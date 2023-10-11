@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 import com.gs.levelup.common.Paging;
 import com.gs.levelup.common.Search;
 import com.gs.levelup.common.SearchDate;
-import com.gs.levelup.notice.model.vo.Notice;
 import com.gs.levelup.payment.model.vo.Payment;
 
 @Repository("paymentDao")
@@ -25,7 +24,6 @@ public class PaymentDao {
 		return (ArrayList<Payment>)list;
 	}
 	
-
 	public int insertPayment(Payment payment) {
 		return sqlSessionTemplate.insert("paymentMapper.insertNotice", payment);
 	}
