@@ -16,47 +16,52 @@ public class CaseItemChangeController {
 	@Autowired
 	private CaseItemChangeService cicService;
 	
-	@RequestMapping(value="cicinsert.do", method = RequestMethod.POST)
+	@RequestMapping(value="changeItem.do", method = RequestMethod.GET)
+	public ModelAndView changeItemMethod(ModelAndView mv) {
+		return mv;
+	}
+	
+	@RequestMapping(value="cicinsert.do", method = RequestMethod.GET)
 	public ModelAndView insertCaseItemChange(ModelAndView mv) {
 		return mv;
 	}
 
-	@RequestMapping(value="cicselect.do", method = RequestMethod.POST)
+	@RequestMapping(value="cicselect.do", method = RequestMethod.GET)
 	public ModelAndView selectCaseItemChange(ModelAndView mv) {
 		return mv;
 	}
 
-	@RequestMapping(value="cicupdate.do", method = RequestMethod.POST)
+	@RequestMapping(value="cicupdate.do", method = RequestMethod.GET)
 	public ModelAndView updateCaseItemChange(ModelAndView mv) {
 		return mv;
 	}
 
-	@RequestMapping(value="cicdel.do", method = RequestMethod.POST)
+	@RequestMapping(value="cicdel.do", method = RequestMethod.GET)
 	public ModelAndView deleteCaseItemChange(ModelAndView mv) {
 		return mv;
 	}
 
-	@RequestMapping(value="ciclist.do", method = RequestMethod.POST)
+	@RequestMapping(value="ciclist.do", method = RequestMethod.GET)
 	public ModelAndView selectList(ModelAndView mv) {
 		return mv;
 	}
 
-	@RequestMapping(value="cicsearchemp.do", method = RequestMethod.POST)
+	@RequestMapping(value="cicsearchemp.do", method = RequestMethod.GET)
 	public ModelAndView selectSearchEmployeeId(ModelAndView mv) {
 		return mv;
 	}
 
-	@RequestMapping(value="cicsearchwriter.do", method = RequestMethod.POST)
+	@RequestMapping(value="cicsearchwriter.do", method = RequestMethod.GET)
 	public ModelAndView selectSearchWriter(ModelAndView mv) {
 		return mv;
 	}
 
-	@RequestMapping(value="cicsearchtitle.do", method = RequestMethod.POST)
+	@RequestMapping(value="cicsearchtitle.do", method = RequestMethod.GET)
 	public ModelAndView selectSearchTitle(ModelAndView mv) {
 		return mv;
 	}
 
-	@RequestMapping(value="cicsearchdate.do", method = RequestMethod.POST)
+	@RequestMapping(value="cicsearchdate.do", method = RequestMethod.GET)
 	public ModelAndView selectSearchDate(ModelAndView mv) {
 		return mv;
 	}

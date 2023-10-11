@@ -22,6 +22,11 @@ public class InquiryController {
 		return mv;
 	}
 	
+	@RequestMapping(value="idetail.do", method=RequestMethod.GET)
+	public ModelAndView moveInquiryDetailMethod(ModelAndView mv){
+		return mv;
+	}
+	
 	@RequestMapping(value="insertans.do", method=RequestMethod.GET)
 	public ModelAndView insertInquiryAnswerMethod(ModelAndView mv){
 		return mv;
