@@ -1,2 +1,2 @@
-# 강남스토리
+# GANGNAM Story
 levelup team project repository
