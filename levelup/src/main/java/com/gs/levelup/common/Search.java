@@ -4,12 +4,25 @@ import java.sql.Date;
 
 public class Search {
 	private String keyword;
+
+	private int age;		//나이 검색시 필요
+
 	private int startRow;  //페이지에 출력할 시작행
 	private int endRow;   //페이지에 출력할 끝행
 	private Date begin;
 	private Date end;
 	
 	public Search() {}
+
+	
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
 
 	public String getKeyword() {
 		return keyword;
@@ -53,8 +66,7 @@ public class Search {
 
 	@Override
 	public String toString() {
-		return "SearchDatePaging [keyword=" + keyword + ", startRow=" + startRow + ", endRow=" + endRow + ", begin="
-				+ begin + ", end=" + end + "]";
+		return "Search [keyword=" + keyword + ", startRow=" + startRow + ", endRow=" + endRow + ", begin=" + begin
+				+ ", end=" + end + "]";
 	}
-	
 }
