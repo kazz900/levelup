@@ -65,4 +65,5 @@ public class Search {
 		return "Search [keyword=" + keyword + ", startRow=" + startRow + ", endRow=" + endRow + ", begin=" + begin
 				+ ", end=" + end + "]";
 	}
+
 }
