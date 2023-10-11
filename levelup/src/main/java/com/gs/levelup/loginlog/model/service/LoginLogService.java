@@ -1,5 +1,9 @@
 package com.gs.levelup.loginlog.model.service;
 
-public interface LoginLogService {
+import java.util.ArrayList;
 
+import com.gs.levelup.loginlog.model.vo.LoginLog;
+
+public interface LoginLogService {
+	public ArrayList<LoginLog> selectLoginLog(int accountId);
 }

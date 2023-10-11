@@ -16,12 +16,14 @@ public class CharacterController {
 	@Autowired
 	private CharacterService characterService;
 	
-	@RequestMapping("getChars")
+	@RequestMapping("selectchars")
 	public ModelAndView selectCharacters(int accountId, ModelAndView mv) {
 		return mv;
 	}
 	
-	
-	
-	
+	@RequestMapping("selectchar")
+	public ModelAndView selectCharacter(int accountId, int charId, ModelAndView mv) {
+		return mv;
+	}
+
 }

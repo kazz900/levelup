@@ -1,5 +1,9 @@
 package com.gs.levelup.picklog.model.service;
 
-public interface PickLogService {
+import java.util.ArrayList;
 
+import com.gs.levelup.picklog.model.vo.PickLog;
+
+public interface PickLogService {
+	public ArrayList<PickLog> selectPickLog(int accountId, int charId);
 }
