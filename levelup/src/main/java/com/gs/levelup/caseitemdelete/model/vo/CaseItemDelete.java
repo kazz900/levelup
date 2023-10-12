@@ -2,41 +2,44 @@ package com.gs.levelup.caseitemdelete.model.vo;
 
 import java.sql.Date;
 
-public class CaseItemDelete {
+
+public class CaseItemDelete{
+	
 	private String documentId;
 	private int userId;
 	private int itemId;
 	private int charId;
 	private String employeeId;
-	private int deleteItemId;
-	private int deleteItemNo;
 	private String documentTitle;
 	private String documentContent;
 	private String attachementFilename;
 	private Date editDate;
 	private Date signDate;
-	private String DocumentStatus;
+	private String documentStatus;
+	private int deleteItemId;
+	private int deleteItemNo;
 	
 	public CaseItemDelete() {}
 
-	public CaseItemDelete(String documentId, int userId, int itemId, int charId, String employeeId, int deleteItemId,
-			int deleteItemNo, String documentTitle, String documentContent, String attachementFilename, Date editDate,
-			Date signDate, String documentStatus) {
+	public CaseItemDelete(String documentId, int userId, int itemId, int charId, String employeeId,
+			String documentTitle, String documentContent, String attachementFilename, Date editDate, Date signDate,
+			String documentStatus, int deleteItemId, int deleteItemNo) {
 		super();
 		this.documentId = documentId;
 		this.userId = userId;
 		this.itemId = itemId;
 		this.charId = charId;
 		this.employeeId = employeeId;
-		this.deleteItemId = deleteItemId;
-		this.deleteItemNo = deleteItemNo;
 		this.documentTitle = documentTitle;
 		this.documentContent = documentContent;
 		this.attachementFilename = attachementFilename;
 		this.editDate = editDate;
 		this.signDate = signDate;
-		DocumentStatus = documentStatus;
+		this.documentStatus = documentStatus;
+		this.deleteItemId = deleteItemId;
+		this.deleteItemNo = deleteItemNo;
 	}
+
 
 	public String getDocumentId() {
 		return documentId;
@@ -76,22 +79,6 @@ public class CaseItemDelete {
 
 	public void setEmployeeId(String employeeId) {
 		this.employeeId = employeeId;
-	}
-
-	public int getDeleteItemId() {
-		return deleteItemId;
-	}
-
-	public void setDeleteItemId(int deleteItemId) {
-		this.deleteItemId = deleteItemId;
-	}
-
-	public int getDeleteItemNo() {
-		return deleteItemNo;
-	}
-
-	public void setDeleteItemNo(int deleteItemNo) {
-		this.deleteItemNo = deleteItemNo;
 	}
 
 	public String getDocumentTitle() {
@@ -135,22 +122,35 @@ public class CaseItemDelete {
 	}
 
 	public String getDocumentStatus() {
-		return DocumentStatus;
+		return documentStatus;
 	}
 
 	public void setDocumentStatus(String documentStatus) {
-		DocumentStatus = documentStatus;
+		this.documentStatus = documentStatus;
+	}
+
+	public int getDeleteItemId() {
+		return deleteItemId;
+	}
+
+	public void setDeleteItemId(int deleteItemId) {
+		this.deleteItemId = deleteItemId;
+	}
+
+	public int getDeleteItemNo() {
+		return deleteItemNo;
+	}
+
+	public void setDeleteItemNo(int deleteItemNo) {
+		this.deleteItemNo = deleteItemNo;
 	}
 
 	@Override
 	public String toString() {
 		return "CaseItemDelete [documentId=" + documentId + ", userId=" + userId + ", itemId=" + itemId + ", charId="
-				+ charId + ", employeeId=" + employeeId + ", deleteItemId=" + deleteItemId + ", deleteItemNo="
-				+ deleteItemNo + ", documentTitle=" + documentTitle + ", documentContent=" + documentContent
-				+ ", attachementFilename=" + attachementFilename + ", editDate=" + editDate + ", signDate=" + signDate
-				+ ", DocumentStatus=" + DocumentStatus + "]";
+				+ charId + ", employeeId=" + employeeId + ", documentTitle=" + documentTitle + ", documentContent="
+				+ documentContent + ", attachementFilename=" + attachementFilename + ", editDate=" + editDate
+				+ ", signDate=" + signDate + ", DocumentStatus=" + documentStatus + ", deleteItemId=" + deleteItemId
+				+ ", deleteItemNo=" + deleteItemNo + "]";
 	}
-	
-	
-
 }

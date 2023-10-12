@@ -1,5 +1,76 @@
 package com.gs.levelup.payment.model.service;
 
-public class PaymentServiceImpl {
+import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.gs.levelup.common.Paging;
+import com.gs.levelup.common.Search;
+import com.gs.levelup.common.SearchDate;
+import com.gs.levelup.payment.model.dao.PaymentDao;
+import com.gs.levelup.payment.model.vo.Payment;
+
+@Service("paymentService")
+public class PaymentServiceImpl implements PaymentService {
+		@Autowired
+		private PaymentDao paymentDao;
+		
+		@Override
+		public ArrayList<Payment> selectList(Paging paging){
+			return paymentDao.selectList(paging);
+		}
+		
+		
+		@Override
+		public int insertPayment(Payment payment) {
+			return paymentDao.insertPayment(payment);
+		}
+		
+		@Override
+		public int updatePayment(Payment payment) {
+			return paymentDao.updatePayment(payment);
+		}
+		
+		@Override
+		public int deletePayment(String paymentId) {
+			return paymentDao.deletePayment(paymentId);
+		}
+
+		@Override
+		public int selectListCount() {		
+			return paymentDao.selectListCount();
+		}
+
+		@Override
+		public int selectSearchUserIDCount(String keyword) {
+			return paymentDao.selectSearchUserIDCount(keyword);
+		}
+
+		@Override
+		public int selectSearchItemCount(String keyword) {		
+			return paymentDao.selectSearchItemCount(keyword);
+		}
+
+		@Override
+		public int selectSearchDateCount(SearchDate date) {		
+			return paymentDao.selectSearchDateCount(date);
+		}
+
+		@Override
+		public ArrayList<Payment> selectSearchUserID(Search search) {
+			return paymentDao.selectSearchUserID(search);
+		}
+
+		@Override
+		public ArrayList<Payment> selectSearchItem(Search search) {		
+			return paymentDao.selectSearchItem(search);
+		}
+
+		@Override
+		public ArrayList<Payment> selectSearchDate(Search search) {		
+			return paymentDao.selectSearchDate(search);
+		}
+
+	
 }
