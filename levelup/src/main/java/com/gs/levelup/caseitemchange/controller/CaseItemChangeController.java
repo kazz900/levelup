@@ -16,7 +16,7 @@ public class CaseItemChangeController {
 	@Autowired
 	private CaseItemChangeService cicService;
 	
-	@RequestMapping(value="changeItem.do", method = RequestMethod.GET)
+	@RequestMapping(value="changeitem.do", method = RequestMethod.GET)
 	public ModelAndView changeItemMethod(ModelAndView mv) {
 		return mv;
 	}

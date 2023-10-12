@@ -2,41 +2,47 @@ package com.gs.levelup.caseitemchange.model.vo;
 
 import java.sql.Date;
 
-public class CaseItemChange {
+
+public class CaseItemChange{
+	
 	private String documentId;
 	private int userId;
 	private int itemId;
 	private int charId;
 	private String employeeId;
-	private int replaceItemId;
-	private int replaceItemNo;
 	private String documentTitle;
 	private String documentContent;
 	private String attachementFilename;
 	private Date editDate;
 	private Date signDate;
-	private String DocumentStatus;
+	private String documentStatus;
+	private int replaceItemId;
+	private int replaceItemNo;
 	
 	public CaseItemChange() {}
+	
+	
 
-	public CaseItemChange(String documentId, int userId, int itemId, int charId, String employeeId, int replaceItemId,
-			int replaceItemNo, String documentTitle, String documentContent, String attachementFilename, Date editDate,
-			Date signDate, String documentStatus) {
+	public CaseItemChange(String documentId, int userId, int itemId, int charId, String employeeId,
+			String documentTitle, String documentContent, String attachementFilename, Date editDate, Date signDate,
+			String documentStatus, int replaceItemId, int replaceItemNo) {
 		super();
 		this.documentId = documentId;
 		this.userId = userId;
 		this.itemId = itemId;
 		this.charId = charId;
 		this.employeeId = employeeId;
-		this.replaceItemId = replaceItemId;
-		this.replaceItemNo = replaceItemNo;
 		this.documentTitle = documentTitle;
 		this.documentContent = documentContent;
 		this.attachementFilename = attachementFilename;
 		this.editDate = editDate;
 		this.signDate = signDate;
-		DocumentStatus = documentStatus;
+		this.documentStatus = documentStatus;
+		this.replaceItemId = replaceItemId;
+		this.replaceItemNo = replaceItemNo;
 	}
+
+
 
 	public String getDocumentId() {
 		return documentId;
@@ -76,22 +82,6 @@ public class CaseItemChange {
 
 	public void setEmployeeId(String employeeId) {
 		this.employeeId = employeeId;
-	}
-
-	public int getReplaceItemId() {
-		return replaceItemId;
-	}
-
-	public void setReplaceItemId(int replaceItemId) {
-		this.replaceItemId = replaceItemId;
-	}
-
-	public int getReplaceItemNo() {
-		return replaceItemNo;
-	}
-
-	public void setReplaceItemNo(int replaceItemNo) {
-		this.replaceItemNo = replaceItemNo;
 	}
 
 	public String getDocumentTitle() {
@@ -135,21 +125,39 @@ public class CaseItemChange {
 	}
 
 	public String getDocumentStatus() {
-		return DocumentStatus;
+		return documentStatus;
 	}
 
 	public void setDocumentStatus(String documentStatus) {
-		DocumentStatus = documentStatus;
+		this.documentStatus = documentStatus;
 	}
+
+	public int getReplaceItemId() {
+		return replaceItemId;
+	}
+
+	public void setReplaceItemId(int replaceItemId) {
+		this.replaceItemId = replaceItemId;
+	}
+
+	public int getReplaceItemNo() {
+		return replaceItemNo;
+	}
+
+	public void setReplaceItemNo(int replaceItemNo) {
+		this.replaceItemNo = replaceItemNo;
+	}
+
+
 
 	@Override
 	public String toString() {
 		return "CaseItemChange [documentId=" + documentId + ", userId=" + userId + ", itemId=" + itemId + ", charId="
-				+ charId + ", employeeId=" + employeeId + ", replaceItemId=" + replaceItemId + ", replaceItemNo="
-				+ replaceItemNo + ", documentTitle=" + documentTitle + ", documentContent=" + documentContent
-				+ ", attachementFilename=" + attachementFilename + ", editDate=" + editDate + ", signDate=" + signDate
-				+ ", DocumentStatus=" + DocumentStatus + "]";
+				+ charId + ", employeeId=" + employeeId + ", documentTitle=" + documentTitle + ", documentContent="
+				+ documentContent + ", attachementFilename=" + attachementFilename + ", editDate=" + editDate
+				+ ", signDate=" + signDate + ", DocumentStatus=" + documentStatus + ", replaceItemId=" + replaceItemId
+				+ ", replaceItemNo=" + replaceItemNo + "]";
 	}
-	
+
 	
 }
