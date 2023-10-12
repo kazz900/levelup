@@ -42,6 +42,7 @@ public class InquiryController {
 		return mv;
 	}	
 	
+
 	@RequestMapping(value="isearchid.do", method=RequestMethod.GET)
 	public ModelAndView selectSearchUserIDMethod(ModelAndView mv){
 		return mv;

@@ -74,6 +74,4 @@ public class PaymentController {
 											ModelAndView mv) {
 		return mv;
 	}
-
-
 }
