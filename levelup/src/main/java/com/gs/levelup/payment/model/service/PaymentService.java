@@ -2,6 +2,7 @@ package com.gs.levelup.payment.model.service;
 
 import java.util.ArrayList;
 
+<<<<<<< main
 import com.gs.levelup.common.Paging;
 import com.gs.levelup.common.Search;
 import com.gs.levelup.common.SearchDate;
@@ -20,5 +21,15 @@ public interface PaymentService {
 	public ArrayList<Payment> selectSearchUserID(Search search);
 	public ArrayList<Payment> selectSearchItem(Search search);
 	public ArrayList<Payment> selectSearchDate(Search search);
+=======
+import com.gs.levelup.payment.model.vo.Payment;
+>>>>>>> kimjihyuk
 
+public interface PaymentService {
+	public Payment selectPayment(String paymentId);
+	public int inserPayment(Payment payment);
+	public int updatePayment(Payment payment);
+	public int deletePayment(Payment payment);
+	public ArrayList<Payment> selectList();
+	public int selectListCount();
 }
