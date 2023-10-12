@@ -4,6 +4,7 @@ spring-security.xml
 servlet-context.xml
 root-context.xml
 mybatis-config.xml
+web.xml
 
 /target/
 !.mvn/wrapper/maven-wrapper.jar
