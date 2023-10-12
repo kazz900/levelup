@@ -10,11 +10,11 @@ import org.springframework.stereotype.Repository;
 import com.gs.levelup.common.Paging;
 import com.gs.levelup.common.Search;
 import com.gs.levelup.common.SearchDate;
+
 import com.gs.levelup.payment.model.vo.Payment;
 
 @Repository("paymentDao")
 public class PaymentDao {
-
 	@Autowired  
 	private SqlSessionTemplate sqlSessionTemplate;
 

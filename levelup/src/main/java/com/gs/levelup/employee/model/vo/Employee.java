@@ -2,19 +2,9 @@ package com.gs.levelup.employee.model.vo;
 
 import java.sql.Date;
 
-public class Employee {
-	/*
-	 * EMPLOYEE_ID
-DEPARTMENT_ID
-TEAM_ID
-RANK_ID
-EMPLOYEE_NAME
-EMPLOYEE_EMAIL
-EMPLOYEE_PWD
-EMPLOYEE_ADDRESS
-EMPLOYEE_PHONE
-EMPLOYEE_BIRTHDATE
-	 */
+public class Employee implements java.io.Serializable  {
+	private static final long serialVersionUID = 8455557861948383032L;
+	
 	private String employeeId;
 	private String departmentId;
 	private String teamId;

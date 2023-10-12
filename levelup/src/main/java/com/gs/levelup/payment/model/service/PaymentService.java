@@ -20,5 +20,4 @@ public interface PaymentService {
 	public ArrayList<Payment> selectSearchUserID(Search search);
 	public ArrayList<Payment> selectSearchItem(Search search);
 	public ArrayList<Payment> selectSearchDate(Search search);
-
 }

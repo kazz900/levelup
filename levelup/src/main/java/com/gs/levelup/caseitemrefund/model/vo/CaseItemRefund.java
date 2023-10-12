@@ -2,38 +2,40 @@ package com.gs.levelup.caseitemrefund.model.vo;
 
 import java.sql.Date;
 
-public class CaseItemRefund {
+
+public class CaseItemRefund{
+	
 	private String documentId;
 	private int userId;
 	private int itemId;
 	private int charId;
 	private String employeeId;
-	private int refundAmount;
 	private String documentTitle;
 	private String documentContent;
 	private String attachementFilename;
 	private Date editDate;
 	private Date signDate;
 	private String DocumentStatus;
+	private int refundAmount;
 
 	public CaseItemRefund() {}
 
-	public CaseItemRefund(String documentId, int userId, int itemId, int charId, String employeeId, int refundAmount,
+	public CaseItemRefund(String documentId, int userId, int itemId, int charId, String employeeId,
 			String documentTitle, String documentContent, String attachementFilename, Date editDate, Date signDate,
-			String documentStatus) {
+			String documentStatus, int refundAmount) {
 		super();
 		this.documentId = documentId;
 		this.userId = userId;
 		this.itemId = itemId;
 		this.charId = charId;
 		this.employeeId = employeeId;
-		this.refundAmount = refundAmount;
 		this.documentTitle = documentTitle;
 		this.documentContent = documentContent;
 		this.attachementFilename = attachementFilename;
 		this.editDate = editDate;
 		this.signDate = signDate;
 		DocumentStatus = documentStatus;
+		this.refundAmount = refundAmount;
 	}
 
 	public String getDocumentId() {
@@ -74,14 +76,6 @@ public class CaseItemRefund {
 
 	public void setEmployeeId(String employeeId) {
 		this.employeeId = employeeId;
-	}
-
-	public int getRefundAmount() {
-		return refundAmount;
-	}
-
-	public void setRefundAmount(int refundAmount) {
-		this.refundAmount = refundAmount;
 	}
 
 	public String getDocumentTitle() {
@@ -132,14 +126,22 @@ public class CaseItemRefund {
 		DocumentStatus = documentStatus;
 	}
 
+	public int getRefundAmount() {
+		return refundAmount;
+	}
+
+	public void setRefundAmount(int refundAmount) {
+		this.refundAmount = refundAmount;
+	}
+
 	@Override
 	public String toString() {
 		return "CaseItemRefund [documentId=" + documentId + ", userId=" + userId + ", itemId=" + itemId + ", charId="
-				+ charId + ", employeeId=" + employeeId + ", refundAmount=" + refundAmount + ", documentTitle="
-				+ documentTitle + ", documentContent=" + documentContent + ", attachementFilename="
-				+ attachementFilename + ", editDate=" + editDate + ", signDate=" + signDate + ", DocumentStatus="
-				+ DocumentStatus + "]";
+				+ charId + ", employeeId=" + employeeId + ", documentTitle=" + documentTitle + ", documentContent="
+				+ documentContent + ", attachementFilename=" + attachementFilename + ", editDate=" + editDate
+				+ ", signDate=" + signDate + ", DocumentStatus=" + DocumentStatus + ", refundAmount=" + refundAmount
+				+ "]";
 	}
-	
+
 	
 }
