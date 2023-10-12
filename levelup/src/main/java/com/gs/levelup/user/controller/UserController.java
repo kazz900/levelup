@@ -22,7 +22,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.gs.levelup.common.Paging;
 import com.gs.levelup.common.SearchDate;
-import com.gs.levelup.common.SearchDatePaging;
 import com.gs.levelup.user.model.service.UserService;
 import com.gs.levelup.user.model.vo.User;
 
