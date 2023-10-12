@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.gs.levelup.common.Paging;
-import com.gs.levelup.common.SearchDatePaging;
+import com.gs.levelup.common.Search;
 import com.gs.levelup.common.SearchDate;
 import com.gs.levelup.employee.controller.EmployeeController;
 import com.gs.levelup.employee.model.service.EmployeeService;
@@ -301,7 +301,7 @@ public class EmployeeController {
 			//service 메소드 호출하고 리턴결과 받기
 			ArrayList<Employee> list = null;
 			
-			SearchDatePaging search = new SearchDatePaging();
+			Search search = new Search();
 			search.setStartRow(paging.getStartRow());
 			search.setEndRow(paging.getEndRow());
 			

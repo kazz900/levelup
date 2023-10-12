@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.gs.levelup.common.Paging;
-import com.gs.levelup.common.SearchDatePaging;
+import com.gs.levelup.common.Search;
 import com.gs.levelup.common.SearchDate;
 import com.gs.levelup.employee.model.vo.Employee;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -60,27 +60,27 @@ public class EmployeeDao {
 		return sqlSessionTemplate.update("memberMapper.updateLoginOK", member);
 	}
 
-	public ArrayList<Employee> selectSearchUserid(SearchDatePaging search) {
+	public ArrayList<Employee> selectSearchUserid(Search search) {
 		List<Employee> list = sqlSessionTemplate.selectList("memberMapper.selectSearchUserid", search);
 		return (ArrayList<Employee>)list;
 	}
 
-	public ArrayList<Employee> selectSearchGender(SearchDatePaging search) {
+	public ArrayList<Employee> selectSearchGender(Search search) {
 		List<Employee> list = sqlSessionTemplate.selectList("memberMapper.selectSearchGender", search);
 		return (ArrayList<Employee>)list;
 	}
 
-	public ArrayList<Employee> selectSearchAge(SearchDatePaging search) {
+	public ArrayList<Employee> selectSearchAge(Search search) {
 		List<Employee> list = sqlSessionTemplate.selectList("memberMapper.selectSearchAge", search);
 		return (ArrayList<Employee>)list;
 	}
 
-	public ArrayList<Employee> selectSearchEnrollDate(SearchDatePaging search) {
+	public ArrayList<Employee> selectSearchEnrollDate(Search search) {
 		List<Employee> list = sqlSessionTemplate.selectList("memberMapper.selectSearchEnrollDate", search);
 		return (ArrayList<Employee>)list;
 	}
 
-	public ArrayList<Employee> selectSearchLoginOK(SearchDatePaging search) {
+	public ArrayList<Employee> selectSearchLoginOK(Search search) {
 		List<Employee> list = sqlSessionTemplate.selectList("memberMapper.selectSearchLoginOK", search);
 		return (ArrayList<Employee>)list;
 	}
