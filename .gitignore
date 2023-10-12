@@ -1,3 +1,10 @@
+log4j.xml
+pom.xml
+spring-security.xml
+servlet-context.xml
+root-context.xml
+mybatis-config.xml
+
 /target/
 !.mvn/wrapper/maven-wrapper.jar
 
