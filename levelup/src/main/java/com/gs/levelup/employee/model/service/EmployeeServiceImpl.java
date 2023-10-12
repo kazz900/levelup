@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.gs.levelup.common.Paging;
 import com.gs.levelup.common.SearchDate;
-import com.gs.levelup.common.SearchDatePaging;
+import com.gs.levelup.common.Search;
 import com.gs.levelup.employee.model.dao.EmployeeDao;
 import com.gs.levelup.employee.model.vo.Employee;
 
@@ -67,28 +67,28 @@ public class EmployeeServiceImpl implements EmployeeService{
 	}
 
 	@Override
-	public ArrayList<Employee> selectSearchUserid(SearchDatePaging searchDatePaging) {
-		return employeeDao.selectSearchUserid(searchDatePaging);
+	public ArrayList<Employee> selectSearchUserid(Search Search) {
+		return employeeDao.selectSearchUserid(Search);
 	}
 
 	@Override
-	public ArrayList<Employee> selectSearchGender(SearchDatePaging searchDatePaging) {
-		return employeeDao.selectSearchGender(searchDatePaging);
+	public ArrayList<Employee> selectSearchGender(Search Search) {
+		return employeeDao.selectSearchGender(Search);
 	}
 
 	@Override
-	public ArrayList<Employee> selectSearchAge(SearchDatePaging searchDatePaging) {		
-		return employeeDao.selectSearchAge(searchDatePaging);
+	public ArrayList<Employee> selectSearchAge(Search Search) {		
+		return employeeDao.selectSearchAge(Search);
 	}
 
 	@Override
-	public ArrayList<Employee> selectSearchEnrollDate(SearchDatePaging searchDatePaging) {	
-		return employeeDao.selectSearchEnrollDate(searchDatePaging);
+	public ArrayList<Employee> selectSearchEnrollDate(Search Search) {	
+		return employeeDao.selectSearchEnrollDate(Search);
 	}
 
 	@Override
-	public ArrayList<Employee> selectSearchLoginOK(SearchDatePaging searchDatePaging) {
-		return employeeDao.selectSearchLoginOK(searchDatePaging);
+	public ArrayList<Employee> selectSearchLoginOK(Search Search) {
+		return employeeDao.selectSearchLoginOK(Search);
 	}
 
 	@Override

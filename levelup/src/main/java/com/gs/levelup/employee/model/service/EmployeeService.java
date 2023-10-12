@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.gs.levelup.common.Paging;
 import com.gs.levelup.common.SearchDate;
-import com.gs.levelup.common.SearchDatePaging;
+import com.gs.levelup.common.Search;
 import com.gs.levelup.employee.model.vo.Employee;
 
 public interface EmployeeService {
@@ -25,10 +25,10 @@ public interface EmployeeService {
 	public int selectSearchDateCount(SearchDate searchDate);
 	public int selectSearchLoginOKCount(String keyword);
 	//검색 관련
-	public ArrayList<Employee> selectSearchUserid(SearchDatePaging searchDatePaging);
-	public ArrayList<Employee> selectSearchGender(SearchDatePaging searchDatePaging);
-	public ArrayList<Employee> selectSearchAge(SearchDatePaging searchDatePaging);
-	public ArrayList<Employee> selectSearchEnrollDate(SearchDatePaging searchDatePaging);
-	public ArrayList<Employee> selectSearchLoginOK(SearchDatePaging searchDatePaging);
+	public ArrayList<Employee> selectSearchUserid(Search Search);
+	public ArrayList<Employee> selectSearchGender(Search Search);
+	public ArrayList<Employee> selectSearchAge(Search Search);
+	public ArrayList<Employee> selectSearchEnrollDate(Search Search);
+	public ArrayList<Employee> selectSearchLoginOK(Search Search);
 	public int selectCheckId(String userid);
 }
