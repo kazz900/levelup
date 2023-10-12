@@ -43,18 +43,18 @@ public class EmployeeController {
 		
 		//웹 서비스 요청 하나당 메소드 하나씩 작성하는 방식임 ****************************************
 		//뷰 페이지 내보내기용 메소드
-		@RequestMapping(value="loginPage.do", method= {RequestMethod.GET, RequestMethod.POST})
+		@RequestMapping(value="eloginPage.do", method= {RequestMethod.GET, RequestMethod.POST})
 		public String moveLoginPage() {
 			return "member/loginPage";
 		}
 		
 		//회원가입 페이지 내보내기용
-		@RequestMapping("enrollPage.do")
+		@RequestMapping("eenrollPage.do")
 		public String moveEnrollPage() {
 			return "member/enrollPage";
 		}
 		
-		@RequestMapping(value="login.do", method= {RequestMethod.GET, RequestMethod.POST})
+		@RequestMapping(value="elogin.do", method= {RequestMethod.GET, RequestMethod.POST})
 		public String loginMethod(Employee employee, HttpSession session,
 				SessionStatus status, Model model) {
 			logger.info("login.do : " + employee);
@@ -84,7 +84,7 @@ public class EmployeeController {
 		
 		//로그아웃 처리용 메소드
 		//전송방식이 get 이면 , method 속성 생략 가능함, method 속성 생략시 value 속성도 표기 생략함
-		@RequestMapping("logout.do")
+		@RequestMapping("elogout.do")
 		public String logoutMethod(HttpServletRequest request, Model model) {
 			HttpSession session = request.getSession(false);
 			if(session != null) {
@@ -97,7 +97,7 @@ public class EmployeeController {
 		}
 		
 		//ajax 통신으로 아이디 중복체크요청 처리용 메소드
-		@RequestMapping(value="idchk.do", method = RequestMethod.POST)
+		@RequestMapping(value="eidchk.do", method = RequestMethod.POST)
 		public void dupCheckIdMethod(@RequestParam("userid") String userid,
 				HttpServletResponse response) throws IOException {
 			//@RequestParam("전송온이름") 자료형 값저장변수명
@@ -122,7 +122,7 @@ public class EmployeeController {
 		}
 		
 		//회원가입 요청 처리용 메소드
-		@RequestMapping(value="enroll.do", method = RequestMethod.POST)
+		@RequestMapping(value="eenroll.do", method = RequestMethod.POST)
 		public String employeeInsertMethod(Employee employee, Model model) {
 			logger.info("enroll.do" + employee);
 			
@@ -141,7 +141,7 @@ public class EmployeeController {
 		
 		//My Page 클릭시 내 정보 보기 요청 처리용 메소드
 		//컨트롤러의 메소드 리턴 타입은 string,ModelAndView 를 사용할 수있음
-		@RequestMapping("myinfo.do")
+		@RequestMapping("emyinfo.do")
 		public String memberDetailMethod(@RequestParam("userId") String userId, Model model) {
 			//서비스 메소드로 아이디 전달하고, 해당 회원정보 받기
 			Employee employee= employeeService.selectEmployee(userId);
@@ -157,7 +157,7 @@ public class EmployeeController {
 		
 		//회원 정보 수정 페이지 내보내기용 메소드
 		//반환타입이 ModelAndView 인 경우 
-		@RequestMapping("moveup.do")
+		@RequestMapping("emoveup.do")
 		public ModelAndView moveUpdatePage(@RequestParam("userId") String userId, 
 				ModelAndView mv) {
 			Employee employee = employeeService.selectEmployee(userId);
@@ -175,7 +175,7 @@ public class EmployeeController {
 		
 		//회원 정보 수정 처리용 메소드 : 수정 성공시 myInfoPage.jsp 로 이동함
 		//패스워드 수정이 있는 경우 
-		@RequestMapping(value="mupdate.do", method = RequestMethod.POST)
+		@RequestMapping(value="emupdate.do", method = RequestMethod.POST)
 		public String employeeUpdateMethod(Employee employee, Model model,
 				@RequestParam("origin_userpwd") String origin_userpwd) {
 			logger.info("mupdate.do : " + employee);
@@ -202,7 +202,7 @@ public class EmployeeController {
 		}
 		
 		//회원탈퇴(삭제) 요청 처리용
-		@RequestMapping("mdel.do")
+		@RequestMapping("emdel.do")
 		public String employeeDeleteMethod(@RequestParam("userId") String userId, Model model) {
 			if(employeeService.deleteEmployee(userId) > 0) {
 				//회원 탈퇴성공시, 자동 로그아웃 처리해야함
@@ -215,7 +215,7 @@ public class EmployeeController {
 		}
 		
 		//반환형이 ModelAndView, 페이징 처리 추가한 메소드
-		@RequestMapping("mlist.do")
+		@RequestMapping("emlist.do")
 		public ModelAndView employeeListViewMethod(
 				@RequestParam(name="page", required=false) String page,
 				ModelAndView mv) {
@@ -244,7 +244,7 @@ public class EmployeeController {
 		}
 		
 		//관리지용 : 회원 로그인 제한/가능 처리용 메소드
-		@RequestMapping("loginok.do")
+		@RequestMapping("eloginok.do")
 		public String employeeLoginOKMethod(Employee employee, Model model) {
 			if(employeeService.updateLoginOK(employee) > 0) {
 				return "redirect:mlist.do";
@@ -255,7 +255,7 @@ public class EmployeeController {
 		}
 		
 		//관리자용 : 회원 검색 처리용 메소드
-		@RequestMapping(value="msearch.do", method=RequestMethod.POST)
+		@RequestMapping(value="emsearch.do", method=RequestMethod.POST)
 		public ModelAndView employeeSearchMethod(HttpServletRequest request, ModelAndView mv) {
 			//전송온 값 꺼내기
 			String action = request.getParameter("action");

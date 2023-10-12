@@ -55,7 +55,7 @@
 		<beans:property name="maxUploadSize" value="10000000" />	
 	</beans:bean>	
 	
-	<context:component-scan base-package="org.ict.first" />
+	<context:component-scan base-package="com.gs.levelup" />
 	
 	<aop:aspectj-autoproxy proxy-target-class="true" />
 	
