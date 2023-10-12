@@ -27,32 +27,32 @@ public class InquiryController {
 		return mv;
 	}
 	
-	@RequestMapping(value="insertans.do", method=RequestMethod.GET)
+	@RequestMapping(value="iinsert.do", method=RequestMethod.GET)
 	public ModelAndView insertInquiryAnswerMethod(ModelAndView mv){
 		return mv;
 	}	
 	
-	@RequestMapping(value="updateans.do", method=RequestMethod.GET)
+	@RequestMapping(value="iupdate.do", method=RequestMethod.GET)
 	public ModelAndView updateInquiryAnswerMethod(ModelAndView mv){
 		return mv;
 	}
 	
-	@RequestMapping(value="deleteans.do", method=RequestMethod.GET)
+	@RequestMapping(value="idelete.do", method=RequestMethod.GET)
 	public ModelAndView deleteInquiryAnswerMethod(ModelAndView mv){
 		return mv;
 	}	
 	
-	@RequestMapping(value="searchidt.do", method=RequestMethod.GET)
+	@RequestMapping(value="isearchid.do", method=RequestMethod.GET)
 	public ModelAndView selectSearchUserIDMethod(ModelAndView mv){
 		return mv;
 	}
 	
-	@RequestMapping(value="searchtype.do", method=RequestMethod.GET)
+	@RequestMapping(value="isearchtype.do", method=RequestMethod.GET)
 	public ModelAndView selectSearchTypeMethod(ModelAndView mv){
 		return mv;
 	}
 	
-	@RequestMapping(value="searchdate.do", method=RequestMethod.GET)
+	@RequestMapping(value="isearchdate.do", method=RequestMethod.GET)
 	public ModelAndView selectSearchDateMethod(ModelAndView mv){
 		return mv;
 	}
