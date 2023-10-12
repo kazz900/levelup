@@ -1,5 +1,12 @@
 package com.gs.levelup.item.model.service;
 
-public interface ItemService {
+import java.util.ArrayList;
 
+import com.gs.levelup.item.model.vo.Item;
+
+public interface ItemService {
+	public ArrayList<Item> selectListItems();
+	public Item selectItem(int itemId);
+	public ArrayList<Item> selectListItemType(String itemType);
+	public ArrayList<Item> selectSearchItems(String searchword);
 }
