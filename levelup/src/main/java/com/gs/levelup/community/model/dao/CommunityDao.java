@@ -2,11 +2,14 @@ package com.gs.levelup.community.model.dao;
 
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Repository;
+
 import com.gs.levelup.common.Paging;
 import com.gs.levelup.common.Search;
 import com.gs.levelup.common.SearchDate;
 import com.gs.levelup.community.model.vo.Community;
 
+@Repository("communityDao")
 public class CommunityDao {
 
 	public ArrayList<Community> selectCommunityTop() {
