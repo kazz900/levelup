@@ -10,6 +10,7 @@ import com.gs.levelup.picklog.model.vo.PickLog;
 
 @Service("pickLogService")
 public class PickLogServiceImpl implements PickLogService{
+	
 	@Autowired
 	private PickLogDao pickLogDao;
 	

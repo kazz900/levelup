@@ -44,5 +44,4 @@ public class HomeController {
 		// view를 내보낼때는 String을 return type으로 함
 		return "home";
 	}
-	
 }
