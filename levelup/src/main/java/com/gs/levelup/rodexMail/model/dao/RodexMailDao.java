@@ -2,9 +2,12 @@ package com.gs.levelup.rodexMail.model.dao;
 
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Repository;
+
 import com.gs.levelup.common.Paging;
 import com.gs.levelup.rodexMail.model.vo.RodexMail;
 
+@Repository("rodexMailDao")
 public class RodexMailDao {
 
 	public int insertRodexMail(RodexMail rodexMail) {
