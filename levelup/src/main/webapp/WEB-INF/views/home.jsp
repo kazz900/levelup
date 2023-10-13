@@ -1,39 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
+<!doctype html>
 <html>
 <head>
-<title>Levelup Home</title>
-<style type="text/css">
-.container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.child {
-	text-align: center;
-	max-width: 50%;
-}
-
-.inputfields{
-	margin: 2.5px;
-	width: 250px;
-	height: 30px;
-}
-</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="initial-scale=1.0,maximum-scale=3.0,minimum-scale=1.0,width=device-width,minimal-ui">
+<title>Levelup login page</title>
+<link rel="stylesheet" type="text/css" href="./resources/css/main.css">
+<link rel="stylesheet" type="text/css" href="./resources/css/login.css">
+<script type="text/javascript" src="./resources/js/lib/jquery.min.js"></script>
+<script type="text/javascript" src="./resources/js/make_graph.js"></script>
+<script type="text/javascript" src="./resources/js/page_info.js"></script>
+<script type="text/javascript" src="./resources/js/main.js"></script>
 </head>
 <body>
-	<div class="container">
-		<div class="child">
-			<h1>Levelup login</h1>
-			<br>
-			<form action="elogin.do" method="post">
-				<input type="text" class="inputfields" placeholder="아이디 입력"><br> 
-				<input type="password" class="inputfields" placeholder="비밀번호 입력"><br>
-				<input type="submit" class="inputfields" value="로그인">
-			</form>
-		</div>
-	</div>
+    <div id="container">
+        
+        <main class="main-wrapper login">
+            <div class="login-box">
+                <form action="elogin.do" method="post">
+                    <a class="login-logo" href="./main.html">
+                        <img src="./resources/images/game-controller.png">
+                    </a>
+
+                    <div class="login-nemo login-name margin-top30px">
+                        <input type="text" id="empid" placeholder="아이디를 입력하세요." name="empid" >
+                        <i class='bx bxs-user' name='bx'></i>
+                    </div>
+
+                    <div class="login-nemo login-name">
+                        <input type="password" placeholder="비밀번호를 입력하세요." name="emppwd" >
+                        <i class='bx bxs-lock-alt' name="bx"></i>
+                    </div>
+
+                    <input class="login-btn" type="submit" name="login" value="로그인">
+                </form>
+            </div>
+        </main>
+        
+    </div>
 </body>
 </html>
