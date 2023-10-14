@@ -6,6 +6,8 @@
 
 <!-- 	<div th:fragment="head" th:remove="tag">  -->
 		<!-- Bootstrap Css -->
+
+
 		<link href="resources/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
 
 		<!-- Icons Css -->
@@ -16,11 +18,5 @@
 
 
 <!-- 	<div th:fragment="script" th:remove="tag"> -->
-		<script src="resources/libs/jquery/jquery.min.js"></script>
-		<script src="resources/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-		<script src="resources/libs/metismenu/metisMenu.min.js"></script>
-		<script src="resources/libs/simplebar/simplebar.min.js"></script>
-		<script src="resources/libs/node-waves/waves.min.js"></script>
-		<script src="resources/js/app.js"></script>
 		
 <!-- 	</div> -->

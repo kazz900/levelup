@@ -8,44 +8,32 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<c:import url="title-meta.jsp"/>
-<c:import url="head-script.jsp"/>
+<c:import url="/WEB-INF/views/common/title-meta.jsp"/>
+<c:import url="/WEB-INF/views/common/head-script.jsp"/>
 </head>
-<body>
+<body data-sidebar="dark" data-layout-mode="light">
 
-<c:import url="layout.jsp"/>
-	<!-- ============================================================== -->
-	<!-- Start right Content here -->
-	<!-- ============================================================== -->
-	<div layout:fragment="content">
-		<div class="main-content">
+<c:import url="/WEB-INF/views/common/layout.jsp"/>
 
-			<div class="page-content">
-				<div class="container-fluid">
+<div class="main-content">
+	<div class="page-content">
+		<div class="container-fluid">
 
-					<!-- start page title -->
-<%-- 					<div th:replace="page-title :: topnavbar(${title},${item},${subitem})"></div> --%>
-					<c:import url="page-title.jsp"/>
-					<!-- end page title -->
+<c:import url="/WEB-INF/views/common/page-title.jsp"/>
 
-					
-					<!-- end row -->
-				</div>
-				<!-- container-fluid -->
-			</div>
-			<!-- End Page-content -->
-			<!-- Start footer -->
-<!-- 			<div th:replace="footer :: footer"></div> -->
-			<c:import url="footer.jsp"/>
-			<!-- end footer -->
+
+
+
+
 			
+
+	 	<!-- container-fluid -->			
 		</div>
+	<!-- page-content -->		
 	</div>
-	<!-- end main content-->
-
-	<!-- END layout-wrapper -->
-
-<!-- 	<th:block layout:fragment="script"/> -->
+<c:import url="/WEB-INF/views/common/footer.jsp"/>
+</div> <!-- main-content -->
 
 </body>
 </html>
+
