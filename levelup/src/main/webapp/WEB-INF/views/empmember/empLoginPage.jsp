@@ -17,7 +17,6 @@
 </head>
 <body>
     <div id="container">
-        
         <main class="main-wrapper login">
             <div class="login-box">
         		<h1>L e v e l U p</h1>
