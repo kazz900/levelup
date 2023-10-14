@@ -6,6 +6,9 @@ public class Inquiry {
 	
 	private String inquiryId;
 	private int itemId;
+	private int charId;
+	private int accountId;
+	private String userId;
 	private String employeeId;
 	private String inquiryTitle;
 	private String inquiryContent;
@@ -23,12 +26,15 @@ public class Inquiry {
 	}
 
 
-	public Inquiry(String inquiryId, int itemId, String employeeId, String inquiryTitle, String inquiryContent,
-			String answerStatus, Date editDate, Date answerDate, String answerContent, String attachmentFileName,
-			String inquiryType) {
+	public Inquiry(String inquiryId, int itemId, int charId, int accountId, String userId, String employeeId,
+			String inquiryTitle, String inquiryContent, String answerStatus, Date editDate, Date answerDate,
+			String answerContent, String attachmentFileName, String inquiryType) {
 		super();
 		this.inquiryId = inquiryId;
 		this.itemId = itemId;
+		this.charId = charId;
+		this.accountId = accountId;
+		this.userId = userId;
 		this.employeeId = employeeId;
 		this.inquiryTitle = inquiryTitle;
 		this.inquiryContent = inquiryContent;
@@ -58,6 +64,36 @@ public class Inquiry {
 
 	public void setItemId(int itemId) {
 		this.itemId = itemId;
+	}
+
+
+	public int getCharId() {
+		return charId;
+	}
+
+
+	public void setCharId(int charId) {
+		this.charId = charId;
+	}
+
+
+	public int getAccountId() {
+		return accountId;
+	}
+
+
+	public void setAccountId(int accountId) {
+		this.accountId = accountId;
+	}
+
+
+	public String getUserId() {
+		return userId;
+	}
+
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 
@@ -153,13 +189,14 @@ public class Inquiry {
 
 	@Override
 	public String toString() {
-		return "inquiry [inquiryId=" + inquiryId + ", itemId=" + itemId + ", employeeId=" + employeeId
-				+ ", inquiryTitle=" + inquiryTitle + ", inquiryContent=" + inquiryContent + ", answerStatus="
-				+ answerStatus + ", editDate=" + editDate + ", answerDate=" + answerDate + ", answerContent="
-				+ answerContent + ", attachmentFileName=" + attachmentFileName + ", inquiryType=" + inquiryType + "]";
+		return "Inquiry [inquiryId=" + inquiryId + ", itemId=" + itemId + ", charId=" + charId + ", accountId="
+				+ accountId + ", userId=" + userId + ", employeeId=" + employeeId + ", inquiryTitle=" + inquiryTitle
+				+ ", inquiryContent=" + inquiryContent + ", answerStatus=" + answerStatus + ", editDate=" + editDate
+				+ ", answerDate=" + answerDate + ", answerContent=" + answerContent + ", attachmentFileName="
+				+ attachmentFileName + ", inquiryType=" + inquiryType + "]";
 	}
-	
-	
+
+
 	
 
 }
