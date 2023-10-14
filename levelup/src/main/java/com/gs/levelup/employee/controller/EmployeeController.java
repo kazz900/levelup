@@ -53,35 +53,18 @@ public class EmployeeController {
 		return "member/enrollPage";
 	}
 
-	@RequestMapping(value = "elogin.do", method = RequestMethod.POST )
+	@RequestMapping(value = "elogin.do", method = RequestMethod.POST)
 	public String loginMethod(Employee employee, HttpSession session, SessionStatus status, Model model) {
-		logger.info(employee.getEmployeeName() + " " + employee.getEmployeePwd());
-		logger.info(employee.getEmployeeName().length() + " " + employee.getEmployeePwd().length());
-		
-		
-		//DB 연결이 되지 않아 일단 이름 3개인지 체크하고 세션 생성하여 로그인
-		//마이바티스 설정 문제 해결해야함
-		if (employee.getEmployeeName().length() == 3) {
-			session.setAttribute("loginEmployee", employee);
+		Employee loginEmployee = employeeService.selectEmployee(employee.getEmployeeName());
+
+		if (loginEmployee != null && employee.getEmployeePwd().equals(loginEmployee.getEmployeePwd())) {
+			session.setAttribute("loginEmployee", loginEmployee);
 			status.setComplete();
 			return "common/main";
 		} else {
-			model.addAttribute("message","로그인 실패!"); 
+			model.addAttribute("message", "로그인 실패!, 아이디 및 비밀번호를 확인 해주세요");
 			return "common/error";
 		}
-		
-		//Employee loginEmployee = employeeService.selectEmployee(e);
-		
-		
-		/*
-		 * if(loginEmployee != null &&
-		 * e.getEmployeePwd().trim().equals(loginEmployee.getEmployeePwd().trim())) {
-		 * session.setAttribute("loginEmployee", loginEmployee); status.setComplete();
-		 * //로그인요청 성공, 200 을 전송함 return "common/main"; } else { //스브링에서는 request 에
-		 * 저장처리하는 내용을 model 에 저장하는 것으로 변경됨 //포워딩 하지 못함 => // 뷰리졸버로 뷰파일명과 뷰로 내보낼 값이 전달이
-		 * 가야함 //request.setAttribute("message", "로그인 실패!");
-		 * model.addAttribute("message","로그인 실패!"); return "common/error"; }
-		 */
 	}
 
 	// 로그아웃 처리용 메소드
@@ -146,14 +129,14 @@ public class EmployeeController {
 	@RequestMapping("emyinfo.do")
 	public String memberDetailMethod(@RequestParam("userId") String userId, Model model) {
 		// 서비스 메소드로 아이디 전달하고, 해당 회원정보 받기
-		//Employee employee = employeeService.selectEmployee();
+		// Employee employee = employeeService.selectEmployee();
 
 		/*
 		 * if (employee != null) { model.addAttribute("employee", employee); return
 		 * "employee/myInfoPage"; } else { model.addAttribute("message", userId +
 		 * " 회원 정보 실패!"); return "common/error"; }
 		 */
-		
+
 		return "";
 	}
 
