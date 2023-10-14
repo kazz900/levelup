@@ -26,6 +26,18 @@
 
 						<li>
 							<a href="javascript: void(0);" class="has-arrow waves-effect">
+								<i class="bx bx-home-circle"></i>
+								<span key="t-dashboards">일정관리</span>
+							</a>
+							<ul class="sub-menu" aria-expanded="false">
+								<li><a href="#" key="t-default">일정등록</a></li>
+								<li><a href="#" key="t-default">일정수정</a></li>
+								<li><a href="#" key="t-default">일정삭제</a></li>
+							</ul>
+						</li>						
+
+						<li>
+							<a href="javascript: void(0);" class="has-arrow waves-effect">
 								<i class="bx bx-layout"></i>
 								<span key="t-layouts">Layouts</span>
 							</a>
