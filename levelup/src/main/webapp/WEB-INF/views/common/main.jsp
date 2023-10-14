@@ -8,12 +8,12 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<c:import url="title-meta.jsp"/>
-<c:import url="head-script.jsp"/>
+<c:import url="/WEB-INF/views/common/title-meta.jsp"/>
+<c:import url="/WEB-INF/views/common/head-script.jsp"/>
 </head>
 <body>
 
-<c:import url="layout.jsp"/>
+<c:import url="/WEB-INF/views/common/layout.jsp"/>
 	<!-- ============================================================== -->
 	<!-- Start right Content here -->
 	<!-- ============================================================== -->
@@ -25,7 +25,7 @@
 
 					<!-- start page title -->
 <%-- 					<div th:replace="page-title :: topnavbar(${title},${item},${subitem})"></div> --%>
-					<c:import url="page-title.jsp"/>
+					<c:import url="/WEB-INF/views/common/page-title.jsp"/>
 					<!-- end page title -->
 
 					
@@ -36,7 +36,7 @@
 			<!-- End Page-content -->
 			<!-- Start footer -->
 <!-- 			<div th:replace="footer :: footer"></div> -->
-			<c:import url="footer.jsp"/>
+			<c:import url="/WEB-INF/views/common/footer.jsp"/>
 			<!-- end footer -->
 			
 		</div>
