@@ -57,29 +57,31 @@ public class EmployeeController {
 		@RequestMapping(value="elogin.do", method= {RequestMethod.GET, RequestMethod.POST})
 		public String loginMethod(Employee employee, HttpSession session,
 				SessionStatus status, Model model) {
-			logger.info("login.do : " + employee);
+			// 임시로 그냥 로그인 버튼 누르면 일단 메인페이지로 이동하도록 설정해두었음
+			// TODO : 로그인 기능 완료해야함
+
 			
 			//서비스 메소드로 전달하고 결과받기
 			//Member loginMember = memberService.selectLogin(member);
 			
 			//암호화처리된 패스워드 일치 조회는 select 해온 값으로 비교함
 			//전달 온 회원 아이디로 먼저 회원 정보를 조회해옴
-			Employee loginMember = employeeService.selectEmployee(employee.getEmployeeId());
+			// Employee loginMember = employeeService.selectEmployee(employee.getEmployeeId());
 			
 			//3. 받은 결과를 가지고 성공 또는 실패 페이지 내보내기
-			if(loginMember != null && 
-					this.bcryptPasswordEncoder.matches(
-							employee.getEmployeePwd(), loginMember.getEmployeePwd())) {
-				session.setAttribute("loginMember", loginMember);
-				status.setComplete();	//로그인 요청 성공, 200 을 전송함
-				return "common/main";
-			}else {
-				//스브링에서는 request 에 저장처리하는 내용을 model 에 저장하는 것으로 변경됨
-				//포워딩 하지 못함 => 뷰리졸버로 뷰파일명과 뷰로 내보낼 값이 전달이 가야함
-				//request.setAttribute("message", "로그인 실패!");
-				model.addAttribute("message","로그인 실패!");
-				return "common/error";
-			}
+			/*
+			 * if(loginMember != null && this.bcryptPasswordEncoder.matches(
+			 * employee.getEmployeePwd(), loginMember.getEmployeePwd())) {
+			 * session.setAttribute("loginMember", loginMember); status.setComplete(); //로그인
+			 * 요청 성공, 200 을 전송함 return "common/main"; }
+			 */ /*
+				 * else { //스브링에서는 request 에 저장처리하는 내용을 model 에 저장하는 것으로 변경됨 //포워딩 하지 못함 =>
+				 * 뷰리졸버로 뷰파일명과 뷰로 내보낼 값이 전달이 가야함 //request.setAttribute("message", "로그인 실패!");
+				 * model.addAttribute("message","로그인 실패!"); return "common/error"; }
+				 */
+			
+			
+			return "common/main";
 		}
 		
 		//로그아웃 처리용 메소드
