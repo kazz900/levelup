@@ -4,7 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-<!-- 	<div th:fragment="footer" th:remove="tag"> -->
 		<footer class="footer" th:fragment="footer">
 			<div class="container-fluid">
 				<div class="row">
@@ -27,5 +26,4 @@
 		<script src="resources/libs/simplebar/simplebar.min.js"></script>
 		<script src="resources/libs/node-waves/waves.min.js"></script>
 		<script src="resources/js/app.js"></script>
-		
-<!-- 	</div> -->
+	

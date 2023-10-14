@@ -4,8 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-
-<!-- 	<div th:fragment="sidebar" th:remove="tag"> -->
 		<div class="vertical-menu">
 			<div data-simplebar class="h-100">
 
@@ -127,4 +125,3 @@
 
 
 		</div>
-<!-- 	</div> -->

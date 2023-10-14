@@ -4,7 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-<!-- 	<div th:fragment="topnavbar" th:remove="tag"> -->
 		<div class="topnav">
 			<div class="container-fluid">
 				<nav class="navbar navbar-light navbar-expand-lg topnav-menu">
@@ -132,4 +131,4 @@
 			</div>
 		</div>
 
-<!-- 	</div> -->
+		
