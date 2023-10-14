@@ -18,10 +18,11 @@
 						<li>
 							<a href="javascript: void(0);" class="has-arrow waves-effect">
 								<i class="bx bx-home-circle"></i>
-								<span key="t-dashboards">Dashboard</span>
+								<span key="t-dashboards">고객센터</span>
 							</a>
 							<ul class="sub-menu" aria-expanded="false">
-								<li><a href="/" key="t-default">Default</a></li>
+								<li><a href="${pageContext.servletContext.contextPath}/ilist.do" key="t-default">유저 문의</a></li>
+								<li><a href="#" key="t-default">기안 목록</a></li>
 							</ul>
 						</li>
 

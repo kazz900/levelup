@@ -6,8 +6,12 @@
 
 	<div id="layout-wrapper">
 		<!-- Start Header -->
+<!-- 		<div th:replace="header :: header"></div> -->
 		<c:import url="/WEB-INF/views/common/header.jsp"/>
 		<!-- end Header -->
+		<div th:replace="sidebar :: sidebar"></div>
+		<c:import url="/WEB-INF/views/common/sidebar.jsp"/>
+		<section layout:fragment="content" th:remove="tag">
 
 		<!-- Side Bar -->
 		<c:import url="/WEB-INF/views/common/sidebar.jsp"/>
@@ -16,6 +20,8 @@
 
 	<!-- Content Section -->
 
+<!-- 	<div th:replace="right-bar :: rightbar"></div> -->
+	<c:import url="/WEB-INF/views/common/right-bar.jsp"/>
 	<!-- /Right-bar -->
 	<c:import url="right-bar.jsp"/>
 

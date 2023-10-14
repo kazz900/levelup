@@ -42,6 +42,6 @@ public class HomeController {
 	@RequestMapping("main.do")
 	public String forwardMainView(Locale locale, Model model) {
 		// view를 내보낼때는 String을 return type으로 함
-		return "common/index";
+		return "common/main";
 	}
 }
