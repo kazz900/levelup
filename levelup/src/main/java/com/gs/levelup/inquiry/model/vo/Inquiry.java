@@ -1,13 +1,12 @@
 package com.gs.levelup.inquiry.model.vo;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Inquiry {
+public class Inquiry implements Serializable{
+	private static final long serialVersionUID = -756746066186729603L;
 	
 	private String inquiryId;
-	private int itemId;
-	private int charId;
-	private int accountId;
 	private String userId;
 	private String employeeId;
 	private String inquiryTitle;
@@ -18,22 +17,19 @@ public class Inquiry {
 	private String answerContent;
 	private String attachmentFileName;
 	private String inquiryType;
-	
+	private String inquiryRef;
+	private String answerRef;
 	
 	public Inquiry() {
 		super();
 	
 	}
 
-
-	public Inquiry(String inquiryId, int itemId, int charId, int accountId, String userId, String employeeId,
-			String inquiryTitle, String inquiryContent, String answerStatus, Date editDate, Date answerDate,
-			String answerContent, String attachmentFileName, String inquiryType) {
+	public Inquiry(String inquiryId, String userId, String employeeId, String inquiryTitle, String inquiryContent,
+			String answerStatus, Date editDate, Date answerDate, String answerContent, String attachmentFileName,
+			String inquiryType, String inquiryRef, String answerRef) {
 		super();
 		this.inquiryId = inquiryId;
-		this.itemId = itemId;
-		this.charId = charId;
-		this.accountId = accountId;
 		this.userId = userId;
 		this.employeeId = employeeId;
 		this.inquiryTitle = inquiryTitle;
@@ -44,7 +40,44 @@ public class Inquiry {
 		this.answerContent = answerContent;
 		this.attachmentFileName = attachmentFileName;
 		this.inquiryType = inquiryType;
+		this.inquiryRef = inquiryRef;
+		this.answerRef = answerRef;
 	}
+
+
+
+
+
+	public String getInquiryRef() {
+		return inquiryRef;
+	}
+
+
+
+
+
+	public void setInquiryRef(String inquiryRef) {
+		this.inquiryRef = inquiryRef;
+	}
+
+
+
+
+
+	public String getAnswerRef() {
+		return answerRef;
+	}
+
+
+
+
+
+	public void setAnswerRef(String answerRef) {
+		this.answerRef = answerRef;
+	}
+
+
+
 
 
 	public String getInquiryId() {
@@ -55,37 +88,6 @@ public class Inquiry {
 	public void setInquiryId(String inquiryId) {
 		this.inquiryId = inquiryId;
 	}
-
-
-	public int getItemId() {
-		return itemId;
-	}
-
-
-	public void setItemId(int itemId) {
-		this.itemId = itemId;
-	}
-
-
-	public int getCharId() {
-		return charId;
-	}
-
-
-	public void setCharId(int charId) {
-		this.charId = charId;
-	}
-
-
-	public int getAccountId() {
-		return accountId;
-	}
-
-
-	public void setAccountId(int accountId) {
-		this.accountId = accountId;
-	}
-
 
 	public String getUserId() {
 		return userId;
@@ -187,16 +189,18 @@ public class Inquiry {
 	}
 
 
+
+
+
 	@Override
 	public String toString() {
-		return "Inquiry [inquiryId=" + inquiryId + ", itemId=" + itemId + ", charId=" + charId + ", accountId="
-				+ accountId + ", userId=" + userId + ", employeeId=" + employeeId + ", inquiryTitle=" + inquiryTitle
-				+ ", inquiryContent=" + inquiryContent + ", answerStatus=" + answerStatus + ", editDate=" + editDate
-				+ ", answerDate=" + answerDate + ", answerContent=" + answerContent + ", attachmentFileName="
-				+ attachmentFileName + ", inquiryType=" + inquiryType + "]";
+		return "Inquiry [inquiryId=" + inquiryId + ", userId=" + userId + ", employeeId=" + employeeId
+				+ ", inquiryTitle=" + inquiryTitle + ", inquiryContent=" + inquiryContent + ", answerStatus="
+				+ answerStatus + ", editDate=" + editDate + ", answerDate=" + answerDate + ", answerContent="
+				+ answerContent + ", attachmentFileName=" + attachmentFileName + ", inquiryType=" + inquiryType
+				+ ", inquiryRef=" + inquiryRef + ", answerRef=" + answerRef + "]";
 	}
 
-
 	
-
+	
 }

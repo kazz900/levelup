@@ -3,6 +3,8 @@ package com.gs.levelup.inquiry.controller;
 
 import java.util.ArrayList;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +20,7 @@ import com.gs.levelup.inquiry.model.vo.Inquiry;
 
 @Controller
 public class InquiryController {
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
 	private InquiryService inquiryService;
@@ -29,42 +32,42 @@ public class InquiryController {
 	
 	@RequestMapping(value="ilist.do", method=RequestMethod.GET)
 	public String selectListMethod(@RequestParam(name="page", required=false) String page,
-										  @RequestParam(name="limit", required=false) String plimit,
+										  @RequestParam(name="limit", required=false) String slimit,
 										  Model model){
-		/*int currentPage = 1;
-		if(page != null) {
+		
+		int currentPage = 1;
+		if (page != null) {
 			currentPage = Integer.parseInt(page);
 		}
 		
-		//한 페이지에 10개씩 출력
+		//한 페이지 게시글 10개씩 출력되게 한다면
 		int limit = 10;
-		if(plimit != null) {
-			limit = Integer.parseInt(plimit);
+		if (slimit != null) {
+			limit = Integer.parseInt(slimit);
 		}
 		
-		//총 페이지 수 계산을 위한 게시글 총 개수
+		//총 페이지 수 계산을 위한 게시글 총갯수 조회
 		int listCount = inquiryService.selectListCount();
+		logger.info(String.valueOf(listCount));
 		
-		//페이징 계산
+		//페이지 관련 항목 계산 처리
 		Paging paging = new Paging(listCount, currentPage, limit, "ilist.do");
 		paging.calculator();
 		
-		//페이지에 조회할 목록 조회
-		ArrayList<Inquiry> list = inquiryService.selectList(paging);
+		//페이지에 출력할 목록 조회해 옴
+		ArrayList<Inquiry> inquiryList = inquiryService.selectList(paging);
 		
-		if(list != null && list.size() > 0 ) {
-			model.addAttribute("list", list);
+		if(inquiryList != null && inquiryList.size() > 0) {
+			model.addAttribute("inquiryList", inquiryList);
 			model.addAttribute("paging", paging);
 			model.addAttribute("currentPage", currentPage);
-			model.addAttribute("limit", limit);*/
+			model.addAttribute("limit", limit);
 			
 			return "empInquiry/empInquiryListView";
-			
-			/*
-			 * }else { model.addAttribute("message", "문의 목록 조회 실패"); return "common/error";
-			 * }
-			 */		
-		
+		}else {
+			model.addAttribute("message", currentPage + "페이지 목록 조회 실패!");
+			return "common/error";
+		}	
 	}
 	
 	@RequestMapping(value="idetail.do", method=RequestMethod.GET)
