@@ -14,10 +14,10 @@
 	<div id="layout-wrapper">
 		<!-- Start Header -->
 <!-- 		<div th:replace="header :: header"></div> -->
-		<c:import url="header.jsp"/>
+		<c:import url="/WEB-INF/views/common/header.jsp"/>
 		<!-- end Header -->
 		<div th:replace="sidebar :: sidebar"></div>
-		<c:import url="sidebar.jsp"/>
+		<c:import url="/WEB-INF/views/common/sidebar.jsp"/>
 		<section layout:fragment="content" th:remove="tag">
 
 		</section>
@@ -26,7 +26,7 @@
 	<!-- Content Section -->
 
 <!-- 	<div th:replace="right-bar :: rightbar"></div> -->
-	<c:import url="right-bar.jsp"/>
+	<c:import url="/WEB-INF/views/common/right-bar.jsp"/>
 	<!-- /Right-bar -->
 
 	<!-- Right bar overlay-->

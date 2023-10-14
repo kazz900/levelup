@@ -16,6 +16,7 @@
 <title>levelup</title>
 </head>
 <body>
+<c:import url="/WEB-INF/views/common/layout.jsp"/>
 <h1 align="center">문의 내역 목록</h1>
 <br>
 
