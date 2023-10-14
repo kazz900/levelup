@@ -4,10 +4,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-<!-- 	<div th:fragment="title-meta" th:remove="tag"> -->
 	<title>LevelUp ERP</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<!-- App favicon -->
 		<link rel="shortcut icon" href="resources/images/favicon.ico">
-<!-- 	</div> -->
