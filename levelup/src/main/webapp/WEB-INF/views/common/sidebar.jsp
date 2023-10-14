@@ -20,9 +20,12 @@
 							</a>
 							<ul class="sub-menu" aria-expanded="false">
 								<li><a href="${pageContext.servletContext.contextPath}/ilist.do" key="t-default">유저 문의</a></li>
+								<li><a href="#" key="t-default">유저 검색</a></li>
 								<li><a href="#" key="t-default">기안 목록</a></li>
+
 								<li><a href="movepaylist.do" key="t-default">Payment List</a></li>
 								
+
 							</ul>
 						</li>
 						

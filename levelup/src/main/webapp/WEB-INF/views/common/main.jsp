@@ -11,7 +11,7 @@
 <c:import url="/WEB-INF/views/common/title-meta.jsp"/>
 <c:import url="/WEB-INF/views/common/head-script.jsp"/>
 </head>
-<body>
+<body data-sidebar="dark" data-layout-mode="light">
 
 <c:import url="/WEB-INF/views/common/layout.jsp"/>
 	<!-- ============================================================== -->
