@@ -19,18 +19,18 @@ File: Main Js File
     function setLanguage(lang) {
         if (document.getElementById("header-lang-img")) {
             if (lang == 'en') {
-                document.getElementById("header-lang-img").src = "assets/images/flags/us.jpg";
+                document.getElementById("header-lang-img").src = "resources/images/flags/us.jpg";
             } else if (lang == 'sp') {
-                document.getElementById("header-lang-img").src = "assets/images/flags/spain.jpg";
+                document.getElementById("header-lang-img").src = "resources/images/flags/spain.jpg";
             }
             else if (lang == 'gr') {
-                document.getElementById("header-lang-img").src = "assets/images/flags/germany.jpg";
+                document.getElementById("header-lang-img").src = "resources/images/flags/germany.jpg";
             }
             else if (lang == 'it') {
-                document.getElementById("header-lang-img").src = "assets/images/flags/italy.jpg";
+                document.getElementById("header-lang-img").src = "resources/images/flags/italy.jpg";
             }
             else if (lang == 'ru') {
-                document.getElementById("header-lang-img").src = "assets/images/flags/russia.jpg";
+                document.getElementById("header-lang-img").src = "resources/images/flags/russia.jpg";
             }
             localStorage.setItem('language', lang);
             language = localStorage.getItem('language');
@@ -41,7 +41,7 @@ File: Main Js File
     // Multi language setting
     function getLanguage() {
         (language == null) ? setLanguage(default_lang) : false;
-        $.getJSON('assets/lang/' + language + '.json', function (lang) {
+        $.getJSON('resources/lang/' + language + '.json', function (lang) {
             $('html').attr('lang', language);
             $.each(lang, function (index, val) {
                 (index === 'head') ? $(document).attr("title", val['title']) : false;
@@ -257,9 +257,9 @@ File: Main Js File
             $("#dark-mode-switch").prop("checked", false);
             $("#rtl-mode-switch").prop("checked", false);
             $("#dark-rtl-mode-switch").prop("checked", false);
-            $("#bootstrap-style").attr('href', '/assets/css/bootstrap.min.css');
+//            $("#bootstrap-style").attr('href', 'resources/css/bootstrap.min.css');
             $('body').attr('data-layout-mode', 'light');
-            $("#app-style").attr('href', '/assets/css/app.min.css');
+//            $("#app-style").attr('href', 'resources/css/app.min.css');
             sessionStorage.setItem("is_visited", "light-mode-switch");
         } else if ($("#dark-mode-switch").prop("checked") == true && id === "dark-mode-switch") {
             $("html").removeAttr("dir");
@@ -272,8 +272,8 @@ File: Main Js File
             $("#light-mode-switch").prop("checked", false);
             $("#dark-mode-switch").prop("checked", false);
             $("#dark-rtl-mode-switch").prop("checked", false);
-            $("#bootstrap-style").attr('href', '/assets/css/bootstrap-rtl.min.css');
-            $("#app-style").attr('href', '/assets/css/app-rtl.min.css');
+//            $("#bootstrap-style").attr('href', 'resources/css/bootstrap-rtl.min.css');
+//            $("#app-style").attr('href', 'resources/css/app-rtl.min.css');
             $("html").attr("dir", 'rtl');
             $('body').attr('data-layout-mode', 'light');
             sessionStorage.setItem("is_visited", "rtl-mode-switch");
@@ -282,8 +282,8 @@ File: Main Js File
             $("#light-mode-switch").prop("checked", false);
             $("#rtl-mode-switch").prop("checked", false);
             $("#dark-mode-switch").prop("checked", false);
-            $("#bootstrap-style").attr('href', '/assets/css/bootstrap-rtl.min.css');
-            $("#app-style").attr('href', '/assets/css/app-rtl.min.css');
+            //$("#bootstrap-style").attr('href', 'resources/css/bootstrap-rtl.min.css');
+            //$("#app-style").attr('href', 'resources/css/app-rtl.min.css');
             $("html").attr("dir", 'rtl');
             $('body').attr('data-layout-mode', 'dark');
             sessionStorage.setItem("is_visited", "dark-rtl-mode-switch");
