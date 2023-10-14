@@ -10,10 +10,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
        <meta charset="utf-8" />
-        <title>Login | Skote - Admin & Dashboard Template</title>
+        <title>Login | LevelUp ERP</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-        <meta content="Themesbrand" name="author" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="resources/images/favicon.ico">
 
@@ -37,7 +35,7 @@
                                     <div class="col-7">
                                         <div class="text-primary p-4">
                                             <h5 class="text-primary">Welcome Back !</h5>
-                                            <p>Sign in to continue to Skote.</p>
+                                            <p>Sign in to continue to LevelUp ERP.</p>
                                         </div>
                                     </div>
                                     <div class="col-5 align-self-end">
@@ -124,7 +122,7 @@
                             
                             <div>
                                 <p>Don't have an account ? <a href="/auth/register" class="fw-medium text-primary"> Signup now </a> </p>
-                                <p>© <script>document.write(new Date().getFullYear())</script> Skote. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand</p>
+                                <p>© <script>document.write(new Date().getFullYear())</script> LevelUp ERP by Team GS </p>
                             </div>
                         </div>
 

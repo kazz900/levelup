@@ -20,7 +20,7 @@
 								</a>
 								<div class="dropdown-menu" aria-labelledby="topnav-dashboard">
 
-									<a href="/" class="dropdown-item" key="t-default">Default</a>
+									<a href="#" class="dropdown-item" key="t-default">Default</a>
 								</div>
 							</li>
 
