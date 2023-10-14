@@ -21,20 +21,36 @@
 							<ul class="sub-menu" aria-expanded="false">
 								<li><a href="${pageContext.servletContext.contextPath}/ilist.do" key="t-default">유저 문의</a></li>
 								<li><a href="#" key="t-default">기안 목록</a></li>
+								<li><a href="movepaylist.do" key="t-default">Payment List</a></li>
+								
 							</ul>
 						</li>
-
+						
 						<li>
 							<a href="javascript: void(0);" class="has-arrow waves-effect">
 								<i class="bx bx-home-circle"></i>
 								<span key="t-dashboards">일정관리</span>
 							</a>
 							<ul class="sub-menu" aria-expanded="false">
+								<li><a href="calendar.do" key="t-default">일정보기</a></li>
 								<li><a href="#" key="t-default">일정등록</a></li>
 								<li><a href="#" key="t-default">일정수정</a></li>
 								<li><a href="#" key="t-default">일정삭제</a></li>
 							</ul>
 						</li>						
+
+						<li>
+							<a href="javascript: void(0);" class="has-arrow waves-effect">
+								<i class="bx bx-home-circle"></i>
+								<span key="t-dashboards">게시판</span>
+							</a>
+							<ul class="sub-menu" aria-expanded="false">
+								<li><a href="movecom.do" key="t-default">게시판</a></li>
+								<li><a href="movecomdetail.do" key="t-default">DetailView</a></li>
+								<li><a href="#" key="t-default">일정수정</a></li>
+								<li><a href="#" key="t-default">일정삭제</a></li>
+							</ul>
+						</li>	
 
 						<li>
 							<a href="javascript: void(0);" class="has-arrow waves-effect">
