@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberMapper">
+
+	<resultMap id="resultMember" type="EMPLOYEE">
+		<id property="employeeId" column="EMPLOYEE_ID" />
+		<result property="departmentId" column="DEPARTMENT_ID" />
+		<result property="teamId" column="TEAM_ID" />
+		<result property="rankId" column="RANK_ID" />
+		<result property="employeeName" column="EMPLOYEE_NAME" />
+		<result property="employeeEmail" column="EMPLOYEE_EMAIL" />
+		<result property="employeePwd" column="EMPLOYEE_PWD" />
+		<result property="employeeAddress" column="EMPLOYEE_ADDRESS" />
+		<result property="employeePhone" column="EMPLOYEE_PHONE" />
+		<result property="employeeBirthdate" column="EMPLOYEE_BIRTHDATE" />
+	</resultMap>
+	
+	<resultMap id="resultList" type="EMPLOYEE">
+		<result property="userId" column="EMPLOYEE_ID" />
+		<result property="userPwd" column="DEPARTMENT_ID" />
+		<result property="userName" column="TEAM_ID" />
+		<result property="gender" column="RANK_ID" />
+		<result property="age" column="EMPLOYEE_NAME" />
+		<result property="phone" column="EMPLOYEE_EMAIL" />
+		<result property="email" column="EMPLOYEE_PWD" />
+		<result property="enrollDate" column="EMPLOYEE_ADDRESS" />
+		<result property="lastModified" column="EMPLOYEE_PHONE" />
+		<result property="signType" column="EMPLOYEE_BIRTHDATE" />
+	</resultMap>
+
+
+	
+	<select id="selectMember" parameterType="string" resultMap="resultMember">
+		select * from employee where EMPLOYEE_NAME = #{ employeeName };
+	</select>
+	
+</mapper>
+
+
+
+
+
+

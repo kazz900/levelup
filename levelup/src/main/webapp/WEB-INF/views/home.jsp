@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
 <!doctype html>
 <html>
 <head>
@@ -19,18 +18,19 @@
         
         <main class="main-wrapper login">
             <div class="login-box">
+        		<h1>L e v e l U p</h1>
                 <form action="elogin.do" method="post">
-                    <a class="login-logo" href="./main.html">
+                    <a class="login-logo" href="#">
                         <img src="./resources/images/game-controller.png">
                     </a>
 
                     <div class="login-nemo login-name margin-top30px">
-                        <input type="text" id="empid" placeholder="아이디를 입력하세요." name="empid" >
+                        <input type="text" id="empid" placeholder="아이디를 입력하세요." name="employeeName" required>
                         <i class='bx bxs-user' name='bx'></i>
                     </div>
 
                     <div class="login-nemo login-name">
-                        <input type="password" placeholder="비밀번호를 입력하세요." name="emppwd" >
+                        <input type="password" placeholder="비밀번호를 입력하세요." name="employeePwd" required>
                         <i class='bx bxs-lock-alt' name="bx"></i>
                     </div>
 
@@ -38,7 +38,6 @@
                 </form>
             </div>
         </main>
-        
     </div>
 </body>
 </html>
