@@ -8,44 +8,36 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
+<!-- 타이틀 -->
 <c:import url="/WEB-INF/views/common/title-meta.jsp"/>
+<!-- 헤드 스크립트 -->
 <c:import url="/WEB-INF/views/common/head-script.jsp"/>
+
 </head>
-<body>
-
+<body data-sidebar="dark" data-layout-mode="light">
+<!-- 내비게이션바, 사이드바 등등 -->
 <c:import url="/WEB-INF/views/common/layout.jsp"/>
-	<!-- ============================================================== -->
-	<!-- Start right Content here -->
-	<!-- ============================================================== -->
-	<div layout:fragment="content">
-		<div class="main-content">
 
-			<div class="page-content">
-				<div class="container-fluid">
+<div class="main-content">
+	<div class="page-content">
+		<div class="container-fluid">
 
-					<!-- start page title -->
-<%-- 					<div th:replace="page-title :: topnavbar(${title},${item},${subitem})"></div> --%>
-					<c:import url="/WEB-INF/views/common/page-title.jsp"/>
-					<!-- end page title -->
-					<h1>문의 목록 페이지</h1>
-					
-					<!-- end row -->
-				</div>
-				<!-- container-fluid -->
-			</div>
-			<!-- End Page-content -->
-			<!-- Start footer -->
-<!-- 			<div th:replace="footer :: footer"></div> -->
-			<c:import url="/WEB-INF/views/common/footer.jsp"/>
-			<!-- end footer -->
-			
+<c:import url="/WEB-INF/views/common/page-title.jsp"/>
+
+<!-- 여기서부터 내용 작성 -->
+
+	
+<h1>문의 목록 페이지</h1>
+
+
+	 	<!-- container-fluid -->			
 		</div>
+	<!-- page-content -->		
 	</div>
-	<!-- end main content-->
-
-	<!-- END layout-wrapper -->
-
-<!-- 	<th:block layout:fragment="script"/> -->
+<!-- 푸터(자바스크립트 로딩) -->
+<c:import url="/WEB-INF/views/common/footer.jsp"/>
+</div> <!-- main-content -->
 
 </body>
 </html>
+
