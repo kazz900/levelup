@@ -44,7 +44,7 @@ public class EmployeeController {
 	// 뷰 페이지 내보내기용 메소드
 	@RequestMapping(value = "eloginPage.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String moveLoginPage() {
-		return "member/loginPage";
+		return "empmember/empLoginPage";
 	}
 
 	// 회원가입 페이지 내보내기용
@@ -53,29 +53,35 @@ public class EmployeeController {
 		return "member/enrollPage";
 	}
 
-	@RequestMapping(value = "elogin.do", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "elogin.do", method = RequestMethod.POST )
 	public String loginMethod(Employee employee, HttpSession session, SessionStatus status, Model model) {
 		logger.info(employee.getEmployeeName() + " " + employee.getEmployeePwd());
-		// 서비스 메소드로 전달하고 결과받기
-		// Member loginMember = memberService.selectLogin(member);
-
-		// 암호화처리된 패스워드 일치 조회는 select 해온 값으로 비교함
-		// 전달 온 회원 아이디로 먼저 회원 정보를 조회해옴
-		Employee loginMember = employeeService.selectEmployee(employee.getEmployeeName().trim());
-		logger.info(loginMember.toString());
-		// 3. 받은 결과를 가지고 성공 또는 실패 페이지 내보내기
+		logger.info(employee.getEmployeeName().length() + " " + employee.getEmployeePwd().length());
 		
-		 if(loginMember != null && employee.getEmployeePwd().equals(loginMember.getEmployeePwd().trim())) {
-			 	session.setAttribute("loginMember", loginMember); 
-			 	status.setComplete(); 
-			 	//로그인요청 성공, 200 을 전송함 
-			 	return "common/main"; 
-		 } else { 
-			 //스브링에서는 request 에 저장처리하는 내용을 model 에 저장하는 것으로 변경됨 //포워딩 하지 못함 =>
-			 // 뷰리졸버로 뷰파일명과 뷰로 내보낼 값이 전달이 가야함 //request.setAttribute("message", "로그인 실패!");
-			 model.addAttribute("message","로그인 실패!"); 
-			 return "common/error"; 
-		 }
+		
+		//DB 연결이 되지 않아 일단 이름 3개인지 체크하고 세션 생성하여 로그인
+		//마이바티스 설정 문제 해결해야함
+		if (employee.getEmployeeName().length() == 3) {
+			session.setAttribute("loginEmployee", employee);
+			status.setComplete();
+			return "common/main";
+		} else {
+			model.addAttribute("message","로그인 실패!"); 
+			return "common/error";
+		}
+		
+		//Employee loginEmployee = employeeService.selectEmployee(e);
+		
+		
+		/*
+		 * if(loginEmployee != null &&
+		 * e.getEmployeePwd().trim().equals(loginEmployee.getEmployeePwd().trim())) {
+		 * session.setAttribute("loginEmployee", loginEmployee); status.setComplete();
+		 * //로그인요청 성공, 200 을 전송함 return "common/main"; } else { //스브링에서는 request 에
+		 * 저장처리하는 내용을 model 에 저장하는 것으로 변경됨 //포워딩 하지 못함 => // 뷰리졸버로 뷰파일명과 뷰로 내보낼 값이 전달이
+		 * 가야함 //request.setAttribute("message", "로그인 실패!");
+		 * model.addAttribute("message","로그인 실패!"); return "common/error"; }
+		 */
 	}
 
 	// 로그아웃 처리용 메소드
@@ -140,31 +146,30 @@ public class EmployeeController {
 	@RequestMapping("emyinfo.do")
 	public String memberDetailMethod(@RequestParam("userId") String userId, Model model) {
 		// 서비스 메소드로 아이디 전달하고, 해당 회원정보 받기
-		Employee employee = employeeService.selectEmployee(userId);
+		//Employee employee = employeeService.selectEmployee();
 
-		if (employee != null) {
-			model.addAttribute("employee", employee);
-			return "employee/myInfoPage";
-		} else {
-			model.addAttribute("message", userId + " 회원 정보 실패!");
-			return "common/error";
-		}
+		/*
+		 * if (employee != null) { model.addAttribute("employee", employee); return
+		 * "employee/myInfoPage"; } else { model.addAttribute("message", userId +
+		 * " 회원 정보 실패!"); return "common/error"; }
+		 */
+		
+		return "";
 	}
 
 	// 회원 정보 수정 페이지 내보내기용 메소드
 	// 반환타입이 ModelAndView 인 경우
 	@RequestMapping("emoveup.do")
 	public ModelAndView moveUpdatePage(@RequestParam("userId") String userId, ModelAndView mv) {
-		Employee employee = employeeService.selectEmployee(userId);
-
-		if (employee != null) {
-			mv.addObject("employee", employee);
-			mv.setViewName("employee/employeeUpdatePage");
-		} else {
-			mv.addObject("message", "수정페이지로 이동 실패!");
-			mv.setViewName("common/error");
-		}
-
+		/*
+		 * Employee employee = employeeService.selectEmployee(userId);
+		 * 
+		 * if (employee != null) { mv.addObject("employee", employee);
+		 * mv.setViewName("employee/employeeUpdatePage"); } else {
+		 * mv.addObject("message", "수정페이지로 이동 실패!"); mv.setViewName("common/error"); }
+		 * 
+		 * return mv;
+		 */
 		return mv;
 	}
 
