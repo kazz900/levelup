@@ -23,7 +23,6 @@
 <!-- 	<div th:replace="right-bar :: rightbar"></div> -->
 	<c:import url="/WEB-INF/views/common/right-bar.jsp"/>
 	<!-- /Right-bar -->
-	<c:import url="right-bar.jsp"/>
 
 	<!-- Right bar overlay-->
 	<div class="rightbar-overlay"></div>
