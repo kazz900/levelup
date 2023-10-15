@@ -1,11 +1,13 @@
 package com.gs.levelup.inquiry.model.vo;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Inquiry {
+public class Inquiry implements Serializable{
+	private static final long serialVersionUID = -756746066186729603L;
 	
 	private String inquiryId;
-	private int itemId;
+	private String userId;
 	private String employeeId;
 	private String inquiryTitle;
 	private String inquiryContent;
@@ -15,20 +17,20 @@ public class Inquiry {
 	private String answerContent;
 	private String attachmentFileName;
 	private String inquiryType;
-	
+	private String inquiryRef;
+	private String answerRef;
 	
 	public Inquiry() {
 		super();
 	
 	}
 
-
-	public Inquiry(String inquiryId, int itemId, String employeeId, String inquiryTitle, String inquiryContent,
+	public Inquiry(String inquiryId, String userId, String employeeId, String inquiryTitle, String inquiryContent,
 			String answerStatus, Date editDate, Date answerDate, String answerContent, String attachmentFileName,
-			String inquiryType) {
+			String inquiryType, String inquiryRef, String answerRef) {
 		super();
 		this.inquiryId = inquiryId;
-		this.itemId = itemId;
+		this.userId = userId;
 		this.employeeId = employeeId;
 		this.inquiryTitle = inquiryTitle;
 		this.inquiryContent = inquiryContent;
@@ -38,7 +40,44 @@ public class Inquiry {
 		this.answerContent = answerContent;
 		this.attachmentFileName = attachmentFileName;
 		this.inquiryType = inquiryType;
+		this.inquiryRef = inquiryRef;
+		this.answerRef = answerRef;
 	}
+
+
+
+
+
+	public String getInquiryRef() {
+		return inquiryRef;
+	}
+
+
+
+
+
+	public void setInquiryRef(String inquiryRef) {
+		this.inquiryRef = inquiryRef;
+	}
+
+
+
+
+
+	public String getAnswerRef() {
+		return answerRef;
+	}
+
+
+
+
+
+	public void setAnswerRef(String answerRef) {
+		this.answerRef = answerRef;
+	}
+
+
+
 
 
 	public String getInquiryId() {
@@ -50,14 +89,13 @@ public class Inquiry {
 		this.inquiryId = inquiryId;
 	}
 
-
-	public int getItemId() {
-		return itemId;
+	public String getUserId() {
+		return userId;
 	}
 
 
-	public void setItemId(int itemId) {
-		this.itemId = itemId;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 
@@ -151,15 +189,18 @@ public class Inquiry {
 	}
 
 
+
+
+
 	@Override
 	public String toString() {
-		return "inquiry [inquiryId=" + inquiryId + ", itemId=" + itemId + ", employeeId=" + employeeId
+		return "Inquiry [inquiryId=" + inquiryId + ", userId=" + userId + ", employeeId=" + employeeId
 				+ ", inquiryTitle=" + inquiryTitle + ", inquiryContent=" + inquiryContent + ", answerStatus="
 				+ answerStatus + ", editDate=" + editDate + ", answerDate=" + answerDate + ", answerContent="
-				+ answerContent + ", attachmentFileName=" + attachmentFileName + ", inquiryType=" + inquiryType + "]";
+				+ answerContent + ", attachmentFileName=" + attachmentFileName + ", inquiryType=" + inquiryType
+				+ ", inquiryRef=" + inquiryRef + ", answerRef=" + answerRef + "]";
 	}
-	
-	
-	
 
+	
+	
 }

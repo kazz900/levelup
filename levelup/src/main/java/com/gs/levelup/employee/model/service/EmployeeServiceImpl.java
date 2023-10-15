@@ -27,8 +27,8 @@ public class EmployeeServiceImpl implements EmployeeService{
 	}
 
 	@Override
-	public Employee selectEmployee(String userid) {
-		return employeeDao.selectMember(userid);
+	public Employee selectEmployee(String employeeName) {
+		return employeeDao.selectEmployee(employeeName);
 	}
 	
 	@Override
