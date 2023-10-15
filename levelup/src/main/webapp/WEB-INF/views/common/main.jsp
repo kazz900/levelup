@@ -19,7 +19,6 @@
 	<!-- ============================================================== -->
 	<div layout:fragment="content">
 		<div class="main-content">
-
 			<div class="page-content">
 				<div class="container-fluid">
 
