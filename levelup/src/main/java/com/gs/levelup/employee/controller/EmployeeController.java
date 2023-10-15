@@ -55,7 +55,7 @@ public class EmployeeController {
 
 	@RequestMapping(value = "elogin.do", method = RequestMethod.POST)
 	public String loginMethod(Employee employee, HttpSession session, SessionStatus status, Model model) {
-		Employee loginEmployee = employeeService.selectEmployee(employee.getEmployeeName());
+		Employee loginEmployee = employeeService.selectEmployee(employee.getEmployeeEmail());
 
 		if (loginEmployee != null && employee.getEmployeePwd().equals(loginEmployee.getEmployeePwd())) {
 			session.setAttribute("loginEmployee", loginEmployee);

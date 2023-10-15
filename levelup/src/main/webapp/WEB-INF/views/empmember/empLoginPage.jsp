@@ -26,7 +26,7 @@
                     </a>
 
                     <div class="login-nemo login-name margin-top30px">
-                        <input type="text" id="empid" placeholder="아이디를 입력하세요." name="employeeName" required>
+                        <input type="text" id="empid" placeholder="이메일을 입력하세요." name="employeeEmail" required>
                         <i class='bx bxs-user' name='bx'></i>
                     </div>
 

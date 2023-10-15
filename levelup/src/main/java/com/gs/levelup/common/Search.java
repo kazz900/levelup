@@ -4,13 +4,12 @@ import java.sql.Date;
 
 public class Search {
 	private String keyword;
-
 	private int age;		//나이 검색시 필요
-
 	private int startRow;  //페이지에 출력할 시작행
 	private int endRow;   //페이지에 출력할 끝행
 	private Date begin;
 	private Date end;
+	private String type; //문의 타입 겸색시 필요
 	
 	public Search() {}
 
@@ -63,10 +62,24 @@ public class Search {
 	public void setEnd(Date end) {
 		this.end = end;
 	}
+	
+	
+
+	public String getType() {
+		return type;
+	}
+
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 
 	@Override
 	public String toString() {
-		return "Search [keyword=" + keyword + ", startRow=" + startRow + ", endRow=" + endRow + ", begin=" + begin
-				+ ", end=" + end + "]";
+		return "Search [keyword=" + keyword + ", age=" + age + ", startRow=" + startRow + ", endRow=" + endRow
+				+ ", begin=" + begin + ", end=" + end + ", type=" + type + "]";
 	}
+
+	
 }
