@@ -34,7 +34,12 @@ public class UserController {
 	// Service 연결처리 : 자동 DI 처리
 	@Autowired
 	private UserService userService;
-
+	
+	//페이지 이동처리
+	@RequestMapping("umain.do")
+	public String userMainPageMethod() {
+		return "user/umain";
+	}
 
 	@RequestMapping(value="login.do", method=RequestMethod.POST)
 	public String loginMethod(HttpServletRequest request, HttpServletResponse response, Model model) {
