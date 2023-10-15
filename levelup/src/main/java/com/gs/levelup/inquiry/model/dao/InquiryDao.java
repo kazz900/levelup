@@ -1,6 +1,7 @@
 package com.gs.levelup.inquiry.model.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +19,14 @@ public class InquiryDao {
 	private SqlSessionTemplate sqlSessionTemplate;
 
 	public ArrayList<Inquiry> selectList(Paging paging) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Inquiry> list = sqlSessionTemplate.selectList("inquiryMapper.selectList", paging);
+		return (ArrayList<Inquiry>) list;
 	}
 
+	public int selectListCount() {
+		return sqlSessionTemplate.selectOne("inquiryMapper.selectListCount");
+	}
+	
 	public int insertInquiryAnswer(Inquiry inquiry) {
 		// TODO Auto-generated method stub
 		return 0;
@@ -37,10 +42,6 @@ public class InquiryDao {
 		return 0;
 	}
 
-	public int selectListCount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	public int selectSearchUserIDCount(String keyword) {
 		// TODO Auto-generated method stub
