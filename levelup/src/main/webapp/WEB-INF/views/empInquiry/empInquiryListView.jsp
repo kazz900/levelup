@@ -8,7 +8,8 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="./resources/css/empInquiryListView.css">
+<link rel="stylesheet" type="text/css"
+	href="./resources/css/empInquiryListView.css">
 <!-- 타이틀 -->
 <c:import url="/WEB-INF/views/common/title-meta.jsp" />
 <!-- 헤드 스크립트 -->
@@ -32,6 +33,22 @@
 
 				<!-- 여기서부터 내용 작성 -->
 				<div class="container">
+
+					<!-- 타입별 검색 1. 전제, 환불문의, 게임문의, 기타문의 -->
+					<!-- 타입별 검색 내 keyword  종류 : 유저ID, 제목, 날짜 -->
+					<form action="isearch">
+						<div class="container">
+							<div class="select">
+								<select>
+									<option name="itype" value="0" selected>문의구분</option>
+									<option name="itype" value="1">환불문의</option>
+									<option name="itype" value="2">게임문의</option>
+									<option name="itype" value="3">기타문의</option>
+								</select>
+							</div>
+						</div>
+					</form>
+					<!-- 문의 테이블 -->
 					<table class="rwd-table">
 						<tbody>
 							<tr>
@@ -43,7 +60,8 @@
 							</tr>
 							<c:forEach items="${ requestScope.inquiryList }" var="i">
 								<tr>
-									<td data-th="Question Title"><a class="ititle" href="/levelup/idetail.do?iid=${ i.inquiryId }">${ i.inquiryTitle }</a></td>
+									<td data-th="Question Title"><a class="ititle"
+										href="/levelup/idetail.do?iid=${ i.inquiryId }">${ i.inquiryTitle }</a></td>
 									<td data-th="User ID">${ i.userId }</td>
 									<c:if test="${ i.inquiryType eq '1' }">
 										<td data-th="Type">환불문의</td>
@@ -54,7 +72,8 @@
 									<c:if test="${ i.inquiryType eq '3' }">
 										<td data-th="Type">기타문의</td>
 									</c:if>
-									<td data-th="Date"><fmt:formatDate value="${ i.editDate }" pattern="yyyy-MM-dd" /></td>
+									<td data-th="Date"><fmt:formatDate value="${ i.editDate }"
+											pattern="yyyy-MM-dd" /></td>
 									<c:if test="${ i.answerStatus eq 'Y' }">
 										<td data-th="Answer">답변완료</td>
 									</c:if>
