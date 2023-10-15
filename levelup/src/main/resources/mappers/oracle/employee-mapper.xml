@@ -33,7 +33,7 @@
 
 	
 	<select id="selectEmployee" parameterType="string" resultMap="resultEmployee">
-		select * from employee where EMPLOYEE_NAME = #{ employeeName }
+		select * from employee where EMPLOYEE_EMAIL = #{ employeeEmail }
 	</select>
 	
 </mapper>
