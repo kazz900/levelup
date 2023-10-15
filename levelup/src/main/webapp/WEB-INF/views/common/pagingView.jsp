@@ -115,7 +115,7 @@
 			<c:param name="keyword" value="${ keyword }" />
 		</c:url>
 		<a href="${ um1 }">[이전그룹]</a> &nbsp;
-	</c:if>s
+	</c:if>
 	<c:if test="${ !((currentPage - 10) < startPage && (currentPage - 10) > 1) }">
 		[이전그룹] &nbsp;
 	</c:if>
