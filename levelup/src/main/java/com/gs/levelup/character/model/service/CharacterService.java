@@ -5,5 +5,6 @@ import java.util.ArrayList;
 public interface CharacterService {
 	public ArrayList<Character> selectCharacters(int accountId);
 	public Character selectCharacter(int accountId,int charId);
+	public ArrayList<Character> testMaria();
 	
 }

@@ -35,10 +35,26 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
+	@RequestMapping("ulogin.do")
+	public String moveUserLogin() {
+		return "user/ulogin";
+	}
 
 	@RequestMapping(value="login.do", method=RequestMethod.POST)
-	public String loginMethod(HttpServletRequest request, HttpServletResponse response, Model model) {
-		return "";
+	public String selectLogin(User user, HttpSession session, SessionStatus status, Model model) {
+		logger.info("login.do : " + user);
+		User loginUser = userService.selectLogin(user);
+		if(loginUser != null ) {
+			session.setAttribute("loginUser", loginUser);
+			status.setComplete(); //로그인 요청 성공, 200 전송
+			return "user/userMain";
+		} else {
+			// 스프링에서는 request에 저장처리하는 내용을 model 에 저장하는 것으로 변경됨
+			// 포워딩하지 못함
+			model.addAttribute("message", "로그인 실패");
+			return "common/error";
+		}
+		
 	}
 
 	@RequestMapping("logout.do")
@@ -70,7 +86,7 @@ public class UserController {
 		int limit = 10;
 		// 회원 목록 전체 갯수 조회해 옴
 		int listCount = userService.selectListCount();
-		Paging paging = new Paging(listCount, currentPage, limit, "mlist.do");
+		Paging paging = new Paging(listCount, currentPage, limit, "ulist.do");
 		paging.calculator();
 		// 페이징에 필요한 항목들 계산 처리
 

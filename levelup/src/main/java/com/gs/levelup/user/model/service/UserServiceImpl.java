@@ -19,8 +19,8 @@ public class UserServiceImpl implements UserService{
 	public UserServiceImpl() {}
 
 	@Override
-	public User selectLogin(User User) {
-		return userDao.selectLogin(User);
+	public User selectLogin(User user) {
+		return userDao.selectLogin(user);
 	}
 
 	@Override
@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public ArrayList<User> selectList(Paging paging) {
-		return userDao.selectList();
+		return userDao.selectList(paging);
 	}
 
 	@Override
