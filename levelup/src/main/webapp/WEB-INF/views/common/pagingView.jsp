@@ -98,7 +98,7 @@
 	<c:if test="${ currentPage < maxPage }" >
 		<li class="page-item">
 		<a class="page-link" href="/levelup/${ urlMapping }?page=${ maxPage }" aria-label="맨끝">
-			<i class="mdi mdi-chevron-right"></i>
+			<i class="mdi mdi-chevron-double-right"></i>
 		</a>
 		</li>
 
