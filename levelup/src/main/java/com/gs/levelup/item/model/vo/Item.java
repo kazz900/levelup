@@ -1,6 +1,11 @@
 package com.gs.levelup.item.model.vo;
 
-public class Item {
+public class Item  implements java.io.Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1647014372057010765L;
 	private int itemId;
 	private String itemType;
 	private String itemData;

@@ -8,624 +8,57 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<style type="text/css">
-@import 'https://fonts.googleapis.com/css?family=Open+Sans:600,700';
+<link rel="stylesheet" type="text/css"
+	href="./resources/css/empInquiryListView.css">
+<script type="text/javascript">
+function showDateBox() {
+	var dateBox = document.querySelector(".dateboxContainer");
+	var keywordInputbox = document.getElementById("keywordInputbox");
+	var typeDropdown = document.querySelector(".typeDropdownContainer");
+	dateBox.style.display = 'block';	
+	
+	console.log(typeDropdown);
 
-* {
-	font-family: 'Open Sans', sans-serif;
-}
-
-.rwd-table {
-	margin: auto;
-	min-width: 300px;
-	max-width: 100%;
-	border-collapse: collapse;
-}
-
-.rwd-table tr:first-child {
-	border-top: none;
-	background: #284258;
-	color: #fff;
-}
-
-.rwd-table tr {
-	border-top: 1px solid #ddd;
-	border-bottom: 1px solid #ddd;
-	background-color: #f5f9fc;
-}
-
-.rwd-table tr:nth-child(odd):not(:first-child) {
-	background-color: #ebf3f9;
-}
-
-.rwd-table th {
-	display: none;
-}
-
-.rwd-table td {
-	display: block;
-}
-
-.rwd-table td:first-child {
-	margin-top: .5em;
-}
-
-.rwd-table td:last-child {
-	margin-bottom: .5em;
-}
-
-.rwd-table td:before {
-	content: attr(data-th) ": ";
-	font-weight: bold;
-	width: 120px;
-	display: inline-block;
-	color: #000;
-}
-
-.rwd-table th, .rwd-table td {
-	text-align: left;
-}
-
-.rwd-table {
-	color: #333;
-	border-radius: .4em;
-	overflow: hidden;
-}
-
-.rwd-table tr {
-	border-color: #bfbfbf;
-}
-
-.rwd-table th, .rwd-table td {
-	padding: .5em 1em;
-}
-
-@media screen and (max-width: 601px) {
-	.rwd-table tr:nth-child(2) {
-		border-top: none;
+	if (keywordInputbox.style.display != 'none'){
+		keywordInputbox.style.display = 'none';
+	}
+	
+	if (typeDropdown.style.display != 'none'){
+		typeDropdown.style.display = 'none';
 	}
 }
 
-@media screen and (min-width: 600px) {
-	.rwd-table tr:hover:not(:first-child) {
-		background-color: #d8e7f3;
+function showSearchBox() {
+	var dateBox = document.querySelector(".dateboxContainer");
+	var keywordInputbox = document.getElementById("keywordInputbox");
+	var typeDropdown = document.querySelector(".typeDropdownContainer");
+	keywordInputbox.style.display = 'inline';	
+
+	if (dateBox.style.display != 'none'){
+		dateBox.style.display = 'none';
 	}
-	.rwd-table td:before {
-		display: none;
-	}
-	.rwd-table th, .rwd-table td {
-		display: table-cell;
-		padding: .25em .5em;
-	}
-	.rwd-table th:first-child, .rwd-table td:first-child {
-		padding-left: 0;
-	}
-	.rwd-table th:last-child, .rwd-table td:last-child {
-		padding-right: 0;
-	}
-	.rwd-table th, .rwd-table td {
-		padding: 1em !important;
+	
+	if (typeDropdown.style.display != 'none'){
+		typeDropdown.style.display = 'none';
 	}
 }
 
-/* THE END OF THE IMPORTANT STUFF */
+function showTypeDropdown(){
+	var dateBox = document.querySelector(".dateboxContainer");
+	var keywordInputbox = document.getElementById("keywordInputbox");
+	var typeDropdown = document.querySelector(".typeDropdownContainer");
+	typeDropdown.style.display = 'inline';	
 
-/* Basic Styling */
-h1 {
-	text-align: center;
-	font-size: 2.4em;
-	color: #f2f2f2;
+	if (keywordInputbox.style.display != 'none'){
+		keywordInputbox.style.display = 'none';
+	}
+	
+	if (dateBox.style.display != 'none'){
+		dateBox.style.display = 'none';
+	}
 }
 
-.container {
-	display: block;
-	text-align: center;
-}
-
-h3 {
-	display: inline-block;
-	position: relative;
-	text-align: center;
-	font-size: 1.5em;
-	color: #cecece;
-}
-
-h3:before {
-	content: "\25C0";
-	position: absolute;
-	left: -50px;
-	-webkit-animation: leftRight 2s linear infinite;
-	animation: leftRight 2s linear infinite;
-}
-
-h3:after {
-	content: "\25b6";
-	position: absolute;
-	right: -50px;
-	-webkit-animation: leftRight 2s linear infinite reverse;
-	animation: leftRight 2s linear infinite reverse;
-}
-
-@
--webkit-keyframes leftRight { 0% {
-	-webkit-transform: translateX(0)
-}
-
-25
-
-
-
-
-
-
-
-
-
-
-%
-{
--webkit-transform
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
-
-
-translateX
-
-
-
-
-
-
-
-
-(
-
-
-
-
-
-
-
-
-
-
--10px
-
-
-
-
-
-
-
-
-
-
-)
-
-
-
-
-
-
-
-
-
-
-}
-75
-
-
-
-
-
-
-
-
-
-
-%
-{
--webkit-transform
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
-
-
-translateX
-
-
-
-
-
-
-
-
-(
-
-
-
-
-
-
-
-
-
-
-10px
-
-
-
-
-
-
-
-
-
-
-)
-
-
-
-
-
-
-
-
-
-
-}
-100
-
-
-
-
-
-
-
-
-
-
-%
-{
--webkit-transform
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
-
-
-translateX
-
-
-
-
-
-
-
-
-(
-
-
-
-
-
-
-
-
-
-
-0
-
-
-
-
-
-
-
-
-
-
-)
-
-
-
-
-
-
-
-
-
-
-}
-}
-@
-keyframes leftRight { 0% {
-	transform: translateX(0)
-}
-25
-
-
-
-
-
-
-
-
-
-
-%
-{
-transform
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
-
-
-translateX
-
-
-
-
-
-
-
-
-(
-
-
-
-
-
-
-
-
-
-
--10px
-
-
-
-
-
-
-
-
-
-
-)
-
-
-
-
-
-
-
-
-
-
-}
-75
-
-
-
-
-
-
-
-
-
-
-%
-{
-transform
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
-
-
-translateX
-
-
-
-
-
-
-
-
-(
-
-
-
-
-
-
-
-
-
-
-10px
-
-
-
-
-
-
-
-
-
-
-)
-
-
-
-
-
-
-
-
-
-
-}
-100
-
-
-
-
-
-
-
-
-
-
-%
-{
-transform
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
-
-
-translateX
-
-
-
-
-
-
-
-
-(
-
-
-
-
-
-
-
-
-
-
-0
-
-
-
-
-
-
-
-
-
-
-)
-
-
-
-
-
-
-
-
-
-
-}
-}
-</style>
+</script>
 <!-- 타이틀 -->
 <c:import url="/WEB-INF/views/common/title-meta.jsp" />
 <!-- 헤드 스크립트 -->
@@ -649,7 +82,33 @@ translateX
 
 				<!-- 여기서부터 내용 작성 -->
 				<div class="container">
-					<h1>유저 문의 목록</h1>
+
+					<!-- 타입별 검색 1. 전제, 환불문의, 게임문의, 기타문의 -->
+					<!-- 타입별 검색 내 keyword  종류 : 유저ID, 제목, 날짜 -->
+					<form action="isearch.do">
+						<div class="container">
+							<div class="inputs">
+								<input type="radio" name="action" value="writer" onclick="showSearchBox();"><label>유저ID</label>
+								<input type="radio" name="action" value="title" onclick="showSearchBox();"><label>제목</label>
+								<input type="radio" name="action" value="date" onclick="showDateBox();"><label>날짜</label>
+								<input type="radio" name="action" value="type" onclick="showTypeDropdown(); "><label>문의구분</label>
+								<div class="dateboxContainer">
+									<input type="date" class="searchDateInput" name="begin"> ~ <input type="date" class="searchDateInput" name="end">
+								</div>
+								<div class="typeDropdownContainer">
+									<select name="type">
+										<option value="0">문의구분</option>
+										<option value="1">환불문의</option>
+										<option value="2">게임문의</option>
+										<option value="3">기타문의</option>
+									</select>
+								</div>
+								<input id="keywordInputbox" type="search" name="keyword">
+								<input type="submit" value="SEARCH">
+							</div>
+						</div>
+					</form>
+					<!-- 문의 테이블 -->
 					<table class="rwd-table">
 						<tbody>
 							<tr>
@@ -657,21 +116,29 @@ translateX
 								<th>User ID</th>
 								<th>Type</th>
 								<th>Date</th>
-								<th>Answer</th>
+								<th>Status</th>
 							</tr>
-							<c:forEach items="${ requestScope.inquiryList }" var="i">
+							<c:forEach items="${ requestScope.list }" var="i">
 								<tr>
-									<td data-th="Question Title">${ i.inquiryTitle }</td>
+									<td data-th="Question Title"><a class="ititle"
+										href="/levelup/idetail.do?iid=${ i.inquiryId }">${ i.inquiryTitle }</a></td>
 									<td data-th="User ID">${ i.userId }</td>
 									<c:if test="${ i.inquiryType eq '1' }">
 										<td data-th="Type">환불문의</td>
 									</c:if>
-									<td data-th="Date"><fmt:formatDate value="${ i.editDate }" pattern="yyyy-MM-dd" /></td>
+									<c:if test="${ i.inquiryType eq '2' }">
+										<td data-th="Type">게임문의</td>
+									</c:if>
+									<c:if test="${ i.inquiryType eq '3' }">
+										<td data-th="Type">기타문의</td>
+									</c:if>
+									<td data-th="Date"><fmt:formatDate value="${ i.editDate }"
+											pattern="yyyy-MM-dd HH:mm:ss" /></td>
 									<c:if test="${ i.answerStatus eq 'Y' }">
-										<td data-th="Answer">답변완료</td>
+										<td data-th="Answer"><span class="badge bg-success">답변완료</span></td>
 									</c:if>
 									<c:if test="${ i.answerStatus eq 'N' }">
-										<td data-th="Answer">미답변</td>
+										<td data-th="Answer"><span class="badge bg-danger">미답변</span></td>
 									</c:if>
 								</tr>
 							</c:forEach>
@@ -681,7 +148,6 @@ translateX
 					<br>
 
 					<%-- 페이징 처리 뷰 포함 처리 --%>
-					<%-- <%@ include file="../common/pagingView.jsp" %> --%>
 					<c:import url="/WEB-INF/views/common/pagingView.jsp" />
 				</div>
 

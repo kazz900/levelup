@@ -21,6 +21,11 @@ public class CharacterServiceImpl implements CharacterService{
 	public Character selectCharacter(int accountId, int charId) {
 		return characterDao.selectCharacter(accountId,charId);
 	}
+
+	@Override
+	public ArrayList<Character> selectAll() {
+		return characterDao.selectAll();
+	}
 	
 	
 }

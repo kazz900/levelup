@@ -4,8 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-<c:set var="currentPage" value="${ requestScope.currentPage }" />
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -27,10 +25,27 @@
 <c:import url="/WEB-INF/views/common/page-title.jsp"/>
 
 <!-- 여기서부터 내용 작성 -->
+<%-- 모든 유저 목록 출력 --%>
+<table align="center" border="1" cellspacing="0" width="700">
+	<tr>
+		<th>accountId</th>
+		<th>userId</th>
+		<th>email</th>
+		<th>logincount</th>
+		<th>lastlogin</th>
+	</tr>
+	<c:forEach var="b" items="${ list }">
+		<tr>
+			<td align="center">${ b.accountId }</td>
+			<td align="center">${ b.userId }</td>
+			<td align="center">${ b.email }</td>
+			<td align="center">${ b.logincount }</td>
+			<td align="center">${ b.lastlogin }</td>
+		</tr>
+	</c:forEach>
+</table>
 
-	<h1>문의 상세 보기 페이지</h1> <br>
-	<h3>유저 문의에 답변 등록, 수정 할수 있음</h3> <br>
-	<h3>사진 첨부 할 수 있어야 함</h3>
+	
 
 
 
