@@ -2,7 +2,13 @@ package com.gs.levelup.community.model.vo;
 
 import java.sql.Date;
 
-public class Community {
+public class Community implements java.io.Serializable{
+	private static final long serialVersionUID = 5632326431275916747L;
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	private String boardId;
 	private String departmentId;
 	private String employeeId;
