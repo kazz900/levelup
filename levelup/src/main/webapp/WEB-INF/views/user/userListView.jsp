@@ -44,9 +44,10 @@
 		</tr>
 	</c:forEach>
 </table>
+<br>
 
 	
-
+<c:import url="/WEB-INF/views/common/pagingView.jsp"/>
 
 
 	 	<!-- container-fluid -->			
