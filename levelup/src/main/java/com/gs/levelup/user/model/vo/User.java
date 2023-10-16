@@ -2,7 +2,13 @@ package com.gs.levelup.user.model.vo;
 
 import java.sql.Date;
 
-public class User {
+public class User  implements java.io.Serializable{
+	private static final long serialVersionUID = 7477593661177192885L;
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	private int accountId;
 	private String userId;
 	private String userPass;

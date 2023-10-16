@@ -1,6 +1,12 @@
 package com.gs.levelup.department.model.vo;
 
-public class Department {
+public class Department  implements java.io.Serializable{
+	private static final long serialVersionUID = -2650184692818330398L;
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	private String departmentId;
 	private String departmentName;
 	
