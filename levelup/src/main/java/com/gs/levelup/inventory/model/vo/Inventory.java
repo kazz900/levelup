@@ -1,6 +1,12 @@
 package com.gs.levelup.inventory.model.vo;
 
-public class Inventory {
+public class Inventory  implements java.io.Serializable{
+	private static final long serialVersionUID = 4178293791060111904L;
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	private int id;
 	private int charId;
 	private int nameId;
