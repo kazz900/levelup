@@ -2,7 +2,13 @@ package com.gs.levelup.charlog.model.vo;
 
 import java.sql.Date;
 
-public class CharLog {
+public class CharLog implements java.io.Serializable {
+	private static final long serialVersionUID = 5058626317001492589L;
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	private Date time;
 	private String charMsg;
 	private int accountId;

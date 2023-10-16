@@ -22,7 +22,7 @@ public class CharacterDao {
 		return null;
 	}
 
-	public ArrayList<Character> testMaria() {
+	public ArrayList<Character> selectAll() {
 		List<Character> list = sqlSessionTemplateMaria.selectList("mariatest.selectAll");
 		return (ArrayList<Character>)list;
 	}
