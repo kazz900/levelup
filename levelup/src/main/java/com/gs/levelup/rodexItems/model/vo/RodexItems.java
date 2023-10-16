@@ -1,6 +1,11 @@
 package com.gs.levelup.rodexItems.model.vo;
 
-public class RodexItems {
+public class RodexItems  implements java.io.Serializable{
+	private static final long serialVersionUID = 5526184724395697932L;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	private int id;
 	private int mailId;
 	private int nameId;

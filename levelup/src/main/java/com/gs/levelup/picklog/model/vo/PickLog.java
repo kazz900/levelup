@@ -2,7 +2,13 @@ package com.gs.levelup.picklog.model.vo;
 
 import java.sql.Date;
 
-public class PickLog {
+public class PickLog  implements java.io.Serializable{
+	private static final long serialVersionUID = -7095994249942862889L;
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	private int id;
 	private Date time;
 	private int charId;

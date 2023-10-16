@@ -27,11 +27,24 @@
 <c:import url="/WEB-INF/views/common/page-title.jsp"/>
 
 <!-- 여기서부터 내용 작성 -->
+<!-- 문의 분류 문의제목 , 유저ID, 문의 날짜,-->
+<!-- 문의 내용 -->
+<!-- 첨부파일 -->
+<!-- 답변내용 -->
+<!-- 답변 단 사원 ID, 답변 등록 날짜.  -->
 
-	<h1>문의 상세 보기 페이지</h1> <br>
-	<h3>유저 문의에 답변 등록, 수정 할수 있음</h3> <br>
-	<h3>사진 첨부 할 수 있어야 함</h3>
-
+<div class="row mb-3 text-center">
+      <div class="col-md-8 themed-grid-col">
+        <div class="pb-3">
+          .col-md-8
+        </div>
+        <div class="row">
+          <div class="col-md-6 themed-grid-col">.col-md-6</div>
+          <div class="col-md-6 themed-grid-col">.col-md-6</div>
+        </div>
+      </div>
+      <div class="col-md-4 themed-grid-col">.col-md-4</div>
+    </div>
 
 
 	 	<!-- container-fluid -->			

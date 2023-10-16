@@ -71,6 +71,10 @@ public class InquiryDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public int insertInqury(Inquiry inquiry) {
+		return sqlSessionTemplate.insert("inquiryMapper.insertInquiry", inquiry);
+	}
 	
 
 

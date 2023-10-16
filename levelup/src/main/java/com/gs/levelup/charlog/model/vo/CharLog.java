@@ -2,14 +2,20 @@ package com.gs.levelup.charlog.model.vo;
 
 import java.sql.Date;
 
-public class CharLog {
+public class CharLog implements java.io.Serializable {
+	private static final long serialVersionUID = 5058626317001492589L;
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	private Date time;
 	private String charMsg;
 	private int accountId;
 	private int charId;
 	private int charNum;
 	private int class_;
-	private int name;
+	private String name;
 	private int str;
 	private int agi;
 	private int vit;
@@ -21,7 +27,7 @@ public class CharLog {
 	
 	public CharLog() {}
 
-	public CharLog(Date time, String charMsg, int accountId, int charId, int charNum, int class_, int name, int str,
+	public CharLog(Date time, String charMsg, int accountId, int charId, int charNum, int class_, String name, int str,
 			int agi, int vit, int int_, int dex, int luk, int hair, int hairColor) {
 		super();
 		this.time = time;
@@ -89,11 +95,11 @@ public class CharLog {
 		this.class_ = class_;
 	}
 
-	public int getName() {
+	public String getName() {
 		return name;
 	}
 
-	public void setName(int name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 

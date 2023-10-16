@@ -3,8 +3,14 @@ package com.gs.levelup.caseitemrefund.model.vo;
 import java.sql.Date;
 
 
-public class CaseItemRefund{
+public class CaseItemRefund implements java.io.Serializable{
 	
+	private static final long serialVersionUID = -6050799986642389358L;
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	private String documentId;
 	private int userId;
 	private int itemId;

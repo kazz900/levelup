@@ -14,8 +14,8 @@ public class LoginLogServiceImpl implements LoginLogService{
 	private LoginLogDao loginLogDao;
 
 	@Override
-	public ArrayList<LoginLog> selectLoginLog(int accountId) {
-		return loginLogDao.selectLoginLog(accountId);
+	public ArrayList<LoginLog> selectLoginLog(String userId) {
+		return loginLogDao.selectLoginLog(userId);
 	}
 	
 	
