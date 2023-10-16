@@ -73,4 +73,9 @@ public class InquiryServiceImpl implements InquiryService{
 		return inquiryDao.selectSearchDate(search);
 	}
 
+	@Override
+	public int insertInquiry(Inquiry inquiry) {
+		return inquiryDao.insertInqury(inquiry);
+	}
+
 }
