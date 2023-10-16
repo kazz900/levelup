@@ -6,7 +6,7 @@ public class Character {
 	private int charId;
 	private int accountId;
 	private int charNum;
-	private int name;
+	private String name;
 	private int class_;
 	private int baseLevel;
 	private int jobLevel;
@@ -26,14 +26,14 @@ public class Character {
 	private int statusPoint;
 	private int skillPoint;
 	private int lastLogin;
-	private int lastMap;
+	private String lastMap;
 	private int online;
 	
 	public Character() {}
 
-	public Character(int charId, int accountId, int charNum, int name, int class_, int baseLevel, int jobLevel,
+	public Character(int charId, int accountId, int charNum, String name, int class_, int baseLevel, int jobLevel,
 			int baseExp, int jobExp, int zeny, int str, int agi, int vit, int int_, int dex, int luk, int maxHp, int hp,
-			int maxSp, int sp, int statusPoint, int skillPoint, int lastLogin, int lastMap, int online) {
+			int maxSp, int sp, int statusPoint, int skillPoint, int lastLogin, String lastMap, int online) {
 		super();
 		this.charId = charId;
 		this.accountId = accountId;
@@ -86,11 +86,11 @@ public class Character {
 		this.charNum = charNum;
 	}
 
-	public int getName() {
+	public String getName() {
 		return name;
 	}
 
-	public void setName(int name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
@@ -246,11 +246,11 @@ public class Character {
 		this.lastLogin = lastLogin;
 	}
 
-	public int getLastMap() {
+	public String getLastMap() {
 		return lastMap;
 	}
 
-	public void setLastMap(int lastMap) {
+	public void setLastMap(String lastMap) {
 		this.lastMap = lastMap;
 	}
 
@@ -271,6 +271,5 @@ public class Character {
 				+ ", sp=" + sp + ", statusPoint=" + statusPoint + ", skillPoint=" + skillPoint + ", lastLogin="
 				+ lastLogin + ", lastMap=" + lastMap + ", online=" + online + "]";
 	}
-	
 	
 }

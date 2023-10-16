@@ -24,8 +24,7 @@ public class InquiryDao {
 	}
 
 	public int selectListCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSessionTemplate.selectOne("inquiryMapper.selectListCount");
 	}
 	
 	public int insertInquiryAnswer(Inquiry inquiry) {
@@ -45,8 +44,7 @@ public class InquiryDao {
 
 
 	public int selectSearchUserIDCount(String keyword) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSessionTemplate.selectOne("inquiryMapper.selectSearchUserIDCount", keyword);
 	}
 
 	public int selectSearchTypeCount(String keyword) {
@@ -60,8 +58,8 @@ public class InquiryDao {
 	}
 
 	public ArrayList<Inquiry> selectSearchUserID(Search search) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Inquiry> list = sqlSessionTemplate.selectList("inquiryMapper.selectSearchUserID", search);
+		return (ArrayList<Inquiry>) list;
 	}
 
 	public ArrayList<Inquiry> selectSearchType(Search search) {
