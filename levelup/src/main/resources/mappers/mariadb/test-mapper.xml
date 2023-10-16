@@ -11,7 +11,7 @@
 	</resultMap>
 	
 	<select id="selectAll" resultMap="resultChar">
-		select char_id , account_id from evol.char
+		select * from evol.char
 	</select>
 		
 </mapper>
