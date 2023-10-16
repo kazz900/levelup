@@ -67,8 +67,22 @@ function showTypeDropdown(){
 </head>
 <body>
 <c:import url="/WEB-INF/views/user/userHeader.jsp"/>
+
 <div class="main-content">
-		<div class="page-content">
+	
+<hr><br><br><br><br><br>
+<h3>도움말&문의</h3>|<a>&nbsp;&nbsp;&nbsp; 환불문의 &nbsp;&nbsp;&nbsp;</a>|<a>&nbsp;&nbsp;&nbsp; 게임문의 &nbsp;&nbsp;&nbsp;</a>| 
+<a>&nbsp;&nbsp;&nbsp; 기타문의 &nbsp;&nbsp;&nbsp;</a> | <a>&nbsp;&nbsp;&nbsp; 아이템 &nbsp;&nbsp;&nbsp;</a> | 
+<a>&nbsp;&nbsp;&nbsp; 아이템 &nbsp;&nbsp;&nbsp;</a> |
+		
+		
+		<hr>
+		<c:if test="${ !empty sessionScope.loginUser }">
+			<input type="button" value="작성하기" id="submitButton">
+		</c:if>
+		<c:if test="${ empty sessionScope.loginUser }">
+			&nbsp;
+		</c:if>
 			<div class="container-fluid">
 
 				<c:import url="/WEB-INF/views/common/page-title.jsp" />
@@ -146,16 +160,22 @@ function showTypeDropdown(){
 					<br>
 
 					<%-- 페이징 처리 뷰 포함 처리 --%>
-					<c:import url="/WEB-INF/views/common/pagingView.jsp" />
+					
 				</div>
 
 				<!-- container-fluid -->
 			</div>
 			<!-- page-content -->
+				<c:import url="/WEB-INF/views/common/pagingView.jsp" />
 		</div>
-		<c:import url="/WEB-INF/views/common/footer.jsp" />
-	</div>
 
+<script type="text/javascript">
+        // 버튼 클릭 이벤트 핸들러
+        document.getElementById("submitButton").addEventListener("click", function() {
+            // inquiryu.do 실행
+            window.location.href = "inquiryu.do";
+        });
+    </script>
 <c:import url="/WEB-INF/views/user/userFooter.jsp"/>
 </body>
 </html>
