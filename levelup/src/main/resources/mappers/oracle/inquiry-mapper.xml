@@ -72,4 +72,10 @@
 				 order by EDIT_DATE DESC))
 		where rnum between #{ startRow } and #{ endRow }
 	</select>
+	
+	<select id="selectInquiry" parameterType="string" resultMap="resultInquiry">
+		select * from INQUIRY where INQUIRY_ID = #{ inquiryId }
+	</select>
+	
+	
 </mapper>

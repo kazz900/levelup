@@ -74,9 +74,37 @@ public class InquiryController {
 		}	
 	}
 	
+	
 	@RequestMapping(value="idetail.do", method=RequestMethod.GET)
-	public String moveInquiryDetailMethod(Model model){
-		return "empInquiry/empInquiryDetailView";
+	public ModelAndView moveInquiryDetailMethod(
+									@RequestParam("iid") String inquiryId,
+									@RequestParam("page") String page,
+									ModelAndView mv){
+		//출력할 페이지 
+		int currentPage = 1;
+		
+		//전송할 페이지가 있다면 추출
+		if(page != null) {
+			currentPage = Integer.parseInt(page);
+		}
+	
+		Inquiry inquiry = inquiryService.selectInquiry(inquiryId);
+		
+		if(inquiry != null) {
+			mv.addObject("inquiry", inquiry);
+			mv.addObject("currentPage", currentPage);
+			
+			mv.setViewName("empInquiry/empInquiryDetailView");
+			
+		}else {
+			mv.addObject("message", "문의글 상세보기 실패");
+			mv.setViewName("common/error");
+		}
+
+		return mv;
+		
+		
+		
 	}
 	
 	@RequestMapping(value="iinsertans.do", method=RequestMethod.GET)

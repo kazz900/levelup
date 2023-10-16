@@ -71,6 +71,10 @@ public class InquiryDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public Inquiry selectInquiry(String inquiryId) {
+		return sqlSessionTemplate.selectOne("inquiryMapper.selectInquiry", inquiryId);
+	}
 	
 
 
