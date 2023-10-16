@@ -15,11 +15,13 @@ public interface InquiryService {
 	public int deleteInquiryAnswer(String inquiryId);	
 	public int selectListCount();
 	public int selectSearchUserIDCount(String keyword);
-	public int selectSearchTypeCount(String keyword);
-	public int selectSearchDateCount(SearchDate date);
+	public int selectSearchTitleCount(String keyword);
+	public int selectSearchTypeCount(String type);
+	public int selectSearchDateCount(Search search);
 	public ArrayList<Inquiry> selectSearchUserID(Search search);
 	public ArrayList<Inquiry> selectSearchType(Search search);
 	public ArrayList<Inquiry> selectSearchDate(Search search);
+	public ArrayList<Inquiry> selectSearchTitle(Search search);
 	public int insertInquiry(Inquiry inquiry);
 
 
