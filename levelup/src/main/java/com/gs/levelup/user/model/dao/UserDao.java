@@ -1,10 +1,12 @@
 package com.gs.levelup.user.model.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.gs.levelup.common.Paging;
 import com.gs.levelup.common.Search;
 import com.gs.levelup.user.model.vo.User;
 
@@ -12,11 +14,10 @@ import com.gs.levelup.user.model.vo.User;
 public class UserDao {
 	
 	@Autowired
-	private org.mybatis.spring.SqlSessionTemplate sqlSessionTemplate;
+	private org.mybatis.spring.SqlSessionTemplate sqlSessionTemplateMaria;
 
 	public User selectLogin(User user) {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSessionTemplateMaria.selectOne("userMapper.selectLogin",user);
 	}
 
 	public User selectMember(String userid) {
@@ -24,14 +25,13 @@ public class UserDao {
 		return null;
 	}
 
-	public ArrayList<User> selectList() {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<User> selectList(Paging paging) {
+		List<User> list = sqlSessionTemplateMaria.selectList("userMapper.selectList",paging);
+		return (ArrayList<User>)list;
 	}
 
 	public int selectListCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSessionTemplateMaria.selectOne("userMapper.selectListCount");
 	}
 
 	public int selectSearchIdCount(String keyword) {

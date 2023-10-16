@@ -9,7 +9,7 @@ import com.gs.levelup.user.model.vo.User;
 
 public interface UserService {
 
-	public User selectLogin(User User);
+	public User selectLogin(User user);
 	public User selectUser(String userid);
 
 	public ArrayList<User> selectList(Paging paging); // 페이징 처리된 목록 조회

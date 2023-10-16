@@ -10,7 +10,7 @@ import com.gs.levelup.employee.model.vo.Employee;
 public interface EmployeeService {
 	public Employee selectLogin(Employee employee);
 	public int insertEmployee(Employee employee);
-	public Employee selectEmployee(String userid);
+	public Employee selectEmployee(String employeeEmail);
 	public int updateEmployee(Employee employee);
 	public int updateEmployee2(Employee employee);
 	public int deleteEmployee(String userid);

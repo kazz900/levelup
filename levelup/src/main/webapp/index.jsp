@@ -20,7 +20,7 @@
 <!-- 
 	Spring에서는 뷰에서 바로 뷰로 가지 않고 무조건 컨트롤러를 거쳐서 view를 포워딩한다 
 -->
-<jsp:forward page="main.do" /> <!-- Controller로 가고 main.do가 view를 forwading 함 -->
+<jsp:forward page="eloginPage.do" /> <!-- Controller로 가고 main.do가 view를 forwading 함 -->
 
 </body>
 </html>

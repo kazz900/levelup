@@ -23,6 +23,12 @@ public class PaymentController {
 	@Autowired
 	private PaymentService paymentService;
 	
+	// move payment list
+	@RequestMapping("movepaylist.do")
+	public String movePaymentList() {
+		return "payment/paymentList";
+	}
+	
 	@RequestMapping(value="plist.do", method=RequestMethod.GET)
 	public String paymentListMethod(@RequestParam(name="page", required=false) String page,
 									@RequestParam(name="limit", required=false) String limit,
