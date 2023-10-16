@@ -36,6 +36,7 @@
 
 <c:set var="action" value="${ requestScope.action }" />
 <c:set var="keyword" value="${ requestScope.keyword }" />
+<c:set var="type" value="${ requestScope.type }"/>
 <c:set var="begin" value="${ requestScope.begin }" />
 <c:set var="end" value="${ requestScope.end }" />
 
@@ -96,10 +97,10 @@
 </c:if>
 
 
+<%---------------------------------------------------------------------------------------------------------------------------- --%>
 
-
-<%-- 검색(제목, 작성자, 내용) 페이징 처리 --%>
-<c:if test="${ !empty action and !empty keyword }">
+<%-- 검색(작성자) 페이징 처리 --%>
+<c:if test="${ !empty action and action eq 'writer' }">
 
 <div style="text-align:center;">
 	<c:if test="${ currentPage eq 1 }" >
@@ -143,6 +144,108 @@
 	</c:if>
 	<c:if test="${ currentPage < maxPage }">
 		<a href="/levelup/${ urlMapping }?page=${ maxPage }&action=${ action }&keyword=${ keyword }">[맨끝]</a> &nbsp;
+	</c:if>
+</div>
+</c:if>
+
+<%---------------------------------------------------------------------------------------------------------------------------- --%>
+
+<%-- 검색(제목) 페이징 처리 --%>
+<c:if test="${ !empty action and action eq 'title' }">
+
+<div style="text-align:center;">
+	<c:if test="${ currentPage eq 1 }" >
+		[맨처음] &nbsp;
+	</c:if>
+	<c:if test="${ currentPage gt 1 }" >
+		<a href="/levelup/${ urlMapping }?page=&action=${ action }&keyword=${ keyword }">[맨처음]</a> &nbsp;
+	</c:if>
+	<c:if test="${ ((currentPage - 10) < startPage) && ((currentPage - 10) > 1) }">
+		<c:url var="um1" value="${ urlMapping }">
+			<c:param name="page" value="${ startPage -10 }" />
+			<c:param name="action" value="${ action }" />
+			<c:param name="keyword" value="${ keyword }" />
+		</c:url>
+		<a href="${ um1 }">[이전그룹]</a> &nbsp;
+	</c:if>
+	<c:if test="${ !((currentPage - 10) < startPage && (currentPage - 10) > 1) }">
+		[이전그룹] &nbsp;
+	</c:if>
+	
+	<%-- 현재 페이지가 속한 페이지그룹 숫자 출력 --%>
+	<c:forEach var="p" begin="${ startPage }" end="${ endPage }" step="1">
+		<c:if test="${ p eq currentPage }">
+			<font color="blue" size="4"><b>${ p }</b></font>
+		</c:if>
+		<c:if test="${ !(p eq currentPage) }">
+			<a href="/levelup/${ urlMapping }?page=${ p }&action=${ action }&keyword=${ keyword }">${ p }</a>
+		</c:if>
+	</c:forEach>
+	
+	<%-- 다음 페이지 그룹으로 이동 --%>
+	<c:if test="${ (currentPage + 10) > endPage && ((currentPage + 10) < maxPage) }">
+		<a href="/levelup/${ urlMapping }?page=${ startPage + 10 }&action=${ action }&keyword=${ keyword }">[다음그룹]</a> &nbsp;
+	</c:if>
+	<c:if test="${ !((currentPage + 10) > endPage && (currentPage + 10) < maxPage) }">
+		[다음그룹] &nbsp;
+	</c:if>
+	
+	<c:if test="${ currentPage >= maxPage }">
+		[맨끝] &nbsp;
+	</c:if>
+	<c:if test="${ currentPage < maxPage }">
+		<a href="/levelup/${ urlMapping }?page=${ maxPage }&action=${ action }&keyword=${ keyword }">[맨끝]</a> &nbsp;
+	</c:if>
+</div>
+</c:if>
+
+<%---------------------------------------------------------------------------------------------------------------------------- --%>
+
+<%-- 검색(문의 타입) 페이징 처리 --%>
+<c:if test="${ !empty action and action eq 'type' }">
+
+<div style="text-align:center;">
+	<c:if test="${ currentPage eq 1 }" >
+		[맨처음] &nbsp;
+	</c:if>
+	<c:if test="${ currentPage gt 1 }" >
+		<a href="/levelup/${ urlMapping }?page=&action=${ action }&type=${ type }">[맨처음]</a> &nbsp;
+	</c:if>
+	<c:if test="${ ((currentPage - 10) < startPage) && ((currentPage - 10) > 1) }">
+		<c:url var="um1" value="${ urlMapping }">
+			<c:param name="page" value="${ startPage -10 }" />
+			<c:param name="action" value="${ action }" />
+			<c:param name="keyword" value="${ keyword }" />
+		</c:url>
+		<a href="${ um1 }">[이전그룹]</a> &nbsp;
+	</c:if>
+	<c:if test="${ !((currentPage - 10) < startPage && (currentPage - 10) > 1) }">
+		[이전그룹] &nbsp;
+	</c:if>
+	
+	<%-- 현재 페이지가 속한 페이지그룹 숫자 출력 --%>
+	<c:forEach var="p" begin="${ startPage }" end="${ endPage }" step="1">
+		<c:if test="${ p eq currentPage }">
+			<font color="blue" size="4"><b>${ p }</b></font>
+		</c:if>
+		<c:if test="${ !(p eq currentPage) }">
+			<a href="/levelup/${ urlMapping }?page=${ p }&action=${ action }&type=${ type }">${ p }</a>
+		</c:if>
+	</c:forEach>
+	
+	<%-- 다음 페이지 그룹으로 이동 --%>
+	<c:if test="${ (currentPage + 10) > endPage && ((currentPage + 10) < maxPage) }">
+		<a href="/levelup/${ urlMapping }?page=${ startPage + 10 }&action=${ action }&type=${ type }">[다음그룹]</a> &nbsp;
+	</c:if>
+	<c:if test="${ !((currentPage + 10) > endPage && (currentPage + 10) < maxPage) }">
+		[다음그룹] &nbsp;
+	</c:if>
+	
+	<c:if test="${ currentPage >= maxPage }">
+		[맨끝] &nbsp;
+	</c:if>
+	<c:if test="${ currentPage < maxPage }">
+		<a href="/levelup/${ urlMapping }?page=${ maxPage }&action=${ action }&type=${ type }">[맨끝]</a> &nbsp;
 	</c:if>
 </div>
 </c:if>
