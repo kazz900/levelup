@@ -71,5 +71,25 @@ values(SYS_GUID(),
 SYSDATE);
 
 
+UPDATE EMPLOYEE
+SET employee_email = 'tatha000@naver.com'
+WHERE EMPLOYEE_NAME = '안태환';
+
+UPDATE EMPLOYEE
+SET employee_email = 'kimjihyuk5935@gmail.com'
+WHERE EMPLOYEE_NAME = '김지혁';
+
+UPDATE EMPLOYEE
+SET employee_email = 'osm1525@naver.com'
+WHERE EMPLOYEE_NAME = '오상민';
+
+UPDATE EMPLOYEE
+SET employee_email = 'rarayo44@gmail.com'
+WHERE EMPLOYEE_NAME = '최유미';
+
+UPDATE EMPLOYEE
+SET employee_email = 'zxcqwgks@kakao.com'
+WHERE EMPLOYEE_NAME = '한창현';
+
 
 COMMIT;
