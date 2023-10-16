@@ -39,7 +39,7 @@ public class UserController {
 	public String moveUserLogin() {
 		return "user/ulogin";
 	}
-	
+
 	//페이지 이동처리
 	@RequestMapping("umain.do")
 	public String userMainPageMethod() {
