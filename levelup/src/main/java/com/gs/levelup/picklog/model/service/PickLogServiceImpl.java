@@ -15,8 +15,8 @@ public class PickLogServiceImpl implements PickLogService{
 	private PickLogDao pickLogDao;
 	
 	@Override
-	public ArrayList<PickLog> selectPickLog(int accountId, int charId) {
-		return pickLogDao.selectPickLog(accountId, charId);
+	public ArrayList<PickLog> selectPickLog(int charId) {
+		return pickLogDao.selectPickLog(charId);
 	}
 	
 
