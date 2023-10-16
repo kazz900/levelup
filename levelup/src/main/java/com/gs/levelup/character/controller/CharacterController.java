@@ -24,9 +24,9 @@ public class CharacterController {
 		return mv;
 	}
 	
-	@RequestMapping("testMaria.do")
+	@RequestMapping("listChar.do")
 	public String testMaria(Model model) {
-		ArrayList<Character> list = characterService.testMaria();
+		ArrayList<Character> list = characterService.selectAll();
 		
 		if (list != null && list.size() > 0) {
 			model.addAttribute("list", list);
