@@ -22,5 +22,7 @@ public interface InquiryService {
 	public ArrayList<Inquiry> selectSearchType(Search search);
 	public ArrayList<Inquiry> selectSearchDate(Search search);
 	public ArrayList<Inquiry> selectSearchTitle(Search search);
+	public int insertInquiry(Inquiry inquiry);
+
 
 }

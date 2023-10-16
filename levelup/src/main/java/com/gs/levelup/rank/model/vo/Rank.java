@@ -1,6 +1,12 @@
 package com.gs.levelup.rank.model.vo;
 
-public class Rank {
+public class Rank  implements java.io.Serializable{
+	private static final long serialVersionUID = 8843722194879663559L;
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	private String rankId;
 	private String rankName;
 	

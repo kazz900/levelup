@@ -74,6 +74,10 @@ public class InquiryDao {
 		return (ArrayList<Inquiry>) list;
 	}
 
+	public int insertInqury(Inquiry inquiry) {
+		return sqlSessionTemplate.insert("inquiryMapper.insertInquiry", inquiry);
+	}
+	
 	public ArrayList<Inquiry> selectSearchTitle(Search search) {
 		List<Inquiry> list = sqlSessionTemplate.selectList("inquiryMapper.selectSearchTitle", search);
 		return (ArrayList<Inquiry>) list;

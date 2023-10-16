@@ -11,4 +11,5 @@
 		<link href="resources/css/icons.min.css" rel="stylesheet" type="text/css" />
 		<!-- App Css-->
 		<link href="resources/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+		<link href="resources/css/plus.min.css" id="plus-style" rel="stylesheet" type="text/css" />
 

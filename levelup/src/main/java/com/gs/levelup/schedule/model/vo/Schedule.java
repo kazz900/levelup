@@ -2,7 +2,13 @@ package com.gs.levelup.schedule.model.vo;
 
 import java.sql.Date;
 
-public class Schedule {
+public class Schedule  implements java.io.Serializable{
+	private static final long serialVersionUID = -6088993346291069316L;
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	private String scheduleId;
 	private String employeeId;
 	private String departmentId;

@@ -81,6 +81,8 @@ public class InquiryServiceImpl implements InquiryService{
 	@Override
 	public ArrayList<Inquiry> selectSearchTitle(Search search) {
 		return inquiryDao.selectSearchTitle(search);
+	public int insertInquiry(Inquiry inquiry) {
+		return inquiryDao.insertInqury(inquiry);
 	}
 
 }

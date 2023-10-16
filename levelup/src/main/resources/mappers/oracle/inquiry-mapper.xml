@@ -87,6 +87,7 @@
 				 order by EDIT_DATE DESC))
 		where rnum between #{ startRow } and #{ endRow }
 	</select>
+
 	
 		<select id="selectSearchType" parameterType="Search" resultMap="resultList">
 		select *
@@ -123,4 +124,14 @@
 		where rnum >= #{startRow} and rnum <= #{endRow}
 		]]>
 	</select>
+
+
+	<insert id="insertInquiry" parameterType="Inquiry">
+		insert into inquiry
+		(INQUIRY_ID, USERID, INQUIRY_TITLE, INQUIRY_CONTENT, ANSWER_STATUS,
+		EDIT_DATE, INQUIRY_TYPE)
+		VALUES (default, #{userId}, #{inquiryTitle},
+		#{inquiryContent}, #{answerStatus}, sysdate, #{inquiryType})
+	</insert>
+
 </mapper>
