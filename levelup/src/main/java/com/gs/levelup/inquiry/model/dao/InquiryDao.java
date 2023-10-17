@@ -27,14 +27,8 @@ public class InquiryDao {
 		return sqlSessionTemplate.selectOne("inquiryMapper.selectListCount");
 	}
 	
-	public int insertInquiryAnswer(Inquiry inquiry) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public int updateInquiryAnswer(Inquiry inquiry) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int updateInquiryAnswer(Inquiry inquiry) {	
+		return sqlSessionTemplate.update("inquiryMapper.updateInquiryAnswer", inquiry);
 	}
 
 	public int deleteInquiryAnswer(String inquiryId) {

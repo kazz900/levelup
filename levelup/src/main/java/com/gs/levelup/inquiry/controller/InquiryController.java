@@ -105,14 +105,27 @@ public class InquiryController {
 		return mv;
 	}
 
-	@RequestMapping(value = "iinsertans.do", method = RequestMethod.GET)
-	public ModelAndView insertInquiryAnswerMethod(ModelAndView mv) {
-		return mv;
-	}
-
-	@RequestMapping(value = "iupdate.do", method = RequestMethod.GET)
-	public ModelAndView updateInquiryAnswerMethod(ModelAndView mv) {
-		return mv;
+	@RequestMapping(value = "iupdate.do", method = RequestMethod.POST)
+	public String updateInquiryAnswerMethod(Inquiry inquiry, Model model, 
+											HttpServletRequest request,
+											@RequestParam("inquiryId") String inquiryId,
+											@RequestParam("userId") String userId,
+											@RequestParam("page") String page) {
+		int currentPage = 1;
+		if(page != null) {
+			currentPage = Integer.parseInt(page);
+		}
+		
+		if(inquiryService.updateInquiryAnswer(inquiry) > 0 ) {
+			//답변 달기 성공 시 상세 페이지로 이동
+			model.addAttribute("iid", inquiryId);
+			model.addAttribute("userId", userId);
+			model.addAttribute("page", page);
+			return "redirect:idetail.do";
+		}else {			
+			model.addAttribute("message", "답변 등록 실패");
+			return  "common/error";
+		}
 	}
 
 

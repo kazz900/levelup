@@ -28,11 +28,6 @@ public class InquiryServiceImpl implements InquiryService{
 	}
 	
 	@Override
-	public int insertInquiryAnswer(Inquiry inquiry) {
-		return inquiryDao.insertInquiryAnswer(inquiry);
-	}
-	
-	@Override
 	public int updateInquiryAnswer(Inquiry inquiry) {
 		return inquiryDao.updateInquiryAnswer(inquiry);
 	}
