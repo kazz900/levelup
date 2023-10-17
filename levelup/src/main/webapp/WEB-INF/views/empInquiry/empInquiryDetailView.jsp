@@ -69,7 +69,7 @@ function golist(){
 
 				<c:import url="/WEB-INF/views/common/page-title.jsp" />
 
-				<h2 align="center">${ requestScope.inquiry.inquiryId }상세보기</h2>
+				<h2 align="center"></h2>
 				<br>
 
 				<div class="row">
