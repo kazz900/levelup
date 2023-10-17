@@ -181,7 +181,7 @@ public class UserController {
 		String savePath = request.getSession().getServletContext().getRealPath("resources/inquiry_upfiles");
 		
 		// 첨부파일일 있을 때
-		if (mfile != null && !mfile.isEmpty()) {
+		if (!mfile.isEmpty()) {
 			// 전송온 파일이름 추출함
 			String fileName = mfile.getOriginalFilename();
 			String renameFileName = null;
@@ -194,6 +194,7 @@ public class UserController {
 				renameFileName = FileNameChange.change(fileName, "yyyyMMddHHmmss") + "#" + mfile.getOriginalFilename();
 
 				logger.info("첨부파일명 확인 : " + fileName + ", " + renameFileName);
+				System.out.println("첨부파일명 확인 : " + fileName + ", " + renameFileName);
 				try {
 					// 저장 폴더에 파일명 바꾸기 처리
 					mfile.transferTo(new File(savePath + "\\" + renameFileName));
