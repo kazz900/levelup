@@ -1,17 +1,23 @@
 package com.gs.levelup.inventory.model.vo;
 
-public class Inventory {
+public class Inventory  implements java.io.Serializable{
+	private static final long serialVersionUID = 4178293791060111904L;
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	private int id;
 	private int charId;
 	private int nameId;
 	private int amount;
 	private int equip;
 	private int identify;
-	private int uniqueId;
+	private long uniqueId;
 	
 	public Inventory() {}
 
-	public Inventory(int id, int charId, int nameId, int amount, int equip, int identify, int uniqueId) {
+	public Inventory(int id, int charId, int nameId, int amount, int equip, int identify, long uniqueId) {
 		super();
 		this.id = id;
 		this.charId = charId;
@@ -70,11 +76,11 @@ public class Inventory {
 		this.identify = identify;
 	}
 
-	public int getUniqueId() {
+	public long getUniqueId() {
 		return uniqueId;
 	}
 
-	public void setUniqueId(int uniqueId) {
+	public void setUniqueId(long uniqueId) {
 		this.uniqueId = uniqueId;
 	}
 

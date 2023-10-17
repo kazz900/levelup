@@ -14,8 +14,8 @@ public class InventoryServiceImpl implements InventoryService{
 	private InventoryDao inventoryDao;
 
 	@Override
-	public ArrayList<Inventory> selectInventory(int accountId, int charId) {
-		return inventoryDao.selectInventory(accountId, charId);
+	public ArrayList<Inventory> selectInventory(int charId) {
+		return inventoryDao.selectInventory(charId);
 	}
 	
 

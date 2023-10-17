@@ -3,8 +3,15 @@ package com.gs.levelup.caseitemchange.model.vo;
 import java.sql.Date;
 
 
-public class CaseItemChange{
-	
+public class CaseItemChange implements java.io.Serializable{
+	private static final long serialVersionUID = -9037080188106481236L;
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
+
 	private String documentId;
 	private int userId;
 	private int itemId;

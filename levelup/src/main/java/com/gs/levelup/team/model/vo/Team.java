@@ -1,6 +1,12 @@
 package com.gs.levelup.team.model.vo;
 
-public class Team {
+public class Team  implements java.io.Serializable{
+	private static final long serialVersionUID = 2853786217820017500L;
+	
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	private String teamId;
 	private String teamName;
 	

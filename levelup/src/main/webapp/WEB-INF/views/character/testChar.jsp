@@ -43,7 +43,6 @@
 </table>
 
 
-
 	 	<!-- container-fluid -->			
 		</div>
 	<!-- page-content -->		

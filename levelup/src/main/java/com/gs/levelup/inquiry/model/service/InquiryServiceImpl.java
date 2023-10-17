@@ -28,11 +28,6 @@ public class InquiryServiceImpl implements InquiryService{
 	}
 	
 	@Override
-	public int insertInquiryAnswer(Inquiry inquiry) {
-		return inquiryDao.insertInquiryAnswer(inquiry);
-	}
-	
-	@Override
 	public int updateInquiryAnswer(Inquiry inquiry) {
 		return inquiryDao.updateInquiryAnswer(inquiry);
 	}
@@ -42,20 +37,24 @@ public class InquiryServiceImpl implements InquiryService{
 		return inquiryDao.deleteInquiryAnswer(inquiryId);
 	}
 	
-	
 	@Override
 	public int selectSearchUserIDCount(String keyword){
 		return inquiryDao.selectSearchUserIDCount(keyword);
 	}
 	
 	@Override
-	public int selectSearchTypeCount(String keyword) {
-		return inquiryDao.selectSearchTypeCount(keyword);
+	public int selectSearchTitleCount(String keyword) {
+		return inquiryDao.selectSearchTitleCount(keyword);
 	}
 	
 	@Override
-	public int selectSearchDateCount(SearchDate date) {
-		return inquiryDao.selectSearchDateCount(date);
+	public int selectSearchTypeCount(String type) {
+		return inquiryDao.selectSearchTypeCount(type);
+	}
+	
+	@Override
+	public int selectSearchDateCount(Search search) {
+		return inquiryDao.selectSearchDateCount(search);
 	}
 	
 	@Override
@@ -71,6 +70,26 @@ public class InquiryServiceImpl implements InquiryService{
 	@Override
 	public ArrayList<Inquiry> selectSearchDate(Search search){
 		return inquiryDao.selectSearchDate(search);
+	}
+	
+	@Override
+	public Inquiry selectInquiry(String inquiryId) {
+		return inquiryDao.selectInquiry(inquiryId);
+	}
+
+	@Override
+	public ArrayList<Inquiry> selectSearchTitle(Search search) {
+		return inquiryDao.selectSearchTitle(search);
+	}
+	
+	@Override
+	public int insertInquiry(Inquiry inquiry) {
+		return inquiryDao.insertInqury(inquiry);
+	}
+
+	@Override
+	public ArrayList<Inquiry> selectUserPreviousInquiry(String userId) {
+		return inquiryDao.selectUserPreviousInquiry(userId);
 	}
 
 }

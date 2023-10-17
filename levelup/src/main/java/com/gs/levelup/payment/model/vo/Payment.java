@@ -2,8 +2,14 @@ package com.gs.levelup.payment.model.vo;
 
 import java.sql.Date;
 
-public class Payment {
+public class Payment implements java.io.Serializable {
+	private static final long serialVersionUID = -6902969006704456021L;
+
 	private String paymentId;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	private int itemId;
 	private int charId;
 	private int accountId;

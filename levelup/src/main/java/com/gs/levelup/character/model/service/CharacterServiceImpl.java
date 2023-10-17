@@ -23,8 +23,8 @@ public class CharacterServiceImpl implements CharacterService{
 	}
 
 	@Override
-	public ArrayList<Character> testMaria() {
-		return characterDao.testMaria();
+	public ArrayList<Character> selectAll() {
+		return characterDao.selectAll();
 	}
 	
 	
