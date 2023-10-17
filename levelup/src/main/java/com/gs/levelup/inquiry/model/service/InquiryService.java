@@ -9,8 +9,7 @@ import com.gs.levelup.inquiry.model.vo.Inquiry;
 
 public interface InquiryService {
 	
-	public ArrayList<Inquiry> selectList(Paging paging);	
-	public int insertInquiryAnswer(Inquiry inquiry);	
+	public ArrayList<Inquiry> selectList(Paging paging);		
 	public int updateInquiryAnswer(Inquiry inquiry);	
 	public int deleteInquiryAnswer(String inquiryId);	
 	public int selectListCount();
@@ -24,4 +23,5 @@ public interface InquiryService {
 	public ArrayList<Inquiry> selectSearchTitle(Search search);
 	public int insertInquiry(Inquiry inquiry);
 	public Inquiry selectInquiry(String inquiryId);
+	public ArrayList<Inquiry> selectUserPreviousInquiry(String userId);
 }

@@ -125,15 +125,38 @@
 		where rnum >= #{startRow} and rnum <= #{endRow}
 		]]>
 	</select>
+	
+	
+	<select id="selectUserPreviousInquiry" parameterType="string" resultMap="resultList">
+		select * from INQUIRY where userid = #{ userId }
+	</select>
 
 
 	<insert id="insertInquiry" parameterType="Inquiry">
-		insert into inquiry
-		(INQUIRY_ID, USERID, INQUIRY_TITLE, INQUIRY_CONTENT, ANSWER_STATUS,
-		EDIT_DATE, INQUIRY_TYPE)
-		VALUES (default, #{userId}, #{inquiryTitle},
-		#{inquiryContent}, #{answerStatus}, sysdate, #{inquiryType})
+		<if test="inquiryType != null">
+			insert into inquiry
+			(INQUIRY_ID, USERID, INQUIRY_TITLE, INQUIRY_CONTENT, ANSWER_STATUS,
+			EDIT_DATE,ATTACHEMENT_FILENAME, INQUIRY_TYPE)
+			VALUES (default, #{userId}, #{inquiryTitle},
+			#{inquiryContent}, #{answerStatus}, sysdate,#{attachmentFileName}, #{inquiryType})
+		</if>
+		<if test="inquiryType == null">
+			insert into inquiry
+			(INQUIRY_ID, USERID, INQUIRY_TITLE, INQUIRY_CONTENT, ANSWER_STATUS,
+			EDIT_DATE,ATTACHEMENT_FILENAME, INQUIRY_TYPE)
+			VALUES (default, #{userId}, #{inquiryTitle},
+			#{inquiryContent}, #{answerStatus}, sysdate,#{attachmentFileName}, 3)
+		</if>
 	</insert>
+	
+	<update id="updateInquiryAnswer" parameterType="Inquiry">				
+		update inquiry 
+		set ANSWER_STATUS = 'Y',
+		ANSWER_DATE = SYSDATE,
+		ANSWER_CONTENT = #{ answerContent }
+		where INQUIRY_ID = #{ inquiryId }
+	
+	</update>
 
 
 	
