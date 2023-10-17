@@ -144,7 +144,8 @@
 		update inquiry 
 		set ANSWER_STATUS = 'Y',
 		ANSWER_DATE = SYSDATE,
-		ANSWER_CONTENT = #{ answerContent }
+		ANSWER_CONTENT = #{ answerContent },
+		EMPLOYEE_ID = #{ employeeId }
 		where INQUIRY_ID = #{ inquiryId }
 	
 	</update>

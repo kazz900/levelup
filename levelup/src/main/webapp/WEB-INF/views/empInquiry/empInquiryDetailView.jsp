@@ -153,7 +153,7 @@ function moveUpdatePage(){
 								</div>
 							</div>	
 							<div class="text-muted mt-4">
-                                            <p><i class="mdi mdi-chevron-right text-primary me-1"></i> 사원 ID : ${ requestScope.inquiry.employeeId }</p>
+                                            <p><i class="mdi mdi-chevron-right text-primary me-1"></i> 사원 이름 : ${ requestScope.employee.employeeName }</p>
                                             <p><i class="mdi mdi-chevron-right text-primary me-1"></i> 
                                             답변 날짜 : <fmt:formatDate value="${ requestScope.inquiry.answerDate }" pattern="yyyy-MM-dd" /></p>
                                             </div>
@@ -189,9 +189,10 @@ function moveUpdatePage(){
 					<div class="card">
 						<div class="card-body">	
 						<form action="iupdate.do" method="post">
-						<input type="hidden" name="inquiryId" value="${ param.iid }">
-						<input type="hidden" name="userId" value="${ param.userId }">
-						<input type="hidden" name="page" value="${ param.page }">
+							<input type="hidden" name="employeeId" value="${ sessionScope.loginEmployee.employeeId }">
+							<input type="hidden" name="inquiryId" value="${ param.iid }"> 
+							<input type="hidden" name="userId" value="${ param.userId }">
+							<input type="hidden" name="page" value="${ param.page }">
 							<div class="d-flex">
 								<div class="flex-grow-1 overflow-hidden">
 									<h5 class="text-truncate font-size-15"> 답변 내용 : </h5>

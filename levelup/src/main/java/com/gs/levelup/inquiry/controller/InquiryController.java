@@ -108,6 +108,7 @@ public class InquiryController {
 	@RequestMapping(value = "iupdate.do", method = RequestMethod.POST)
 	public String updateInquiryAnswerMethod(Inquiry inquiry, Model model, 
 											HttpServletRequest request,
+											@RequestParam("employeeId") String employeeId,
 											@RequestParam("inquiryId") String inquiryId,
 											@RequestParam("userId") String userId,
 											@RequestParam("page") String page) {
