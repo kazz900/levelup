@@ -88,6 +88,7 @@
 		where rnum between #{ startRow } and #{ endRow }
 	</select>
 
+
 	
 		<select id="selectSearchType" parameterType="Search" resultMap="resultList">
 		select *
@@ -134,4 +135,11 @@
 		#{inquiryContent}, #{answerStatus}, sysdate, #{inquiryType})
 	</insert>
 
+
+	
+	<select id="selectInquiry" parameterType="string" resultMap="resultInquiry">
+		select * from INQUIRY where INQUIRY_ID = #{ inquiryId }
+	</select>
+	
+	
 </mapper>

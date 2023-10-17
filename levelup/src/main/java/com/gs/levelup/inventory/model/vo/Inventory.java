@@ -13,11 +13,11 @@ public class Inventory  implements java.io.Serializable{
 	private int amount;
 	private int equip;
 	private int identify;
-	private int uniqueId;
+	private long uniqueId;
 	
 	public Inventory() {}
 
-	public Inventory(int id, int charId, int nameId, int amount, int equip, int identify, int uniqueId) {
+	public Inventory(int id, int charId, int nameId, int amount, int equip, int identify, long uniqueId) {
 		super();
 		this.id = id;
 		this.charId = charId;
@@ -76,11 +76,11 @@ public class Inventory  implements java.io.Serializable{
 		this.identify = identify;
 	}
 
-	public int getUniqueId() {
+	public long getUniqueId() {
 		return uniqueId;
 	}
 
-	public void setUniqueId(int uniqueId) {
+	public void setUniqueId(long uniqueId) {
 		this.uniqueId = uniqueId;
 	}
 
