@@ -26,18 +26,18 @@
 
 <!-- 여기서부터 내용 작성 -->
 <!-- <h2>2. 서버로 전송하는 값 있고, 결과로 문자열을 받아서 출력: post 방식</h2> -->
-userId : <input type="text" id="userId"> <br>
-charId : <input type="number" id="charId"> <br>
-<textarea id='loginlog' style="width:300px;height:50px;border:1px solid blue;"></textarea>
-<br>
-<textarea id='charlog' style="width:300px;height:50px;border:1px solid blue;"></textarea>
-<br>
-<textarea id='picklog' style="width:300px;height:50px;border:1px solid blue;"></textarea>
-<br>
-<textarea id='inventory' style="width:300px;height:50px;border:1px solid blue;"></textarea>
-<br>
+userId (String - 로그인로그) : <input class="form-control" type="text" id="userId">
+charId (int - 인벤토리, 캐럭터로그, 픽로그) : <input class="form-control" type="number" id="charId">
+<button class="btn btn-primary w-md mb-3 mt-3" id="getlogs">get logs</button><br>
+로그인 로그
+<textarea readonly class="form-control mb-3" rows="8" id='loginlog'></textarea>
+캐럭터 로그
+<textarea readonly class="form-control mb-3" rows="8" id='charlog'></textarea>
+아이템 입수 로그
+<textarea readonly class="form-control mb-3" rows="8" id='picklog'></textarea>
+인벤토리
+<textarea readonly class="form-control mb-3" rows="10" id='inventory'></textarea>
 
-<button id="getlogs">get logs</button>
 
 <hr>
 
