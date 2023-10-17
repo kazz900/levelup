@@ -24,4 +24,5 @@ public interface InquiryService {
 	public ArrayList<Inquiry> selectSearchTitle(Search search);
 	public int insertInquiry(Inquiry inquiry);
 	public Inquiry selectInquiry(String inquiryId);
+	public ArrayList<Inquiry> selectUserPreviousInquiry(String userId);
 }

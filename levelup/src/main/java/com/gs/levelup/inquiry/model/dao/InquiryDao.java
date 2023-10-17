@@ -86,4 +86,9 @@ public class InquiryDao {
 		List<Inquiry> list = sqlSessionTemplate.selectList("inquiryMapper.selectSearchTitle", search);
 		return (ArrayList<Inquiry>) list;
 	}
+
+	public ArrayList<Inquiry> selectUserPreviousInquiry(String userId) {
+		List<Inquiry> list = sqlSessionTemplate.selectList("inquiryMapper.selectUserPreviousInquiry", userId);
+		return (ArrayList<Inquiry>) list;
+	}
 }

@@ -125,6 +125,11 @@
 		where rnum >= #{startRow} and rnum <= #{endRow}
 		]]>
 	</select>
+	
+	
+	<select id="selectUserPreviousInquiry" parameterType="string" resultMap="resultList">
+		select * from INQUIRY where userid = #{ userId }
+	</select>
 
 
 	<insert id="insertInquiry" parameterType="Inquiry">
