@@ -5,5 +5,5 @@ import java.util.ArrayList;
 import com.gs.levelup.loginlog.model.vo.LoginLog;
 
 public interface LoginLogService {
-	public ArrayList<LoginLog> selectLoginLog(int accountId);
+	public ArrayList<LoginLog> selectLoginLog(String userId);
 }

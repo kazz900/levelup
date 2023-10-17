@@ -1,12 +1,3 @@
-INSERT INTO RANK
-VALUES(SYS_GUID(), '사원');
-
-INSERT INTO TEAM
-VALUES(SYS_GUID(), '백엔드팀');
-
-INSERT INTO DEPARTMENT
-VALUES(SYS_GUID(), '개발부');
-
 insert into employee 
 values(SYS_GUID(), 
 (SELECT DEPARTMENT_ID FROM DEPARTMENT WHERE DEPARTMENT_NAME = '개발부'), 
@@ -79,25 +70,6 @@ values(SYS_GUID(),
 '010-1234-5678', 
 SYSDATE);
 
-UPDATE EMPLOYEE
-SET employee_email = 'tatha000@naver.com'
-WHERE EMPLOYEE_NAME = '안태환';
-
-UPDATE EMPLOYEE
-SET employee_email = 'kimjihyuk5935@gmail.com'
-WHERE EMPLOYEE_NAME = '김지혁';
-
-UPDATE EMPLOYEE
-SET employee_email = 'osm1525@naver.com'
-WHERE EMPLOYEE_NAME = '오상민';
-
-UPDATE EMPLOYEE
-SET employee_email = 'rarayo44@gmail.com'
-WHERE EMPLOYEE_NAME = '최유미';
-
-UPDATE EMPLOYEE
-SET employee_email = 'zxcqwgks@kakao.com'
-WHERE EMPLOYEE_NAME = '한창현';
 
 
 COMMIT;

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    pageEncoding="UTF-8" errorPage="error.jsp"  %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
@@ -28,81 +28,24 @@
         <link href="resources/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
 
     </head>
-
+<style>
+.uloginbox{
+	padding-top: 230px;
+	padding-left: 40%;
+	padding-right: 40%;
+}
+</style>
     <body class="auth-body-bg">
-        
-        <div>
-            <div class="container-fluid p-0">
-                <div class="row g-0">
-                    
-                    <div class="col-xl-9">
-                        <div class="auth-full-bg pt-lg-5 p-4">
-                            <div class="w-100">
-                                <div class="bg-overlay"></div>
-                                <div class="d-flex h-100 flex-column">
-    
-                                    <div class="p-4 mt-auto">
-                                        <div class="row justify-content-center">
-                                            <div class="col-lg-7">
-                                                <div class="text-center">
-                                                    
-                                                    <h4 class="mb-3"><i class="bx bxs-quote-alt-left text-primary h1 align-middle me-3"></i><span class="text-primary">5k</span>+ Satisfied clients</h4>
-                                                    
-                                                    <div dir="ltr">
-                                                        <div class="owl-carousel owl-theme auth-review-carousel" id="auth-review-carousel">
-                                                            <div class="item">
-                                                                <div class="py-3">
-                                                                    <p class="font-size-16 mb-4">" Fantastic theme with a ton of options. If you just want the HTML to integrate with your project, then this is the package. You can find the files in the 'dist' folder...no need to install git and all the other stuff the documentation talks about. "</p>
-    
-                                                                    <div>
-                                                                        <h4 class="font-size-16 text-primary">Abs1981</h4>
-                                                                        <p class="font-size-14 mb-0">- Skote User</p>
-                                                                    </div>
-                                                                </div>
-                                                                
-                                                            </div>
-    
-                                                            <div class="item">
-                                                                <div class="py-3">
-                                                                    <p class="font-size-16 mb-4">" If Every Vendor on Envato are as supportive as Themesbrand, Development with be a nice experience. You guys are Wonderful. Keep us the good work. "</p>
-    
-                                                                    <div>
-                                                                        <h4 class="font-size-16 text-primary">nezerious</h4>
-                                                                        <p class="font-size-14 mb-0">- Skote User</p>
-                                                                    </div>
-                                                                </div>
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end col -->
-
-                    <div class="col-xl-3">
-                        <div class="auth-full-page-content p-md-5 p-4">
-                            <div class="w-100">
-
+ 		<div class="uloginbox">
                                 <div class="d-flex flex-column h-100">
                                     <div class="mb-4 mb-md-5">
-                                        <a href="/" class="d-block auth-logo">
-                                            <img src="resources/images/logo-dark.png" alt="" height="18" class="auth-logo-dark">
-                                            <img src="resources/images/logo-light.png" alt="" height="18" class="auth-logo-light">
+                                        <a href="${ pageContext.servletContext.contextPath }/umain.do" class="d-block auth-logo">
+                                            <img src="/levelup/resources/images/users/umainlogo.jpg" alt="" height="40">
+                                            The ManaWorld
                                         </a>
                                     </div>
                                     <div class="my-auto">
-                                        
-                                        <div>
-                                            <h5 class="text-primary">Welcome Back !</h5>
-                                            <p class="text-muted">Please Sign in</p>
-                                        </div>
-            
+                            
                                         <div class="mt-4">
                                             <form action="login.do" method="post">
                 
@@ -134,27 +77,7 @@
                                                 </div>
                     
                                                 
-                                                <div class="mt-4 text-center">
-                                                    <h5 class="font-size-14 mb-3">Sign in with</h5>
-                    
-                                                    <ul class="list-inline">
-                                                        <li class="list-inline-item">
-                                                            <a href="javascript::void()" class="social-list-item bg-primary text-white border-primary">
-                                                                <i class="mdi mdi-facebook"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <a href="javascript::void()" class="social-list-item bg-info text-white border-info">
-                                                                <i class="mdi mdi-twitter"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <a href="javascript::void()" class="social-list-item bg-danger text-white border-danger">
-                                                                <i class="mdi mdi-google"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
+                               
 
                                             </form>
                                             <div class="mt-5 text-center">
@@ -164,20 +87,10 @@
                                     </div>
 
                                     <div class="mt-4 mt-md-5 text-center">
-                                        <p class="mb-0">© <script>document.write(new Date().getFullYear())</script> Skote. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand</p>
+                                        <p>&copy; 2023 team.gangnamstory</p>
                                     </div>
                                 </div>
-                                
-                                
-                            </div>
                         </div>
-                    </div>
-                    <!-- end col -->
-                </div>
-                <!-- end row -->
-            </div>
-            <!-- end container-fluid -->
-        </div>
 
         <!-- JAVASCRIPT -->
         <script src="resources/libs/jquery/jquery.min.js"></script>

@@ -19,6 +19,12 @@
 
 		<typeAlias type="com.gs.levelup.character.model.vo.Character" alias="Char" />
 		<typeAlias type="com.gs.levelup.user.model.vo.User" alias="User" />
+
+		<typeAlias type="com.gs.levelup.charlog.model.vo.CharLog" alias="CharLog" />
+		<typeAlias type="com.gs.levelup.loginlog.model.vo.LoginLog" alias="LoginLog" />
+		<typeAlias type="com.gs.levelup.inventory.model.vo.Inventory" alias="Inventory" />
+		<typeAlias type="com.gs.levelup.picklog.model.vo.PickLog" alias="PickLog" />
+		
 		 		
 	</typeAliases>
 
@@ -27,5 +33,6 @@
 		<!-- 클래스들은 java 폴더가 base -->
 		<mapper resource="mappers/mariadb/test-mapper.xml" />
 		<mapper resource="mappers/mariadb/user-mapper.xml" />
+		<mapper resource="mappers/mariadb/log-mapper.xml" />
 	</mappers>
 </configuration>

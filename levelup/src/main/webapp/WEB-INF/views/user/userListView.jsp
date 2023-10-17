@@ -26,7 +26,7 @@
 
 <!-- 여기서부터 내용 작성 -->
 <%-- 모든 유저 목록 출력 --%>
-<table align="center" border="1" cellspacing="0" width="700">
+<table class="table table-striped container">
 	<tr>
 		<th>accountId</th>
 		<th>userId</th>
@@ -44,9 +44,10 @@
 		</tr>
 	</c:forEach>
 </table>
+<br>
 
 	
-
+<c:import url="/WEB-INF/views/common/pagingView.jsp"/>
 
 
 	 	<!-- container-fluid -->			

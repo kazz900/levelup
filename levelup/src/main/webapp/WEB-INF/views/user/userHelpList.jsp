@@ -1,25 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>   
+
+<script type="text/javascript" src="/levelup/resources/js/jquery-3.7.0.min.js"></script>
+<c:set var="nowpage" value="1" /> 
+<c:if test="${ !empty requestScope.currentPage }">
+   <c:set var="nowpage" value="${ requestScope.currentPage }"/>
+</c:if>
 
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css"
-	href="./resources/css/empInquiryListView.css">
-<script type="text/javascript" src="/levelup/resources/js/jquery-3.7.0.min.js"></script>
+<title>Insert title here</title>
 <script type="text/javascript">
-$(function(){
-	$("#searchByTypeSelect").on('change', function(){
-		if ($(this).val()!= 0){
-			$("#searchSubmitButton").click()
-		}
-	});
-});
-
 function showDateBox() {
 	var dateBox = document.querySelector(".dateboxContainer");
 	var keywordInputbox = document.getElementById("keywordInputbox");
@@ -66,19 +62,27 @@ function showTypeDropdown(){
 		dateBox.style.display = 'none';
 	}
 }
+
 </script>
-<!-- 타이틀 -->
-<c:import url="/WEB-INF/views/common/title-meta.jsp" />
-<!-- 헤드 스크립트 -->
-<c:import url="/WEB-INF/views/common/head-script.jsp" />
-
 </head>
-<body data-sidebar="dark" data-layout-mode="light">
-	<!-- 내비게이션바, 사이드바 등등 -->
-	<c:import url="/WEB-INF/views/common/layout.jsp" />
+<body>
+<c:import url="/WEB-INF/views/user/userHeader.jsp"/>
 
-	<div class="main-content">
-		<div class="page-content">
+<div class="main-content">
+	
+<hr><br><br><br><br><br>
+<h3>도움말&문의</h3>|<a>&nbsp;&nbsp;&nbsp; 환불문의 &nbsp;&nbsp;&nbsp;</a>|<a>&nbsp;&nbsp;&nbsp; 게임문의 &nbsp;&nbsp;&nbsp;</a>| 
+<a>&nbsp;&nbsp;&nbsp; 기타문의 &nbsp;&nbsp;&nbsp;</a> | <a>&nbsp;&nbsp;&nbsp; 아이템 &nbsp;&nbsp;&nbsp;</a> | 
+<a>&nbsp;&nbsp;&nbsp; 아이템 &nbsp;&nbsp;&nbsp;</a> |
+		
+		
+		<hr>
+		<c:if test="${ !empty sessionScope.loginUser }">
+			<input type="button" value="작성하기" id="submitButton">
+		</c:if>
+		<c:if test="${ empty sessionScope.loginUser }">
+			&nbsp;
+		</c:if>
 			<div class="container-fluid">
 
 				<c:import url="/WEB-INF/views/common/page-title.jsp" />
@@ -104,7 +108,7 @@ function showTypeDropdown(){
 									<input type="date" class="searchDateInput" name="begin"> ~ <input type="date" class="searchDateInput" name="end">
 								</div>
 								<div class="typeDropdownContainer">
-									<select id="searchByTypeSelect" name="type">
+									<select name="type">
 										<option value="0">문의구분</option>
 										<option value="1">환불문의</option>
 										<option value="2">게임문의</option>
@@ -112,8 +116,7 @@ function showTypeDropdown(){
 									</select>
 								</div>
 								<input id="keywordInputbox" type="search" name="keyword">
-								<input id="searchSubmitButton" type="submit" value="SEARCH">
-								<input type="button" onclick="javascript:location.href='${ pageContext.servletContext.contextPath }/ilist.do?page=${ nowpage }'" value="RESET">
+								<input type="submit" value="SEARCH">
 							</div>
 						</div>
 					</form>
@@ -127,14 +130,10 @@ function showTypeDropdown(){
 								<th>Date</th>
 								<th>Status</th>
 							</tr>
-								<%-- <c:url var="idt" value="idetail.do">
-									<c:param name="iid" value="${ requestScope.inquiry.inquiryId }" />
-									<c:param name="page" value="${ nowpage }" />
-								</c:url> --%>
 							<c:forEach items="${ requestScope.list }" var="i">
 								<tr>
 									<td data-th="Question Title"><a class="ititle"
-										href="/levelup/idetail.do?iid=${ i.inquiryId }&page=${ nowpage }">${ i.inquiryTitle }</a></td>
+										href="/levelup/idetail.do?iid=${ i.inquiryId }">${ i.inquiryTitle }</a></td>
 									<td data-th="User ID">${ i.userId }</td>
 									<c:if test="${ i.inquiryType eq '1' }">
 										<td data-th="Type">환불문의</td>
@@ -157,24 +156,26 @@ function showTypeDropdown(){
 							</c:forEach>
 						</tbody>
 					</table>
-							<c:if test="${ empty requestScope.list }">
-								<p>결과가 존재하지 않습니다.</p>
-							</c:if>
 
 					<br>
 
 					<%-- 페이징 처리 뷰 포함 처리 --%>
-					<c:import url="/WEB-INF/views/common/pagingView.jsp" />
+					
 				</div>
 
 				<!-- container-fluid -->
 			</div>
 			<!-- page-content -->
+				<c:import url="/WEB-INF/views/common/pagingView.jsp" />
 		</div>
-		<c:import url="/WEB-INF/views/common/footer.jsp" />
-	</div>
-	<!-- main-content -->
 
+<script type="text/javascript">
+        // 버튼 클릭 이벤트 핸들러
+        document.getElementById("submitButton").addEventListener("click", function() {
+            // inquiryu.do 실행
+            window.location.href = "inquiryu.do";
+        });
+    </script>
+<c:import url="/WEB-INF/views/user/userFooter.jsp"/>
 </body>
 </html>
-
