@@ -86,7 +86,7 @@ public class Inventory  implements java.io.Serializable{
 
 	@Override
 	public String toString() {
-		return "Inventory [id=" + id + ", charId=" + charId + ", nameId=" + nameId + ", amount=" + amount + ", equip="
+		return "인벤토리 [아이디: " + id + ", charId=" + charId + ", nameId=" + nameId + ", amount=" + amount + ", equip="
 				+ equip + ", identify=" + identify + ", uniqueId=" + uniqueId + "]";
 	}
 	
