@@ -25,6 +25,7 @@
 								<li><a href="ulist.do" key="t-default">유저 목록</a></li>
 								<li><a href="ulogin.do" key="t-default">유저 로그인</a></li>
 								<li><a href="listChar.do" key="t-default">게임캐럭터 목록</a></li>
+								<li><a href="getLogs.do" key="t-default">캐럭터 게임로그 출력</a></li>
 
 								<li><a href="movepaylist.do" key="t-default">Payment List</a></li>
 								

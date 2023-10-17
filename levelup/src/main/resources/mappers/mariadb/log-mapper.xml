@@ -14,15 +14,24 @@
 <!-- 	</resultMap> -->
 	
 	<resultMap type="CharLog" id="resultCharLog">
+		<result column="char_id" property="charId"/>
+		<result column="char_msg" property="charMsg"/>
+		<result column="account_id" property="accountId"/>
+		<result column="hair_color" property="hairColor"/>
+		<result column="char_num" property="charNum"/>
 	</resultMap>
 	
 	<resultMap type="Inventory" id="resultInventory">
+		<result column="char_id" property="charId"/>
+		<result column="unique_id" property="uniqueId"/>
 	</resultMap>
 	
 	<resultMap type="LoginLog" id="resultLoginLog">
 	</resultMap>
 	
 	<resultMap type="PickLog" id="resultPickLog">
+		<result column="char_id" property="charId"/>
+		<result column="unique_id" property="uniqueId"/>
 	</resultMap>
 
 	<select id="selectCharLog" resultMap="resultCharLog">
