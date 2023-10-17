@@ -249,18 +249,11 @@ function golist(){
 								<table class="table table-nowrap align-middle table-hover mb-0">
 									<tbody>
 										<tr>
-											<td style="width: 45px;">
-												<div class="avatar-sm">
-													<span
-														class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-24">
-														<i class="bx bxs-file-doc"></i>
-													</span>
-												</div>
-											</td>
+											<c:if test="${ !empty requestScope.inquiry.attachmentFileName }">
+												
 											<td>
 												<h5 class="font-size-14 mb-1">
-													<a href="javascript: void(0);" class="text-dark">Skote
-														Landing.Zip</a>
+													<a href="javascript: void(0);" class="text-dark">${ requestScope.inquiry.attachmentFileName }</a>
 												</h5> <small>Size : 3.25 MB</small>
 											</td>
 											<td>
@@ -269,6 +262,10 @@ function golist(){
 														class="bx bx-download h3 m-0"></i></a>
 												</div>
 											</td>
+											</c:if>
+											<c:if test="${ empty requestScope.inquiry.attachmentFileName }">
+											첨부파일 없음
+											</c:if>
 										</tr>
 									</tbody>
 								</table>
