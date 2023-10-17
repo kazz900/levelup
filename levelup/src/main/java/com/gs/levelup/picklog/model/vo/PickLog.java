@@ -5,29 +5,29 @@ import java.sql.Date;
 public class PickLog  implements java.io.Serializable{
 	private static final long serialVersionUID = -7095994249942862889L;
 
-	private int id;
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
+	private int id;
 	private Date time;
 	private int charId;
 	private String type;
 	private int nameId;
-	private int account;
-	private int uniqueId;
+	private int amount;
+	private long uniqueId;
 	private String map;
 	
 	public PickLog() {}
 
-	public PickLog(int id, Date time, int charId, String type, int nameId, int account, int uniqueId, String map) {
+	public PickLog(int id, Date time, int charId, String type, int nameId, int amount, long uniqueId, String map) {
 		super();
 		this.id = id;
 		this.time = time;
 		this.charId = charId;
 		this.type = type;
 		this.nameId = nameId;
-		this.account = account;
+		this.amount = amount;
 		this.uniqueId = uniqueId;
 		this.map = map;
 	}
@@ -72,19 +72,19 @@ public class PickLog  implements java.io.Serializable{
 		this.nameId = nameId;
 	}
 
-	public int getAccount() {
-		return account;
+	public int getamount() {
+		return amount;
 	}
 
-	public void setAccount(int account) {
-		this.account = account;
+	public void setamount(int amount) {
+		this.amount = amount;
 	}
 
-	public int getUniqueId() {
+	public long getUniqueId() {
 		return uniqueId;
 	}
 
-	public void setUniqueId(int uniqueId) {
+	public void setUniqueId(long uniqueId) {
 		this.uniqueId = uniqueId;
 	}
 
@@ -99,7 +99,7 @@ public class PickLog  implements java.io.Serializable{
 	@Override
 	public String toString() {
 		return "PickLog [id=" + id + ", time=" + time + ", charId=" + charId + ", type=" + type + ", nameId=" + nameId
-				+ ", account=" + account + ", uniqueId=" + uniqueId + ", map=" + map + "]";
+				+ ", amount=" + amount + ", uniqueId=" + uniqueId + ", map=" + map + "]";
 	}
 	
 	
