@@ -59,7 +59,22 @@
 
 	<select id="selectSearchUserIDCount" parameterType="string" resultType="_int">
 		select count(*) from inquiry
-		where USERID like '%' || #{ keyword } || '%'
+		where USERID = #{ keyword }
+	</select>
+	
+	<select id="selectSearchTitleCount" parameterType="string" resultType="_int">
+		select count(*) from inquiry
+		where INQUIRY_TITLE like '%' || #{ keyword } || '%'
+	</select>
+	
+	<select id="selectSearchTypeCount" parameterType="string" resultType="_int">
+		select count(*) from inquiry
+		where INQUIRY_TYPE = #{ keyword }
+	</select>
+	
+	<select id="selectSearchDateCount" resultType="_int" parameterType="Search">
+		select count(*) from inquiry 
+		where EDIT_DATE between #{begin} and #{end}
 	</select>
 	
 	<select id="selectSearchUserID" parameterType="Search" resultMap="resultList">
@@ -68,8 +83,63 @@
 				  ANSWER_STATUS, EDIT_DATE, ANSWER_DATE, ANSWER_CONTENT, ATTACHEMENT_FILENAME, INQUIRY_TYPE,
 				  INQUIRY_REF, ASNWER_REF
 			from (select * from INQUIRY 
-				 where USERID like '%' || #{ keyword } || '%'
+				 where USERID = #{ keyword } 
 				 order by EDIT_DATE DESC))
 		where rnum between #{ startRow } and #{ endRow }
 	</select>
+
+
+	
+		<select id="selectSearchType" parameterType="Search" resultMap="resultList">
+		select *
+		from (select rownum rnum, INQUIRY_ID, USERID, EMPLOYEE_ID, INQUIRY_TITLE, INQUIRY_CONTENT, 
+				  ANSWER_STATUS, EDIT_DATE, ANSWER_DATE, ANSWER_CONTENT, ATTACHEMENT_FILENAME, INQUIRY_TYPE,
+				  INQUIRY_REF, ASNWER_REF
+			from (select * from INQUIRY 
+				 where INQUIRY_TYPE = #{ type }
+				 order by EDIT_DATE DESC))
+		where rnum between #{ startRow } and #{ endRow }
+	</select>
+	
+	<select id="selectSearchTitle" parameterType="Search" resultMap="resultList">
+		select *
+		from (select rownum rnum, INQUIRY_ID, USERID, EMPLOYEE_ID, INQUIRY_TITLE, INQUIRY_CONTENT, 
+				  ANSWER_STATUS, EDIT_DATE, ANSWER_DATE, ANSWER_CONTENT, ATTACHEMENT_FILENAME, INQUIRY_TYPE,
+				  INQUIRY_REF, ASNWER_REF
+			from (select * from INQUIRY 
+				 where INQUIRY_TITLE like '%' || #{ keyword } || '%'
+				 order by EDIT_DATE DESC))
+		where rnum between #{ startRow } and #{ endRow }
+	</select>
+	
+		<select id="selectSearchDate" parameterType="Search" resultMap="resultList">
+		<![CDATA[
+		select * 
+		from (select rownum rnum, INQUIRY_ID, USERID, EMPLOYEE_ID, 
+		           INQUIRY_TITLE, INQUIRY_CONTENT, ANSWER_STATUS, 
+		           EDIT_DATE, ANSWER_DATE, 
+		           ANSWER_CONTENT, ATTACHEMENT_FILENAME, INQUIRY_TYPE, INQUIRY_REF, ASNWER_REF
+		      from (select * from INQUIRY 
+		            where EDIT_DATE between #{begin} and #{end} 
+		             order by EDIT_DATE desc)) 
+		where rnum >= #{startRow} and rnum <= #{endRow}
+		]]>
+	</select>
+
+
+	<insert id="insertInquiry" parameterType="Inquiry">
+		insert into inquiry
+		(INQUIRY_ID, USERID, INQUIRY_TITLE, INQUIRY_CONTENT, ANSWER_STATUS,
+		EDIT_DATE, INQUIRY_TYPE)
+		VALUES (default, #{userId}, #{inquiryTitle},
+		#{inquiryContent}, #{answerStatus}, sysdate, #{inquiryType})
+	</insert>
+
+
+	
+	<select id="selectInquiry" parameterType="string" resultMap="resultInquiry">
+		select * from INQUIRY where INQUIRY_ID = #{ inquiryId }
+	</select>
+	
+	
 </mapper>
