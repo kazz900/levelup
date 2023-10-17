@@ -12,7 +12,7 @@
 					<!-- Left Menu Start -->
 					<ul class="metismenu list-unstyled" id="side-menu">
 						<li class="menu-title" key="t-menu">Menu</li>
-
+						<!-- 고객센터 -->
 						<li>
 							<a href="javascript: void(0);" class="has-arrow waves-effect">
 								<i class="bx bx-home-circle"></i>
@@ -20,16 +20,13 @@
 							</a>
 							<ul class="sub-menu" aria-expanded="false">
 								<li><a href="${pageContext.servletContext.contextPath}/ilist.do" key="t-default">유저 문의</a></li>
-								<li><a href="#" key="t-default">유저 검색</a></li>
+								<li><a href="${pageContext.servletContext.contextPath}/mlist.do" key="t-default">유저 검색</a></li>
 								<li><a href="#" key="t-default">기안 목록</a></li>
 								<li><a href="ulist.do" key="t-default">유저 목록</a></li>
 								<li><a href="ulogin.do" key="t-default">유저 로그인</a></li>
 								<li><a href="listChar.do" key="t-default">게임캐럭터 목록</a></li>
 								<li><a href="getLogs.do" key="t-default">캐럭터 게임로그 출력</a></li>
-
 								<li><a href="movepaylist.do" key="t-default">Payment List</a></li>
-								
-
 							</ul>
 						</li>
 						

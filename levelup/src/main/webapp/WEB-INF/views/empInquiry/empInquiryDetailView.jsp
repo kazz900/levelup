@@ -127,7 +127,7 @@ function golist(){
 				</div>
 
 
-				<!-- 이전 문의 내역 -->
+				<!-- 해당 고객의 이전 문의 내역 -->
 
 				<div class="col-lg-4">
 					<div class="card">
@@ -142,6 +142,7 @@ function golist(){
 												value="${ requestScope.inquiry.inquiryId }" />
 											<c:param name="page" value="${ nowpage }" />
 										</c:url>
+										
  --%>										<c:forEach items="${ requestScope.list }" var="i">
 											<tr>
 												<td style="width: 50px;"><img

@@ -8,8 +8,7 @@
 
 .rwd-table {
 	margin: auto;
-	min-width: 300px;
-	max-width: 100%;
+	width: inherit;
 	border-collapse: collapse;
 }
 

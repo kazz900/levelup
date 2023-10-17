@@ -32,8 +32,7 @@ public class InquiryController {
 	// 요청 처리용 ----------------------------------------------------------
 
 	@RequestMapping(value = "ilist.do", method = RequestMethod.GET)
-	public String selectListMethod(@RequestParam(name = "page", required = false) String page,
-			@RequestParam(name = "limit", required = false) String slimit, Model model) {
+	public String selectListMethod(@RequestParam(name = "page", required = false) String page, Model model) {
 
 		int currentPage = 1;
 		if (page != null) {
@@ -42,13 +41,9 @@ public class InquiryController {
 
 		// 한 페이지 게시글 10개씩 출력되게 한다면
 		int limit = 10;
-		if (slimit != null) {
-			limit = Integer.parseInt(slimit);
-		}
 
 		// 총 페이지 수 계산을 위한 게시글 총갯수 조회
 		int listCount = inquiryService.selectListCount();
-		logger.info(String.valueOf(listCount));
 
 		// 페이지 관련 항목 계산 처리
 		Paging paging = new Paging(listCount, currentPage, limit, "ilist.do");
@@ -64,6 +59,42 @@ public class InquiryController {
 			model.addAttribute("limit", limit);
 
 			return "empInquiry/empInquiryListView";
+		} else {
+			model.addAttribute("message", currentPage + "페이지 목록 조회 실패!");
+			return "common/error";
+		}
+	}
+	
+	
+	@RequestMapping(value = "ilistboot.do", method = RequestMethod.GET)
+	public String selectListBootMethod(@RequestParam(name = "page", required = false) String page, Model model) {
+
+		int currentPage = 1;
+		if (page != null) {
+			currentPage = Integer.parseInt(page);
+		}
+
+		// 한 페이지 게시글 10개씩 출력되게 한다면
+		int limit = 10;
+
+
+		// 총 페이지 수 계산을 위한 게시글 총갯수 조회
+		int listCount = inquiryService.selectListCount();
+
+		// 페이지 관련 항목 계산 처리
+		Paging paging = new Paging(listCount, currentPage, limit, "ilistboot.do");
+		paging.calculator();
+
+		// 페이지에 출력할 목록 조회해 옴
+		ArrayList<Inquiry> list = inquiryService.selectList(paging);
+
+		if (list != null && list.size() > 0) {
+			model.addAttribute("list", list);
+			model.addAttribute("paging", paging);
+			model.addAttribute("currentPage", currentPage);
+			model.addAttribute("limit", limit);
+
+			return "empInquiry/empInquiryListViewBoot";
 		} else {
 			model.addAttribute("message", currentPage + "페이지 목록 조회 실패!");
 			return "common/error";
@@ -91,7 +122,6 @@ public class InquiryController {
 			mv.addObject("currentPage", currentPage);
 			
 			mv.setViewName("empInquiry/empInquiryDetailView");
-			
 		}else {
 			mv.addObject("message", "문의글 상세보기 실패");
 			mv.setViewName("common/error");
