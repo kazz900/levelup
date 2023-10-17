@@ -9,7 +9,7 @@
 <body>
     <c:import url="/WEB-INF/views/user/userHeader.jsp" />
 
-    <form action="inquiry.do" method="post">
+    <form action="inquiry.do" method="post" enctype="multipart/form-data">
         <label for="userid">유저 ID:</label>
         <input type="text" id="userid" name="userId" value="${ sessionScope.loginUser.userId }" readonly><br>
 
@@ -19,11 +19,11 @@
         <label for="inquirycontent">문의 내용:</label>
         <textarea id="inquirycontent" name="inquiryContent" rows="4" cols="50" required></textarea><br>
         
-        <label for="inquuiryfile">첨부파일 :</label>
+        <label for="inquiryfile">첨부파일 :</label>
         <input type="file" name="upfile"><br>
 
         <input type="hidden" name="answerStatus" value="N">
-        <input type="hidden" name="inquiryType" value="A">
+        <input type="hidden" name="inquiryType" value="3">
 		<br><br>
 		<c:url var="bl" value="uhelp.do">
 	 		<c:param name="page" value="1" />

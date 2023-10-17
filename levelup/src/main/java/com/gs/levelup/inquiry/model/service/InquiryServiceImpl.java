@@ -92,4 +92,9 @@ public class InquiryServiceImpl implements InquiryService{
 		return inquiryDao.insertInqury(inquiry);
 	}
 
+	@Override
+	public ArrayList<Inquiry> selectUserPreviousInquiry(String userId) {
+		return inquiryDao.selectUserPreviousInquiry(userId);
+	}
+
 }

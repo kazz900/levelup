@@ -7,12 +7,22 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="/WEB-INF/views/common/head-script.jsp"/>
+<link href="resources/css/plus.min.css" id="plus-style" rel="stylesheet" type="text/css" />
+<style type="text/css">
+.container {
+    width: 100%; /* 페이지 폭을 100%로 설정 */
+    max-width: 1200px; /* 페이지 폭의 최대 크기를 지정 */
+    margin: 0 auto; /* 페이지 내용을 수평으로 가운데 정렬 */
+    padding: 20px; /* 페이지 주위의 패딩을 설정 */
+    /* 기타 스타일 속성을 추가할 수 있습니다 */
+}
+</style>
 </head>
 
 <body>
 	<header>
 		<nav>
-			<div class="container">
+			<div class="container textalign1">
 				<a href="${ pageContext.servletContext.contextPath }/umain.do"><img
 					src="/levelup/resources/images/users/umainlogo.jpg"
 					class="umainlogo" alt="Game Logo"></a>

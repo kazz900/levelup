@@ -17,34 +17,14 @@
 
 <c:url var="imoveup" value="iupdate.do">
 	<c:param name="iid" value="${ requestScope.inquiry.inquiryId }" />
-	<c:param name="page" value="${ nowpage }" />
-</c:url>
-
-<c:url var="idel" value="idelete.do">
-	<c:param name="iid" value="${ requestScope.inquiry.inquiryId }" />
-	<c:param name="page" value="${ nowpage }" />
-</c:url>
-
-<c:url var="iins" value="iinsertans.do">
-	<c:param name="iid" value="${ requestScope.inquiry.inquiryId }" />
-	<c:param name="page" value="${ nowpage }" />
+	<c:param name="page" value="${ param.page }" />
 </c:url>
 
 <script type="text/javascript">
 function moveUpdatePage(){
 	location.href = "${ imoveup }";
 }
-function requestDelete(){
-	location.href = "${ idel }";
-}
 
-function createans(){
-	location.href = "${ iins }"
-}
-
-function golist(){
-	location.href="${pageContext.servletContext.contextPath}/ilist.do"
-}
 
 </script>
 </head>
@@ -128,31 +108,24 @@ function golist(){
 
 
 				<!-- 이전 문의 내역 -->
-
+				
 				<div class="col-lg-4">
 					<div class="card">
 						<div class="card-body">
 							<h4 class="card-title mb-4">이전 문의 내역</h4>
 
 							<div class="table-responsive">
+							<c:if test="${ empty requestScope.list }"></c:if>
 								<table class="table align-middle table-nowrap">
 									<tbody>
-										<%-- <c:url var="idt" value="idetail.do">
-											<c:param name="iid"
-												value="${ requestScope.inquiry.inquiryId }" />
-											<c:param name="page" value="${ nowpage }" />
-										</c:url>
- --%>										<c:forEach items="${ requestScope.list }" var="i">
+																				
+										<c:forEach items="${ requestScope.list }" var="i">
 											<tr>
-												<td style="width: 50px;"><img
-													src="assets/images/users/avatar-2.jpg"
-													class="rounded-circle avatar-xs" alt=""></td>
+									
 												<td><h5 class="font-size-14 m-0">
-														<a href="/levelup/idetail.do?iid=${ i.inquiryId }&page=${ nowpage }" 
-														class="text-dark">${ i.inquiryTitle }</a>
+														<a href="/levelup/idetail.do?iid=${ i.inquiryId }&page=${ param.page }&userId=${ i.userId }" class="text-dark">${ i.inquiryTitle }</a>
 													</h5></td>
-												<td data-th="Date"><fmt:formatDate
-														value="${ i.editDate }" pattern="yyyy-MM-dd" /></td>
+												<td data-th="Date"><fmt:formatDate value="${ i.editDate }" pattern="yyyy-MM-dd" /></td>
 											</tr>
 										</c:forEach>
 									</tbody>
@@ -215,25 +188,22 @@ function golist(){
 				<div class="col-lg-8">
 					<div class="card">
 						<div class="card-body">	
+						<form action="iinsertans.do" method="post" enctype="multipart/form-data">
 							<div class="d-flex">
 								<div class="flex-grow-1 overflow-hidden">
 									<h5 class="text-truncate font-size-15"> 답변 내용 : </h5>
-									<p class="text-muted"> 답변 필요 </p>
+									<div class="mb-3">
+                                           <textarea id="formmessage" class="form-control" rows="3" placeholder="Enter Your Message"></textarea>
+                                       </div>
 								</div>
 							</div>				
 							<div class="row task-dates">
 								<div class="col-sm-4 col-6">
-									<div class="mt-4">
-										<a href="javascript: void(0);" class="btn btn-primary btn-sm">답변달기</a>										
-									</div>
+									<button type="submit" class="btn btn-primary">답변작성</button> &nbsp;
+									<button type="button" class="btn btn-primary">목록으로</button>
 								</div>
-
-								<div class="col-sm-4 col-6">
-									<div class="mt-4">
-										<a href="javascript: void(0);" class="btn btn-primary btn-sm">목록으로</a>										
-									</div>
-								</div>
-								</div>
+							</div>
+							</form>
 							</div>
 						</div>
 					</div>				
@@ -250,15 +220,17 @@ function golist(){
 									<tbody>
 										<tr>
 											<c:if test="${ !empty requestScope.inquiry.attachmentFileName }">
-												
+												<c:url var="idown" value="ifdown.do">
+													<c:param name="file" value="${ requestScope.inquiry.attachmentFileName }" />												
+												</c:url>
 											<td>
 												<h5 class="font-size-14 mb-1">
-													<a href="javascript: void(0);" class="text-dark">${ requestScope.inquiry.attachmentFileName }</a>
-												</h5> <small>Size : 3.25 MB</small>
+													<a href="${ idown }" class="text-dark">${ requestScope.inquiry.attachmentFileName }</a>
+												</h5>
 											</td>
 											<td>
 												<div class="text-center">
-													<a href="javascript: void(0);" class="text-dark"><i
+													<a href="${ idown }" class="text-dark"><i
 														class="bx bx-download h3 m-0"></i></a>
 												</div>
 											</td>

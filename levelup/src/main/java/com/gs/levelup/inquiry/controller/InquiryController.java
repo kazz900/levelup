@@ -1,7 +1,10 @@
 package com.gs.levelup.inquiry.controller;
 
+import java.io.File;
 import java.sql.Date;
 import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +19,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.gs.levelup.common.Paging;
 import com.gs.levelup.common.Search;
-import com.gs.levelup.common.SearchDate;
 import com.gs.levelup.inquiry.model.service.InquiryService;
 import com.gs.levelup.inquiry.model.vo.Inquiry;
 
@@ -75,6 +77,7 @@ public class InquiryController {
 	public ModelAndView moveInquiryDetailMethod(
 									@RequestParam("iid") String inquiryId,
 									@RequestParam("page") String page,
+									@RequestParam("userId") String userId,
 									ModelAndView mv){
 		//출력할 페이지 
 		int currentPage = 1;
@@ -85,10 +88,12 @@ public class InquiryController {
 		}
 	
 		Inquiry inquiry = inquiryService.selectInquiry(inquiryId);
+		ArrayList<Inquiry> list = inquiryService.selectUserPreviousInquiry(userId);
 		
 		if(inquiry != null) {
 			mv.addObject("inquiry", inquiry);
 			mv.addObject("currentPage", currentPage);
+			mv.addObject("list", list);
 			
 			mv.setViewName("empInquiry/empInquiryDetailView");
 			
@@ -110,10 +115,6 @@ public class InquiryController {
 		return mv;
 	}
 
-	@RequestMapping(value = "idelete.do", method = RequestMethod.GET)
-	public ModelAndView deleteInquiryAnswerMethod(ModelAndView mv) {
-		return mv;
-	}
 
 	@RequestMapping(value = "isearch.do", method = RequestMethod.GET)
 	public String selectSearchMethod(@RequestParam("action") String action,
@@ -337,4 +338,27 @@ public class InquiryController {
 		}
 		return mv;
 	}
+	
+	//파일 다운로드 요청 처리용
+	@RequestMapping("ifdown.do")
+	public ModelAndView fileDownMethod(
+							ModelAndView mv, HttpServletRequest request,
+							@RequestParam("file") String attachmentFileName) {
+		//파일 다운 메소드는 리턴 타입이 ModelAndView로 정해져있음
+		
+		//게시글 첨부파일 저장폴더 경로 지정
+		String savePath = request.getSession().getServletContext().getRealPath("resources/inquiry_files");
+		
+		//저장 폴더에서 읽을 파일에 대한 파일 객체 생성함
+		File file = new File(savePath + "\\" +attachmentFileName);
+		
+		//파일 다운로드용 뷰로 전달할 정보 저장 처리
+		mv.setViewName("filedown");
+		mv.addObject("file", file);
+		
+		return mv;
+	}
+	
+	
+	
 }
