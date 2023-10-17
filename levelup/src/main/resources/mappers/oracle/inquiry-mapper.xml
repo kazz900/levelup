@@ -148,6 +148,15 @@
 			#{inquiryContent}, #{answerStatus}, sysdate,#{attachmentFileName}, 3)
 		</if>
 	</insert>
+	
+	<update id="updateInquiryAnswer" parameterType="Inquiry">				
+		update inquiry 
+		set ANSWER_STATUS = 'Y',
+		ANSWER_DATE = SYSDATE,
+		ANSWER_CONTENT = #{ answerContent }
+		where INQUIRY_ID = #{ inquiryId }
+	
+	</update>
 
 
 	

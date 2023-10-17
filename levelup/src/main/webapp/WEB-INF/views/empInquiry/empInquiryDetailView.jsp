@@ -188,18 +188,21 @@ function moveUpdatePage(){
 				<div class="col-lg-8">
 					<div class="card">
 						<div class="card-body">	
-						<form action="iinsertans.do" method="post" enctype="multipart/form-data">
+						<form action="iupdate.do" method="post">
+						<input type="hidden" name="inquiryId" value="${ param.iid }">
+						<input type="hidden" name="userId" value="${ param.userId }">
+						<input type="hidden" name="page" value="${ param.page }">
 							<div class="d-flex">
 								<div class="flex-grow-1 overflow-hidden">
 									<h5 class="text-truncate font-size-15"> 답변 내용 : </h5>
 									<div class="mb-3">
-                                           <textarea id="formmessage" class="form-control" rows="3" placeholder="Enter Your Message"></textarea>
+                                           <textarea id="formmessage" name="answerContent" class="form-control" rows="3" placeholder="Enter Your Message"></textarea>
                                        </div>
 								</div>
 							</div>				
 							<div class="row task-dates">
 								<div class="col-sm-4 col-6">
-									<button type="submit" class="btn btn-primary">답변작성</button> &nbsp;
+									<button type="submit" class="btn btn-primary" >답변작성</button> &nbsp;
 									<button type="button" class="btn btn-primary">목록으로</button>
 								</div>
 							</div>

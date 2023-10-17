@@ -9,8 +9,7 @@ import com.gs.levelup.inquiry.model.vo.Inquiry;
 
 public interface InquiryService {
 	
-	public ArrayList<Inquiry> selectList(Paging paging);	
-	public int insertInquiryAnswer(Inquiry inquiry);	
+	public ArrayList<Inquiry> selectList(Paging paging);		
 	public int updateInquiryAnswer(Inquiry inquiry);	
 	public int deleteInquiryAnswer(String inquiryId);	
 	public int selectListCount();
