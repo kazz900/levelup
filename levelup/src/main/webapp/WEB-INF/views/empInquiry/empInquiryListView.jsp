@@ -127,37 +127,34 @@ function showTypeDropdown(){
 								<th>Date</th>
 								<th>Status</th>
 							</tr>
-							<c:if test="${ !empty requestScope.list }">
-								<c:forEach items="${ requestScope.list }" var="i">
-									<tr>
-										<c:url var="idetail" value="idetail.do">
-											<c:param name="iid" value="${ i.inquiryId }"/>
-											<c:param name="page" value="${ nowpage }" />
-										</c:url>
-										<td data-th="Question Title"><a class="ititle"
-											href="${ idetail }">${ i.inquiryTitle }</a></td>
-										<td data-th="User ID">${ i.userId }</td>
-										<c:if test="${ i.inquiryType eq '1' }">
-											<td data-th="Type">환불문의</td>
-										</c:if>
-										<c:if test="${ i.inquiryType eq '2' }">
-											<td data-th="Type">게임문의</td>
-										</c:if>
-										<c:if test="${ i.inquiryType eq '3' }">
-											<td data-th="Type">기타문의</td>
-										</c:if>
-										<td data-th="Date"><fmt:formatDate value="${ i.editDate }"
-												pattern="yyyy-MM-dd HH:mm:ss" /></td>
-										<c:if test="${ i.answerStatus eq 'Y' }">
-											<td data-th="Answer"><span class="badge bg-success">답변완료</span></td>
-										</c:if>
-										<c:if test="${ i.answerStatus eq 'N' }">
-											<td data-th="Answer"><span class="badge bg-danger">미답변</span></td>
-										</c:if>
-									</tr>
-								</c:forEach>
-							</c:if>
-							
+								<%-- <c:url var="idt" value="idetail.do">
+									<c:param name="iid" value="${ requestScope.inquiry.inquiryId }" />
+									<c:param name="page" value="${ nowpage }" />
+								</c:url> --%>
+							<c:forEach items="${ requestScope.list }" var="i">
+								<tr>
+									<td data-th="Question Title"><a class="ititle"
+										href="/levelup/idetail.do?iid=${ i.inquiryId }&page=${ nowpage }">${ i.inquiryTitle }</a></td>
+									<td data-th="User ID">${ i.userId }</td>
+									<c:if test="${ i.inquiryType eq '1' }">
+										<td data-th="Type">환불문의</td>
+									</c:if>
+									<c:if test="${ i.inquiryType eq '2' }">
+										<td data-th="Type">게임문의</td>
+									</c:if>
+									<c:if test="${ i.inquiryType eq '3' }">
+										<td data-th="Type">기타문의</td>
+									</c:if>
+									<td data-th="Date"><fmt:formatDate value="${ i.editDate }"
+											pattern="yyyy-MM-dd HH:mm:ss" /></td>
+									<c:if test="${ i.answerStatus eq 'Y' }">
+										<td data-th="Answer"><span class="badge bg-success">답변완료</span></td>
+									</c:if>
+									<c:if test="${ i.answerStatus eq 'N' }">
+										<td data-th="Answer"><span class="badge bg-danger">미답변</span></td>
+									</c:if>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 							<c:if test="${ empty requestScope.list }">
