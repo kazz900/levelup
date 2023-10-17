@@ -46,15 +46,17 @@ public class InquiryDao {
 	public int selectSearchUserIDCount(String keyword) {
 		return sqlSessionTemplate.selectOne("inquiryMapper.selectSearchUserIDCount", keyword);
 	}
-
-	public int selectSearchTypeCount(String keyword) {
-		// TODO Auto-generated method stub
-		return 0;
+	
+	public int selectSearchTitleCount(String keyword) {
+		return sqlSessionTemplate.selectOne("inquiryMapper.selectSearchTitleCount", keyword);
 	}
 
-	public int selectSearchDateCount(SearchDate date) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int selectSearchTypeCount(String type) {
+		return sqlSessionTemplate.selectOne("inquiryMapper.selectSearchTypeCount", type);
+	}
+
+	public int selectSearchDateCount(Search search) {
+		return sqlSessionTemplate.selectOne("inquiryMapper.selectSearchDateCount", search);
 	}
 
 	public ArrayList<Inquiry> selectSearchUserID(Search search) {
@@ -63,21 +65,25 @@ public class InquiryDao {
 	}
 
 	public ArrayList<Inquiry> selectSearchType(Search search) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Inquiry> list = sqlSessionTemplate.selectList("inquiryMapper.selectSearchType", search);
+		return (ArrayList<Inquiry>) list;
 	}
 
 	public ArrayList<Inquiry> selectSearchDate(Search search) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Inquiry> list = sqlSessionTemplate.selectList("inquiryMapper.selectSearchDate", search);
+		return (ArrayList<Inquiry>) list;
+	}
+
+	public int insertInqury(Inquiry inquiry) {
+		return sqlSessionTemplate.insert("inquiryMapper.insertInquiry", inquiry);
 	}
 
 	public Inquiry selectInquiry(String inquiryId) {
 		return sqlSessionTemplate.selectOne("inquiryMapper.selectInquiry", inquiryId);
 	}
 	
-
-
-	
-
+	public ArrayList<Inquiry> selectSearchTitle(Search search) {
+		List<Inquiry> list = sqlSessionTemplate.selectList("inquiryMapper.selectSearchTitle", search);
+		return (ArrayList<Inquiry>) list;
+	}
 }

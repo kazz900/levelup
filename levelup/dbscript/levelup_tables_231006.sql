@@ -752,3 +752,32 @@ ALTER TABLE SCHEDULE
 		REFERENCES RANK (
 			RANK_ID
 		);
+
+----------------- INQUIRY 테이블에 컬럼 추가 및 속성 변경 -----------------
+
+----------------- ANSWER_STATUS 컬럼은 'Y' 혹은 'N' 으로 답변 여부 체크함
+
+----------------- INQUIRY_TYPE 문의구분 : 
+----------------- '1' == 환불문의
+----------------- '2' == 게임문의
+----------------- '3' == 기타문의
+
+ALTER TABLE INQUIRY
+MODIFY  (EMPLOYEE_ID NULL);
+
+ALTER TABLE INQUIRY
+MODIFY ANSWER_STATUS DEFAULT 'N';
+
+ALTER TABLE INQUIRY
+ADD INQUIRY_REF RAW(16) DEFAULT NULL;
+
+ALTER TABLE INQUIRY
+ADD ASNWER_REF RAW(16) DEFAULT NULL;
+
+----------------- EMPLOYEE 테이블에 관리자ID 컬럼 추가 -----------------
+ALTER TABLE EMPLOYEE
+ADD MANAGER_ID RAW(16);
+
+COMMENT ON COLUMN EMPLOYEE.MANAGER_ID IS '관리자 ID';
+
+COMMIT;

@@ -16,6 +16,9 @@ public class UserDao {
 	@Autowired
 	private org.mybatis.spring.SqlSessionTemplate sqlSessionTemplateMaria;
 
+	@Autowired
+	private org.mybatis.spring.SqlSessionTemplate sqlSessionTemplate;
+	
 	public User selectLogin(User user) {
 		return sqlSessionTemplateMaria.selectOne("userMapper.selectLogin",user);
 	}

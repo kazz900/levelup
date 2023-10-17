@@ -19,7 +19,7 @@
     <div id="container">
         <main class="main-wrapper login">
             <div class="login-box">
-        		<h1>L e v e l U p</h1>
+        		<h1>L E V E L U P</h1>
                 <form action="elogin.do" method="post">
                     <a class="login-logo" href="#">
                         <img src="./resources/images/game-controller.png">

@@ -12,7 +12,8 @@ public class Search {
 	private String type; //문의 타입 겸색시 필요
 	
 	public Search() {}
-
+	
+	
 	
 	public int getAge() {
 		return age;

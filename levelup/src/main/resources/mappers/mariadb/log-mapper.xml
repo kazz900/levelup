@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="logMapper">
+
+<!-- 	<resultMap type="User" id="resultUser"> -->
+<!-- 		<id column="account_id" property="accountId" /> -->
+<!-- 		<result column="userid" property="userId"/> -->
+<!-- 		<result column="user_pass" property="userPass"/> -->
+<!-- 		<result column="email" property="email"/> -->
+<!-- 		<result column="logincount" property="logincount"/> -->
+<!-- 		<result column="lastlogin" property="lastlogin"/> -->
+<!-- 	</resultMap> -->
+	
+	<resultMap type="CharLog" id="resultCharLog">
+	</resultMap>
+	
+	<resultMap type="Inventory" id="resultInventory">
+	</resultMap>
+	
+	<resultMap type="LoginLog" id="resultLoginLog">
+	</resultMap>
+	
+	<resultMap type="PickLog" id="resultPickLog">
+	</resultMap>
+
+	<select id="selectCharLog" resultMap="resultCharLog">
+		select * from evol.charlog  where char_id = #{charId}
+	</select>
+
+	<select id="selectLoginLog" resultMap="resultLoginLog">
+		select * from evol.loginlog where user = #{userId}
+	</select>
+	<select id="selectPickLog" resultMap="resultPickLog">
+		select * from evol.picklog  where char_id = #{charId}
+	</select>
+	
+	<select id="selectInventory" resultMap="resultInventory">
+		select * from evol.inventory where char_id = #{charId}
+	</select>
+	
+		
+</mapper>
