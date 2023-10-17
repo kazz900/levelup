@@ -15,74 +15,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
-function showDateBox() {
-	var dateBox = document.querySelector(".dateboxContainer");
-	var keywordInputbox = document.getElementById("keywordInputbox");
-	var typeDropdown = document.querySelector(".typeDropdownContainer");
-	dateBox.style.display = 'block';	
-	
-	console.log(typeDropdown);
 
-	if (keywordInputbox.style.display != 'none'){
-		keywordInputbox.style.display = 'none';
-	}
-	
-	if (typeDropdown.style.display != 'none'){
-		typeDropdown.style.display = 'none';
-	}
-}
-
-function showSearchBox() {
-	var dateBox = document.querySelector(".dateboxContainer");
-	var keywordInputbox = document.getElementById("keywordInputbox");
-	var typeDropdown = document.querySelector(".typeDropdownContainer");
-	keywordInputbox.style.display = 'inline';	
-
-	if (dateBox.style.display != 'none'){
-		dateBox.style.display = 'none';
-	}
-	
-	if (typeDropdown.style.display != 'none'){
-		typeDropdown.style.display = 'none';
-	}
-}
-
-function showTypeDropdown(){
-	var dateBox = document.querySelector(".dateboxContainer");
-	var keywordInputbox = document.getElementById("keywordInputbox");
-	var typeDropdown = document.querySelector(".typeDropdownContainer");
-	typeDropdown.style.display = 'inline';	
-
-	if (keywordInputbox.style.display != 'none'){
-		keywordInputbox.style.display = 'none';
-	}
-	
-	if (dateBox.style.display != 'none'){
-		dateBox.style.display = 'none';
-	}
-}
-
-</script>
 </head>
 <body>
 <c:import url="/WEB-INF/views/user/userHeader.jsp"/>
 
-<div class="main-content">
-	
+<div>
+<div class="container">
 <hr><br><br><br><br><br>
 <h3>도움말&문의</h3>|<a>&nbsp;&nbsp;&nbsp; 환불문의 &nbsp;&nbsp;&nbsp;</a>|<a>&nbsp;&nbsp;&nbsp; 게임문의 &nbsp;&nbsp;&nbsp;</a>| 
 <a>&nbsp;&nbsp;&nbsp; 기타문의 &nbsp;&nbsp;&nbsp;</a> | <a>&nbsp;&nbsp;&nbsp; 아이템 &nbsp;&nbsp;&nbsp;</a> | 
-<a>&nbsp;&nbsp;&nbsp; 아이템 &nbsp;&nbsp;&nbsp;</a> |
-		
+<a>&nbsp;&nbsp;&nbsp; 고객센터 &nbsp;&nbsp;&nbsp;</a> |
+</div>	
 		
 		<hr>
-		<c:if test="${ !empty sessionScope.loginUser }">
-			<input type="button" value="작성하기" id="submitButton">
-		</c:if>
-		<c:if test="${ empty sessionScope.loginUser }">
-			&nbsp;
-		</c:if>
+		
 			<div class="container-fluid">
 
 				<c:import url="/WEB-INF/views/common/page-title.jsp" />
@@ -95,31 +42,6 @@ function showTypeDropdown(){
 				<!-- 여기서부터 내용 작성 -->
 				<div class="container">
 
-					<!-- 타입별 검색 1. 전제, 환불문의, 게임문의, 기타문의 -->
-					<!-- 타입별 검색 내 keyword  종류 : 유저ID, 제목, 날짜 -->
-					<form action="isearch.do">
-						<div class="container">
-							<div class="inputs">
-								<input type="radio" name="action" value="writer" onclick="showSearchBox();"><label>유저ID</label>
-								<input type="radio" name="action" value="title" onclick="showSearchBox();"><label>제목</label>
-								<input type="radio" name="action" value="date" onclick="showDateBox();"><label>날짜</label>
-								<input type="radio" name="action" value="type" onclick="showTypeDropdown(); "><label>문의구분</label>
-								<div class="dateboxContainer">
-									<input type="date" class="searchDateInput" name="begin"> ~ <input type="date" class="searchDateInput" name="end">
-								</div>
-								<div class="typeDropdownContainer">
-									<select name="type">
-										<option value="0">문의구분</option>
-										<option value="1">환불문의</option>
-										<option value="2">게임문의</option>
-										<option value="3">기타문의</option>
-									</select>
-								</div>
-								<input id="keywordInputbox" type="search" name="keyword">
-								<input type="submit" value="SEARCH">
-							</div>
-						</div>
-					</form>
 					<!-- 문의 테이블 -->
 					<table class="rwd-table">
 						<tbody>
@@ -159,8 +81,6 @@ function showTypeDropdown(){
 
 					<br>
 
-					<%-- 페이징 처리 뷰 포함 처리 --%>
-					
 				</div>
 
 				<!-- container-fluid -->
@@ -168,12 +88,32 @@ function showTypeDropdown(){
 			<!-- page-content -->
 				<c:import url="/WEB-INF/views/common/pagingView.jsp" />
 		</div>
+<div class="container">
+	<c:if test="${ !empty sessionScope.loginUser }">
+		<input type="button" value="작성하기" id="submitButton">
+	</c:if>
+	<c:if test="${ empty sessionScope.loginUser }">
+		&nbsp;
+	</c:if>
+</div>
+	
 
 <script type="text/javascript">
         // 버튼 클릭 이벤트 핸들러
         document.getElementById("submitButton").addEventListener("click", function() {
             // inquiryu.do 실행
             window.location.href = "inquiryu.do";
+        });
+        $(document).ready(function () {
+            $('td[data-th="User ID"]').each(function () {
+                var userId = $(this).text();
+                if (userId.length > 2) {
+                    var hiddenPart = '*'.repeat(userId.length - 2);
+                    var visiblePart = userId.substring(0, 2);
+                    var maskedUserId = visiblePart + hiddenPart;
+                    $(this).text(maskedUserId);
+                }
+            });
         });
     </script>
 <c:import url="/WEB-INF/views/user/userFooter.jsp"/>

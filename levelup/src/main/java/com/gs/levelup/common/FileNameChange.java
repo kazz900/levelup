@@ -18,10 +18,6 @@ public class FileNameChange {
 		//변경할 파일명 만들기
 		renameFileName = sdf.format(new java.sql.Date(System.currentTimeMillis()));
 		
-		//원본 파일의 확장자를 추출해서, 바꿀 파일명에 붙여줌
-		renameFileName += "." + originalFileName.substring(
-								originalFileName.lastIndexOf(".") + 1);
-				
 		return renameFileName;
 	}
 }
