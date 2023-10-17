@@ -25,8 +25,8 @@ public class NoticeDao {
 	}
 	
 	//공지글번호로 한 개 조회 : 공지사항 상세보기용
-	public Notice selectOne(int noticeNo) {
-		return sqlSessionTemplate.selectOne("noticeMapper.selectOne", noticeNo);
+	public Notice selectOne(String noticeId) {
+		return sqlSessionTemplate.selectOne("noticeMapper.selectOne", noticeId);
 	}
 	
 	//새 공지글 등록
@@ -40,8 +40,8 @@ public class NoticeDao {
 	}
 	
 	//공지글 삭제
-	public int deleteNotice(int noticeNo) {
-		return sqlSessionTemplate.delete("noticeMapper.deleteNotice", noticeNo);
+	public int deleteNotice(String noticeId) {
+		return sqlSessionTemplate.delete("noticeMapper.deleteNotice", noticeId);
 	}
 	
 	public int selectListCount() {
@@ -75,8 +75,8 @@ public class NoticeDao {
 		return (ArrayList<Notice>)list;
 	}
 
-	public int updateReadCount(int noticeNo) {
-		return sqlSessionTemplate.update("noticeMapper.addReadCount", noticeNo);
+	public int updateReadCount(String noticeId) {
+		return sqlSessionTemplate.update("noticeMapper.addReadCount", noticeId);
 	}
 }
 

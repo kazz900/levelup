@@ -59,6 +59,19 @@
 								<li><a href="#" key="t-default">일정삭제</a></li>
 							</ul>
 						</li>	
+						
+						<li>
+							<a href="javascript: void(0);" class="has-arrow waves-effect">
+								<i class="fas fa-skull"></i>
+								<span key="t-dashboards">공지사항</span>
+							</a>
+							<ul class="sub-menu" aria-expanded="false">
+								<li><a href="nlist.do" key="t-default">공지사항</a></li>
+								<li><a href="ndetail.do" key="t-default">DetailView</a></li>
+								<li><a href="#" key="t-default">공지사항 수정</a></li>
+								<li><a href="#" key="t-default">공지사항 삭제</a></li>
+							</ul>
+						</li>	
 
 						<li>
 							<a href="javascript: void(0);" class="has-arrow waves-effect">

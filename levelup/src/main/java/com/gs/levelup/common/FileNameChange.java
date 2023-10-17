@@ -8,7 +8,9 @@ import java.text.SimpleDateFormat;
 
 public class FileNameChange {
 
+
 	public static String change(String originalFileName,String formatStr){
+
 		String renameFileName = null;
 		
 		//바꿀 파일명에 대한 문자열 만들기
