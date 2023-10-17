@@ -4,11 +4,12 @@ values(SYS_GUID(),
 (SELECT TEAM_ID FROM TEAM WHERE TEAM_NAME = '백엔드팀'),  
 (SELECT RANK_ID FROM RANK WHERE RANK_NAME = '사원'), 
 '한창현', 
-'test1@test.com', 
+'zxcqwgks@kakao.com', 
 '1111', 
 '서울', 
 '010-1234-5678', 
-SYSDATE);
+SYSDATE,
+NULL);
 
 insert into employee 
 values(SYS_GUID(), 
@@ -16,11 +17,12 @@ values(SYS_GUID(),
 (SELECT TEAM_ID FROM TEAM WHERE TEAM_NAME = '백엔드팀'),  
 (SELECT RANK_ID FROM RANK WHERE RANK_NAME = '사원'),  
 '안태환', 
-'test2@test.com', 
+'tatha000@naver.com', 
 '1111', 
 '서울', 
 '010-1234-5678', 
-SYSDATE);
+SYSDATE,
+NULL);
 
 insert into employee 
 values(SYS_GUID(), 
@@ -28,11 +30,12 @@ values(SYS_GUID(),
 (SELECT TEAM_ID FROM TEAM WHERE TEAM_NAME = '백엔드팀'),  
 (SELECT RANK_ID FROM RANK WHERE RANK_NAME = '사원'), 
 '김지혁', 
-'test3@test.com', 
+'kimjihyuk5935@gmail.com', 
 '1111', 
 '서울', 
 '010-1234-5678', 
-SYSDATE);
+SYSDATE,
+NULL);
 
 insert into employee 
 values(SYS_GUID(), 
@@ -40,11 +43,12 @@ values(SYS_GUID(),
 (SELECT TEAM_ID FROM TEAM WHERE TEAM_NAME = '백엔드팀'),  
 (SELECT RANK_ID FROM RANK WHERE RANK_NAME = '사원'),  
 '오상민', 
-'test@test.com', 
+'osm1525@naver.com', 
 '1111', 
 '서울', 
 '010-1234-5678', 
-SYSDATE);
+SYSDATE,
+NULL);
 
 insert into employee 
 values(SYS_GUID(), 
@@ -56,7 +60,8 @@ values(SYS_GUID(),
 '1111', 
 '서울', 
 '010-1234-5678', 
-SYSDATE);
+SYSDATE,
+NULL);
 
 insert into employee 
 values(SYS_GUID(), 
@@ -64,11 +69,12 @@ values(SYS_GUID(),
 (SELECT TEAM_ID FROM TEAM WHERE TEAM_NAME = '백엔드팀'),  
 (SELECT RANK_ID FROM RANK WHERE RANK_NAME = '사원'), 
 '최유미', 
-'test5@test.com', 
+'rarayo44@gmail.com', 
 '1111', 
 '서울', 
 '010-1234-5678', 
-SYSDATE);
+SYSDATE,
+NULL);
 
 
 UPDATE EMPLOYEE
@@ -91,5 +97,45 @@ UPDATE EMPLOYEE
 SET employee_email = 'zxcqwgks@kakao.com'
 WHERE EMPLOYEE_NAME = '한창현';
 
+----------테스트용 관리자 사원 가데이터 추가----------
+
+insert into employee 
+values(SYS_GUID(), 
+(SELECT DEPARTMENT_ID FROM DEPARTMENT WHERE DEPARTMENT_NAME = '개발부'), 
+(SELECT TEAM_ID FROM TEAM WHERE TEAM_NAME = '백엔드팀'),  
+(SELECT RANK_ID FROM RANK WHERE RANK_NAME = '차장'), 
+'호랑이', 
+'admin1@admin.com', 
+'1111', 
+'서울', 
+'010-1234-5678', 
+SYSDATE,
+NULL);
+
+insert into employee 
+values(SYS_GUID(), 
+(SELECT DEPARTMENT_ID FROM DEPARTMENT WHERE DEPARTMENT_NAME = '개발부'), 
+(SELECT TEAM_ID FROM TEAM WHERE TEAM_NAME = '백엔드팀'),  
+(SELECT RANK_ID FROM RANK WHERE RANK_NAME = '대리'), 
+'김대리', 
+'admin2@admin.com', 
+'1111', 
+'서울', 
+'010-1234-5678', 
+SYSDATE,
+(SELECT EMPLOYEE_ID FROM EMPLOYEE WHERE EMPLOYEE NAME = '피카츄'));
+
+insert into employee 
+values(SYS_GUID(), 
+(SELECT DEPARTMENT_ID FROM DEPARTMENT WHERE DEPARTMENT_NAME = '개발부'), 
+(SELECT TEAM_ID FROM TEAM WHERE TEAM_NAME = '백엔드팀'),  
+(SELECT RANK_ID FROM RANK WHERE RANK_NAME = '과장'), 
+'피카츄', 
+'admin3@admin.com', 
+'1111', 
+'서울', 
+'010-1234-5678', 
+SYSDATE,
+(SELECT EMPLOYEE_ID FROM EMPLOYEE WHERE EMPLOYEE NAME = '호랑이'));
 
 COMMIT;
