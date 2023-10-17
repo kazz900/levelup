@@ -3,9 +3,14 @@ package com.gs.levelup.caseitemdelete.model.vo;
 import java.sql.Date;
 
 
-public class CaseItemDelete{
-	
+public class CaseItemDelete implements java.io.Serializable{
+	private static final long serialVersionUID = -4244145355886312304L;
+
 	private String documentId;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	private int userId;
 	private int itemId;
 	private int charId;

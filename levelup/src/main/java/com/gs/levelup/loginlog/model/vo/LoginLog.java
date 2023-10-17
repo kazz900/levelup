@@ -2,7 +2,13 @@ package com.gs.levelup.loginlog.model.vo;
 
 import java.sql.Date;
 
-public class LoginLog {
+public class LoginLog  implements java.io.Serializable {
+	private static final long serialVersionUID = -3670358373930511132L;
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	private Date time;
 	private String ip;
 	private String user;
