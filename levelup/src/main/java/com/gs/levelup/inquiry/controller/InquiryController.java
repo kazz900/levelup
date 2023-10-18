@@ -103,7 +103,7 @@ public class InquiryController {
 		}
 	}
 
-	
+	//문의글 디테일 뷰
 	@RequestMapping(value="idetail.do", method=RequestMethod.GET)
 	public ModelAndView moveInquiryDetailMethod(
 									@RequestParam("iid") String inquiryId,
@@ -135,6 +135,7 @@ public class InquiryController {
 		return mv;
 	}
 
+	//문의글 디테일 뷰 / 답변 작성 or 수정 작업
 	@RequestMapping(value = "iupdate.do", method = RequestMethod.POST)
 	public String updateInquiryAnswerMethod(Inquiry inquiry, Model model, 
 											HttpServletRequest request,
@@ -158,6 +159,44 @@ public class InquiryController {
 			return  "common/error";
 		}
 	}
+	
+	//문의글 디테일 뷰 / 답변 수정 페이지로 이동 컨트롤러
+	@RequestMapping("ansfixview.do")
+	public ModelAndView moveAnswerFixView(@RequestParam("employeeId") String employeeId,
+										@RequestParam("inquiryId") String inquiryId,
+										@RequestParam("userId") String userId,
+										@RequestParam("page") String page,
+										ModelAndView mv) {
+		
+		//출력할 페이지 
+			int currentPage = 1;
+			
+			//전송할 페이지가 있다면 추출
+			if(page != null) {
+				currentPage = Integer.parseInt(page);
+			}
+		
+			Inquiry inquiry = inquiryService.selectInquiry(inquiryId);
+			ArrayList<Inquiry> list = inquiryService.selectUserPreviousInquiry(userId);
+			
+			if(inquiry != null) {
+				mv.addObject("inquiry", inquiry);
+				mv.addObject("currentPage", currentPage);
+				mv.addObject("list", list);
+				
+				mv.setViewName("empInquiry/empInquiryAnserFixView");
+				
+			}else {
+				mv.addObject("message", "문의글 답변 수정창 불러오기 실패");
+				mv.setViewName("common/error");
+			}
+	
+			return mv;
+		
+		
+		
+	}
+	
 
 
 	@RequestMapping(value = "isearch.do", method = RequestMethod.GET)

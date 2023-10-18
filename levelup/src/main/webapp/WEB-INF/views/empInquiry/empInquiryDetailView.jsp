@@ -15,10 +15,19 @@
 <!-- 헤드 스크립트 -->
 <c:import url="/WEB-INF/views/common/head-script.jsp" />
 
-
+<c:url var="ansfix" value="ansfixview.do">
+	<c:param name="employeeId" value="${ sessionScope.loginEmployee.employeeId }" />
+	<c:param name="inquiryId" value="${ param.iid }" />
+	<c:param name="userId" value="${ param.userId }" />
+	<c:param name="page" value="${ param.page }" />	
+</c:url>
 <script type="text/javascript">
 function golist(){
 	location.href = "${pageContext.servletContext.contextPath}/ilist.do?page=${ param.page }";
+}
+
+function moveAnsFixPage(){
+	location.href = "${ ansfix }";
 }
 
 </script>
@@ -146,7 +155,8 @@ function golist(){
 									<h5 class="text-truncate font-size-15"> 답변 내용 : </h5>
 									<p class="text-muted">${ requestScope.inquiry.answerContent }</p>
 								</div>
-							</div>	
+							</div>
+								
 							<div class="text-muted mt-4">
                                             <p><i class="mdi mdi-chevron-right text-primary me-1"></i> 사원 이름 : ${ requestScope.employee.employeeName }</p>
                                             <p><i class="mdi mdi-chevron-right text-primary me-1"></i> 
@@ -154,7 +164,7 @@ function golist(){
                                             </div>
 							<div class="row task-dates">
 								<div class="col-sm-4 col-6">
-									<button type="button" class="btn btn-primary" onclick="moveUpdatePage();">수정하기</button> &nbsp;
+									<button type="button" class="btn btn-primary" onclick="moveAnsFixPage();">수정하기</button> &nbsp;
 									<button type="button" class="btn btn-primary" onclick="golist();">목록으로</button>
 								</div>
 							</div>
