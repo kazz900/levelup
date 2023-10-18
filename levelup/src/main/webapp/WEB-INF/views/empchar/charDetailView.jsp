@@ -66,7 +66,7 @@
 								<c:if test="${ !empty requestScope.char_ }">
 										<tr>
 											<!-- Char ID COLUMN -->
-											<td data-th="Char ID">${ char_.charId }</a></td>
+											<td data-th="Char ID">${ char_.charId }</td>
 											<!-- Char Name COLUMN -->
 											<td data-th="Char Name">${ char_.name }</td>
 											<!-- Level COLUMN -->
@@ -101,6 +101,9 @@
 						<tbody>
 							<tr>
 								<th>Item ID</th>
+								<th>Item Name</th>
+								<th>Price</th>
+								<th>Game Price</th>
 								<th>Item GUID</th>
 								<th>Amount</th>
 								<th>Action</th>
@@ -109,7 +112,9 @@
 									<c:forEach items="${ requestScope.list }" var="i">
 										<tr>
 											<!-- Item ID COLUMN -->
-											<td data-th="Item ID">${ i.nameId }</a></td>
+											<td data-th="Item ID">${ i.nameId }</td>
+											<!-- Item ID COLUMN -->
+											<td data-th="Item ID">${ i.nameId }</td>
 											<!-- Item GUID COLUMN -->
 											<td data-th="Item GUID">${ i.uniqueId }</td>
 											<!-- Amount COLUMN -->
