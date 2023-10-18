@@ -397,7 +397,7 @@ public class InquiryController {
 		File file = new File(savePath + "\\" +attachmentFileName);
 		
 		//파일 다운로드용 뷰로 전달할 정보 저장 처리
-		mv.setViewName("filedown");
+		mv.setViewName("empiqfiledown");
 		mv.addObject("file", file);
 		
 		return mv;
