@@ -48,4 +48,19 @@ public class UserServiceImpl implements UserService{
 		return userDao.selectSearchUserId(search);
 	}
 
+	@Override
+	public User selectOneSearchAccountId(Search search) {
+		return userDao.selectOneSearchAccountId(search);
+	}
+
+	@Override
+	public User selectOneSearchUserId(Search search) {
+		return userDao.selectOneSearchUserId(search);
+	}
+
+	@Override
+	public User selectOneSearchEmail(Search search) {
+		return userDao.selectOneSearchEmail(search);
+	}
+
 }
