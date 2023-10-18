@@ -25,6 +25,8 @@ import com.gs.levelup.common.Paging;
 import com.gs.levelup.common.Search;
 import com.gs.levelup.inquiry.model.service.InquiryService;
 import com.gs.levelup.inquiry.model.vo.Inquiry;
+import com.gs.levelup.item.model.service.ItemService;
+import com.gs.levelup.item.model.vo.Item;
 import com.gs.levelup.user.model.service.UserService;
 import com.gs.levelup.user.model.vo.User;
 
@@ -43,6 +45,9 @@ public class UserController {
 	
 	@Autowired
 	private CharacterService characterService;
+	
+	@Autowired
+	private ItemService itemService;
 
 	@RequestMapping("ulogin.do")
 	public String moveUserLogin() {
@@ -79,15 +84,6 @@ public class UserController {
 	public String usertestpage1Method() {
 		return "user/usertestpage1";
 	}
-	
-	@RequestMapping(value="shopgobuy.do", method = RequestMethod.GET)
-    public String shopgobuymethod(@RequestParam("item_name") String itemName,
-    		@RequestParam("item_price") int price, Model model) {
-        model.addAttribute("item_name", itemName);
-        model.addAttribute("item_price", price);
-        return "user/shopgobuy";
-    }
-	
 	
 	@RequestMapping(value="uhelp.do", method=RequestMethod.GET)
 	public String userhelpPageMethod(@RequestParam(name="page", required=false) String page,
@@ -583,6 +579,23 @@ public class UserController {
 		}
 		
 		mv.setViewName("empuser/userSearchView");
+		return mv;
+	}
+	
+	@RequestMapping(value = "itembuypage.do", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView itembuypageMethod(
+			@RequestParam("itemname") String itemName,
+			ModelAndView mv) {
+		
+		Item item = itemService.selectOneItem(itemName);
+		
+		if(item != null) {
+			mv.addObject("item", item);
+			mv.setViewName("user/shopgobuy");
+		}else {
+			mv.addObject("message","아이템 구매페이지로 이동중 에러");
+			mv.setViewName("common/error");
+		}
 		return mv;
 	}
 }
