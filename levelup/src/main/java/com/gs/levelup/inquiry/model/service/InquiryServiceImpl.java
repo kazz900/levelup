@@ -106,4 +106,5 @@ public class InquiryServiceImpl implements InquiryService {
 	public int updateInquiryAnswer(Inquiry inquiry) {
 		return inquiryDao.updateInquiryAnswer(inquiry);
 	}
+
 }
