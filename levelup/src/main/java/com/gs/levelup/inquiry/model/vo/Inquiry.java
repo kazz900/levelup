@@ -19,6 +19,7 @@ public class Inquiry implements Serializable{
 	private String inquiryType;
 	private String inquiryRef;
 	private String answerRef;
+	private String employeeName;
 	
 	public Inquiry() {
 		super();
@@ -188,19 +189,19 @@ public class Inquiry implements Serializable{
 		this.inquiryType = inquiryType;
 	}
 
-
-
-
-
-	@Override
-	public String toString() {
-		return "Inquiry [inquiryId=" + inquiryId + ", userId=" + userId + ", employeeId=" + employeeId
-				+ ", inquiryTitle=" + inquiryTitle + ", inquiryContent=" + inquiryContent + ", answerStatus="
-				+ answerStatus + ", editDate=" + editDate + ", answerDate=" + answerDate + ", answerContent="
-				+ answerContent + ", attachmentFileName=" + attachmentFileName + ", inquiryType=" + inquiryType
-				+ ", inquiryRef=" + inquiryRef + ", answerRef=" + answerRef + "]";
+	public String getEmployeeName() {
+		return employeeName;
 	}
 
+	public void setEmployeeName(String employeeName) {
+		this.employeeName = employeeName;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	
 	
 	
 }
