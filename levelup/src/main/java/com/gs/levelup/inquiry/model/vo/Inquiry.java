@@ -17,9 +17,8 @@ public class Inquiry implements Serializable{
 	private String answerContent;
 	private String attachmentFileName;
 	private String inquiryType;
-	private String inquiryRef;
-	private String answerRef;
 	private String employeeName;
+
 	
 	public Inquiry() {
 		super();
@@ -41,10 +40,9 @@ public class Inquiry implements Serializable{
 		this.answerContent = answerContent;
 		this.attachmentFileName = attachmentFileName;
 		this.inquiryType = inquiryType;
-		this.inquiryRef = inquiryRef;
-		this.answerRef = answerRef;
 		this.employeeName = employeeName;
 	}
+
 
 	public String getInquiryId() {
 		return inquiryId;
@@ -168,10 +166,6 @@ public class Inquiry implements Serializable{
 				+ ", inquiryTitle=" + inquiryTitle + ", inquiryContent=" + inquiryContent + ", answerStatus="
 				+ answerStatus + ", editDate=" + editDate + ", answerDate=" + answerDate + ", answerContent="
 				+ answerContent + ", attachmentFileName=" + attachmentFileName + ", inquiryType=" + inquiryType
-				+ ", inquiryRef=" + inquiryRef + ", answerRef=" + answerRef + ", employeeName=" + employeeName + "]";
+				+ "]";
 	}
-
-	
-	
-	
 }
