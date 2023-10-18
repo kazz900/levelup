@@ -102,9 +102,10 @@
 							<tr>
 								<th>Item ID</th>
 								<th>Item Name</th>
+								<th>Item Type</th>
 								<th>Price</th>
 								<th>Game Price</th>
-								<th>Item GUID</th>
+								<th>GUID</th>
 								<th>Amount</th>
 								<th>Action</th>
 							</tr>
@@ -112,9 +113,25 @@
 									<c:forEach items="${ requestScope.list }" var="i">
 										<tr>
 											<!-- Item ID COLUMN -->
-											<td data-th="Item ID">${ i.nameId }</td>
-											<!-- Item ID COLUMN -->
-											<td data-th="Item ID">${ i.nameId }</td>
+											<td data-th="Item ID">${ i.nameId }</td> 
+											<!-- Item Name COLUMN -->
+											<c:if test="${ !empty i.itemName }">
+											<td data-th="Item Name">${ i.itemName }</td> 
+											</c:if>
+											<c:if test="${ empty i.itemName }">
+											<td data-th="Item Name">잡템</td> 
+											</c:if>
+											<!-- Item Type COLUMN -->
+											<c:if test="${ !empty i.itemType }">
+											<td data-th="Item Type">${ i.itemType }</td>
+											</c:if>
+											<c:if test="${ empty i.itemType }">
+											<td data-th="Item Type">구분없음</td>
+											</c:if>
+											<!-- Price COLUMN -->
+											<td data-th="Price">${ i.price }</td>
+											<!-- Game Price COLUMN -->
+											<td data-th="Game Price">${ i.gamePrice }</td>
 											<!-- Item GUID COLUMN -->
 											<td data-th="Item GUID">${ i.uniqueId }</td>
 											<!-- Amount COLUMN -->

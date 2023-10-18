@@ -93,10 +93,7 @@ public class Item  implements java.io.Serializable{
 
 	@Override
 	public String toString() {
-		return "Item [itemId=" + itemId + ", itemType=" + itemType + ", itemData=" + itemData + "]";
+		return "Item [itemId=" + itemId + ", itemType=" + itemType + ", itemData=" + itemData + ", itemName=" + itemName
+				+ ", price=" + price + ", gamePrice=" + gamePrice + ", discountRate=" + discountRate + "]";
 	}
-	
-	
-	
-	
 }

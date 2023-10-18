@@ -132,22 +132,6 @@ public class Inquiry implements Serializable{
 		this.inquiryType = inquiryType;
 	}
 
-	public String getInquiryRef() {
-		return inquiryRef;
-	}
-
-	public void setInquiryRef(String inquiryRef) {
-		this.inquiryRef = inquiryRef;
-	}
-
-	public String getAnswerRef() {
-		return answerRef;
-	}
-
-	public void setAnswerRef(String answerRef) {
-		this.answerRef = answerRef;
-	}
-
 	public String getEmployeeName() {
 		return employeeName;
 	}
