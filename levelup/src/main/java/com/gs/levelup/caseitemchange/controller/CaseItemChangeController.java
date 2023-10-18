@@ -38,9 +38,10 @@ public class CaseItemChangeController {
 	//기안 작성 페이지로 이동
 	
 	@RequestMapping("cicform.do")
-	public String moveCaseItemChangeWritePage(Model model) {
+	public String moveCaseItemChangeWritePage(Model model,
+												@RequestParam("employeeId") String employeeId) {
 		
-		ArrayList<CaseItemChange> list = cicService.selectEmpList();
+		ArrayList<CaseItemChange> list = cicService.selectEmpList(employeeId);
 		
 		if (list != null && list.size() > 0) {
 			model.addAttribute("list", list);

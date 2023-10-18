@@ -38,8 +38,8 @@ public class CaseItemChangeServiceImpl implements CaseItemChangeService{
 	}
 
 	@Override
-	public ArrayList<CaseItemChange> selectEmpList() {
-		return cicDao.selectEmpList();
+	public ArrayList<CaseItemChange> selectEmpList(String employeeId) {
+		return cicDao.selectEmpList(employeeId);
 	}
 	
 	@Override

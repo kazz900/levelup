@@ -15,7 +15,7 @@ public interface CaseItemChangeService {
 	public int updateCaseItemChange(CaseItemChange caseItemChange);
 	public int deleteCaseItemChange(String caseItemChangeNo);
 	
-	public ArrayList<CaseItemChange> selectEmpList(); //결재자 조회용
+	public ArrayList<CaseItemChange> selectEmpList(String employeeId); //결재자 조회용
 	public ArrayList<CaseItemChange> selectList();  //페이징 처리 없는 전체 목록 조회
 	public ArrayList<CaseItemChange> selectList(Paging paging);  //페이징 처리된 목록 조회
 	
