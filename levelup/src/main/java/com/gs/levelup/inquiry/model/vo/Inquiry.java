@@ -173,4 +173,5 @@ public class Inquiry implements Serializable{
 
 	
 	
+	
 }

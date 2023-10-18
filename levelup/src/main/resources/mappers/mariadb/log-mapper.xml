@@ -45,7 +45,7 @@
 		select * from evol.picklog  where char_id = #{charId}
 	</select>
 	
-	<select id="selectInventory" resultMap="resultInventory">
+	<select id="selectInventory" parameterType="_int" resultMap="resultInventory">
 		select * from evol.inventory where char_id = #{charId}
 	</select>
 </mapper>

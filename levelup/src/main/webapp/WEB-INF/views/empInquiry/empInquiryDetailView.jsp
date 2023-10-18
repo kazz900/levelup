@@ -82,7 +82,7 @@ function moveAnsFixPage(){
 										<h5 class="font-size-14">
 											<i class="bx bx-calendar me-1 text-primary"></i> 문의 날짜
 										</h5>
-										<p class="text-muted mb-0">${ requestScope.inquiry.editDate }</p>
+										<p class="text-muted mb-0"><fmt:formatDate value="${ requestScope.inquiry.editDate }" pattern="yyyy-MM-dd HH:mm:ss" /></p>
 									</div>
 								</div>
 
@@ -161,7 +161,7 @@ function moveAnsFixPage(){
 							<div class="text-muted mt-4">
                                             <p><i class="mdi mdi-chevron-right text-primary me-1"></i> 사원 이름 : ${ requestScope.inquiry.employeeName }</p>
                                             <p><i class="mdi mdi-chevron-right text-primary me-1"></i> 
-                                            답변 날짜 : <fmt:formatDate value="${ requestScope.inquiry.answerDate }" pattern="yyyy-MM-dd" /></p>
+                                            답변 날짜 : <fmt:formatDate value="${ requestScope.inquiry.answerDate }" pattern="yyyy-MM-dd HH:mm:ss" /></p>
                                             </div>
 							<div class="row task-dates">
 								<div class="col-sm-4 col-6">
