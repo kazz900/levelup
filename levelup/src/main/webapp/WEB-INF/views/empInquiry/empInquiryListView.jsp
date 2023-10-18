@@ -9,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css"
-	href="./resources/css/empInquiryListView.css">
+	href="./resources/css/empListView.css">
 <script type="text/javascript" src="/levelup/resources/js/jquery-3.7.0.min.js"></script>
 <script type="text/javascript">
 $(function(){
@@ -131,11 +131,16 @@ function showTypeDropdown(){
 									<c:param name="iid" value="${ requestScope.inquiry.inquiryId }" />
 									<c:param name="page" value="${ nowpage }" />
 								</c:url> --%>
+							<c:if test="${ !empty requestScope.list }">
 							<c:forEach items="${ requestScope.list }" var="i">
 								<tr>
+									<!-- 문의 제목 -->
 									<td data-th="Question Title"><a class="ititle"
-										href="/levelup/idetail.do?iid=${ i.inquiryId }&page=${ nowpage }">${ i.inquiryTitle }</a></td>
+										href="/levelup/idetail.do?iid=${ i.inquiryId }&page=${ nowpage }&userId=${ i.userId }">${ i.inquiryTitle }</a></td>
+									
+									<!-- 유저 아이디 -->
 									<td data-th="User ID">${ i.userId }</td>
+									<!-- 문의 타입 -->
 									<c:if test="${ i.inquiryType eq '1' }">
 										<td data-th="Type">환불문의</td>
 									</c:if>
@@ -145,8 +150,10 @@ function showTypeDropdown(){
 									<c:if test="${ i.inquiryType eq '3' }">
 										<td data-th="Type">기타문의</td>
 									</c:if>
+									<!-- 문의 작성 날짜 -->
 									<td data-th="Date"><fmt:formatDate value="${ i.editDate }"
 											pattern="yyyy-MM-dd HH:mm:ss" /></td>
+									<!-- 문의 답변 여부 -->
 									<c:if test="${ i.answerStatus eq 'Y' }">
 										<td data-th="Answer"><span class="badge bg-success">답변완료</span></td>
 									</c:if>
@@ -155,6 +162,7 @@ function showTypeDropdown(){
 									</c:if>
 								</tr>
 							</c:forEach>
+							</c:if>
 						</tbody>
 					</table>
 							<c:if test="${ empty requestScope.list }">

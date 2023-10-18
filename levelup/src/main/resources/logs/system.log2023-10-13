@@ -1,307 +1,31 @@
-[14:19:39][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[14:19:39][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 787 ms
-[14:19:39][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[14:19:40][INFO ][FrameworkServlet.java: 547] - Completed initialization in 870 ms
-[14:24:48][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[14:24:49][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 724 ms
-[14:24:49][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[14:24:50][INFO ][FrameworkServlet.java: 547] - Completed initialization in 880 ms
-[14:26:04][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[14:26:05][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 724 ms
-[14:26:05][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[14:26:06][INFO ][FrameworkServlet.java: 547] - Completed initialization in 902 ms
-[14:28:09][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[14:28:10][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 717 ms
-[14:28:10][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[14:28:10][INFO ][FrameworkServlet.java: 547] - Completed initialization in 867 ms
-[14:28:59][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[14:28:59][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 770 ms
-[14:28:59][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[14:29:00][INFO ][FrameworkServlet.java: 547] - Completed initialization in 875 ms
-[14:29:19][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[14:29:20][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 717 ms
-[14:29:20][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[14:29:21][INFO ][FrameworkServlet.java: 547] - Completed initialization in 869 ms
-[14:29:40][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[14:29:40][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 703 ms
-[14:29:40][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[14:29:41][INFO ][FrameworkServlet.java: 547] - Completed initialization in 878 ms
-[14:30:03][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[14:30:04][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 748 ms
-[14:30:04][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[14:30:05][INFO ][FrameworkServlet.java: 547] - Completed initialization in 862 ms
-[14:31:16][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[14:31:17][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 737 ms
-[14:31:17][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[14:31:17][INFO ][FrameworkServlet.java: 547] - Completed initialization in 865 ms
-[14:31:54][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[14:31:55][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 711 ms
-[14:31:55][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[14:31:56][INFO ][FrameworkServlet.java: 547] - Completed initialization in 849 ms
-[14:32:25][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[14:32:26][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 746 ms
-[14:32:26][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[14:32:27][INFO ][FrameworkServlet.java: 547] - Completed initialization in 861 ms
-[14:37:56][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[14:37:57][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 740 ms
-[14:37:57][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[14:37:58][INFO ][FrameworkServlet.java: 547] - Completed initialization in 849 ms
-[14:40:23][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[14:40:24][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 737 ms
-[14:40:24][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[14:40:25][INFO ][FrameworkServlet.java: 547] - Completed initialization in 834 ms
-[14:41:26][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[14:41:27][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 723 ms
-[14:41:27][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[14:41:28][INFO ][FrameworkServlet.java: 547] - Completed initialization in 886 ms
-[14:41:44][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[14:41:44][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 731 ms
-[14:41:44][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[14:41:45][INFO ][FrameworkServlet.java: 547] - Completed initialization in 899 ms
-[14:42:39][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[14:42:40][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 731 ms
-[14:42:40][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[14:42:41][INFO ][FrameworkServlet.java: 547] - Completed initialization in 920 ms
-[14:43:07][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[14:43:08][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 705 ms
-[14:43:08][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[14:43:09][INFO ][FrameworkServlet.java: 547] - Completed initialization in 878 ms
-[14:45:41][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[14:45:42][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 715 ms
-[14:45:42][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[14:45:43][INFO ][FrameworkServlet.java: 547] - Completed initialization in 849 ms
-[14:45:48][INFO ][EmployeeController.java: 60] - elogin.do : Employee [employeeId=null, departmentId=null, teamId=null, rankId=null, employeeName=null, employeeEmail=null, employeePwd=null, employeeAddress=null, employeePhone=null, employeeBirthdate=null]
-[14:46:17][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[14:46:17][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 633 ms
-[14:46:17][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[14:46:18][INFO ][FrameworkServlet.java: 547] - Completed initialization in 791 ms
-[14:46:26][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[14:46:27][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 717 ms
-[14:46:27][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[14:46:28][INFO ][FrameworkServlet.java: 547] - Completed initialization in 876 ms
-[14:55:53][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[14:55:54][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 736 ms
-[14:55:54][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[14:55:55][INFO ][FrameworkServlet.java: 547] - Completed initialization in 854 ms
-[14:58:55][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[14:58:56][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 712 ms
-[14:58:56][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[14:58:57][INFO ][FrameworkServlet.java: 547] - Completed initialization in 905 ms
-[15:01:17][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[15:01:18][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 773 ms
-[15:01:18][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[15:01:19][INFO ][FrameworkServlet.java: 547] - Completed initialization in 862 ms
-[15:03:26][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[15:03:26][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 732 ms
-[15:03:26][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[15:03:27][INFO ][FrameworkServlet.java: 547] - Completed initialization in 890 ms
-[15:03:44][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[15:03:45][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 719 ms
-[15:03:45][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[15:03:46][INFO ][FrameworkServlet.java: 547] - Completed initialization in 908 ms
-[15:04:39][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[15:04:40][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 736 ms
-[15:04:40][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[15:04:40][INFO ][FrameworkServlet.java: 547] - Completed initialization in 903 ms
-[15:05:08][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[15:05:09][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 734 ms
-[15:05:09][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[15:05:10][INFO ][FrameworkServlet.java: 547] - Completed initialization in 852 ms
-[15:08:19][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[15:08:20][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 720 ms
-[15:08:20][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[15:08:21][INFO ][FrameworkServlet.java: 547] - Completed initialization in 885 ms
-[15:10:28][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[15:10:29][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 710 ms
-[15:10:29][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[15:10:29][INFO ][FrameworkServlet.java: 547] - Completed initialization in 903 ms
-[15:10:56][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[15:10:57][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 718 ms
-[15:10:57][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[15:10:58][INFO ][FrameworkServlet.java: 547] - Completed initialization in 885 ms
-[15:11:19][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[15:11:20][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 707 ms
-[15:11:20][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[15:11:21][INFO ][FrameworkServlet.java: 547] - Completed initialization in 849 ms
-[15:12:52][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[15:12:53][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 719 ms
-[15:12:53][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[15:12:53][INFO ][FrameworkServlet.java: 547] - Completed initialization in 860 ms
-[15:13:13][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[15:13:14][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 721 ms
-[15:13:14][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[15:13:15][INFO ][FrameworkServlet.java: 547] - Completed initialization in 904 ms
-[15:20:29][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[15:20:30][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 715 ms
-[15:20:30][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[15:20:31][INFO ][FrameworkServlet.java: 547] - Completed initialization in 855 ms
-[15:21:38][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[15:21:39][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 778 ms
-[15:21:39][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[15:21:40][INFO ][FrameworkServlet.java: 547] - Completed initialization in 926 ms
-[15:22:30][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[15:22:31][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 706 ms
-[15:22:31][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[15:22:32][INFO ][FrameworkServlet.java: 547] - Completed initialization in 834 ms
-[15:23:05][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[15:23:06][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 721 ms
-[15:23:06][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[15:23:07][INFO ][FrameworkServlet.java: 547] - Completed initialization in 825 ms
-[15:30:12][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[15:30:13][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 708 ms
-[15:30:13][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[15:30:14][INFO ][FrameworkServlet.java: 547] - Completed initialization in 840 ms
-[15:33:43][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[15:33:44][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 709 ms
-[15:33:44][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[15:33:45][INFO ][FrameworkServlet.java: 547] - Completed initialization in 909 ms
-[15:36:29][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[15:36:30][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 713 ms
-[15:36:30][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[15:36:31][INFO ][FrameworkServlet.java: 547] - Completed initialization in 846 ms
-[15:36:59][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[15:36:59][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 716 ms
-[15:36:59][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[15:37:00][INFO ][FrameworkServlet.java: 547] - Completed initialization in 869 ms
-[15:39:26][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[15:39:26][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 691 ms
-[15:39:26][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[15:39:27][INFO ][FrameworkServlet.java: 547] - Completed initialization in 822 ms
-[15:39:58][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[15:39:59][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 711 ms
-[15:39:59][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[15:40:00][INFO ][FrameworkServlet.java: 547] - Completed initialization in 842 ms
-[15:40:49][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[15:40:50][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 693 ms
-[15:40:50][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[15:40:50][INFO ][FrameworkServlet.java: 547] - Completed initialization in 826 ms
-[15:46:29][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[15:46:30][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 764 ms
-[15:46:30][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[15:46:31][INFO ][FrameworkServlet.java: 547] - Completed initialization in 855 ms
-[15:47:10][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[15:47:11][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 722 ms
-[15:47:11][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[15:47:12][INFO ][FrameworkServlet.java: 547] - Completed initialization in 858 ms
-[15:47:56][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[15:47:57][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 745 ms
-[15:47:57][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[15:47:58][INFO ][FrameworkServlet.java: 547] - Completed initialization in 833 ms
-[15:48:04][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[15:48:04][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 711 ms
-[15:48:04][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[15:48:05][INFO ][FrameworkServlet.java: 547] - Completed initialization in 848 ms
-[17:09:07][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[17:09:08][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 750 ms
-[17:09:08][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[17:09:09][INFO ][FrameworkServlet.java: 547] - Completed initialization in 911 ms
-[17:24:21][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[17:24:22][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 773 ms
-[17:24:22][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[17:24:22][INFO ][FrameworkServlet.java: 547] - Completed initialization in 873 ms
-[17:33:40][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[17:33:41][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 722 ms
-[17:33:41][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[17:33:41][INFO ][FrameworkServlet.java: 547] - Completed initialization in 888 ms
-[17:44:10][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[17:44:11][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 598 ms
-[17:44:11][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[17:44:12][INFO ][FrameworkServlet.java: 547] - Completed initialization in 763 ms
-[17:45:42][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[17:45:43][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 758 ms
-[17:45:43][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[17:45:43][INFO ][FrameworkServlet.java: 547] - Completed initialization in 856 ms
-[17:48:22][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[17:48:23][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 739 ms
-[17:48:23][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[17:48:24][INFO ][FrameworkServlet.java: 547] - Completed initialization in 852 ms
-[17:48:41][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[17:48:42][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 751 ms
-[17:48:42][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[17:48:43][INFO ][FrameworkServlet.java: 547] - Completed initialization in 896 ms
-[17:51:15][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[17:51:16][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 612 ms
-[17:51:16][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[17:51:17][INFO ][FrameworkServlet.java: 547] - Completed initialization in 805 ms
-[17:51:57][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[17:51:58][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 720 ms
-[17:51:58][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[17:51:59][INFO ][FrameworkServlet.java: 547] - Completed initialization in 831 ms
-[17:53:21][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[17:53:22][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 708 ms
-[17:53:22][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[17:53:23][INFO ][FrameworkServlet.java: 547] - Completed initialization in 828 ms
-[17:54:19][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[17:54:20][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 728 ms
-[17:54:20][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[17:54:21][INFO ][FrameworkServlet.java: 547] - Completed initialization in 841 ms
-[17:55:21][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[17:55:21][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 694 ms
-[17:55:21][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[17:55:22][INFO ][FrameworkServlet.java: 547] - Completed initialization in 857 ms
-[17:56:19][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[17:56:20][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 722 ms
-[17:56:20][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[17:56:20][INFO ][FrameworkServlet.java: 547] - Completed initialization in 842 ms
-[17:56:54][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[17:56:55][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 735 ms
-[17:56:55][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[17:56:56][INFO ][FrameworkServlet.java: 547] - Completed initialization in 868 ms
-[17:57:35][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[17:57:36][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 694 ms
-[17:57:36][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[17:57:37][INFO ][FrameworkServlet.java: 547] - Completed initialization in 839 ms
-[17:57:57][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[17:57:58][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 697 ms
-[17:57:58][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[17:57:58][INFO ][FrameworkServlet.java: 547] - Completed initialization in 850 ms
-[17:59:58][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[17:59:59][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 604 ms
-[17:59:59][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[18:00:00][INFO ][FrameworkServlet.java: 547] - Completed initialization in 723 ms
-[18:00:11][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[18:00:12][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 611 ms
-[18:00:12][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[18:00:12][INFO ][FrameworkServlet.java: 547] - Completed initialization in 759 ms
-[18:00:24][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[18:00:24][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 564 ms
-[18:00:24][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[18:00:25][INFO ][FrameworkServlet.java: 547] - Completed initialization in 709 ms
-[18:01:20][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[18:01:20][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 551 ms
-[18:01:20][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[18:01:21][INFO ][FrameworkServlet.java: 547] - Completed initialization in 718 ms
-[18:03:21][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[18:03:21][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 535 ms
-[18:03:21][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[18:03:22][INFO ][FrameworkServlet.java: 547] - Completed initialization in 699 ms
-[18:03:33][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[18:03:34][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 559 ms
-[18:03:34][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[18:03:35][INFO ][FrameworkServlet.java: 547] - Completed initialization in 737 ms
-[18:04:19][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[18:04:19][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 610 ms
-[18:04:19][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[18:04:20][INFO ][FrameworkServlet.java: 547] - Completed initialization in 745 ms
-[18:35:15][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[18:35:16][WARN ][AbstractApplicationContext.java: 591] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSession' defined in class path resource [root-context.xml]: Invocation of init method failed; nested exception is org.springframework.core.NestedIOException: Failed to parse config resource: class path resource [mybatis-config.xml]; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: java.io.IOException: Could not find resource mappers/oracle/employee-mapper.xml
-[18:35:16][ERROR][ContextLoader.java: 313] - Context initialization failed
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSession' defined in class path resource [root-context.xml]: Invocation of init method failed; nested exception is org.springframework.core.NestedIOException: Failed to parse config resource: class path resource [mybatis-config.xml]; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: java.io.IOException: Could not find resource mappers/oracle/employee-mapper.xml
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:934)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
-	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:401)
-	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:292)
-	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:103)
-	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4494)
-	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4946)
+[15:51:14][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[15:51:14][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 692 ms
+[15:51:14][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[15:51:15][ERROR][FrameworkServlet.java: 534] - Context initialization failed
+org.springframework.beans.factory.BeanDefinitionStoreException: Unexpected exception parsing XML document from ServletContext resource [/WEB-INF/spring/appServlet/servlet-context.xml]; nested exception is org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name 'pickLogService' for bean class [com.gs.levelup.picklog.model.service.PickLogServiceImpl] conflicts with existing, non-compatible bean definition of same name and class [com.gs.levelup.loginlog.model.service.LoginLogServiceImpl]
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadBeanDefinitions(XmlBeanDefinitionReader.java:417)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:338)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:196)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:232)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:203)
+	at org.springframework.web.context.support.XmlWebApplicationContext.loadBeanDefinitions(XmlWebApplicationContext.java:125)
+	at org.springframework.web.context.support.XmlWebApplicationContext.loadBeanDefinitions(XmlWebApplicationContext.java:94)
+	at org.springframework.context.support.AbstractRefreshableApplicationContext.refreshBeanFactory(AbstractRefreshableApplicationContext.java:130)
+	at org.springframework.context.support.AbstractApplicationContext.obtainFreshBeanFactory(AbstractApplicationContext.java:671)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:553)
+	at org.springframework.web.servlet.FrameworkServlet.configureAndRefreshWebApplicationContext(FrameworkServlet.java:702)
+	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:668)
+	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:716)
+	at org.springframework.web.servlet.FrameworkServlet.initWebApplicationContext(FrameworkServlet.java:591)
+	at org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:530)
+	at org.springframework.web.servlet.HttpServletBean.init(HttpServletBean.java:170)
+	at javax.servlet.GenericServlet.init(GenericServlet.java:143)
+	at org.apache.catalina.core.StandardWrapper.initServlet(StandardWrapper.java:1106)
+	at org.apache.catalina.core.StandardWrapper.loadServlet(StandardWrapper.java:1063)
+	at org.apache.catalina.core.StandardWrapper.load(StandardWrapper.java:960)
+	at org.apache.catalina.core.StandardContext.loadOnStartup(StandardContext.java:4673)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4980)
 	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
 	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1328)
 	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1318)
@@ -330,42 +54,103 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
 	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:347)
 	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:478)
-Caused by: org.springframework.core.NestedIOException: Failed to parse config resource: class path resource [mybatis-config.xml]; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: java.io.IOException: Could not find resource mappers/oracle/employee-mapper.xml
-	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:590)
-	at org.mybatis.spring.SqlSessionFactoryBean.afterPropertiesSet(SqlSessionFactoryBean.java:491)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
-	... 42 more
-Caused by: org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: java.io.IOException: Could not find resource mappers/oracle/employee-mapper.xml
-	at org.apache.ibatis.builder.xml.XMLConfigBuilder.parseConfiguration(XMLConfigBuilder.java:122)
-	at org.apache.ibatis.builder.xml.XMLConfigBuilder.parse(XMLConfigBuilder.java:99)
-	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:587)
-	... 45 more
-Caused by: java.io.IOException: Could not find resource mappers/oracle/employee-mapper.xml
-	at org.apache.ibatis.io.Resources.getResourceAsStream(Resources.java:114)
-	at org.apache.ibatis.io.Resources.getResourceAsStream(Resources.java:100)
-	at org.apache.ibatis.builder.xml.XMLConfigBuilder.mapperElement(XMLConfigBuilder.java:375)
-	at org.apache.ibatis.builder.xml.XMLConfigBuilder.parseConfiguration(XMLConfigBuilder.java:120)
-	... 47 more
-[18:35:37][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[18:35:37][WARN ][AbstractApplicationContext.java: 591] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSession' defined in class path resource [root-context.xml]: Invocation of init method failed; nested exception is org.springframework.core.NestedIOException: Failed to parse config resource: class path resource [mybatis-config.xml]; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: java.io.IOException: Could not find resource mappers/oracle/employee-mapper.xml
-[18:35:37][ERROR][ContextLoader.java: 313] - Context initialization failed
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSession' defined in class path resource [root-context.xml]: Invocation of init method failed; nested exception is org.springframework.core.NestedIOException: Failed to parse config resource: class path resource [mybatis-config.xml]; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: java.io.IOException: Could not find resource mappers/oracle/employee-mapper.xml
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:934)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
-	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:401)
-	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:292)
-	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:103)
-	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4494)
-	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4946)
+Caused by: org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name 'pickLogService' for bean class [com.gs.levelup.picklog.model.service.PickLogServiceImpl] conflicts with existing, non-compatible bean definition of same name and class [com.gs.levelup.loginlog.model.service.LoginLogServiceImpl]
+	at org.springframework.context.annotation.ClassPathBeanDefinitionScanner.checkCandidate(ClassPathBeanDefinitionScanner.java:349)
+	at org.springframework.context.annotation.ClassPathBeanDefinitionScanner.doScan(ClassPathBeanDefinitionScanner.java:287)
+	at org.springframework.context.annotation.ComponentScanBeanDefinitionParser.parse(ComponentScanBeanDefinitionParser.java:90)
+	at org.springframework.beans.factory.xml.NamespaceHandlerSupport.parse(NamespaceHandlerSupport.java:74)
+	at org.springframework.beans.factory.xml.BeanDefinitionParserDelegate.parseCustomElement(BeanDefinitionParserDelegate.java:1391)
+	at org.springframework.beans.factory.xml.BeanDefinitionParserDelegate.parseCustomElement(BeanDefinitionParserDelegate.java:1371)
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.parseBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:179)
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.doRegisterBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:149)
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.registerBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:96)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.registerBeanDefinitions(XmlBeanDefinitionReader.java:511)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadBeanDefinitions(XmlBeanDefinitionReader.java:391)
+	... 50 more
+[15:52:08][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[15:52:09][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 646 ms
+[15:52:09][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[15:52:09][ERROR][FrameworkServlet.java: 534] - Context initialization failed
+org.springframework.beans.factory.BeanDefinitionStoreException: Unexpected exception parsing XML document from ServletContext resource [/WEB-INF/spring/appServlet/servlet-context.xml]; nested exception is org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name 'pickLogService' for bean class [com.gs.levelup.picklog.model.service.PickLogServiceImpl] conflicts with existing, non-compatible bean definition of same name and class [com.gs.levelup.loginlog.model.service.LoginLogServiceImpl]
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadBeanDefinitions(XmlBeanDefinitionReader.java:417)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:338)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:196)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:232)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:203)
+	at org.springframework.web.context.support.XmlWebApplicationContext.loadBeanDefinitions(XmlWebApplicationContext.java:125)
+	at org.springframework.web.context.support.XmlWebApplicationContext.loadBeanDefinitions(XmlWebApplicationContext.java:94)
+	at org.springframework.context.support.AbstractRefreshableApplicationContext.refreshBeanFactory(AbstractRefreshableApplicationContext.java:130)
+	at org.springframework.context.support.AbstractApplicationContext.obtainFreshBeanFactory(AbstractApplicationContext.java:671)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:553)
+	at org.springframework.web.servlet.FrameworkServlet.configureAndRefreshWebApplicationContext(FrameworkServlet.java:702)
+	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:668)
+	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:716)
+	at org.springframework.web.servlet.FrameworkServlet.initWebApplicationContext(FrameworkServlet.java:591)
+	at org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:530)
+	at org.springframework.web.servlet.HttpServletBean.init(HttpServletBean.java:170)
+	at javax.servlet.GenericServlet.init(GenericServlet.java:143)
+	at org.apache.catalina.core.StandardWrapper.initServlet(StandardWrapper.java:1106)
+	at org.apache.catalina.core.StandardWrapper.loadServlet(StandardWrapper.java:1063)
+	at org.apache.catalina.core.StandardWrapper.load(StandardWrapper.java:960)
+	at org.apache.catalina.core.StandardContext.loadOnStartup(StandardContext.java:4673)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4980)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardContext.reload(StandardContext.java:3589)
+	at org.apache.catalina.loader.WebappLoader.backgroundProcess(WebappLoader.java:309)
+	at org.apache.catalina.core.StandardContext.backgroundProcess(StandardContext.java:5308)
+	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1297)
+	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1301)
+	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1301)
+	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.run(ContainerBase.java:1279)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name 'pickLogService' for bean class [com.gs.levelup.picklog.model.service.PickLogServiceImpl] conflicts with existing, non-compatible bean definition of same name and class [com.gs.levelup.loginlog.model.service.LoginLogServiceImpl]
+	at org.springframework.context.annotation.ClassPathBeanDefinitionScanner.checkCandidate(ClassPathBeanDefinitionScanner.java:349)
+	at org.springframework.context.annotation.ClassPathBeanDefinitionScanner.doScan(ClassPathBeanDefinitionScanner.java:287)
+	at org.springframework.context.annotation.ComponentScanBeanDefinitionParser.parse(ComponentScanBeanDefinitionParser.java:90)
+	at org.springframework.beans.factory.xml.NamespaceHandlerSupport.parse(NamespaceHandlerSupport.java:74)
+	at org.springframework.beans.factory.xml.BeanDefinitionParserDelegate.parseCustomElement(BeanDefinitionParserDelegate.java:1391)
+	at org.springframework.beans.factory.xml.BeanDefinitionParserDelegate.parseCustomElement(BeanDefinitionParserDelegate.java:1371)
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.parseBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:179)
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.doRegisterBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:149)
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.registerBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:96)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.registerBeanDefinitions(XmlBeanDefinitionReader.java:511)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadBeanDefinitions(XmlBeanDefinitionReader.java:391)
+	... 37 more
+[15:52:11][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[15:52:12][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 699 ms
+[15:52:12][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[15:52:12][ERROR][FrameworkServlet.java: 534] - Context initialization failed
+org.springframework.beans.factory.BeanDefinitionStoreException: Unexpected exception parsing XML document from ServletContext resource [/WEB-INF/spring/appServlet/servlet-context.xml]; nested exception is org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name 'pickLogService' for bean class [com.gs.levelup.picklog.model.service.PickLogServiceImpl] conflicts with existing, non-compatible bean definition of same name and class [com.gs.levelup.loginlog.model.service.LoginLogServiceImpl]
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadBeanDefinitions(XmlBeanDefinitionReader.java:417)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:338)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:196)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:232)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:203)
+	at org.springframework.web.context.support.XmlWebApplicationContext.loadBeanDefinitions(XmlWebApplicationContext.java:125)
+	at org.springframework.web.context.support.XmlWebApplicationContext.loadBeanDefinitions(XmlWebApplicationContext.java:94)
+	at org.springframework.context.support.AbstractRefreshableApplicationContext.refreshBeanFactory(AbstractRefreshableApplicationContext.java:130)
+	at org.springframework.context.support.AbstractApplicationContext.obtainFreshBeanFactory(AbstractApplicationContext.java:671)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:553)
+	at org.springframework.web.servlet.FrameworkServlet.configureAndRefreshWebApplicationContext(FrameworkServlet.java:702)
+	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:668)
+	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:716)
+	at org.springframework.web.servlet.FrameworkServlet.initWebApplicationContext(FrameworkServlet.java:591)
+	at org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:530)
+	at org.springframework.web.servlet.HttpServletBean.init(HttpServletBean.java:170)
+	at javax.servlet.GenericServlet.init(GenericServlet.java:143)
+	at org.apache.catalina.core.StandardWrapper.initServlet(StandardWrapper.java:1106)
+	at org.apache.catalina.core.StandardWrapper.loadServlet(StandardWrapper.java:1063)
+	at org.apache.catalina.core.StandardWrapper.load(StandardWrapper.java:960)
+	at org.apache.catalina.core.StandardContext.loadOnStartup(StandardContext.java:4673)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4980)
 	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
 	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1328)
 	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1318)
@@ -394,881 +179,31 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
 	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:347)
 	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:478)
-Caused by: org.springframework.core.NestedIOException: Failed to parse config resource: class path resource [mybatis-config.xml]; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: java.io.IOException: Could not find resource mappers/oracle/employee-mapper.xml
-	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:590)
-	at org.mybatis.spring.SqlSessionFactoryBean.afterPropertiesSet(SqlSessionFactoryBean.java:491)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
-	... 42 more
-Caused by: org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: java.io.IOException: Could not find resource mappers/oracle/employee-mapper.xml
-	at org.apache.ibatis.builder.xml.XMLConfigBuilder.parseConfiguration(XMLConfigBuilder.java:122)
-	at org.apache.ibatis.builder.xml.XMLConfigBuilder.parse(XMLConfigBuilder.java:99)
-	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:587)
-	... 45 more
-Caused by: java.io.IOException: Could not find resource mappers/oracle/employee-mapper.xml
-	at org.apache.ibatis.io.Resources.getResourceAsStream(Resources.java:114)
-	at org.apache.ibatis.io.Resources.getResourceAsStream(Resources.java:100)
-	at org.apache.ibatis.builder.xml.XMLConfigBuilder.mapperElement(XMLConfigBuilder.java:375)
-	at org.apache.ibatis.builder.xml.XMLConfigBuilder.parseConfiguration(XMLConfigBuilder.java:120)
-	... 47 more
-[18:37:08][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[18:37:08][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 774 ms
-[18:37:08][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[18:37:09][INFO ][FrameworkServlet.java: 547] - Completed initialization in 867 ms
-[18:37:19][ERROR][Slf4jSpyLogDelegator.java: 120] - 1. PreparedStatement.execute() select * from employee where EMPLOYEE_NAME = '김화범';
-java.sql.SQLSyntaxErrorException: ORA-00933: SQL 명령어가 올바르게 종료되지 않았습니다
-
-	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:494)
-	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:446)
-	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1052)
-	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:537)
-	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:255)
-	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:610)
-	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:253)
-	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:86)
-	at oracle.jdbc.driver.T4CPreparedStatement.executeForDescribe(T4CPreparedStatement.java:765)
-	at oracle.jdbc.driver.OracleStatement.executeMaybeDescribe(OracleStatement.java:921)
-	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1099)
-	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:3640)
-	at oracle.jdbc.driver.T4CPreparedStatement.executeInternal(T4CPreparedStatement.java:1384)
-	at oracle.jdbc.driver.OraclePreparedStatement.execute(OraclePreparedStatement.java:3752)
-	at oracle.jdbc.driver.OraclePreparedStatementWrapper.execute(OraclePreparedStatementWrapper.java:1079)
-	at org.apache.commons.dbcp.DelegatingPreparedStatement.execute(DelegatingPreparedStatement.java:172)
-	at org.apache.commons.dbcp.DelegatingPreparedStatement.execute(DelegatingPreparedStatement.java:172)
-	at net.sf.log4jdbc.PreparedStatementSpy.execute(PreparedStatementSpy.java:418)
-	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:64)
-	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79)
-	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63)
-	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:325)
-	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
-	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:136)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:76)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
-	at com.sun.proxy.$Proxy9.selectOne(Unknown Source)
-	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:160)
-	at com.gs.levelup.employee.model.dao.EmployeeDao.selectMember(EmployeeDao.java:28)
-	at com.gs.levelup.employee.model.service.EmployeeServiceImpl.selectEmployee(EmployeeServiceImpl.java:31)
-	at com.gs.levelup.employee.model.service.EmployeeServiceImpl$$FastClassBySpringCGLIB$$591c6d4d.invoke(<generated>)
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
-	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123)
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388)
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
-	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
-	at com.gs.levelup.employee.model.service.EmployeeServiceImpl$$EnhancerBySpringCGLIB$$773153bc.selectEmployee(<generated>)
-	at com.gs.levelup.employee.controller.EmployeeController.loginMethod(EmployeeController.java:64)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
-	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:673)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-Caused by: Error : 933, Position : 48, Sql = select * from employee where EMPLOYEE_NAME = :1 ;, OriginalSql = select * from employee where EMPLOYEE_NAME = ?;, Error Msg = ORA-00933: SQL 명령어가 올바르게 종료되지 않았습니다
-
-	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:498)
-	... 94 more
-[18:37:19][ERROR][Slf4jSpyLogDelegator.java: 139] - 1. PreparedStatement.execute() FAILED! select * from employee where EMPLOYEE_NAME = '김화범'; {FAILED after 5 msec}
-java.sql.SQLSyntaxErrorException: ORA-00933: SQL 명령어가 올바르게 종료되지 않았습니다
-
-	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:494)
-	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:446)
-	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1052)
-	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:537)
-	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:255)
-	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:610)
-	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:253)
-	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:86)
-	at oracle.jdbc.driver.T4CPreparedStatement.executeForDescribe(T4CPreparedStatement.java:765)
-	at oracle.jdbc.driver.OracleStatement.executeMaybeDescribe(OracleStatement.java:921)
-	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1099)
-	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:3640)
-	at oracle.jdbc.driver.T4CPreparedStatement.executeInternal(T4CPreparedStatement.java:1384)
-	at oracle.jdbc.driver.OraclePreparedStatement.execute(OraclePreparedStatement.java:3752)
-	at oracle.jdbc.driver.OraclePreparedStatementWrapper.execute(OraclePreparedStatementWrapper.java:1079)
-	at org.apache.commons.dbcp.DelegatingPreparedStatement.execute(DelegatingPreparedStatement.java:172)
-	at org.apache.commons.dbcp.DelegatingPreparedStatement.execute(DelegatingPreparedStatement.java:172)
-	at net.sf.log4jdbc.PreparedStatementSpy.execute(PreparedStatementSpy.java:418)
-	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:64)
-	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79)
-	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63)
-	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:325)
-	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
-	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:136)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:76)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
-	at com.sun.proxy.$Proxy9.selectOne(Unknown Source)
-	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:160)
-	at com.gs.levelup.employee.model.dao.EmployeeDao.selectMember(EmployeeDao.java:28)
-	at com.gs.levelup.employee.model.service.EmployeeServiceImpl.selectEmployee(EmployeeServiceImpl.java:31)
-	at com.gs.levelup.employee.model.service.EmployeeServiceImpl$$FastClassBySpringCGLIB$$591c6d4d.invoke(<generated>)
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
-	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123)
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388)
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
-	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
-	at com.gs.levelup.employee.model.service.EmployeeServiceImpl$$EnhancerBySpringCGLIB$$773153bc.selectEmployee(<generated>)
-	at com.gs.levelup.employee.controller.EmployeeController.loginMethod(EmployeeController.java:64)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
-	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:673)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-Caused by: Error : 933, Position : 48, Sql = select * from employee where EMPLOYEE_NAME = :1 ;, OriginalSql = select * from employee where EMPLOYEE_NAME = ?;, Error Msg = ORA-00933: SQL 명령어가 올바르게 종료되지 않았습니다
-
-	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:498)
-	... 94 more
-[18:38:57][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[18:38:58][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 794 ms
-[18:38:58][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[18:38:58][INFO ][FrameworkServlet.java: 547] - Completed initialization in 868 ms
-[18:39:09][ERROR][Slf4jSpyLogDelegator.java: 120] - 1. PreparedStatement.execute() select * from employee where EMPLOYEE_NAME = '김화범';
-java.sql.SQLSyntaxErrorException: ORA-00933: SQL 명령어가 올바르게 종료되지 않았습니다
-
-	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:494)
-	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:446)
-	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1052)
-	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:537)
-	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:255)
-	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:610)
-	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:253)
-	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:86)
-	at oracle.jdbc.driver.T4CPreparedStatement.executeForDescribe(T4CPreparedStatement.java:765)
-	at oracle.jdbc.driver.OracleStatement.executeMaybeDescribe(OracleStatement.java:921)
-	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1099)
-	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:3640)
-	at oracle.jdbc.driver.T4CPreparedStatement.executeInternal(T4CPreparedStatement.java:1384)
-	at oracle.jdbc.driver.OraclePreparedStatement.execute(OraclePreparedStatement.java:3752)
-	at oracle.jdbc.driver.OraclePreparedStatementWrapper.execute(OraclePreparedStatementWrapper.java:1079)
-	at org.apache.commons.dbcp.DelegatingPreparedStatement.execute(DelegatingPreparedStatement.java:172)
-	at org.apache.commons.dbcp.DelegatingPreparedStatement.execute(DelegatingPreparedStatement.java:172)
-	at net.sf.log4jdbc.PreparedStatementSpy.execute(PreparedStatementSpy.java:418)
-	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:64)
-	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79)
-	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63)
-	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:325)
-	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
-	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:136)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:76)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
-	at com.sun.proxy.$Proxy9.selectOne(Unknown Source)
-	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:160)
-	at com.gs.levelup.employee.model.dao.EmployeeDao.selectMember(EmployeeDao.java:28)
-	at com.gs.levelup.employee.model.service.EmployeeServiceImpl.selectEmployee(EmployeeServiceImpl.java:31)
-	at com.gs.levelup.employee.model.service.EmployeeServiceImpl$$FastClassBySpringCGLIB$$591c6d4d.invoke(<generated>)
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
-	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123)
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388)
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
-	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
-	at com.gs.levelup.employee.model.service.EmployeeServiceImpl$$EnhancerBySpringCGLIB$$a359d349.selectEmployee(<generated>)
-	at com.gs.levelup.employee.controller.EmployeeController.loginMethod(EmployeeController.java:64)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
-	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:673)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-Caused by: Error : 933, Position : 48, Sql = select * from employee where EMPLOYEE_NAME = :1 ;, OriginalSql = select * from employee where EMPLOYEE_NAME = ?;, Error Msg = ORA-00933: SQL 명령어가 올바르게 종료되지 않았습니다
-
-	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:498)
-	... 94 more
-[18:39:09][ERROR][Slf4jSpyLogDelegator.java: 139] - 1. PreparedStatement.execute() FAILED! select * from employee where EMPLOYEE_NAME = '김화범'; {FAILED after 7 msec}
-java.sql.SQLSyntaxErrorException: ORA-00933: SQL 명령어가 올바르게 종료되지 않았습니다
-
-	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:494)
-	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:446)
-	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1052)
-	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:537)
-	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:255)
-	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:610)
-	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:253)
-	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:86)
-	at oracle.jdbc.driver.T4CPreparedStatement.executeForDescribe(T4CPreparedStatement.java:765)
-	at oracle.jdbc.driver.OracleStatement.executeMaybeDescribe(OracleStatement.java:921)
-	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1099)
-	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:3640)
-	at oracle.jdbc.driver.T4CPreparedStatement.executeInternal(T4CPreparedStatement.java:1384)
-	at oracle.jdbc.driver.OraclePreparedStatement.execute(OraclePreparedStatement.java:3752)
-	at oracle.jdbc.driver.OraclePreparedStatementWrapper.execute(OraclePreparedStatementWrapper.java:1079)
-	at org.apache.commons.dbcp.DelegatingPreparedStatement.execute(DelegatingPreparedStatement.java:172)
-	at org.apache.commons.dbcp.DelegatingPreparedStatement.execute(DelegatingPreparedStatement.java:172)
-	at net.sf.log4jdbc.PreparedStatementSpy.execute(PreparedStatementSpy.java:418)
-	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:64)
-	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79)
-	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63)
-	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:325)
-	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
-	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:136)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:76)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
-	at com.sun.proxy.$Proxy9.selectOne(Unknown Source)
-	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:160)
-	at com.gs.levelup.employee.model.dao.EmployeeDao.selectMember(EmployeeDao.java:28)
-	at com.gs.levelup.employee.model.service.EmployeeServiceImpl.selectEmployee(EmployeeServiceImpl.java:31)
-	at com.gs.levelup.employee.model.service.EmployeeServiceImpl$$FastClassBySpringCGLIB$$591c6d4d.invoke(<generated>)
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
-	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123)
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388)
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
-	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
-	at com.gs.levelup.employee.model.service.EmployeeServiceImpl$$EnhancerBySpringCGLIB$$a359d349.selectEmployee(<generated>)
-	at com.gs.levelup.employee.controller.EmployeeController.loginMethod(EmployeeController.java:64)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
-	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:673)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-Caused by: Error : 933, Position : 48, Sql = select * from employee where EMPLOYEE_NAME = :1 ;, OriginalSql = select * from employee where EMPLOYEE_NAME = ?;, Error Msg = ORA-00933: SQL 명령어가 올바르게 종료되지 않았습니다
-
-	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:498)
-	... 94 more
-[18:39:31][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[18:39:31][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 814 ms
-[18:39:31][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[18:39:32][INFO ][FrameworkServlet.java: 547] - Completed initialization in 844 ms
-[18:39:37][ERROR][Slf4jSpyLogDelegator.java: 120] - 1. PreparedStatement.execute() select * from employee where EMPLOYEE_NAME = '김화범';
-java.sql.SQLSyntaxErrorException: ORA-00933: SQL 명령어가 올바르게 종료되지 않았습니다
-
-	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:494)
-	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:446)
-	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1052)
-	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:537)
-	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:255)
-	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:610)
-	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:253)
-	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:86)
-	at oracle.jdbc.driver.T4CPreparedStatement.executeForDescribe(T4CPreparedStatement.java:765)
-	at oracle.jdbc.driver.OracleStatement.executeMaybeDescribe(OracleStatement.java:921)
-	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1099)
-	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:3640)
-	at oracle.jdbc.driver.T4CPreparedStatement.executeInternal(T4CPreparedStatement.java:1384)
-	at oracle.jdbc.driver.OraclePreparedStatement.execute(OraclePreparedStatement.java:3752)
-	at oracle.jdbc.driver.OraclePreparedStatementWrapper.execute(OraclePreparedStatementWrapper.java:1079)
-	at org.apache.commons.dbcp.DelegatingPreparedStatement.execute(DelegatingPreparedStatement.java:172)
-	at org.apache.commons.dbcp.DelegatingPreparedStatement.execute(DelegatingPreparedStatement.java:172)
-	at net.sf.log4jdbc.PreparedStatementSpy.execute(PreparedStatementSpy.java:418)
-	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:64)
-	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79)
-	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63)
-	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:325)
-	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
-	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:136)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:76)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
-	at com.sun.proxy.$Proxy9.selectOne(Unknown Source)
-	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:160)
-	at com.gs.levelup.employee.model.dao.EmployeeDao.selectMember(EmployeeDao.java:28)
-	at com.gs.levelup.employee.model.service.EmployeeServiceImpl.selectEmployee(EmployeeServiceImpl.java:31)
-	at com.gs.levelup.employee.model.service.EmployeeServiceImpl$$FastClassBySpringCGLIB$$591c6d4d.invoke(<generated>)
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
-	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123)
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388)
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
-	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
-	at com.gs.levelup.employee.model.service.EmployeeServiceImpl$$EnhancerBySpringCGLIB$$a359d349.selectEmployee(<generated>)
-	at com.gs.levelup.employee.controller.EmployeeController.loginMethod(EmployeeController.java:64)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
-	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:673)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-Caused by: Error : 933, Position : 48, Sql = select * from employee where EMPLOYEE_NAME = :1 ;, OriginalSql = select * from employee where EMPLOYEE_NAME = ?;, Error Msg = ORA-00933: SQL 명령어가 올바르게 종료되지 않았습니다
-
-	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:498)
-	... 94 more
-[18:39:37][ERROR][Slf4jSpyLogDelegator.java: 139] - 1. PreparedStatement.execute() FAILED! select * from employee where EMPLOYEE_NAME = '김화범'; {FAILED after 7 msec}
-java.sql.SQLSyntaxErrorException: ORA-00933: SQL 명령어가 올바르게 종료되지 않았습니다
-
-	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:494)
-	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:446)
-	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1052)
-	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:537)
-	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:255)
-	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:610)
-	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:253)
-	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:86)
-	at oracle.jdbc.driver.T4CPreparedStatement.executeForDescribe(T4CPreparedStatement.java:765)
-	at oracle.jdbc.driver.OracleStatement.executeMaybeDescribe(OracleStatement.java:921)
-	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1099)
-	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:3640)
-	at oracle.jdbc.driver.T4CPreparedStatement.executeInternal(T4CPreparedStatement.java:1384)
-	at oracle.jdbc.driver.OraclePreparedStatement.execute(OraclePreparedStatement.java:3752)
-	at oracle.jdbc.driver.OraclePreparedStatementWrapper.execute(OraclePreparedStatementWrapper.java:1079)
-	at org.apache.commons.dbcp.DelegatingPreparedStatement.execute(DelegatingPreparedStatement.java:172)
-	at org.apache.commons.dbcp.DelegatingPreparedStatement.execute(DelegatingPreparedStatement.java:172)
-	at net.sf.log4jdbc.PreparedStatementSpy.execute(PreparedStatementSpy.java:418)
-	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:64)
-	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79)
-	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63)
-	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:325)
-	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
-	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:136)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:76)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
-	at com.sun.proxy.$Proxy9.selectOne(Unknown Source)
-	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:160)
-	at com.gs.levelup.employee.model.dao.EmployeeDao.selectMember(EmployeeDao.java:28)
-	at com.gs.levelup.employee.model.service.EmployeeServiceImpl.selectEmployee(EmployeeServiceImpl.java:31)
-	at com.gs.levelup.employee.model.service.EmployeeServiceImpl$$FastClassBySpringCGLIB$$591c6d4d.invoke(<generated>)
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
-	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123)
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388)
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
-	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
-	at com.gs.levelup.employee.model.service.EmployeeServiceImpl$$EnhancerBySpringCGLIB$$a359d349.selectEmployee(<generated>)
-	at com.gs.levelup.employee.controller.EmployeeController.loginMethod(EmployeeController.java:64)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
-	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:673)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-Caused by: Error : 933, Position : 48, Sql = select * from employee where EMPLOYEE_NAME = :1 ;, OriginalSql = select * from employee where EMPLOYEE_NAME = ?;, Error Msg = ORA-00933: SQL 명령어가 올바르게 종료되지 않았습니다
-
-	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:498)
-	... 94 more
-[18:40:16][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[18:40:17][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 792 ms
-[18:40:17][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[18:40:18][INFO ][FrameworkServlet.java: 547] - Completed initialization in 888 ms
-[18:40:27][ERROR][Slf4jSpyLogDelegator.java: 120] - 1. PreparedStatement.execute() select * from employee where EMPLOYEE_NAME = '김화범';
-java.sql.SQLSyntaxErrorException: ORA-00933: SQL 명령어가 올바르게 종료되지 않았습니다
-
-	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:494)
-	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:446)
-	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1052)
-	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:537)
-	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:255)
-	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:610)
-	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:253)
-	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:86)
-	at oracle.jdbc.driver.T4CPreparedStatement.executeForDescribe(T4CPreparedStatement.java:765)
-	at oracle.jdbc.driver.OracleStatement.executeMaybeDescribe(OracleStatement.java:921)
-	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1099)
-	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:3640)
-	at oracle.jdbc.driver.T4CPreparedStatement.executeInternal(T4CPreparedStatement.java:1384)
-	at oracle.jdbc.driver.OraclePreparedStatement.execute(OraclePreparedStatement.java:3752)
-	at oracle.jdbc.driver.OraclePreparedStatementWrapper.execute(OraclePreparedStatementWrapper.java:1079)
-	at org.apache.commons.dbcp.DelegatingPreparedStatement.execute(DelegatingPreparedStatement.java:172)
-	at org.apache.commons.dbcp.DelegatingPreparedStatement.execute(DelegatingPreparedStatement.java:172)
-	at net.sf.log4jdbc.PreparedStatementSpy.execute(PreparedStatementSpy.java:418)
-	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:64)
-	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79)
-	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63)
-	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:325)
-	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
-	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:136)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:76)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
-	at com.sun.proxy.$Proxy9.selectOne(Unknown Source)
-	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:160)
-	at com.gs.levelup.employee.model.dao.EmployeeDao.selectMember(EmployeeDao.java:28)
-	at com.gs.levelup.employee.model.service.EmployeeServiceImpl.selectEmployee(EmployeeServiceImpl.java:31)
-	at com.gs.levelup.employee.model.service.EmployeeServiceImpl$$FastClassBySpringCGLIB$$591c6d4d.invoke(<generated>)
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
-	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123)
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388)
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
-	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
-	at com.gs.levelup.employee.model.service.EmployeeServiceImpl$$EnhancerBySpringCGLIB$$a359d349.selectEmployee(<generated>)
-	at com.gs.levelup.employee.controller.EmployeeController.loginMethod(EmployeeController.java:64)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
-	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:673)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-Caused by: Error : 933, Position : 48, Sql = select * from employee where EMPLOYEE_NAME = :1 ;, OriginalSql = select * from employee where EMPLOYEE_NAME = ?;, Error Msg = ORA-00933: SQL 명령어가 올바르게 종료되지 않았습니다
-
-	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:498)
-	... 94 more
-[18:40:27][ERROR][Slf4jSpyLogDelegator.java: 139] - 1. PreparedStatement.execute() FAILED! select * from employee where EMPLOYEE_NAME = '김화범'; {FAILED after 9 msec}
-java.sql.SQLSyntaxErrorException: ORA-00933: SQL 명령어가 올바르게 종료되지 않았습니다
-
-	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:494)
-	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:446)
-	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1052)
-	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:537)
-	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:255)
-	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:610)
-	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:253)
-	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:86)
-	at oracle.jdbc.driver.T4CPreparedStatement.executeForDescribe(T4CPreparedStatement.java:765)
-	at oracle.jdbc.driver.OracleStatement.executeMaybeDescribe(OracleStatement.java:921)
-	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1099)
-	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:3640)
-	at oracle.jdbc.driver.T4CPreparedStatement.executeInternal(T4CPreparedStatement.java:1384)
-	at oracle.jdbc.driver.OraclePreparedStatement.execute(OraclePreparedStatement.java:3752)
-	at oracle.jdbc.driver.OraclePreparedStatementWrapper.execute(OraclePreparedStatementWrapper.java:1079)
-	at org.apache.commons.dbcp.DelegatingPreparedStatement.execute(DelegatingPreparedStatement.java:172)
-	at org.apache.commons.dbcp.DelegatingPreparedStatement.execute(DelegatingPreparedStatement.java:172)
-	at net.sf.log4jdbc.PreparedStatementSpy.execute(PreparedStatementSpy.java:418)
-	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:64)
-	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79)
-	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63)
-	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:325)
-	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
-	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:136)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:76)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
-	at com.sun.proxy.$Proxy9.selectOne(Unknown Source)
-	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:160)
-	at com.gs.levelup.employee.model.dao.EmployeeDao.selectMember(EmployeeDao.java:28)
-	at com.gs.levelup.employee.model.service.EmployeeServiceImpl.selectEmployee(EmployeeServiceImpl.java:31)
-	at com.gs.levelup.employee.model.service.EmployeeServiceImpl$$FastClassBySpringCGLIB$$591c6d4d.invoke(<generated>)
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
-	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123)
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388)
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
-	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
-	at com.gs.levelup.employee.model.service.EmployeeServiceImpl$$EnhancerBySpringCGLIB$$a359d349.selectEmployee(<generated>)
-	at com.gs.levelup.employee.controller.EmployeeController.loginMethod(EmployeeController.java:64)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
-	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:673)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-Caused by: Error : 933, Position : 48, Sql = select * from employee where EMPLOYEE_NAME = :1 ;, OriginalSql = select * from employee where EMPLOYEE_NAME = ?;, Error Msg = ORA-00933: SQL 명령어가 올바르게 종료되지 않았습니다
-
-	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:498)
-	... 94 more
-[18:44:26][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[18:44:27][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 770 ms
-[18:44:27][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[18:44:28][INFO ][FrameworkServlet.java: 547] - Completed initialization in 846 ms
-[18:46:03][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[18:46:04][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 824 ms
-[18:46:04][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[18:46:05][INFO ][FrameworkServlet.java: 547] - Completed initialization in 846 ms
-[18:46:15][INFO ][EmployeeController.java: 58] - null 1111
-[18:47:08][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[18:47:09][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 802 ms
-[18:47:09][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[18:47:10][INFO ][FrameworkServlet.java: 547] - Completed initialization in 875 ms
-[18:47:19][INFO ][EmployeeController.java: 58] - 김화범 1111
-[18:51:03][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[18:51:03][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 776 ms
-[18:51:03][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[18:51:04][INFO ][FrameworkServlet.java: 547] - Completed initialization in 902 ms
-[18:51:15][INFO ][EmployeeController.java: 58] - 김화범 1111
-[18:52:38][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[18:52:39][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 804 ms
-[18:52:39][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[18:52:40][INFO ][FrameworkServlet.java: 547] - Completed initialization in 914 ms
-[18:52:46][INFO ][EmployeeController.java: 58] - 김화범 1111
-[18:53:51][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[18:53:52][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 824 ms
-[18:53:52][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[18:53:53][INFO ][FrameworkServlet.java: 547] - Completed initialization in 876 ms
-[18:53:59][INFO ][EmployeeController.java: 58] - 김화범 1111
+Caused by: org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name 'pickLogService' for bean class [com.gs.levelup.picklog.model.service.PickLogServiceImpl] conflicts with existing, non-compatible bean definition of same name and class [com.gs.levelup.loginlog.model.service.LoginLogServiceImpl]
+	at org.springframework.context.annotation.ClassPathBeanDefinitionScanner.checkCandidate(ClassPathBeanDefinitionScanner.java:349)
+	at org.springframework.context.annotation.ClassPathBeanDefinitionScanner.doScan(ClassPathBeanDefinitionScanner.java:287)
+	at org.springframework.context.annotation.ComponentScanBeanDefinitionParser.parse(ComponentScanBeanDefinitionParser.java:90)
+	at org.springframework.beans.factory.xml.NamespaceHandlerSupport.parse(NamespaceHandlerSupport.java:74)
+	at org.springframework.beans.factory.xml.BeanDefinitionParserDelegate.parseCustomElement(BeanDefinitionParserDelegate.java:1391)
+	at org.springframework.beans.factory.xml.BeanDefinitionParserDelegate.parseCustomElement(BeanDefinitionParserDelegate.java:1371)
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.parseBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:179)
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.doRegisterBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:149)
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.registerBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:96)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.registerBeanDefinitions(XmlBeanDefinitionReader.java:511)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadBeanDefinitions(XmlBeanDefinitionReader.java:391)
+	... 50 more
+[16:08:43][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[16:08:44][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 671 ms
+[16:08:44][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[16:08:44][INFO ][FrameworkServlet.java: 547] - Completed initialization in 552 ms
+[16:08:48][WARN ][DispatcherServlet.java: 1278] - No mapping for GET /levelup/main.do
+[16:08:49][WARN ][DispatcherServlet.java: 1278] - No mapping for GET /levelup/main.do
+[16:08:50][WARN ][DispatcherServlet.java: 1278] - No mapping for GET /levelup/main.do
+[16:08:50][WARN ][DispatcherServlet.java: 1278] - No mapping for GET /levelup/main.do
+[16:08:50][WARN ][DispatcherServlet.java: 1278] - No mapping for GET /levelup/main.do
+[16:08:51][WARN ][DispatcherServlet.java: 1278] - No mapping for GET /levelup/main.do
+[16:08:51][WARN ][DispatcherServlet.java: 1278] - No mapping for GET /levelup/main.do
+[16:24:58][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[16:24:58][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 757 ms
+[16:24:58][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[16:24:59][INFO ][FrameworkServlet.java: 547] - Completed initialization in 861 ms

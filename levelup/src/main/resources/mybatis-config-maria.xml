@@ -24,15 +24,14 @@
 		<typeAlias type="com.gs.levelup.loginlog.model.vo.LoginLog" alias="LoginLog" />
 		<typeAlias type="com.gs.levelup.inventory.model.vo.Inventory" alias="Inventory" />
 		<typeAlias type="com.gs.levelup.picklog.model.vo.PickLog" alias="PickLog" />
-		
-		 		
 	</typeAliases>
 
 	<mappers>
 		<!-- 존재하지 않는 파일을 등록하면 톰캣 구동 안됨 -->
 		<!-- 클래스들은 java 폴더가 base -->
-		<mapper resource="mappers/mariadb/test-mapper.xml" />
 		<mapper resource="mappers/mariadb/user-mapper.xml" />
 		<mapper resource="mappers/mariadb/log-mapper.xml" />
+		<mapper resource="mappers/mariadb/character-mapper.xml" />
+		<mapper resource="mappers/mariadb/inventory-mapper.xml" />
 	</mappers>
 </configuration>

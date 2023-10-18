@@ -14,7 +14,13 @@
 		<!-- 존재하지 않는 클래스를 등록하면 톰캣 구동 안됨 
 		vo 클래스의 줄임말을 등록. mapper.xlm 에서 줄임말 쓰기 위한 용도 -->
  		<typeAlias type="com.gs.levelup.employee.model.vo.Employee" alias="Employee" />
+
+ 		<typeAlias type="com.gs.levelup.notice.model.vo.Notice" alias="Notice" />
+
  		<typeAlias type="com.gs.levelup.inquiry.model.vo.Inquiry" alias="Inquiry" />
+ 		
+ 		<typeAlias type="com.gs.levelup.item.model.vo.Item" alias="Item" />
+
  		<typeAlias type="com.gs.levelup.common.FileDownload" alias="FileDownload" />
  		<typeAlias type="com.gs.levelup.common.FileNameChange" alias="FileNameChange" />
  		<typeAlias type="com.gs.levelup.common.Paging" alias="Paging" />
@@ -26,7 +32,13 @@
 		<!-- 존재하지 않는 파일을 등록하면 톰캣 구동 안됨 -->
 		<!-- 클래스들은 java 폴더가 base -->
 		<mapper resource="mappers/oracle/employee-mapper.xml" />
+
+		<mapper resource="mappers/oracle/notice-mapper.xml" />
+
 		<mapper resource="mappers/oracle/inquiry-mapper.xml" />
+		
+		<mapper resource="mappers/oracle/item-mapper.xml" />
+
 <!-- 		<mapper resource="mappers/mariadb/test-mapper.xml" /> -->
 	</mappers>
 </configuration>

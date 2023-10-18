@@ -13,18 +13,16 @@ public class CharacterDao {
 	private org.mybatis.spring.SqlSessionTemplate sqlSessionTemplateMaria;
 
 	public ArrayList<Character> selectCharacters(int accountId) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Character> list = sqlSessionTemplateMaria.selectList("charMapper.selectCharacters", accountId);
+		return (ArrayList<Character>) list;
 	}
 
-	public Character selectCharacter(int accountId, int charId) {
-		// TODO Auto-generated method stub
-		return null;
+	public com.gs.levelup.character.model.vo.Character selectCharacter(int charId) {
+		return sqlSessionTemplateMaria.selectOne("charMapper.selectCharacter", charId);
 	}
 
 	public ArrayList<Character> selectAll() {
-		List<Character> list = sqlSessionTemplateMaria.selectList("mariatest.selectAll");
+		List<Character> list = sqlSessionTemplateMaria.selectList("charMapper.selectAll");
 		return (ArrayList<Character>)list;
 	}
-
 }

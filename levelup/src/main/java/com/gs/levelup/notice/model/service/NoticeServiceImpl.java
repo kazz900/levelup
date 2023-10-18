@@ -21,8 +21,8 @@ public class NoticeServiceImpl implements NoticeService{
 		return noticeDao.selectList(paging);
 	}
 	@Override
-	public Notice selectOne(int noticeNo) {
-		return noticeDao.selectOne(noticeNo);
+	public Notice selectOne(String noticeId) {
+		return noticeDao.selectOne(noticeId);
 	}
 	@Override
 	public int insertNotice(Notice notice) {
@@ -33,8 +33,8 @@ public class NoticeServiceImpl implements NoticeService{
 		return noticeDao.updateNotice(notice);
 	}
 	@Override
-	public int deleteNotice(int noticeNo) {
-		return noticeDao.deleteNotice(noticeNo);
+	public int deleteNotice(String noticeId) {
+		return noticeDao.deleteNotice(noticeId);
 	}
 	@Override
 	public int selectListCount() {
@@ -65,7 +65,7 @@ public class NoticeServiceImpl implements NoticeService{
 		return noticeDao.selectSearchDate(search);
 	}
 	@Override
-	public void updateReadCount(int noticeNo) {
-	
+	public void updateReadCount(String noticeId) {
+		noticeDao.updateReadCount(noticeId);
 	}
 }
