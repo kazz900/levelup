@@ -9,11 +9,10 @@ import com.gs.levelup.notice.model.vo.Notice;
 import com.gs.levelup.schedule.model.vo.Schedule;
 
 public interface ScheduleService {
-	public ArrayList<Schedule> selectScheduleList(Paging paging);
-	public ArrayList<Schedule> selectTeamScheduleList(Paging paging);
-	public ArrayList<Schedule> selectDeptScheduleList(Paging paging);
-	public ArrayList<Schedule> selectMyScheduleList(Paging paging);
-	public ArrayList<Schedule> selectWeeklyScheduleList(Paging paging);
+	public ArrayList<Schedule> selectScheduleList();
+	public ArrayList<Schedule> selectTeamScheduleList(String teamId);
+	public ArrayList<Schedule> selectDeptScheduleList(String departmentId);
+	public ArrayList<Schedule> selectMyScheduleList(String employeeId);
 	public Schedule selectSchedule(int noticeNo);
 	public int insertSchedule(Schedule schedule);
 	public int updateSchedule(Schedule schedule);

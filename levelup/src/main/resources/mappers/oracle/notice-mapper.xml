@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="noticeMapper">
+
+	<resultMap type="Notice" id="resultNotice">
+		<result column="NOTICE_ID" property="noticeId" />
+		<result column="EMPLOYEE_ID" property="employeeId" />
+		<result column="DEPARTMENT_ID" property="departmentId" />
+		<result column="TEAM_ID" property="teamId" />
+		<result column="NOTICE_TITLE" property="noticeTitle" />
+		<result column="NOTICE_CONTENT" property="noticeContent" />
+		<result column="EDIT_DATE" property="editDate" />
+		<result column="ATTACHEMENT_FILENAME" property="attachementFilename" />
+		<result column="READ_COUNT" property="readCount" />
+		<result column="RENAME_FILENAME" property="renameFilename" />
+	</resultMap>
+	
+	
+	<select id="selectList" parameterType="Paging" resultMap="resultNotice">
+		select * from (select rownum rnum, NOTICE_ID, EMPLOYEE_ID, DEPARTMENT_ID, 
+				            TEAM_ID, NOTICE_TITLE, NOTICE_CONTENT, EDIT_DATE, 
+				            ATTACHEMENT_FILENAME, READ_COUNT, RENAME_FILENAME
+				      from (select * from notice 
+				            order by EDIT_DATE desc, NOTICE_ID desc)
+				     ) 
+		 where rnum between #{ startRow } and #{ endRow }
+	</select>
+
+	<select id="selectOne" parameterType="string" resultMap="resultNotice">
+		select * from notice where NOTICE_ID = #{ noticeId }
+	</select>	
+	
+	<select id="getListCount" resultType="_int">
+		select count(*) from notice
+	</select>
+	
+	<select id="getSearchTitleCount" parameterType="string" resultType="_int">
+		select count(*) from notice where NOTICE_TITLE like '%' || #{ keyword } || '%'
+	</select>
+	
+	<select id="getSearchContentCount" parameterType="string" resultType="_int">
+		select count(*) from notice where NOTICE_CONTENT like '%' || #{ keyword } || '%'
+	</select>
+	
+	<select id="getSearchDateCount" parameterType="SearchDate" resultType="_int">
+		select count(*) from notice where EDIT_DATE between #{ begin } and #{ end }
+	</select>
+	
+	<select id="selectSearchTitle" parameterType="Search" resultMap="resultNotice">
+		select * 
+		from (select rownum rnum, NOTICE_ID, EMPLOYEE_ID, DEPARTMENT_ID, 
+		            TEAM_ID, NOTICE_TITLE, NOTICE_CONTENT, EDIT_DATE, 
+		            ATTACHEMENT_FILENAME, READ_COUNT, RENAME_FILENAME 
+		      from (select * from notice 
+		           where NOTICE_TITLE like '%' || #{ keyword } || '%' 
+		           order by EDIT_DATE desc)
+		     ) 
+		where rnum between #{ startRow } and #{ endRow }
+	</select>
+	
+	<select id="selectSearchContent" parameterType="Search" resultMap="resultNotice">
+		select * 
+		from (select rownum rnum, NOTICE_ID, EMPLOYEE_ID, DEPARTMENT_ID, 
+		            TEAM_ID, NOTICE_TITLE, NOTICE_CONTENT, EDIT_DATE, 
+		            ATTACHEMENT_FILENAME, READ_COUNT, RENAME_FILENAME 
+		      from (select * from notice 
+		           where NOTICE_CONTENT like '%' || #{ keyword } || '%' 
+		           order by EDIT_DATE desc)
+		     ) 
+		where rnum between #{ startRow } and #{ endRow }
+	</select>
+	
+	<select id="selectSearchDate" parameterType="Search" resultMap="resultNotice">
+		select * 
+		from (select rownum rnum, NOTICE_ID, EMPLOYEE_ID, DEPARTMENT_ID, 
+		            TEAM_ID, NOTICE_TITLE, NOTICE_CONTENT, EDIT_DATE, 
+		            ATTACHEMENT_FILENAME, READ_COUNT, RENAME_FILENAME 
+		      from (select * from notice 
+		           where EDIT_DATE between #{ begin } and #{ end } 
+		           order by EDIT_DATE desc)
+		     ) 
+		where rnum between #{ startRow } and #{ endRow }
+	</select>
+	
+	<update id="addReadCount" parameterType="string">
+		update notice 
+		set READ_COUNT = READ_COUNT + 1 
+		where NOTICE_ID = #{ noticeId }
+	</update>
+	
+	<insert id="insertNotice" parameterType="Notice">
+		insert into notice 
+		values (default, 
+				#{employeeId}, #{departmentId}, #{teamId}, #{noticeTitle}, 
+				#{noticeContent}, sysdate, #{attachementFilename}, default, #{renameFilename})
+	</insert>
+	
+	<update id="updateNotice" parameterType="Notice">
+    update notice 
+    set EMPLOYEE_ID = #{employeeId}, 
+        NOTICE_TITLE = #{noticeTitle},  
+        NOTICE_CONTENT = #{noticeContent}, 
+        EDIT_DATE = sysdate
+    <if test="attachementFilename == null">
+        , ATTACHEMENT_FILENAME = null, 
+        RENAME_FILENAME = null
+    </if>
+    <if test="attachementFilename != null">
+        , ATTACHEMENT_FILENAME = #{attachementFilename}, 
+        RENAME_FILENAME = #{renameFilename}
+    </if>
+    where NOTICE_ID = #{noticeId}
+	</update>
+
+	
+	<delete id="deleteNotice" parameterType="string">
+		delete from notice where NOTICE_ID = #{ noticeId }
+	</delete>
+	
+</mapper>
+
+
+
+
+
