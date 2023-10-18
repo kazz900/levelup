@@ -58,8 +58,9 @@
                           <h1 class="card-title mb-5" align="center">새 기안 작성 (아이템 변경)</h1>                         
                           
                           <form id="newcaseform" class="outer-repeater" method="post">
-                                <div data-repeater-list="outer-group" class="outer">
-                                  <div data-repeater-item="" class="outer">
+                            <input type="hidden" name="employeeId" value="${ sessionScope.loginEmployee.employeeId }">
+							<input type="hidden" name="employeeName" value="${ sessionScope.loginEmployee.employeeName }">
+          
                                   
                                   
                                   
@@ -72,43 +73,27 @@
                                       </div>
                                       
                                    
-                                      
-                                      
-                             <!-- 기안 승인자 목록 -->
+         
+                             <!-- 결재자 -->
 
-                                  <label class="col-form-label col-lg-1">결재 라인</label>
-									
-									<div class="inner-repeater mb-4">
-                                            <div data-repeater-list="inner-group" class="inner form-group mb-0 row">                                               
-                                                <div data-repeater-item="" class="inner col-lg-11 ms-md-auto">
-                                                    <div class="mb-3 row align-items-center">
-                                                        <div class="col-md-6">
-                                                             <select class="form-select">
-		                                                   <option>Select</option>
-		                                                   <option>Large select</option>
-		                                                   <option>Small select</option>
-                                               			 </select>
-                                                        </div>                                                       
-                                                        <div class="col-md-2">
-                                                            <div class="mt-2 mt-md-0 d-grid">
-                                                                <input data-repeater-delete="" type="button" class="btn btn-primary inner" value="Delete">
-                                                            </div>
-                                                        </div>
-                                                        
-                                                    </div>
-                                                </div>
+									<div class="mb-3 row">
+                                            <label class="col-md-1 col-form-label">결재 라인</label>
+                                            <div class="col-md-4">
+                                                <select class="form-select">
+                                                <c:if test="${ !empty requestScope.list }">
+													<c:forEach items="${ requestScope.list }" var="e">
+	                                                    <option>Select</option>
+	                                                    <option>Large select</option>
+	                                                    <option>Small select</option>
+                                                    </c:forEach>
+                                                </c:if>
+                                                </select>
                                             </div>
-                                            <div class="row justify-content-end">
-                                                <div class="col-lg-10">
-                                                    <input data-repeater-create="" type="button" class="btn btn-success inner" value="결재 라인 추가">
-                                                </div>
-                                            </div>
-                                        </div>
-									
+                                     </div>
+                                   
 	
                                    
-                                      
-                                      
+                          
                                       
                                       
                             <!-- 기안 내용 -->        
@@ -136,42 +121,30 @@
         
 
 									
-							<!-- 현재 유저 아이템 정보 -->
+							<!-- 현재  아이템 정보 -->
 							
-                                    <label for="currentItems" class="col-form-label col-lg-3">변경 대상 아이템</label>
+							 <label for="currentItems" class="col-form-label col-lg-3">변경 할 아이템</label>
                                     <div id="currentItems">
-                                   			<div class="row" >
+                                   		<div class="row" >
                                      		<div class="mb-3 col-lg-2"> 아이템 ID </div>        
                                             <div class="mb-3 col-lg-2"> 아이템 고유번호  </div>         
                                             <div class="mb-3 col-lg-2">  수량 </div>   
-                                            </div>    
+                                        </div>    
+                                
+                                		<div class="row">	
+	                                        <div class="mb-3 col-lg-2">
+	                                            <input type="text" id="itemId" name="group-a[0][untyped-input]" class="form-control">
+	                                        </div>        
+	                                        <div class="mb-3 col-lg-2">                                                      
+	                                            <input type="text" id="itemGui" class="form-control">
+	                                        </div>        
+	                                        <div class="mb-3 col-lg-2">                                                      
+	                                            <input type="text" id="amount" class="form-control">
+	                                        </div> 
+                                     	</div>
                                             
-		                                                                                               
-												<div class="inner-repeater mb-4">
-	                                            <div data-repeater-list="group-a">
-                                                <div data-repeater-item="" class="row">
-                                                    <div class="mb-3 col-lg-2">
-                                                        <input type="text" id="itemId" name="group-a[0][untyped-input]" class="form-control">
-                                                    </div>        
-                                                    <div class="mb-3 col-lg-2">                                                      
-                                                        <input type="text" id="itemGui" class="form-control">
-                                                    </div>        
-                                                    <div class="mb-3 col-lg-2">                                                      
-                                                        <input type="text" id="amount" class="form-control">
-                                                    </div>        
-                                                    <div class="mb-3 col-lg-2 align-self-center">
-                                                        <div class="d-grid">
-                                                            <input data-repeater-delete="" type="button" class="btn btn-primary" value="Delete">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                
-                                            </div>
-                                            <input data-repeater-create="" type="button" class="btn btn-success mt-3 mt-lg-0" value="Add">
-                                         </div>
-                   
-									</div>
-                            
+                                    </div>        
+							
                             
                             
                               <!-- 변경할 아이템 수량 -->     
@@ -179,56 +152,39 @@
                               
                                     <label for="currentItems" class="col-form-label col-lg-3">변경 할 아이템</label>
                                     <div id="currentItems">
-                                   			<div class="row" >
+                                   		<div class="row" >
                                      		<div class="mb-3 col-lg-2"> 아이템 ID </div>        
                                             <div class="mb-3 col-lg-2"> 아이템 고유번호  </div>         
                                             <div class="mb-3 col-lg-2">  수량 </div>   
-                                            </div>    
+                                        </div>    
+                                
+                                		<div class="row">	
+	                                        <div class="mb-3 col-lg-2">
+	                                            <input type="text" id="itemId" name="group-a[0][untyped-input]" class="form-control">
+	                                        </div>        
+	                                        <div class="mb-3 col-lg-2">                                                      
+	                                            <input type="text" id="itemGui" class="form-control">
+	                                        </div>        
+	                                        <div class="mb-3 col-lg-2">                                                      
+	                                            <input type="text" id="amount" class="form-control">
+	                                        </div> 
+                                     	</div>
                                             
-		                                                                                               
-												<div class="inner-repeater mb-4">
-	                                            <div data-repeater-list="group-a">
-                                                <div data-repeater-item="" class="row">
-                                                    <div class="mb-3 col-lg-2">
-                                                        <input type="text" id="itemId" name="group-a[0][untyped-input]" class="form-control">
-                                                    </div>        
-                                                    <div class="mb-3 col-lg-2">                                                      
-                                                        <input type="text" id="itemGui" class="form-control">
-                                                    </div>        
-                                                    <div class="mb-3 col-lg-2">                                                      
-                                                        <input type="text" id="amount" class="form-control">
-                                                    </div>        
-                                                    <div class="mb-3 col-lg-2 align-self-center">
-                                                        <div class="d-grid">
-                                                            <input data-repeater-delete="" type="button" class="btn btn-primary" value="Delete">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                
-                                            </div>
-                                            <input data-repeater-create="" type="button" class="btn btn-success mt-3 mt-lg-0" value="Add">
-                                         </div>
-                   
-									</div>
+                                    </div>        
+                          						
+											
+											
+											
 
-
-                                      
-                                      
-                                      
-                                      
-                                      
-             
-                       		 </div>	
-                       		</div> <!-- reapeat -->
-                          </form>
-                          
-                        
-                          
                           <div class="row justify-content-end">
                               <div class="col-lg-10">
-                                  <button type="submit" class="btn btn-primary">Create Task</button>
+                                  <button type="submit" class="btn btn-primary">작성 완료</button>
                               </div>
                           </div>
+                  
+                          </form>
+                          
+                          
 
                       </div>
                   </div>
@@ -259,10 +215,6 @@
 <!-- init js -->
 <script src="resources/js/pages/form-editor.init.js"></script>
 
-<!-- form repeater js -->
-<script src="resources/libs/jquery.repeater/jquery.repeater.min.js"></script>
-<script src="resources/js/pages/task-create.init.js"></script>
-<script src="resources/js/app.js"></script>
 
 <!-- Plugins js -->
 <script src="resources/libs/dropzone/min/dropzone.min.js"></script>
