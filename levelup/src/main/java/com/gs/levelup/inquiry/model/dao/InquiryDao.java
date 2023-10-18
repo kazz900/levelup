@@ -45,6 +45,9 @@ public class InquiryDao {
 	public int updateInquiryAnswer(Inquiry inquiry) {
 		// TODO Auto-generated method stub
 		return 0;
+
+	public int updateInquiryAnswer(Inquiry inquiry) {	
+		return sqlSessionTemplate.update("inquiryMapper.updateInquiryAnswer", inquiry);
 	}
 
 	public int deleteInquiryAnswer(String inquiryId) {
@@ -94,6 +97,11 @@ public class InquiryDao {
 	
 	public ArrayList<Inquiry> selectSearchTitle(Search search) {
 		List<Inquiry> list = sqlSessionTemplate.selectList("inquiryMapper.selectSearchTitle", search);
+		return (ArrayList<Inquiry>) list;
+	}
+
+	public ArrayList<Inquiry> selectUserPreviousInquiry(String userId) {
+		List<Inquiry> list = sqlSessionTemplate.selectList("inquiryMapper.selectUserPreviousInquiry", userId);
 		return (ArrayList<Inquiry>) list;
 	}
 }

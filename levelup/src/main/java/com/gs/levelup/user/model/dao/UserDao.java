@@ -47,4 +47,15 @@ public class UserDao {
 		return null;
 	}
 
+	public User selectOneSearchAccountId(Search search) {
+		return sqlSessionTemplateMaria.selectOne("userMapper.selectOneSearchAccountId", search);
+	}
+
+	public User selectOneSearchUserId(Search search) {
+		return sqlSessionTemplateMaria.selectOne("userMapper.selectOneSearchUserId", search);
+	}
+
+	public User selectOneSearchEmail(Search search) {
+		return sqlSessionTemplateMaria.selectOne("userMapper.selectOneSearchEmail", search);
+	}
 }

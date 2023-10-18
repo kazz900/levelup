@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.gs.levelup.character.model.service.CharacterService;
 import com.gs.levelup.common.FileNameChange;
 import com.gs.levelup.common.Paging;
 import com.gs.levelup.common.Search;
@@ -38,6 +40,9 @@ public class UserController {
 	
 	@Autowired
 	private InquiryService inquiryService;
+	
+	@Autowired
+	private CharacterService characterService;
 
 	@RequestMapping("ulogin.do")
 	public String moveUserLogin() {
@@ -251,6 +256,7 @@ public class UserController {
 
 	}
 	
+
 	@RequestMapping(value = "helptype1.do", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView helptype1Method(@RequestParam(name = "limit", required = false) String slimit,
 			@RequestParam(name = "page", required = false) String page, 
@@ -415,12 +421,110 @@ public class UserController {
 	}
 
 
+
+	// 관리자용 : 회원검색 페이지 이동 처리용
+	@RequestMapping(value = "moveusearch.do", method = RequestMethod.GET)
+	public String userSearchMethod(@RequestParam(name="user", required=false) User user,
+								@RequestParam(name="list", required=false) ArrayList<Character> list, 
+								Model model) {
+		
+		// 검색결과가 존재할 경우
+		if (user != null) {
+			model.addAttribute("user", user);
+			// 검색한 유저에게 캐릭터가 존재할 경우
+			if (list.size() > 0 ) {
+				model.addAttribute("list", list);
+			}
+		}
+		
+		return "empuser/userSearchView";
+	}
+	
+
 	// 관리자용 : 회원검색 처리용 메소드
 	@RequestMapping(value = "usearch.do", method = RequestMethod.POST)
-	public ModelAndView userSearchMethod(HttpServletRequest request, ModelAndView mv) {
+	public String selectSearchMethod(@RequestParam("action") String action,
+			@RequestParam("keyword") String keyword,
+			Model model, RedirectAttributes re) {
+
+		if (action.equals("accound_id")) {
+			re.addAttribute("keyword", keyword);
+			return "redirect:usearchaccountid.do";
+		} else if (action.equals("userid")) {
+			re.addAttribute("keyword", keyword);
+			return "redirect:usearchuserid.do";
+		} else if (action.equals("email")) {
+			re.addAttribute("keyword", keyword);
+			return "redirect:usearchemail.do";
+		} else {
+			model.addAttribute("message1", "검색 실패!");
+			return "empuser/userSearchView";
+		}
+	}
+	
+	@RequestMapping(value = "usearchaccountid.do", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView selectSearchAccountIdMethod(@RequestParam("keyword") String keyword, ModelAndView mv) {
+		// MyBatis sql query에 필요한 Search Object 생성 및 Keyword 설정
+		Search search = new Search();
+		search.setKeyword(keyword.trim());
+		
+		// 서비스 메소드 호출하고 리턴결과 받기
+		User user = userService.selectOneSearchAccountId(search);
+
+		// 받은 결과에 따라 성공/실패 페이지 내보내기
+		if (user != null) {
+			mv.addObject("user", user);
+
+			// 유저가 검색 되었을 때만 캐릭터를 검색함
+			ArrayList<Character> list = characterService.selectCharacters(user.getAccountId());
+			
+			// 검색된 유저가 캐릭터를 가지고 있을경우
+			if (list != null && list.size() > 0) {
+				mv.addObject("list", list);				
+			} else {
+				// 검색된 유저가 캐릭터를 가지고 있지 않을 경우
+				mv.addObject("message2", "해당 유저는 캐릭터가 없습니다");
+			}
+		}else {
+			mv.addObject("message1", keyword + "로 검색된 유저가 없습니다");
+		}
+		
+		mv.setViewName("empuser/userSearchView");
 		return mv;
 	}
 	
+	@RequestMapping(value = "usearchuserid.do", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView selectSearchUserIdMethod(@RequestParam("keyword") String keyword, ModelAndView mv) {
+		// MyBatis sql query에 필요한 Search Object 생성 및 Keyword 설정
+		Search search = new Search();
+		search.setKeyword(keyword.trim());
+		
+		// 서비스 메소드 호출하고 리턴결과 받기
+		User user = userService.selectOneSearchUserId(search);
+
+		// 받은 결과에 따라 성공/실패 페이지 내보내기
+		if (user != null) {
+			mv.addObject("user", user);
+
+			// 유저가 검색 되었을 때만 캐릭터를 검색함
+			ArrayList<Character> list = characterService.selectCharacters(user.getAccountId());
+			
+			// 검색된 유저가 캐릭터를 가지고 있을경우
+			if (list != null && list.size() > 0) {
+				mv.addObject("list", list);				
+			} else {
+				// 검색된 유저가 캐릭터를 가지고 있지 않을 경우
+				mv.addObject("message2", "해당 유저는 캐릭터가 없습니다");
+			}
+		}else {
+			mv.addObject("message1", keyword + "로 검색된 유저가 없습니다");
+		}
+		
+		mv.setViewName("empuser/userSearchView");
+		return mv;
+	}
+	
+
 	@RequestMapping(value="uidetail.do", method=RequestMethod.GET)
 	public ModelAndView moveInquiryDetailMethod(
 									@RequestParam("iid") String inquiryId,
@@ -450,4 +554,35 @@ public class UserController {
 		return mv;
 	}
 
+	@RequestMapping(value = "usearchemail.do", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView selectSearchEmailMethod(@RequestParam("keyword") String keyword, ModelAndView mv) {
+		// MyBatis sql query에 필요한 Search Object 생성 및 Keyword 설정
+		Search search = new Search();
+		search.setKeyword(keyword.trim());
+		
+		// 서비스 메소드 호출하고 리턴결과 받기
+		User user = userService.selectOneSearchEmail(search);
+
+
+		// 받은 결과에 따라 성공/실패 페이지 내보내기
+		if (user != null) {
+			mv.addObject("user", user);
+
+			// 유저가 검색 되었을 때만 캐릭터를 검색함
+			ArrayList<Character> list = characterService.selectCharacters(user.getAccountId());
+			
+			// 검색된 유저가 캐릭터를 가지고 있을경우
+			if (list != null && list.size() > 0) {
+				mv.addObject("list", list);				
+			} else {
+				// 검색된 유저가 캐릭터를 가지고 있지 않을 경우
+				mv.addObject("message2", "해당 유저는 캐릭터가 없습니다");
+			}
+		}else {
+			mv.addObject("message1", keyword + "로 검색된 유저가 없습니다");
+		}
+		
+		mv.setViewName("empuser/userSearchView");
+		return mv;
+	}
 }

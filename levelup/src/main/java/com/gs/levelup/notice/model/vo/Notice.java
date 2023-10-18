@@ -18,6 +18,7 @@ public class Notice implements java.io.Serializable {
 	private String noticeContent;
 	private Date editDate;
 	private String attachementFilename;
+	private String renameFilename;
 	private int readCount;
 	
 	public Notice() {}
@@ -42,6 +43,14 @@ public class Notice implements java.io.Serializable {
 
 	public void setNoticeId(String noticeId) {
 		this.noticeId = noticeId;
+	}
+
+	public String getRenameFilename() {
+		return renameFilename;
+	}
+
+	public void setRenameFilename(String renameFilename) {
+		this.renameFilename = renameFilename;
 	}
 
 	public String getEmployeeId() {
@@ -112,9 +121,13 @@ public class Notice implements java.io.Serializable {
 	public String toString() {
 		return "Notice [noticeId=" + noticeId + ", employeeId=" + employeeId + ", departmentId=" + departmentId
 				+ ", teamId=" + teamId + ", noticeTitle=" + noticeTitle + ", noticeContent=" + noticeContent
-				+ ", editDate=" + editDate + ", attachementFilename=" + attachementFilename + ", readCount=" + readCount
-				+ "]";
+				+ ", editDate=" + editDate + ", attachementFilename=" + attachementFilename + ", renameFilename="
+				+ renameFilename + ", readCount=" + readCount + "]";
 	}
+
+	
 	
 	
 }
+
+

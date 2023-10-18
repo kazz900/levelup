@@ -12,7 +12,7 @@
 					<!-- Left Menu Start -->
 					<ul class="metismenu list-unstyled" id="side-menu">
 						<li class="menu-title" key="t-menu">Menu</li>
-
+						<!-- 고객센터 -->
 						<li>
 							<a href="javascript: void(0);" class="has-arrow waves-effect">
 								<i class="bx bx-home-circle"></i>
@@ -20,16 +20,13 @@
 							</a>
 							<ul class="sub-menu" aria-expanded="false">
 								<li><a href="${pageContext.servletContext.contextPath}/ilist.do" key="t-default">유저 문의</a></li>
-								<li><a href="#" key="t-default">유저 검색</a></li>
+								<li><a href="${pageContext.servletContext.contextPath}/moveusearch.do" key="t-default">유저 검색</a></li>
 								<li><a href="#" key="t-default">기안 목록</a></li>
 								<li><a href="ulist.do" key="t-default">유저 목록</a></li>
 								<li><a href="ulogin.do" key="t-default">유저 로그인</a></li>
 								<li><a href="listChar.do" key="t-default">게임캐럭터 목록</a></li>
 								<li><a href="getLogs.do" key="t-default">캐럭터 게임로그 출력</a></li>
-
 								<li><a href="movepaylist.do" key="t-default">Payment List</a></li>
-								
-
 							</ul>
 						</li>
 						
@@ -57,6 +54,19 @@
 								<li><a href="movecomdetail.do" key="t-default">DetailView</a></li>
 								<li><a href="#" key="t-default">일정수정</a></li>
 								<li><a href="#" key="t-default">일정삭제</a></li>
+							</ul>
+						</li>	
+						
+						<li>
+							<a href="javascript: void(0);" class="has-arrow waves-effect">
+								<i class="fas fa-skull"></i>
+								<span key="t-dashboards">공지사항</span>
+							</a>
+							<ul class="sub-menu" aria-expanded="false">
+								<li><a href="nlist.do" key="t-default">공지사항</a></li>
+								<li><a href="ndetail.do" key="t-default">DetailView</a></li>
+								<li><a href="#" key="t-default">공지사항 수정</a></li>
+								<li><a href="#" key="t-default">공지사항 삭제</a></li>
 							</ul>
 						</li>	
 
