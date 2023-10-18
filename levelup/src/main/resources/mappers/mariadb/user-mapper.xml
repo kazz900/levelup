@@ -11,6 +11,7 @@
 		<result column="email" property="email"/>
 		<result column="logincount" property="logincount"/>
 		<result column="lastlogin" property="lastlogin"/>
+		<result column="last_ip" property="lastIp"/>
 	</resultMap>
 	
 	<select id="selectListCount" resultType="_int">
@@ -19,8 +20,20 @@
 	<select id="selectList" resultMap="resultUser">
 		select * from evol.login
 	</select>
+	
 	<select id="selectLogin" parameterType="User" resultMap="resultUser">
 		select * from evol.login where userid = #{userId} and user_pass = #{userPass}
 	</select>
-		
+	
+	<select id="selectOneSearchAccountId" parameterType="Search" resultMap="resultUser">
+		SELECT * FROM evol.login WHERE evol.login.account_id = #{keyword}
+	</select>
+	
+	<select id="selectOneSearchUserId" parameterType="Search" resultMap="resultUser">
+		SELECT * FROM evol.login WHERE evol.login.userid = #{keyword}
+	</select>
+	
+	<select id="selectOneSearchEmail" parameterType="Search" resultMap="resultUser">
+		SELECT * FROM evol.login WHERE evol.login.email = #{keyword}
+	</select>
 </mapper>
