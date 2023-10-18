@@ -14,9 +14,8 @@ testsuccess
 <br>
 <p>${ sessionScope.loginUser.userId }</p>
 <br>
-<p>Item Name: ${ item_name }</p>
+<p>Item id: ${ requestScope.item.itemId }</p>
 <br>
-<p>Item price : ${ item_price }</p>
 <c:import url="/WEB-INF/views/user/userFooter.jsp"/>
 </body>
 </html>
