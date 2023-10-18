@@ -48,6 +48,4 @@
 	<select id="selectInventory" resultMap="resultInventory">
 		select * from evol.inventory where char_id = #{charId}
 	</select>
-	
-		
 </mapper>
