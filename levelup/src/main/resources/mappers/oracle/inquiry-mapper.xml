@@ -19,6 +19,7 @@
 		<result property="inquiryType" column="INQUIRY_TYPE" />
 		<result property="inquiryRef" column="INQUIRY_REF" />
 		<result property="answerRef" column="ASNWER_REF" />
+		<result property="employeeName" column="EMP_NAME" />
 	</resultMap>
 
 	<resultMap id="resultList" type="Inquiry">
@@ -36,6 +37,7 @@
 		<result property="inquiryType" column="INQUIRY_TYPE" />
 		<result property="inquiryRef" column="INQUIRY_REF" />
 		<result property="answerRef" column="ASNWER_REF" />
+		<result property="employeeName" column="EMP_NAME" />
 	</resultMap>
 
 	<select id="selectList" parameterType="Paging"
@@ -154,8 +156,10 @@
 		set ANSWER_STATUS = 'Y',
 		ANSWER_DATE = SYSDATE,
 		ANSWER_CONTENT = #{ answerContent },
-		EMPLOYEE_ID = #{ employeeId }
+		EMPLOYEE_ID = #{ employeeId },
+		EMP_NAME = #{ employeeName }
 		where INQUIRY_ID = #{ inquiryId }
+		
 	</update>
 
 	

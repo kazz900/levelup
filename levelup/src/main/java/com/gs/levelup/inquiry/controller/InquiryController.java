@@ -140,6 +140,7 @@ public class InquiryController {
 	public String updateInquiryAnswerMethod(Inquiry inquiry, Model model, 
 											HttpServletRequest request,
 											@RequestParam("employeeId") String employeeId,
+											@RequestParam("employeeName") String employeeName,
 											@RequestParam("inquiryId") String inquiryId,
 											@RequestParam("userId") String userId,
 											@RequestParam("page") String page) {
@@ -163,11 +164,11 @@ public class InquiryController {
 	//문의글 디테일 뷰 / 답변 수정 페이지로 이동 컨트롤러
 	@RequestMapping("ansfixview.do")
 	public ModelAndView moveAnswerFixView(@RequestParam("employeeId") String employeeId,
+										@RequestParam("employeeName") String employeeName,
 										@RequestParam("inquiryId") String inquiryId,
 										@RequestParam("userId") String userId,
 										@RequestParam("page") String page,
 										ModelAndView mv) {
-		
 		//출력할 페이지 
 			int currentPage = 1;
 			
