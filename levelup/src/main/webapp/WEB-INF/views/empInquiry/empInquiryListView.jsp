@@ -9,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css"
-	href="./resources/css/empInquiryListView.css">
+	href="./resources/css/empListView.css">
 <script type="text/javascript" src="/levelup/resources/js/jquery-3.7.0.min.js"></script>
 <script type="text/javascript">
 $(function(){
@@ -131,6 +131,7 @@ function showTypeDropdown(){
 									<c:param name="iid" value="${ requestScope.inquiry.inquiryId }" />
 									<c:param name="page" value="${ nowpage }" />
 								</c:url> --%>
+							<c:if test="${ !empty requestScope.list }">
 							<c:forEach items="${ requestScope.list }" var="i">
 								<tr>
 									<td data-th="Question Title"><a class="ititle"
@@ -155,6 +156,7 @@ function showTypeDropdown(){
 									</c:if>
 								</tr>
 							</c:forEach>
+							</c:if>
 						</tbody>
 					</table>
 							<c:if test="${ empty requestScope.list }">

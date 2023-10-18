@@ -15,6 +15,7 @@ public class User  implements java.io.Serializable{
 	private String email;
 	private int logincount;
 	private Date lastlogin;
+	private String lastIp;
 	
 	public User() {}
 
@@ -75,12 +76,20 @@ public class User  implements java.io.Serializable{
 	public void setLastlogin(Date lastlogin) {
 		this.lastlogin = lastlogin;
 	}
+	
+	
+
+	public String getLastIp() {
+		return lastIp;
+	}
+
+	public void setLastIp(String lastIp) {
+		this.lastIp = lastIp;
+	}
 
 	@Override
 	public String toString() {
 		return "User [accountId=" + accountId + ", userId=" + userId + ", userPass=" + userPass + ", email=" + email
-				+ ", logincount=" + logincount + ", lastlogin=" + lastlogin + "]";
+				+ ", logincount=" + logincount + ", lastlogin=" + lastlogin + ", lastIp=" + lastIp + "]";
 	}
-	
-	
 }
