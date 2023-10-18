@@ -99,7 +99,7 @@ public class CharacterController {
 			mv.addObject("char_", char_);
 
 			// 캐릭터가 검색 되었을 때만 캐릭터를 검색함
-			ArrayList<Inventory> list = inventoryService.selectInventory(Integer.parseInt(keyword));
+			ArrayList<Inventory> list = inventoryService.selectUserInventory(Integer.parseInt(keyword));
 
 			// 검색된 유저가 아이템을 하나라도 가지고 있을경우
 			if (list != null && list.size() > 0) {

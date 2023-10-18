@@ -62,7 +62,7 @@
 								<c:if test="${ !empty user }">
 									<tr>
 										<!-- ACCOUNT ID COLUMN -->
-										<td data-th="Account ID">${ user.accountId }</a></td>
+										<td data-th="Account ID">${ user.accountId }</td>
 										<!-- USER ID COLUMN -->
 										<td data-th="User ID">${ user.userId }</td>
 										<!-- EMAIL COLUMN -->
@@ -103,7 +103,7 @@
 									<c:forEach items="${ requestScope.list }" var="c">
 										<tr>
 											<!-- Char ID COLUMN -->
-											<td data-th="Char ID">${ c.charId }</a></td>
+											<td data-th="Char ID">${ c.charId }</td>
 											<!-- Char Name COLUMN -->
 											<td data-th="Char Name">${ c.name }</td>
 											<!-- Level COLUMN -->
