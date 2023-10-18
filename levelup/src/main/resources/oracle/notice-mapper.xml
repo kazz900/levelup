@@ -26,8 +26,8 @@
 	    ) where rnum between #{startRow} and #{endRow}
 	</select>
 	
-	<select id="selectOne" parameterType="_int" resultMap="resultNotice">
-		select * from notice where noticeno = #{noticeno}
+	<select id="selectOne" parameterType="String" resultMap="resultNotice">
+		select * from notice where noticeId = #{noticeId}
 	</select>
 
 	<select id="selectNewTop3" resultMap="resultNotice">

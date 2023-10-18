@@ -134,7 +134,7 @@ function showTypeDropdown(){
 							<c:forEach items="${ requestScope.list }" var="i">
 								<tr>
 									<td data-th="Question Title"><a class="ititle"
-										href="/levelup/idetail.do?iid=${ i.inquiryId }&page=${ nowpage }">${ i.inquiryTitle }</a></td>
+										href="/levelup/idetail.do?iid=${ i.inquiryId }&page=${ nowpage }&userId=${ i.userId }">${ i.inquiryTitle }</a></td>
 									<td data-th="User ID">${ i.userId }</td>
 									<c:if test="${ i.inquiryType eq '1' }">
 										<td data-th="Type">환불문의</td>

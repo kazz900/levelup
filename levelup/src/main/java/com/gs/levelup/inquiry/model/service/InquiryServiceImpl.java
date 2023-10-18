@@ -43,11 +43,6 @@ public class InquiryServiceImpl implements InquiryService{
 	}
 	
 	@Override
-	public int updateInquiryAnswer(Inquiry inquiry) {
-		return inquiryDao.updateInquiryAnswer(inquiry);
-	}
-	
-	@Override
 	public int deleteInquiryAnswer(String inquiryId){
 		return inquiryDao.deleteInquiryAnswer(inquiryId);
 	}
@@ -100,6 +95,11 @@ public class InquiryServiceImpl implements InquiryService{
 	@Override
 	public int insertInquiry(Inquiry inquiry) {
 		return inquiryDao.insertInqury(inquiry);
+	}
+
+	@Override
+	public ArrayList<Inquiry> selectUserPreviousInquiry(String userId) {
+		return inquiryDao.selectUserPreviousInquiry(userId);
 	}
 
 }

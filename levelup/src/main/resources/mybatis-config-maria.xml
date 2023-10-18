@@ -24,8 +24,6 @@
 		<typeAlias type="com.gs.levelup.loginlog.model.vo.LoginLog" alias="LoginLog" />
 		<typeAlias type="com.gs.levelup.inventory.model.vo.Inventory" alias="Inventory" />
 		<typeAlias type="com.gs.levelup.picklog.model.vo.PickLog" alias="PickLog" />
-		
-		 		
 	</typeAliases>
 
 	<mappers>
