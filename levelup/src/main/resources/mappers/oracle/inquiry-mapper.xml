@@ -14,11 +14,8 @@
 		<result property="editDate" column="EDIT_DATE" />
 		<result property="answerDate" column="ANSWER_DATE" />
 		<result property="answerContent" column="ANSWER_CONTENT" />
-		<result property="attachmentFileName"
-			column="ATTACHEMENT_FILENAME" />
+		<result property="attachmentFileName" column="ATTACHEMENT_FILENAME" />
 		<result property="inquiryType" column="INQUIRY_TYPE" />
-		<result property="inquiryRef" column="INQUIRY_REF" />
-		<result property="answerRef" column="ASNWER_REF" />
 		<result property="employeeName" column="EMP_NAME" />
 	</resultMap>
 
@@ -32,11 +29,8 @@
 		<result property="editDate" column="EDIT_DATE" />
 		<result property="answerDate" column="ANSWER_DATE" />
 		<result property="answerContent" column="ANSWER_CONTENT" />
-		<result property="attachmentFileName"
-			column="ATTACHEMENT_FILENAME" />
+		<result property="attachmentFileName" column="ATTACHEMENT_FILENAME" />
 		<result property="inquiryType" column="INQUIRY_TYPE" />
-		<result property="inquiryRef" column="INQUIRY_REF" />
-		<result property="answerRef" column="ASNWER_REF" />
 		<result property="employeeName" column="EMP_NAME" />
 	</resultMap>
 
@@ -47,7 +41,7 @@
 		from (select rownum rnum, INQUIRY_ID, USERID, EMPLOYEE_ID, 
 				   INQUIRY_TITLE, INQUIRY_CONTENT, ANSWER_STATUS, 
 		           EDIT_DATE, ANSWER_DATE, ANSWER_CONTENT, ATTACHEMENT_FILENAME, 
-		           INQUIRY_TYPE, INQUIRY_REF, answer_REF
+		           INQUIRY_TYPE, EMP_NAME
 		      from (select * from INQUIRY 
 		           order by EDIT_DATE desc)) 
 		where rnum >= #{ startRow } and rnum <= #{ endRow }
@@ -55,24 +49,23 @@
 	</select>
 	
 	<select id="selectListType" parameterType="Paging" resultMap="resultInquiry">
-  <![CDATA[
-    SELECT *
-    FROM (SELECT rownum rnum, INQUIRY_ID, USERID, EMPLOYEE_ID,
-    		 INQUIRY_TITLE, INQUIRY_CONTENT, ANSWER_STATUS, 
-    		 EDIT_DATE, ANSWER_DATE, ANSWER_CONTENT, ATTACHEMENT_FILENAME,
-    		 INQUIRY_TYPE, INQUIRY_REF, ANSWER_REF
-     	 FROM (SELECT * FROM INQUIRY
-        WHERE INQUIRY_TYPE = #{keyword2}
-        ORDER BY EDIT_DATE DESC
-      )
-    )
-    WHERE rnum >= #{ startRow } and rnum <= #{ endRow }
-  ]]>
-</select>
+	  <![CDATA[
+	    SELECT *
+	    FROM (SELECT rownum rnum, INQUIRY_ID, USERID, EMPLOYEE_ID,
+	    		 INQUIRY_TITLE, INQUIRY_CONTENT, ANSWER_STATUS, 
+	    		 EDIT_DATE, ANSWER_DATE, ANSWER_CONTENT, ATTACHEMENT_FILENAME,
+	    		 INQUIRY_TYPE, EMP_NAME 
+	     	 FROM (SELECT * FROM INQUIRY
+	        WHERE INQUIRY_TYPE = #{keyword2}
+	        ORDER BY EDIT_DATE DESC
+	      )
+	    )
+	    WHERE rnum >= #{ startRow } and rnum <= #{ endRow }
+	  ]]>
+	</select>
 
 	<select id="selectListCount" resultType="_int">
-		select count(*) from
-		INQUIRY
+		select count(*) from INQUIRY
 	</select>
 	
 	<select id="selectListCountType" parameterType="_int" resultType="_int">
@@ -104,7 +97,7 @@
 		select *
 		from (select rownum rnum, INQUIRY_ID, USERID, EMPLOYEE_ID, INQUIRY_TITLE, INQUIRY_CONTENT, 
 				  ANSWER_STATUS, EDIT_DATE, ANSWER_DATE, ANSWER_CONTENT, ATTACHEMENT_FILENAME, INQUIRY_TYPE,
-				  INQUIRY_REF, answer_REF
+				  EMP_NAME
 			from (select * from INQUIRY 
 				 where USERID = #{ keyword } 
 				 order by EDIT_DATE DESC))
@@ -117,7 +110,7 @@
 		select *
 		from (select rownum rnum, INQUIRY_ID, USERID, EMPLOYEE_ID, INQUIRY_TITLE, INQUIRY_CONTENT, 
 				  ANSWER_STATUS, EDIT_DATE, ANSWER_DATE, ANSWER_CONTENT, ATTACHEMENT_FILENAME, INQUIRY_TYPE,
-				  INQUIRY_REF, answer_REF
+				  EMP_NAME
 			from (select * from INQUIRY 
 				 where INQUIRY_TYPE = #{ type }
 				 order by EDIT_DATE DESC))
@@ -128,7 +121,7 @@
 		select *
 		from (select rownum rnum, INQUIRY_ID, USERID, EMPLOYEE_ID, INQUIRY_TITLE, INQUIRY_CONTENT, 
 				  ANSWER_STATUS, EDIT_DATE, ANSWER_DATE, ANSWER_CONTENT, ATTACHEMENT_FILENAME, INQUIRY_TYPE,
-				  INQUIRY_REF, answer_REF
+				  EMP_NAME
 			from (select * from INQUIRY 
 				 where INQUIRY_TITLE like '%' || #{ keyword } || '%'
 				 order by EDIT_DATE DESC))
@@ -141,7 +134,7 @@
 		from (select rownum rnum, INQUIRY_ID, USERID, EMPLOYEE_ID, 
 		           INQUIRY_TITLE, INQUIRY_CONTENT, ANSWER_STATUS, 
 		           EDIT_DATE, ANSWER_DATE, 
-		           ANSWER_CONTENT, ATTACHEMENT_FILENAME, INQUIRY_TYPE, INQUIRY_REF, answer_REF
+		           ANSWER_CONTENT, ATTACHEMENT_FILENAME, INQUIRY_TYPE, EMP_NAME
 		      from (select * from INQUIRY 
 		            where EDIT_DATE between #{begin} and #{end} 
 		             order by EDIT_DATE desc)) 
@@ -187,6 +180,4 @@
 	<select id="selectInquiry" parameterType="string" resultMap="resultInquiry">
 		select * from INQUIRY where INQUIRY_ID = #{ inquiryId }
 	</select>
-	
-	
 </mapper>
