@@ -107,8 +107,8 @@ function moveUpdatePage(){
 				</div>
 
 
-				<!-- 해당 고객의 이전 문의 내역 -->
-
+				<!-- 이전 문의 내역 -->
+				
 				<div class="col-lg-4">
 					<div class="card">
 						<div class="card-body">
@@ -189,7 +189,8 @@ function moveUpdatePage(){
 					<div class="card">
 						<div class="card-body">	
 						<form action="iupdate.do" method="post">
-						<input type="hidden" name="inquiryId" value="${ param.iid }">
+						<input type="hidden" name="employeeId" value="${ requestScope.inquiry.employeeId }">
+						<input type="hidden" name="inquiryId" value="${ param.iid }"> 
 						<input type="hidden" name="userId" value="${ param.userId }">
 						<input type="hidden" name="page" value="${ param.page }">
 							<div class="d-flex">

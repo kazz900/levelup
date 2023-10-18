@@ -10,63 +10,62 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css"
 	href="./resources/css/empInquiryListView.css">
-<script type="text/javascript"
-	src="/levelup/resources/js/jquery-3.7.0.min.js"></script>
+<script type="text/javascript" src="/levelup/resources/js/jquery-3.7.0.min.js"></script>
 <script type="text/javascript">
-	$(function() {
-		$("#searchByTypeSelect").on('change', function() {
-			if ($(this).val() != 0) {
-				$("#searchSubmitButton").click()
-			}
-		});
+$(function(){
+	$("#searchByTypeSelect").on('change', function(){
+		if ($(this).val()!= 0){
+			$("#searchSubmitButton").click()
+		}
 	});
+});
 
-	function showDateBox() {
-		var dateBox = document.querySelector(".dateboxContainer");
-		var keywordInputbox = document.getElementById("keywordInputbox");
-		var typeDropdown = document.querySelector(".typeDropdownContainer");
-		dateBox.style.display = 'block';
+function showDateBox() {
+	var dateBox = document.querySelector(".dateboxContainer");
+	var keywordInputbox = document.getElementById("keywordInputbox");
+	var typeDropdown = document.querySelector(".typeDropdownContainer");
+	dateBox.style.display = 'block';	
+	
+	console.log(typeDropdown);
 
-		console.log(typeDropdown);
-
-		if (keywordInputbox.style.display != 'none') {
-			keywordInputbox.style.display = 'none';
-		}
-
-		if (typeDropdown.style.display != 'none') {
-			typeDropdown.style.display = 'none';
-		}
+	if (keywordInputbox.style.display != 'none'){
+		keywordInputbox.style.display = 'none';
 	}
-
-	function showSearchBox() {
-		var dateBox = document.querySelector(".dateboxContainer");
-		var keywordInputbox = document.getElementById("keywordInputbox");
-		var typeDropdown = document.querySelector(".typeDropdownContainer");
-		keywordInputbox.style.display = 'inline';
-
-		if (dateBox.style.display != 'none') {
-			dateBox.style.display = 'none';
-		}
-
-		if (typeDropdown.style.display != 'none') {
-			typeDropdown.style.display = 'none';
-		}
+	
+	if (typeDropdown.style.display != 'none'){
+		typeDropdown.style.display = 'none';
 	}
+}
 
-	function showTypeDropdown() {
-		var dateBox = document.querySelector(".dateboxContainer");
-		var keywordInputbox = document.getElementById("keywordInputbox");
-		var typeDropdown = document.querySelector(".typeDropdownContainer");
-		typeDropdown.style.display = 'inline';
+function showSearchBox() {
+	var dateBox = document.querySelector(".dateboxContainer");
+	var keywordInputbox = document.getElementById("keywordInputbox");
+	var typeDropdown = document.querySelector(".typeDropdownContainer");
+	keywordInputbox.style.display = 'inline';	
 
-		if (keywordInputbox.style.display != 'none') {
-			keywordInputbox.style.display = 'none';
-		}
-
-		if (dateBox.style.display != 'none') {
-			dateBox.style.display = 'none';
-		}
+	if (dateBox.style.display != 'none'){
+		dateBox.style.display = 'none';
 	}
+	
+	if (typeDropdown.style.display != 'none'){
+		typeDropdown.style.display = 'none';
+	}
+}
+
+function showTypeDropdown(){
+	var dateBox = document.querySelector(".dateboxContainer");
+	var keywordInputbox = document.getElementById("keywordInputbox");
+	var typeDropdown = document.querySelector(".typeDropdownContainer");
+	typeDropdown.style.display = 'inline';	
+
+	if (keywordInputbox.style.display != 'none'){
+		keywordInputbox.style.display = 'none';
+	}
+	
+	if (dateBox.style.display != 'none'){
+		dateBox.style.display = 'none';
+	}
+}
 </script>
 <!-- 타이틀 -->
 <c:import url="/WEB-INF/views/common/title-meta.jsp" />
@@ -97,17 +96,12 @@
 					<form action="isearch.do">
 						<div class="container">
 							<div class="inputs">
-								<input type="radio" name="action" value="writer"
-									onclick="showSearchBox();"><label>유저ID</label> <input
-									type="radio" name="action" value="title"
-									onclick="showSearchBox();"><label>제목</label> <input
-									type="radio" name="action" value="date"
-									onclick="showDateBox();"><label>날짜</label> <input
-									type="radio" name="action" value="type"
-									onclick="showTypeDropdown(); "><label>문의구분</label>
+								<input type="radio" name="action" value="writer" onclick="showSearchBox();"><label>유저ID</label>
+								<input type="radio" name="action" value="title" onclick="showSearchBox();"><label>제목</label>
+								<input type="radio" name="action" value="date" onclick="showDateBox();"><label>날짜</label>
+								<input type="radio" name="action" value="type" onclick="showTypeDropdown(); "><label>문의구분</label>
 								<div class="dateboxContainer">
-									<input type="date" class="searchDateInput" name="begin">
-									~ <input type="date" class="searchDateInput" name="end">
+									<input type="date" class="searchDateInput" name="begin"> ~ <input type="date" class="searchDateInput" name="end">
 								</div>
 								<div class="typeDropdownContainer">
 									<select id="searchByTypeSelect" name="type">
@@ -119,9 +113,7 @@
 								</div>
 								<input id="keywordInputbox" type="search" name="keyword">
 								<input id="searchSubmitButton" type="submit" value="SEARCH">
-								<input type="button"
-									onclick="javascript:location.href='${ pageContext.servletContext.contextPath }/ilist.do?page=${ nowpage }'"
-									value="RESET">
+								<input type="button" onclick="javascript:location.href='${ pageContext.servletContext.contextPath }/ilist.do?page=${ nowpage }'" value="RESET">
 							</div>
 						</div>
 					</form>
@@ -135,41 +127,39 @@
 								<th>Date</th>
 								<th>Status</th>
 							</tr>
-							<%-- <c:url var="idt" value="idetail.do">
+								<%-- <c:url var="idt" value="idetail.do">
 									<c:param name="iid" value="${ requestScope.inquiry.inquiryId }" />
 									<c:param name="page" value="${ nowpage }" />
 								</c:url> --%>
 							<c:forEach items="${ requestScope.list }" var="i">
-								<c:if test="${ empty i.answerRef }">
-									<tr>
-										<td data-th="Question Title"><a class="ititle"
-											href="/levelup/idetail.do?iid=${ i.inquiryId }&page=${ nowpage }&userId=${ i.userId }">${ i.inquiryTitle }</a></td>
-										<td data-th="User ID">${ i.userId }</td>
-										<c:if test="${ i.inquiryType eq '1' }">
-											<td data-th="Type">환불문의</td>
-										</c:if>
-										<c:if test="${ i.inquiryType eq '2' }">
-											<td data-th="Type">게임문의</td>
-										</c:if>
-										<c:if test="${ i.inquiryType eq '3' }">
-											<td data-th="Type">기타문의</td> 
+								<tr>
+									<td data-th="Question Title"><a class="ititle"
+										href="/levelup/idetail.do?iid=${ i.inquiryId }&page=${ nowpage }&userId=${ i.userId }">${ i.inquiryTitle }</a></td>
+									<td data-th="User ID">${ i.userId }</td>
+									<c:if test="${ i.inquiryType eq '1' }">
+										<td data-th="Type">환불문의</td>
 									</c:if>
-										<td data-th="Date"><fmt:formatDate
-												value="${ i.editDate }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-										<c:if test="${ i.answerStatus eq 'Y' }">
-											<td data-th="Answer"><span class="badge bg-success">답변완료</span></td>
-										</c:if>
-										<c:if test="${ i.answerStatus eq 'N' }">
-											<td data-th="Answer"><span class="badge bg-danger">미답변</span></td>
-										</c:if>
-									</tr>
-								</c:if>
+									<c:if test="${ i.inquiryType eq '2' }">
+										<td data-th="Type">게임문의</td>
+									</c:if>
+									<c:if test="${ i.inquiryType eq '3' }">
+										<td data-th="Type">기타문의</td>
+									</c:if>
+									<td data-th="Date"><fmt:formatDate value="${ i.editDate }"
+											pattern="yyyy-MM-dd HH:mm:ss" /></td>
+									<c:if test="${ i.answerStatus eq 'Y' }">
+										<td data-th="Answer"><span class="badge bg-success">답변완료</span></td>
+									</c:if>
+									<c:if test="${ i.answerStatus eq 'N' }">
+										<td data-th="Answer"><span class="badge bg-danger">미답변</span></td>
+									</c:if>
+								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
-					<c:if test="${ empty requestScope.list }">
-						<p>결과가 존재하지 않습니다.</p>
-					</c:if>
+							<c:if test="${ empty requestScope.list }">
+								<p>결과가 존재하지 않습니다.</p>
+							</c:if>
 
 					<br>
 

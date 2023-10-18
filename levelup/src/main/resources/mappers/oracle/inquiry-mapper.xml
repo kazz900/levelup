@@ -155,9 +155,7 @@
 		ANSWER_DATE = SYSDATE,
 		ANSWER_CONTENT = #{ answerContent }
 		where INQUIRY_ID = #{ inquiryId }
-	
 	</update>
-
 
 	
 	<select id="selectInquiry" parameterType="string" resultMap="resultInquiry">

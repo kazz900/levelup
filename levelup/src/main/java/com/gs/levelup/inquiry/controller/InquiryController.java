@@ -150,7 +150,7 @@ public class InquiryController {
 			//답변 달기 성공 시 상세 페이지로 이동
 			model.addAttribute("iid", inquiryId);
 			model.addAttribute("userId", userId);
-			model.addAttribute("page", page);
+			model.addAttribute("page", currentPage);
 			return "redirect:idetail.do";
 		}else {			
 			model.addAttribute("message", "답변 등록 실패");
