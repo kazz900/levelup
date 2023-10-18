@@ -42,10 +42,6 @@ public class InquiryDao {
 		return 0;
 	}
 
-	public int updateInquiryAnswer(Inquiry inquiry) {
-		// TODO Auto-generated method stub
-		return 0;
-
 	public int updateInquiryAnswer(Inquiry inquiry) {	
 		return sqlSessionTemplate.update("inquiryMapper.updateInquiryAnswer", inquiry);
 	}
