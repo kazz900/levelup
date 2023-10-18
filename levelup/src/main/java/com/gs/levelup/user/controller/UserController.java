@@ -70,6 +70,19 @@ public class UserController {
 		return "user/usercall";
 	}
 	
+	@RequestMapping("usertestpage1.do")
+	public String usertestpage1Method() {
+		return "user/usertestpage1";
+	}
+	
+	@RequestMapping(value="shopgobuy.do", method = RequestMethod.GET)
+    public String shopgobuymethod(@RequestParam("item_name") String itemName,
+    		@RequestParam("item_price") int price, Model model) {
+        model.addAttribute("item_name", itemName);
+        model.addAttribute("item_price", price);
+        return "user/shopgobuy";
+    }
+	
 	
 	@RequestMapping(value="uhelp.do", method=RequestMethod.GET)
 	public String userhelpPageMethod(@RequestParam(name="page", required=false) String page,
