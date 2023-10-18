@@ -15,16 +15,21 @@
 <!-- 헤드 스크립트 -->
 <c:import url="/WEB-INF/views/common/head-script.jsp" />
 
-<c:url var="imoveup" value="iupdate.do">
-	<c:param name="iid" value="${ requestScope.inquiry.inquiryId }" />
-	<c:param name="page" value="${ param.page }" />
+<c:url var="ansfix" value="ansfixview.do">
+	<c:param name="employeeId" value="${ sessionScope.loginEmployee.employeeId }" />
+	<c:param name="employeeName" value="${ sessionScope.loginEmployee.employeeName }" />
+	<c:param name="inquiryId" value="${ param.iid }" />
+	<c:param name="userId" value="${ param.userId }" />
+	<c:param name="page" value="${ param.page }" />	
 </c:url>
-
 <script type="text/javascript">
-function moveUpdatePage(){
-	location.href = "${ imoveup }";
+function golist(){
+	location.href = "${pageContext.servletContext.contextPath}/ilist.do?page=${ param.page }";
 }
 
+function moveAnsFixPage(){
+	location.href = "${ ansfix }";
+}
 
 </script>
 </head>
@@ -151,31 +156,17 @@ function moveUpdatePage(){
 									<h5 class="text-truncate font-size-15"> 답변 내용 : </h5>
 									<p class="text-muted">${ requestScope.inquiry.answerContent }</p>
 								</div>
-							</div>	
+							</div>
+								
 							<div class="text-muted mt-4">
-                                            <p><i class="mdi mdi-chevron-right text-primary me-1"></i> 사원 이름 : ${ requestScope.employee.employeeName }</p>
+                                            <p><i class="mdi mdi-chevron-right text-primary me-1"></i> 사원 이름 : ${ requestScope.inquiry.employeeName }</p>
                                             <p><i class="mdi mdi-chevron-right text-primary me-1"></i> 
                                             답변 날짜 : <fmt:formatDate value="${ requestScope.inquiry.answerDate }" pattern="yyyy-MM-dd" /></p>
                                             </div>
 							<div class="row task-dates">
 								<div class="col-sm-4 col-6">
-									<div class="mt-4">
-										<a href="javascript: void(0);" class="btn btn-primary btn-sm">수정하기</a>
-										
-									</div>
-								</div>
-
-								<div class="col-sm-4 col-6">
-									<div class="mt-4">
-										<a href="javascript: void(0);" class="btn btn-primary btn-sm">목록으로</a>
-										
-									</div>
-								</div>
-								<div class="col-sm-4 col-6">
-									<div class="mt-4">
-										<a href="javascript: void(0);" class="btn btn-primary btn-sm">기안작성</a>
-										
-									</div>
+									<button type="button" class="btn btn-primary" onclick="moveAnsFixPage();">수정하기</button> &nbsp;
+									<button type="button" class="btn btn-primary" onclick="golist();">목록으로</button>
 								</div>
 							</div>
 						</div>
@@ -190,6 +181,7 @@ function moveUpdatePage(){
 						<div class="card-body">	
 						<form action="iupdate.do" method="post">
 							<input type="hidden" name="employeeId" value="${ sessionScope.loginEmployee.employeeId }">
+							<input type="hidden" name="employeeName" value="${ sessionScope.loginEmployee.employeeName }">
 							<input type="hidden" name="inquiryId" value="${ param.iid }"> 
 							<input type="hidden" name="userId" value="${ param.userId }">
 							<input type="hidden" name="page" value="${ param.page }">
@@ -197,14 +189,14 @@ function moveUpdatePage(){
 								<div class="flex-grow-1 overflow-hidden">
 									<h5 class="text-truncate font-size-15"> 답변 내용 : </h5>
 									<div class="mb-3">
-                                           <textarea id="formmessage" name="answerContent" class="form-control" rows="3" placeholder="Enter Your Message"></textarea>
+                                           <textarea id="formmessage" name="answerContent" class="form-control" rows="3" placeholder="답변을 달아주세요"></textarea>
                                        </div>
 								</div>
 							</div>				
 							<div class="row task-dates">
 								<div class="col-sm-4 col-6">
 									<button type="submit" class="btn btn-primary" >답변작성</button> &nbsp;
-									<button type="button" class="btn btn-primary">목록으로</button>
+									<button type="button" class="btn btn-primary" onclick="golist();">목록으로</button>
 								</div>
 							</div>
 							</form>
