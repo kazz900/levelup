@@ -15,27 +15,17 @@
 <!-- 헤드 스크립트 -->
 <c:import url="/WEB-INF/views/common/head-script.jsp" />
 
-<c:url var="ansfix" value="ansfixview.do">
-	<c:param name="employeeId" value="${ sessionScope.loginEmployee.employeeId }" />
-	<c:param name="employeeName" value="${ sessionScope.loginEmployee.employeeName }" />
-	<c:param name="inquiryId" value="${ param.iid }" />
-	<c:param name="userId" value="${ param.userId }" />
-	<c:param name="page" value="${ param.page }" />	
-</c:url>
+
 <script type="text/javascript">
 function golist(){
 	location.href = "${pageContext.servletContext.contextPath}/ilist.do?page=${ param.page }";
-}
-
-function moveAnsFixPage(){
-	location.href = "${ ansfix }";
 }
 
 </script>
 </head>
 <style>
 .table-responsive {
-	overflow-y: auto;
+	overflow-y: auto; 
 	height: 200px;
 }
 
@@ -61,6 +51,8 @@ function moveAnsFixPage(){
 				<!-- 여기서부터 내용 작성 -->
 				<!-- 문의 분류,  문의제목 , 유저ID, 문의 날짜,-->
 				<!-- 문의 내용 -->
+				<!-- 답변 수정용 -->
+				
 
 				<div class="col-lg-8">
 					<div class="card">
@@ -82,7 +74,7 @@ function moveAnsFixPage(){
 										<h5 class="font-size-14">
 											<i class="bx bx-calendar me-1 text-primary"></i> 문의 날짜
 										</h5>
-										<p class="text-muted mb-0"><fmt:formatDate value="${ requestScope.inquiry.editDate }" pattern="yyyy-MM-dd HH:mm:ss" /></p>
+										<p class="text-muted mb-0">${ requestScope.inquiry.editDate }</p>
 									</div>
 								</div>
 
@@ -146,56 +138,27 @@ function moveAnsFixPage(){
 				
 				<div class="row">
 				
-				<!--  답변 내용  -->
-				<c:if test="${ requestScope.inquiry.answerStatus == 'Y' }">
-				<div class="col-lg-8">
-					<div class="card">
-						<div class="card-body">
-							<div class="d-flex">
-								<div class="flex-grow-1 overflow-hidden">
-									<h5 class="text-truncate font-size-15"> 답변 내용 : </h5>
-									<p class="text-muted">${ requestScope.inquiry.answerContent }</p>
-								</div>
-							</div>
-								
-							<div class="text-muted mt-4">
-                                            <p><i class="mdi mdi-chevron-right text-primary me-1"></i> 사원 이름 : ${ requestScope.inquiry.employeeName }</p>
-                                            <p><i class="mdi mdi-chevron-right text-primary me-1"></i> 
-                                            답변 날짜 : <fmt:formatDate value="${ requestScope.inquiry.answerDate }" pattern="yyyy-MM-dd HH:mm:ss" /></p>
-                                            </div>
-							<div class="row task-dates">
-								<div class="col-sm-4 col-6">
-									<button type="button" class="btn btn-primary" onclick="moveAnsFixPage();">수정하기</button> &nbsp;
-									<button type="button" class="btn btn-primary" onclick="golist();">목록으로</button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				</c:if>
-
-
-				<c:if test="${ requestScope.inquiry.answerStatus == 'N' }">
+				<!--  답변 수정하기  -->					
 				<div class="col-lg-8">
 					<div class="card">
 						<div class="card-body">	
 						<form action="iupdate.do" method="post">
 							<input type="hidden" name="employeeId" value="${ sessionScope.loginEmployee.employeeId }">
 							<input type="hidden" name="employeeName" value="${ sessionScope.loginEmployee.employeeName }">
-							<input type="hidden" name="inquiryId" value="${ param.iid }"> 
+							<input type="hidden" name="inquiryId" value="${ param.inquiryId }"> 
 							<input type="hidden" name="userId" value="${ param.userId }">
 							<input type="hidden" name="page" value="${ param.page }">
 							<div class="d-flex">
 								<div class="flex-grow-1 overflow-hidden">
 									<h5 class="text-truncate font-size-15"> 답변 내용 : </h5>
 									<div class="mb-3">
-                                           <textarea id="formmessage" name="answerContent" class="form-control" rows="3" placeholder="답변을 달아주세요"></textarea>
+                                           <textarea id="formmessage" name="answerContent" class="form-control" rows="3">${ requestScope.inquiry.answerContent }</textarea>
                                        </div>
 								</div>
 							</div>				
 							<div class="row task-dates">
 								<div class="col-sm-4 col-6">
-									<button type="submit" class="btn btn-primary" >답변작성</button> &nbsp;
+									<button type="submit" class="btn btn-primary" >수정완료</button> &nbsp;
 									<button type="button" class="btn btn-primary" onclick="golist();">목록으로</button>
 								</div>
 							</div>
@@ -203,7 +166,7 @@ function moveAnsFixPage(){
 							</div>
 						</div>
 					</div>				
-				</c:if>
+			
 				
 				
 				<!--  첨부 파일 목록 -->

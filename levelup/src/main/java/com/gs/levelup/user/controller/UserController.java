@@ -420,7 +420,7 @@ public class UserController {
 		return mv;
 	}
 
-
+	// ---------------------------------------------------------------
 
 	// 관리자용 : 회원검색 페이지 이동 처리용
 	@RequestMapping(value = "moveusearch.do", method = RequestMethod.GET)

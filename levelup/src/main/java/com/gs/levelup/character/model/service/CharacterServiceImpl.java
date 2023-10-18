@@ -18,7 +18,7 @@ public class CharacterServiceImpl implements CharacterService{
 	}
 
 	@Override
-	public Character selectCharacter(int charId) {
+	public com.gs.levelup.character.model.vo.Character selectCharacter(int charId) {
 		return characterDao.selectCharacter(charId);
 	}
 
