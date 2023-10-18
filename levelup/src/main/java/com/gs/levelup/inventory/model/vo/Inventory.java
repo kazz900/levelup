@@ -14,6 +14,10 @@ public class Inventory  implements java.io.Serializable{
 	private int equip;
 	private int identify;
 	private long uniqueId;
+	private String itemName;
+	private String itemType;
+	private int price;
+	private int gamePrice; 
 	
 	public Inventory() {}
 
@@ -82,6 +86,40 @@ public class Inventory  implements java.io.Serializable{
 
 	public void setUniqueId(long uniqueId) {
 		this.uniqueId = uniqueId;
+	}
+	
+	
+
+	public String getItemName() {
+		return itemName;
+	}
+
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
+
+	public String getItemType() {
+		return itemType;
+	}
+
+	public void setItemType(String itemType) {
+		this.itemType = itemType;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public int getGamePrice() {
+		return gamePrice;
+	}
+
+	public void setGamePrice(int gamePrice) {
+		this.gamePrice = gamePrice;
 	}
 
 	@Override

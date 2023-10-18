@@ -32,5 +32,6 @@
 		<mapper resource="mappers/mariadb/user-mapper.xml" />
 		<mapper resource="mappers/mariadb/log-mapper.xml" />
 		<mapper resource="mappers/mariadb/character-mapper.xml" />
+		<mapper resource="mappers/mariadb/inventory-mapper.xml" />
 	</mappers>
 </configuration>

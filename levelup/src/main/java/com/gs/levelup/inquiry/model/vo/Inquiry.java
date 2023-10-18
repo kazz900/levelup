@@ -132,7 +132,6 @@ public class Inquiry implements Serializable{
 		this.inquiryType = inquiryType;
 	}
 
-
 	public String getEmployeeName() {
 		return employeeName;
 	}
