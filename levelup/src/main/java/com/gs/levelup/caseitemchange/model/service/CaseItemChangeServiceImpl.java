@@ -38,9 +38,15 @@ public class CaseItemChangeServiceImpl implements CaseItemChangeService{
 	}
 
 	@Override
+	public ArrayList<CaseItemChange> selectEmpList() {
+		return cicDao.selectEmpList();
+	}
+	
+	@Override
 	public ArrayList<CaseItemChange> selectList() {
 		return cicDao.selectList();
 	}
+
 
 	@Override
 	public ArrayList<CaseItemChange> selectList(Paging paging) {

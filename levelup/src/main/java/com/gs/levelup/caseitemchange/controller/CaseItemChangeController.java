@@ -29,8 +29,6 @@ public class CaseItemChangeController {
 	@Autowired
 	private CaseItemChangeService cicService;
 	
-	@Autowired
-	private EmployeeService empService;
 	
 	@RequestMapping(value="changeitem.do", method = RequestMethod.GET)
 	public ModelAndView changeItemMethod(ModelAndView mv) {
@@ -40,9 +38,18 @@ public class CaseItemChangeController {
 	//기안 작성 페이지로 이동
 	
 	@RequestMapping("cicform.do")
-	public String moveCaseItemChangeWritePage(Employee employee, Model model) {
+	public String moveCaseItemChangeWritePage(Model model) {
 		
-		return "empCase/empNewCaseView";
+		ArrayList<CaseItemChange> list = cicService.selectEmpList();
+		
+		if (list != null && list.size() > 0) {
+			model.addAttribute("list", list);
+			
+			return "empCase/empNewCaseView";
+		}else {
+			model.addAttribute("message", "기안 작성 페이지 이동 실패");
+			return "common/error";
+		}
 		
 		
 	}
