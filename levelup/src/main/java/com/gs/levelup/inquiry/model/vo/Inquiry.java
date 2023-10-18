@@ -28,7 +28,7 @@ public class Inquiry implements Serializable{
 
 	public Inquiry(String inquiryId, String userId, String employeeId, String inquiryTitle, String inquiryContent,
 			String answerStatus, Date editDate, Date answerDate, String answerContent, String attachmentFileName,
-			String inquiryType, String inquiryRef, String answerRef) {
+			String inquiryType, String inquiryRef, String answerRef, String employeeName) {
 		super();
 		this.inquiryId = inquiryId;
 		this.userId = userId;
@@ -43,48 +43,12 @@ public class Inquiry implements Serializable{
 		this.inquiryType = inquiryType;
 		this.inquiryRef = inquiryRef;
 		this.answerRef = answerRef;
+		this.employeeName = employeeName;
 	}
-
-
-
-
-
-	public String getInquiryRef() {
-		return inquiryRef;
-	}
-
-
-
-
-
-	public void setInquiryRef(String inquiryRef) {
-		this.inquiryRef = inquiryRef;
-	}
-
-
-
-
-
-	public String getAnswerRef() {
-		return answerRef;
-	}
-
-
-
-
-
-	public void setAnswerRef(String answerRef) {
-		this.answerRef = answerRef;
-	}
-
-
-
-
 
 	public String getInquiryId() {
 		return inquiryId;
 	}
-
 
 	public void setInquiryId(String inquiryId) {
 		this.inquiryId = inquiryId;
@@ -94,99 +58,96 @@ public class Inquiry implements Serializable{
 		return userId;
 	}
 
-
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-
 
 	public String getEmployeeId() {
 		return employeeId;
 	}
 
-
 	public void setEmployeeId(String employeeId) {
 		this.employeeId = employeeId;
 	}
-
 
 	public String getInquiryTitle() {
 		return inquiryTitle;
 	}
 
-
 	public void setInquiryTitle(String inquiryTitle) {
 		this.inquiryTitle = inquiryTitle;
 	}
-
 
 	public String getInquiryContent() {
 		return inquiryContent;
 	}
 
-
 	public void setInquiryContent(String inquiryContent) {
 		this.inquiryContent = inquiryContent;
 	}
-
 
 	public String getAnswerStatus() {
 		return answerStatus;
 	}
 
-
 	public void setAnswerStatus(String answerStatus) {
 		this.answerStatus = answerStatus;
 	}
-
 
 	public Date getEditDate() {
 		return editDate;
 	}
 
-
 	public void setEditDate(Date editDate) {
 		this.editDate = editDate;
 	}
-
 
 	public Date getAnswerDate() {
 		return answerDate;
 	}
 
-
 	public void setAnswerDate(Date answerDate) {
 		this.answerDate = answerDate;
 	}
-
 
 	public String getAnswerContent() {
 		return answerContent;
 	}
 
-
 	public void setAnswerContent(String answerContent) {
 		this.answerContent = answerContent;
 	}
-
 
 	public String getAttachmentFileName() {
 		return attachmentFileName;
 	}
 
-
 	public void setAttachmentFileName(String attachmentFileName) {
 		this.attachmentFileName = attachmentFileName;
 	}
-
 
 	public String getInquiryType() {
 		return inquiryType;
 	}
 
-
 	public void setInquiryType(String inquiryType) {
 		this.inquiryType = inquiryType;
+	}
+
+	public String getInquiryRef() {
+		return inquiryRef;
+	}
+
+	public void setInquiryRef(String inquiryRef) {
+		this.inquiryRef = inquiryRef;
+	}
+
+	public String getAnswerRef() {
+		return answerRef;
+	}
+
+	public void setAnswerRef(String answerRef) {
+		this.answerRef = answerRef;
 	}
 
 	public String getEmployeeName() {
@@ -199,6 +160,15 @@ public class Inquiry implements Serializable{
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	@Override
+	public String toString() {
+		return "Inquiry [inquiryId=" + inquiryId + ", userId=" + userId + ", employeeId=" + employeeId
+				+ ", inquiryTitle=" + inquiryTitle + ", inquiryContent=" + inquiryContent + ", answerStatus="
+				+ answerStatus + ", editDate=" + editDate + ", answerDate=" + answerDate + ", answerContent="
+				+ answerContent + ", attachmentFileName=" + attachmentFileName + ", inquiryType=" + inquiryType
+				+ ", inquiryRef=" + inquiryRef + ", answerRef=" + answerRef + ", employeeName=" + employeeName + "]";
 	}
 
 	
