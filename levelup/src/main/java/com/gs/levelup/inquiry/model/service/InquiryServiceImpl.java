@@ -23,13 +23,23 @@ public class InquiryServiceImpl implements InquiryService{
 	}
 	
 	@Override
+	public ArrayList<Inquiry> selectListType(Search search){
+		return inquiryDao.selectListType(search);
+	}
+	
+	@Override
 	public int selectListCount() {
 		return inquiryDao.selectListCount();
 	}
 	
 	@Override
-	public int updateInquiryAnswer(Inquiry inquiry) {
-		return inquiryDao.updateInquiryAnswer(inquiry);
+	public int selectListCount(String type) {
+		return inquiryDao.selectListCount(type);
+	}
+	
+	@Override
+	public int insertInquiryAnswer(Inquiry inquiry) {
+		return inquiryDao.insertInquiryAnswer(inquiry);
 	}
 	
 	@Override
