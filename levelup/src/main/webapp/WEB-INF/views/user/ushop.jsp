@@ -16,514 +16,273 @@
 
 
 </head>
-<body data-sidebar="dark" data-layout-mode="light">
-<!-- 내비게이션바, 사이드바 등등 -->
+<body>
 
-
-
-	<div class="page-content">
-		<div class="container-fluid">
-
-
-
-<!-- 여기서부터 내용 작성 -->
-					<div class="row">
-						<div class="col-lg-3">
-							<div class="card">
-								<div class="card-body">
-									<h4 class="card-title mb-4">Filter</h4>
-
-									<div>
-										<h5 class="font-size-14 mb-3">Clothes</h5>
-										<ul class="list-unstyled product-list">
-											<li><a href="javascript: void(0);"><i
-														class="mdi mdi-chevron-right me-1"></i> T-shirts</a></li>
-											<li><a href="javascript: void(0);"><i
-														class="mdi mdi-chevron-right me-1"></i> Shirts</a></li>
-											<li><a href="javascript: void(0);"><i
-														class="mdi mdi-chevron-right me-1"></i> Jeans</a></li>
-											<li><a href="javascript: void(0);"><i
-														class="mdi mdi-chevron-right me-1"></i> Jackets</a></li>
-										</ul>
-									</div>
-									<div class="mt-4 pt-3">
-										<h5 class="font-size-14 mb-3">Price</h5>
-										<input type="text" id="pricerange">
-									</div>
-
-									<div class="mt-4 pt-3">
-										<h5 class="font-size-14 mb-3">Discount</h5>
-										<div class="form-check mt-2">
-											<input class="form-check-input" type="checkbox" id="productdiscountCheck1">
-											<label class="form-check-label" for="productdiscountCheck1">
-												Less than 10%
-											</label>
-										</div>
-
-										<div class="form-check mt-2">
-											<input class="form-check-input" type="checkbox" id="productdiscountCheck2">
-											<label class="form-check-label" for="productdiscountCheck2">
-												10% or more
-											</label>
-										</div>
-
-										<div class="form-check mt-2">
-											<input class="form-check-input" type="checkbox" id="productdiscountCheck3"
-												checked>
-											<label class="form-check-label" for="productdiscountCheck3">
-												20% or more
-											</label>
-										</div>
-
-										<div class="form-check mt-2">
-											<input class="form-check-input" type="checkbox" id="productdiscountCheck4">
-											<label class="form-check-label" for="productdiscountCheck4">
-												30% or more
-											</label>
-										</div>
-
-										<div class="form-check mt-2">
-											<input class="form-check-input" type="checkbox" id="productdiscountCheck5">
-											<label class="form-check-label" for="productdiscountCheck5">
-												40% or more
-											</label>
-										</div>
-
-										<div class="form-check mt-2">
-											<input class="form-check-input" type="checkbox" id="productdiscountCheck6">
-											<label class="form-check-label" for="productdiscountCheck6">
-												50% or more
-											</label>
-										</div>
-
-									</div>
-
-									<div class="mt-4 pt-3">
-										<h5 class="font-size-14 mb-3">Customer Rating</h5>
-										<div>
-											<div class="form-check mt-2">
-												<input class="form-check-input" type="checkbox"
-													id="productratingCheck1">
-												<label class="form-check-label" for="productratingCheck1">
-													4 <i class="bx bxs-star text-warning"></i> & Above
-												</label>
-											</div>
-											<div class="form-check mt-2">
-												<input class="form-check-input" type="checkbox"
-													id="productratingCheck2">
-												<label class="form-check-label" for="productratingCheck2">
-													3 <i class="bx bxs-star text-warning"></i> & Above
-												</label>
-											</div>
-											<div class="form-check mt-2">
-												<input class="form-check-input" type="checkbox"
-													id="productratingCheck3">
-												<label class="form-check-label" for="productratingCheck3">
-													2 <i class="bx bxs-star text-warning"></i> & Above
-												</label>
-											</div>
-
-											<div class="form-check mt-2">
-												<input class="form-check-input" type="checkbox"
-													id="productratingCheck4">
-												<label class="form-check-label" for="productratingCheck4">
-													1 <i class="bx bxs-star text-warning"></i>
-												</label>
-											</div>
-
-										</div>
-									</div>
-								</div>
-							</div>
-
-						</div>
-						<div class="col-lg-9">
-
-							<div class="row mb-3">
-								<div class="col-xl-4 col-sm-6">
-									<div class="mt-2">
-										<h5>Clothes</h5>
-									</div>
-								</div>
-								<div class="col-lg-8 col-sm-6">
-									<form class="mt-4 mt-sm-0 float-sm-end d-sm-flex align-items-center">
-										<div class="search-box me-2">
-											<div class="position-relative">
-												<input type="text" class="form-control border-0"
-													placeholder="Search...">
-												<i class="bx bx-search-alt search-icon"></i>
-											</div>
-										</div>
-										<ul class="nav nav-pills product-view-nav justify-content-end mt-3 mt-sm-0">
-											<li class="nav-item">
-												<a class="nav-link active" href="#"><i class="bx bx-grid-alt"></i></a>
-											</li>
-											<li class="nav-item">
-												<a class="nav-link" href="#"><i class="bx bx-list-ul"></i></a>
-											</li>
-										</ul>
-
-
-									</form>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-xl-4 col-sm-6">
-									<div class="card">
-										<div class="card-body">
-											<div class="product-img position-relative">
-												<div class="avatar-sm product-ribbon">
-													<span class="avatar-title rounded-circle  bg-primary">
-														- 25 %
-													</span>
-												</div>
-												<img src="resources/images/product/img-1.png" alt=""
-													class="img-fluid mx-auto d-block">
-											</div>
-											<div class="mt-4 text-center">
-												<h5 class="mb-3 text-truncate"><a href="javascript: void(0);"
-														class="text-dark">Half sleeve T-shirt </a></h5>
-
-												<p class="text-muted">
-													<i class="bx bxs-star text-warning"></i>
-													<i class="bx bxs-star text-warning"></i>
-													<i class="bx bxs-star text-warning"></i>
-													<i class="bx bxs-star text-warning"></i>
-													<i class="bx bxs-star text-warning"></i>
-												</p>
-												<h5 class="my-0"><span class="text-muted me-2"><del>$500</del></span>
-													<b>$450</b></h5>
-
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-xl-4 col-sm-6">
-									<div class="card">
-										<div class="card-body">
-											<div class="product-img position-relative">
-												<img src="resources/images/product/img-2.png" alt=""
-													class="img-fluid mx-auto d-block">
-											</div>
-											<div class="mt-4 text-center">
-												<h5 class="mb-3 text-truncate"><a href="javascript: void(0);"
-														class="text-dark">Light blue T-shirt</a></h5>
-
-												<p class="text-muted">
-													<i class="bx bxs-star text-warning"></i>
-													<i class="bx bxs-star text-warning"></i>
-													<i class="bx bxs-star text-warning"></i>
-													<i class="bx bxs-star text-warning"></i>
-													<i class="bx bxs-star"></i>
-												</p>
-												<h5 class="my-0"><span class="text-muted me-2"><del>$240</del></span>
-													<b>$225</b></h5>
-
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-xl-4 col-sm-6">
-									<div class="card">
-										<div class="card-body">
-											<div class="product-img position-relative">
-												<div class="avatar-sm product-ribbon">
-													<span class="avatar-title rounded-circle  bg-primary">
-														- 20 %
-													</span>
-												</div>
-												<img src="resources/images/product/img-3.png" alt=""
-													class="img-fluid mx-auto d-block">
-											</div>
-											<div class="mt-4 text-center">
-												<h5 class="mb-3 text-truncate"><a href="javascript: void(0);"
-														class="text-dark">Black Color T-shirt</a></h5>
-
-												<p class="text-muted">
-													<i class="bx bxs-star text-warning"></i>
-													<i class="bx bxs-star text-warning"></i>
-													<i class="bx bxs-star text-warning"></i>
-													<i class="bx bxs-star text-warning"></i>
-													<i class="bx bxs-star"></i>
-												</p>
-												<h5 class="my-0"><span class="text-muted me-2"><del>$175</del></span>
-													<b>$152</b></h5>
-
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-xl-4 col-sm-6">
-									<div class="card">
-										<div class="card-body">
-											<div class="product-img position-relative">
-												<img src="resources/images/product/img-4.png" alt=""
-													class="img-fluid mx-auto d-block">
-											</div>
-											<div class="mt-4 text-center">
-												<h5 class="mb-3 text-truncate"><a href="javascript: void(0);"
-														class="text-dark">Hoodie (Blue)</a></h5>
-
-												<p class="text-muted">
-													<i class="bx bxs-star text-warning"></i>
-													<i class="bx bxs-star text-warning"></i>
-													<i class="bx bxs-star text-warning"></i>
-													<i class="bx bxs-star text-warning"></i>
-													<i class="bx bxs-star"></i>
-												</p>
-												<h5 class="my-0"><span class="text-muted me-2"><del>$150</del></span>
-													<b>$145</b></h5>
-
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-xl-4 col-sm-6">
-									<div class="card">
-										<div class="card-body">
-
-											<div class="product-img position-relative">
-												<div class="avatar-sm product-ribbon">
-													<span class="avatar-title rounded-circle  bg-primary">
-														- 22 %
-													</span>
-												</div>
-												<img src="resources/images/product/img-5.png" alt=""
-													class="img-fluid mx-auto d-block">
-											</div>
-											<div class="mt-4 text-center">
-												<h5 class="mb-3 text-truncate"><a href="javascript: void(0);"
-														class="text-dark">Half sleeve T-Shirt</a></h5>
-
-												<p class="text-muted">
-													<i class="bx bxs-star text-warning"></i>
-													<i class="bx bxs-star text-warning"></i>
-													<i class="bx bxs-star text-warning"></i>
-													<i class="bx bxs-star text-warning"></i>
-													<i class="bx bxs-star"></i>
-												</p>
-												<h5 class="my-0"><span class="text-muted me-2"><del>$145</del></span>
-													<b>$138</b></h5>
-
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-xl-4 col-sm-6">
-									<div class="card">
-										<div class="card-body">
-											<div class="product-img position-relative">
-												<div class="avatar-sm product-ribbon">
-													<span class="avatar-title rounded-circle bg-primary">
-														- 28 %
-													</span>
-												</div>
-												<img src="resources/images/product/img-6.png" alt=""
-													class="img-fluid mx-auto d-block">
-											</div>
-											<div class="mt-4 text-center">
-												<h5 class="mb-3 text-truncate"><a href="javascript: void(0);"
-														class="text-dark">Green color T-shirt</a></h5>
-
-												<p class="text-muted">
-													<i class="bx bxs-star text-warning"></i>
-													<i class="bx bxs-star text-warning"></i>
-													<i class="bx bxs-star text-warning"></i>
-													<i class="bx bxs-star text-warning"></i>
-													<i class="bx bxs-star"></i>
-												</p>
-												<h5 class="my-0"><span class="text-muted me-2"><del>$138</del></span>
-													<b>$135</b></h5>
-
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!-- end row -->
-
-							<div class="row">
-								<div class="col-lg-12">
-									<ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
-										<li class="page-item disabled">
-											<a href="javascript: void(0);" class="page-link"><i
-													class="mdi mdi-chevron-left"></i></a>
-										</li>
-										<li class="page-item">
-											<a href="javascript: void(0);" class="page-link">1</a>
-										</li>
-										<li class="page-item active">
-											<a href="javascript: void(0);" class="page-link">2</a>
-										</li>
-										<li class="page-item">
-											<a href="javascript: void(0);" class="page-link">3</a>
-										</li>
-										<li class="page-item">
-											<a href="javascript: void(0);" class="page-link">4</a>
-										</li>
-										<li class="page-item">
-											<a href="javascript: void(0);" class="page-link">5</a>
-										</li>
-										<li class="page-item">
-											<a href="javascript: void(0);" class="page-link"><i
-													class="mdi mdi-chevron-right"></i></a>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- end row -->
-	
-			<!-- Transaction Modal -->
-			<div class="modal fade transaction-detailModal" tabindex="-1" role="dialog"
-				aria-labelledby="transaction-detailModalLabel" aria-hidden="true">
-				<div class="modal-dialog modal-dialog-centered" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="transaction-detailModalLabel">Order Details</h5>
-							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-						</div>
-						<div class="modal-body">
-							<p class="mb-2">Product id: <span class="text-primary">#SK2540</span></p>
-							<p class="mb-4">Billing Name: <span class="text-primary">Neal Matthews</span></p>
-
-							<div class="table-responsive">
-								<table class="table align-middle table-nowrap">
-									<thead>
-										<tr>
-											<th scope="col">Product</th>
-											<th scope="col">Product Name</th>
-											<th scope="col">Price</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<th scope="row">
-												<div>
-													<img src="resources/images/product/img-7.png" alt=""
-														class="avatar-sm">
-												</div>
-											</th>
-											<td>
-												<div>
-													<h5 class="text-truncate font-size-14">Wireless Headphone
-														(Black)
-													</h5>
-													<p class="text-muted mb-0">$ 225 x 1</p>
-												</div>
-											</td>
-											<td>$ 255</td>
-										</tr>
-										<tr>
-											<th scope="row">
-												<div>
-													<img src="resources/images/product/img-4.png" alt=""
-														class="avatar-sm">
-												</div>
-											</th>
-											<td>
-												<div>
-													<h5 class="text-truncate font-size-14">Phone patterned cases
-													</h5>
-													<p class="text-muted mb-0">$ 145 x 1</p>
-												</div>
-											</td>
-											<td>$ 145</td>
-										</tr>
-										<tr>
-											<td colspan="2">
-												<h6 class="m-0 text-right">Sub Total:</h6>
-											</td>
-											<td>
-												$ 400
-											</td>
-										</tr>
-										<tr>
-											<td colspan="2">
-												<h6 class="m-0 text-right">Shipping:</h6>
-											</td>
-											<td>
-												Free
-											</td>
-										</tr>
-										<tr>
-											<td colspan="2">
-												<h6 class="m-0 text-right">Total:</h6>
-											</td>
-											<td>
-												$ 400
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-						</div>
-					</div>
-				</div>
+<div class="user-shop-container">
+        <div class="user-filter">
+            <h2>카테고리</h2>
+            <ul>
+                <li><a href="#" data-category="all">전체 상품</a></li>
+                <li><a href="#" data-category="clothing">무기</a></li>
+                <li><a href="#" data-category="ring">반지</a></li>
+                <li><a href="#" data-category="potions">포션</a></li>
+                <li><a href="#" data-category="necklace">목걸이</a></li>
+                <li><a href="#" data-category="etc">기타</a></li>
+                <!-- 다른 카테고리 항목 추가 -->
+            </ul>
+        </div>
+        <div class="user-items">
+            <!-- 상품 카드 1 -->
+            <div class="user-item-card" data-category="necklace">
+                <img src="/levelup/resources/images/itemlist/1000.png" alt="Item 1">
+                <h3>Copper Necklace</h3>
+                <p>상품 아이디: 1000</p>
+                <p>가격: $1000</p>
+                <p>아이템 설명란 : 무거운 구리 목걸이</p>
+            </div>
+            <!-- 다른 상품 카드 추가 -->
+            <!-- 상품 카드 2 -->
+            <div class="user-item-card" data-category="necklace">
+                <img src="/levelup/resources/images/itemlist/1001.png" alt="Item 2">
+                <h3>Silver Necklace</h3>
+                <p>상품 아이디: 1001</p>
+                <p>가격: $2000</p>
+                <p>아이템 설명란 : 무거운 실버 목걸이</p>
+            </div>
+            <!-- 다른 상품 카드 추가 -->
+            <!-- 상품 카드 3 -->
+            <div class="user-item-card" data-category="necklace">
+                <img src="/levelup/resources/images/itemlist/1002.png" alt="Item 3">
+                <h3>Gold Necklace</h3>
+                <p>상품 아이디: 1002</p>
+                <p>가격: $5000</p>
+                <p>아이템 설명란 : 반짝거리는 골드 목걸이</p>
+            </div>
+            <!-- 다른 상품 카드 추가 -->
+            <!-- 상품 카드 4 -->
+            <div class="user-item-card" data-category="necklace">
+                <img src="/levelup/resources/images/itemlist/1004.png" alt="Item 4">
+                <h3>Copper Four-Leaf Necklace</h3>
+                <p>상품 아이디: 1004</p>
+                <p>가격: $5000</p>
+                <p>아이템 설명란 : 구리로 만들어진 네잎 목걸이</p>
+            </div>
+            <!-- 다른 상품 카드 추가 -->
+            <!-- 상품 카드 5 -->
+            <div class="user-item-card" data-category="electronics">
+                <img src="/levelup/resources/images/itemlist/1013.png" alt="Item 5">
+                <h3>Skull Necklace</h3>
+                <p>상품 아이디: 1013</p>
+                <p>가격: $5000</p>
+                <p>아이템 설명란 : 고블린의 해골 목걸이</p>
+            </div>
+            <!-- 다른 상품 카드 추가 -->
+            <!-- 상품 카드 6 -->
+            <div class="user-item-card" data-category="ring">
+                <img src="/levelup/resources/images/itemlist/1100.png" alt="Item 6">
+                <h3>Simple Copper Ring</h3>
+                <p>상품 아이디: 1100</p>
+                <p>가격: $1000</p>
+                <p>아이템 설명란 : 프로포즈에 제격인 구리반지</p>
+            </div>
+            <!-- 다른 상품 카드 추가 -->
+            <!-- 상품 카드 7 -->
+            <div class="user-item-card" data-category="ring">
+                <img src="/levelup/resources/images/itemlist/1101.png" alt="Item 7">
+                <h3>Simple Silver Ring</h3>
+                <p>상품 아이디: 1101</p>
+                <p>가격: $1000</p>
+                <p>아이템 설명란 : 무거운 은 반지</p>
+            </div>
+            <!-- 다른 상품 카드 추가 -->
+            <!-- 상품 카드 8 -->
+            <div class="user-item-card" data-category="ring">
+                <img src="/levelup/resources/images/itemlist/1102.png" alt="Item 8">
+                <h3>Simple Golden Ring</h3>
+                <p>상품 아이디: 1102</p>
+                <p>가격: $1000</p>
+                <p>아이템 설명란 : 반짝거리는 골드 반지</p>
+            </div>
+            <!-- 다른 상품 카드 추가 -->
+            <!-- 상품 카드 9 -->
+            <div class="user-item-card" data-category="ring">
+                <img src="/levelup/resources/images/itemlist/1106.png" alt="Item 9">
+                <h3>Silver Ring</h3>
+                <p>상품 아이디: 1106</p>
+                <p>가격: $2000</p>
+                <p>아이템 설명란 : 가벼운 은 반지</p>
+            </div>
+            <!-- 다른 상품 카드 추가 -->
+            <div class="user-item-card" data-category="ring">
+                <img src="/levelup/resources/images/itemlist/1110.png" alt="Item 9">
+                <h3>Silver Signet Ring</h3>
+                <p>상품 아이디: 1110</p>
+                <p>가격: $5000</p>
+                <p>아이템 설명란 : 구하기 힘든 실버 인장 반지 19호</p>
+            </div>
+            <div class="user-item-card" data-category="etc">
+                <img src="/levelup/resources/images/itemlist/615.png" alt="Item 9">
+                <h3>Treasure Map</h3>
+                <p>상품 아이디: 615</p>
+                <p>가격: $4500</p>
+                <p>아이템 설명란 : 세계 어딘가 숨어있는 보물을 가르키는 지도</p>
+            </div>
+            <div class="user-item-card" data-category="potions">
+                <img src="/levelup/resources/images/itemlist/608.png" alt="Item 9">
+                <h3>Fertility Potion</h3>
+                <p>상품 아이디: 608</p>
+                <p>가격: $2500</p>
+                <p>아이템 설명란 : 다산의 물약</p>
+            </div>
+            <div class="user-item-card" data-category="potions">
+                <img src="/levelup/resources/images/itemlist/613.png" alt="Item 9">
+                <h3>Purification Potion</h3>
+                <p>상품 아이디: 613</p>
+                <p>가격: $2500</p>
+                <p>아이템 설명란 : 정화 물약</p>
+            </div>
+            <div class="user-item-card" data-category="potions">
+                <img src="/levelup/resources/images/itemlist/625.png" alt="Item 9">
+                <h3>Seafood Plate</h3>
+                <p>상품 아이디: 625</p>
+                <p>가격: $5000</p>
+                <p>아이템 설명란 : 해산물 접시(회복)</p>
+            </div>
+            <div class="user-item-card" data-category="potions">
+                <img src="/levelup/resources/images/itemlist/626.png" alt="Item 9">
+                <h3>Barbecue Plate</h3>
+                <p>상품 아이디: 626</p>
+                <p>가격: $5000</p>
+                <p>아이템 설명란 : 바베큐 플레이트(회복)</p>
+            </div>
+  			<div id="noResultsMessage" style="display: none;">
+			    검색 결과가 없습니다.
 			</div>
-			<!-- end modal -->
-
-			<!-- subscribeModal -->
-			<div class="modal fade" id="subscribeModal" tabindex="-1" aria-labelledby="subscribeModalLabel"
-				aria-hidden="true">
-				<div class="modal-dialog modal-dialog-centered">
-					<div class="modal-content">
-						<div class="modal-header border-bottom-0">
-							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-						</div>
-						<div class="modal-body">
-							<div class="text-center mb-4">
-								<div class="avatar-md mx-auto mb-4">
-									<div class="avatar-title bg-light rounded-circle text-primary h1">
-										<i class="mdi mdi-email-open"></i>
-									</div>
-								</div>
-
-								<div class="row justify-content-center">
-									<div class="col-xl-10">
-										<h4 class="text-primary">Subscribe !</h4>
-										<p class="text-muted font-size-14 mb-4">Subscribe our newletter and get
-											notification to stay update.</p>
-
-										<div class="input-group bg-light rounded">
-											<input type="email" class="form-control bg-transparent border-0"
-												placeholder="Enter Email address" aria-label="Recipient's username"
-												aria-describedby="button-addon2">
-
-											<button class="btn btn-primary" type="button" id="button-addon2">
-												<i class="bx bxs-paper-plane"></i>
-											</button>
-
-										</div>
-
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- end modal -->
-
-
-	 	<!-- container-fluid -->			
-		</div>
-	<!-- page-content -->		
+        </div>
+    </div>
+    <div id="buyItemModal" class="modal">
+	    <div class="modal-content">
+	        <span class="close" id="closeModal">&times;</span>
+	        <h2>구매 확인</h2>
+	        <img src="" alt="Item" id="modalItemImage">
+	        <p>상품명: <span id="modalItemName"></span></p>
+	        <p>가격: $<span id="modalItemPrice"></span></p>
+	        <button id="confirmPurchase">구매 확인</button>
+	    </div>
 	</div>
-<!-- 푸터(자바스크립트 로딩) -->
-<c:import url="/WEB-INF/views/user/userFooter.jsp"/>
+    <br><br><br><br>
+    <c:import url="/WEB-INF/views/user/userFooter.jsp"/>
+ <script type="text/javascript">
+    const itemCards = document.querySelectorAll('.user-item-card'); // 클래스 이름 수정
+    const filterLinks = document.querySelectorAll('.user-filter a'); // 클래스 이름 수정
+    const noResultsMessage = document.getElementById('noResultsMessage');
 
+    // 초기 화면 로딩 시 모든 아이템 표시
+    filterItems('all');
 
-	<!-- Ion Range Slider-->
-        <script src="resources/libs/ion-rangeslider/js/ion.rangeSlider.min.js"></script>
+    // 카테고리별 필터링
+    filterLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            const category = this.getAttribute('data-category');
+            filterItems(category);
+        });
+    });
 
-        <!-- init js -->
-        <script src="resources/js/pages/product-filter-range.init.js"></script>
+    function filterItems(category) {
+        let foundResults = false; // 검색 결과 초기값을 false로 설정
 
+        itemCards.forEach(card => {
+            const cardCategory = card.getAttribute('data-category');
+            if (category === 'all' || cardCategory === category) {
+                card.style.display = 'block';
+                foundResults = true; // 결과가 있을 경우 foundResults를 true로 설정
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        // 검색 결과가 없을 때 메시지 표시
+        if (!foundResults) {
+            noResultsMessage.style.display = 'block';
+        } else {
+            noResultsMessage.style.display = 'none';
+        }
+    }
+
+    itemCards.forEach(card => {
+        card.addEventListener('click', function () {
+            const category = this.getAttribute('data-category');
+            const itemId = this.querySelector('p:nth-of-type(2)').textContent.split(": ")[1];
+            const itemName = this.querySelector('h3').textContent; // h3 요소의 내용 가져오기
+            const priceText = this.querySelector('p:nth-of-type(3)').textContent;
+            const itemPrice = extractPrice(priceText); 
+            const itemImage = this.querySelector('img').getAttribute('src'); // 상품 이미지 가져오기
+            console.log("Category: " + category);
+            console.log("Item ID: " + itemId);
+            console.log("Item Name: " + itemName);
+            console.log("Price Text: " + priceText);
+            console.log("Item Price: " + itemPrice);
+            console.log("Item Image: " + itemImage);
+            
+            buyItem(category, itemId, itemName, itemPrice, itemImage); // itemName과 itemImage 추가로 전달
+        });
+    });
+
+    // 가격 텍스트에서 숫자를 추출하는 함수
+    function extractPrice(priceText) {
+        const pricePattern = /\$([\d,]+(?:\.\d{1,2})?)/; // 가격 정보를 추출하는 정규식
+        const matches = priceText.match(pricePattern);
+        if (matches && matches.length > 1) {
+            const priceStr = matches[1].replace(',', ''); // 쉼표(,)를 제거
+            return parseFloat(priceStr); // 매칭된 숫자를 추출하고 숫자로 변환
+        }
+        return 0; // 가격을 찾지 못한 경우 0으로 처리
+    }
+
+// 구매 페이지로 이동 및 로그인 확인
+function buyItem(category, itemId, itemName, itemPrice, itemImage) {
+    <c:choose>
+        <c:when test="${empty sessionScope.loginUser}">
+            alert("상품을 구매하시려면\n먼저 로그인하세요.");
+        </c:when>
+        <c:otherwise>
+            // 로그인한 사용자라면 모달 팝업을 열고 정보 전달
+            openModal(itemName, itemPrice, itemImage);
+        </c:otherwise>
+    </c:choose>
+}
+
+// 모달 열기 함수
+function openModal(itemName, itemPrice, itemImage) {
+    const modal = document.getElementById("buyItemModal");
+    const modalItemName = document.getElementById("modalItemName");
+    const modalItemPrice = document.getElementById("modalItemPrice");
+    const modalItemImage = document.getElementById("modalItemImage");
+
+    modalItemName.innerText = itemName;
+    modalItemPrice.innerText = parseFloat(itemPrice).toFixed(2); // 가격을 숫자로 변환하고 소수점 2자리까지 표시
+    modalItemImage.src = itemImage; // 상품 사진 설정
+
+    modal.style.display = "block";
+}
+
+// 모달 닫기 함수
+function closeModal() {
+    const modal = document.getElementById("buyItemModal");
+    modal.style.display = "none";
+}
+
+// 구매 확인 버튼 클릭 시 모달 닫고 동작 수행
+document.getElementById("confirmPurchase").addEventListener("click", function () {
+    // 여기서 구매 확인 동작을 추가할 수 있습니다.
+    alert("상품을 구매했습니다.");
+    closeModal();
+});
+
+// 닫기 버튼 클릭 시 모달 닫기
+document.getElementById("closeModal").addEventListener("click", closeModal);
+</script>
 </body>
 </html>
 
