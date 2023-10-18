@@ -1,6 +1,7 @@
 package com.gs.levelup.caseitemchange.controller;
 
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -18,6 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.gs.levelup.caseitemchange.model.service.CaseItemChangeService;
 import com.gs.levelup.caseitemchange.model.vo.CaseItemChange;
 import com.gs.levelup.common.FileNameChange;
+import com.gs.levelup.employee.model.service.EmployeeService;
+import com.gs.levelup.employee.model.vo.Employee;
 
 @Controller
 public class CaseItemChangeController {
@@ -25,6 +28,9 @@ public class CaseItemChangeController {
 	
 	@Autowired
 	private CaseItemChangeService cicService;
+	
+	@Autowired
+	private EmployeeService empService;
 	
 	@RequestMapping(value="changeitem.do", method = RequestMethod.GET)
 	public ModelAndView changeItemMethod(ModelAndView mv) {
@@ -34,8 +40,11 @@ public class CaseItemChangeController {
 	//기안 작성 페이지로 이동
 	
 	@RequestMapping("cicform.do")
-	public String moveCaseItemChangeWritePage() {
+	public String moveCaseItemChangeWritePage(Employee employee, Model model) {
+		
 		return "empCase/empNewCaseView";
+		
+		
 	}
 	
 	//기안 작성페이지 
