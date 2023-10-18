@@ -1,6 +1,9 @@
 package com.gs.levelup.picklog.model.vo;
 
 import java.sql.Date;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+
 
 public class PickLog  implements java.io.Serializable{
 	private static final long serialVersionUID = -7095994249942862889L;
@@ -10,7 +13,7 @@ public class PickLog  implements java.io.Serializable{
 	}
 
 	private int id;
-	private Date time;
+	private ZonedDateTime time;
 	private int charId;
 	private String type;
 	private int nameId;
@@ -20,7 +23,7 @@ public class PickLog  implements java.io.Serializable{
 	
 	public PickLog() {}
 
-	public PickLog(int id, Date time, int charId, String type, int nameId, int amount, long uniqueId, String map) {
+	public PickLog(int id, ZonedDateTime time, int charId, String type, int nameId, int amount, long uniqueId, String map) {
 		super();
 		this.id = id;
 		this.time = time;
@@ -40,11 +43,11 @@ public class PickLog  implements java.io.Serializable{
 		this.id = id;
 	}
 
-	public Date getTime() {
+	public ZonedDateTime getTime() {
 		return time;
 	}
 
-	public void setTime(Date time) {
+	public void setTime(ZonedDateTime time) {
 		this.time = time;
 	}
 
@@ -98,7 +101,7 @@ public class PickLog  implements java.io.Serializable{
 
 	@Override
 	public String toString() {
-		return "PickLog [id=" + id + ", time=" + time + ", charId=" + charId + ", type=" + type + ", nameId=" + nameId
+		return "PickLog [id=" + id + ", time=" + time.format(DateTimeFormatter.ofPattern("yyyy/MM/dd/ HH:mm:ss z")) + ", charId=" + charId + ", type=" + type + ", nameId=" + nameId
 				+ ", amount=" + amount + ", uniqueId=" + uniqueId + ", map=" + map + "]";
 	}
 	

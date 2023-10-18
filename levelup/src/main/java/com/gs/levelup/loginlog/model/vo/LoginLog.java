@@ -1,6 +1,7 @@
 package com.gs.levelup.loginlog.model.vo;
 
-import java.sql.Date;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class LoginLog  implements java.io.Serializable {
 	private static final long serialVersionUID = -3670358373930511132L;
@@ -9,7 +10,7 @@ public class LoginLog  implements java.io.Serializable {
 		return serialVersionUID;
 	}
 
-	private Date time;
+	private ZonedDateTime time;
 	private String ip;
 	private String user;
 	private int rcode;
@@ -17,7 +18,7 @@ public class LoginLog  implements java.io.Serializable {
 	
 	public LoginLog() {}
 
-	public LoginLog(Date time, String ip, String user, int rcode, String log) {
+	public LoginLog(ZonedDateTime time, String ip, String user, int rcode, String log) {
 		super();
 		this.time = time;
 		this.ip = ip;
@@ -26,11 +27,11 @@ public class LoginLog  implements java.io.Serializable {
 		this.log = log;
 	}
 
-	public Date getTime() {
+	public ZonedDateTime getTime() {
 		return time;
 	}
 
-	public void setTime(Date time) {
+	public void setTime(ZonedDateTime time) {
 		this.time = time;
 	}
 
@@ -68,7 +69,7 @@ public class LoginLog  implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "LoginLog [time=" + time + ", ip=" + ip + ", user=" + user + ", rcode=" + rcode + ", log=" + log + "]";
+		return "로그인이력 [로그인시간: " + time.format(DateTimeFormatter.ofPattern("yyyy/MM/dd/ HH:mm:ss z")) + "|  ip : " + ip + " | user ID: " + user + "| log: " + log + "]";
 	}
 	
 	
