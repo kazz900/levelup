@@ -22,9 +22,19 @@ public class InquiryDao {
 		List<Inquiry> list = sqlSessionTemplate.selectList("inquiryMapper.selectList", paging);
 		return (ArrayList<Inquiry>) list;
 	}
+	
+	public ArrayList<Inquiry> selectListType(Search search) {
+		List<Inquiry> list = sqlSessionTemplate.selectList("inquiryMapper.selectListType", search);
+		return (ArrayList<Inquiry>) list;
+	}
 
 	public int selectListCount() {
 		return sqlSessionTemplate.selectOne("inquiryMapper.selectListCount");
+	}
+	
+	public int selectListCount(String type1) {
+		int type = Integer.parseInt(type1);
+		return sqlSessionTemplate.selectOne("inquiryMapper.selectListCountType", type);
 	}
 	
 	public int insertInquiryAnswer(Inquiry inquiry) {

@@ -10,7 +10,34 @@ public class Search {
 	private Date begin;
 	private Date end;
 	private String type; //문의 타입 겸색시 필요
+	private int keyword2;
 	
+	public Search(String keyword, int age, int startRow, int endRow, Date begin, Date end, String type, int keyword2) {
+		super();
+		this.keyword = keyword;
+		this.age = age;
+		this.startRow = startRow;
+		this.endRow = endRow;
+		this.begin = begin;
+		this.end = end;
+		this.type = type;
+		this.keyword2 = keyword2;
+	}
+
+
+
+	public int getKeyword2() {
+		return keyword2;
+	}
+
+
+
+	public void setKeyword2(int keyword2) {
+		this.keyword2 = keyword2;
+	}
+
+
+
 	public Search() {}
 	
 	

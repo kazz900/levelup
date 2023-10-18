@@ -9,7 +9,6 @@
 <c:if test="${ !empty requestScope.currentPage }">
    <c:set var="nowpage" value="${ requestScope.currentPage }"/>
 </c:if>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,9 +22,12 @@
 <div>
 <div class="container">
 <hr><br><br><br><br><br>
-<h3>도움말&문의</h3>|<a>&nbsp;&nbsp;&nbsp; 환불문의 &nbsp;&nbsp;&nbsp;</a>|<a>&nbsp;&nbsp;&nbsp; 게임문의 &nbsp;&nbsp;&nbsp;</a>| 
-<a>&nbsp;&nbsp;&nbsp; 기타문의 &nbsp;&nbsp;&nbsp;</a> | <a>&nbsp;&nbsp;&nbsp; 아이템 &nbsp;&nbsp;&nbsp;</a> | 
-<a>&nbsp;&nbsp;&nbsp; 고객센터 &nbsp;&nbsp;&nbsp;</a> |
+<h3>도움말&문의</h3>|
+<a onclick="help1()">&nbsp;&nbsp;&nbsp; 환불문의 &nbsp;&nbsp;&nbsp;</a>|
+<a onclick="help2()">&nbsp;&nbsp;&nbsp; 게임문의 &nbsp;&nbsp;&nbsp;</a>| 
+<a onclick="help3()">&nbsp;&nbsp;&nbsp; 기타문의 &nbsp;&nbsp;&nbsp;</a> | 
+<a onclick="help4()">&nbsp;&nbsp;&nbsp; 아이템 &nbsp;&nbsp;&nbsp;</a> | 
+<a onclick="help5()">&nbsp;&nbsp;&nbsp; 고객센터 &nbsp;&nbsp;&nbsp;</a> |
 </div>	
 		
 		<hr>
@@ -55,7 +57,7 @@
 							<c:forEach items="${ requestScope.list }" var="i">
 								<tr>
 									<td data-th="Question Title"><a class="ititle"
-										href="/levelup/idetail.do?iid=${ i.inquiryId }">${ i.inquiryTitle }</a></td>
+										href="/levelup/uidetail.do?iid=${ i.inquiryId }&page=${ nowpage }">${ i.inquiryTitle }</a></td>
 									<td data-th="User ID">${ i.userId }</td>
 									<c:if test="${ i.inquiryType eq '1' }">
 										<td data-th="Type">환불문의</td>
@@ -115,6 +117,21 @@
                 }
             });
         });
+        function help1(){
+        	 location.href = "${ pageContext.servletContext.contextPath }/helptype1.do";
+        }
+        function help2(){
+       	 location.href = "${ pageContext.servletContext.contextPath }/helptype2.do";
+       }
+        function help3(){
+       	 location.href = "${ pageContext.servletContext.contextPath }/helptype3.do";
+       }
+        function help4(){
+       	 location.href = "${ pageContext.servletContext.contextPath }/uitem.do";
+       }
+        function help5(){
+       	 location.href = "${ pageContext.servletContext.contextPath }/helptype5.do";
+       }
     </script>
 <c:import url="/WEB-INF/views/user/userFooter.jsp"/>
 </body>
