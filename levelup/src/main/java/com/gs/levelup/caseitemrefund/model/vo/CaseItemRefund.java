@@ -23,6 +23,10 @@ public class CaseItemRefund implements java.io.Serializable{
 	private Date signDate;
 	private String DocumentStatus;
 	private int refundAmount;
+	private String managerId;
+	private String itemName;
+	private int itemAmount;
+	
 
 	public CaseItemRefund() {}
 
@@ -138,6 +142,30 @@ public class CaseItemRefund implements java.io.Serializable{
 
 	public void setRefundAmount(int refundAmount) {
 		this.refundAmount = refundAmount;
+	}
+	
+	public String getManagerId() {
+		return managerId;
+	}
+
+	public void setManagerId(String managerId) {
+		this.managerId = managerId;
+	}
+
+	public String getItemName() {
+		return itemName;
+	}
+
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
+
+	public int getItemAmount() {
+		return itemAmount;
+	}
+
+	public void setItemAmount(int itemAmount) {
+		this.itemAmount = itemAmount;
 	}
 
 	@Override

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cicMapper">
+
+	<resultMap id="resultCaseItemChange" type="CaseItemChange">
+		<id property="documentId" column="DOCUMENT_ID" />
+		<result property="userId" column="USERID" />
+		<result property="itemId" column="ITEM_ID" />
+		<result property="charId" column="CHAR_ID" />
+		<result property="employeeId" column="EMPLOYEE_ID" />
+		<result property="documentTitle" column="DOCUMENET_TITLE" />
+		<result property="documentContent" column="DOCUMENET_CONTENT" />
+		<result property="attachementFilename" column="ATTACHEMENT_FILENAME" />
+		<result property="editDate" column="EDIT_DATE" />
+		<result property="signDate" column="SIGN_DATE" />
+		<result property="documentStatus" column="DOCUMENT_STATUS" />
+		<result property="replaceItemId" column="REPLACE_ITEM_ID" />
+		<result property="replaceItemNo" column="REPLACE_ITEM_NO" />
+	</resultMap>
+
+	<resultMap id="resultList" type="CaseItemChange">
+		<id property="documentId" column="DOCUMENT_ID" />
+		<result property="userId" column="USERID" />
+		<result property="itemId" column="ITEM_ID" />
+		<result property="charId" column="CHAR_ID" />
+		<result property="employeeId" column="EMPLOYEE_ID" />
+		<result property="documentTitle" column="DOCUMENET_TITLE" />
+		<result property="documentContent" column="DOCUMENET_CONTENT" />
+		<result property="attachementFilename" column="ATTACHEMENT_FILENAME" />
+		<result property="editDate" column="EDIT_DATE" />
+		<result property="signDate" column="SIGN_DATE" />
+		<result property="documentStatus" column="DOCUMENT_STATUS" />
+		<result property="replaceItemId" column="REPLACE_ITEM_ID" />
+		<result property="replaceItemNo" column="REPLACE_ITEM_NO" />
+	</resultMap>
+
+	<select id="selectEmpList" parameterType="string" resultMap="resultList">
+		SELECT MANAGER_ID
+		FROM CASE_ITEM_CHANGE
+		FULL OUTER JOIN EMPLOYEE USING (EMPLOYEE_ID)
+		WHERE EMPLOYEE_ID = #{ employeeId }
+	</select>
+	
+	<insert id="caseItemChange" parameterType="CaseItemChange">
+		INSERT INTO CASE_ITEM_CHANGE
+		VALUES ( SYS_GUID(), #{ itemId }, #{ charId }, #{ employeeId }, #{ replaceItemId }, #{ replaceItemNo },
+		#{ documentTitle }, #{ documentContent }, #{ attachementFilename }, SYSDATE, DEFAULT, DEFAULT );	
+	</insert>
+</mapper>
