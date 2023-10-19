@@ -9,10 +9,17 @@
 <body>
     <c:import url="/WEB-INF/views/user/userHeader.jsp" />
 
-    <form action="inquiry.do" method="post" enctype="multipart/form-data">
+    <form action="inquiry.do" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
         <label for="userid">유저 ID:</label>
         <input type="text" id="userid" name="userId" value="${ sessionScope.loginUser.userId }" readonly><br>
-
+		
+		<label for="inquiryType">문의 종류:</label><br>
+        <input type="radio" id="inquiryType" name="inquiryType" value="1">환불문의<br>
+        <input type="radio" id="inquiryType" name="inquiryType" value="2">게임문의<br>
+        <input type="radio" id="inquiryType" name="inquiryType" value="3">기타문의<br>
+        
+        <br>
+        
         <label for="inquirytitle">문의 제목:</label>
         <input type="text" id="inquiryTitle" name="inquiryTitle" required><br>
 
@@ -23,7 +30,6 @@
         <input type="file" name="upfile"><br>
 
         <input type="hidden" name="answerStatus" value="N">
-        <input type="hidden" name="inquiryType" value="3">
 		<br><br>
 		<c:url var="bl" value="uhelp.do">
 	 		<c:param name="page" value="1" />
@@ -35,5 +41,25 @@
     </form>
 
     <c:import url="/WEB-INF/views/user/userFooter.jsp" />
+    <script>
+function validateForm() {
+    var inquiryTypes = document.getElementsByName("inquiryType");
+    var selectedType = false;
+
+    for (var i = 0; i < inquiryTypes.length; i++) {
+        if (inquiryTypes[i].checked) {
+            selectedType = true;
+            break;
+        }
+    }
+
+    if (!selectedType) {
+        alert("문의 종류를 선택해주세요.");
+        return false; // 폼 제출을 막습니다.
+    }
+
+    return true; // 폼 제출을 허용합니다.
+}
+</script>
 </body>
 </html>

@@ -1,6 +1,5 @@
 package com.gs.levelup.character.model.vo;
 
-import java.sql.Date;
 
 public class Character  implements java.io.Serializable{
 	private static final long serialVersionUID = 5270522369799007700L;
@@ -34,6 +33,8 @@ public class Character  implements java.io.Serializable{
 	private int lastLogin;
 	private String lastMap;
 	private int online;
+	
+	
 	
 	public Character() {}
 

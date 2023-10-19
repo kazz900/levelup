@@ -32,6 +32,16 @@ public class ItemServiceImpl implements ItemService{
 	public ArrayList<Item> selectSearchItems(String searchword) {
 		return itemDao.selectSearchItems(searchword);
 	}
+
+	@Override
+	public Item selectOneItem(String itemName) {
+		return itemDao.selectOneItem(itemName);
+	}
+
+	@Override
+	public ArrayList<Item> selectItem3() {
+		return itemDao.selectItem3();
+	}
 	
 	
 }

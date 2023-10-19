@@ -42,6 +42,7 @@ public class Paging implements java.io.Serializable {
 	}
 	
 
+
 	//페이지 계산 함수
 	public void calculator() {
 		//총 페이지 수 : 목록의 총 갯수가 21개인 경우는

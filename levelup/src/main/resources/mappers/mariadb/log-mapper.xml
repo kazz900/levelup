@@ -14,6 +14,7 @@
 <!-- 	</resultMap> -->
 	
 	<resultMap type="CharLog" id="resultCharLog">
+		<result column="time" property="time"/>
 		<result column="char_id" property="charId"/>
 		<result column="char_msg" property="charMsg"/>
 		<result column="account_id" property="accountId"/>
@@ -45,9 +46,7 @@
 		select * from evol.picklog  where char_id = #{charId}
 	</select>
 	
-	<select id="selectInventory" resultMap="resultInventory">
+	<select id="selectInventory" parameterType="_int" resultMap="resultInventory">
 		select * from evol.inventory where char_id = #{charId}
 	</select>
-	
-		
 </mapper>
