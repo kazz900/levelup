@@ -13,8 +13,7 @@
 <%@ page import="java.io.Reader" %>
 <%@ page import="java.nio.charset.StandardCharsets" %>
 <%@ page import="java.net.URLEncoder" %>
-
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
  // 결제 승인 API 호출하기 
  
@@ -63,6 +62,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 </head>
 <body>
+<c:import url="/WEB-INF/views/user/userHeader.jsp"/>
 <section>
     <%
     if (isSuccess) { %>
@@ -87,5 +87,6 @@
     %>
 
 </section>
+<c:import url="/WEB-INF/views/user/userFooter.jsp"/>
 </body>
 </html>

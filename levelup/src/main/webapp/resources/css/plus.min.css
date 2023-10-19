@@ -229,3 +229,8 @@ a:hover {
     float: right;
     cursor: pointer;
 }
+.divider {
+	display: inline-block;
+    flex: 1; /* 동일한 너비를 가진 다수의 디바이더를 만들기 위해 Flex 사용합니다. */
+    border: 1px solid #000; /* 경계선을 추가합니다. */
+}

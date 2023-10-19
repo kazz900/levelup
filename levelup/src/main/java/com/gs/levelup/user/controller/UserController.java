@@ -2,6 +2,7 @@ package com.gs.levelup.user.controller;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Random;
@@ -681,6 +682,44 @@ public class UserController {
 			return "common/error";
 		}
 		
+	}
+	
+	@RequestMapping(value = "item3.do", method = RequestMethod.POST)
+	@ResponseBody
+	public String boardCountTop3Method() throws UnsupportedEncodingException {
+		// ajax 요청시 return 방법은 여러가지가 있음
+		// response 객체 이용시에는 2가지중 선택 가능
+		// 1. 출력 스트림으로 응답하는 방법 (아이디 중복체크 예)
+		// 2. 뷰리졸버로 리턴하는 방법 : response body 에 내보낼 값을 저장함
+
+		// 조회수 많은 순으로 인기 게시글 3개 조회해 옴
+		ArrayList<Item> list = itemService.selectItem3();
+
+		// 전송용 json 객체 준비
+		JSONObject sendJson = new JSONObject();
+		// list 저장할 json 배열 객체 준비
+		JSONArray jarr = new JSONArray();
+
+		for (Item item: list) {
+			// notice 의 각 필드값 저장할 json 객체 생성
+			JSONObject job = new JSONObject();
+
+			job.put("itemId", item.getItemId());
+			job.put("itemName", item.getItemName());
+			job.put("discountRate", item.getDiscountRate());
+			
+			logger.info("item3.do : itemID : " + item.getItemId() + ", itemName : " + item.getItemName() + ", discountRate : " + item.getDiscountRate());
+
+			// job를 jarr 에 추가함
+			jarr.add(job);
+		}
+
+		// 전송용 객체에 jarr 을 담음
+		sendJson.put("list", jarr);
+
+		// 전송용 json 을 json string 으로 바꿔서 전송되게 함
+		return sendJson.toJSONString();// 뷰리졸버로 리턴함
+		// servlet-context.xml 에 jsonString 내보내는 JSONView 라는 뷰리졸버를 추가 등록해야 함
 	}
 
 }

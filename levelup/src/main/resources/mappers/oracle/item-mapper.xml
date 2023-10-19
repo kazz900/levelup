@@ -14,10 +14,24 @@
 		<result column="DISCOUNT_RATE" property="discountRate" />
 	</resultMap>
 	
+	<resultMap type="Item" id="resultItem3">
+		<result column="ITEM_ID" property="itemId" />
+		<result column="ITEM_NAME" property="itemName" />
+		<result column="DISCOUNT_RATE" property="discountRate" />
+	</resultMap>
 	
 	<select id="selectOneItem" parameterType="string" resultMap="resultItem">
 		select * from item where item_name = #{ itemName }
 	</select>
 
+	<select id="selectItem3" resultMap="resultItem3">
+		<![CDATA[
+		select * 
+		from (select rownum rnum, ITEM_ID, ITEM_NAME, DISCOUNT_RATE 
+		    from (select * from item 
+		          order by DISCOUNT_RATE)) 
+		where rnum <= 3
+		]]>
+	</select>
 	
 </mapper>
