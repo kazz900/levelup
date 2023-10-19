@@ -1,6 +1,7 @@
 package com.gs.levelup.rodexMail.model.service;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,8 +16,8 @@ public class RodexMailServiceImpl implements RodexMailService{
 	private RodexMailDao rodexMailDao;
 
 	@Override
-	public int insertRodexMail(RodexMail rodexMail) {
-		return rodexMailDao.insertRodexMail(rodexMail);
+	public int insertRodexMail(Map purchase) {
+		return rodexMailDao.insertRodexMail(purchase);
 	}
 
 	@Override
