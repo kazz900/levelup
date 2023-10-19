@@ -97,40 +97,46 @@ public class CaseItemChangeController {
 										@RequestParam("employeeId") String employeeId,
 										@RequestParam("employeeName") String employeeName,
 										@RequestParam("managerId") String managerId,		
-										@RequestParam("replaceItemId") String replaceItemId,
-										@RequestParam("replaceItemAmount") String replaceItemAmount,
-										@RequestParam(name="attachementFilename", required=false) MultipartFile mfile,
+										@RequestParam(name="upfile", required=false) MultipartFile mfile,
+										@RequestParam(name="originalItemName", required=false) String itemName,
 										HttpServletRequest request,
 										Model model) {		
+		
+		if (caseItemChange.getItemName().equals("잡템")) {
+			System.out.println("잡템 아이템 변경함");
+			caseItemChange.setItemId(0);
+		}
+
 		
 		//첨부파일이 있을 때 저장 경로 지정
 		String savePath = request.getSession().getServletContext().getRealPath("resources/case_upfiles");
 		
-		//첨부파일이 있을 때
-		if( !mfile.isEmpty() ) {
-			//전송 온 파일 이름 추출
+		if(!mfile.isEmpty()) {
+			//전송온 파일이름 추출함
 			String fileName = mfile.getOriginalFilename();
 			String renameFileName = null;
 			
-			//저장폴더에 이름 저장 처리
-			if(fileName != null && fileName.length() > 0) {
-				renameFileName = FileNameChange.change(fileName, "yyyyMMddHHmmss");
-				try {
+			//저장폴더에는 변경된 이름을 저장 처리함
+			//파일 이름바꾸기함 : 년월일시분초.확장자
+			if(fileName != null && fileName.length() > 0) {				
+				//바꿀 파일명에 대한 문자열 만들기
+				renameFileName = FileNameChange.change(fileName, 	"yyyyMMddHHmmss");
+				logger.info("첨부파일명 확인 : " + fileName + ", " + renameFileName);
+				try {	
+					//저장 폴더에 파일명 바꾸기 처리
 					mfile.transferTo(new File(savePath + "\\" + renameFileName));
+				
 				}catch(Exception e) {
 					e.printStackTrace();
-					model.addAttribute("message", "첨부파일 저장 실패");
+					model.addAttribute("message", "첨부파일 저장 실패!");
 					return "common/error";
-				
 				}
-			}
-			//caseitemchange 객체에 파일 정보 저장
+			}  //파일명 바꾸기
+			//board 객체에 첨부파일 정보 저장 처리
 			caseItemChange.setAttachementFilename(renameFileName);
 			
-			logger.info(replaceItemId);
-			logger.info(replaceItemAmount);
-			
-		}
+		} //첨부파일 있을 때	
+		
 		if(cicService.insertCaseItemChange(caseItemChange) > 0) {
 			//기안 작성 성공 시 기안 상세보기 페이지로 이동
 			return "empCase/empCaseDetailView";
@@ -143,7 +149,7 @@ public class CaseItemChangeController {
 	
 	
 	
-	//작성한 기안 상세보기 페이지 뷰(기안 작성 직후 페이지, 결재자에게 올리기 전)
+	//작성한 기안 상세보기 페이지 뷰
 	@RequestMapping(value="cicdetail.do", method = RequestMethod.GET)
 	public ModelAndView selectCaseItemChangeDetail(ModelAndView mv,
 												 @RequestParam("documentId") String documentId,
