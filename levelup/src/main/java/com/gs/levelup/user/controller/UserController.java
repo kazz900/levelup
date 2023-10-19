@@ -2,8 +2,9 @@ package com.gs.levelup.user.controller;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -25,6 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.gs.levelup.character.model.service.CharacterService;
+import com.gs.levelup.character.model.vo.Character;
 import com.gs.levelup.common.FileNameChange;
 import com.gs.levelup.common.Paging;
 import com.gs.levelup.common.Search;
@@ -32,9 +34,10 @@ import com.gs.levelup.inquiry.model.service.InquiryService;
 import com.gs.levelup.inquiry.model.vo.Inquiry;
 import com.gs.levelup.item.model.service.ItemService;
 import com.gs.levelup.item.model.vo.Item;
+import com.gs.levelup.payment.model.service.PaymentService;
+import com.gs.levelup.payment.model.vo.Payment;
 import com.gs.levelup.user.model.service.UserService;
 import com.gs.levelup.user.model.vo.User;
-import com.gs.levelup.character.model.vo.Character;
 
 @Controller // 설정 xml 에 해당 클래스를 Controller 로 자동 등록해 줌
 public class UserController {
@@ -54,6 +57,9 @@ public class UserController {
 	
 	@Autowired
 	private ItemService itemService;
+	
+	@Autowired
+	private PaymentService paymentService;
 
 	@RequestMapping("ulogin.do")
 	public String moveUserLogin() {
@@ -91,7 +97,7 @@ public class UserController {
 		return "user/usertestpage1";
 	}
 	
-	@RequestMapping(value="uhelp.do", method=RequestMethod.GET)
+	@RequestMapping(value="uhelp.do", method = {RequestMethod.POST, RequestMethod.GET})
 	public String userhelpPageMethod(@RequestParam(name="page", required=false) String page,
 			@RequestParam(name="limit", required=false) String slimit, Model model){
 		
@@ -210,7 +216,6 @@ public class UserController {
 	@RequestMapping(value = "inquiry.do", method = RequestMethod.POST)
 	public String insertInquiryMethod(Inquiry inquiry, Model model, HttpServletRequest request,
 			@RequestParam(name = "upfile", required = false) MultipartFile mfile) {
-		logger.info("inquiry.do : " + inquiry);
 		
 		// 공지사항 첨부파일 저장 폴더 지정
 		String savePath = request.getSession().getServletContext().getRealPath("resources/inquiry_upfiles");
@@ -229,7 +234,6 @@ public class UserController {
 				renameFileName = FileNameChange.change(fileName, "yyyyMMddHHmmss") + "#" + mfile.getOriginalFilename();
 
 				logger.info("첨부파일명 확인 : " + fileName + ", " + renameFileName);
-				System.out.println("첨부파일명 확인 : " + fileName + ", " + renameFileName);
 				try {
 					// 저장 폴더에 파일명 바꾸기 처리
 					mfile.transferTo(new File(savePath + "\\" + renameFileName));
@@ -246,7 +250,6 @@ public class UserController {
 
 		} // 첨부파일이 있을 때
 		
-		System.out.println("타입 값 : " + inquiry.getInquiryType());
 		
 		if (inquiryService.insertInquiry(inquiry) > 0) {
 			// 공지글 등록 성공시 목록 보기 페이지로 이동
@@ -295,7 +298,6 @@ public class UserController {
 		search.setKeyword2(1);
 		ArrayList<Inquiry> list = inquiryService.selectListType(search);
 		
-		System.out.println("list1 : " + list);
 		// 받은 결과에 따라 성공/실패 페이지 내보내기
 		if (list != null && list.size() > 0) {
 			mv.addObject("list", list);
@@ -612,11 +614,8 @@ public class UserController {
 		// response 객체 이용시에는 2가지중 선택 가능
 		// 1. 출력 스트림으로 응답하는 방법 (아이디 중복체크 예)
 		// 2. 뷰리졸버로 리턴하는 방법 : response body 에 내보낼 값을 저장함
-		System.out.println("테스트1");
 		// 조회수 많은 순으로 인기 게시글 3개 조회해 옴
 		ArrayList<com.gs.levelup.character.model.vo.Character> list = characterService.selectCharacters(userid);
-		
-		System.out.println("테스트 list : " + list);
 		
 		// 전송용 json 객체 준비
 		JSONObject sendJson = new JSONObject();
@@ -644,4 +643,44 @@ public class UserController {
 		return sendJson.toJSONString();// 뷰리졸버로 리턴함
 		// servlet-context.xml 에 jsonString 내보내는 JSONView 라는 뷰리졸버를 추가 등록해야 함
 	}
+	
+	@RequestMapping(value = "buyingpage.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String insertRodexMail(
+			HttpServletRequest request, 
+			@RequestParam(value="charName") String receiverName,
+			@RequestParam(value="charId") int receiverId, 
+			@RequestParam(value="itemId") int nameId, 
+			@RequestParam("paymentKey") String paymentKey,
+			@RequestParam("orderId") String orderId,
+			@RequestParam("amount") int amount,
+			HttpSession session,
+			Model model) {
+		
+		User loginUser = (User)session.getAttribute("loginUser");
+		
+		int accountId = loginUser.getAccountId();
+		
+		long uniqueId = Instant.now().toEpochMilli() * 100 + (new Random().nextInt(10) + 1) * 10
+				+ (new Random().nextInt(10));
+		
+		Payment payment = new Payment(amount, orderId, paymentKey, receiverId, receiverName, nameId, accountId, uniqueId);
+		
+		int insertResult = paymentService.insertPayment(payment);
+		
+		if(insertResult> 0) {
+			model.addAttribute("charName",receiverName);
+			model.addAttribute("charId",receiverId);
+			model.addAttribute("itemId",nameId);
+			model.addAttribute("paymentKey",paymentKey);
+			model.addAttribute("orderId",orderId);
+			model.addAttribute("amount",amount);
+			
+			return "user/success";
+		}else {
+			model.addAttribute("message", "payment insert중 에러");
+			return "common/error";
+		}
+		
+	}
+
 }
