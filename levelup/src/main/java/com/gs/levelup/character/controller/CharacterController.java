@@ -36,7 +36,7 @@ public class CharacterController {
 
 	@RequestMapping("listChar.do")
 	public String testMaria(Model model) {
-		ArrayList<Character> list = characterService.selectAll();
+		ArrayList<com.gs.levelup.character.model.vo.Character> list = characterService.selectAll();
 
 		if (list != null && list.size() > 0) {
 			model.addAttribute("list", list);

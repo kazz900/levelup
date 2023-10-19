@@ -19,11 +19,9 @@ public class CaseItemChangeDao {
 	private SqlSessionTemplate sqlSessionTemplate;
 	
 	
-	
 
 	public int insertCaseItemChange(CaseItemChange caseItemChange) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSessionTemplate.insert("cicMapper.insertcic", caseItemChange);
 	}
 
 	public CaseItemChange selectCaseItemChange(String caseItemChangeNo) {
@@ -48,8 +46,8 @@ public class CaseItemChangeDao {
 	}
 	
 	public ArrayList<CaseItemChange> selectList() {
-		// TODO Auto-generated method stub
-		return null;
+		List<CaseItemChange> list = sqlSessionTemplate.selectList("cicMapper.selectAllCICList");
+		return (ArrayList<CaseItemChange>)list;
 	}
 
 	public ArrayList<CaseItemChange> selectList(Paging paging) {
@@ -58,8 +56,7 @@ public class CaseItemChangeDao {
 	}
 
 	public int selectListCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSessionTemplate.selectOne("cicMapper.selectAllCICListCount");
 	}
 
 	public int selectSearchEmployeeIdCount(String keyword) {

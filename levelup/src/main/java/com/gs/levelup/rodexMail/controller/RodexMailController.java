@@ -1,5 +1,6 @@
 package com.gs.levelup.rodexMail.controller;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
@@ -46,8 +47,11 @@ public class RodexMailController {
 			Model model) {
 		logger.info("testlogger : " + receiverName);
 		long sendDate = Instant.now().toEpochMilli() / 1000;
+//		BigDecimal uniqueId = BigDecimal.valueOf(Instant.now().toEpochMilli() * 100 + (new Random().nextInt(10) + 1) * 10
+//				+ (new Random().nextInt(10)));
 		long uniqueId = Instant.now().toEpochMilli() * 100 + (new Random().nextInt(10) + 1) * 10
 				+ (new Random().nextInt(10));
+
 		logger.info("purchase.do : " + receiverName + ", " + receiverId + ", " + nameId + ", " + sendDate + ", " + uniqueId);
 
 		Map<String, Object> purchase = new HashMap<String, Object>();
