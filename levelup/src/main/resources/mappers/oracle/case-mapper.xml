@@ -46,6 +46,7 @@
 	<insert id="caseItemChange" parameterType="CaseItemChange">
 		INSERT INTO CASE_ITEM_CHANGE
 		VALUES ( SYS_GUID(), #{ itemId }, #{ charId }, #{ employeeId }, #{ replaceItemId }, #{ replaceItemNo },
-		#{ documentTitle }, #{ documentContent }, #{ attachementFilename }, SYSDATE, DEFAULT, DEFAULT );	
+		#{ documentTitle }, #{ documentContent }, #{ attachementFilename }, SYSDATE, '0', DEFAULT, #{ managerId }, 
+		#{ itemName }, #{ itemAmount });	
 	</insert>
 </mapper>
