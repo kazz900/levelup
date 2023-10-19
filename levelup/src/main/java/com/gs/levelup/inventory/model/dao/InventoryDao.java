@@ -24,4 +24,9 @@ public class InventoryDao {
 		return (ArrayList<Inventory>)list;
 	}
 
+	public ArrayList<Inventory> selectAll() {
+		List<Inventory> list = sqlSessionTemplateMaria.selectList("inventoryMapper.selectAll");
+		return (ArrayList<Inventory>)list;
+	}
+
 }

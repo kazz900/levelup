@@ -41,5 +41,7 @@ public class InventoryController {
 		out.flush();
 		out.close();
 	}
+	
+	
 
 }
