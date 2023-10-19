@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.gs.levelup.caseitemchange.model.service.CaseItemChangeService;
 import com.gs.levelup.caseitemchange.model.vo.CaseItemChange;
 import com.gs.levelup.common.FileNameChange;
+import com.gs.levelup.common.Paging;
 import com.gs.levelup.employee.model.service.EmployeeService;
 import com.gs.levelup.employee.model.vo.Employee;
 import com.gs.levelup.inventory.model.service.InventoryService;
@@ -36,6 +37,40 @@ public class CaseItemChangeController {
 	
 	@Autowired
 	private EmployeeService employeeService;
+	
+	// 뷰 페이지 이동 처리용 ---------------------------------------------------
+
+		// 요청 처리용 ----------------------------------------------------------
+
+	@RequestMapping(value = "ciclist.do", method = RequestMethod.GET)
+	public String selectListMethod(@RequestParam(name = "page", required = false) String page, Model model) {
+
+		int currentPage = 1;
+		if (page != null) {
+			currentPage = Integer.parseInt(page);
+		}
+
+		// 한 페이지 게시글 10개씩 출력되게 한다면
+		int limit = 10;
+
+		// 총 페이지 수 계산을 위한 게시글 총갯수 조회
+		int listCount = cicService.selectListCount();
+
+		// 페이지 관련 항목 계산 처리
+		Paging paging = new Paging(listCount, currentPage, limit, "ciclist.do");
+		paging.calculator();
+
+		// 페이지에 출력할 목록 조회해 옴
+		ArrayList<CaseItemChange> list = cicService.selectList(paging);
+
+		if (list != null && list.size() > 0) {
+			model.addAttribute("list", list);
+			model.addAttribute("paging", paging);
+			model.addAttribute("currentPage", currentPage);
+			model.addAttribute("limit", limit);
+		} 
+		return "empCase/empCaseItemChangeListView";
+	}
 
 	
 	@RequestMapping(value="changeitem.do", method = RequestMethod.GET)
@@ -140,11 +175,6 @@ public class CaseItemChangeController {
 
 	@RequestMapping(value="cicdel.do", method = RequestMethod.GET)
 	public ModelAndView deleteCaseItemChange(ModelAndView mv) {
-		return mv;
-	}
-
-	@RequestMapping(value="ciclist.do", method = RequestMethod.GET)
-	public ModelAndView selectList(ModelAndView mv) {
 		return mv;
 	}
 
