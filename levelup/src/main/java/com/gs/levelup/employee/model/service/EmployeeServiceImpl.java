@@ -121,4 +121,9 @@ public class EmployeeServiceImpl implements EmployeeService{
 	public int selectSearchLoginOKCount(String keyword){
 		return employeeDao.selectSearchLoginOKCount(keyword);
 	}
+
+	@Override
+	public Employee selectManager(String managerId) {
+		return employeeDao.selectManager(managerId);
+	}
 }

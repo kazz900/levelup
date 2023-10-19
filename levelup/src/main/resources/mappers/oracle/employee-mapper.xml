@@ -15,6 +15,7 @@
 		<result property="employeeAddress" column="EMPLOYEE_ADDRESS" />
 		<result property="employeePhone" column="EMPLOYEE_PHONE" />
 		<result property="employeeBirthdate" column="EMPLOYEE_BIRTHDATE" />
+		<result property="managerId" column="MANAGER_ID" />
 	</resultMap>
 	
 	<resultMap id="resultList" type="Employee">
@@ -28,12 +29,17 @@
 		<result property="employeeAddress" column="EMPLOYEE_ADDRESS" />
 		<result property="employeePhone" column="EMPLOYEE_PHONE" />
 		<result property="employeeBirthdate" column="EMPLOYEE_BIRTHDATE" />
+		<result property="managerId" column="MANAGER_ID" />
 	</resultMap>
 
 
 	
 	<select id="selectEmployee" parameterType="string" resultMap="resultEmployee">
 		select * from employee where EMPLOYEE_EMAIL = #{ employeeEmail }
+	</select>
+	
+	<select id="selectManager" parameterType="string" resultMap="resultEmployee">
+		select * from employee where EMPLOYEE_ID = #{ MANAGER_ID }
 	</select>
 	
 	
