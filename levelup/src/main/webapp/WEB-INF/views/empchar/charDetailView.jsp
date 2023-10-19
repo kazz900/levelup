@@ -148,6 +148,7 @@
 												<c:param name="price" value="${ i.price }"/>
 												<c:param name="gamePrice" value="${ i.gamePrice }"/>
 												<c:param name="employeeId" value="${ sessionScope.loginEmployee.employeeId }"/>
+												<c:param name="managerId" value="${ sessionScope.loginEmployee.managerId }"/>
 											</c:url>
 											<td data-th="Action"><a href="#" onclick="javascript:location.href='${cwrite}'" 
 											class="btn btn-primary waves-effect waves-light">Change Item</a></td>

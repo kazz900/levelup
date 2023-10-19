@@ -75,19 +75,18 @@
                                    
          
                              <!-- 결재자 -->
-
-									<div class="mb-3 row">
-                                            <label class="col-md-1 col-form-label">결재 라인</label>
-                                            <div class="col-md-4">
-                                                <select class="form-select">
-                                                <c:if test="${ !empty requestScope.list }">
-													<c:forEach items="${ requestScope.list }" var="e">
-	                                                    <option>${ e.managerId }</option>	                                                   
-                                                    </c:forEach>
-                                                </c:if>
-                                                </select>
-                                            </div>
-                                     </div>
+                                     
+                        					<!-- 결재자 정보 -->
+                                     <div class="row">	
+                                     		<!-- 결재자 이름 -->
+	                                        <div class="mb-3 col-lg-2">
+	                                        	<input type="hidden" name="managerId" value="${ requestScope.manager.employeeId }">
+	                                            <label>결재자 이름</label><input type="text" name="" id="disabledTextInput" class="form-control" placeholder="${ requestScope.manager.employeeName }" disabled>
+	                                        </div>        
+	                                        <div class="mb-3 col-lg-2">
+		                                           <label>결재자 이메일</label><input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.manager.employeeEmail }" disabled>
+	                                        </div>             
+                                     	</div>
                                    
 	
                                    

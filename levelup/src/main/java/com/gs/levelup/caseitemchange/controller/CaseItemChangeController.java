@@ -35,7 +35,7 @@ public class CaseItemChangeController {
 	private InventoryService inventoryService;
 	
 	@Autowired
-	private EmployeeService empService;
+	private EmployeeService employeeService;
 
 	
 	@RequestMapping(value="changeitem.do", method = RequestMethod.GET)
@@ -44,12 +44,12 @@ public class CaseItemChangeController {
 	}
 	
 	//기안 작성 페이지로 이동
-	
 	@RequestMapping("cicform.do")
-
-	public ModelAndView moveCaseItemChangeWritePage(Inventory itemdata, Employee employee, ModelAndView mv) {
+	public ModelAndView moveCaseItemChangeWritePage(Inventory itemdata, @RequestParam("managerId") String managerId, ModelAndView mv) {
 		
 		ArrayList<Inventory> list = inventoryService.selectAll();
+		Employee manager = employeeService.selectManager(managerId);
+		mv.addObject("manager", manager);
 		mv.addObject("list", list);
 		mv.addObject("itemdata", itemdata);
 		mv.setViewName("empCase/empNewCaseView");

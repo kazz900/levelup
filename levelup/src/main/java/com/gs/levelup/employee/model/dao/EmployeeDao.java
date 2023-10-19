@@ -111,4 +111,8 @@ public class EmployeeDao {
 	public int selectSearchLoginOKCount(String keyword){
 		return sqlSessionTemplate.selectOne("employeeMapper.selectSearchLoginOKCount", keyword);
 	}
+
+	public Employee selectManager(String managerId) {
+		return sqlSessionTemplate.selectOne("employeeMapper.selectManager", managerId);
+	}
 }
