@@ -42,4 +42,10 @@
 		FULL OUTER JOIN EMPLOYEE USING (EMPLOYEE_ID)
 		WHERE EMPLOYEE_ID = #{ employeeId }
 	</select>
+	
+	<insert id="caseItemChange" parameterType="CaseItemChange">
+		INSERT INTO CASE_ITEM_CHANGE
+		VALUES ( SYS_GUID(), #{ itemId }, #{ charId }, #{ employeeId }, #{ replaceItemId }, #{ replaceItemNo },
+		#{ documentTitle }, #{ documentContent }, #{ attachementFilename }, SYSDATE, DEFAULT, DEFAULT );	
+	</insert>
 </mapper>
