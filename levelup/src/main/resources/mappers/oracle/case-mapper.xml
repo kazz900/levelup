@@ -124,10 +124,11 @@
 	
 	<insert id="insertcic" parameterType="CaseItemChange">
 		INSERT INTO CASE_ITEM_CHANGE
-		VALUES ( SYS_GUID(), #{ itemId }, #{ charId }, #{ employeeId }, #{ replaceItemId }, #{ replaceItemNo },
-		#{ documentTitle }, #{ documentContent }, #{ attachementFilename }, SYSDATE, '0', DEFAULT, #{ managerId }, 
-		#{ itemName }, #{ itemAmount });	
+		VALUES ( DEFAULT, #{ itemId }, #{ charId }, #{ employeeId }, #{ replaceItemId }, #{ replaceItemAmount },
+		#{ documentTitle }, #{ documentContent }, #{ attachementFilename }, SYSDATE, NULL, '0', #{ managerId }, 
+		#{ itemName }, #{ itemAmount })
 	</insert>
+
 
 	<!-- ************************************************* -->
 	<!-- 아이템 삭제 기안 테이블 -->
