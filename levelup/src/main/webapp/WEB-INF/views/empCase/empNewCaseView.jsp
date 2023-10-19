@@ -69,17 +69,11 @@
 							 <form action="cicinsert.do" class="outer-repeater" method="post">
 	                            <input type="hidden" name="employeeId" value="${ sessionScope.loginEmployee.employeeId }">
 	                            <input type="hidden" name="employeeName" value="${ sessionScope.loginEmployee.employeeName }">
+	                            <input type="hidden" name="managerId" value="${ requestScope.manager.employeeId }">
 	                            <input type="hidden" name="charId" value="${ param.charId }">
-	                            <input type="hidden" name="beforenameId" value="${ param.nameId }">
-	                            <input type="hidden" name="beforeitemName" value="${ param.itemName }">
-	                            <input type="hidden" name="beforeamount" value="${ param.amount }">
-	                            <input type="hidden" name="beforeprice" value="${ param.price }">
-	                            <input type="hidden" name="beforegamePrice" value="${ param.gamePrice }">
-	                            <input type="hidden" name="afternameId" value="${ i.nameId }">
-	                            <input type="hidden" name="afteritemName" value="${ i.itemName }">
-	                            <input type="hidden" name="afteramount" value="${ i.amount }">
-	                            <input type="hidden" name="afterprice" value="${ i.price }">
-	                            <input type="hidden" name="aftergamePrice" value="${ i.gamePrice }">
+	                            <input type="hidden" name="itemId" value="${ param.nameId }">
+
+
 
 									<!-- 기안 제목 -->
 									<div class="form-group row mb-4">
@@ -180,6 +174,8 @@
 												</option>
 											</c:forEach>
 										</select>
+										 <input type="hidden" name="replaceItemId" value="${ i.itemId }">
+	                           			 <input type="hidden" name="replaceItemNo" value="${ i.amount }">		
 									</div>
 
 									<!-- 드랍다운에서 아이템 선택 시 자동으로 채워지는 칸들 -->
