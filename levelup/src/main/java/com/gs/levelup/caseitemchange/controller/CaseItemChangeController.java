@@ -59,7 +59,7 @@ public class CaseItemChangeController {
 	//기안 작성페이지 
 	@RequestMapping(value="cicinsert.do", method = RequestMethod.POST)
 	public String insertCaseItemChange(CaseItemChange caseItemChange,
-										@RequestParam(name="file", required=false) MultipartFile mfile,
+										@RequestParam(name="attachementFilename", required=false) MultipartFile mfile,
 										HttpServletRequest request,
 										Model model) {
 		
@@ -96,7 +96,38 @@ public class CaseItemChangeController {
 			return "common/error";
 		}
 	}
-
+	
+	
+	//작성한 기안 상세보기 페이지 뷰(기안 작성 직후 페이지, 결재자에게 올리기 전)
+	@RequestMapping(value="cicdetail.do", method = RequestMethod.GET)
+	public ModelAndView selectCaseItemChangeDetail(ModelAndView mv,
+												 @RequestParam("documentId") String documentId,
+												 @RequestParam(name="page", required=false) String page) {
+		
+		//출력할 페이지 
+		int currentPage = 1;
+		
+		if(page != null) {
+			currentPage = Integer.parseInt(page);					
+		}
+		
+		CaseItemChange caseItemChange = cicService.selectCaseItemChange(documentId);
+		
+		if(caseItemChange != null) {
+			mv.addObject("caseItemChange", caseItemChange);
+			mv.addObject("currentPage", currentPage);			
+		
+			mv.setViewName("empCase/empCaseDetailView");
+		}else {
+			mv.addObject("message", "아이템 변경 기안 상세 페이지 보기 실패");
+			mv.setViewName("common/error");
+		}
+		
+		
+		return mv;
+	}
+	
+	
 	@RequestMapping(value="cicselect.do", method = RequestMethod.GET)
 	public ModelAndView selectCaseItemChange(ModelAndView mv) {
 		return mv;

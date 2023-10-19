@@ -14,7 +14,6 @@
 <c:import url="/WEB-INF/views/common/title-meta.jsp" />
 <!-- 헤드 스크립트 -->
 <c:import url="/WEB-INF/views/common/head-script.jsp" />
-<script type="text/javascript" src="/malant/resources/common/js/jquery-3.7.0.min.js"></script>
 <script type="text/javascript">
 
 </script>
@@ -57,18 +56,29 @@
                       
                           <h1 class="card-title mb-5" align="center">새 기안 작성 (아이템 변경)</h1>                         
                           
-                          <form id="newcaseform" class="outer-repeater" method="post">
+                          <form action="cicinsert.do" class="outer-repeater" method="post">
                             <input type="hidden" name="employeeId" value="${ sessionScope.loginEmployee.employeeId }">
 							<input type="hidden" name="employeeName" value="${ sessionScope.loginEmployee.employeeName }">
+							<input type="hidden" name="charId" value="${ param.charId }">
+							<input type="hidden" name="beforenameId" value="${ param.nameId }">
+							<input type="hidden" name="beforeitemName" value="${ param.itemName }">
+							<input type="hidden" name="beforeamount" value="${ param.amount }">
+							<input type="hidden" name="beforeprice" value="${ param.price }">
+							<input type="hidden" name="beforegamePrice" value="${ param.gamePrice }">
+							<input type="hidden" name="afternameId" value="${ i.nameId }">
+							<input type="hidden" name="afteritemName" value="${ i.itemName }">
+							<input type="hidden" name="afteramount" value="${ i.amount }">
+							<input type="hidden" name="afterprice" value="${ i.price }">
+							<input type="hidden" name="aftergamePrice" value="${ i.gamePrice }">
           
                                   
                                   
                                   
                           	<!-- 기안 제목 -->           
                                       <div class="form-group row mb-4">
-                                          <label for="caseTitle" class="col-form-label col-lg-1">기안 제목</label>
+                                          <label for="documentTitle" class="col-form-label col-lg-1">기안 제목</label>
                                           <div class="col-lg-11">
-                                              <input id="caseTitle" name="caseTitle" type="text" class="form-control" placeholder="기안 제목 입력하세요">
+                                              <input id="caseTitle" name="documentTitle" type="text" class="form-control" placeholder="기안 제목 입력하세요">
                                           </div>
                                       </div>
                                       
@@ -96,9 +106,9 @@
                             <!-- 기안 내용 -->        
                                     <div class="d-flex">
 									<div class="flex-grow-1 overflow-hidden">
-									<label for="caseContent" class="col-form-label col-lg-1">기안 내용</label>
+									<label for="documentContent" class="col-form-label col-lg-1">기안 내용</label>
 									<div class="col-lg-12">
-                                           <textarea id="caseContent" name="caseContent" class="form-control" rows="3" cols="40" placeholder="기안 내용을 작성하세요"></textarea>
+                                           <textarea id="caseContent" name="documentContent" class="form-control" rows="3" cols="40" placeholder="기안 내용을 작성하세요"></textarea>
                                     </div>
 									</div>
 									</div>	
@@ -111,7 +121,7 @@
 										<label for="attatchFile" class="col-form-label col-lg-1">첨부 파일</label>                                      
                                                <div class="mb-3" align="center">
                                                   <!--  <i class="display-4 text-muted bx bxs-cloud-upload"></i><br> -->
-                                                   <input class="form-control" type="file" id="formFile">                                            
+                                                   <input class="form-control" type="file" id="formFile" name="attachementFilename">                                            
                                                </div>                                               
                            
                                          <br>
