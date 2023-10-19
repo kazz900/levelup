@@ -12,11 +12,11 @@ public class RodexItems  implements java.io.Serializable{
 	private int amount;
 	private int equip;
 	private int identify;
-	private int uniqueId;
+	private long uniqueId;
 	
 	public RodexItems() {}
 
-	public RodexItems(int id, int mailId, int nameId, int amount, int equip, int identify, int uniqueId) {
+	public RodexItems(int id, int mailId, int nameId, int amount, int equip, int identify, long uniqueId) {
 		super();
 		this.id = id;
 		this.mailId = mailId;
@@ -75,11 +75,11 @@ public class RodexItems  implements java.io.Serializable{
 		this.identify = identify;
 	}
 
-	public int getUniqueId() {
+	public long getUniqueId() {
 		return uniqueId;
 	}
 
-	public void setUniqueId(int uniqueId) {
+	public void setUniqueId(long uniqueId) {
 		this.uniqueId = uniqueId;
 	}
 

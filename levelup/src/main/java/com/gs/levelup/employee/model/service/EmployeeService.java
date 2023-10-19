@@ -31,4 +31,5 @@ public interface EmployeeService {
 	public ArrayList<Employee> selectSearchEnrollDate(Search Search);
 	public ArrayList<Employee> selectSearchLoginOK(Search Search);
 	public int selectCheckId(String userid);
+	public Employee selectManager(String managerId);
 }

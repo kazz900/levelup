@@ -9,6 +9,7 @@ import com.gs.levelup.character.model.dao.CharacterDao;
 
 @Service("characterService")
 public class CharacterServiceImpl implements CharacterService{
+	
 	@Autowired
 	private CharacterDao characterDao;
 
@@ -26,6 +27,4 @@ public class CharacterServiceImpl implements CharacterService{
 	public ArrayList<com.gs.levelup.character.model.vo.Character> selectAll() {
 		return characterDao.selectAll();
 	}
-	
-	
 }

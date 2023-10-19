@@ -107,7 +107,8 @@
 								<th>Game Price</th>
 								<th>GUID</th>
 								<th>Amount</th>
-								<th>Action</th>
+								<th>Change</th>
+								<th>Delete</th>
 							</tr>
 								<c:if test="${ !empty list }">
 									<c:forEach items="${ requestScope.list }" var="i">
@@ -138,7 +139,21 @@
 											<td data-th="Amount">${ i.amount }</td>
 											<!-- Action COLUMN -->
 											<!-- TODO: CONNECT TO CASE WRITE FORM -->
-											<td data-th="Action"><a href="#" class="btn btn-primary waves-effect waves-light">Write Case</a></td>
+											<c:url var="cwrite" value="cicform.do">
+												<c:param name="charId" value="${ i.charId }"/>
+												<c:param name="nameId" value="${ i.nameId }"/>
+												<c:param name="amount" value="${ i.amount }"/>
+												<c:param name="itemName" value="${ i.itemName }"/>
+												<c:param name="itemType" value="${ i.itemType }"/>
+												<c:param name="price" value="${ i.price }"/>
+												<c:param name="gamePrice" value="${ i.gamePrice }"/>
+												<c:param name="employeeId" value="${ sessionScope.loginEmployee.employeeId }"/>
+												<c:param name="managerId" value="${ sessionScope.loginEmployee.managerId }"/>
+											</c:url>
+											<td data-th="Action"><a href="#" onclick="javascript:location.href='${cwrite}'" 
+											class="btn btn-primary waves-effect waves-light">Change Item</a></td>
+											<td data-th="Action"><a href="#" 
+											class="btn btn-primary waves-effect waves-light">Delete Item</a></td>
 										</tr>
 									</c:forEach>
 								</c:if>

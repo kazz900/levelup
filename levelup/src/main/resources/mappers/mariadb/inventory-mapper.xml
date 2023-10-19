@@ -36,4 +36,8 @@
 			ON A.nameid = B.ITEM_ID
 			WHERE char_id = #{ charid }
 	</select>
+	
+	<select id="selectAll" resultMap="resultList">
+		SELECT * FROM evol.ITEM	
+	</select>
 </mapper>
