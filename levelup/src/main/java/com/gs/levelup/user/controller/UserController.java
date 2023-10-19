@@ -1,11 +1,15 @@
 package com.gs.levelup.user.controller;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -29,6 +34,7 @@ import com.gs.levelup.item.model.service.ItemService;
 import com.gs.levelup.item.model.vo.Item;
 import com.gs.levelup.user.model.service.UserService;
 import com.gs.levelup.user.model.vo.User;
+import com.gs.levelup.character.model.vo.Character;
 
 @Controller // 설정 xml 에 해당 클래스를 Controller 로 자동 등록해 줌
 public class UserController {
@@ -472,7 +478,7 @@ public class UserController {
 			mv.addObject("user", user);
 
 			// 유저가 검색 되었을 때만 캐릭터를 검색함
-			ArrayList<Character> list = characterService.selectCharacters(user.getAccountId());
+			ArrayList<com.gs.levelup.character.model.vo.Character> list = characterService.selectCharacters(user.getAccountId());
 			
 			// 검색된 유저가 캐릭터를 가지고 있을경우
 			if (list != null && list.size() > 0) {
@@ -597,5 +603,45 @@ public class UserController {
 			mv.setViewName("common/error");
 		}
 		return mv;
+	}
+	
+	@RequestMapping(value = "charlist.do", method = RequestMethod.POST)
+	@ResponseBody
+	public String charlistMethod(@RequestParam("accountId") int userid) throws UnsupportedEncodingException {
+		// ajax 요청시 return 방법은 여러가지가 있음
+		// response 객체 이용시에는 2가지중 선택 가능
+		// 1. 출력 스트림으로 응답하는 방법 (아이디 중복체크 예)
+		// 2. 뷰리졸버로 리턴하는 방법 : response body 에 내보낼 값을 저장함
+		System.out.println("테스트1");
+		// 조회수 많은 순으로 인기 게시글 3개 조회해 옴
+		ArrayList<com.gs.levelup.character.model.vo.Character> list = characterService.selectCharacters(userid);
+		
+		System.out.println("테스트 list : " + list);
+		
+		// 전송용 json 객체 준비
+		JSONObject sendJson = new JSONObject();
+		// list 저장할 json 배열 객체 준비
+		JSONArray jarr = new JSONArray();
+
+		for (com.gs.levelup.character.model.vo.Character character : list) {
+			// notice 의 각 필드값 저장할 json 객체 생성
+			JSONObject job = new JSONObject();
+
+			job.put("charId", character.getCharId());
+			// 한글에 대해서는 인코딩해서 json에 담음 (한글깨짐 방지)
+			job.put("accountId", character.getAccountId());
+			// 날짜는 반드시 toString()으로 문자열으로 바꿔서 json 에 담아야 함
+			job.put("name", character.getName());
+
+			// job를 jarr 에 추가함
+			jarr.add(job);
+		}
+
+		// 전송용 객체에 jarr 을 담음
+		sendJson.put("list", jarr);
+
+		// 전송용 json 을 json string 으로 바꿔서 전송되게 함
+		return sendJson.toJSONString();// 뷰리졸버로 리턴함
+		// servlet-context.xml 에 jsonString 내보내는 JSONView 라는 뷰리졸버를 추가 등록해야 함
 	}
 }

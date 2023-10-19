@@ -59,8 +59,6 @@
 				<br>
 				<!-- 여기부터 내용 작성 -->
 
-
-
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="card">
@@ -68,11 +66,20 @@
 
 								<h1 class="card-title mb-5" align="center">새 기안 작성 (아이템 변경)</h1>
 
-								<form id="newcaseform" class="outer-repeater" method="post">
-									<input type="hidden" name="employeeId"
-										value="${ sessionScope.loginEmployee.employeeId }"> <input
-										type="hidden" name="employeeName"
-										value="${ sessionScope.loginEmployee.employeeName }">
+							 <form action="cicinsert.do" class="outer-repeater" method="post">
+                            <input type="hidden" name="employeeId" value="${ sessionScope.loginEmployee.employeeId }">
+                            <input type="hidden" name="employeeName" value="${ sessionScope.loginEmployee.employeeName }">
+                            <input type="hidden" name="charId" value="${ param.charId }">
+                            <input type="hidden" name="beforenameId" value="${ param.nameId }">
+                            <input type="hidden" name="beforeitemName" value="${ param.itemName }">
+                            <input type="hidden" name="beforeamount" value="${ param.amount }">
+                            <input type="hidden" name="beforeprice" value="${ param.price }">
+                            <input type="hidden" name="beforegamePrice" value="${ param.gamePrice }">
+                            <input type="hidden" name="afternameId" value="${ i.nameId }">
+                            <input type="hidden" name="afteritemName" value="${ i.itemName }">
+                            <input type="hidden" name="afteramount" value="${ i.amount }">
+                            <input type="hidden" name="afterprice" value="${ i.price }">
+                            <input type="hidden" name="aftergamePrice" value="${ i.gamePrice }">
 
 									<!-- 기안 제목 -->
 									<div class="form-group row mb-4">
@@ -230,9 +237,6 @@
 										</div>
 									</div>
 									<br>
-
-
-
 
 									<!-- 파일 업로드 -->
 									<label for="attatchFile" class="col-form-label col-lg-1">첨부

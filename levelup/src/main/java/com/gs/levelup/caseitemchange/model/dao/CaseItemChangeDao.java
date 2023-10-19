@@ -19,11 +19,9 @@ public class CaseItemChangeDao {
 	private SqlSessionTemplate sqlSessionTemplate;
 	
 	
-	
 
 	public int insertCaseItemChange(CaseItemChange caseItemChange) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSessionTemplate.insert("cicMapper.insertCaseItemChange", caseItemChange);
 	}
 
 	public CaseItemChange selectCaseItemChange(String caseItemChangeNo) {

@@ -13,29 +13,25 @@ public class CaseItemChange implements java.io.Serializable{
 
 
 	private String documentId;
-	private int userId;
 	private int itemId;
 	private int charId;
 	private String employeeId;
+	private int replaceItemId;
+	private int replaceItemNo;
 	private String documentTitle;
 	private String documentContent;
 	private String attachementFilename;
 	private Date editDate;
 	private Date signDate;
 	private String documentStatus;
-	private int replaceItemId;
-	private int replaceItemNo;
 	
 	public CaseItemChange() {}
-	
-	
 
-	public CaseItemChange(String documentId, int userId, int itemId, int charId, String employeeId,
-			String documentTitle, String documentContent, String attachementFilename, Date editDate, Date signDate,
-			String documentStatus, int replaceItemId, int replaceItemNo) {
+	public CaseItemChange(String documentId, int itemId, int charId, String employeeId, String documentTitle,
+			String documentContent, String attachementFilename, Date editDate, Date signDate, String documentStatus,
+			int replaceItemId, int replaceItemNo) {
 		super();
 		this.documentId = documentId;
-		this.userId = userId;
 		this.itemId = itemId;
 		this.charId = charId;
 		this.employeeId = employeeId;
@@ -49,22 +45,12 @@ public class CaseItemChange implements java.io.Serializable{
 		this.replaceItemNo = replaceItemNo;
 	}
 
-
-
 	public String getDocumentId() {
 		return documentId;
 	}
 
 	public void setDocumentId(String documentId) {
 		this.documentId = documentId;
-	}
-
-	public int getUserId() {
-		return userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
 	}
 
 	public int getItemId() {
@@ -155,16 +141,16 @@ public class CaseItemChange implements java.io.Serializable{
 		this.replaceItemNo = replaceItemNo;
 	}
 
-
-
 	@Override
 	public String toString() {
-		return "CaseItemChange [documentId=" + documentId + ", userId=" + userId + ", itemId=" + itemId + ", charId="
-				+ charId + ", employeeId=" + employeeId + ", documentTitle=" + documentTitle + ", documentContent="
+		return "CaseItemChange [documentId=" + documentId + ", itemId=" + itemId + ", charId=" + charId
+				+ ", employeeId=" + employeeId + ", documentTitle=" + documentTitle + ", documentContent="
 				+ documentContent + ", attachementFilename=" + attachementFilename + ", editDate=" + editDate
-				+ ", signDate=" + signDate + ", DocumentStatus=" + documentStatus + ", replaceItemId=" + replaceItemId
+				+ ", signDate=" + signDate + ", documentStatus=" + documentStatus + ", replaceItemId=" + replaceItemId
 				+ ", replaceItemNo=" + replaceItemNo + "]";
 	}
+	
+	
 
 	
 }
