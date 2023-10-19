@@ -21,7 +21,7 @@ public class CaseItemChangeDao {
 	
 
 	public int insertCaseItemChange(CaseItemChange caseItemChange) {
-		return sqlSessionTemplate.insert("cicMapper.insertCaseItemChange", caseItemChange);
+		return sqlSessionTemplate.insert("cicMapper.insertcic", caseItemChange);
 	}
 
 	public CaseItemChange selectCaseItemChange(String caseItemChangeNo) {

@@ -94,9 +94,14 @@ public class CaseItemChangeController {
 	//기안 작성페이지 
 	@RequestMapping(value="cicinsert.do", method = RequestMethod.POST)
 	public String insertCaseItemChange(CaseItemChange caseItemChange,
+										@RequestParam("employeeId") String employeeId,
+										@RequestParam("employeeName") String employeeName,
+										@RequestParam("managerId") String managerId,		
+										@RequestParam("replaceItemId") String replaceItemId,
+										@RequestParam("replaceItemAmount") String replaceItemAmount,
 										@RequestParam(name="attachementFilename", required=false) MultipartFile mfile,
 										HttpServletRequest request,
-										Model model) {
+										Model model) {		
 		
 		//첨부파일이 있을 때 저장 경로 지정
 		String savePath = request.getSession().getServletContext().getRealPath("resources/case_upfiles");
@@ -122,6 +127,9 @@ public class CaseItemChangeController {
 			//caseitemchange 객체에 파일 정보 저장
 			caseItemChange.setAttachementFilename(renameFileName);
 			
+			logger.info(replaceItemId);
+			logger.info(replaceItemAmount);
+			
 		}
 		if(cicService.insertCaseItemChange(caseItemChange) > 0) {
 			//기안 작성 성공 시 기안 상세보기 페이지로 이동
@@ -131,6 +139,8 @@ public class CaseItemChangeController {
 			return "common/error";
 		}
 	}
+	
+	
 	
 	
 	//작성한 기안 상세보기 페이지 뷰(기안 작성 직후 페이지, 결재자에게 올리기 전)

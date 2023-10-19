@@ -137,7 +137,7 @@
 		                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ itemName }" disabled>		                                 
 	                                        </div>          
 	                                        <div class="mb-3 col-lg-2">
-	                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ amount }" disabled>
+	                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.caseItemChange.itemAmount }" disabled>
 	                                        </div>  
 	                                       	<div class="mb-3 col-lg-2">
                                             	<input type="text" id="disabledTextInput" class="form-control" placeholder="${ price }" disabled>
@@ -173,7 +173,7 @@
 		                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ itemName }" disabled>		                                 
 	                                        </div>          
 	                                        <div class="mb-3 col-lg-2">
-	                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.caseItemChange.replaceItemNo }" disabled>
+	                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.caseItemChange.replaceItemAmount }" disabled>
 	                                        </div>  
 	                                       	<div class="mb-3 col-lg-2">
                                             	<input type="text" id="disabledTextInput" class="form-control" placeholder="${ price }" disabled>
@@ -227,12 +227,12 @@
 								
 								<div class="col-lg-10" align="center">
 									
-									<c:if test="${ sessionScope.loginEmployee.employeeId != requestScope.manager.employeeId }">
+									<c:if test="${ sessionScope.loginEmployee.employeeId != requestScope.caseItemChange.managerId }">
                                   <button type="button" class="btn btn-secondary waves-effect waves-light">목록으로</button>
                                   
                                    </c:if>
                                    
-									<c:if test="${ sessionScope.loginEmployee.employeeId == requestScope.manager.employeeId }">
+									<c:if test="${ sessionScope.loginEmployee.employeeId == requestScope.caseItemChange.managerId }">
                                   <button type="button" class="btn btn-secondary waves-effect waves-light">목록으로</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                   <button type="button" class="btn btn-success waves-effect waves-light">기안 승인</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                   <button type="submit" class="btn btn-danger waves-effect waves-light">기안 반려</button>                               
