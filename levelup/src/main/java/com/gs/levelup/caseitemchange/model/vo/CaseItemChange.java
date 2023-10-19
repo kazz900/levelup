@@ -17,19 +17,22 @@ public class CaseItemChange implements java.io.Serializable{
 	private int charId;
 	private String employeeId;
 	private int replaceItemId;
-	private int replaceItemNo;
+	private int replaceItemAmount;
 	private String documentTitle;
 	private String documentContent;
 	private String attachementFilename;
 	private Date editDate;
 	private Date signDate;
 	private String documentStatus;
+	private String managerId;
+	private String itemName;
+	private int itemAmount;
 	
 	public CaseItemChange() {}
 
 	public CaseItemChange(String documentId, int itemId, int charId, String employeeId, String documentTitle,
 			String documentContent, String attachementFilename, Date editDate, Date signDate, String documentStatus,
-			int replaceItemId, int replaceItemNo) {
+			int replaceItemId, int replaceItemAmount) {
 		super();
 		this.documentId = documentId;
 		this.itemId = itemId;
@@ -42,7 +45,7 @@ public class CaseItemChange implements java.io.Serializable{
 		this.signDate = signDate;
 		this.documentStatus = documentStatus;
 		this.replaceItemId = replaceItemId;
-		this.replaceItemNo = replaceItemNo;
+		this.replaceItemAmount = replaceItemAmount;
 	}
 
 	public String getDocumentId() {
@@ -133,12 +136,38 @@ public class CaseItemChange implements java.io.Serializable{
 		this.replaceItemId = replaceItemId;
 	}
 
-	public int getReplaceItemNo() {
-		return replaceItemNo;
+	public int getReplaceItemAmount() {
+		return replaceItemAmount;
 	}
 
-	public void setReplaceItemNo(int replaceItemNo) {
-		this.replaceItemNo = replaceItemNo;
+	public void setReplaceItemAmount(int replaceItemAmount) {
+		this.replaceItemAmount = replaceItemAmount;
+	}
+	
+	
+
+	public String getManagerId() {
+		return managerId;
+	}
+
+	public void setManagerId(String managerId) {
+		this.managerId = managerId;
+	}
+
+	public String getItemName() {
+		return itemName;
+	}
+
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
+
+	public int getItemAmount() {
+		return itemAmount;
+	}
+
+	public void setItemAmount(int itemAmount) {
+		this.itemAmount = itemAmount;
 	}
 
 	@Override
@@ -147,7 +176,7 @@ public class CaseItemChange implements java.io.Serializable{
 				+ ", employeeId=" + employeeId + ", documentTitle=" + documentTitle + ", documentContent="
 				+ documentContent + ", attachementFilename=" + attachementFilename + ", editDate=" + editDate
 				+ ", signDate=" + signDate + ", documentStatus=" + documentStatus + ", replaceItemId=" + replaceItemId
-				+ ", replaceItemNo=" + replaceItemNo + "]";
+				+ ", replaceItemNo=" + replaceItemAmount + "]";
 	}
 	
 	
