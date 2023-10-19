@@ -15,12 +15,13 @@ public class Employee implements java.io.Serializable  {
 	private String employeeAddress;
 	private String employeePhone;
 	private Date employeeBirthdate;
+	private String managerId;
 	
 	public Employee() {}
 
 	public Employee(String employeeId, String departmentId, String teamId, String rankId, String employeeName,
 			String employeeEmail, String employeePwd, String employeeAddress, String employeePhone,
-			Date employeeBirthdate) {
+			Date employeeBirthdate, String managerId) {
 		super();
 		this.employeeId = employeeId;
 		this.departmentId = departmentId;
@@ -32,6 +33,7 @@ public class Employee implements java.io.Serializable  {
 		this.employeeAddress = employeeAddress;
 		this.employeePhone = employeePhone;
 		this.employeeBirthdate = employeeBirthdate;
+		this.managerId = managerId;
 	}
 
 	public String getEmployeeId() {
@@ -114,14 +116,26 @@ public class Employee implements java.io.Serializable  {
 		this.employeeBirthdate = employeeBirthdate;
 	}
 
+	public String getManagerId() {
+		return managerId;
+	}
+
+	public void setManagerId(String managerId) {
+		this.managerId = managerId;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Override
 	public String toString() {
 		return "Employee [employeeId=" + employeeId + ", departmentId=" + departmentId + ", teamId=" + teamId
 				+ ", rankId=" + rankId + ", employeeName=" + employeeName + ", employeeEmail=" + employeeEmail
 				+ ", employeePwd=" + employeePwd + ", employeeAddress=" + employeeAddress + ", employeePhone="
-				+ employeePhone + ", employeeBirthdate=" + employeeBirthdate + "]";
+				+ employeePhone + ", employeeBirthdate=" + employeeBirthdate + ", managerId=" + managerId + "]";
 	}
-	
+
 	
 	
 }

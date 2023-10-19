@@ -1,6 +1,7 @@
 package com.gs.levelup.caseitemchange.model.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,9 @@ public class CaseItemChangeDao {
 	
 	@Autowired  //root-context.xml 에서 생성한 객체를 자동 연결함
 	private SqlSessionTemplate sqlSessionTemplate;
+	
+	
+	
 
 	public int insertCaseItemChange(CaseItemChange caseItemChange) {
 		// TODO Auto-generated method stub
@@ -37,6 +41,12 @@ public class CaseItemChangeDao {
 		return 0;
 	}
 
+	//결재자 조회용
+	public ArrayList<CaseItemChange> selectEmpList(String employeeId) {
+		List<CaseItemChange> list = sqlSessionTemplate.selectList("cicMapper.selectEmpList", employeeId);
+		return (ArrayList<CaseItemChange>)list;
+	}
+	
 	public ArrayList<CaseItemChange> selectList() {
 		// TODO Auto-generated method stub
 		return null;

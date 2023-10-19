@@ -12,17 +12,17 @@ public class CharacterDao {
 	@Autowired
 	private org.mybatis.spring.SqlSessionTemplate sqlSessionTemplateMaria;
 
-	public ArrayList<Character> selectCharacters(int accountId) {
-		List<Character> list = sqlSessionTemplateMaria.selectList("charMapper.selectCharacters", accountId);
-		return (ArrayList<Character>) list;
+	public ArrayList<com.gs.levelup.character.model.vo.Character> selectCharacters(int accountId) {
+		List<com.gs.levelup.character.model.vo.Character> list = sqlSessionTemplateMaria.selectList("charMapper.selectCharacters", accountId);
+		return (ArrayList<com.gs.levelup.character.model.vo.Character>) list;
 	}
 
 	public com.gs.levelup.character.model.vo.Character selectCharacter(int charId) {
 		return sqlSessionTemplateMaria.selectOne("charMapper.selectCharacter", charId);
 	}
 
-	public ArrayList<Character> selectAll() {
-		List<Character> list = sqlSessionTemplateMaria.selectList("charMapper.selectAll");
-		return (ArrayList<Character>)list;
+	public ArrayList<com.gs.levelup.character.model.vo.Character> selectAll() {
+		List<com.gs.levelup.character.model.vo.Character> list = sqlSessionTemplateMaria.selectList("charMapper.selectAll");
+		return (ArrayList<com.gs.levelup.character.model.vo.Character>)list;
 	}
 }
