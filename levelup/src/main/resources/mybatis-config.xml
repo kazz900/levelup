@@ -18,6 +18,8 @@
  		<typeAlias type="com.gs.levelup.notice.model.vo.Notice" alias="Notice" />
 
  		<typeAlias type="com.gs.levelup.inquiry.model.vo.Inquiry" alias="Inquiry" />
+
+ 		<typeAlias type="com.gs.levelup.item.model.vo.Item" alias="Item" />
  		
  		<typeAlias type="com.gs.levelup.caseitemchange.model.vo.CaseItemChange" alias="CaseItemChange" />
 
@@ -34,5 +36,7 @@
 		<mapper resource="mappers/oracle/employee-mapper.xml" />
 		<mapper resource="mappers/oracle/notice-mapper.xml" />
 		<mapper resource="mappers/oracle/inquiry-mapper.xml" />
+		<mapper resource="mappers/oracle/item-mapper.xml" />
+		<mapper resource="mappers/oracle/caseItemchange-mapper.xml" />
 	</mappers>
 </configuration>
