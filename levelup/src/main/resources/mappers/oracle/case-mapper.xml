@@ -22,7 +22,7 @@
 		<result property="itemAmount" column="ITEM_AMOUNT" />
 	</resultMap>
 
-	<resultMap id="resultList" type="CaseItemChange">
+	<resultMap id="resultCICList" type="CaseItemChange">
 		<result property="documentId" column="DOCUMENT_ID" />
 		<result property="itemId" column="ITEM_ID" />
 		<result property="charId" column="CHAR_ID" />
@@ -58,7 +58,7 @@
 		<result property="itemAmount" column="ITEM_AMOUNT" />
 	</resultMap>
 
-	<resultMap id="resultList" type="CaseItemDelete">
+	<resultMap id="resultCIDList" type="CaseItemDelete">
 		<result property="documentId" column="DOCUMENT_ID" />
 		<result property="itemId" column="ITEM_ID" />
 		<result property="charId" column="CHAR_ID" />
@@ -94,7 +94,7 @@
 		<result property="itemAmount" column="ITEM_AMOUNT" />
 	</resultMap>
 
-	<resultMap id="resultList" type="CaseItemRefund">
+	<resultMap id="resultCIRList" type="CaseItemRefund">
 		<result property="documentId" column="DOCUMENT_ID" />
 		<result property="userId" column="USERID" />
 		<result property="itemId" column="ITEM_ID" />
@@ -114,7 +114,7 @@
 	
 	<!-- ************************************************* -->
 	<!-- 아이템 변경 기안 테이블 -->
-	<select id="selectAllCICList" resultMap="resultList">
+	<select id="selectAllCICList" resultMap="resultCICList">
 		SELECT * FROM CASE_ITEM_CHANGE
 	</select>
 	
@@ -130,7 +130,7 @@
 
 	<!-- ************************************************* -->
 	<!-- 아이템 삭제 기안 테이블 -->
-	<select id="selectAllCIDList" resultMap="resultList">
+	<select id="selectAllCIDList" resultMap="resultCIDList">
 		SELECT * FROM CASE_ITEM_DELETE
 	</select>
 	
@@ -140,7 +140,7 @@
 	
 	<!-- ************************************************* -->
 	<!-- 아이템 환불 기안 테이블 -->
-	<select id="selectAllCIRList" resultMap="resultList">
+	<select id="selectAllCIRList" resultMap="resultCIRList">
 		SELECT * FROM CASE_ITEM_REFUND
 	</select>
 	
