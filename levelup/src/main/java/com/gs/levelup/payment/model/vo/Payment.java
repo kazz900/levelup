@@ -13,13 +13,71 @@ public class Payment implements java.io.Serializable {
 	private int itemId;
 	private int charId;
 	private int accountId;
-	private int amout;
+	private int amount;
 	private Date paymentDate;
 	private String paymentStatus;
 	private Date refundDate;
 	private String refundCause;
+	private String charName;
+	private String orderId;
+	private String paymentKey;
+	private Long uniqueId;
+	private String emailStatus;
 	
+	
+	
+	public Long getUniqueId() {
+		return uniqueId;
+	}
+
+	public void setUniqueId(Long uniqueId) {
+		this.uniqueId = uniqueId;
+	}
+
+	public String getEmailStatus() {
+		return emailStatus;
+	}
+
+	public void setEmailStatus(String emailStatus) {
+		this.emailStatus = emailStatus;
+	}
+
+	public String getCharName() {
+		return charName;
+	}
+
+	public void setCharName(String charName) {
+		this.charName = charName;
+	}	
+
+	public String getPaymentKey() {
+		return paymentKey;
+	}
+
+	public void setPaymentKey(String paymentKey) {
+		this.paymentKey = paymentKey;
+	}
+
+	public String getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
+	}
+
 	public Payment() {}
+	
+	public Payment(int amount, String orderId, String paymentKey, int charId, String charName, int itemId, int accountId, long uniqueId) {
+		this.amount = amount;
+		this.orderId = orderId;
+		this.paymentKey = paymentKey;
+		this.charId = charId;
+		this.charName = charName;
+		this.itemId = itemId;
+		this.accountId = accountId;
+		this.uniqueId = uniqueId;
+	}
 
 	public Payment(String paymentId, int itemId, int charId, int accountId, int amout, Date paymentDate,
 			String paymentStatus, Date refundDate, String refundCause) {
@@ -28,7 +86,7 @@ public class Payment implements java.io.Serializable {
 		this.itemId = itemId;
 		this.charId = charId;
 		this.accountId = accountId;
-		this.amout = amout;
+		this.amount = amout;
 		this.paymentDate = paymentDate;
 		this.paymentStatus = paymentStatus;
 		this.refundDate = refundDate;
@@ -67,12 +125,12 @@ public class Payment implements java.io.Serializable {
 		this.accountId = accountId;
 	}
 
-	public int getAmout() {
-		return amout;
+	public int getAmount() {
+		return amount;
 	}
 
-	public void setAmout(int amout) {
-		this.amout = amout;
+	public void setAmount(int amout) {
+		this.amount = amout;
 	}
 
 	public Date getPaymentDate() {
@@ -110,7 +168,7 @@ public class Payment implements java.io.Serializable {
 	@Override
 	public String toString() {
 		return "Payment [paymentId=" + paymentId + ", itemId=" + itemId + ", charId=" + charId + ", accountId="
-				+ accountId + ", amout=" + amout + ", paymentDate=" + paymentDate + ", paymentStatus=" + paymentStatus
+				+ accountId + ", amount=" + amount + ", paymentDate=" + paymentDate + ", paymentStatus=" + paymentStatus
 				+ ", refundDate=" + refundDate + ", refundCause=" + refundCause + "]";
 	}
 	

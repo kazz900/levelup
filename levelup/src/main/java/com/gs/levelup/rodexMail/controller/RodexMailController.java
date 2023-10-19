@@ -40,10 +40,11 @@ public class RodexMailController {
 	@RequestMapping(value = "purchase.do", method = RequestMethod.POST)
 	public String insertRodexMail(
 			HttpServletRequest request, 
-			@RequestParam("charName") String receiverName,
-			@RequestParam("charId") int receiverId, 
-			@RequestParam("itemId") int nameId, 
+			@RequestParam(value="charName") String receiverName,
+			@RequestParam(value="charId") int receiverId, 
+			@RequestParam(value="itemId") int nameId, 
 			Model model) {
+		logger.info("testlogger : " + receiverName);
 		long sendDate = Instant.now().toEpochMilli() / 1000;
 		long uniqueId = Instant.now().toEpochMilli() * 100 + (new Random().nextInt(10) + 1) * 10
 				+ (new Random().nextInt(10));
@@ -55,10 +56,10 @@ public class RodexMailController {
 		purchase.put("nameId", nameId);
 		purchase.put("sendDate", sendDate);
 		purchase.put("uniqueId", uniqueId);
-
+		
 		if (rodexMailService.insertRodexMail(purchase) > 0) {
-			
-			return "purchase/thanks";
+			model.addAttribute("message", "구매성공했습니다.");
+			return "user/ushop";
 		} else {
 			model.addAttribute("message", "구매 실패, 고객센터 문의요망");
 			model.addAttribute("map", purchase);

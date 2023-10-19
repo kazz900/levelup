@@ -19,7 +19,11 @@
 
  		<typeAlias type="com.gs.levelup.inquiry.model.vo.Inquiry" alias="Inquiry" />
  		
+ 		<typeAlias type="com.gs.levelup.item.model.vo.Item" alias="Item" />
+ 		
  		<typeAlias type="com.gs.levelup.caseitemchange.model.vo.CaseItemChange" alias="CaseItemChange" />
+ 		
+ 		<typeAlias type="com.gs.levelup.payment.model.vo.Payment" alias="Payment" />
 
  		<typeAlias type="com.gs.levelup.common.FileDownload" alias="FileDownload" />
  		<typeAlias type="com.gs.levelup.common.FileNameChange" alias="FileNameChange" />
@@ -34,5 +38,7 @@
 		<mapper resource="mappers/oracle/employee-mapper.xml" />
 		<mapper resource="mappers/oracle/notice-mapper.xml" />
 		<mapper resource="mappers/oracle/inquiry-mapper.xml" />
+		<mapper resource="mappers/oracle/item-mapper.xml" />
+		<mapper resource="mappers/oracle/payment-mapper.xml" />
 	</mappers>
 </configuration>
