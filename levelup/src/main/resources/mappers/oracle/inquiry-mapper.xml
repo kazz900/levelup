@@ -4,34 +4,36 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="inquiryMapper">
 
-	<resultMap id="resultInquiry" type="Inquiry">
-		<id property="inquiryId" column="INQUIRY_ID" />
+	<resultMap id="resultCaseItemChange" type="CaseItemChange">
+		<id property="documentId" column="DOCUMENT_ID" />
 		<result property="userId" column="USERID" />
+		<result property="itemId" column="ITEM_ID" />
+		<result property="charId" column="CHAR_ID" />
 		<result property="employeeId" column="EMPLOYEE_ID" />
-		<result property="inquiryTitle" column="INQUIRY_TITLE" />
-		<result property="inquiryContent" column="INQUIRY_CONTENT" />
-		<result property="answerStatus" column="ANSWER_STATUS" />
+		<result property="documentTitle" column="DOCUMENET_TITLE" />
+		<result property="documentContent" column="DOCUMENET_CONTENT" />
+		<result property="attachementFilename" column="ATTACHEMENT_FILENAME" />
 		<result property="editDate" column="EDIT_DATE" />
-		<result property="answerDate" column="ANSWER_DATE" />
-		<result property="answerContent" column="ANSWER_CONTENT" />
-		<result property="attachmentFileName" column="ATTACHEMENT_FILENAME" />
-		<result property="inquiryType" column="INQUIRY_TYPE" />
-		<result property="employeeName" column="EMP_NAME" />
+		<result property="signDate" column="SIGN_DATE" />
+		<result property="documentStatus" column="DOCUMENT_STATUS" />
+		<result property="replaceItemId" column="REPLACE_ITEM_ID" />
+		<result property="replaceItemNo" column="REPLACE_ITEM_NO" />
 	</resultMap>
 
-	<resultMap id="resultList" type="Inquiry">
-		<result property="inquiryId" column="INQUIRY_ID" />
+	<resultMap id="resultList" type="CaseItemChange">
+		<id property="documentId" column="DOCUMENT_ID" />
 		<result property="userId" column="USERID" />
+		<result property="itemId" column="ITEM_ID" />
+		<result property="charId" column="CHAR_ID" />
 		<result property="employeeId" column="EMPLOYEE_ID" />
-		<result property="inquiryTitle" column="INQUIRY_TITLE" />
-		<result property="inquiryContent" column="INQUIRY_CONTENT" />
-		<result property="answerStatus" column="ANSWER_STATUS" />
+		<result property="documentTitle" column="DOCUMENET_TITLE" />
+		<result property="documentContent" column="DOCUMENET_CONTENT" />
+		<result property="attachementFilename" column="ATTACHEMENT_FILENAME" />
 		<result property="editDate" column="EDIT_DATE" />
-		<result property="answerDate" column="ANSWER_DATE" />
-		<result property="answerContent" column="ANSWER_CONTENT" />
-		<result property="attachmentFileName" column="ATTACHEMENT_FILENAME" />
-		<result property="inquiryType" column="INQUIRY_TYPE" />
-		<result property="employeeName" column="EMP_NAME" />
+		<result property="signDate" column="SIGN_DATE" />
+		<result property="documentStatus" column="DOCUMENT_STATUS" />
+		<result property="replaceItemId" column="REPLACE_ITEM_ID" />
+		<result property="replaceItemNo" column="REPLACE_ITEM_NO" />
 	</resultMap>
 
 	<select id="selectList" parameterType="Paging"

@@ -82,9 +82,7 @@
                                                 <select class="form-select">
                                                 <c:if test="${ !empty requestScope.list }">
 													<c:forEach items="${ requestScope.list }" var="e">
-	                                                    <option>Select</option>
-	                                                    <option>Large select</option>
-	                                                    <option>Small select</option>
+	                                                    <option>${ e.managerId }</option>	                                                   
                                                     </c:forEach>
                                                 </c:if>
                                                 </select>
