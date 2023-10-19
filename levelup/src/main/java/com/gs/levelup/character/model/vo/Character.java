@@ -34,6 +34,8 @@ public class Character  implements java.io.Serializable{
 	private String lastMap;
 	private int online;
 	
+	
+	
 	public Character() {}
 
 	public Character(int charId, int accountId, int charNum, String name, int class_, int baseLevel, int jobLevel,

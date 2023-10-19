@@ -10,6 +10,7 @@ public class Inventory  implements java.io.Serializable{
 	private int id;
 	private int charId;
 	private int nameId;
+	private int itemId;
 	private int amount;
 	private int equip;
 	private int identify;
@@ -31,6 +32,15 @@ public class Inventory  implements java.io.Serializable{
 		this.equip = equip;
 		this.identify = identify;
 		this.uniqueId = uniqueId;
+	}
+	
+	
+	public int getItemId() {
+		return itemId;
+	}
+
+	public void setItemId(int itemId) {
+		this.itemId = itemId;
 	}
 
 	public int getId() {

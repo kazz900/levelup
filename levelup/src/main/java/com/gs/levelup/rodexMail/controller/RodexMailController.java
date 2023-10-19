@@ -47,6 +47,7 @@ public class RodexMailController {
 		long sendDate = Instant.now().toEpochMilli() / 1000;
 		long uniqueId = Instant.now().toEpochMilli() * 100 + (new Random().nextInt(10) + 1) * 10
 				+ (new Random().nextInt(10));
+		logger.info("purchase.do : " + receiverName + ", " + receiverId + ", " + nameId + ", " + sendDate + ", " + uniqueId);
 
 		Map<String, Object> purchase = new HashMap<String, Object>();
 		purchase.put("receiverName", receiverName);
@@ -57,11 +58,11 @@ public class RodexMailController {
 
 		if (rodexMailService.insertRodexMail(purchase) > 0) {
 			
-			return "thank.do";
+			return "purchase/thanks";
 		} else {
 			model.addAttribute("message", "구매 실패, 고객센터 문의요망");
 			model.addAttribute("map", purchase);
-			return "purchaseError.do";
+			return "purchase/purchaseError";
 		}
 	}
 

@@ -61,7 +61,7 @@
 	</resultMap> 
 	
 	<select id="selectCharacters" parameterType="_int" resultMap="resultList">
-		SELECT * FROM evol.char WHERE evol.char.account_id = #{ accountd_id }
+		SELECT * FROM evol.char WHERE evol.char.account_id = #{ accountId }
 	</select>
 	
 	<select id="selectCharacter" parameterType="_int" resultMap="resultChar">

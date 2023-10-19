@@ -14,11 +14,6 @@
 <c:import url="/WEB-INF/views/common/title-meta.jsp" />
 <!-- 헤드 스크립트 -->
 <c:import url="/WEB-INF/views/common/head-script.jsp" />
-<script type="text/javascript">
-
-</script>
-
-
 </head>
 <style>
 .table-responsive {
@@ -31,7 +26,24 @@
 	top: 0px;
 }
 
+.bg-light {
+	background: #eef0f4;
+}
+/* 드랍다운 */
+.item-select{
+    width: 300px;
+    height: 35px;
+    background: #5a6fe6;
+    border: none;
+    border-radius: 5px;
+    color: white;
+	margin-bottom: 1rem;
+}
 
+.options{
+	background: white;
+	color: black;
+}
 </style>
 <body data-sidebar="dark" data-layout-mode="light">
 	<!-- 내비게이션바, 사이드바 등등 -->
@@ -46,211 +58,242 @@
 				<h2 align="center"></h2>
 				<br>
 				<!-- 여기부터 내용 작성 -->
-				
-				
-			
-			<div class="row">
-              <div class="col-lg-12">
-                  <div class="card">
-                      <div class="card-body">               
-                      
-                          <h1 class="card-title mb-5" align="center">새 기안 작성 (아이템 변경)</h1>                         
-                          
-                          <form action="cicinsert.do" class="outer-repeater" method="post">
+
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="card">
+							<div class="card-body">
+
+								<h1 class="card-title mb-5" align="center">새 기안 작성 (아이템 변경)</h1>
+
+							 <form action="cicinsert.do" class="outer-repeater" method="post">
                             <input type="hidden" name="employeeId" value="${ sessionScope.loginEmployee.employeeId }">
-							<input type="hidden" name="employeeName" value="${ sessionScope.loginEmployee.employeeName }">
-							<input type="hidden" name="charId" value="${ param.charId }">
-							<input type="hidden" name="beforenameId" value="${ param.nameId }">
-							<input type="hidden" name="beforeitemName" value="${ param.itemName }">
-							<input type="hidden" name="beforeamount" value="${ param.amount }">
-							<input type="hidden" name="beforeprice" value="${ param.price }">
-							<input type="hidden" name="beforegamePrice" value="${ param.gamePrice }">
-							<input type="hidden" name="afternameId" value="${ i.nameId }">
-							<input type="hidden" name="afteritemName" value="${ i.itemName }">
-							<input type="hidden" name="afteramount" value="${ i.amount }">
-							<input type="hidden" name="afterprice" value="${ i.price }">
-							<input type="hidden" name="aftergamePrice" value="${ i.gamePrice }">
-          
-                                  
-                                  
-                                  
-                          	<!-- 기안 제목 -->           
-                                      <div class="form-group row mb-4">
-                                          <label for="documentTitle" class="col-form-label col-lg-1">기안 제목</label>
-                                          <div class="col-lg-11">
-                                              <input id="caseTitle" name="documentTitle" type="text" class="form-control" placeholder="기안 제목 입력하세요">
-                                          </div>
-                                      </div>
-                                      
-                                   
-         
-                             <!-- 결재자 -->
-                                     
-                        					<!-- 결재자 정보 -->
-                                     <div class="row">	
-                                     		<!-- 결재자 이름 -->
-	                                        <div class="mb-3 col-lg-2">
-	                                        	<input type="hidden" name="managerId" value="${ requestScope.manager.employeeId }">
-	                                            <label>결재자 이름</label><input type="text" name="" id="disabledTextInput" class="form-control" placeholder="${ requestScope.manager.employeeName }" disabled>
-	                                        </div>        
-	                                        <div class="mb-3 col-lg-2">
-		                                           <label>결재자 이메일</label><input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.manager.employeeEmail }" disabled>
-	                                        </div>             
-                                     	</div>
-                                   
-	
-                                   
-                          
-                                      
-                                      
-                            <!-- 기안 내용 -->        
-                                    <div class="d-flex">
-									<div class="flex-grow-1 overflow-hidden">
-									<label for="documentContent" class="col-form-label col-lg-1">기안 내용</label>
-									<div class="col-lg-12">
-                                           <textarea id="caseContent" name="documentContent" class="form-control" rows="3" cols="40" placeholder="기안 내용을 작성하세요"></textarea>
-                                    </div>
+                            <input type="hidden" name="employeeName" value="${ sessionScope.loginEmployee.employeeName }">
+                            <input type="hidden" name="charId" value="${ param.charId }">
+                            <input type="hidden" name="beforenameId" value="${ param.nameId }">
+                            <input type="hidden" name="beforeitemName" value="${ param.itemName }">
+                            <input type="hidden" name="beforeamount" value="${ param.amount }">
+                            <input type="hidden" name="beforeprice" value="${ param.price }">
+                            <input type="hidden" name="beforegamePrice" value="${ param.gamePrice }">
+                            <input type="hidden" name="afternameId" value="${ i.nameId }">
+                            <input type="hidden" name="afteritemName" value="${ i.itemName }">
+                            <input type="hidden" name="afteramount" value="${ i.amount }">
+                            <input type="hidden" name="afterprice" value="${ i.price }">
+                            <input type="hidden" name="aftergamePrice" value="${ i.gamePrice }">
+
+									<!-- 기안 제목 -->
+									<div class="form-group row mb-4">
+										<label for="caseTitle" class="col-form-label col-lg-1">기안
+											제목</label>
+										<div class="col-lg-11">
+											<input id="caseTitle" name="caseTitle" type="text"
+												class="form-control" placeholder="기안 제목 입력하세요">
+										</div>
 									</div>
-									</div>	
+
+									<!-- 결재자 -->
+									<!-- 결재자 정보 -->
+									<div class="row">
+										<!-- 결재자 이름 -->
+										<div class="mb-3 col-lg-2">
+											<input type="hidden" name="managerId"
+												value="${ requestScope.manager.employeeId }"> <label>결재자
+												이름</label><input type="text" name="" id="disabledTextInput"
+												class="form-control"
+												placeholder="${ requestScope.manager.employeeName }"
+												disabled>
+										</div>
+										<div class="mb-3 col-lg-2">
+											<label>결재자 이메일</label><input type="text"
+												id="disabledTextInput" class="form-control"
+												placeholder="${ requestScope.manager.employeeEmail }"
+												disabled>
+										</div>
+									</div>
+
+									<!-- 현재  아이템 정보 -->
+
+									<label for="currentItems" class="col-form-label col-lg-3">ITEM
+										INFO</label>
+									<div id="currentItems">
+										<div class="row">
+											<div class="mb-3 col-lg-2">ID</div>
+											<div class="mb-3 col-lg-2">NAME</div>
+											<div class="mb-3 col-lg-2">PRICE</div>
+											<div class="mb-3 col-lg-2">GAME PRICE</div>
+											<div class="mb-3 col-lg-2">AMOUNT</div>
+										</div>
+
+										<div class="row">
+
+											<div class="mb-3 col-lg-2">
+												<input type="hidden" name="charId" value="${ param.charId }">
+												<input type="text" id="disabledTextInput"
+													class="form-control" placeholder="${ param.nameId }"
+													disabled>
+											</div>
+											<div class="mb-3 col-lg-2">
+												<c:if test="${ !empty param.itemName }">
+													<input type="text" id="disabledTextInput"
+														class="form-control" placeholder="${ param.itemName }"
+														disabled>
+												</c:if>
+												<c:if test="${ empty param.itemName }">
+													<input type="text" id="disabledTextInput"
+														class="form-control" placeholder="잡템" disabled>
+												</c:if>
+											</div>
+											<div class="mb-3 col-lg-2">
+												<input type="text" id="disabledTextInput"
+													class="form-control" placeholder="${ param.price }"
+													disabled>
+											</div>
+											<div class="mb-3 col-lg-2">
+												<input type="text" id="disabledTextInput"
+													class="form-control" placeholder="${ param.gamePrice }"
+													disabled>
+											</div>
+											<div class="mb-3 col-lg-2">
+												<input type="text" id="disabledTextInput"
+													class="form-control" placeholder="${ param.amount }"
+													disabled>
+											</div>
+										</div>
+
+									</div>
+									<!-- 변경할 아이템 선택 Drop Down-->
+
+									<!-- TODO 오늘까지 한거 -->
+									<!-- TODO 드랍다운 추가 -->
+									<div>
+										<label>SELECT REPLACEMENT ITEM</label> <br>
+										<select class="item-select" id="replacementitemselect" onchange="onReplacementItemSelectChange(this.options[this.selectedIndex]);">
+											<c:forEach items="${ requestScope.ilist }" var="i">
+												<option class="options" id="${ i.itemId }"
+												data-nameId="${ i.itemId }"
+												data-amount="${ i.amount }"
+												data-uniqueId="${ i.uniqueId }"
+												data-itemName="${ i.itemName }"
+												data-itemType="${ i.itemType }"
+												data-price="${ i.price }"
+												data-gamePrice="${ i.gamePrice }">${ i.itemName }
+												</option>
+											</c:forEach>
+										</select>
+									</div>
+
+									<!-- 드랍다운에서 아이템 선택 시 자동으로 채워지는 칸들 -->
+									<div id="currentItems">
+										<div class="row">
+											<div class="mb-3 col-lg-2">ID</div>
+											<div class="mb-3 col-lg-2">NAME</div>
+											<div class="mb-3 col-lg-2">PRICE</div>
+											<div class="mb-3 col-lg-2">GAME PRICE</div>
+											<div class="mb-3 col-lg-2">AMOUNT</div>
+										</div>
+
+										<div class="row">
+											<div class="mb-3 col-lg-2">
+												<input type="text" id="replacementitemid" name="replacement_ItemId"
+													class="form-control"
+													disabled>
+											</div>
+											<div class="mb-3 col-lg-2">
+													<input type="text" id="replacementitemname" name="replacement_ItemName"
+														class="form-control"
+														disabled>
+											</div>
+											<div class="mb-3 col-lg-2">
+												<input type="text" id="replacementitemprice" name="replacement_ItemPrice"
+													class="form-control"
+													disabled>
+											</div>
+											<div class="mb-3 col-lg-2">
+												<input type="text" id="replacementitemgameprice" name="replacement_ItemGamePrice"
+													class="form-control" 
+													disabled>
+											</div>
+											<div class="mb-3 col-lg-2">
+												<input type="text" id="disabledTextInput" name="replacement_ItemAmount"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+
+
+
+
+
+									<!-- 기안 내용 -->
+									<div class="d-flex">
+										<div class="flex-grow-1 overflow-hidden">
+											<label for="caseContent" class="col-form-label col-lg-1">기안
+												내용</label>
+											<div class="col-lg-12">
+												<textarea id="caseContent" name="caseContent"
+													class="form-control" rows="3" cols="40"
+													placeholder="기안 내용을 작성하세요"></textarea>
+											</div>
+										</div>
+									</div>
 									<br>
-									
-									
-									
-							
-							<!-- 파일 업로드 -->
-										<label for="attatchFile" class="col-form-label col-lg-1">첨부 파일</label>                                      
-                                               <div class="mb-3" align="center">
-                                                  <!--  <i class="display-4 text-muted bx bxs-cloud-upload"></i><br> -->
-                                                   <input class="form-control" type="file" id="formFile" name="attachementFilename">                                            
-                                               </div>                                               
-                           
-                                         <br>
-        
 
-									
-							<!-- 현재  아이템 정보 -->
-							
-							 <label for="currentItems" class="col-form-label col-lg-3">변경 할 아이템</label>
-                                    <div id="currentItems">
-                                   		<div class="row" >
-                                     		<div class="mb-3 col-lg-2">ID</div>        
-                                            <div class="mb-3 col-lg-2">NAME</div>         
-                                            <div class="mb-3 col-lg-2">AMOUNT</div>   
-                                            <div class="mb-3 col-lg-2">PRICE</div>
-                                            <div class="mb-3 col-lg-2">GAME PRICE</div>
-                                        </div>    
-                                		
-                                		<div class="row">	
-                          
-	                                        <div class="mb-3 col-lg-2">
-	                                        	<input type="hidden" name="charId" value="${ param.charId }">
-	                                            <input type="text" name="" id="disabledTextInput" class="form-control" placeholder="${ param.nameId }" disabled>
-	                                        </div>        
-	                                        <div class="mb-3 col-lg-2">
-		                                        <c:if test="${ !empty param.itemName }">
-		                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ param.itemName }" disabled>
-		                                        </c:if>
-		                                        <c:if test="${ empty param.itemName }">
-		                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="잡템" disabled>
-		                                        </c:if>
-	                                        </div>          
-	                                        <div class="mb-3 col-lg-2">
-	                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ param.amount }" disabled>
-	                                        </div>  
-	                                       	<div class="mb-3 col-lg-2">
-                                            	<input type="text" id="disabledTextInput" class="form-control" placeholder="${ param.price }" disabled>
-	                                        </div>   
-	                                        <div class="mb-3 col-lg-2">
-	                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ param.gamePrice }" disabled>
-	                                        </div>   
-                                     	</div>
-                                            
-                                    </div>        
-                              <!-- 변경할 아이템 선택 Drop Down-->     
-                              
-                              <!-- TODO 오늘까지 한거 -->
-                                   <div class="dropdown">
-						            <button class="btn btn-secondary dropdown-toggle" 
-						            style="width: 500px;"
-						            type="button" data-bs-toggle="dropdown" aria-expanded="false">
-						              변경할 아이템 선택
-						            </button>
-						            <ul class="dropdown-menu" style="width: 500px;">
-						              <li><h6 class="dropdown-header">아이템을 선택 해주세요</h6></li>
-						              <c:forEach items="${ requestScope.list }" var="i">
-						              <li><a class="dropdown-item">${ i.itemName }</a></li>
-						              </c:forEach>
-						            </ul>
-						          </div>
-                                    
-                                    <div id="currentItems">
-                                   		<div class="row" >
-                                     		<div class="mb-3 col-lg-2"> 아이템 ID </div>        
-                                            <div class="mb-3 col-lg-2"> 아이템 고유번호  </div>         
-                                            <div class="mb-3 col-lg-2">  수량 </div>   
-                                        </div>    
-                                
-                                		<div class="row">	
-	                                        <div class="mb-3 col-lg-2">
-	                                            <input type="text" id="itemId" name="group-a[0][untyped-input]" class="form-control">
-	                                        </div>        
-	                                        <div class="mb-3 col-lg-2">                                                      
-	                                            <input type="text" id="itemGui" class="form-control">
-	                                        </div>        
-	                                        <div class="mb-3 col-lg-2">                                                      
-	                                            <input type="text" id="amount" class="form-control">
-	                                        </div> 
-                                     	</div>
-                                            
-                                    </div>        
-                          						
-											
-											
-											
+									<!-- 파일 업로드 -->
+									<label for="attatchFile" class="col-form-label col-lg-1">첨부
+										파일</label>
+									<div class="mb-3" align="center">
+										<!--  <i class="display-4 text-muted bx bxs-cloud-upload"></i><br> -->
+										<input class="form-control" type="file" id="formFile">
+									</div>
 
-                          <div class="row justify-content-end">
-                              <div class="col-lg-10">
-                                  <button type="submit" class="btn btn-primary">작성 완료</button>
-                              </div>
-                          </div>
-                  
-                          </form>
-                          
-                          
+									<br>
+									<div class="row justify-content-end">
+										<div class="col-lg-10">
+											<button type="submit" class="btn btn-primary">작성 완료</button>
+										</div>
+									</div>
 
-                      </div>
-                  </div>
-              </div>
-          </div>
+								</form>
 
-				
-				
-				
-			
-				
-				
 
-	
+
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 			<!-- container-fluid -->
 		</div>
 		<!-- page-content -->
 
-	<c:import url="/WEB-INF/views/common/footer.jsp" />
+		<c:import url="/WEB-INF/views/common/footer.jsp" />
 	</div>
 	<!-- main-content -->
 
 
- <!--tinymce js-->
-<script src="resources/libs/tinymce/tinymce.min.js"></script>
+	<!--tinymce js-->
+	<script src="resources/libs/tinymce/tinymce.min.js"></script>
 
-<!-- init js -->
-<script src="resources/js/pages/form-editor.init.js"></script>
+	<!-- init js -->
+	<script src="resources/js/pages/form-editor.init.js"></script>
 
 
-<!-- Plugins js -->
-<script src="resources/libs/dropzone/min/dropzone.min.js"></script>
-
+	<!-- Plugins js -->
+	<script src="resources/libs/dropzone/min/dropzone.min.js"></script>
+	
+	<script type="text/javascript">
+		function onReplacementItemSelectChange(replacementItem){
+			var replacementitemidinputfield = document.getElementById('replacementitemid');
+			var replacementitemnameinputfield = document.getElementById('replacementitemname');
+			var replacementitempriceinputfield = document.getElementById('replacementitemprice');
+			var replacementitemgamepriceinputfield = document.getElementById('replacementitemgameprice');
+			
+			replacementitemidinputfield.value = replacementItem.getAttribute("data-nameId");
+			replacementitemnameinputfield.value = replacementItem.getAttribute("data-itemName");
+			replacementitempriceinputfield.value = replacementItem.getAttribute("data-price");
+			replacementitemgamepriceinputfield.value = replacementItem.getAttribute("data-gamePrice");
+		}
+	</script>
 </body>
 </html>
 
