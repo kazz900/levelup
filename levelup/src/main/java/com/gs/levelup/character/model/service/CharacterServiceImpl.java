@@ -14,7 +14,7 @@ public class CharacterServiceImpl implements CharacterService{
 	private CharacterDao characterDao;
 
 	@Override
-	public ArrayList<Character> selectCharacters(int accountId) {
+	public ArrayList<com.gs.levelup.character.model.vo.Character> selectCharacters(int accountId) {
 		return characterDao.selectCharacters(accountId);
 	}
 
@@ -24,7 +24,7 @@ public class CharacterServiceImpl implements CharacterService{
 	}
 
 	@Override
-	public ArrayList<Character> selectAll() {
+	public ArrayList<com.gs.levelup.character.model.vo.Character> selectAll() {
 		return characterDao.selectAll();
 	}
 }
