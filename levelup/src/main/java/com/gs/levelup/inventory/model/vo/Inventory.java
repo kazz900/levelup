@@ -19,6 +19,7 @@ public class Inventory  implements java.io.Serializable{
 	private int price;
 	private int gamePrice; 
 	
+	
 	public Inventory() {}
 
 	public Inventory(int id, int charId, int nameId, int amount, int equip, int identify, long uniqueId) {

@@ -21,6 +21,8 @@ import com.gs.levelup.caseitemchange.model.vo.CaseItemChange;
 import com.gs.levelup.common.FileNameChange;
 import com.gs.levelup.employee.model.service.EmployeeService;
 import com.gs.levelup.employee.model.vo.Employee;
+import com.gs.levelup.inventory.model.service.InventoryService;
+import com.gs.levelup.inventory.model.vo.Inventory;
 
 @Controller
 public class CaseItemChangeController {
@@ -28,6 +30,9 @@ public class CaseItemChangeController {
 	
 	@Autowired
 	private CaseItemChangeService cicService;
+	
+	@Autowired
+	private InventoryService inventoryService;
 	
 	@Autowired
 	private EmployeeService empService;
@@ -40,11 +45,13 @@ public class CaseItemChangeController {
 	//기안 작성 페이지로 이동
 	
 	@RequestMapping("cicform.do")
-	public String moveCaseItemChangeWritePage(Employee employee, Model model) {
+	public ModelAndView moveCaseItemChangeWritePage(Inventory itemdata, Employee employee, ModelAndView mv) {
 		
-		return "empCase/empNewCaseView";
-		
-		
+		ArrayList<Inventory> list = inventoryService.selectAll();
+		mv.addObject("list", list);
+		mv.addObject("itemdata", itemdata);
+		mv.setViewName("empCase/empNewCaseView");
+		return mv;
 	}
 	
 	//기안 작성페이지 
