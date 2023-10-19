@@ -24,6 +24,10 @@
 		<typeAlias type="com.gs.levelup.loginlog.model.vo.LoginLog" alias="LoginLog" />
 		<typeAlias type="com.gs.levelup.inventory.model.vo.Inventory" alias="Inventory" />
 		<typeAlias type="com.gs.levelup.picklog.model.vo.PickLog" alias="PickLog" />
+
+		<typeAlias type="com.gs.levelup.rodexMail.model.vo.RodexMail" alias="RodexMail" />
+		<typeAlias type="com.gs.levelup.rodexItems.model.vo.RodexItems" alias="RodexItems" />
+		
 	</typeAliases>
 
 	<mappers>
@@ -33,5 +37,7 @@
 		<mapper resource="mappers/mariadb/log-mapper.xml" />
 		<mapper resource="mappers/mariadb/character-mapper.xml" />
 		<mapper resource="mappers/mariadb/inventory-mapper.xml" />
+		<mapper resource="mappers/mariadb/rodexmail-mapper.xml" />
+		
 	</mappers>
 </configuration>
