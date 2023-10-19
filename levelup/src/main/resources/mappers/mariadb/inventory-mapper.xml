@@ -7,6 +7,7 @@
 	<resultMap id="resultInventory" type="Inventory">
 		<id column="id" property="id"/>
 		<result column="nameid" property="nameId" />
+		<result column="ITEM_ID" property="itemId"/>
 		<result column="ITEM_NAME" property="itemName"/>
 		<result column="ITEM_TYPE" property="itemType"/>
 		<result column="PRICE" property="price"/>
@@ -19,6 +20,7 @@
 	<resultMap id="resultList" type="Inventory">
 		<result column="id" property="id"/>
 		<result column="nameid" property="nameId" />
+		<result column="ITEM_ID" property="itemId"/>
 		<result column="ITEM_NAME" property="itemName"/>
 		<result column="ITEM_TYPE" property="itemType"/>
 		<result column="PRICE" property="price"/>

@@ -13,29 +13,28 @@ public class CaseItemChange implements java.io.Serializable{
 
 
 	private String documentId;
-	private int userId;
 	private int itemId;
 	private int charId;
 	private String employeeId;
+	private int replaceItemId;
+	private int replaceItemAmount;
 	private String documentTitle;
 	private String documentContent;
 	private String attachementFilename;
 	private Date editDate;
 	private Date signDate;
 	private String documentStatus;
-	private int replaceItemId;
-	private int replaceItemNo;
+	private String managerId;
+	private String itemName;
+	private int itemAmount;
 	
 	public CaseItemChange() {}
-	
-	
 
-	public CaseItemChange(String documentId, int userId, int itemId, int charId, String employeeId,
-			String documentTitle, String documentContent, String attachementFilename, Date editDate, Date signDate,
-			String documentStatus, int replaceItemId, int replaceItemNo) {
+	public CaseItemChange(String documentId, int itemId, int charId, String employeeId, String documentTitle,
+			String documentContent, String attachementFilename, Date editDate, Date signDate, String documentStatus,
+			int replaceItemId, int replaceItemAmount) {
 		super();
 		this.documentId = documentId;
-		this.userId = userId;
 		this.itemId = itemId;
 		this.charId = charId;
 		this.employeeId = employeeId;
@@ -46,10 +45,8 @@ public class CaseItemChange implements java.io.Serializable{
 		this.signDate = signDate;
 		this.documentStatus = documentStatus;
 		this.replaceItemId = replaceItemId;
-		this.replaceItemNo = replaceItemNo;
+		this.replaceItemAmount = replaceItemAmount;
 	}
-
-
 
 	public String getDocumentId() {
 		return documentId;
@@ -57,14 +54,6 @@ public class CaseItemChange implements java.io.Serializable{
 
 	public void setDocumentId(String documentId) {
 		this.documentId = documentId;
-	}
-
-	public int getUserId() {
-		return userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
 	}
 
 	public int getItemId() {
@@ -147,24 +136,50 @@ public class CaseItemChange implements java.io.Serializable{
 		this.replaceItemId = replaceItemId;
 	}
 
-	public int getReplaceItemNo() {
-		return replaceItemNo;
+	public int getReplaceItemAmount() {
+		return replaceItemAmount;
 	}
 
-	public void setReplaceItemNo(int replaceItemNo) {
-		this.replaceItemNo = replaceItemNo;
+	public void setReplaceItemAmount(int replaceItemAmount) {
+		this.replaceItemAmount = replaceItemAmount;
+	}
+	
+	
+
+	public String getManagerId() {
+		return managerId;
 	}
 
+	public void setManagerId(String managerId) {
+		this.managerId = managerId;
+	}
 
+	public String getItemName() {
+		return itemName;
+	}
+
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
+
+	public int getItemAmount() {
+		return itemAmount;
+	}
+
+	public void setItemAmount(int itemAmount) {
+		this.itemAmount = itemAmount;
+	}
 
 	@Override
 	public String toString() {
-		return "CaseItemChange [documentId=" + documentId + ", userId=" + userId + ", itemId=" + itemId + ", charId="
-				+ charId + ", employeeId=" + employeeId + ", documentTitle=" + documentTitle + ", documentContent="
+		return "CaseItemChange [documentId=" + documentId + ", itemId=" + itemId + ", charId=" + charId
+				+ ", employeeId=" + employeeId + ", documentTitle=" + documentTitle + ", documentContent="
 				+ documentContent + ", attachementFilename=" + attachementFilename + ", editDate=" + editDate
-				+ ", signDate=" + signDate + ", DocumentStatus=" + documentStatus + ", replaceItemId=" + replaceItemId
-				+ ", replaceItemNo=" + replaceItemNo + "]";
+				+ ", signDate=" + signDate + ", documentStatus=" + documentStatus + ", replaceItemId=" + replaceItemId
+				+ ", replaceItemNo=" + replaceItemAmount + "]";
 	}
+	
+	
 
 	
 }
