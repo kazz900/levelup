@@ -47,10 +47,10 @@ public class CaseItemChangeController {
 	@RequestMapping("cicform.do")
 	public ModelAndView moveCaseItemChangeWritePage(Inventory itemdata, @RequestParam("managerId") String managerId, ModelAndView mv) {
 		
-		ArrayList<Inventory> list = inventoryService.selectAll();
+		ArrayList<Inventory> ilist = inventoryService.selectAll();
 		Employee manager = employeeService.selectManager(managerId);
 		mv.addObject("manager", manager);
-		mv.addObject("list", list);
+		mv.addObject("ilist", ilist);
 		mv.addObject("itemdata", itemdata);
 		mv.setViewName("empCase/empNewCaseView");
 		return mv;
