@@ -17,6 +17,16 @@ public class InventoryServiceImpl implements InventoryService{
 	public ArrayList<Inventory> selectInventory(int charId) {
 		return inventoryDao.selectInventory(charId);
 	}
+
+	@Override
+	public ArrayList<Inventory> selectUserInventory(int charId) {
+		return inventoryDao.selectUserInventory(charId);
+	}
+
+	@Override
+	public ArrayList<Inventory> selectAll() {
+		return inventoryDao.selectAll();
+	}
 	
 
 }

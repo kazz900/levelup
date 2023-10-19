@@ -62,7 +62,7 @@
 								<c:if test="${ !empty user }">
 									<tr>
 										<!-- ACCOUNT ID COLUMN -->
-										<td data-th="Account ID">${ user.accountId }</a></td>
+										<td data-th="Account ID">${ user.accountId }</td>
 										<!-- USER ID COLUMN -->
 										<td data-th="User ID">${ user.userId }</td>
 										<!-- EMAIL COLUMN -->
@@ -103,28 +103,28 @@
 									<c:forEach items="${ requestScope.list }" var="c">
 										<tr>
 											<!-- Char ID COLUMN -->
-											<td data-th="Account ID">${ c.charId }</a></td>
+											<td data-th="Char ID">${ c.charId }</td>
 											<!-- Char Name COLUMN -->
-											<td data-th="User ID">${ c.name }</td>
+											<td data-th="Char Name">${ c.name }</td>
 											<!-- Level COLUMN -->
-											<td data-th="Email">${ c.baseLevel }</td>
+											<td data-th="Level">${ c.baseLevel }</td>
 											<!-- Job Level COLUMN -->
-											<td data-th="Login count">${ c.jobLevel }</td>
+											<td data-th="Job Level">${ c.jobLevel }</td>
 											<!-- Zeny COLUMN -->
-											<td data-th="Last login IP">${ c.zeny }</td>
+											<td data-th="Zeny">${ c.zeny }</td>
 											<!-- Str COLUMN -->
-											<td data-th="Last login IP">${ c.str }</td>
+											<td data-th="Str">${ c.str }</td>
 											<!-- Agi COLUMN -->
-											<td data-th="Last login IP">${ c.agi }</td>
+											<td data-th="Agi">${ c.agi }</td>
 											<!-- Vit COLUMN -->
-											<td data-th="Last login IP">${ c.vit }</td>
+											<td data-th="Vit">${ c.vit }</td>
 											<!-- Int COLUMN -->
-											<td data-th="Last login IP">${ c.int_ }</td>
+											<td data-th="Int">${ c.int_ }</td>
 											<!-- Dex COLUMN -->
-											<td data-th="Last login IP">${ c.dex }</td>
+											<td data-th="Dex">${ c.dex }</td>
 											<!-- Luk COLUMN -->
-											<td data-th="Last login IP">${ c.luk }</td>
-											<td data-th="Last login IP"><button value="기안작성"></button></td>
+											<td data-th="Luk">${ c.luk }</td>
+											<td data-th="Action"><a href="javascript:location.href='${ pageContext.servletContext.contextPath }/charsearch.do?keyword=${ c.charId }'" class="btn btn-primary waves-effect waves-light">View Details</a></td>
 										</tr>
 									</c:forEach>
 								</c:if>

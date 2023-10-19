@@ -17,7 +17,7 @@ public class CharacterDao {
 		return (ArrayList<Character>) list;
 	}
 
-	public Character selectCharacter(int charId) {
+	public com.gs.levelup.character.model.vo.Character selectCharacter(int charId) {
 		return sqlSessionTemplateMaria.selectOne("charMapper.selectCharacter", charId);
 	}
 

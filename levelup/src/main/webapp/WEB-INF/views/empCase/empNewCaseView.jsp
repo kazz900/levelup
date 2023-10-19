@@ -124,31 +124,56 @@
 							 <label for="currentItems" class="col-form-label col-lg-3">변경 할 아이템</label>
                                     <div id="currentItems">
                                    		<div class="row" >
-                                     		<div class="mb-3 col-lg-2"> 아이템 ID </div>        
-                                            <div class="mb-3 col-lg-2"> 아이템 고유번호  </div>         
-                                            <div class="mb-3 col-lg-2">  수량 </div>   
+                                     		<div class="mb-3 col-lg-2">ID</div>        
+                                            <div class="mb-3 col-lg-2">NAME</div>         
+                                            <div class="mb-3 col-lg-2">AMOUNT</div>   
+                                            <div class="mb-3 col-lg-2">PRICE</div>
+                                            <div class="mb-3 col-lg-2">GAME PRICE</div>
                                         </div>    
-                                
+                                		
                                 		<div class="row">	
+                          
 	                                        <div class="mb-3 col-lg-2">
-	                                            <input type="text" id="itemId" name="group-a[0][untyped-input]" class="form-control">
+	                                        	<input type="hidden" name="charId" value="${ param.charId }">
+	                                            <input type="text" name="" id="disabledTextInput" class="form-control" placeholder="${ param.nameId }" disabled>
 	                                        </div>        
-	                                        <div class="mb-3 col-lg-2">                                                      
-	                                            <input type="text" id="itemGui" class="form-control">
-	                                        </div>        
-	                                        <div class="mb-3 col-lg-2">                                                      
-	                                            <input type="text" id="amount" class="form-control">
-	                                        </div> 
+	                                        <div class="mb-3 col-lg-2">
+		                                        <c:if test="${ !empty param.itemName }">
+		                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ param.itemName }" disabled>
+		                                        </c:if>
+		                                        <c:if test="${ empty param.itemName }">
+		                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="잡템" disabled>
+		                                        </c:if>
+	                                        </div>          
+	                                        <div class="mb-3 col-lg-2">
+	                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ param.amount }" disabled>
+	                                        </div>  
+	                                       	<div class="mb-3 col-lg-2">
+                                            	<input type="text" id="disabledTextInput" class="form-control" placeholder="${ param.price }" disabled>
+	                                        </div>   
+	                                        <div class="mb-3 col-lg-2">
+	                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ param.gamePrice }" disabled>
+	                                        </div>   
                                      	</div>
                                             
                                     </div>        
-							
-                            
-                            
-                              <!-- 변경할 아이템 수량 -->     
-                            
+                              <!-- 변경할 아이템 선택 Drop Down-->     
                               
-                                    <label for="currentItems" class="col-form-label col-lg-3">변경 할 아이템</label>
+                              <!-- TODO 오늘까지 한거 -->
+                                   <div class="dropdown">
+						            <button class="btn btn-secondary dropdown-toggle" 
+						            style="width: 500px;"
+						            type="button" data-bs-toggle="dropdown" aria-expanded="false">
+						              변경할 아이템 선택
+						            </button>
+						            <ul class="dropdown-menu" style="width: 500px;">
+						              <li><h6 class="dropdown-header">아이템을 선택 해주세요</h6></li>
+						              <c:forEach items="${ requestScope.list }" var="i">
+						              <li><a class="dropdown-item">${ i.itemName }</a></li>
+						              </c:forEach>
+						            </ul>
+						          </div>
+                                    
                                     <div id="currentItems">
                                    		<div class="row" >
                                      		<div class="mb-3 col-lg-2"> 아이템 ID </div>        

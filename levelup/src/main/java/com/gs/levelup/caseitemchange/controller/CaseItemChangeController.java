@@ -21,6 +21,8 @@ import com.gs.levelup.caseitemchange.model.vo.CaseItemChange;
 import com.gs.levelup.common.FileNameChange;
 import com.gs.levelup.employee.model.service.EmployeeService;
 import com.gs.levelup.employee.model.vo.Employee;
+import com.gs.levelup.inventory.model.service.InventoryService;
+import com.gs.levelup.inventory.model.vo.Inventory;
 
 @Controller
 public class CaseItemChangeController {
@@ -28,7 +30,13 @@ public class CaseItemChangeController {
 	
 	@Autowired
 	private CaseItemChangeService cicService;
+
+	@Autowired
+	private InventoryService inventoryService;
 	
+	@Autowired
+	private EmployeeService empService;
+
 	
 	@RequestMapping(value="changeitem.do", method = RequestMethod.GET)
 	public ModelAndView changeItemMethod(ModelAndView mv) {
@@ -38,21 +46,14 @@ public class CaseItemChangeController {
 	//기안 작성 페이지로 이동
 	
 	@RequestMapping("cicform.do")
-	public String moveCaseItemChangeWritePage(Model model,
-												@RequestParam("employeeId") String employeeId) {
+
+	public ModelAndView moveCaseItemChangeWritePage(Inventory itemdata, Employee employee, ModelAndView mv) {
 		
-		ArrayList<CaseItemChange> list = cicService.selectEmpList(employeeId);
-		
-		if (list != null && list.size() > 0) {
-			model.addAttribute("list", list);
-			
-			return "empCase/empNewCaseView";
-		}else {
-			model.addAttribute("message", "기안 작성 페이지 이동 실패");
-			return "common/error";
-		}
-		
-		
+		ArrayList<Inventory> list = inventoryService.selectAll();
+		mv.addObject("list", list);
+		mv.addObject("itemdata", itemdata);
+		mv.setViewName("empCase/empNewCaseView");
+		return mv;
 	}
 	
 	//기안 작성페이지 
