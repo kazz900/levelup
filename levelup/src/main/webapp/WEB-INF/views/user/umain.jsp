@@ -8,8 +8,81 @@
 <c:import url="/WEB-INF/views/common/head-script.jsp"/>
 <title>userMain</title>
 <c:url var="gouloginpage" value="gouloginpage.do" />
+<script src="resources/js/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+
+$(function(){
+    
+   
+    // 세션 상태를 JavaScript 변수에 할당
+    var isUserLoggedIn = ${not empty sessionScope.loginUser};
+
+    if (isUserLoggedIn) {
+        $.ajax({
+            url: "item3.do",
+            type: "post",
+            dataType: "json",
+            success: function(data) {
+                console.log("success : " + data);
+
+                var str = JSON.stringify(data);
+                var json = JSON.parse(str);
+                var values = "";
+
+                for (var i in json.list) {
+                    values += "<div class='user-item-card'><img src='/levelup/resources/images/itemlist/"
+                        + json.list[i].itemId + ".png' alt='item" + json.list[i].itemId + "'>"
+                        + "<h3>" + json.list[i].itemName + "</h3>"
+                        + "<p> -" + json.list[i].discountRate + "%</p>"
+                        + "<a href='" + "${pageContext.servletContext.contextPath}/itembuypage.do?itemname=" 
+                        + json.list[i].itemName + "' class='btn btn-secondary'>구매하기</a></div>";
+                }
+
+                $('#user-items').html($('#user-items').html() + values);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log("error : " + jqXHR + ", " + textStatus + ", " + errorThrown);
+            }
+        });
+    }else{
+    	$('.purchase-button').click(function() {
+            loginalert();
+        });
+    	
+    	$.ajax({
+            url: "item3.do",
+            type: "post",
+            dataType: "json",
+            success: function(data) {
+                console.log("success : " + data);
+
+                var str = JSON.stringify(data);
+                var json = JSON.parse(str);
+                var values = "";
+
+                for (var i in json.list) {
+                    values += "<div class='user-item-card'><img src='/levelup/resources/images/itemlist/"
+                        + json.list[i].itemId + ".png' alt='item" + json.list[i].itemId + "'>"
+                        + "<h3>" + json.list[i].itemName + "</h3>"
+                        + "<p> -" + json.list[i].discountRate + "%</p>"
+                        + "<a class='btn btn-secondary purchase-button' onclick='logincheck()'>구매하기</a></div>";
+                }
+                
+                $('#user-items').html($('#user-items').html() + values);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log("error : " + jqXHR + ", " + textStatus + ", " + errorThrown);
+            }
+        });
 
 
+    }
+
+});
+function logincheck(){
+	alert("상품을 구매하시려면\n먼저 로그인하세요.");
+}
+</script>
 </head>
 <body>
 
@@ -42,31 +115,33 @@
 
 	<section class="featured-games">
 		<div class="container">
-			<h2>event cash shop</h2>
-			<div class="game-card">
-				<img src="#" alt="item 1">
-				<h3>item Title 1</h3>
-				<p>Explore a fantastic world in this epic adventure.</p>
-				<a href="game1.jsp" class="btn btn-secondary">구매하기</a>
+			<h3>event cash shop</h3>
+			<br>
+			<div class="user-items" id="user-items">
+				<!-- <div class="user-item-card">
+					<img src="#" alt="item 1">
+					<h3>item Title 1</h3>
+					<p>Explore a fantastic world in this epic adventure.</p>
+					<a href="#" class="btn btn-secondary">구매하기</a>
+				</div>
+				<div class="user-item-card">
+					<img src="#" alt="item 2">
+					<h3>item Title 2</h3>
+					<p>Compete with friends in this exciting multiplayer game.</p>
+					<a href="#" class="btn btn-secondary">구매하기</a>
+				</div>
+				<div class="user-item-card">
+					<img src="#" alt="item 3">
+					<h3>item Title 3</h3>
+					<p>Compete with friends in this exciting multiplayer game.</p>
+					<a href="#" class="btn btn-secondary">구매하기</a>
+				</div> -->
 			</div>
-			<div class="game-card">
-				<img src="#" alt="item 2">
-				<h3>item Title 2</h3>
-				<p>Compete with friends in this exciting multiplayer game.</p>
-				<a href="game2.jsp" class="btn btn-secondary">구매하기</a>
-			</div>
-			<div class="game-card">
-				<img src="#" alt="item 3">
-				<h3>item Title 3</h3>
-				<p>Compete with friends in this exciting multiplayer game.</p>
-				<a href="game2.jsp" class="btn btn-secondary">구매하기</a>
-			</div>
-			<!-- Add more featured games here -->
 		</div>
 	</section>
 <c:import url="/WEB-INF/views/user/userFooter.jsp"/>
 
-	<script type="text/javascript">
+<script type="text/javascript">
 function gouloginpage(){
     location.href = "${gouloginpage}";
 }

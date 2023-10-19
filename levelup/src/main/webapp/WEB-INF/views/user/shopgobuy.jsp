@@ -57,19 +57,27 @@ $(function(){
 <c:import url="/WEB-INF/views/user/userHeader.jsp"/>
 <br>
 <div class="container">
-<h3>캐릭터를 선택해 주세요</h3>
-<table id="charlist" cellspacing="0" width="700">
-</table>
-<%-- <p>userId : ${ sessionScope.loginUser.userId }</p>
-<p>accountId : ${ sessionScope.loginUser.accountId }</p>
-<br>
-<p>Item id: ${ requestScope.item.itemId }</p> --%>
-<br>
-<br>
-<div id="payment-method"></div>
-  <div id="agreement"></div>
-  <br>
-<button id="payment-button">결제하기</button>
+	<div class="divider">
+		<h3>캐릭터를 선택해 주세요</h3>
+		<table id="charlist" cellspacing="0" width="700">
+		</table>
+		<br>
+		<img src="/levelup/resources/images/itemlist/${requestScope.item.itemId}.png" alt="Item 15">
+		<br>
+		<p>가격 : ${requestScope.item.price}</p>
+		<%-- <p>userId : ${ sessionScope.loginUser.userId }</p>
+		<p>accountId : ${ sessionScope.loginUser.accountId }</p>
+		<br>
+		<p>Item id: ${ requestScope.item.itemId }</p> --%>
+	</div>
+	<div class="divider">
+		<br>
+		<br>
+		<div id="payment-method"></div>
+		  <div id="agreement"></div>
+		  <br>
+		<button id="payment-button">결제하기</button>
+	</div>
 </div>
 <c:import url="/WEB-INF/views/user/userFooter.jsp"/>
 <script type="text/javascript">

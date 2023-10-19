@@ -1,6 +1,7 @@
 package com.gs.levelup.item.model.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,11 @@ public class ItemDao {
 
 	public Item selectOneItem(String itemName) {
 		return sqlSessionTemplate.selectOne("itemMapper.selectOneItem", itemName);
+	}
+
+	public ArrayList<Item> selectItem3() {
+		List<Item> list = sqlSessionTemplate.selectList("itemMapper.selectItem3");
+		return (ArrayList<Item>)list;
 	}
 
 }
