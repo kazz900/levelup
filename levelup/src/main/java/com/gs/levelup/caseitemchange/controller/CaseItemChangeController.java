@@ -59,6 +59,9 @@ public class CaseItemChangeController {
 	//기안 작성페이지 
 	@RequestMapping(value="cicinsert.do", method = RequestMethod.POST)
 	public String insertCaseItemChange(CaseItemChange caseItemChange,
+										@RequestParam("employeeId") String employeeId,
+										@RequestParam("employeeName") String employeeName,
+										@RequestParam("managerId") String managerId,									
 										@RequestParam(name="attachementFilename", required=false) MultipartFile mfile,
 										HttpServletRequest request,
 										Model model) {
@@ -96,6 +99,8 @@ public class CaseItemChangeController {
 			return "common/error";
 		}
 	}
+	
+	
 	
 	
 	//작성한 기안 상세보기 페이지 뷰(기안 작성 직후 페이지, 결재자에게 올리기 전)
