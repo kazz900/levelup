@@ -96,10 +96,10 @@ function showTypeDropdown(){
 					<form action="csearch.do">
 						<div class="container">
 							<div class="inputs">
-								<input type="radio" name="action" value="writer" onclick="showSearchBox();"><label>유저ID</label>
+								<input type="radio" name="action" value="writer" onclick="showSearchBox();"><label>작성 사원 이름</label>
 								<input type="radio" name="action" value="title" onclick="showSearchBox();"><label>제목</label>
 								<input type="radio" name="action" value="date" onclick="showDateBox();"><label>날짜</label>
-								<input type="radio" name="action" value="type" onclick="showTypeDropdown(); "><label>문의구분</label>
+								<input type="radio" name="action" value="type" onclick="showTypeDropdown(); "><label>기안구분</label>
 								<div class="dateboxContainer">
 									<input type="date" class="searchDateInput" name="begin"> ~ <input type="date" class="searchDateInput" name="end">
 								</div>
@@ -124,6 +124,7 @@ function showTypeDropdown(){
 								<th>TITLE</th>
 								<th>WRITER NAME</th>
 								<th>TYPE</th>
+								<th>MANAGER NAME</th>
 								<th>DATE</th>
 								<th>STATUS</th>
 								<th>SIGN DATE</th>
@@ -138,33 +139,39 @@ function showTypeDropdown(){
 									<!-- TITLE -->
 									<td data-th="TITLE">${ c.caseTitle }</td>
 									<!-- WRITER NAME -->
-									<td data-th="WRITER NAME">${ c.userId }</td>
+									<td data-th="WRITER NAME">${ c.caseWriterName }</td>
 									<!-- TYPE -->
-									<c:if test="${ c.inquiryType eq '1' }">
+									<c:if test="${ c.caseType eq '1' }">
 										<td data-th="TYPE">아이템 변경</td>
 									</c:if>
-									<c:if test="${ c.inquiryType eq '2' }">
+									<c:if test="${ c.caseType eq '2' }">
 										<td data-th="TYPE">아이템 삭제</td>
 									</c:if>
-									<c:if test="${ c.inquiryType eq '3' }">
+									<c:if test="${ c.caseType eq '3' }">
 										<td data-th="TYPE">아이템 환불</td>
 									</c:if>
+									<!-- MANAGER NAME -->
+									<td data-th="MANAGER NAME">${ c.caseManagerName }</td>
 									<!-- DATE -->
 									<td data-th="DATE"><fmt:formatDate value="${ c.editDate }"
 											pattern="yyyy-MM-dd HH:mm:ss" /></td>
 									<!-- STATUS -->
-									<c:if test="${ c.answerStatus eq '0' }">
-										<td data-th="STATUS"><span class="badge bg-danger">처리필요</span></td>
+									<c:if test="${ c.caseStatus eq '0' }">
+										<td data-th="STATUS"><span class="badge badge-pill badge-soft-warning font-size-12">처리필요</span></td>
 									</c:if>
-									<c:if test="${ c.answerStatus eq '1' }">
+									<c:if test="${ c.caseStatus eq '1' }">
 										<td data-th="STATUS"><span class="badge bg-success">처리완료</span></td>
 									</c:if>
-									<c:if test="${ c.answerStatus eq '2' }">
+									<c:if test="${ c.caseStatus eq '2' }">
 										<td data-th="STATUS"><span class="badge bg-danger">반려</span></td>
 									</c:if>
+									<!-- SIGN DATE -->
 									<c:if test="${ !empty c.signDate }">
 										<td data-th="SIGN DATE"><fmt:formatDate value="${ c.signDate }"
 											pattern="yyyy-MM-dd HH:mm:ss" /></td>
+									</c:if>
+									<c:if test="${ empty c.signDate }">
+										<td data-th="SIGN DATE"></td>
 									</c:if>
 								</tr>
 							</c:forEach>
