@@ -22,7 +22,6 @@
 								<li><a href="${pageContext.servletContext.contextPath}/ilist.do" key="t-default">유저 문의</a></li>
 								<li><a href="${pageContext.servletContext.contextPath}/moveusearch.do" key="t-default">유저 검색</a></li>
 								<li><a href="${pageContext.servletContext.contextPath}/chardetailview.do" key="t-default">캐릭터 검색</a></li>
-								<li><a href="${pageContext.servletContext.contextPath}/cicdetail.do" key="t-default">기안 작성 완료한 페이지</a></li>
 								<li><a href="ulist.do" key="t-default">유저 목록</a></li>
 								<li><a href="ulogin.do" key="t-default">유저 로그인</a></li>
 								<li><a href="listChar.do" key="t-default">게임캐럭터 목록</a></li>
