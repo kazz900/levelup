@@ -88,9 +88,14 @@
 	</select>
 	
 	<insert id="insertCase" parameterType="Case">
-		INSERT INTO CASE_ITEM_CHANGE
-		VALUES ( DEFAULT, #{ itemId }, #{ charId }, #{ employeeId }, #{ replaceItemId }, #{ replaceItemAmount },
-		#{ documentTitle }, #{ documentContent }, #{ attachementFilename }, SYSDATE, NULL, '0', #{ managerId }, 
-		#{ itemName }, #{ itemAmount })
+		INSERT INTO CASE
+		
+		<if test="caseType == 1">
+		VALUES (DEFAULT, #{ caseTitle }, #{ caseContent }, #{ caseWriterId }, #{ caseWriterName },
+		#{ caseType }, #{ caseManagerId }, #{ caseManagerName }, '0', SYSDATE, DEFAULT, #{ attachmentFileName }, #{ charId },
+		#{ charName }, #{ accountId }, #{ originalItemId }, #{ originalItemName }, #{ originalItemAmount }, #{ uniqueId }, 
+		#{ newItemId }, #{ newItemName }, #{newItemAmount}, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT)
+		</if>
+
 	</insert>
 </mapper>

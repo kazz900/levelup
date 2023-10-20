@@ -64,13 +64,22 @@
 						<div class="card">
 							<div class="card-body">
 
-								<h1 class="card-title mb-5" align="center">새 기안 작성 (아이템 변경)</h1>
+								<h1 class="card-title mb-5" align="center">아이템 변경 기안 작성</h1>
 
 							 <form action="cinsert.do" class="outer-repeater" enctype="multipart/form-data" method="post">							 	
-	                            <input type="hidden" name="employeeId" value="${ sessionScope.loginEmployee.employeeId }">
-	                            <input type="hidden" name="employeeName" value="${ sessionScope.loginEmployee.employeeName }">
+	                            <input type="hidden" name="caseWriterId" value="${ sessionScope.loginEmployee.employeeId }">
+	                            <input type="hidden" name="caseWriterName" value="${ sessionScope.loginEmployee.employeeName }">
+	                            <input type="hidden" name="caseManagerId" value="${ requestScope.manager.employeeId }">
+	                            <input type="hidden" name="caseManagerName" value="${ requestScope.manager.employeeName }">                            
+	                      
+	                            
+	                            
 	                            <input type="hidden" name="caseType" value="${ param.caseType }">
 	                            <input type="hidden" name="charId" value="${ param.charId }">
+	                            <input type="hidden" name="accountId" value="${ requestScope.character.accountId }">
+	                            <input type="hidden" name="charName" value="${ requestScope.character.name }">
+	                            <input type="hidden" name="uniqueId" value="${ requestScope.itemdata.uniqueId }">
+	                            
 	                            <input type="hidden" name="originalItemId" value="${ param.nameId }">
 	                            <c:if test="${ !empty param.itemName }">
 		                            <input type="hidden" name="originalItemName" value="${ param.itemName }">
@@ -84,11 +93,10 @@
 
 									<!-- 기안 제목 -->
 									<div class="form-group row mb-4">
-										<label for="caseTitle" class="col-form-label col-lg-1">기안
-											제목</label>
+										<label for="caseTitle" class="col-form-label col-lg-1">기안 제목</label>
 										<div class="col-lg-11">
 											<input id="caseTitle" name="caseTitle" type="text"
-												class="form-control" placeholder="기안 제목 입력하세요">
+												class="form-control" placeholder="기안 제목 입력하세요" required>
 										</div>
 									</div>
 
@@ -97,10 +105,10 @@
 									<div class="row">
 										<!-- 결재자 이름 -->
 										<div class="mb-3 col-lg-2">
-											<input type="hidden" name="caseManagerId"
+											<input type="hidden" name=""
 												value="${ requestScope.manager.employeeId }"> 
 												<label>결재자 이름</label>
-												<input type="text" name="caseManagerName" id="disabledTextInput" class="form-control"
+												<input type="text" name="" id="disabledTextInput" class="form-control"
 												placeholder="${ requestScope.manager.employeeName }" disabled>
 										</div>
 										<div class="mb-3 col-lg-2">
@@ -199,12 +207,13 @@
 												<input type="text" id="replacementitemid" name="disabledReplaceItemId"
 													class="form-control"
 													disabled>
-													<input type="hidden" id="hiddenInputReplaceItemId" name="replaceItemId">
+													<input type="hidden" id="hiddenInputReplaceItemId" name="newItemId">
 											</div>
 											<div class="mb-3 col-lg-2">
-													<input type="text" id="replacementitemname" name="replacement_ItemName"
+													<input type="text" id="replacementitemname" name="disabledReplaceItemName"
 														class="form-control"
 														disabled>
+													<input type="hidden" id="hiddenInputReplaceItemName" name="newItemName">
 											</div>
 											<div class="mb-3 col-lg-2">
 												<input type="text" id="replacementitemprice" name="replacement_ItemPrice"
@@ -217,8 +226,8 @@
 													disabled>
 											</div>
 											<div class="mb-3 col-lg-2">
-												<input type="text" id="disabledTextInput" name="replaceItemAmount"
-													class="form-control">
+												<input type="number" id="disabledTextInput" name="newItemAmount"
+													class="form-control" required>
 											</div>
 										</div>
 									</div>
@@ -235,7 +244,7 @@
 											<div class="col-lg-12">
 												<textarea id="caseContent" name="caseContent"
 													class="form-control" rows="3" cols="40"
-													placeholder="기안 내용을 작성하세요"></textarea>
+													placeholder="기안 내용을 작성하세요" required></textarea>
 											</div>
 										</div>
 									</div>
@@ -293,12 +302,14 @@
 			var replacementitempriceinputfield = document.getElementById('replacementitemprice');
 			var replacementitemgamepriceinputfield = document.getElementById('replacementitemgameprice');
 			var hiddenInputReplacementItemId = document.getElementById('hiddenInputReplaceItemId');
+			var hiddenInputReplacementItemName = document.getElementById('hiddenInputReplaceItemName');
 			
 			replacementitemidinputfield.value = replacementItem.getAttribute("data-nameId");
 			replacementitemnameinputfield.value = replacementItem.getAttribute("data-itemName");
 			replacementitempriceinputfield.value = replacementItem.getAttribute("data-price");
 			replacementitemgamepriceinputfield.value = replacementItem.getAttribute("data-gamePrice");
 			hiddenInputReplacementItemId.value = replacementItem.getAttribute("data-nameId");
+			hiddenInputReplacementItemName.value = replacementItem.getAttribute("data-itemName");
 		}
 	</script>
 </body>
