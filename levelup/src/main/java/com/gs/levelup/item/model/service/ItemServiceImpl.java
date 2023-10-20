@@ -37,6 +37,11 @@ public class ItemServiceImpl implements ItemService{
 	public Item selectOneItem(String itemName) {
 		return itemDao.selectOneItem(itemName);
 	}
+
+	@Override
+	public ArrayList<Item> selectItem3() {
+		return itemDao.selectItem3();
+	}
 	
 	
 }

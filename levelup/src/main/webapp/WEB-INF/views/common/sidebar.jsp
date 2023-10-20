@@ -38,7 +38,7 @@
                                 </a>
                                 <ul class="sub-menu mm-collapse mm-show" aria-expanded="false" style="">
                                     <li><a href="#" key="t-blog-list">My 기안함</a></li>
-                                    <li><a href="#" key="t-blog-list">전체 아이템 변경 기안</a></li>
+                                    <li><a href="${pageContext.servletContext.contextPath}/ciclist.do" key="t-blog-list">전체 아이템 변경 기안</a></li>
                                     <li><a href="#" key="t-blog-grid">전체 아이템 삭제 기안</a></li>
                                     <li><a href="#" key="t-blog-details">전체 아이템 환불 기안</a></li>
                                 </ul>
@@ -78,6 +78,8 @@
 							</a>
 							<ul class="sub-menu" aria-expanded="false">
 								<li><a href="nlist.do" key="t-default">공지사항</a></li>
+								<li><a href="ntlist.do" key="t-default">팀 공지사항</a></li>
+								<li><a href="ndlist.do" key="t-default">부서 공지사항</a></li>
 								<li><a href="ndetail.do" key="t-default">DetailView</a></li>
 								<li><a href="#" key="t-default">공지사항 수정</a></li>
 								<li><a href="#" key="t-default">공지사항 삭제</a></li>

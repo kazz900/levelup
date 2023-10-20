@@ -16,13 +16,13 @@ public class CaseItemRefund implements java.io.Serializable{
 	private int itemId;
 	private int charId;
 	private String employeeId;
+	private int refundAmount;
 	private String documentTitle;
 	private String documentContent;
 	private String attachementFilename;
 	private Date editDate;
 	private Date signDate;
-	private String DocumentStatus;
-	private int refundAmount;
+	private String documentStatus;
 	private String managerId;
 	private String itemName;
 	private int itemAmount;
@@ -44,7 +44,7 @@ public class CaseItemRefund implements java.io.Serializable{
 		this.attachementFilename = attachementFilename;
 		this.editDate = editDate;
 		this.signDate = signDate;
-		DocumentStatus = documentStatus;
+		this.documentStatus = documentStatus;
 		this.refundAmount = refundAmount;
 	}
 
@@ -129,11 +129,11 @@ public class CaseItemRefund implements java.io.Serializable{
 	}
 
 	public String getDocumentStatus() {
-		return DocumentStatus;
+		return documentStatus;
 	}
 
 	public void setDocumentStatus(String documentStatus) {
-		DocumentStatus = documentStatus;
+		this.documentStatus = documentStatus;
 	}
 
 	public int getRefundAmount() {
@@ -173,7 +173,7 @@ public class CaseItemRefund implements java.io.Serializable{
 		return "CaseItemRefund [documentId=" + documentId + ", userId=" + userId + ", itemId=" + itemId + ", charId="
 				+ charId + ", employeeId=" + employeeId + ", documentTitle=" + documentTitle + ", documentContent="
 				+ documentContent + ", attachementFilename=" + attachementFilename + ", editDate=" + editDate
-				+ ", signDate=" + signDate + ", DocumentStatus=" + DocumentStatus + ", refundAmount=" + refundAmount
+				+ ", signDate=" + signDate + ", DocumentStatus=" + documentStatus + ", refundAmount=" + refundAmount
 				+ "]";
 	}
 

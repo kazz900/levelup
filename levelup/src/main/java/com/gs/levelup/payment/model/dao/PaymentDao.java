@@ -25,7 +25,7 @@ public class PaymentDao {
 	}
 	
 	public int insertPayment(Payment payment) {
-		return sqlSessionTemplate.insert("paymentMapper.insertNotice", payment);
+		return sqlSessionTemplate.insert("paymentMapper.insertPayment", payment);
 	}
 
 	public int updatePayment(Payment payment) {

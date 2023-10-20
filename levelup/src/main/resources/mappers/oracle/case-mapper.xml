@@ -3,49 +3,150 @@
 "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cicMapper">
-
+	<!-- 아이템 변경 기안 RESULT MAP -->
 	<resultMap id="resultCaseItemChange" type="CaseItemChange">
 		<id property="documentId" column="DOCUMENT_ID" />
-		<result property="userId" column="USERID" />
 		<result property="itemId" column="ITEM_ID" />
 		<result property="charId" column="CHAR_ID" />
 		<result property="employeeId" column="EMPLOYEE_ID" />
+		<result property="replaceItemId" column="REPLACE_ITEM_ID" />
+		<result property="replaceItemAmount" column="REPLACE_ITEM_AMOUNT" />
 		<result property="documentTitle" column="DOCUMENET_TITLE" />
 		<result property="documentContent" column="DOCUMENET_CONTENT" />
 		<result property="attachementFilename" column="ATTACHEMENT_FILENAME" />
 		<result property="editDate" column="EDIT_DATE" />
 		<result property="signDate" column="SIGN_DATE" />
 		<result property="documentStatus" column="DOCUMENT_STATUS" />
-		<result property="replaceItemId" column="REPLACE_ITEM_ID" />
-		<result property="replaceItemNo" column="REPLACE_ITEM_NO" />
+		<result property="managerId" column="MANAGER_ID" />
+		<result property="itemName" column="ITEM_NAME" />
+		<result property="itemAmount" column="ITEM_AMOUNT" />
 	</resultMap>
 
-	<resultMap id="resultList" type="CaseItemChange">
+	<resultMap id="resultCICList" type="CaseItemChange">
+		<result property="documentId" column="DOCUMENT_ID" />
+		<result property="itemId" column="ITEM_ID" />
+		<result property="charId" column="CHAR_ID" />
+		<result property="employeeId" column="EMPLOYEE_ID" />
+		<result property="replaceItemId" column="REPLACE_ITEM_ID" />
+		<result property="replaceItemAmount" column="REPLACE_ITEM_AMOUNT" />
+		<result property="documentTitle" column="DOCUMENET_TITLE" />
+		<result property="documentContent" column="DOCUMENET_CONTENT" />
+		<result property="attachementFilename" column="ATTACHEMENT_FILENAME" />
+		<result property="editDate" column="EDIT_DATE" />
+		<result property="signDate" column="SIGN_DATE" />
+		<result property="documentStatus" column="DOCUMENT_STATUS" />
+		<result property="managerId" column="MANAGER_ID" />
+		<result property="itemName" column="ITEM_NAME" />
+		<result property="itemAmount" column="ITEM_AMOUNT" />
+	</resultMap>
+	<!-- ************************************************* -->
+	<!-- 아이템 삭제 기안 RESULT MAP -->
+	<resultMap id="resultCaseItemDelete" type="CaseItemDelete">
+		<id property="documentId" column="DOCUMENT_ID" />
+		<result property="itemId" column="ITEM_ID" />
+		<result property="charId" column="CHAR_ID" />
+		<result property="employeeId" column="EMPLOYEE_ID" />
+		<result property="deleteItemId" column="DELETE_ITEM_ID" />
+		<result property="documentTitle" column="DOCUMENET_TITLE" />
+		<result property="documentContent" column="DOCUMENET_CONTENT" />
+		<result property="attachementFilename" column="ATTACHEMENT_FILENAME" />
+		<result property="editDate" column="EDIT_DATE" />
+		<result property="signDate" column="SIGN_DATE" />
+		<result property="documentStatus" column="DOCUMENT_STATUS" />
+		<result property="managerId" column="MANAGER_ID" />
+		<result property="itemName" column="ITEM_NAME" />
+		<result property="itemAmount" column="ITEM_AMOUNT" />
+	</resultMap>
+
+	<resultMap id="resultCIDList" type="CaseItemDelete">
+		<result property="documentId" column="DOCUMENT_ID" />
+		<result property="itemId" column="ITEM_ID" />
+		<result property="charId" column="CHAR_ID" />
+		<result property="employeeId" column="EMPLOYEE_ID" />
+		<result property="deleteItemId" column="DELETE_ITEM_ID" />
+		<result property="documentTitle" column="DOCUMENET_TITLE" />
+		<result property="documentContent" column="DOCUMENET_CONTENT" />
+		<result property="attachementFilename" column="ATTACHEMENT_FILENAME" />
+		<result property="editDate" column="EDIT_DATE" />
+		<result property="signDate" column="SIGN_DATE" />
+		<result property="documentStatus" column="DOCUMENT_STATUS" />
+		<result property="managerId" column="MANAGER_ID" />
+		<result property="itemName" column="ITEM_NAME" />
+		<result property="itemAmount" column="ITEM_AMOUNT" />
+	</resultMap>
+	<!-- ************************************************* -->
+	<!-- 아이템 환불 기안 RESULT MAP -->
+	<resultMap id="resultCaseItemRefund" type="CaseItemRefund">
 		<id property="documentId" column="DOCUMENT_ID" />
 		<result property="userId" column="USERID" />
 		<result property="itemId" column="ITEM_ID" />
 		<result property="charId" column="CHAR_ID" />
 		<result property="employeeId" column="EMPLOYEE_ID" />
+		<result property="refundAmount" column="REFUND_AMOUNT" />
 		<result property="documentTitle" column="DOCUMENET_TITLE" />
 		<result property="documentContent" column="DOCUMENET_CONTENT" />
 		<result property="attachementFilename" column="ATTACHEMENT_FILENAME" />
 		<result property="editDate" column="EDIT_DATE" />
 		<result property="signDate" column="SIGN_DATE" />
 		<result property="documentStatus" column="DOCUMENT_STATUS" />
-		<result property="replaceItemId" column="REPLACE_ITEM_ID" />
-		<result property="replaceItemNo" column="REPLACE_ITEM_NO" />
+		<result property="managerId" column="MANAGER_ID" />
+		<result property="itemName" column="ITEM_NAME" />
+		<result property="itemAmount" column="ITEM_AMOUNT" />
 	</resultMap>
 
-	<select id="selectEmpList" parameterType="string" resultMap="resultList">
-		SELECT MANAGER_ID
-		FROM CASE_ITEM_CHANGE
-		FULL OUTER JOIN EMPLOYEE USING (EMPLOYEE_ID)
-		WHERE EMPLOYEE_ID = #{ employeeId }
+	<resultMap id="resultCIRList" type="CaseItemRefund">
+		<result property="documentId" column="DOCUMENT_ID" />
+		<result property="userId" column="USERID" />
+		<result property="itemId" column="ITEM_ID" />
+		<result property="charId" column="CHAR_ID" />
+		<result property="employeeId" column="EMPLOYEE_ID" />
+		<result property="refundAmount" column="REFUND_AMOUNT" />
+		<result property="documentTitle" column="DOCUMENET_TITLE" />
+		<result property="documentContent" column="DOCUMENET_CONTENT" />
+		<result property="attachementFilename" column="ATTACHEMENT_FILENAME" />
+		<result property="editDate" column="EDIT_DATE" />
+		<result property="signDate" column="SIGN_DATE" />
+		<result property="documentStatus" column="DOCUMENT_STATUS" />
+		<result property="managerId" column="MANAGER_ID" />
+		<result property="itemName" column="ITEM_NAME" />
+		<result property="itemAmount" column="ITEM_AMOUNT" />
+	</resultMap>
+	
+	<!-- ************************************************* -->
+	<!-- 아이템 변경 기안 테이블 -->
+	<select id="selectAllCICList" resultMap="resultCICList">
+		SELECT * FROM CASE_ITEM_CHANGE
 	</select>
 	
-	<insert id="caseItemChange" parameterType="CaseItemChange">
+	<select id="selectAllCICListCount" resultType="_int">
+		SELECT COUNT(*) FROM CASE_ITEM_CHANGE
+	</select>
+	
+	<insert id="insertcic" parameterType="CaseItemChange">
 		INSERT INTO CASE_ITEM_CHANGE
-		VALUES ( SYS_GUID(), #{ itemId }, #{ charId }, #{ employeeId }, #{ replaceItemId }, #{ replaceItemNo },
-		#{ documentTitle }, #{ documentContent }, #{ attachementFilename }, SYSDATE, DEFAULT, DEFAULT );	
+		VALUES ( DEFAULT, #{ itemId }, #{ charId }, #{ employeeId }, #{ replaceItemId }, #{ replaceItemAmount },
+		#{ documentTitle }, #{ documentContent }, #{ attachementFilename }, SYSDATE, NULL, '0', #{ managerId }, 
+		#{ itemName }, #{ itemAmount })
 	</insert>
+
+
+	<!-- ************************************************* -->
+	<!-- 아이템 삭제 기안 테이블 -->
+	<select id="selectAllCIDList" resultMap="resultCIDList">
+		SELECT * FROM CASE_ITEM_DELETE
+	</select>
+	
+	<select id="selectAllCIDListCount" resultType="_int">
+		SELECT COUNT(*) FROM CASE_ITEM_DELETE
+	</select>
+	
+	<!-- ************************************************* -->
+	<!-- 아이템 환불 기안 테이블 -->
+	<select id="selectAllCIRList" resultMap="resultCIRList">
+		SELECT * FROM CASE_ITEM_REFUND
+	</select>
+	
+	<select id="selectAllCIRListCount" resultType="_int">
+		SELECT COUNT(*) FROM CASE_ITEM_REFUND
+	</select>
 </mapper>

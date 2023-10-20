@@ -17,7 +17,7 @@
     /* 기타 스타일 속성을 추가할 수 있습니다 */
 }
 </style>
-<script src="resources/js/jquery-3.7.0.min.js"></script>
+
 </head>
 
 <body>
