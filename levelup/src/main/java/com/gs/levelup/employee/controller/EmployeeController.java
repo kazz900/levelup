@@ -74,7 +74,7 @@ public class EmployeeController {
 		HttpSession session = request.getSession(false);
 		if (session != null) {
 			session.invalidate();
-			return "common/main";
+			return "redirect:eloginPage.do";
 		} else {
 			model.addAttribute("message", "로그인 세션이 존재하지 않습니다.");
 			return "common/error";

@@ -71,6 +71,26 @@
 		SELECT COUNT(*) FROM CASE
 	</select>
 	
+	<select id="selectSearchWriterNameCount" parameterType="string" resultType="_int">
+		SELECT COUNT(*) FROM CASE
+		WHERE CASE_WRITER_NAME = #{keyword}
+	</select>
+	
+	<select id="selectSearchTitleCount" parameterType="string" resultType="_int">
+		SELECT COUNT(*) FROM CASE
+		WHERE CASE_TITLE LIKE '%' || #{ keyword } || '%'
+	</select>
+	
+	<select id="selectSearchDateCount" parameterType="Search" resultType="_int">
+		SELECT COUNT(*) FROM CASE 
+		WHERE EDIT_DATE BETWEEN #{begin} AND #{end}
+	</select>
+	
+	<select id="selectSearchTypeCount" parameterType="string" resultType="_int">
+		SELECT COUNT(*) FROM CASE
+		WHERE CASE_TYPE = #{type}
+	</select>
+	
 	<select id="selectList" parameterType="Paging" resultMap="resultList">
 		<![CDATA[
 		select * 
@@ -84,6 +104,68 @@
 		      from (select * from CASE 
 		           order by EDIT_DATE desc)) 
 		where rnum >= #{ startRow } and rnum <= #{ endRow }
+		]]>
+	</select>
+	
+	<select id="selectSearchWriterName" parameterType="Search" resultMap="resultList">
+		select *
+		from (select rownum rnum, CASE_ID, CASE_TITLE, CASE_CONTENT, 
+				   CASE_WRITER_ID, CASE_WRITER_NAME, CASE_TYPE, 
+		           CASE_MANAGER_ID, CASE_MANAGER_NAME, CASE_STATUS, EDIT_DATE, 
+		           SIGN_DATE, ATTACHMENT_FILENAME, CHAR_ID, CHAR_NAME, ACCOUNT_ID,
+		           ORIGINAL_ITEM_ID, ORIGINAL_ITEM_NAME, ORIGINAL_ITEM_AMOUNT, UNIQUE_ID,
+		           NEW_ITEM_ID, NEW_ITEM_NAME, NEW_ITEM_AMOUNT, PAYMENT_DATE, PAYMENT_STATUS,
+		           PAYMENT_AMOUNT, REFUND_DATE, REFUND_CAUSE, PAYMENT_KEY
+			from (select * from CASE 
+				 where CASE_WRITER_NAME = #{ keyword }
+				 order by EDIT_DATE DESC))
+		where rnum between #{ startRow } and #{ endRow }
+	</select>
+	
+	<select id="selectSearchTitle" parameterType="Search" resultMap="resultList">
+		select *
+		from (select rownum rnum, CASE_ID, CASE_TITLE, CASE_CONTENT, 
+				   CASE_WRITER_ID, CASE_WRITER_NAME, CASE_TYPE, 
+		           CASE_MANAGER_ID, CASE_MANAGER_NAME, CASE_STATUS, EDIT_DATE, 
+		           SIGN_DATE, ATTACHMENT_FILENAME, CHAR_ID, CHAR_NAME, ACCOUNT_ID,
+		           ORIGINAL_ITEM_ID, ORIGINAL_ITEM_NAME, ORIGINAL_ITEM_AMOUNT, UNIQUE_ID,
+		           NEW_ITEM_ID, NEW_ITEM_NAME, NEW_ITEM_AMOUNT, PAYMENT_DATE, PAYMENT_STATUS,
+		           PAYMENT_AMOUNT, REFUND_DATE, REFUND_CAUSE, PAYMENT_KEY
+			from (select * from CASE 
+				 where CASE_TITLE LIKE '%' || #{ keyword } || '%'
+				 order by EDIT_DATE DESC))
+		where rnum between #{ startRow } and #{ endRow }
+	</select>
+	
+	<select id="selectSearchType" parameterType="Search" resultMap="resultList">
+		select *
+		from (select rownum rnum, CASE_ID, CASE_TITLE, CASE_CONTENT, 
+				   CASE_WRITER_ID, CASE_WRITER_NAME, CASE_TYPE, 
+		           CASE_MANAGER_ID, CASE_MANAGER_NAME, CASE_STATUS, EDIT_DATE, 
+		           SIGN_DATE, ATTACHMENT_FILENAME, CHAR_ID, CHAR_NAME, ACCOUNT_ID,
+		           ORIGINAL_ITEM_ID, ORIGINAL_ITEM_NAME, ORIGINAL_ITEM_AMOUNT, UNIQUE_ID,
+		           NEW_ITEM_ID, NEW_ITEM_NAME, NEW_ITEM_AMOUNT, PAYMENT_DATE, PAYMENT_STATUS,
+		           PAYMENT_AMOUNT, REFUND_DATE, REFUND_CAUSE, PAYMENT_KEY
+			from (select * from CASE 
+				 where CASE_TYPE = #{ type }
+				 order by EDIT_DATE DESC))
+		where rnum between #{ startRow } and #{ endRow }
+	</select>
+	
+	<select id="selectSearchDate" parameterType="Search" resultMap="resultList">
+		<![CDATA[
+		select * 
+		from (select rownum rnum, CASE_ID, CASE_TITLE, CASE_CONTENT, 
+				   CASE_WRITER_ID, CASE_WRITER_NAME, CASE_TYPE, 
+		           CASE_MANAGER_ID, CASE_MANAGER_NAME, CASE_STATUS, EDIT_DATE, 
+		           SIGN_DATE, ATTACHMENT_FILENAME, CHAR_ID, CHAR_NAME, ACCOUNT_ID,
+		           ORIGINAL_ITEM_ID, ORIGINAL_ITEM_NAME, ORIGINAL_ITEM_AMOUNT, UNIQUE_ID,
+		           NEW_ITEM_ID, NEW_ITEM_NAME, NEW_ITEM_AMOUNT, PAYMENT_DATE, PAYMENT_STATUS,
+		           PAYMENT_AMOUNT, REFUND_DATE, REFUND_CAUSE, PAYMENT_KEY
+		      from (select * from CASE 
+		            where EDIT_DATE between #{begin} and #{end} 
+		             order by EDIT_DATE desc)) 
+		where rnum >= #{startRow} and rnum <= #{endRow}
 		]]>
 	</select>
 	

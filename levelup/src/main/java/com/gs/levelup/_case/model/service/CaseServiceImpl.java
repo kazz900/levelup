@@ -37,20 +37,20 @@ public class CaseServiceImpl implements CaseService{
 		return caseDao.selectListCount();
 	}
 	@Override
-	public int selectSearchWriterNameCount(Search search) {
-		return caseDao.selectSearchWriterNameCount(search);
+	public int selectSearchWriterNameCount(String keyword) {
+		return caseDao.selectSearchWriterNameCount(keyword);
 	}
 	@Override
-	public int selectSearchTitleCount(Search search) {
-		return caseDao.selectSearchTitleCount(search);
+	public int selectSearchTitleCount(String keyword) {
+		return caseDao.selectSearchTitleCount(keyword);
 	}
 	@Override
 	public int selectSearchDateCount(Search search) {
 		return caseDao.selectSearchDateCount(search);
 	}
 	@Override
-	public int selectSearchTypeCount(Search search) {
-		return caseDao.selectSearchTypeCount(search);
+	public int selectSearchTypeCount(String keyword) {
+		return caseDao.selectSearchTypeCount(keyword);
 	}
 	@Override
 	public ArrayList<Case> selectSearchWriterName(Search search) {
