@@ -43,7 +43,7 @@ public class CaseItemChangeController {
 		// 요청 처리용 ----------------------------------------------------------
 
 	@RequestMapping(value = "ciclist.do", method = RequestMethod.GET)
-	public String selectListMethod(@RequestParam(name = "page", required = false) String page, Model model) {
+	public ModelAndView selectListMethod(@RequestParam(name = "page", required = false) String page, ModelAndView mv) {
 
 		int currentPage = 1;
 		if (page != null) {
@@ -64,12 +64,13 @@ public class CaseItemChangeController {
 		ArrayList<CaseItemChange> list = cicService.selectList(paging);
 
 		if (list != null && list.size() > 0) {
-			model.addAttribute("list", list);
-			model.addAttribute("paging", paging);
-			model.addAttribute("currentPage", currentPage);
-			model.addAttribute("limit", limit);
-		} 
-		return "empCase/empCaseItemChangeListView";
+			mv.addObject("list", list);
+			mv.addObject("paging", paging);
+			mv.addObject("currentPage", currentPage);
+			mv.addObject("limit", limit);
+			mv.setViewName("empCase/empCaseItemChangeListView");
+		}
+		return mv;
 	}
 
 	

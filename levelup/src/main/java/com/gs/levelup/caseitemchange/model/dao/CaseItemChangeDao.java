@@ -51,8 +51,8 @@ public class CaseItemChangeDao {
 	}
 
 	public ArrayList<CaseItemChange> selectList(Paging paging) {
-		// TODO Auto-generated method stub
-		return null;
+		List<CaseItemChange> list = sqlSessionTemplate.selectList("cicMapper.selectAllCICPagingList", paging);
+		return (ArrayList<CaseItemChange>)list;
 	}
 
 	public int selectListCount() {
