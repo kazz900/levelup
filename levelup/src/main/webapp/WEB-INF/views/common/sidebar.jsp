@@ -23,7 +23,7 @@
 								<li><a href="${pageContext.servletContext.contextPath}/moveusearch.do" key="t-default">유저 검색</a></li>
 								<li><a href="${pageContext.servletContext.contextPath}/chardetailview.do" key="t-default">캐릭터 검색</a></li>
 								<li><a href="ulist.do" key="t-default">유저 목록</a></li>
-								<li><a href="ulogin.do" key="t-default">유저 로그인</a></li>
+								<li><a href="umain.do" key="t-default">유저 홈페이지</a></li>
 								<li><a href="listChar.do" key="t-default">게임캐럭터 목록</a></li>
 								<li><a href="getLogs.do" key="t-default">캐럭터 게임로그 출력</a></li>
 								<li><a href="movepaylist.do" key="t-default">전체 결제 내역</a></li>
