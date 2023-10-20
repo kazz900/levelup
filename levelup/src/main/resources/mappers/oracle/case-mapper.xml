@@ -107,6 +107,10 @@
 		]]>
 	</select>
 	
+	<select id="selectMyCaseList" parameterType="string" resultMap="resultList">
+		select * from case where CASE_MANAGER_ID = #{ myEmployeeId } and CASE_STATUS = '0'
+	</select>
+	
 
 	<select id="selectCase" parameterType="string" resultMap="resultCase">
 		select * from case where caseId = #{ caseId }

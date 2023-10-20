@@ -36,7 +36,7 @@
                                     <span key="t-blog">기안관리</span>
                                 </a>
                                 <ul class="sub-menu mm-collapse mm-show" aria-expanded="false" style="">
-                                    <li><a href="${pageContext.servletContext.contextPath}/mclist.do" key="t-blog-list">My 기안함</a></li>
+                                    <li><a href="${pageContext.servletContext.contextPath}/mclist.do?employeeId=${ sessionScope.loginEmployee.employeeId }" key="t-blog-list">My 기안함</a></li>
                                     <li><a href="${pageContext.servletContext.contextPath}/clist.do" key="t-blog-list">전체 기안 목록</a></li>
                                 </ul>
                             </li>
