@@ -98,9 +98,18 @@ public class UserController {
 		return "user/usertestpage1";
 	}
 	
+	@RequestMapping("ukeyin.do")
+	public String ukeyinMethod() {
+		return "user/buykeyin";
+	}
+	
 	@RequestMapping(value="uhelp.do", method = {RequestMethod.POST, RequestMethod.GET})
 	public String userhelpPageMethod(@RequestParam(name="page", required=false) String page,
-			@RequestParam(name="limit", required=false) String slimit, Model model){
+			@RequestParam(name="limit", required=false) String slimit,
+			@RequestParam(value="message", required=false) String message,
+			Model model){
+		
+		logger.info("uhelp.do : " + message);
 		
 		int currentPage = 1;
 		if (page != null) {
@@ -128,6 +137,7 @@ public class UserController {
 			model.addAttribute("paging", paging);
 			model.addAttribute("currentPage", currentPage);
 			model.addAttribute("limit", limit);
+			model.addAttribute("message", message);
 			
 			return "user/userHelpList";
 		}else {
@@ -219,7 +229,7 @@ public class UserController {
 			@RequestParam(name = "upfile", required = false) MultipartFile mfile) {
 		
 		// 공지사항 첨부파일 저장 폴더 지정
-		String savePath = request.getSession().getServletContext().getRealPath("resources/inquiry_upfiles");
+		String savePath = request.getSession().getServletContext().getRealPath("resources/inquiry_files");
 		
 		// 첨부파일일 있을 때
 		if (!mfile.isEmpty()) {
@@ -666,6 +676,8 @@ public class UserController {
 		
 		Payment payment = new Payment(amount, orderId, paymentKey, receiverId, receiverName, nameId, accountId, uniqueId);
 		
+		logger.info("buyingpage.do : orderId - " + orderId);
+		
 		int insertResult = paymentService.insertPayment(payment);
 		
 		if(insertResult> 0) {
@@ -721,5 +733,54 @@ public class UserController {
 		return sendJson.toJSONString();// 뷰리졸버로 리턴함
 		// servlet-context.xml 에 jsonString 내보내는 JSONView 라는 뷰리졸버를 추가 등록해야 함
 	}
+	
+	@RequestMapping(value="uuidetail.do", method=RequestMethod.GET)
+	public ModelAndView moveInquiryDetailMethod(
+									@RequestParam("iid") String inquiryId,
+									@RequestParam(value= "page", required=false) String page,
+									@RequestParam("userId") String userId,
+									ModelAndView mv){
+		logger.info("uidetail.do : " + inquiryId + ", " + page + ", " + userId);
+		
+		//출력할 페이지 
+		int currentPage = 1;
+		
+		//전송할 페이지가 있다면 추출
+		if(page != null) {
+			currentPage = Integer.parseInt(page);
+		}
+	
+		Inquiry inquiry = inquiryService.selectInquiry(inquiryId);
+		
+		if(inquiry != null) {
+			mv.addObject("inquiry", inquiry);
+			mv.addObject("currentPage", currentPage);
+			
+			mv.setViewName("user/userInquiryDetailView");
+		}else {
+			mv.addObject("message", "문의글 상세보기 실패");
+			mv.setViewName("common/error");
+		}
+		
+		return mv;
+	}
+	
+	@RequestMapping("uinqfix.do")
+	public ModelAndView uinqfixMethod(ModelAndView mv,
+			@RequestParam("iid") String inquiryId,
+			@RequestParam("page") int nowPage) {
+		
+		Inquiry inquiry = inquiryService.selectInquiry(inquiryId);
+		
+		mv.addObject("iid", inquiryId);
+		mv.addObject("page", nowPage);
+		mv.addObject("inquiry", inquiry);
+		mv.setViewName("user/uFixInqPage");
+		
+		return mv;
+	} 
+	
+	
+	
 
 }

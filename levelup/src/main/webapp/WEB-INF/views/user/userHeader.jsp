@@ -32,6 +32,7 @@
 					<li><a href="${ pageContext.servletContext.contextPath }/uitem.do">items</a></li>
 					<li><a href="${ pageContext.servletContext.contextPath }/uhelp.do">고객지원</a></li>
 					<li><a href="${ pageContext.servletContext.contextPath }/uabout.do">About Us</a></li>
+					<li><a href="${ pageContext.servletContext.contextPath }/ukeyin.do">결제취소연습</a></li>
 				</ul>
 		</nav>
 	</header>
