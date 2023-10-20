@@ -2,14 +2,7 @@ package com.gs.levelup.notice.model.vo;
 
 import java.sql.Date;
 
-public class Notice implements java.io.Serializable {
-	private static final long serialVersionUID = 3865437586950123928L;
-
-	
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
+public class Notice {
 	private String noticeId;
 	private String employeeId;
 	private String departmentId;

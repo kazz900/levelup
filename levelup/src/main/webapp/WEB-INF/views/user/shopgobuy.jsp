@@ -57,30 +57,41 @@ $(function(){
 <c:import url="/WEB-INF/views/user/userHeader.jsp"/>
 <br>
 <div class="container">
-<h3>캐릭터를 선택해 주세요</h3>
-<table id="charlist" cellspacing="0" width="700">
-</table>
-<%-- <p>userId : ${ sessionScope.loginUser.userId }</p>
-<p>accountId : ${ sessionScope.loginUser.accountId }</p>
-<br>
-<p>Item id: ${ requestScope.item.itemId }</p> --%>
-<br>
-<br>
-<div id="payment-method"></div>
-  <div id="agreement"></div>
-  <br>
-<button id="payment-button">결제하기</button>
+	<div class="divider">
+		<h3>캐릭터를 선택해 주세요</h3>
+		<table id="charlist" cellspacing="0" width="700">
+		</table>
+		<br>
+		<img src="/levelup/resources/images/itemlist/${requestScope.item.itemId}.png" alt="Item 15">
+		<br>
+		<p>가격 : ${requestScope.item.price}</p>
+		<%-- <p>userId : ${ sessionScope.loginUser.userId }</p>
+		<p>accountId : ${ sessionScope.loginUser.accountId }</p>
+		<br>
+		<p>Item id: ${ requestScope.item.itemId }</p> --%>
+	</div>
+	<div class="divider">
+		<br>
+		<br>
+		<div id="payment-method"></div>
+		  <div id="agreement"></div>
+		  <br>
+		<button id="payment-button">결제하기</button>
+	</div>
 </div>
 <c:import url="/WEB-INF/views/user/userFooter.jsp"/>
 <script type="text/javascript">
-const clientKey = "test_gck_docs_Ovk5rk1EwkEbP0W43n07xlzm"
+const clientKey = "test_ck_6BYq7GWPVvnz7o1ODvR5VNE5vbo1"
+const secretKey = 'test_sk_DpexMgkW36ZnqQN19dEN3GbR5ozO'
+const base64Encoded = btoa(secretKey);
+console.log("=============" + base64Encoded);
 const customerKey = "${ sessionScope.loginUser.userId }"
 const button = document.getElementById("payment-button")
 const paymentWidget = PaymentWidget(clientKey, customerKey) // 회원 결제
 
 paymentWidget.renderPaymentMethods(
 	  "#payment-method", 
-	  { value: 15000 },
+	  { value: "${ requestScope.item.price }" },
 	  // 렌더링하고 싶은 멀티 결제 UI의 variantKey
 	  // https://docs.tosspayments.com/guides/payment-widget/admin#멀티-결제-ui
 	  { variantKey: "DEFAULT" } 
@@ -91,44 +102,35 @@ paymentWidget.renderAgreement(
 	{ variantKey: "AGREEMENT" } // 기본 이용약관 렌더링
 )
 
+const orderId = generateRandomString(10);
+
 button.addEventListener("click", function () {
     // 구매 성공 URL 및 다른 데이터
     const selectedCharName = document.querySelector("select[name='charName']").value;
+    const hiddenCharId = document.querySelector("input[name='charId']").value;
     if (selectedCharName === "") {
         alert("먼저 캐릭터를 선택해주세요");
     } else {
-    	const successUrl = "http://localhost:8080/levelup/purchase.do";
-        const postData = {
-            orderId: "${ sessionScope.loginUser.userId }",
+        paymentWidget.requestPayment({
+            orderId: orderId,
             orderName: "${ requestScope.item.itemId }",
+            successUrl: "http://localhost:8080/levelup/buyingpage.do?charName=" + selectedCharName + "&charId=" + hiddenCharId + "&itemId=${ requestScope.item.itemId }",
+            failUrl: "http://localhost:8080/levelup/ushop.do",
             customerEmail: "kimjihyuk5935@gmail.com",
             customerName: "김지혁"
-        };
-
-        // Fetch API를 사용하여 POST 요청 보내기
-        fetch(successUrl, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(postData)
-        })
-        .then(response => {
-            if (response.ok) {
-                // 성공한 경우에 대한 처리
-                // 예: 페이지 이동 또는 다른 작업 수행
-                window.location.href = successUrl;
-            } else {
-                // 실패한 경우에 대한 처리
-                console.error("구매 성공 URL로의 POST 요청이 실패했습니다.");
-            }
-        })
-        .catch(error => {
-            console.error("POST 요청 중 오류가 발생했습니다:", error);
         });
     }
-    
 });
+
+function generateRandomString(length) {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+}
 </script>
 </body>
 </html>

@@ -10,6 +10,11 @@ public class Search {
 	private Date begin;
 	private Date end;
 	private String type; //문의 타입 겸색시 필요
+
+	private String teamId;
+	private String departmentId;
+	
+
 	private int keyword2;
 	
 	public Search(String keyword, int age, int startRow, int endRow, Date begin, Date end, String type, int keyword2) {
@@ -37,10 +42,32 @@ public class Search {
 	}
 
 
+  
+
 
 	public Search() {}
 	
-	
+	public String getTeamId() {
+		return teamId;
+	}
+
+
+
+	public void setTeamId(String teamId) {
+		this.teamId = teamId;
+	}
+
+
+
+	public String getDepartmentId() {
+		return departmentId;
+	}
+
+
+
+	public void setDepartmentId(String departmentId) {
+		this.departmentId = departmentId;
+	}
 	
 	public int getAge() {
 		return age;

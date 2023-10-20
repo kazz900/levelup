@@ -38,7 +38,7 @@ public class CommunityController {
 	// Community test 페이지 이동처리용
 	@RequestMapping("movecom.do")
 	public String moveCom() {
-		return "community/comlist";
+		return "community/comMain";
 	}
 
 	// Community detail test 페이지 이동처리용
@@ -74,10 +74,14 @@ public class CommunityController {
 
 	}
 
-	// 공지사항 전체 목록보기 요청 처리용
+	// 게시글 전체 목록보기 요청 처리용
 	@RequestMapping("comlist.do")
-	public String selectList(@RequestParam(name = "currentPage", required = false) String page,
-			@RequestParam(name = "limit", required = false) String slimit, Model model) {
+	public String selectList(
+			@RequestParam(name = "currentPage", required = false) String page,
+			@RequestParam(name = "limit", required = false) String slimit, 
+			Model model) {
+		logger.info("comlist.do : page : " + page + ", slimit: " + slimit);
+
 		int currentPage = 1;
 		if (page != null) {
 			currentPage = Integer.parseInt(page);
@@ -91,10 +95,10 @@ public class CommunityController {
 
 		// 페이지 관련 항목 계산 처리
 		int listCount = communityService.selectListCount();
-		Paging paging = new Paging(listCount, currentPage, limit, "nlist.do");
+		Paging paging = new Paging(listCount, currentPage, limit, "comlist.do");
 		paging.calculator();
 
-		// 페이지에 ㅊㄹ력할 목록 조회해 옴
+		// 페이지에 출력할 목록 조회해 옴
 		ArrayList<Community> list = communityService.selectList(paging);
 
 		if (list != null && list.size() > 0) {
@@ -103,7 +107,7 @@ public class CommunityController {
 			model.addAttribute("currentPage", currentPage);
 			model.addAttribute("limit", limit);
 
-			return "";
+			return "community/comlist";
 		} else {
 			model.addAttribute("message", currentPage + "페이지 목록 조회 실패");
 			return "common/error";
@@ -422,4 +426,6 @@ public class CommunityController {
 		}
 		return mv;
 	}
+	
+	
 }

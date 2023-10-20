@@ -133,7 +133,9 @@ function requestDelete(){
 													<tr><th colspan="2">
 													<button onclick="moveUpdatePage(); return false;">수정페이지로 이동</button> &nbsp; 
 													<button onclick="requestDelete(); return false;">삭제하기</button> &nbsp; 
-													<button onclick="javascript:history.go(-1); return false;">목록</button>
+													<button onclick="javascript:window.location.href='<%= session.getAttribute("listPage") %>';">목록</button>
+													<a>##previousPage##   <%= session.getAttribute("previousPage") %></a>
+													<a>##listPage##   <%= session.getAttribute("listPage") %></a>
 												</th></tr>
 
 								</div><!-- card -->

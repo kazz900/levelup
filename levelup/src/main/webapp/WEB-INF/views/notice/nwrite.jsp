@@ -17,7 +17,7 @@
 <body data-sidebar="dark" data-layout-mode="light">
 	<!-- 내비게이션바, 사이드바 등등 -->
 	<c:import url="/WEB-INF/views/common/layout.jsp" />
-
+	
 	<div class="main-content">
 		<div class="page-content">
 			<div class="container-fluid">
@@ -29,6 +29,8 @@
 				
 				<form action="ninsert.do" method="post"
 					enctype="multipart/form-data">
+					<input type="hidden" value="${ sessionScope.loginEmployee.teamId }" name="teamId">
+					<input type="hidden" value="${ sessionScope.loginEmployee.departmentId }" name="departmentId">
 					<div class="row">
 						<div class="col-12">
 							<div class="card">
@@ -52,15 +54,14 @@
 										</tr>
 									</p>
 
-									<textarea id="formmessage" name="noticeContent"
+									<textarea id="elm1" name="noticeContent"
 										class="form-control" rows="25"
 										placeholder="Enter Your Message"></textarea>
 
 									<tr>
 										<th colspan="2"><input type="submit" value="등록하기">
-											&nbsp; <input type="reset" value="작성취소"> &nbsp; <input
-											type="button" value="목록"
-											onclick="javascript:history.go(-1); return false;"></th>
+											&nbsp; <input type="button" value="목록" 
+    										onclick="javascript:window.location.href='<%= session.getAttribute("listPage") %>';"></th>
 									</tr>
 								</div>
 							</div>
@@ -124,7 +125,12 @@
 
 	<!-- email editor init -->
 	<script src="resources/js/pages/email-editor.init.js"></script>
+	
+<!--tinymce js-->
+        <script src="resources/libs/tinymce/tinymce.min.js"></script>
 
+        <!-- init js -->
+        <script src="resources/js/pages/form-editor.init.js"></script>
 
 </body>
 </html>

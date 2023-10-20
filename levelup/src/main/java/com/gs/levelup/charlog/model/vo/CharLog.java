@@ -1,6 +1,7 @@
 package com.gs.levelup.charlog.model.vo;
 
-import java.time.ZonedDateTime;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 
 public class CharLog implements java.io.Serializable {
@@ -10,7 +11,7 @@ public class CharLog implements java.io.Serializable {
 		return serialVersionUID;
 	}
 
-	private ZonedDateTime time;
+	private Timestamp time;
 	private String charMsg;
 	private int accountId;
 	private int charId;
@@ -28,7 +29,7 @@ public class CharLog implements java.io.Serializable {
 	
 	public CharLog() {}
 
-	public CharLog(ZonedDateTime time, String charMsg, int accountId, int charId, int charNum, int class_, String name, int str,
+	public CharLog(Timestamp time, String charMsg, int accountId, int charId, int charNum, int class_, String name, int str,
 			int agi, int vit, int int_, int dex, int luk, int hair, int hairColor) {
 		super();
 		this.time = time;
@@ -48,11 +49,11 @@ public class CharLog implements java.io.Serializable {
 		this.hairColor = hairColor;
 	}
 
-	public ZonedDateTime getTime() {
+	public Timestamp getTime() {
 		return time;
 	}
 
-	public void setTime(ZonedDateTime time) {
+	public void setTime(Timestamp time) {
 		this.time = time;
 	}
 
@@ -170,7 +171,9 @@ public class CharLog implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "CharLog [time=" + time.format(DateTimeFormatter.ofPattern("yyyy/MM/dd/ HH:mm:ss z")) + ", charMsg=" + charMsg + ", accountId=" + accountId + ", charId=" + charId
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+		return "CharLog [time=" + sdf.format(time) + ", charMsg=" + charMsg + ", accountId=" + accountId + ", charId=" + charId
 				+ ", charNum=" + charNum + ", class_=" + class_ + ", name=" + name + ", str=" + str + ", agi=" + agi
 				+ ", vit=" + vit + ", int_=" + int_ + ", dex=" + dex + ", luk=" + luk + ", hair=" + hair
 				+ ", hairColor=" + hairColor + "]";

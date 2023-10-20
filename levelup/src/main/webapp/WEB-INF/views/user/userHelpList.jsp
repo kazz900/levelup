@@ -27,7 +27,7 @@
 <a onclick="help2()">&nbsp;&nbsp;&nbsp; 게임문의 &nbsp;&nbsp;&nbsp;</a>| 
 <a onclick="help3()">&nbsp;&nbsp;&nbsp; 기타문의 &nbsp;&nbsp;&nbsp;</a> | 
 <a onclick="help4()">&nbsp;&nbsp;&nbsp; 아이템 &nbsp;&nbsp;&nbsp;</a> | 
-<a onclick="help5()">&nbsp;&nbsp;&nbsp; 고객센터 &nbsp;&nbsp;&nbsp;</a> |
+<a onclick="help5()">&nbsp;&nbsp;&nbsp; 문의전화 &nbsp;&nbsp;&nbsp;</a> |
 </div>	
 		
 		<hr>
