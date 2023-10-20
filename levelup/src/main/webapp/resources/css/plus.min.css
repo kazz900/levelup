@@ -56,14 +56,15 @@ nav .uheaderul li a {
 }
 
 .hero {
-	background: #211B10 url('/levelup/resources/images/imagearr/image1.png')
-		no-repeat center center;
-	background-size: cover;
-	color: #fff;
-	text-align: center;
-	padding: 100px 0;
-	transition: background-image 1s ease-in-out;
-	height: 400px;
+    background: #211B10 url('/levelup/resources/images/background/backgroundgif1.gif')
+        no-repeat center center;
+    background-size: contain;
+    background-color: #000; /* 나머지 부분을 검은색으로 채웁니다. */
+    color: #fff;
+    text-align: center;
+    padding: 100px 0;
+    transition: background-image 1s ease-in-out;
+    height: 400px;
 }
 
 .hero .umainloginbox {
