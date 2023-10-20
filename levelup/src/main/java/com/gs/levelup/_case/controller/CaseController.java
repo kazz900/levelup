@@ -1,6 +1,7 @@
 package com.gs.levelup._case.controller;
 
 import java.io.File;
+import java.sql.Date;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,13 +16,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.gs.levelup._case.model.service.CaseService;
 import com.gs.levelup._case.model.vo.Case;
 import com.gs.levelup.common.FileNameChange;
 import com.gs.levelup.common.Paging;
+import com.gs.levelup.common.Search;
 import com.gs.levelup.employee.model.service.EmployeeService;
 import com.gs.levelup.employee.model.vo.Employee;
+import com.gs.levelup.inquiry.model.vo.Inquiry;
 import com.gs.levelup.inventory.model.service.InventoryService;
 import com.gs.levelup.inventory.model.vo.Inventory;
 
@@ -38,10 +42,8 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 	@Autowired
 	private EmployeeService employeeService;
 	
-	// 뷰 페이지 이동 처리용 ---------------------------------------------------
 
-		// 요청 처리용 ----------------------------------------------------------
-
+	// 기안 리스트 출력용
 	@RequestMapping(value = "clist.do", method = RequestMethod.GET)
 	public ModelAndView selectListMethod(@RequestParam(name = "page", required = false) String page, ModelAndView mv) {
 
@@ -57,7 +59,7 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 		int listCount = caseService.selectListCount();
 
 		// 페이지 관련 항목 계산 처리
-		Paging paging = new Paging(listCount, currentPage, limit, "ciclist.do");
+		Paging paging = new Paging(listCount, currentPage, limit, "clist.do");
 		paging.calculator();
 
 		// 페이지에 출력할 목록 조회해 옴
@@ -72,6 +74,232 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 		}
 		return mv;
 	}
+	
+	// --------------------------------------------------------
+	// 기안 검색용
+	@RequestMapping(value = "csearch.do", method = RequestMethod.GET)
+	public String selectSearchMethod(@RequestParam("action") String action,
+			@RequestParam(name = "begin", required = false) String begin,
+			@RequestParam(name = "end", required = false) String end,
+			@RequestParam(name = "keyword", required = false) String keyword,
+			@RequestParam(name = "page", required = false) String page,
+			@RequestParam(name = "type", required = false) String type, Model model, RedirectAttributes re) {
+
+		if (action.equals("writer")) {
+			re.addAttribute("action", action);
+			re.addAttribute("keyword", keyword);
+			re.addAttribute("page", page);
+			return "redirect:csearchwritername.do";
+		} else if (action.equals("title")) {
+			re.addAttribute("action", action);
+			re.addAttribute("keyword", keyword);
+			re.addAttribute("page", page);
+			return "redirect:csearchtitle.do";
+		} else if (action.equals("date")) {
+			re.addAttribute("action", action);
+			re.addAttribute("page", page);
+			re.addAttribute("begin", begin);
+			re.addAttribute("end", end);
+			return "redirect:csearchdate.do";
+		} else if (action.equals("type")) {
+			re.addAttribute("action", action);
+			re.addAttribute("page", page);
+			re.addAttribute("type", type);
+			return "redirect:csearchtype.do";
+		} else {
+			model.addAttribute("message", "검색 실패!");
+			return "common/error";
+		}
+	}
+
+	@RequestMapping(value = "csearchwritername.do", method = RequestMethod.GET)
+	public ModelAndView selectSearchWriterNameMethod(ModelAndView mv, @RequestParam("action") String action,
+			@RequestParam(name = "keyword", required = false) String keyword,
+			@RequestParam(name = "page", required = false) String page) {
+		// 검색결과에 대한 페이징 처리
+		// 출력할 페이지 지정
+		int currentPage = 1;
+		// 전송온 페이지 값이 있다면 추출함
+		if (page != null) {
+			currentPage = Integer.parseInt(page);
+		}
+
+		// 한 페이지당 출력할 목록 갯수 지정
+		int limit = 10;
+
+		// 총 페이지수 계산을 위한 검색 결과 적용된 총 목록 갯수 조회
+		int listCount = caseService.selectSearchWriterNameCount(keyword.trim());
+
+		// 뷰 페이지에 사용할 페이징 관련 값 계산 처리
+		Paging paging = new Paging(listCount, currentPage, limit, "csearchwritername.do");
+		paging.calculator();
+
+		// 서비스 메소드 호출하고 리턴결과 받기
+		Search search = new Search();
+		search.setStartRow(paging.getStartRow());
+		search.setEndRow(paging.getEndRow());
+		search.setKeyword(keyword);
+
+		ArrayList<Case> list = caseService.selectSearchWriterName(search);
+
+		// 받은 결과에 따라 성공/실패 페이지 내보내기
+		if (list != null && list.size() > 0) {
+			mv.addObject("list", list);
+			mv.addObject("paging", paging);
+			mv.addObject("currentPage", currentPage);
+			mv.addObject("limit", limit);
+			mv.addObject("action", action);
+			mv.addObject("keyword", keyword);
+
+			mv.setViewName("empCase/empCaseListView");
+		} else {
+			mv.setViewName("empCase/empCaseListView");
+		}
+		return mv;
+	}
+
+	@RequestMapping(value = "csearchtitle.do", method = RequestMethod.GET)
+	public ModelAndView selectSearchTitleMethod(ModelAndView mv, @RequestParam("action") String action,
+			@RequestParam(name = "keyword", required = false) String keyword,
+			@RequestParam(name = "page", required = false) String page) {
+		// 검색결과에 대한 페이징 처리
+		// 출력할 페이지 지정
+		int currentPage = 1;
+		// 전송온 페이지 값이 있다면 추출함
+		if (page != null) {
+			currentPage = Integer.parseInt(page);
+		}
+
+		// 한 페이지당 출력할 목록 갯수 지정
+		int limit = 10;
+
+		// 총 페이지수 계산을 위한 검색 결과 적용된 총 목록 갯수 조회
+		int listCount = caseService.selectSearchTitleCount(keyword.trim());
+
+		// 뷰 페이지에 사용할 페이징 관련 값 계산 처리
+		Paging paging = new Paging(listCount, currentPage, limit, "csearchtitle.do");
+		paging.calculator();
+
+		// 서비스 메소드 호출하고 리턴결과 받기
+		Search search = new Search();
+		search.setStartRow(paging.getStartRow());
+		search.setEndRow(paging.getEndRow());
+		search.setKeyword(keyword);
+
+		ArrayList<Case> list = caseService.selectSearchTitle(search);
+
+		// 받은 결과에 따라 성공/실패 페이지 내보내기
+		if (list != null && list.size() > 0) {
+			mv.addObject("list", list);
+			mv.addObject("paging", paging);
+			mv.addObject("currentPage", currentPage);
+			mv.addObject("limit", limit);
+			mv.addObject("action", action);
+			mv.addObject("keyword", keyword);
+
+			mv.setViewName("empCase/empCaseListView");
+		} else {
+			mv.setViewName("empCase/empCaseListView");
+		}
+		return mv;
+	}
+
+	@RequestMapping(value = "csearchtype.do", method = RequestMethod.GET)
+	public ModelAndView selectSearchTypeMethod(ModelAndView mv, @RequestParam("type") String type,
+			@RequestParam(name = "page", required = false) String page, @RequestParam("action") String action) {
+		// 검색결과에 대한 페이징 처리
+		// 출력할 페이지 지정
+		int currentPage = 1;
+		// 전송온 페이지 값이 있다면 추출함
+		if (page != null) {
+			currentPage = Integer.parseInt(page);
+		}
+
+		// 한 페이지당 출력할 목록 갯수 지정
+		int limit = 10;
+
+		// 총 페이지수 계산을 위한 검색 결과 적용된 총 목록 갯수 조회
+		int listCount = caseService.selectSearchTypeCount(type.trim());
+
+		// 뷰 페이지에 사용할 페이징 관련 값 계산 처리
+		Paging paging = new Paging(listCount, currentPage, limit, "csearchtype.do");
+		paging.calculator();
+
+		// 서비스 메소드 호출하고 리턴결과 받기
+		Search search = new Search();
+		search.setStartRow(paging.getStartRow());
+		search.setEndRow(paging.getEndRow());
+		search.setType(type);
+
+		ArrayList<Case> list = caseService.selectSearchType(search);
+
+		// 받은 결과에 따라 성공/실패 페이지 내보내기
+		if (list != null && list.size() > 0) {
+			mv.addObject("list", list);
+			mv.addObject("paging", paging);
+			mv.addObject("currentPage", currentPage);
+			mv.addObject("limit", limit);
+			mv.addObject("action", action);
+			mv.addObject("type", type);
+
+			mv.setViewName("empCase/empCaseListView");
+		} else {
+			mv.setViewName("empCase/empCaseListView");
+		}
+		return mv;
+	}
+
+	@RequestMapping(value = "csearchdate.do", method = RequestMethod.GET)
+	public ModelAndView selectSearchDateMethod(ModelAndView mv, @RequestParam("action") String action,
+			@RequestParam(name = "page", required = false) String page, @RequestParam("begin") String begin,
+			@RequestParam("end") String end) {
+
+		// 검색결과에 대한 페이징 처리
+		// 출력할 페이지 지정
+		int currentPage = 1;
+		// 전송온 페이지 값이 있다면 추출함
+		if (page != null) {
+			currentPage = Integer.parseInt(page);
+		}
+
+		Search search = new Search();
+		search.setBegin(Date.valueOf(begin));
+		search.setEnd(Date.valueOf(end));
+
+		// 한 페이지당 출력할 목록 갯수 지정
+		int limit = 10;
+
+		// 총 페이지수 계산을 위한 검색 결과 적용된 총 목록 갯수 조회
+		int listCount = caseService.selectSearchDateCount(search);
+		logger.info(String.valueOf(listCount));
+
+		// 뷰 페이지에 사용할 페이징 관련 값 계산 처리
+		Paging paging = new Paging(listCount, currentPage, limit, "csearchdate.do");
+		paging.calculator();
+
+		// 서비스 메소드 호출하고 리턴결과 받기
+		search.setStartRow(paging.getStartRow());
+		search.setEndRow(paging.getEndRow());
+
+		ArrayList<Case> list = caseService.selectSearchDate(search);
+
+		// 받은 결과에 따라 성공/실패 페이지 내보내기
+		if (list != null && list.size() > 0) {
+			mv.addObject("list", list);
+			mv.addObject("paging", paging);
+			mv.addObject("currentPage", currentPage);
+			mv.addObject("limit", limit);
+			mv.addObject("action", action);
+			mv.addObject("begin", search.getBegin());
+			mv.addObject("end", search.getEnd());
+
+			mv.setViewName("empCase/empCaseListView");
+		} else {
+			mv.setViewName("empCase/empCaseListView");
+		}
+		return mv;
+	}
+	
 
 	
 	@RequestMapping(value="changeitem.do", method = RequestMethod.GET)
@@ -79,7 +307,6 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 		return mv;
 	}
 	
-	// TODO : 최유미 확인 필요-------------------------------------------------------
 	
 	//기안 작성 페이지로 이동
 	@RequestMapping("cicform.do")

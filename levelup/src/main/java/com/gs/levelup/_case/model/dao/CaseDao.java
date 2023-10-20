@@ -42,43 +42,39 @@ public class CaseDao {
 		return sqlSessionTemplate.insert("caseMapper.selectListCount");
 	}
 
-	public int selectSearchWriterNameCount(Search search) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int selectSearchWriterNameCount(String keyword) {
+		return sqlSessionTemplate.selectOne("caseMapper.selectSearchWriterNameCount", keyword);
 	}
 
-	public int selectSearchTitleCount(Search search) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int selectSearchTitleCount(String keyword) {
+		return sqlSessionTemplate.selectOne("caseMapper.selectSearchTitleCount", keyword);
 	}
 
 	public int selectSearchDateCount(Search search) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSessionTemplate.selectOne("caseMapper.selectSearchDateCount", search);
 	}
 
-	public int selectSearchTypeCount(Search search) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int selectSearchTypeCount(String keyword) {
+		return sqlSessionTemplate.selectOne("caseMapper.selectSearchTypeCount", keyword);
 	}
 
 	public ArrayList<Case> selectSearchWriterName(Search search) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Case> list = sqlSessionTemplate.selectList("caseMapper.selectSearchWriterName", search);
+		return (ArrayList<Case>) list;
 	}
 
 	public ArrayList<Case> selectSearchTitle(Search search) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Case> list = sqlSessionTemplate.selectList("caseMapper.selectSearchTitle", search);
+		return (ArrayList<Case>) list;
 	}
 
 	public ArrayList<Case> selectSearchDate(Search search) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Case> list = sqlSessionTemplate.selectList("caseMapper.selectSearchDate", search);
+		return (ArrayList<Case>) list;
 	}
 
 	public ArrayList<Case> selectSearchType(Search search) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Case> list = sqlSessionTemplate.selectList("caseMapper.selectSearchType", search);
+		return (ArrayList<Case>) list;
 	}
 }

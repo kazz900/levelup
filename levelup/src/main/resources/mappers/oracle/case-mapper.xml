@@ -71,6 +71,26 @@
 		SELECT COUNT(*) FROM CASE
 	</select>
 	
+	<select id="selectSearchWriterNameCount" parameterType="string" resultType="_int">
+		SELECT COUNT(*) FROM CASE
+		WHERE CASE_WRITER_NAME = #{keyword}
+	</select>
+	
+	<select id="selectSearchTitleCount" parameterType="string" resultType="_int">
+		SELECT COUNT(*) FROM CASE
+		WHERE CASE_TITLE LIKE '%' || #{ keyword } || '%'
+	</select>
+	
+	<select id="selectSearchDateCount" parameterType="string" resultType="_int">
+		SELECT COUNT(*) FROM CASE 
+		WHERE EDIT_DATE BETWEEN #{begin} AND #{end}
+	</select>
+	
+	<select id="selectSearchTypeCount" parameterType="string" resultType="_int">
+		SELECT COUNT(*) FROM CASE
+		WHERE CASE_TYPE = #{type}
+	</select>
+	
 	<select id="selectList" parameterType="Paging" resultMap="resultList">
 		<![CDATA[
 		select * 

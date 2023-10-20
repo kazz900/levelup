@@ -19,10 +19,10 @@ public interface CaseService {
 	public int selectListCount();
 	
 	//검색 목록 카운트 관련
-	public int selectSearchWriterNameCount(Search search);
-	public int selectSearchTitleCount(Search search);
+	public int selectSearchWriterNameCount(String keyword);
+	public int selectSearchTitleCount(String keyword);
 	public int selectSearchDateCount(Search search);
-	public int selectSearchTypeCount(Search search);
+	public int selectSearchTypeCount(String keyword);
 	
 	//검색 관련
 	public ArrayList<Case> selectSearchWriterName(Search search);
