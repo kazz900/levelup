@@ -15,9 +15,26 @@
 <!-- 헤드 스크립트 -->
 <c:import url="/WEB-INF/views/common/head-script.jsp" />
 
+<c:url var="caseApprove" value="caseApprove.do">
+
+</c:url>
+
+<c:url var="caseReject" value="caseReject.do">
+
+</c:url>
 
 <script type="text/javascript">
+function golist(){
+	location.href = "${pageContext.servletContext.contextPath}/clist.do?page=${ param.page }";
+}
 
+function caseApprove(){
+	location.href = "${ caseApprove }";
+}
+
+funtion caseReject(){
+	location.href = "${ caseReject }";
+}
 
 </script>
 </head>
@@ -252,14 +269,14 @@
 								<div class="col-lg-10" align="center">
 									
 									<c:if test="${ sessionScope.loginEmployee.employeeId != requestScope._case.caseManagerId }">
-                                  <button type="button" class="btn btn-secondary waves-effect waves-light">목록으로</button>
+                                  <button type="button" class="btn btn-secondary waves-effect waves-light" onclick="golist();">목록으로</button>
                                   
                                    </c:if>
                                    
 									<c:if test="${ sessionScope.loginEmployee.employeeId == requestScope._case.caseManagerId }">
-                                  <button type="button" class="btn btn-secondary waves-effect waves-light">목록으로</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                  <button type="button" class="btn btn-success waves-effect waves-light">기안 승인</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                  <button type="submit" class="btn btn-danger waves-effect waves-light">기안 반려</button>                               
+                                  <button type="button" class="btn btn-secondary waves-effect waves-light" onclick="golist();">목록으로</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                  <button type="button" class="btn btn-success waves-effect waves-light" onclick="caseApprove();">기안 승인</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                  <button type="button" class="btn btn-danger waves-effect waves-light" onclick="caseReject();">기안 반려</button>                               
                                    </c:if>
                               </div>
 								
