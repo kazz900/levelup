@@ -28,8 +28,8 @@ NULL,
 #{ receiverName } ,
 #{ receiverId },
 0,
-' Thank you for purchase ',
-'Here is your item which you bought ',
+concat('Dear ',#{ receiverName },'. Thank you for purchase '),
+'Here is your item which you bought.',
 0,
 6,
 0,
@@ -45,7 +45,6 @@ LAST_INSERT_ID(),
 1,
 1,
 #{ uniqueId })
-
 
 	</insert>
 
