@@ -82,7 +82,7 @@
                                        <div class="col-sm-4">
                                            <div class="mt-4 mt-sm-0">
                                                <p class="text-muted mb-2">기안 작성 날짜</p>
-                                               <h5 class="font-size-15">${ requestScope.caseItemChange.editDate }</h5>
+                                               <h5 class="font-size-15"><fmt:formatDate value="${ requestScope.caseItemChange.editDate }" pattern="yyyy-MM-dd HH:mm:ss" /></h5>
                                            </div>
                                        </div>
                                        

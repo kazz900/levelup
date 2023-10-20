@@ -22,10 +22,35 @@
 		select * from (select rownum rnum, NOTICE_ID, EMPLOYEE_ID, DEPARTMENT_ID, 
 				            TEAM_ID, NOTICE_TITLE, NOTICE_CONTENT, EDIT_DATE, 
 				            ATTACHEMENT_FILENAME, READ_COUNT, RENAME_FILENAME
-				      from (select * from notice 
+				      from (select * from notice  
 				            order by EDIT_DATE desc, NOTICE_ID desc)
 				     ) 
 		 where rnum between #{ startRow } and #{ endRow }
+	</select>
+	
+	<select id="selectTList" parameterType="Paging" resultMap="resultNotice">
+		select * from (
+	    select rownum rnum, NOTICE_ID, EMPLOYEE_ID, DEPARTMENT_ID, 
+	    TEAM_ID, NOTICE_TITLE, NOTICE_CONTENT, EDIT_DATE, 
+	    ATTACHEMENT_FILENAME, READ_COUNT, RENAME_FILENAME
+	    from (
+	        select * from notice where TEAM_ID = #{teamId}
+	        order by EDIT_DATE desc, NOTICE_ID desc
+			    )
+			)
+		where rnum between #{paging.startRow} and #{paging.endRow}
+		
+
+	</select>
+	
+	<select id="selectDList" parameterType="Paging" resultMap="resultNotice">
+		select * from (select rownum rnum, NOTICE_ID, EMPLOYEE_ID, DEPARTMENT_ID, 
+				            TEAM_ID, NOTICE_TITLE, NOTICE_CONTENT, EDIT_DATE, 
+				            ATTACHEMENT_FILENAME, READ_COUNT, RENAME_FILENAME
+				      from (select * from notice where DEPARTMENT_ID = #{departmentId}
+				            order by EDIT_DATE desc, NOTICE_ID desc)
+				     ) 
+		 where rnum between #{ paging.startRow } and #{ paging.endRow }
 	</select>
 
 	<select id="selectOne" parameterType="string" resultMap="resultNotice">
@@ -36,8 +61,25 @@
 		select count(*) from notice
 	</select>
 	
-	<select id="getSearchTitleCount" parameterType="string" resultType="_int">
-		select count(*) from notice where NOTICE_TITLE like '%' || #{ keyword } || '%'
+	<select id="getTListCount" resultType="_int">
+		select count(*) from notice where TEAM_ID = #{ teamId }
+	</select>
+	
+	<select id="getDListCount" resultType="_int">
+		select count(*) from notice where DEPARTMENT_ID = #{ departmentId }
+	</select>
+	
+	<select id="getSearchTitleCount" parameterType="Search" resultType="_int">
+		  select count(*) from notice
+		  WHERE NOTICE_TITLE LIKE '%' || #{keyword} || '%'
+		  <if test="teamId != ''">
+                   AND TEAM_ID = #{teamId}
+          </if>
+          <if test="departmentId != ''">
+                   AND DEPARTMENT_ID = #{departmentId}
+          </if>
+          
+		 
 	</select>
 	
 	<select id="getSearchContentCount" parameterType="string" resultType="_int">
@@ -48,17 +90,25 @@
 		select count(*) from notice where EDIT_DATE between #{ begin } and #{ end }
 	</select>
 	
-	<select id="selectSearchTitle" parameterType="Search" resultMap="resultNotice">
-		select * 
-		from (select rownum rnum, NOTICE_ID, EMPLOYEE_ID, DEPARTMENT_ID, 
-		            TEAM_ID, NOTICE_TITLE, NOTICE_CONTENT, EDIT_DATE, 
-		            ATTACHEMENT_FILENAME, READ_COUNT, RENAME_FILENAME 
-		      from (select * from notice 
-		           where NOTICE_TITLE like '%' || #{ keyword } || '%' 
-		           order by EDIT_DATE desc)
-		     ) 
-		where rnum between #{ startRow } and #{ endRow }
-	</select>
+	<select id="selectSearchTitle" parameterType="com.gs.levelup.common.Search" resultMap="resultNotice">
+    SELECT * 
+    FROM (SELECT rownum rnum, NOTICE_ID, EMPLOYEE_ID, DEPARTMENT_ID, 
+                TEAM_ID, NOTICE_TITLE, NOTICE_CONTENT, EDIT_DATE, 
+                ATTACHEMENT_FILENAME, READ_COUNT, RENAME_FILENAME 
+          FROM (SELECT * FROM notice 
+               WHERE NOTICE_TITLE LIKE '%' || #{keyword} || '%'
+               <if test="teamId != null">
+                   AND TEAM_ID = #{teamId}
+               </if>
+               <if test="departmentId != null">
+                   AND DEPARTMENT_ID = #{departmentId}
+               </if>
+               
+               ORDER BY EDIT_DATE DESC)
+         ) 
+    WHERE rnum BETWEEN #{startRow} AND #{endRow}
+</select>
+
 	
 	<select id="selectSearchContent" parameterType="Search" resultMap="resultNotice">
 		select * 
@@ -97,10 +147,13 @@
 				#{noticeContent}, sysdate, #{attachementFilename}, default, #{renameFilename})
 	</insert>
 	
+	
 	<update id="updateNotice" parameterType="Notice">
     update notice 
     set EMPLOYEE_ID = #{employeeId}, 
-        NOTICE_TITLE = #{noticeTitle},  
+        NOTICE_TITLE = #{noticeTitle},
+        DEPARTMENT_ID = #{departmentId},
+        TEAM_ID = #{teamId},
         NOTICE_CONTENT = #{noticeContent}, 
         EDIT_DATE = sysdate
     <if test="attachementFilename == null">
@@ -113,7 +166,6 @@
     </if>
     where NOTICE_ID = #{noticeId}
 	</update>
-
 	
 	<delete id="deleteNotice" parameterType="string">
 		delete from notice where NOTICE_ID = #{ noticeId }
