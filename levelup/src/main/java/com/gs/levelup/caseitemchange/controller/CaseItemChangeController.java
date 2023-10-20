@@ -138,7 +138,7 @@ public class CaseItemChangeController {
 			
 		} //첨부파일 있을 때	
 		
-		if(cicService.insertCaseItemChange(caseItemChange) > 0) {
+		if(cicService.insertCaseItemChange(caseItemChange) > 0) {  
 			//기안 작성 성공 시 기안 상세보기 페이지로 이동
 			return "empCase/empCaseDetailView";
 		}else {
@@ -163,7 +163,7 @@ public class CaseItemChangeController {
 			currentPage = Integer.parseInt(page);					
 		}
 		
-		CaseItemChange caseItemChange = cicService.selectCaseItemChange(documentId);
+		CaseItemChange caseItemChange = cicService.selectCaseItemChange(documentId);		
 		
 		if(caseItemChange != null) {
 			mv.addObject("caseItemChange", caseItemChange);

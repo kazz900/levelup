@@ -10,4 +10,5 @@ public interface ItemService {
 	public ArrayList<Item> selectListItemType(String itemType);
 	public ArrayList<Item> selectSearchItems(String searchword);
 	public Item selectOneItem(String itemName);
+	public ArrayList<Item> selectItem3();
 }

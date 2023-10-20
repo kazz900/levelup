@@ -31,6 +31,13 @@
 <c:import url="/WEB-INF/views/common/page-title.jsp"/>
 
 <!-- 여기서부터 내용 작성 -->
+<h1>전체 공지사항</h1>
+<h2>##Page##   <%= session.getAttribute("Page") %></h2>
+<h2>##listPage##   <%= session.getAttribute("listPage") %></h2>
+<h2>##teamID##   <%= session.getAttribute("teamId") %></h2>
+<h2>##departmentId##   <%= session.getAttribute("departmentId") %> ${ departmentId }</h2>
+
+
 					<div class="row">
 						<div class="col-12">
 
@@ -93,6 +100,8 @@
 <form id="titleform" class="sform" action="nsearchTitle.do" method="post">
 	<input type="hidden" name="action" value="title">
 	<input type="hidden" name="limit" value="${ currentLimit }">	
+	<input type="hidden" name="teamId" value="${ teamId }">	
+	<input type="hidden" name="departmentId" value="${ departmentId }">	
 <fieldset>
 	<legend>검색할 제목을 입력하세요.</legend>
 	<input type="search" name="keyword" size="50"> &nbsp;

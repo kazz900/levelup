@@ -22,7 +22,6 @@
 								<li><a href="${pageContext.servletContext.contextPath}/ilist.do" key="t-default">유저 문의</a></li>
 								<li><a href="${pageContext.servletContext.contextPath}/moveusearch.do" key="t-default">유저 검색</a></li>
 								<li><a href="${pageContext.servletContext.contextPath}/chardetailview.do" key="t-default">캐릭터 검색</a></li>
-								<li><a href="${pageContext.servletContext.contextPath}/cicdetail.do" key="t-default">기안 작성 완료한 페이지</a></li>
 								<li><a href="ulist.do" key="t-default">유저 목록</a></li>
 								<li><a href="ulogin.do" key="t-default">유저 로그인</a></li>
 								<li><a href="listChar.do" key="t-default">게임캐럭터 목록</a></li>
@@ -78,6 +77,8 @@
 							</a>
 							<ul class="sub-menu" aria-expanded="false">
 								<li><a href="nlist.do" key="t-default">공지사항</a></li>
+								<li><a href="ntlist.do" key="t-default">팀 공지사항</a></li>
+								<li><a href="ndlist.do" key="t-default">부서 공지사항</a></li>
 								<li><a href="ndetail.do" key="t-default">DetailView</a></li>
 								<li><a href="#" key="t-default">공지사항 수정</a></li>
 								<li><a href="#" key="t-default">공지사항 삭제</a></li>
