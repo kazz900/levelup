@@ -11,6 +11,8 @@ public interface CaseService {
 	public int insertCase(Case _case);
 	public Case selectCase(String caseId);
 	public int updateCase(Case _case);
+	public int updateCaseArrove(Case _case);
+	public int updateCaseReject(Case _case);
 	
 	// 전체 목록 조회용
 	public ArrayList<Case> selectList(Paging paging);  //페이징 처리된 목록 조회

@@ -31,6 +31,14 @@ public class CaseDao {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	public int updateCaseArrove(Case _case) {
+		return sqlSessionTemplate.update("caseMapper.updateCaseArrove", _case);
+	}
+	
+	public int updateCaseReject(Case _case) {
+		return sqlSessionTemplate.update("caseMapper.updateCaseReject", _case);
+	}
 
 	public ArrayList<Case> selectList(Paging paging) {
 		List<Case> list = sqlSessionTemplate.selectList("caseMapper.selectList", paging);
