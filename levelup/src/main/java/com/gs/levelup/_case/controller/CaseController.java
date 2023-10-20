@@ -89,6 +89,7 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 			mv.addObject("list", list);
 			mv.setViewName("empCase/empMyCaseListView");
 		}
+		mv.setViewName("empCase/empMyCaseListView");
 		return mv;
 	}
 	
