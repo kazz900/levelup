@@ -20,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.gs.levelup._case.model.service.CaseService;
 import com.gs.levelup._case.model.vo.Case;
+import com.gs.levelup.character.model.service.CharacterService;
 import com.gs.levelup.common.FileNameChange;
 import com.gs.levelup.common.Paging;
 import com.gs.levelup.common.Search;
@@ -42,6 +43,8 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 	@Autowired
 	private EmployeeService employeeService;
 	
+	@Autowired
+	private CharacterService characterService;
 
 	// 기안 리스트 출력용
 	@RequestMapping(value = "clist.do", method = RequestMethod.GET)
@@ -308,30 +311,53 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 	}
 	
 	
+	
+	
 	//기안 작성 페이지로 이동
 	@RequestMapping("cicform.do")
-	public ModelAndView moveCaseItemChangeWritePage(Inventory itemdata, @RequestParam("managerId") String managerId, ModelAndView mv) {
-		
+	public ModelAndView moveCaseItemChangeWritePage(Case _case, 
+													Inventory itemdata,													
+													@RequestParam("charId") int charId,
+													@RequestParam("managerId") String managerId, 
+													ModelAndView mv) {
+				
 		ArrayList<Inventory> ilist = inventoryService.selectAll();
 		Employee manager = employeeService.selectManager(managerId);
-		mv.addObject("manager", manager);
-		mv.addObject("ilist", ilist);
-		mv.addObject("itemdata", itemdata);
-		mv.setViewName("empCase/empNewCaseView");
+		com.gs.levelup.character.model.vo.Character character = characterService.selectCharacter(charId);
+		
+		if(_case.getCaseType().equals("1")) {
+			mv.addObject("manager", manager);
+			mv.addObject("ilist", ilist);
+			mv.addObject("itemdata", itemdata);
+			mv.addObject("character", character);
+		
+			mv.setViewName("empCase/empNewChangeCaseView");
+			
+		}else if (_case.getCaseType().equals("2")) {
+			mv.addObject("manager", manager);
+			mv.addObject("ilist", ilist);
+			mv.addObject("itemdata", itemdata);
+			mv.addObject("character", character);
+			
+			mv.setViewName("empCase/empNewDelCaseView");
+		}
+				
 		return mv;
 	}
+	
+	
 	
 	//기안 작성페이지 
 	@RequestMapping(value="cinsert.do", method = RequestMethod.POST)
 	public String insertCaseItemChange(Case _case,
-										@RequestParam("employeeId") String employeeId,
-										@RequestParam("employeeName") String employeeName,
-										@RequestParam("managerId") String managerId,		
+										@RequestParam("caseWriterId") String employeeId,
+										@RequestParam("caseWriterName") String employeeName,											
 										@RequestParam(name="upfile", required=false) MultipartFile mfile,
 										@RequestParam(name="originalItemName", required=false) String itemName,
 										HttpServletRequest request,
 										Model model) {		
-		// TODO : 최유미 확인 필요
+	
+		
 		if (_case.getOriginalItemName().equals("잡템")) {
 			System.out.println("잡템 아이템 변경함");
 			_case.setOriginalItemId(0);

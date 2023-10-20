@@ -147,6 +147,7 @@
 												<c:param name="itemType" value="${ i.itemType }"/>
 												<c:param name="price" value="${ i.price }"/>
 												<c:param name="gamePrice" value="${ i.gamePrice }"/>
+												<c:param name="uniqueId" value="${ i.uniqueId }"/>
 												<c:param name="employeeId" value="${ sessionScope.loginEmployee.employeeId }"/>
 												<c:param name="managerId" value="${ sessionScope.loginEmployee.managerId }"/>
 											</c:url>
