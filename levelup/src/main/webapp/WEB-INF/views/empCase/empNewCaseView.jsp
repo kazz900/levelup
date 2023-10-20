@@ -66,19 +66,19 @@
 
 								<h1 class="card-title mb-5" align="center">새 기안 작성 (아이템 변경)</h1>
 
-							 <form action="cicinsert.do" class="outer-repeater" enctype="multipart/form-data" method="post">
-							 	
+							 <form action="cinsert.do" class="outer-repeater" enctype="multipart/form-data" method="post">							 	
 	                            <input type="hidden" name="employeeId" value="${ sessionScope.loginEmployee.employeeId }">
 	                            <input type="hidden" name="employeeName" value="${ sessionScope.loginEmployee.employeeName }">
+	                            <input type="hidden" name="caseType" value="${ param.caseType }">
 	                            <input type="hidden" name="charId" value="${ param.charId }">
-	                            <input type="hidden" name="itemId" value="${ param.nameId }">
+	                            <input type="hidden" name="originalItemId" value="${ param.nameId }">
 	                            <c:if test="${ !empty param.itemName }">
-		                            <input type="hidden" name="itemName" value="${ param.itemName }">
+		                            <input type="hidden" name="originalItemName" value="${ param.itemName }">
 	                            </c:if>
 	                            <c:if test="${ empty param.itemName }">
-		                            <input type="hidden" name="itemName" value="잡템">
+		                            <input type="hidden" name="originalItemName" value="잡템">
 	                            </c:if>
-	                            <input type="hidden" name="itemAmount" value="${ param.amount }">
+	                            <input type="hidden" name="originalItemAmount" value="${ param.amount }">
 
 
 
@@ -87,7 +87,7 @@
 										<label for="caseTitle" class="col-form-label col-lg-1">기안
 											제목</label>
 										<div class="col-lg-11">
-											<input id="caseTitle" name="documentTitle" type="text"
+											<input id="caseTitle" name="caseTitle" type="text"
 												class="form-control" placeholder="기안 제목 입력하세요">
 										</div>
 									</div>
@@ -97,12 +97,11 @@
 									<div class="row">
 										<!-- 결재자 이름 -->
 										<div class="mb-3 col-lg-2">
-											<input type="hidden" name="managerId"
-												value="${ requestScope.manager.employeeId }"> <label>결재자
-												이름</label><input type="text" name="" id="disabledTextInput"
-												class="form-control"
-												placeholder="${ requestScope.manager.employeeName }"
-												disabled>
+											<input type="hidden" name="caseManagerId"
+												value="${ requestScope.manager.employeeId }"> 
+												<label>결재자 이름</label>
+												<input type="text" name="caseManagerName" id="disabledTextInput" class="form-control"
+												placeholder="${ requestScope.manager.employeeName }" disabled>
 										</div>
 										<div class="mb-3 col-lg-2">
 											<label>결재자 이메일</label><input type="text"
@@ -234,7 +233,7 @@
 											<label for="caseContent" class="col-form-label col-lg-1">기안
 												내용</label>
 											<div class="col-lg-12">
-												<textarea id="caseContent" name="documentContent"
+												<textarea id="caseContent" name="caseContent"
 													class="form-control" rows="3" cols="40"
 													placeholder="기안 내용을 작성하세요"></textarea>
 											</div>
