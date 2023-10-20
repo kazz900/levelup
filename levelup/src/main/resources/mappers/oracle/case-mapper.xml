@@ -110,7 +110,8 @@
 
 	<select id="selectCase" parameterType="string" resultMap="resultCase">
 		select * from case where caseId = #{ caseId }
-
+	</select>
+	
 	<select id="selectSearchWriterName" parameterType="Search" resultMap="resultList">
 		select *
 		from (select rownum rnum, CASE_ID, CASE_TITLE, CASE_CONTENT, 
