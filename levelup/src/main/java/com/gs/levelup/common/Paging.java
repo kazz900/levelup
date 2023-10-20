@@ -12,9 +12,27 @@ public class Paging implements java.io.Serializable {
 	private int startPage;   //페이지 그룹의 시작값
 	private int endPage;   //페이지 그룹의 끝값
 	private String urlMapping;
+	private String teamId;
+	private String departmentId;
 	
 	//기본 생성자 없음
 	
+	public String getDepartmentId() {
+		return departmentId;
+	}
+
+	public void setDepartmentId(String departmentId) {
+		this.departmentId = departmentId;
+	}
+
+	public String getTeamId() {
+		return teamId;
+	}
+
+	public void setTeamId(String teamId) {
+		this.teamId = teamId;
+	}
+
 	//매개변수 있는 생성자
 	public Paging(int listCount, int currentPage, int limit, String urlMapping) {
 		this.listCount = listCount;
@@ -22,6 +40,7 @@ public class Paging implements java.io.Serializable {
 		this.limit = limit;
 		this.urlMapping = urlMapping;
 	}
+	
 
 
 	//페이지 계산 함수
@@ -47,6 +66,16 @@ public class Paging implements java.io.Serializable {
 		//한 페이지에 출력할 목록 갯수가 10개인 경우에는 3페이지가 요청되었다면 행번호는 21 ~ 30행임
 		this.startRow = (currentPage - 1) * limit + 1;
 		this.endRow = startRow + limit - 1;
+	}
+
+	public Paging(int listCount, int limit, int currentPage, String urlMapping, String teamId, String departmentId) {
+		super();
+		this.listCount = listCount;
+		this.limit = limit;
+		this.currentPage = currentPage;
+		this.urlMapping = urlMapping;
+		this.teamId = teamId;
+		this.departmentId = departmentId;
 	}
 
 	public int getStartRow() {

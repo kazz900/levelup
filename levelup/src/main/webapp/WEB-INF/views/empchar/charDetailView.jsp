@@ -150,10 +150,10 @@
 												<c:param name="employeeId" value="${ sessionScope.loginEmployee.employeeId }"/>
 												<c:param name="managerId" value="${ sessionScope.loginEmployee.managerId }"/>
 											</c:url>
-											<td data-th="Action"><a href="#" onclick="javascript:location.href='${cwrite}'" 
+											<td data-th="Action"><a href="#" onclick="javascript:location.href='${cwrite}&caseType=1'" 
 											class="btn btn-primary waves-effect waves-light">Change Item</a></td>
 											<td data-th="Action"><a href="#" 
-											class="btn btn-primary waves-effect waves-light">Delete Item</a></td>
+											class="btn btn-primary waves-effect waves-light" onclick="javascript:location.href='${cwrite}&caseType=2'">Delete Item</a></td>
 										</tr>
 									</c:forEach>
 								</c:if>

@@ -1,7 +1,7 @@
 package com.gs.levelup.loginlog.model.vo;
 
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 public class LoginLog  implements java.io.Serializable {
 	private static final long serialVersionUID = -3670358373930511132L;
@@ -10,7 +10,7 @@ public class LoginLog  implements java.io.Serializable {
 		return serialVersionUID;
 	}
 
-	private ZonedDateTime time;
+	private Timestamp time;
 	private String ip;
 	private String user;
 	private int rcode;
@@ -18,7 +18,7 @@ public class LoginLog  implements java.io.Serializable {
 	
 	public LoginLog() {}
 
-	public LoginLog(ZonedDateTime time, String ip, String user, int rcode, String log) {
+	public LoginLog(Timestamp time, String ip, String user, int rcode, String log) {
 		super();
 		this.time = time;
 		this.ip = ip;
@@ -27,11 +27,11 @@ public class LoginLog  implements java.io.Serializable {
 		this.log = log;
 	}
 
-	public ZonedDateTime getTime() {
+	public Timestamp getTime() {
 		return time;
 	}
 
-	public void setTime(ZonedDateTime time) {
+	public void setTime(Timestamp time) {
 		this.time = time;
 	}
 
@@ -69,7 +69,9 @@ public class LoginLog  implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "로그인이력 [로그인시간: " + time.format(DateTimeFormatter.ofPattern("yyyy/MM/dd/ HH:mm:ss z")) + "|  ip : " + ip + " | user ID: " + user + "| log: " + log + "]";
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//		return "로그인이력 [로그인시간: " + time.format(TimestampTimeFormatter.ofPattern("yyyy/MM/dd/ HH:mm:ss z")) + "|  ip : " + ip + " | user ID: " + user + "| log: " + log + "]";
+		return "로그인이력 [로그인시간: " + sdf.format(time) + "|  ip : " + ip + " | user ID: " + user + "| log: " + log + "]";
 	}
 	
 	

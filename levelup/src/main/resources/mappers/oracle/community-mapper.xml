@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="comMapper">
+
+	<resultMap type="Community" id="resultCom">
+		<id column="BOARD_ID" property="boardId" />
+		<result column="DEPARTMENT_ID" property="departmentId" />
+		<result column="EMPLOYEE_ID" property="employeeId" />
+		<result column="BOARD_TITLE" property="boardTitle" />
+		<result column="BOARD_CONTENT" property="boardContent" />
+		<result column="BOARD_DATE" property="boardDate" />
+		<result column="ATTACHEMENT_FILENAME" property="attachementFilename" />
+		<result column="BOARD_TYPE" property="boardType" />
+		<result column="READ_COUNT" property="readCount" />
+	</resultMap>
+
+	<select id="selectListCount" resultType="_int">
+		select count(*) from community
+	</select>
+		
+	<select id="selectList" parameterType="Paging" resultMap="resultCom">
+		select * from (select rownum rnum, BOARD_ID, DEPARTMENT_ID, 
+				            EMPLOYEE_ID, BOARD_TITLE, BOARD_CONTENT, BOARD_DATE, 
+				            ATTACHEMENT_FILENAME, BOARD_TYPE, READ_COUNT
+				      from (select * from Community 
+				            order by BOARD_DATE desc)
+				     ) 
+		 where rnum between #{ startRow } and #{ endRow }
+	</select>
+<!-- 	
+
+	<select id="selectOne" parameterType="string" resultMap="resultCom">
+		select * from Community where Community_ID = #{ CommunityId }
+	</select>	
+	
+	
+	<select id="getSearchTitleCount" parameterType="string" resultType="_int">
+		select count(*) from Community where Community_TITLE like '%' || #{ keyword } || '%'
+	</select>
+	
+	<select id="getSearchContentCount" parameterType="string" resultType="_int">
+		select count(*) from Community where Community_CONTENT like '%' || #{ keyword } || '%'
+	</select>
+	
+	<select id="getSearchDateCount" parameterType="SearchDate" resultType="_int">
+		select count(*) from Community where EDIT_DATE between #{ begin } and #{ end }
+	</select>
+	
+	<select id="selectSearchTitle" parameterType="Search" resultMap="resultCom">
+		select * 
+		from (select rownum rnum, Community_ID, EMPLOYEE_ID, DEPARTMENT_ID, 
+		            TEAM_ID, Community_TITLE, Community_CONTENT, EDIT_DATE, 
+		            ATTACHEMENT_FILENAME, READ_COUNT, RENAME_FILENAME 
+		      from (select * from Community 
+		           where Community_TITLE like '%' || #{ keyword } || '%' 
+		           order by EDIT_DATE desc)
+		     ) 
+		where rnum between #{ startRow } and #{ endRow }
+	</select>
+	
+	<select id="selectSearchContent" parameterType="Search" resultMap="resultCom">
+		select * 
+		from (select rownum rnum, Community_ID, EMPLOYEE_ID, DEPARTMENT_ID, 
+		            TEAM_ID, Community_TITLE, Community_CONTENT, EDIT_DATE, 
+		            ATTACHEMENT_FILENAME, READ_COUNT, RENAME_FILENAME 
+		      from (select * from Community 
+		           where Community_CONTENT like '%' || #{ keyword } || '%' 
+		           order by EDIT_DATE desc)
+		     ) 
+		where rnum between #{ startRow } and #{ endRow }
+	</select>
+	
+	<select id="selectSearchDate" parameterType="Search" resultMap="resultCom">
+		select * 
+		from (select rownum rnum, Community_ID, EMPLOYEE_ID, DEPARTMENT_ID, 
+		            TEAM_ID, Community_TITLE, Community_CONTENT, EDIT_DATE, 
+		            ATTACHEMENT_FILENAME, READ_COUNT, RENAME_FILENAME 
+		      from (select * from Community 
+		           where EDIT_DATE between #{ begin } and #{ end } 
+		           order by EDIT_DATE desc)
+		     ) 
+		where rnum between #{ startRow } and #{ endRow }
+	</select>
+	
+	<update id="addReadCount" parameterType="string">
+		update Community 
+		set READ_COUNT = READ_COUNT + 1 
+		where Community_ID = #{ CommunityId }
+	</update>
+	
+	<insert id="insertCommunity" parameterType="Community">
+		insert into Community 
+		values (default, 
+				#{employeeId}, #{departmentId}, #{teamId}, #{CommunityTitle}, 
+				#{CommunityContent}, sysdate, #{attachementFilename}, default, #{renameFilename})
+	</insert>
+	
+	<update id="updateCommunity" parameterType="Community">
+    update Community 
+    set EMPLOYEE_ID = #{employeeId}, 
+        Community_TITLE = #{CommunityTitle},  
+        Community_CONTENT = #{CommunityContent}, 
+        EDIT_DATE = sysdate
+    <if test="attachementFilename == null">
+        , ATTACHEMENT_FILENAME = null, 
+        RENAME_FILENAME = null
+    </if>
+    <if test="attachementFilename != null">
+        , ATTACHEMENT_FILENAME = #{attachementFilename}, 
+        RENAME_FILENAME = #{renameFilename}
+    </if>
+    where Community_ID = #{CommunityId}
+	</update>
+
+	
+	<delete id="deleteCommunity" parameterType="string">
+		delete from Community where Community_ID = #{ CommunityId }
+	</delete>
+ -->
+</mapper>
+
+
+
+
+
