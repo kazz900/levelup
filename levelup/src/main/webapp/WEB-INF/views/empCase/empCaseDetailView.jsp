@@ -74,7 +74,7 @@
                                             <div class="col-sm-4">
                                                 <div>
                                                     <p class="text-muted mb-2">기안 분류</p>
-                                                    <h5 class="font-size-15">${ requestScope._case.caseType }</h5>
+                                                    <h5 class="font-size-15">${ requestScope.casedetail.caseType }</h5>
                                                 </div>
                                             </div>
                                             
@@ -82,7 +82,7 @@
                                        <div class="col-sm-4">
                                            <div class="mt-4 mt-sm-0">
                                                <p class="text-muted mb-2">기안 작성 날짜</p>
-                                               <h5 class="font-size-15"><fmt:formatDate value="${ requestScope._case.editDate }" pattern="yyyy-MM-dd HH:mm:ss" /></h5>
+                                               <h5 class="font-size-15"><fmt:formatDate value="${ requestScope.casedetail.editDate }" pattern="yyyy-MM-dd HH:mm:ss" /></h5>
                                            </div>
                                        </div>
                                        
@@ -90,7 +90,7 @@
                                        <div class="col-sm-4">
                                            <div class="mt-4 mt-sm-0">
                                                <p class="text-muted mb-2">기안 작성자</p>
-                                               <h5 class="font-size-15">${ requestScope._case.caseWriterName }</h5>
+                                               <h5 class="font-size-15">${ requestScope.casedetail.caseWriterName }</h5>
                                            </div>
                                        </div>
                                        </div>
@@ -113,7 +113,7 @@
                                 <!-- 변경 전 아이템 정보 -->  
                                 		
                                 		<h5 class="mb-3">대상 유저 정보</h5>
-                                		  	<label>유저 ID</label><input type="text" value="${ requestScope._case.charId }">
+                                		  	<label>유저 ID</label><input type="text" value="${ requestScope.casedetail.charId }">
                                 		  	
                                 		<br><br>
                                 		
@@ -131,13 +131,13 @@
                                              
                                 		<div class="row">	
                                 			<div class="mb-3 col-lg-2">	                                        	
-	                                            <input type="text" name="" id="disabledTextInput" class="form-control" placeholder="${ requestScope._case.originalItemId }" disabled>
+	                                            <input type="text" name="" id="disabledTextInput" class="form-control" placeholder="${ requestScope.casedetail.originalItemId }" disabled>
 	                                        </div>        
 	                                        <div class="mb-3 col-lg-2">		                                        
-		                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope._case.originalItemName }" disabled>		                                 
+		                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.casedetail.originalItemName }" disabled>		                                 
 	                                        </div>          
 	                                        <div class="mb-3 col-lg-2">
-	                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope._case.originalItemAmount }" disabled>
+	                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.casedetail.originalItemAmount }" disabled>
 	                                        </div>  
 	                                       	<div class="mb-3 col-lg-2">
                                             	<input type="text" id="disabledTextInput" class="form-control" placeholder="${ price }" disabled>
@@ -167,13 +167,13 @@
                                              
                                 		<div class="row">	
                                 			<div class="mb-3 col-lg-2">	                                        	
-	                                            <input type="text" name="" id="disabledTextInput" class="form-control" placeholder="${ requestScope._case.newItemId }" disabled>
+	                                            <input type="text" name="" id="disabledTextInput" class="form-control" placeholder="${ requestScope.casedetail.newItemId }" disabled>
 	                                        </div>        
 	                                        <div class="mb-3 col-lg-2">		                                        
-		                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope._case.newItemName }" disabled>		                                 
+		                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.casedetail.newItemName }" disabled>		                                 
 	                                        </div>          
 	                                        <div class="mb-3 col-lg-2">
-	                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope._case.newItemAmount }" disabled>
+	                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.casedetail.newItemAmount }" disabled>
 	                                        </div>  
 	                                       	<div class="mb-3 col-lg-2">
                                             	<input type="text" id="disabledTextInput" class="form-control" placeholder="${ price }" disabled>
@@ -196,7 +196,7 @@
 
                                                 <div>                                                   
                                                    <div class="flex-grow-1 overflow-hidden">
-													<p class="text-muted">${ requestScope._case.caseContent }</p>
+													<p class="text-muted">${ requestScope.casedetail.caseContent }</p>
 													</div>                                                 
                                                    
                                                 </div>
@@ -212,13 +212,13 @@
 								<table class="table table-nowrap align-middle table-hover mb-0">
 									<tbody>
 										<tr>
-											<c:if test="${ !empty requestScope._case.attachmentFileName }">
+											<c:if test="${ !empty requestScope.casedetail.attachmentFileName }">
 												<c:url var="idown" value="ifdown.do">
-													<c:param name="file" value="${ requestScope._case.attachmentFileName }" />												
+													<c:param name="file" value="${ requestScope.casedetail.attachmentFileName }" />												
 												</c:url>
 											<td>
 												<h5 class="font-size-14 mb-1">
-													<a href="${ idown }" class="text-dark">${ requestScope._case.attachmentFileName }</a>
+													<a href="${ idown }" class="text-dark">${ requestScope.casedetail.attachmentFileName }</a>
 												</h5>
 											</td>
 											<td>
@@ -228,7 +228,7 @@
 												</div>
 											</td>
 											</c:if>
-											<c:if test="${ empty requestScope._case.attachmentFileName }">
+											<c:if test="${ empty requestScope.casedetail.attachmentFileName }">
 											첨부파일 없음
 											</c:if>
 										</tr>

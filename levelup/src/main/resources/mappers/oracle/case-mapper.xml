@@ -107,6 +107,10 @@
 		]]>
 	</select>
 	
+
+	<select id="selectCase" parameterType="string" resultMap="resultCase">
+		select * from case where caseId = #{ caseId }
+
 	<select id="selectSearchWriterName" parameterType="Search" resultMap="resultList">
 		select *
 		from (select rownum rnum, CASE_ID, CASE_TITLE, CASE_CONTENT, 
@@ -167,6 +171,7 @@
 		             order by EDIT_DATE desc)) 
 		where rnum >= #{startRow} and rnum <= #{endRow}
 		]]>
+
 	</select>
 	
 	<insert id="insertCase" parameterType="Case">
@@ -177,6 +182,12 @@
 		#{ caseType }, #{ caseManagerId }, #{ caseManagerName }, '0', SYSDATE, DEFAULT, #{ attachmentFileName }, #{ charId },
 		#{ charName }, #{ accountId }, #{ originalItemId }, #{ originalItemName }, #{ originalItemAmount }, #{ uniqueId }, 
 		#{ newItemId }, #{ newItemName }, #{newItemAmount}, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT)
+		</if>
+		<if test="caseType == 2">
+		VALUES (DEFAULT, #{ caseTitle }, #{ caseContent }, #{ caseWriterId }, #{ caseWriterName },
+		#{ caseType }, #{ caseManagerId }, #{ caseManagerName }, '0', SYSDATE, DEFAULT, #{ attachmentFileName }, #{ charId },
+		#{ charName }, #{ accountId }, #{ originalItemId }, #{ originalItemName }, #{ originalItemAmount }, #{ uniqueId }, 
+		DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT)
 		</if>
 
 	</insert>
