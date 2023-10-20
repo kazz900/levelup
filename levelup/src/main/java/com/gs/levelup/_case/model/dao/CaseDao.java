@@ -24,8 +24,7 @@ public class CaseDao {
 	}
 
 	public Case selectCase(String caseId) {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSessionTemplate.selectOne("caseMapper.selectCase", caseId);
 	}
 
 	public int updateCase(Case _case) {

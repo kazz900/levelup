@@ -87,6 +87,10 @@
 		]]>
 	</select>
 	
+	<select id="selectCase" parameterType="string" resultMap="resultCase">
+		select * from case where caseId = #{ caseId }
+	</select>
+	
 	<insert id="insertCase" parameterType="Case">
 		INSERT INTO CASE
 		
@@ -95,6 +99,12 @@
 		#{ caseType }, #{ caseManagerId }, #{ caseManagerName }, '0', SYSDATE, DEFAULT, #{ attachmentFileName }, #{ charId },
 		#{ charName }, #{ accountId }, #{ originalItemId }, #{ originalItemName }, #{ originalItemAmount }, #{ uniqueId }, 
 		#{ newItemId }, #{ newItemName }, #{newItemAmount}, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT)
+		</if>
+		<if test="caseType == 2">
+		VALUES (DEFAULT, #{ caseTitle }, #{ caseContent }, #{ caseWriterId }, #{ caseWriterName },
+		#{ caseType }, #{ caseManagerId }, #{ caseManagerName }, '0', SYSDATE, DEFAULT, #{ attachmentFileName }, #{ charId },
+		#{ charName }, #{ accountId }, #{ originalItemId }, #{ originalItemName }, #{ originalItemAmount }, #{ uniqueId }, 
+		DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT)
 		</if>
 
 	</insert>

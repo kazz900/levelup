@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.gs.levelup._case.model.service.CaseService;
 import com.gs.levelup._case.model.vo.Case;
@@ -120,7 +121,6 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 	}
 	
 	
-	
 	//기안 작성페이지 
 	@RequestMapping(value="cinsert.do", method = RequestMethod.POST)
 	public String insertCaseItemChange(Case _case,
@@ -137,7 +137,6 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 			_case.setOriginalItemId(0);
 		}
 
-		
 		//첨부파일이 있을 때 저장 경로 지정
 		String savePath = request.getSession().getServletContext().getRealPath("resources/case_upfiles");
 		
@@ -168,9 +167,9 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 		} //첨부파일 있을 때	
 		
 		if(caseService.insertCase(_case) > 0) {  
-			//기안 작성 성공 시 기안 상세보기 페이지로 이동
-			return "empCase/empCaseDetailView";
-		}else {
+			//기안 작성 성공 시 기안 리스트 출력 뷰 리다이렉트
+			return "redirect:clist.do";
+		} else {
 			model.addAttribute("message", "기안 작성 실패!");
 			return "common/error";
 		}
@@ -181,8 +180,8 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 	
 	//작성한 기안 상세보기 페이지 뷰
 	@RequestMapping(value="cdetail.do", method = RequestMethod.GET)
-	public ModelAndView selectCaseItemChangeDetail(ModelAndView mv,
-												 @RequestParam("documentId") String documentId,
+	public ModelAndView selectCaseItemChangeDetail(Case _case, ModelAndView mv,
+												 @RequestParam("caseId") String caseId,
 												 @RequestParam(name="page", required=false) String page) {
 		
 		//출력할 페이지 
@@ -192,10 +191,10 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 			currentPage = Integer.parseInt(page);					
 		}
 		
-		Case caseItemChange = caseService.selectCase(documentId);		
+		Case casedetail = caseService.selectCase(caseId);		
 		
-		if(caseItemChange != null) {
-			mv.addObject("caseItemChange", caseItemChange);
+		if(casedetail != null) {
+			mv.addObject("casedetail", casedetail);
 			mv.addObject("currentPage", currentPage);			
 		
 			mv.setViewName("empCase/empCaseDetailView");
