@@ -62,7 +62,7 @@
                                     <div class="text-center">
                                         <div class="mb-4">                                      
                                         </div>
-                                        <h4>기안 제목 : ${ requestScope.caseItemChange.documentTitle }</h4>
+                                        <h4>기안 제목 : ${ requestScope._case.caseTitle }</h4>
                                      </div>
 
                                     <hr>
@@ -74,7 +74,7 @@
                                             <div class="col-sm-4">
                                                 <div>
                                                     <p class="text-muted mb-2">기안 분류</p>
-                                                    <h5 class="font-size-15">아이템 변경 기안</h5>
+                                                    <h5 class="font-size-15">${ requestScope._case.caseType }</h5>
                                                 </div>
                                             </div>
                                             
@@ -82,7 +82,7 @@
                                        <div class="col-sm-4">
                                            <div class="mt-4 mt-sm-0">
                                                <p class="text-muted mb-2">기안 작성 날짜</p>
-                                               <h5 class="font-size-15"><fmt:formatDate value="${ requestScope.caseItemChange.editDate }" pattern="yyyy-MM-dd HH:mm:ss" /></h5>
+                                               <h5 class="font-size-15"><fmt:formatDate value="${ requestScope._case.editDate }" pattern="yyyy-MM-dd HH:mm:ss" /></h5>
                                            </div>
                                        </div>
                                        
@@ -90,7 +90,7 @@
                                        <div class="col-sm-4">
                                            <div class="mt-4 mt-sm-0">
                                                <p class="text-muted mb-2">기안 작성자</p>
-                                               <h5 class="font-size-15">${ requestScope.caseItemChange.employeeId }</h5>
+                                               <h5 class="font-size-15">${ requestScope._case.caseWriterName }</h5>
                                            </div>
                                        </div>
                                        </div>
@@ -113,7 +113,7 @@
                                 <!-- 변경 전 아이템 정보 -->  
                                 		
                                 		<h5 class="mb-3">대상 유저 정보</h5>
-                                		  	<label>유저 ID</label><input type="text" value="${ requestScope.caseItemChange.charId }">
+                                		  	<label>유저 ID</label><input type="text" value="${ requestScope._case.charId }">
                                 		  	
                                 		<br><br>
                                 		
@@ -131,13 +131,13 @@
                                              
                                 		<div class="row">	
                                 			<div class="mb-3 col-lg-2">	                                        	
-	                                            <input type="text" name="" id="disabledTextInput" class="form-control" placeholder="${ requestScope.caseItemChange.itemId }" disabled>
+	                                            <input type="text" name="" id="disabledTextInput" class="form-control" placeholder="${ requestScope._case.originalItemId }" disabled>
 	                                        </div>        
 	                                        <div class="mb-3 col-lg-2">		                                        
-		                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ itemName }" disabled>		                                 
+		                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope._case.originalItemName }" disabled>		                                 
 	                                        </div>          
 	                                        <div class="mb-3 col-lg-2">
-	                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.caseItemChange.itemAmount }" disabled>
+	                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope._case.originalItemAmount }" disabled>
 	                                        </div>  
 	                                       	<div class="mb-3 col-lg-2">
                                             	<input type="text" id="disabledTextInput" class="form-control" placeholder="${ price }" disabled>
@@ -167,13 +167,13 @@
                                              
                                 		<div class="row">	
                                 			<div class="mb-3 col-lg-2">	                                        	
-	                                            <input type="text" name="" id="disabledTextInput" class="form-control" placeholder="${ requestScope.caseItemChange.replaceItemId }" disabled>
+	                                            <input type="text" name="" id="disabledTextInput" class="form-control" placeholder="${ requestScope._case.newItemId }" disabled>
 	                                        </div>        
 	                                        <div class="mb-3 col-lg-2">		                                        
-		                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ itemName }" disabled>		                                 
+		                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope._case.newItemName }" disabled>		                                 
 	                                        </div>          
 	                                        <div class="mb-3 col-lg-2">
-	                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.caseItemChange.replaceItemAmount }" disabled>
+	                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope._case.newItemAmount }" disabled>
 	                                        </div>  
 	                                       	<div class="mb-3 col-lg-2">
                                             	<input type="text" id="disabledTextInput" class="form-control" placeholder="${ price }" disabled>
@@ -196,7 +196,7 @@
 
                                                 <div>                                                   
                                                    <div class="flex-grow-1 overflow-hidden">
-													<p class="text-muted">${ requestScope.caseItemChange.documentContent }</p>
+													<p class="text-muted">${ requestScope._case.caseContent }</p>
 													</div>                                                 
                                                    
                                                 </div>
@@ -204,16 +204,40 @@
                                             
                                       <!-- 첨부된 파일 -->   
 
-                                            <div class="mt-4">
-                                                <h5 class="mb-3">첨부파일 내용</h5>
-
-                                                <div>                                                   
-                                                   <div class="flex-grow-1 overflow-hidden">
-													<p class="text-muted">${ requestScope.caseItemChange.attachementFilename }</p>
-													</div>                                                     
-                                                   
-                                                </div>
-                                            </div>
+                                           <div class="col-lg-4">
+					<div class="card">
+						<div class="card-body">
+							<h4 class="card-title mb-4">첨부 파일 목록</h4>
+							<div class="table-responsive">
+								<table class="table table-nowrap align-middle table-hover mb-0">
+									<tbody>
+										<tr>
+											<c:if test="${ !empty requestScope._case.attachmentFileName }">
+												<c:url var="idown" value="ifdown.do">
+													<c:param name="file" value="${ requestScope._case.attachmentFileName }" />												
+												</c:url>
+											<td>
+												<h5 class="font-size-14 mb-1">
+													<a href="${ idown }" class="text-dark">${ requestScope._case.attachmentFileName }</a>
+												</h5>
+											</td>
+											<td>
+												<div class="text-center">
+													<a href="${ idown }" class="text-dark"><i
+														class="bx bx-download h3 m-0"></i></a>
+												</div>
+											</td>
+											</c:if>
+											<c:if test="${ empty requestScope._case.attachmentFileName }">
+											첨부파일 없음
+											</c:if>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
 
 									 <!-- ----------------------------기안 내용 끝------------------------------------------------- -->			
 
@@ -227,12 +251,12 @@
 								
 								<div class="col-lg-10" align="center">
 									
-									<c:if test="${ sessionScope.loginEmployee.employeeId != requestScope.caseItemChange.managerId }">
+									<c:if test="${ sessionScope.loginEmployee.employeeId != requestScope._case.caseManagerId }">
                                   <button type="button" class="btn btn-secondary waves-effect waves-light">목록으로</button>
                                   
                                    </c:if>
                                    
-									<c:if test="${ sessionScope.loginEmployee.employeeId == requestScope.caseItemChange.managerId }">
+									<c:if test="${ sessionScope.loginEmployee.employeeId == requestScope._case.caseManagerId }">
                                   <button type="button" class="btn btn-secondary waves-effect waves-light">목록으로</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                   <button type="button" class="btn btn-success waves-effect waves-light">기안 승인</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                   <button type="submit" class="btn btn-danger waves-effect waves-light">기안 반려</button>                               
