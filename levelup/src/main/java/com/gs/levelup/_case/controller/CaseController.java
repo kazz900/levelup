@@ -90,19 +90,32 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 	//기안 작성 페이지로 이동
 	@RequestMapping("cicform.do")
 	public ModelAndView moveCaseItemChangeWritePage(Case _case, 
-													Inventory itemdata,
+													Inventory itemdata,													
 													@RequestParam("charId") int charId,
 													@RequestParam("managerId") String managerId, 
 													ModelAndView mv) {
-		
+				
 		ArrayList<Inventory> ilist = inventoryService.selectAll();
 		Employee manager = employeeService.selectManager(managerId);
 		com.gs.levelup.character.model.vo.Character character = characterService.selectCharacter(charId);
-		mv.addObject("manager", manager);
-		mv.addObject("ilist", ilist);
-		mv.addObject("itemdata", itemdata);
-		mv.addObject("character", character);
-		mv.setViewName("empCase/empNewCaseView");
+		
+		if(_case.getCaseType().equals("1")) {
+			mv.addObject("manager", manager);
+			mv.addObject("ilist", ilist);
+			mv.addObject("itemdata", itemdata);
+			mv.addObject("character", character);
+		
+			mv.setViewName("empCase/empNewChangeCaseView");
+			
+		}else if (_case.getCaseType().equals("2")) {
+			mv.addObject("manager", manager);
+			mv.addObject("ilist", ilist);
+			mv.addObject("itemdata", itemdata);
+			mv.addObject("character", character);
+			
+			mv.setViewName("empCase/empNewDelCaseView");
+		}
+				
 		return mv;
 	}
 	
