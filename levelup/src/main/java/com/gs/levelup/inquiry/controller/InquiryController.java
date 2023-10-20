@@ -443,6 +443,27 @@ public class InquiryController {
 		return mv;
 	}
 	
+	//문의사항 삭제용
+	@RequestMapping("deleteinquiry.do")
+	public String deleteinquiryMethod(
+			Model model,
+			@RequestParam(value = "page", required=false) int nowPage,
+			@RequestParam("iid") String inquiryId) {
+		
+		logger.info("deleteinquiry.do : " + inquiryId);
+		
+		if(inquiryService.deleteInquiry(inquiryId) > 0) {
+			model.addAttribute("page", nowPage);
+			model.addAttribute("message", "삭제되었습니다.");
+			return "redirect:uhelp.do";
+		}else {
+			model.addAttribute("message", "새 공지글 등록 실패!");
+			return "common/error";
+		}
+	}
+	
+	
+	
 	
 	
 }

@@ -181,4 +181,9 @@
 	<select id="selectInquiry" parameterType="string" resultMap="resultInquiry">
 		select * from INQUIRY where INQUIRY_ID = #{ inquiryId }
 	</select>
+	
+	<delete id="deleteInquiry" parameterType="string">
+		delete from inquiry where inquiry_id = #{ inquiryId }
+	</delete>
+	
 </mapper>

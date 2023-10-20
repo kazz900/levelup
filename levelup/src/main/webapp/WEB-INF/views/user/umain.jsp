@@ -108,13 +108,12 @@ function cmdgame(){
 			</c:if>
 			<c:if test="${ !empty sessionScope.loginUser }">
 				<div class="umainloginbox">
-					<div class="gamestartbox">게임 시작</div>
+					<div class="gamestartbox" onclick="cmdgame()">게임 시작</div>
 					<hr>
-					<div class="uloginbox2" onclick="cmdgame()">
+					<div class="uloginbox2">
 						${loginUser.userId} 님 방문을 환영합니다.
-						
-						<a href="logout.do">로그아웃</a>
 					</div>
+					<a href="logout.do">로그아웃</a>
 				</div>
 			</c:if>
 		</div>
