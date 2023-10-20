@@ -26,7 +26,6 @@ import com.gs.levelup.common.Paging;
 import com.gs.levelup.common.Search;
 import com.gs.levelup.employee.model.service.EmployeeService;
 import com.gs.levelup.employee.model.vo.Employee;
-import com.gs.levelup.inquiry.model.vo.Inquiry;
 import com.gs.levelup.inventory.model.service.InventoryService;
 import com.gs.levelup.inventory.model.vo.Inventory;
 
@@ -38,10 +37,10 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 	private CaseService caseService;
 
 	@Autowired
-	private InventoryService inventoryService;
-	
-	@Autowired
 	private EmployeeService employeeService;
+
+	@Autowired
+	private InventoryService inventoryService;
 	
 	@Autowired
 	private CharacterService characterService;
@@ -74,6 +73,21 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 			mv.addObject("currentPage", currentPage);
 			mv.addObject("limit", limit);
 			mv.setViewName("empCase/empCaseListView");
+		}
+		return mv;
+	}
+	
+	//---------------------------------------------------------
+	// My 기안함
+	@RequestMapping(value = "mclist.do", method = RequestMethod.GET)
+	public ModelAndView selectMyCaseListMethod(ModelAndView mv, @RequestParam("employeeId") String employeeId) {
+
+		// 페이지에 출력할 목록 조회해 옴
+		ArrayList<Case> list = caseService.selectMyCaseList(employeeId);
+
+		if (list != null && list.size() > 0) {
+			mv.addObject("list", list);
+			mv.setViewName("empCase/empMyCaseListView");
 		}
 		return mv;
 	}

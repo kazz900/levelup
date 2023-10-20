@@ -33,6 +33,10 @@ public class CaseServiceImpl implements CaseService{
 		return caseDao.selectList(paging);
 	}
 	@Override
+	public ArrayList<Case> selectMyCaseList(String myEmployeeId) {
+		return caseDao.selectMyCaseList(myEmployeeId);
+	}
+	@Override
 	public int selectListCount() {
 		return caseDao.selectListCount();
 	}
@@ -68,5 +72,4 @@ public class CaseServiceImpl implements CaseService{
 	public ArrayList<Case> selectSearchType(Search search) {
 		return caseDao.selectSearchType(search);
 	}
-
 }

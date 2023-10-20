@@ -36,6 +36,11 @@ public class CaseDao {
 		List<Case> list = sqlSessionTemplate.selectList("caseMapper.selectList", paging);
 		return (ArrayList<Case>) list;
 	}
+	
+	public ArrayList<Case> selectMyCaseList(String myEmployeeId) {
+		List<Case> list = sqlSessionTemplate.selectList("caseMapper.selectMyCaseList", myEmployeeId);
+		return (ArrayList<Case>) list;
+	}
 
 	public int selectListCount() {
 		return sqlSessionTemplate.insert("caseMapper.selectListCount");
