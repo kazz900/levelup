@@ -50,7 +50,6 @@ public class FileDownloadView extends AbstractView {
 		
 		fin.close();
 	}
-
 }
 
 
