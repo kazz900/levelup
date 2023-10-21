@@ -437,6 +437,10 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 			currentPage = Integer.parseInt(page);					
 		}
 		
+		if (itemName.equals("잡템")) {
+			itemName = "NONE";
+		}
+		
 		Case casedetail = caseService.selectCase(caseId);	
 		com.gs.levelup.item.model.vo.Item item = itemService.selectOneItem(itemName);
 		com.gs.levelup.item.model.vo.Item item2 = itemService.selectOneItem(itemName2);

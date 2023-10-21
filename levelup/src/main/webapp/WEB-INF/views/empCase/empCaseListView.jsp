@@ -176,6 +176,7 @@ function showTypeDropdown(){
 									</c:if>
 									<c:url var="cdetail" value="cdetail.do">
 										<c:param name="caseId" value="${ c.caseId }"/>
+										<c:param name="page" value="${ nowpage }" />
 									</c:url>
 									<td data-th="Action"><a href="#" onclick="javascript:location.href='${cdetail}'" 
 											class="btn btn-primary waves-effect waves-light">View Details</a></td>
