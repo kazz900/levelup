@@ -394,8 +394,7 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 			//파일 이름바꾸기함 : 년월일시분초.확장자
 			if(fileName != null && fileName.length() > 0) {				
 				//바꿀 파일명에 대한 문자열 만들기
-				renameFileName = FileNameChange.change(fileName, 	"yyyyMMddHHmmss");
-				logger.info("첨부파일명 확인 : " + fileName + ", " + renameFileName);
+				renameFileName = FileNameChange.change(fileName, "yyyyMMddHHmmss");
 				try {	
 					//저장 폴더에 파일명 바꾸기 처리
 					mfile.transferTo(new File(savePath + "\\" + renameFileName));
@@ -436,6 +435,10 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 		
 		if(page != null) {
 			currentPage = Integer.parseInt(page);					
+		}
+		
+		if (itemName.equals("잡템")) {
+			itemName = "NONE";
 		}
 		
 		Case casedetail = caseService.selectCase(caseId);	

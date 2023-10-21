@@ -176,6 +176,7 @@ function showTypeDropdown(){
 									</c:if>
 									<c:url var="cdetail" value="cdetail.do">
 										<c:param name="caseId" value="${ c.caseId }"/>
+										<c:param name="page" value="${ nowpage }" />
 										<c:param name="itemName" value="${ c.originalItemName }"/>
 										<c:param name="itemName2" value="${ c.newItemName }"/>
 									</c:url>
