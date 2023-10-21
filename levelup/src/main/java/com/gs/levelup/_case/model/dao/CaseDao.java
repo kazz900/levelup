@@ -32,12 +32,12 @@ public class CaseDao {
 		return 0;
 	}
 	
-	public int updateCaseArrove(Case _case) {
-		return sqlSessionTemplate.update("caseMapper.updateCaseArrove", _case);
+	public int updateCaseArrove(String caseId) {
+		return sqlSessionTemplate.update("caseMapper.updateCaseArrove", caseId);
 	}
 	
-	public int updateCaseReject(Case _case) {
-		return sqlSessionTemplate.update("caseMapper.updateCaseReject", _case);
+	public int updateCaseReject(String caseId) {
+		return sqlSessionTemplate.update("caseMapper.updateCaseReject", caseId);
 	}
 
 	public ArrayList<Case> selectList(Paging paging) {

@@ -460,13 +460,15 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 	//기안 승인 요청처리용
 	@RequestMapping(value="caseApprove.do", method = RequestMethod.GET)
 	public String updateSaseStatusApprove(Case _case, 
+										@RequestParam("caseId") String caseId,
+										@RequestParam("employeeId") String employeeId,
 										HttpServletRequest request, 
 										Model model,
 										RedirectAttributes re) {
 		
-		if(caseService.updateCaseArrove(_case) > 0) {
-			
-			return "redirect:clist.do";
+		if(caseService.updateCaseArrove(caseId) > 0) {
+			re.addAttribute("employeeId", employeeId);
+			return "redirect:mclist.do";
 			
 		}else {
 			model.addAttribute("message", "기안 승인 실패");
@@ -478,13 +480,15 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 	//기안 반려 요청처리용
 		@RequestMapping(value="caseReject.do", method = RequestMethod.GET)
 		public String updateSaseStatusReject(Case _case, 
+											@RequestParam("caseId") String caseId,
+											@RequestParam("employeeId") String employeeId,
 											HttpServletRequest request, 
 											Model model,
 											RedirectAttributes re) {
 			
-			if(caseService.updateCaseReject(_case) > 0) {
-				
-				return "redirect:clist.do";
+			if(caseService.updateCaseReject(caseId) > 0) {
+				re.addAttribute("employeeId", employeeId);
+				return "redirect:mclist.do";
 				
 			}else {
 				model.addAttribute("message", "기안 승인 실패");

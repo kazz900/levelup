@@ -197,15 +197,17 @@
 
 	</insert>
 	
-	<update id="updateCaseArrove" parameterType="Case">
+	<update id="updateCaseArrove" parameterType="string">
 		update case
-		set CASE_STATUS = '1'
+		set CASE_STATUS = '1',
+			SIGN_DATE = SYSDATE
 		where CASE_ID = #{ caseId }
 	</update>
 	
-	<update id="updateCaseReject" parameterType="Case">
+	<update id="updateCaseReject" parameterType="string">
 		update case
-		set CASE_STATUS = '2'
+		set CASE_STATUS = '2',
+			SIGN_DATE = SYSDATE
 		where CASE_ID = #{ caseId }
 	</update>
 	

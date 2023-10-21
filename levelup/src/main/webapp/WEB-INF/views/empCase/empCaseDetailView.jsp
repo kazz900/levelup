@@ -16,11 +16,13 @@
 <c:import url="/WEB-INF/views/common/head-script.jsp" />
 
 <c:url var="caseApprove" value="caseApprove.do">
-
+	<c:param name="caseId" value="${ requestScope.casedetail.caseId }" />
+	<c:param name="employeeId" value="${ sessionScope.loginEmployee.employeeId }" />
 </c:url>
 
 <c:url var="caseReject" value="caseReject.do">
-
+	<c:param name="caseId" value="${ requestScope.casedetail.caseId }" />
+	<c:param name="employeeId" value="${ sessionScope.loginEmployee.employeeId }" />
 </c:url>
 
 <script type="text/javascript">
@@ -29,13 +31,17 @@ function golist(){
 }
 
 function caseApprove(){
-	alert("기안이 승인되었습니다");
-	location.href = "${ caseApprove }";
+	var ans = confirm("기안이 승인하시겠습니까? 아이템의 정보가 변경됩니다.");
+	if(ans) { location.href = "${ caseApprove }";
+	}	
+	return false;
 }
 
 function caseReject(){
-	alert("기안이 반려되었습니다");
-	location.href = "${ caseReject }";
+	var ans = confirm("기안이 반려하시겠습니까? 아이템이 삭제 됩니다.");
+	if(ans) { location.href = "${ caseReject }";
+	}	
+	return false;
 }
 
 </script>
@@ -81,7 +87,7 @@ function caseReject(){
                                     <div class="text-center">
                                         <div class="mb-4">                                      
                                         </div>
-                                        <h4>기안 제목 : ${ requestScope._case.caseTitle }</h4>
+                                        <h4>기안 제목 : ${ requestScope.casedetail.caseTitle }</h4>
                                      </div>
 
                                     <hr>
@@ -93,7 +99,12 @@ function caseReject(){
                                             <div class="col-sm-4">
                                                 <div>
                                                     <p class="text-muted mb-2">기안 분류</p>
-                                                    <h5 class="font-size-15">${ requestScope.casedetail.caseType }</h5>
+                                                    <c:if test="${ requestScope.casedetail.caseType eq 1}">
+                                                    	<h5 class="font-size-15">아이템 변경 기안</h5>
+                                                   	</c:if>
+                                                   	 <c:if test="${ requestScope.casedetail.caseType eq 2}">
+                                                    	<h5 class="font-size-15">아이템 삭제 기안</h5>
+                                                   	</c:if>
                                                 </div>
                                             </div>
                                             
@@ -132,9 +143,9 @@ function caseReject(){
                                 <!-- 변경 전 아이템 정보 -->  
                                 		
                                 		<h5 class="mb-3">대상 유저 정보</h5>
-                                		  	<label>유저 ID</label><input type="text" value="${ requestScope.casedetail.charId }">
+                                		  	<label>유저 ID</label>&nbsp;&nbsp;&nbsp;<input type="text" value="${ requestScope.casedetail.charId }" disabled>
                                 		  	
-                                		<br><br>
+                                		<br><br><br><br>
                                 		
                                 		<h5 class="mb-3">현재 아이템 정보</h5>
                                 
@@ -169,9 +180,8 @@ function caseReject(){
                                 		
                                 		<br><br>
                                 		
-                                		<c:if test="${ requestScope.casedetail.caseType } == '1'">
-                                		
-                                		
+                                	
+                                	 <c:if test="${ requestScope.casedetail.caseType eq 1}">	
                                 <!-- 변경 후 아이템 정보 -->	
                                 
                                 	
@@ -206,10 +216,11 @@ function caseReject(){
                                 			
                                 		</div>	  
                                 		</div>
-                                		
+                                		<!-- 변경 후 아이템 끝 -->
                                 		</c:if>
+                                	
                                 		
-                                		</div>
+                                		</div> <!-- 아이템 내용 끝-->
                                 		
                                 		
                                 		      
@@ -220,7 +231,7 @@ function caseReject(){
 
                                                 <div>                                                   
                                                    <div class="flex-grow-1 overflow-hidden">
-													<p class="text-muted">${ requestScope.casedetail.caseContent }</p>
+                                                   <input type="text" id="disabledTextInput" class="form-control" style="height:100px;" placeholder="${ requestScope.casedetail.caseContent }" disabled>
 													</div>                                                 
                                                    
                                                 </div>
@@ -274,12 +285,12 @@ function caseReject(){
 								
 								<div class="col-lg-10" align="center">
 									
-									<c:if test="${ sessionScope.loginEmployee.employeeId != requestScope._case.caseManagerId }">
+									<c:if test="${ sessionScope.loginEmployee.employeeId != requestScope.casedetail.caseManagerId }">
                                   <button type="button" class="btn btn-secondary waves-effect waves-light" onclick="golist();">목록으로</button>
                                   
                                    </c:if>
                                    
-									<c:if test="${ sessionScope.loginEmployee.employeeId == requestScope._case.caseManagerId }">
+									<c:if test="${ sessionScope.loginEmployee.employeeId == requestScope.casedetail.caseManagerId }">
                                   <button type="button" class="btn btn-secondary waves-effect waves-light" onclick="golist();">목록으로</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                   <button type="button" class="btn btn-success waves-effect waves-light" onclick="caseApprove();">기안 승인</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                   <button type="button" class="btn btn-danger waves-effect waves-light" onclick="caseReject();">기안 반려</button>                               
