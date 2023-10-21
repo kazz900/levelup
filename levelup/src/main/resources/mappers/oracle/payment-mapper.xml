@@ -20,9 +20,30 @@
 		<result column="EMAIL_STATUS" property="emailStatus" />
 	</resultMap>
 	
+		<resultMap type="Item" id="resultList">
+		<result column="PAYMENT_ID" property="orderId" />
+		<result column="ITEM_ID" property="itemId" />
+		<result column="CHAR_ID" property="charId" />
+		<result column="ACCOUNT_ID" property="accountId" />
+		<result column="AMOUNT" property="amount" />
+		<result column="PAYMENT_DATE" property="paymentDate" />
+		<result column="PAYMENT_STATUS" property="paymentStatus" />
+		<result column="REFUND_DATE" property="refundDate" />
+		<result column="REFUND_CAUSE" property="refundCause" />
+		<result column="CHAR_NAME" property="charName" />
+		<result column="PAYMENT_KEY" property="paymentKey" />
+		<result column="UNIQUE_ID" property="uniqueId" />
+		<result column="EMAIL_STATUS" property="emailStatus" />
+	</resultMap>
+	
 	
 	<select id="insertPayment" parameterType="Payment" resultMap="resultPayment">
 		insert into payment 
+		values (default, #{itemId}, #{charId}, #{accountId}, #{amount}, sysdate, null, null,null,  null, #{paymentKey}, #{uniqueId}, default)
+	</select>
+	
+	<select id="selectAllPaymentList" parameterType="Paging" resultMap="resultPayment">
+		SELECT * FROM into payment 
 		values (default, #{itemId}, #{charId}, #{accountId}, #{amount}, sysdate, null, null,null,  null, #{paymentKey}, #{uniqueId}, default)
 	</select>
 
