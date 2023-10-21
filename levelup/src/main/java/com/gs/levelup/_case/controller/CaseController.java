@@ -63,6 +63,7 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 
 		// 총 페이지 수 계산을 위한 게시글 총갯수 조회
 		int listCount = caseService.selectListCount();
+		logger.info(String.valueOf(listCount));
 
 		// 페이지 관련 항목 계산 처리
 		Paging paging = new Paging(listCount, currentPage, limit, "clist.do");
