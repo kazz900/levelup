@@ -5,11 +5,11 @@ import java.sql.Date;
 public class Payment implements java.io.Serializable {
 	private static final long serialVersionUID = -6902969006704456021L;
 
-	private String paymentId;
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
+	private String paymentId;
 	private int itemId;
 	private int charId;
 	private int accountId;
