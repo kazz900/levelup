@@ -107,4 +107,9 @@ public class InquiryServiceImpl implements InquiryService {
 		return inquiryDao.updateInquiryAnswer(inquiry);
 	}
 
+	@Override
+	public int deleteInquiry(String inquiryId) {
+		return inquiryDao.deleteInquiry(inquiryId);
+	}
+
 }

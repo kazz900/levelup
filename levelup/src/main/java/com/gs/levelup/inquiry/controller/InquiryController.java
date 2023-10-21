@@ -401,11 +401,32 @@ public class InquiryController {
 		File file = new File(savePath + "\\" +attachmentFileName);
 		
 		//파일 다운로드용 뷰로 전달할 정보 저장 처리
-		mv.setViewName("empiqfiledown");
+		mv.setViewName("empfiledown");
 		mv.addObject("file", file);
 		
 		return mv;
 	}
+	
+	//문의사항 삭제용
+	@RequestMapping("deleteinquiry.do")
+	public String deleteinquiryMethod(
+			Model model,
+			@RequestParam(value = "page", required=false) int nowPage,
+			@RequestParam("iid") String inquiryId) {
+		
+		logger.info("deleteinquiry.do : " + inquiryId);
+		
+		if(inquiryService.deleteInquiry(inquiryId) > 0) {
+			model.addAttribute("page", nowPage);
+			model.addAttribute("message", "삭제되었습니다.");
+			return "redirect:uhelp.do";
+		}else {
+			model.addAttribute("message", "새 공지글 등록 실패!");
+			return "common/error";
+		}
+	}
+	
+	
 	
 	
 	

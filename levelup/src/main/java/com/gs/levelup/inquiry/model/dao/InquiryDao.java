@@ -100,4 +100,8 @@ public class InquiryDao {
 		List<Inquiry> list = sqlSessionTemplate.selectList("inquiryMapper.selectUserPreviousInquiry", userId);
 		return (ArrayList<Inquiry>) list;
 	}
+
+	public int deleteInquiry(String inquiryId) {
+		return sqlSessionTemplate.delete("inquiryMapper.deleteInquiry", inquiryId);
+	}
 }
