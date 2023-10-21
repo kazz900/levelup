@@ -111,7 +111,7 @@ public class CharacterController {
 		} else { // 캐릭터가 검색되지 않았을떄
 			mv.addObject("message1", keyword + "로 검색된 캐릭터가 없습니다");
 		}
-
+		mv.addObject("keyword", keyword);
 		mv.setViewName("empchar/charDetailView");
 		return mv;
 	}
