@@ -20,7 +20,7 @@
   String orderId = request.getParameter("orderId");
   String paymentKey = request.getParameter("paymentKey");
   String amount = request.getParameter("amount");
-  String secretKey = "test_sk_DpexMgkW36ZnqQN19dEN3GbR5ozO:";
+  String secretKey = "test_sk_DpexMgkW36xJ0M0ooAXMrGbR5ozO:";
   
   Encoder encoder = Base64.getEncoder(); 
   byte[] encodedBytes = encoder.encode(secretKey.getBytes("UTF-8"));
