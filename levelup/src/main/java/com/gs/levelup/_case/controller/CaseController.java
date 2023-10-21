@@ -28,6 +28,7 @@ import com.gs.levelup.employee.model.service.EmployeeService;
 import com.gs.levelup.employee.model.vo.Employee;
 import com.gs.levelup.inventory.model.service.InventoryService;
 import com.gs.levelup.inventory.model.vo.Inventory;
+import com.gs.levelup.item.model.service.ItemService;
 
 @Controller
 public class CaseController {
@@ -35,6 +36,9 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 	
 	@Autowired
 	private CaseService caseService;
+	
+	@Autowired
+	private ItemService itemService;
 
 	@Autowired
 	private EmployeeService employeeService;
@@ -59,6 +63,7 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 
 		// 총 페이지 수 계산을 위한 게시글 총갯수 조회
 		int listCount = caseService.selectListCount();
+		logger.info(String.valueOf(listCount));
 
 		// 페이지 관련 항목 계산 처리
 		Paging paging = new Paging(listCount, currentPage, limit, "clist.do");
@@ -89,6 +94,7 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 			mv.addObject("list", list);
 			mv.setViewName("empCase/empMyCaseListView");
 		}
+		mv.setViewName("empCase/empMyCaseListView");
 		return mv;
 	}
 	
@@ -388,8 +394,7 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 			//파일 이름바꾸기함 : 년월일시분초.확장자
 			if(fileName != null && fileName.length() > 0) {				
 				//바꿀 파일명에 대한 문자열 만들기
-				renameFileName = FileNameChange.change(fileName, 	"yyyyMMddHHmmss");
-				logger.info("첨부파일명 확인 : " + fileName + ", " + renameFileName);
+				renameFileName = FileNameChange.change(fileName, "yyyyMMddHHmmss");
 				try {	
 					//저장 폴더에 파일명 바꾸기 처리
 					mfile.transferTo(new File(savePath + "\\" + renameFileName));
@@ -417,10 +422,12 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 	
 	
 	
-	//작성한 기안 상세보기 페이지 뷰
+	//작성한 기안 디테일 뷰. 승인/ 반려 페이지
 	@RequestMapping(value="cdetail.do", method = RequestMethod.GET)
-	public ModelAndView selectCaseItemChangeDetail(Case _case, ModelAndView mv,
+	public ModelAndView selectCaseItemChangeDetail(ModelAndView mv,
 												 @RequestParam("caseId") String caseId,
+												 @RequestParam("itemName") String itemName,
+												 @RequestParam("itemName2") String itemName2,
 												 @RequestParam(name="page", required=false) String page) {
 		
 		//출력할 페이지 
@@ -430,11 +437,18 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 			currentPage = Integer.parseInt(page);					
 		}
 		
-		Case casedetail = caseService.selectCase(caseId);		
+		if (itemName.equals("잡템")) {
+			itemName = "NONE";
+		}
 		
+		Case casedetail = caseService.selectCase(caseId);	
+		com.gs.levelup.item.model.vo.Item item = itemService.selectOneItem(itemName);
+		com.gs.levelup.item.model.vo.Item item2 = itemService.selectOneItem(itemName2);
 		if(casedetail != null) {
 			mv.addObject("casedetail", casedetail);
-			mv.addObject("currentPage", currentPage);			
+			mv.addObject("currentPage", currentPage);
+			mv.addObject("item", item);
+			mv.addObject("item2", item2);
 		
 			mv.setViewName("empCase/empCaseDetailView");
 		}else {
@@ -445,4 +459,69 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 		
 		return mv;
 	}
+	
+	
+	
+	//기안 승인 요청처리용
+	@RequestMapping(value="caseApprove.do", method = RequestMethod.GET)
+	public String updateSaseStatusApprove(Case _case, 
+										@RequestParam("caseId") String caseId,
+										@RequestParam("employeeId") String employeeId,
+										HttpServletRequest request, 
+										Model model,
+										RedirectAttributes re) {
+		
+		if(caseService.updateCaseArrove(caseId) > 0) {
+			re.addAttribute("employeeId", employeeId);
+			return "redirect:mclist.do";
+			
+		}else {
+			model.addAttribute("message", "기안 승인 실패");
+			return ("common/error");
+		}
+		
+	}
+	
+	//기안 반려 요청처리용
+		@RequestMapping(value="caseReject.do", method = RequestMethod.GET)
+		public String updateSaseStatusReject(Case _case, 
+											@RequestParam("caseId") String caseId,
+											@RequestParam("employeeId") String employeeId,
+											HttpServletRequest request, 
+											Model model,
+											RedirectAttributes re) {
+			
+			if(caseService.updateCaseReject(caseId) > 0) {
+				re.addAttribute("employeeId", employeeId);
+				return "redirect:mclist.do";
+				
+			}else {
+				model.addAttribute("message", "기안 승인 실패");
+				return ("common/error");
+			}
+			
+		}
+
+		//파일 다운로드 요청 처리용
+		@RequestMapping("cfdown.do")
+		public ModelAndView fileDownMethod(
+								ModelAndView mv, HttpServletRequest request,
+								@RequestParam("file") String attachmentFileName) {
+			//파일 다운 메소드는 리턴 타입이 ModelAndView로 정해져있음
+			
+			//게시글 첨부파일 저장폴더 경로 지정
+			String savePath = request.getSession().getServletContext().getRealPath("resources/case_upfiles");
+			
+			//저장 폴더에서 읽을 파일에 대한 파일 객체 생성함
+			File file = new File(savePath + "\\" +attachmentFileName);
+			
+			//파일 다운로드용 뷰로 전달할 정보 저장 처리
+			mv.setViewName("empfiledown");
+			mv.addObject("file", file);
+			
+			return mv;
+		}
+	
+
+	
 }

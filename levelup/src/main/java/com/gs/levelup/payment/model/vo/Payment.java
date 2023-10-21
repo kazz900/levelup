@@ -5,11 +5,11 @@ import java.sql.Date;
 public class Payment implements java.io.Serializable {
 	private static final long serialVersionUID = -6902969006704456021L;
 
-	private String paymentId;
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
+	private String paymentId;
 	private int itemId;
 	private int charId;
 	private int accountId;
@@ -19,10 +19,10 @@ public class Payment implements java.io.Serializable {
 	private Date refundDate;
 	private String refundCause;
 	private String charName;
-	private String orderId;
 	private String paymentKey;
 	private Long uniqueId;
 	private String emailStatus;
+	private String orderId;
 	
 	
 	
@@ -58,15 +58,17 @@ public class Payment implements java.io.Serializable {
 		this.paymentKey = paymentKey;
 	}
 
-	public String getOrderId() {
-		return orderId;
-	}
-
-	public void setOrderId(String orderId) {
-		this.orderId = orderId;
-	}
-
 	public Payment() {}
+	
+	public Payment(int amount, String paymentKey, int charId, String charName, int itemId, int accountId, long uniqueId) {
+		this.amount = amount;
+		this.paymentKey = paymentKey;
+		this.charId = charId;
+		this.charName = charName;
+		this.itemId = itemId;
+		this.accountId = accountId;
+		this.uniqueId = uniqueId;
+	}
 	
 	public Payment(int amount, String orderId, String paymentKey, int charId, String charName, int itemId, int accountId, long uniqueId) {
 		this.amount = amount;
@@ -163,6 +165,16 @@ public class Payment implements java.io.Serializable {
 
 	public void setRefundCause(String refundCause) {
 		this.refundCause = refundCause;
+	}
+	
+	
+
+	public String getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
 	}
 
 	@Override

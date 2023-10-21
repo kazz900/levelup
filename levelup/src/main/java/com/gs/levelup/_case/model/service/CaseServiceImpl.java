@@ -28,6 +28,16 @@ public class CaseServiceImpl implements CaseService{
 	public int updateCase(Case _case) {
 		return caseDao.updateCase(_case);
 	}
+	
+	@Override
+	public int updateCaseArrove(String caseId) {
+		return caseDao.updateCaseArrove(caseId);
+	}
+	
+	@Override
+	public int updateCaseReject(String caseId) {
+		return caseDao.updateCaseReject(caseId);
+	}
 	@Override
 	public ArrayList<Case> selectList(Paging paging) {
 		return caseDao.selectList(paging);

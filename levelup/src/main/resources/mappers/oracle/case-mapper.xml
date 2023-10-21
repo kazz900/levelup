@@ -113,14 +113,14 @@
 	
 
 	<select id="selectCase" parameterType="string" resultMap="resultCase">
-		select * from case where caseId = #{ caseId }
+		select * from case where CASE_ID = #{ caseId }
 	</select>
 	
 	<select id="selectSearchWriterName" parameterType="Search" resultMap="resultList">
 		select *
 		from (select rownum rnum, CASE_ID, CASE_TITLE, CASE_CONTENT, 
 				   CASE_WRITER_ID, CASE_WRITER_NAME, CASE_TYPE, 
-		           CASE_MANAGER_ID, CASE_MANAGER_NAME, CASE_STATUS, EDIT_DATE, 
+		           CASE_MANAGER_ID, CASE_MANAGER_NAME, CASE_STATUS, EDIT_DATE,  
 		           SIGN_DATE, ATTACHMENT_FILENAME, CHAR_ID, CHAR_NAME, ACCOUNT_ID,
 		           ORIGINAL_ITEM_ID, ORIGINAL_ITEM_NAME, ORIGINAL_ITEM_AMOUNT, UNIQUE_ID,
 		           NEW_ITEM_ID, NEW_ITEM_NAME, NEW_ITEM_AMOUNT, PAYMENT_DATE, PAYMENT_STATUS,
@@ -196,4 +196,21 @@
 		</if>
 
 	</insert>
+	
+	<update id="updateCaseArrove" parameterType="string">
+		update case
+		set CASE_STATUS = '1',
+			SIGN_DATE = SYSDATE
+		where CASE_ID = #{ caseId }
+	</update>
+	
+	<update id="updateCaseReject" parameterType="string">
+		update case
+		set CASE_STATUS = '2',
+			SIGN_DATE = SYSDATE
+		where CASE_ID = #{ caseId }
+	</update>
+	
+	
+	
 </mapper>

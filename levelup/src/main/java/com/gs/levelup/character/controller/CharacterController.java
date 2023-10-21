@@ -79,9 +79,6 @@ public class CharacterController {
 		if (action != null && action.equals("char_id")) {
 			re.addAttribute("keyword", keyword);
 			return "redirect:csearchcharid.do";
-		} else if (keyword != null) {
-			re.addAttribute("keyword", keyword);
-			return "redirect:csearchcharid.do";
 		} else {
 			model.addAttribute("message1", keyword + "로 검색된 캐릭터가 없습니다");
 			return "empchar/charDetailView";
@@ -111,7 +108,7 @@ public class CharacterController {
 		} else { // 캐릭터가 검색되지 않았을떄
 			mv.addObject("message1", keyword + "로 검색된 캐릭터가 없습니다");
 		}
-
+		mv.addObject("keyword", keyword);
 		mv.setViewName("empchar/charDetailView");
 		return mv;
 	}

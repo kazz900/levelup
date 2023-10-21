@@ -16,11 +16,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
  // 결제 승인 API 호출하기 
- 
   String orderId = request.getParameter("orderId");
   String paymentKey = request.getParameter("paymentKey");
   String amount = request.getParameter("amount");
-  String secretKey = "test_sk_DpexMgkW36ZnqQN19dEN3GbR5ozO:";
+  // 김화범 시크릿키
+  String secretKey = "test_sk_DpexMgkW36xJ0M0ooAXMrGbR5ozO:";
   
   Encoder encoder = Base64.getEncoder(); 
   byte[] encodedBytes = encoder.encode(secretKey.getBytes("UTF-8"));
@@ -75,7 +75,6 @@
             <% if(jsonObject.get("method").equals("가상계좌")) { out.println(((JSONObject)jsonObject.get("virtualAccount")).get("accountNumber"));} %>
             <% if(jsonObject.get("method").equals("계좌이체")) { out.println(((JSONObject)jsonObject.get("transfer")).get("bank"));} %>
             <% if(jsonObject.get("method").equals("휴대폰")) { out.println(((JSONObject)jsonObject.get("mobilePhone")).get("customerMobilePhone"));} %>
-        
         </p>
        
     <%} else { %>
