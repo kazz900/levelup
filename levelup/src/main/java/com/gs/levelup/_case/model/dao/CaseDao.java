@@ -51,7 +51,7 @@ public class CaseDao {
 	}
 
 	public int selectListCount() {
-		return sqlSessionTemplate.insert("caseMapper.selectListCount");
+		return sqlSessionTemplate.selectOne("caseMapper.selectListCount");
 	}
 
 	public int selectSearchWriterNameCount(String keyword) {
