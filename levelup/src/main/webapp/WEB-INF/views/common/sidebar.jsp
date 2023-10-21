@@ -26,7 +26,7 @@
 								<li><a href="umain.do" key="t-default">유저 홈페이지</a></li>
 								<li><a href="listChar.do" key="t-default">게임캐럭터 목록</a></li>
 								<li><a href="getLogs.do" key="t-default">캐럭터 게임로그 출력</a></li>
-								<li><a href="movepaylist.do" key="t-default">전체 결제 내역</a></li>
+								<li><a href="${pageContext.servletContext.contextPath}/plist.do" key="t-default">전체 결제 내역</a></li>
 							</ul>
 						</li>
 						

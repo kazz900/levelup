@@ -5,6 +5,7 @@
 <%@ page import="java.net.HttpURLConnection"%>
 <%@ page import="java.net.URL" %>
 <%@ page import="org.json.simple.JSONObject" %>
+<%@ page import="org.json.simple.JSONArray" %>
 <%@ page import="org.json.simple.parser.JSONParser" %>
 <%@ page import="org.json.simple.parser.ParseException" %>
 <%@ page import="java.io.OutputStream" %>
@@ -12,34 +13,48 @@
 <%@ page import="java.io.InputStreamReader" %>
 <%@ page import="java.io.Reader" %>
 <%@ page import="java.nio.charset.StandardCharsets" %>
-<%@ page import="java.net.URLEncoder" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%
- // 결제 승인 API 호출하기 
-  String orderId = request.getParameter("orderId");
+  String nowpage = request.getParameter("page");
   String paymentKey = request.getParameter("paymentKey");
-  String amount = request.getParameter("amount");
-  // 김화범 시크릿키
+  String cancelReason = request.getParameter("cancelReason");
+
+  //refundReceiveAccount - 가상계좌 거래에 대해 입금후에 취소하는 경우만 필요
+  String bank = "신한";
+  String accountNumber = "12345678901234";
+  String holderName = "홍길동";
+
+  //중복 취소를 막기위해 취소 가능금액을 전송
+  String refundableAmount = null;
+  
+  //김화범 테스트 시크릿키
   String secretKey = "test_sk_DpexMgkW36xJ0M0ooAXMrGbR5ozO:";
   
   Encoder encoder = Base64.getEncoder(); 
   byte[] encodedBytes = encoder.encode(secretKey.getBytes("UTF-8"));
   String authorizations = "Basic "+ new String(encodedBytes, 0, encodedBytes.length);
-
-  paymentKey = URLEncoder.encode(paymentKey, StandardCharsets.UTF_8);
   
-  URL url = new URL("https://api.tosspayments.com/v1/payments/confirm");
+  URL url = new URL("https://api.tosspayments.com/v1/payments/" + paymentKey + "/cancel");
   
   HttpURLConnection connection = (HttpURLConnection) url.openConnection();
   connection.setRequestProperty("Authorization", authorizations);
   connection.setRequestProperty("Content-Type", "application/json");
   connection.setRequestMethod("POST");
   connection.setDoOutput(true);
+
   JSONObject obj = new JSONObject();
-  obj.put("paymentKey", paymentKey);
-  obj.put("orderId", orderId);
-  obj.put("amount", amount);
+  obj.put("cancelReason", cancelReason);
+
+  JSONObject refundReceiveAccount = new JSONObject();
+  refundReceiveAccount.put("bank", bank);
+  refundReceiveAccount.put("accountNumber", accountNumber);
+  refundReceiveAccount.put("holderName", holderName);
+
+  obj.put("refundReceiveAccount", refundReceiveAccount);
+  obj.put("refundableAmount", refundableAmount);
   
+    
   OutputStream outputStream = connection.getOutputStream();
   outputStream.write(obj.toString().getBytes("UTF-8"));
   
@@ -57,28 +72,19 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <title>결제 성공</title>
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 </head>
 <body>
-<c:import url="/WEB-INF/views/user/userHeader.jsp"/>
 <section>
-    <%
-    if (isSuccess) { %>
-        <h1>결제 성공</h1>
-        <p>결과 데이터 : <%= jsonObject.toJSONString() %></p>
-        <p>orderName : <%= jsonObject.get("orderName") %></p>
-        <p>method : <%= jsonObject.get("method") %></p>
-        <p>
-            <% if(jsonObject.get("method").equals("카드")) { out.println(((JSONObject)jsonObject.get("card")).get("number"));} %>
-            <% if(jsonObject.get("method").equals("가상계좌")) { out.println(((JSONObject)jsonObject.get("virtualAccount")).get("accountNumber"));} %>
-            <% if(jsonObject.get("method").equals("계좌이체")) { out.println(((JSONObject)jsonObject.get("transfer")).get("bank"));} %>
-            <% if(jsonObject.get("method").equals("휴대폰")) { out.println(((JSONObject)jsonObject.get("mobilePhone")).get("customerMobilePhone"));} %>
-        </p>
-       
+    <% if (isSuccess) { %>
+    	<c:redirect url="pcancelsuccessresult.do">
+    		<c:param name="page" value="<%= nowpage %>"/>
+    		<c:param name="paymentKey" value="<%= paymentKey %>"/>
+    		<c:param name="cancelReason" value="<%= cancelReason %>"/>
+    	</c:redirect>
     <%} else { %>
-        <h1>결제 실패</h1>
+        <h1>취소 실패</h1>
         <p><%= jsonObject.get("message") %></p>
         <span>에러코드: <%= jsonObject.get("code") %></span>
         <%
@@ -86,6 +92,5 @@
     %>
 
 </section>
-<c:import url="/WEB-INF/views/user/userFooter.jsp"/>
 </body>
 </html>

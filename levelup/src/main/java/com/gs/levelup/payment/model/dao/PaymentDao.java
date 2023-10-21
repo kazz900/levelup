@@ -17,12 +17,6 @@ import com.gs.levelup.payment.model.vo.Payment;
 public class PaymentDao {
 	@Autowired  
 	private SqlSessionTemplate sqlSessionTemplate;
-
-
-	public ArrayList<Payment> selectList(Paging paging){
-		List<Payment> list = sqlSessionTemplate.selectList("paymentMapper.selectList", paging);
-		return (ArrayList<Payment>)list;
-	}
 	
 	public int insertPayment(Payment payment) {
 		return sqlSessionTemplate.insert("paymentMapper.insertPayment", payment);
@@ -37,35 +31,43 @@ public class PaymentDao {
 	}
 
 	public int selectListCount() {
-		return sqlSessionTemplate.selectOne("paymentMapper.getListCount");
+		return sqlSessionTemplate.selectOne("paymentMapper.selectListCount");
 	}
 
-	public int selectSearchUserIDCount(String keyword) {
-		return sqlSessionTemplate.selectOne("paymentMapper.getSearchTitleCount", keyword);
+	public int selectSearchPaymentIdCount(String keyword) {
+		return sqlSessionTemplate.selectOne("paymentMapper.selectSearchPaymentIdCount", keyword);
 	}
 
-	public int selectSearchItemCount(String keyword) {
-		return sqlSessionTemplate.selectOne("paymentMapper.getSearchContentCount", keyword);
+	public int selectSearchDateCount(Search search) {
+		return sqlSessionTemplate.selectOne("paymentMapper.selectSearchDateCount", search);
 	}
-
-	public int selectSearchDateCount(SearchDate date) {
-		return sqlSessionTemplate.selectOne("paymentMapper.getSearchDateCount", date);
+	
+	public int selectSearchPaymentStatusCount(String keyword) {
+		return sqlSessionTemplate.selectOne("paymentMapper.selectSearchPaymentStatusCount", keyword);
 	}
-
-	public ArrayList<Payment> selectSearchUserID(Search search) {
-		List<Payment> list = sqlSessionTemplate.selectList("paymentMapper.selectSearchTitle", search);
+	
+	public ArrayList<Payment> selectList(Paging paging){
+		List<Payment> list = sqlSessionTemplate.selectList("paymentMapper.selectList", paging);
 		return (ArrayList<Payment>)list;
 	}
 
-	public ArrayList<Payment> selectSearchItem(Search search) {
-		List<Payment> list = sqlSessionTemplate.selectList("paymentMapper.selectSearchContent", search);
+	public List<Payment> selectSearchPaymentId(Search search) {
+		List<Payment> list = sqlSessionTemplate.selectList("paymentMapper.selectSearchPaymentId", search);
 		return (ArrayList<Payment>)list;
 	}
-
-	public ArrayList<Payment> selectSearchDate(Search search) {
+	
+	public List<Payment> selectSearchDate(Search search) {
 		List<Payment> list = sqlSessionTemplate.selectList("paymentMapper.selectSearchDate", search);
 		return (ArrayList<Payment>)list;
 	}
 
+	public List<Payment> selectSearchStatus(Search search) {
+		List<Payment> list = sqlSessionTemplate.selectList("paymentMapper.selectSearchStatus", search);
+		return (ArrayList<Payment>)list;
+	}
+
+	public int cancelPayment(Search search) {
+		return sqlSessionTemplate.insert("paymentMapper.cancelPayment", search);
+	}
 
 }

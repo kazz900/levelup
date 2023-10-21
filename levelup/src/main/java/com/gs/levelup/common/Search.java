@@ -14,10 +14,20 @@ public class Search {
 	private String teamId;
 	private String departmentId;
 	
+	private String paymentstatus; //결제 리스트 출력 시 결제 상태 검색 시 필요
+	
+	private String paymentKey; // 결제 취소시 필요
+	private String cancelReason; // 결제 취소시 필요 
 
 	private int keyword2;
+
 	
-	public Search(String keyword, int age, int startRow, int endRow, Date begin, Date end, String type, int keyword2) {
+	
+	
+
+
+	public Search(String keyword, int age, int startRow, int endRow, Date begin, Date end, String type, String teamId,
+			String departmentId, String paymentstatus, int keyword2) {
 		super();
 		this.keyword = keyword;
 		this.age = age;
@@ -26,8 +36,40 @@ public class Search {
 		this.begin = begin;
 		this.end = end;
 		this.type = type;
+		this.teamId = teamId;
+		this.departmentId = departmentId;
+		this.paymentstatus = paymentstatus;
 		this.keyword2 = keyword2;
 	}
+
+	
+	
+
+	public String getPaymentKey() {
+		return paymentKey;
+	}
+
+
+
+
+	public void setPaymentKey(String paymentKey) {
+		this.paymentKey = paymentKey;
+	}
+
+
+
+
+	public String getCancelReason() {
+		return cancelReason;
+	}
+
+
+
+
+	public void setCancelReason(String cancelReason) {
+		this.cancelReason = cancelReason;
+	}
+
 
 
 
@@ -128,6 +170,18 @@ public class Search {
 	public void setType(String type) {
 		this.type = type;
 	}
+	
+
+	public String getPaymentstatus() {
+		return paymentstatus;
+	}
+
+
+
+	public void setPaymentstatus(String paymentstatus) {
+		this.paymentstatus = paymentstatus;
+	}
+
 
 
 	@Override

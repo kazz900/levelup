@@ -14,10 +14,11 @@ public interface PaymentService {
 	public int updatePayment(Payment payment);	
 	public int deletePayment(String paymentId);	
 	public int selectListCount();
-	public int selectSearchUserIDCount(String keyword);
-	public int selectSearchItemCount(String keyword);
-	public int selectSearchDateCount(SearchDate date);
-	public ArrayList<Payment> selectSearchUserID(Search search);
-	public ArrayList<Payment> selectSearchItem(Search search);
+	public int selectSearchPaymentIdCount(String keyword);
+	public int selectSearchDateCount(Search search);
+	public int selectSearchPaymentStatusCount(String trim);
+	public ArrayList<Payment> selectSearchPaymentId(Search search);
 	public ArrayList<Payment> selectSearchDate(Search search);
+	public ArrayList<Payment> selectSearchStatus(Search search);
+	public int cancelPayment(Search search);
 }
