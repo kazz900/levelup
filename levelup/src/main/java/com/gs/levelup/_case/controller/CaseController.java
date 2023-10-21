@@ -420,7 +420,7 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 	
 	//작성한 기안 상세보기 페이지 뷰
 	@RequestMapping(value="cdetail.do", method = RequestMethod.GET)
-	public ModelAndView selectCaseItemChangeDetail(Case _case, ModelAndView mv,
+	public ModelAndView selectCaseItemChangeDetail(ModelAndView mv,
 												 @RequestParam("caseId") String caseId,
 												 @RequestParam(name="page", required=false) String page) {
 		

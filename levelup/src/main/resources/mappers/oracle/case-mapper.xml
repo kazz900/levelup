@@ -113,7 +113,7 @@
 	
 
 	<select id="selectCase" parameterType="string" resultMap="resultCase">
-		select * from case where caseId = #{ caseId }
+		select * from case where CASE_ID = #{ caseId }
 	</select>
 	
 	<select id="selectSearchWriterName" parameterType="Search" resultMap="resultList">
