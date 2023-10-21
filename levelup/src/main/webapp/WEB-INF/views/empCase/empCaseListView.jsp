@@ -128,6 +128,7 @@ function showTypeDropdown(){
 								<th>DATE</th>
 								<th>STATUS</th>
 								<th>SIGN DATE</th>
+								<th>Action</th>
 							</tr>
 								<%-- <c:url var="idt" value="idetail.do">
 									<c:param name="iid" value="${ requestScope.inquiry.inquiryId }" />
@@ -173,6 +174,12 @@ function showTypeDropdown(){
 									<c:if test="${ empty c.signDate }">
 										<td data-th="SIGN DATE"></td>
 									</c:if>
+									<c:url var="cdetail" value="cdetail.do">
+										<c:param name="caseId" value="${ c.caseId }"/>
+									</c:url>
+									<td data-th="Action"><a href="#" onclick="javascript:location.href='${cdetail}'" 
+											class="btn btn-primary waves-effect waves-light">View Details</a></td>
+									</tr>
 								</tr>
 							</c:forEach>
 							</c:if>

@@ -5,6 +5,7 @@
 <%@ page import="java.net.HttpURLConnection"%>
 <%@ page import="java.net.URL" %>
 <%@ page import="org.json.simple.JSONObject" %>
+<%@ page import="org.json.simple.JSONArray" %>
 <%@ page import="org.json.simple.parser.JSONParser" %>
 <%@ page import="org.json.simple.parser.ParseException" %>
 <%@ page import="java.io.OutputStream" %>
@@ -12,34 +13,51 @@
 <%@ page import="java.io.InputStreamReader" %>
 <%@ page import="java.io.Reader" %>
 <%@ page import="java.nio.charset.StandardCharsets" %>
-<%@ page import="java.net.URLEncoder" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%
- // 결제 승인 API 호출하기 
- 
-  String orderId = request.getParameter("orderId");
-  String paymentKey = request.getParameter("paymentKey");
-  String amount = request.getParameter("amount");
-  String secretKey = "test_sk_DpexMgkW36xJ0M0ooAXMrGbR5ozO:";
+
+
+  String orderId = "keyin-" + String.valueOf(System.currentTimeMillis());
+  String amount = "50000";
+  String cardNumber = "5450898000198151";
+  String cardExpirationYear = "26";
+  String cardExpirationMonth = "01";
+  String cardPassword = "31";
+  String customerBirthday = "771102";
+  String cardInstallmentPlan = "0";
+  String customerEmail = "customer@email.com";
+  String customerName = "박토스";
+  String orderName = "토스 키인 결제";
+    
+  String secretKey = "test_sk_DpexMgkW36ZnqQN19dEN3GbR5ozO:";
   
   Encoder encoder = Base64.getEncoder(); 
   byte[] encodedBytes = encoder.encode(secretKey.getBytes("UTF-8"));
   String authorizations = "Basic "+ new String(encodedBytes, 0, encodedBytes.length);
-
-  paymentKey = URLEncoder.encode(paymentKey, StandardCharsets.UTF_8);
   
-  URL url = new URL("https://api.tosspayments.com/v1/payments/confirm");
+  URL url = new URL("https://api.tosspayments.com/v1/payments/key-in");
   
   HttpURLConnection connection = (HttpURLConnection) url.openConnection();
   connection.setRequestProperty("Authorization", authorizations);
   connection.setRequestProperty("Content-Type", "application/json");
   connection.setRequestMethod("POST");
   connection.setDoOutput(true);
+
   JSONObject obj = new JSONObject();
-  obj.put("paymentKey", paymentKey);
   obj.put("orderId", orderId);
   obj.put("amount", amount);
+  obj.put("cardNumber", cardNumber);
+  obj.put("cardExpirationYear", cardExpirationYear);
+  obj.put("cardExpirationMonth", cardExpirationMonth);
+  obj.put("cardPassword", cardPassword);
+  obj.put("customerBirthday", customerBirthday);
+  obj.put("cardInstallmentPlan", cardInstallmentPlan);
+  obj.put("customerEmail", customerEmail);
+  obj.put("customerName", customerName);
+  obj.put("orderName", orderName);
+
   
+    
   OutputStream outputStream = connection.getOutputStream();
   outputStream.write(obj.toString().getBytes("UTF-8"));
   
@@ -57,29 +75,22 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <title>결제 성공</title>
+    <title>취소 성공</title>
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 </head>
 <body>
-<c:import url="/WEB-INF/views/user/userHeader.jsp"/>
 <section>
     <%
     if (isSuccess) { %>
-        <h1>결제 성공</h1>
+        <h1>취소 성공</h1>
         <p>결과 데이터 : <%= jsonObject.toJSONString() %></p>
         <p>orderName : <%= jsonObject.get("orderName") %></p>
         <p>method : <%= jsonObject.get("method") %></p>
-        <p>
-            <% if(jsonObject.get("method").equals("카드")) { out.println(((JSONObject)jsonObject.get("card")).get("number"));} %>
-            <% if(jsonObject.get("method").equals("가상계좌")) { out.println(((JSONObject)jsonObject.get("virtualAccount")).get("accountNumber"));} %>
-            <% if(jsonObject.get("method").equals("계좌이체")) { out.println(((JSONObject)jsonObject.get("transfer")).get("bank"));} %>
-            <% if(jsonObject.get("method").equals("휴대폰")) { out.println(((JSONObject)jsonObject.get("mobilePhone")).get("customerMobilePhone"));} %>
+        <p>card -> number : <%=((JSONObject)jsonObject.get("card")).get("number") %></p>
         
-        </p>
-       
     <%} else { %>
-        <h1>결제 실패</h1>
+        <h1>취소 실패</h1>
         <p><%= jsonObject.get("message") %></p>
         <span>에러코드: <%= jsonObject.get("code") %></span>
         <%
@@ -87,6 +98,5 @@
     %>
 
 </section>
-<c:import url="/WEB-INF/views/user/userFooter.jsp"/>
 </body>
 </html>

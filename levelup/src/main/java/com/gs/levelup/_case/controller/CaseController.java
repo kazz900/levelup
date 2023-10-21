@@ -93,6 +93,7 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 			mv.addObject("list", list);
 			mv.setViewName("empCase/empMyCaseListView");
 		}
+		mv.setViewName("empCase/empMyCaseListView");
 		return mv;
 	}
 	
@@ -423,7 +424,7 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 	
 	//작성한 기안 디테일 뷰. 승인/ 반려 페이지
 	@RequestMapping(value="cdetail.do", method = RequestMethod.GET)
-	public ModelAndView selectCaseItemChangeDetail(Case _case, ModelAndView mv,
+	public ModelAndView selectCaseItemChangeDetail(ModelAndView mv,
 												 @RequestParam("caseId") String caseId,
 												 @RequestParam("itemName") String itemName,
 												 @RequestParam("itemName2") String itemName2,
