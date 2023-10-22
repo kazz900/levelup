@@ -76,24 +76,22 @@ function golist(){
 	                            <input type="hidden" name="caseWriterId" value="${ sessionScope.loginEmployee.employeeId }">
 	                            <input type="hidden" name="caseWriterName" value="${ sessionScope.loginEmployee.employeeName }">
 	                            <input type="hidden" name="caseManagerId" value="${ requestScope.manager.employeeId }">
-	                            <input type="hidden" name="caseManagerName" value="${ requestScope.manager.employeeName }">                            
-	                      
+	                            <input type="hidden" name="caseManagerName" value="${ requestScope.manager.employeeName }">                           
 	                            
-	                            
-	                            <input type="hidden" name="caseType" value="${ param.caseType }">
-	                            <input type="hidden" name="charId" value="${ param.charId }">
+	                            <input type="hidden" name="caseType" value="1">
+	                            <input type="hidden" name="charId" value="${ requestScope.character.charId }">
 	                            <input type="hidden" name="accountId" value="${ requestScope.character.accountId }">
 	                            <input type="hidden" name="charName" value="${ requestScope.character.name }">
 	                            <input type="hidden" name="uniqueId" value="${ requestScope.itemdata.uniqueId }">
 	                            
-	                            <input type="hidden" name="originalItemId" value="${ param.nameId }">
-	                            <c:if test="${ !empty param.itemName }">
-		                            <input type="hidden" name="originalItemName" value="${ param.itemName }">
+	                            <input type="hidden" name="originalItemId" value="${ requestScope.itemdata.nameId }">
+	                            <c:if test="${ !empty requestScope.itemdata.itemName }">
+		                            <input type="hidden" name="originalItemName" value="${ requestScope.itemdata.itemName }">
 	                            </c:if>
-	                            <c:if test="${ empty param.itemName }">
+	                            <c:if test="${ empty requestScope.itemdata.itemName }">
 		                            <input type="hidden" name="originalItemName" value="잡템">
 	                            </c:if>
-	                            <input type="hidden" name="originalItemAmount" value="${ param.amount }">
+	                            <input type="hidden" name="originalItemAmount" value="${ requestScope.itemdata.amount }">
 
 
 
@@ -168,44 +166,33 @@ function golist(){
 									<div id="currentItems">
 										<div class="row">
 											<div class="mb-3 col-lg-2">ID</div>
-											<div class="mb-3 col-lg-2">NAME</div>
-											<div class="mb-3 col-lg-2">PRICE</div>
-											<div class="mb-3 col-lg-2">GAME PRICE</div>
+											<div class="mb-3 col-lg-2">NAME</div>				
 											<div class="mb-3 col-lg-2">AMOUNT</div>
 										</div>
 
 										<div class="row">
 
 											<div class="mb-3 col-lg-2">
-												<input type="hidden" name="charId" value="${ param.charId }">
+												<input type="hidden" name="charId" value="${ requestScope.character.charId }">
 												<input type="text" id="disabledTextInput"
-													class="form-control" placeholder="${ param.nameId }"
+													class="form-control" placeholder="${ requestScope.itemdata.nameId }"
 													disabled>
 											</div>
 											<div class="mb-3 col-lg-2">
-												<c:if test="${ !empty param.itemName }">
+												<c:if test="${ !empty requestScope.itemdata.itemName }">
 													<input type="text" id="disabledTextInput"
-														class="form-control" placeholder="${ param.itemName }"
+														class="form-control" placeholder="${ requestScope.itemdata.itemName }"
 														disabled>
 												</c:if>
-												<c:if test="${ empty param.itemName }">
+												<c:if test="${ empty requestScope.itemdata.itemName }">
 													<input type="text" id="disabledTextInput"
 														class="form-control" placeholder="잡템" disabled>
 												</c:if>
-											</div>
-											<div class="mb-3 col-lg-2">
-												<input type="text" id="disabledTextInput"
-													class="form-control" placeholder="${ param.price }"
-													disabled>
-											</div>
-											<div class="mb-3 col-lg-2">
-												<input type="text" id="disabledTextInput"
-													class="form-control" placeholder="${ param.gamePrice }"
-													disabled>
-											</div>
+											</div>										
+											
 											<div class="mb-3 col-lg-2">
 												<input type="text" id="disabledTextInput" 
-													class="form-control" placeholder="${ param.amount }"
+													class="form-control" placeholder="${ requestScope.itemdata.amount }"
 													disabled>
 											</div>
 										</div>
@@ -238,9 +225,7 @@ function golist(){
 									<div id="currentItems">
 										<div class="row">
 											<div class="mb-3 col-lg-2">ID</div>
-											<div class="mb-3 col-lg-2">NAME</div>
-											<div class="mb-3 col-lg-2">PRICE</div>
-											<div class="mb-3 col-lg-2">GAME PRICE</div>
+											<div class="mb-3 col-lg-2">NAME</div>							
 											<div class="mb-3 col-lg-2">AMOUNT</div>
 										</div>
 
@@ -256,17 +241,7 @@ function golist(){
 														class="form-control"
 														disabled>
 													<input type="hidden" id="hiddenInputReplaceItemName" name="newItemName">
-											</div>
-											<div class="mb-3 col-lg-2">
-												<input type="text" id="replacementitemprice" name="replacement_ItemPrice"
-													class="form-control"
-													disabled>
-											</div>
-											<div class="mb-3 col-lg-2">
-												<input type="text" id="replacementitemgameprice" name="replacement_ItemGamePrice"
-													class="form-control" 
-													disabled>
-											</div>
+											</div>											
 											<div class="mb-3 col-lg-2">
 												<input type="number" id="disabledTextInput" name="newItemAmount"
 													class="form-control" required>
@@ -351,17 +326,16 @@ function golist(){
 	
 	<script type="text/javascript">
 		function onReplacementItemSelectChange(replacementItem){
+			// Disabled Input Field (뷰 처리용) 아이템 이름이랑 아이디 띄우는 용도
 			var replacementitemidinputfield = document.getElementById('replacementitemid');
 			var replacementitemnameinputfield = document.getElementById('replacementitemname');
-			var replacementitempriceinputfield = document.getElementById('replacementitemprice');
-			var replacementitemgamepriceinputfield = document.getElementById('replacementitemgameprice');
+			// Hidden Input Field (컨트롤러로 New Item 정보 전송용) 
 			var hiddenInputReplacementItemId = document.getElementById('hiddenInputReplaceItemId');
 			var hiddenInputReplacementItemName = document.getElementById('hiddenInputReplaceItemName');
 			
 			replacementitemidinputfield.value = replacementItem.getAttribute("data-nameId");
 			replacementitemnameinputfield.value = replacementItem.getAttribute("data-itemName");
-			replacementitempriceinputfield.value = replacementItem.getAttribute("data-price");
-			replacementitemgamepriceinputfield.value = replacementItem.getAttribute("data-gamePrice");
+			
 			hiddenInputReplacementItemId.value = replacementItem.getAttribute("data-nameId");
 			hiddenInputReplacementItemName.value = replacementItem.getAttribute("data-itemName");
 		}

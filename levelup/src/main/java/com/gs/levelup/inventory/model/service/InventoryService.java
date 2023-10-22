@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import com.gs.levelup._case.model.vo.Case;
 import com.gs.levelup.inventory.model.vo.Inventory;
-import com.gs.levelup.item.model.vo.Item;
 
 public interface InventoryService {
 	public ArrayList<Inventory> selectInventory(int charId);

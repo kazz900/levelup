@@ -208,9 +208,7 @@ function caseReject(){
                                    		<div class="row" >
                                      		<div class="mb-3 col-lg-2">ID</div>        
                                             <div class="mb-3 col-lg-2">NAME</div>         
-                                            <div class="mb-3 col-lg-2">AMOUNT</div>   
-                                            <div class="mb-3 col-lg-2">PRICE</div>
-                                            <div class="mb-3 col-lg-2">GAME PRICE</div>
+                                            <div class="mb-3 col-lg-2">AMOUNT</div>                 
                                         </div>  
                                         
                                              
@@ -223,13 +221,7 @@ function caseReject(){
 	                                        </div>          
 	                                        <div class="mb-3 col-lg-2">
 	                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.casedetail.originalItemAmount }" disabled>
-	                                        </div>  
-	                                       	<div class="mb-3 col-lg-2">
-                                            	<input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.item.price }" disabled>
-	                                        </div>   
-	                                        <div class="mb-3 col-lg-2">
-	                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.item.gamePrice }" disabled>
-	                                        </div> 
+	                                        </div>  	                                       	
                                 			
                                 		</div>	 
                                 		
@@ -246,9 +238,7 @@ function caseReject(){
                                    		<div class="row" >
                                      		<div class="mb-3 col-lg-2">ID</div>        
                                             <div class="mb-3 col-lg-2">NAME</div>         
-                                            <div class="mb-3 col-lg-2">AMOUNT</div>   
-                                            <div class="mb-3 col-lg-2">PRICE</div>
-                                            <div class="mb-3 col-lg-2">GAME PRICE</div>
+                                            <div class="mb-3 col-lg-2">AMOUNT</div>              
                                         </div>  
                                         
                                              
@@ -261,13 +251,7 @@ function caseReject(){
 	                                        </div>          
 	                                        <div class="mb-3 col-lg-2">
 	                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.casedetail.newItemAmount }" disabled>
-	                                        </div>  
-	                                       	<div class="mb-3 col-lg-2">
-                                            	<input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.item2.price }" disabled>
-	                                        </div>   
-	                                        <div class="mb-3 col-lg-2">
-	                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.item2.gamePrice }" disabled>
-	                                        </div> 
+	                                        </div>  	                          
                                 			
                                 		</div>	  
                                 		</div>
