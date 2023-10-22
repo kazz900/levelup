@@ -38,5 +38,6 @@
 		<mapper resource="mappers/mariadb/character-mapper.xml" />
 		<mapper resource="mappers/mariadb/inventory-mapper.xml" />
 		<mapper resource="mappers/mariadb/rodexmail-mapper.xml" />
+		
 	</mappers>
 </configuration>

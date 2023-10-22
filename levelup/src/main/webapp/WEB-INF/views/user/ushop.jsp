@@ -158,6 +158,7 @@
   			<div id="noResultsMessage" style="display: none;">
 			    검색 결과가 없습니다.
 			</div>
+			
         </div>
     </div>
     <div id="buyItemModal" class="modal">

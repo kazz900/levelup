@@ -13,12 +13,21 @@ import com.gs.levelup.notice.model.vo.Notice;
 
 @Service("noticeService")
 public class NoticeServiceImpl implements NoticeService{
+	private static final String String = null;
 	@Autowired	//자동 DI 처리됨 : 자동 객체 생성됨
 	private NoticeDao noticeDao;
 	
 	@Override
 	public ArrayList<Notice> selectList(Paging paging){
 		return noticeDao.selectList(paging);
+	}
+	@Override
+	public ArrayList<Notice> selectTList(Paging paging, String teamId){
+		return noticeDao.selectTList(paging, teamId);
+	}
+	@Override
+	public ArrayList<Notice> selectDList(Paging paging, String departmentId){
+		return noticeDao.selectDList(paging, departmentId);
 	}
 	@Override
 	public Notice selectOne(String noticeId) {
@@ -41,8 +50,16 @@ public class NoticeServiceImpl implements NoticeService{
 		return noticeDao.selectListCount();
 	}
 	@Override
-	public int selectSearchTitleCount(String keyword) {
-		return noticeDao.selectSearchTitleCount(keyword);
+	public int selectTListCount(String teamId) {
+		return noticeDao.selectTListCount(teamId);
+	}
+	@Override
+	public int selectDListCount(String departmentId) {
+		return noticeDao.selectDListCount(departmentId);
+	}
+	@Override
+	public int selectSearchTitleCount(Search search) {
+		return noticeDao.selectSearchTitleCount(search);
 	}
 	@Override
 	public int selectSearchContentCount(String keyword) {

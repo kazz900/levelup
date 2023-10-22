@@ -1,9 +1,13 @@
 package com.gs.levelup.notice.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -17,11 +21,30 @@ public class NoticeDao {
 	
 	@Autowired	//root-context.xml 에서 생성한 객체를 자동 연결함
 	private SqlSessionTemplate sqlSessionTemplate;
-
+	private static final Logger logger = LoggerFactory.getLogger(NoticeDao.class);
+	
 	//공지사항 페이지 단위로 목록 조회 : 공지사항 목록보기용
 	public ArrayList<Notice> selectList(Paging paging){
 		List<Notice> list = sqlSessionTemplate.selectList("noticeMapper.selectList", paging);
 		return (ArrayList<Notice>)list;
+	}
+	//공지사항 페이지 단위로 목록 조회 : 공지사항 목록보기용
+	public ArrayList<Notice> selectTList(Paging paging, String teamId){
+		Map<String, Object> parameters = new HashMap<>();
+	    parameters.put("paging", paging);
+	    parameters.put("teamId", teamId);
+	    
+	    List<Notice> tlist = sqlSessionTemplate.selectList("noticeMapper.selectTList", parameters);
+	    return (ArrayList<Notice>)tlist;
+	}
+	//공지사항 페이지 단위로 목록 조회 : 공지사항 목록보기용
+	public ArrayList<Notice> selectDList(Paging paging, String departmentId){
+		Map<String, Object> parameters = new HashMap<>();
+	    parameters.put("paging", paging);
+	    parameters.put("departmentId", departmentId);
+	    
+		List<Notice> dlist = sqlSessionTemplate.selectList("noticeMapper.selectDList", parameters);
+		return (ArrayList<Notice>)dlist;
 	}
 	
 	//공지글번호로 한 개 조회 : 공지사항 상세보기용
@@ -31,11 +54,14 @@ public class NoticeDao {
 	
 	//새 공지글 등록
 	public int insertNotice(Notice notice) {
+		logger.info("noticeDao : " + notice);
 		return sqlSessionTemplate.insert("noticeMapper.insertNotice", notice);
+		
 	}
 	
 	//공지글 수정
 	public int updateNotice(Notice notice) {
+		logger.info("noticeDao : " + notice);
 		return sqlSessionTemplate.update("noticeMapper.updateNotice", notice);
 	}
 	
@@ -47,9 +73,16 @@ public class NoticeDao {
 	public int selectListCount() {
 		return sqlSessionTemplate.selectOne("noticeMapper.getListCount");
 	}
+	
+	public int selectTListCount(String teamId) {
+		return sqlSessionTemplate.selectOne("noticeMapper.getTListCount", teamId);
+	}
+	public int selectDListCount(String departmentId) {
+		return sqlSessionTemplate.selectOne("noticeMapper.getDListCount", departmentId);
+	}
 
-	public int selectSearchTitleCount(String keyword) {
-		return sqlSessionTemplate.selectOne("noticeMapper.getSearchTitleCount", keyword);
+	public int selectSearchTitleCount(Search search) {
+		return sqlSessionTemplate.selectOne("noticeMapper.getSearchTitleCount", search);
 	}
 
 	public int selectSearchContentCount(String keyword) {

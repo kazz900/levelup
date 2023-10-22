@@ -66,12 +66,19 @@
 
 								<h1 class="card-title mb-5" align="center">새 기안 작성 (아이템 변경)</h1>
 
-							 <form action="cicinsert.do" class="outer-repeater" method="post">
+							 <form action="cicinsert.do" class="outer-repeater" enctype="multipart/form-data" method="post">
+							 	
 	                            <input type="hidden" name="employeeId" value="${ sessionScope.loginEmployee.employeeId }">
 	                            <input type="hidden" name="employeeName" value="${ sessionScope.loginEmployee.employeeName }">
-	                            <input type="hidden" name="managerId" value="${ requestScope.manager.employeeId }">
 	                            <input type="hidden" name="charId" value="${ param.charId }">
 	                            <input type="hidden" name="itemId" value="${ param.nameId }">
+	                            <c:if test="${ !empty param.itemName }">
+		                            <input type="hidden" name="itemName" value="${ param.itemName }">
+	                            </c:if>
+	                            <c:if test="${ empty param.itemName }">
+		                            <input type="hidden" name="itemName" value="잡템">
+	                            </c:if>
+	                            <input type="hidden" name="itemAmount" value="${ param.amount }">
 
 
 
@@ -80,7 +87,7 @@
 										<label for="caseTitle" class="col-form-label col-lg-1">기안
 											제목</label>
 										<div class="col-lg-11">
-											<input id="caseTitle" name="caseTitle" type="text"
+											<input id="caseTitle" name="documentTitle" type="text"
 												class="form-control" placeholder="기안 제목 입력하세요">
 										</div>
 									</div>
@@ -148,7 +155,7 @@
 													disabled>
 											</div>
 											<div class="mb-3 col-lg-2">
-												<input type="text" id="disabledTextInput"
+												<input type="text" id="disabledTextInput" 
 													class="form-control" placeholder="${ param.amount }"
 													disabled>
 											</div>
@@ -174,8 +181,8 @@
 												</option>
 											</c:forEach>
 										</select>
-										 <input type="hidden" name="replaceItemId" value="${ i.itemId }">
-	                           			 <input type="hidden" name="replaceItemNo" value="${ i.amount }">		
+
+				
 									</div>
 
 									<!-- 드랍다운에서 아이템 선택 시 자동으로 채워지는 칸들 -->
@@ -190,9 +197,10 @@
 
 										<div class="row">
 											<div class="mb-3 col-lg-2">
-												<input type="text" id="replacementitemid" name="replacement_ItemId"
+												<input type="text" id="replacementitemid" name="disabledReplaceItemId"
 													class="form-control"
 													disabled>
+													<input type="hidden" id="hiddenInputReplaceItemId" name="replaceItemId">
 											</div>
 											<div class="mb-3 col-lg-2">
 													<input type="text" id="replacementitemname" name="replacement_ItemName"
@@ -210,7 +218,7 @@
 													disabled>
 											</div>
 											<div class="mb-3 col-lg-2">
-												<input type="text" id="disabledTextInput" name="replacement_ItemAmount"
+												<input type="text" id="disabledTextInput" name="replaceItemAmount"
 													class="form-control">
 											</div>
 										</div>
@@ -226,7 +234,7 @@
 											<label for="caseContent" class="col-form-label col-lg-1">기안
 												내용</label>
 											<div class="col-lg-12">
-												<textarea id="caseContent" name="caseContent"
+												<textarea id="caseContent" name="documentContent"
 													class="form-control" rows="3" cols="40"
 													placeholder="기안 내용을 작성하세요"></textarea>
 											</div>
@@ -235,14 +243,16 @@
 									<br>
 
 									<!-- 파일 업로드 -->
-									<label for="attatchFile" class="col-form-label col-lg-1">첨부
-										파일</label>
+									<label for="attatchFile" class="col-form-label col-lg-1">첨부 파일</label>
 									<div class="mb-3" align="center">
 										<!--  <i class="display-4 text-muted bx bxs-cloud-upload"></i><br> -->
-										<input class="form-control" type="file" id="formFile">
+										<input class="form-control" type="file" name="upfile">
 									</div>
 
 									<br>
+									
+									
+									<!-- 작성 완료 -->
 									<div class="row justify-content-end">
 										<div class="col-lg-10">
 											<button type="submit" class="btn btn-primary">작성 완료</button>
@@ -283,11 +293,13 @@
 			var replacementitemnameinputfield = document.getElementById('replacementitemname');
 			var replacementitempriceinputfield = document.getElementById('replacementitemprice');
 			var replacementitemgamepriceinputfield = document.getElementById('replacementitemgameprice');
+			var hiddenInputReplacementItemId = document.getElementById('hiddenInputReplaceItemId');
 			
 			replacementitemidinputfield.value = replacementItem.getAttribute("data-nameId");
 			replacementitemnameinputfield.value = replacementItem.getAttribute("data-itemName");
 			replacementitempriceinputfield.value = replacementItem.getAttribute("data-price");
 			replacementitemgamepriceinputfield.value = replacementItem.getAttribute("data-gamePrice");
+			hiddenInputReplacementItemId.value = replacementItem.getAttribute("data-nameId");
 		}
 	</script>
 </body>
