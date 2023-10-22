@@ -29,6 +29,7 @@ import com.gs.levelup.employee.model.vo.Employee;
 import com.gs.levelup.inventory.model.service.InventoryService;
 import com.gs.levelup.inventory.model.vo.Inventory;
 import com.gs.levelup.item.model.service.ItemService;
+import com.gs.levelup.item.model.vo.Item;
 import com.gs.levelup.payment.model.service.PaymentService;
 import com.gs.levelup.payment.model.vo.Payment;
 
@@ -339,11 +340,10 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 	
 	
 	
-	//기안 작성 페이지로 이동
-	@RequestMapping("cicform.do")
-	public ModelAndView moveCaseItemChangeWritePage(@RequestParam("caseType") String caseType,
-													@RequestParam("managerId") String managerId, 
-													@RequestParam("paymentKey") String paymentKey, 
+	//기안 작성 페이지로 이동(아이템 변경/삭제 기안)
+	@RequestMapping("cdcaseform.do")
+	public ModelAndView moveitemChDeCaseWritePage(@RequestParam("caseType") String caseType,
+													@RequestParam("managerId") String managerId, 												
 													Inventory itemdata,		//Original 아이템 정보											
 													ModelAndView mv) {
 		// 현재 우리가 ITEM TABLE에 가지고 있는 정보를 불러오는 용도
@@ -352,8 +352,7 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 		Employee manager = employeeService.selectManager(managerId);
 		// 기안 테이블에 유저 정보를 넣기위해 캐릭터 TABLE에서 유저 정보를 가져옴
 		com.gs.levelup.character.model.vo.Character character = characterService.selectCharacter(itemdata.getCharId());
-		// payment 테이블에서 해당 paymentId의 결재 정보를 가져옴
-		Payment payment = paymentService.selectPaymentOne(paymentKey);
+	
 		
 		if(caseType.equals("1")) {
 			mv.addObject("manager", manager);
@@ -371,18 +370,46 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 			
 			mv.setViewName("empCase/empNewDelCaseView");
 		}
-		else if (caseType.equals("3")) {
-			mv.addObject("manager", manager);
-			mv.addObject("ilist", ilist);
-			mv.addObject("itemdata", itemdata);
-			mv.addObject("character", character);
-			mv.addObject("payment", payment);
-			
-			mv.setViewName("empCase/empNewDelCaseView");
-		}
-				
+						
 		return mv;
 	}
+	
+	
+	//기안 작성 페이지로 이동(아이템 환불 기안)
+		@RequestMapping("rfcaseform.do")
+		public ModelAndView moveitemRefundCasePage(@RequestParam("caseType") String caseType,
+														@RequestParam("managerId") String managerId, 
+														Payment paymentinfo, 																								
+														ModelAndView mv) {
+			// 현재 우리가 ITEM TABLE에 가지고 있는 정보를 불러오는 용도
+			//ArrayList<Inventory> ilist = inventoryService.selectAll();
+			// 현재 로그인한 사원의 관리자 정보 불러오는 용도
+			Employee manager = employeeService.selectManager(managerId);
+			
+			// 기안 테이블에 유저 정보를 넣기위해 캐릭터 TABLE에서 유저 정보를 가져옴
+			com.gs.levelup.character.model.vo.Character character = characterService.selectCharacter(paymentinfo.getCharId());
+			
+			// payment 테이블에서 해당 paymentId의 결재 정보를 가져옴
+			Payment payment = paymentService.selectPaymentOne(paymentinfo.getPaymentKey());
+			
+			// Inventory 테이블에서 구매한 아이템의 UniqueId를 가진 아이템을 조회해옴 
+			Inventory payitem = inventoryService.selectPaymentItem(paymentinfo.getUniqueId());
+			
+			// 구매한 아이템의 아이템정보를 Item 테이블에서 가져옴
+			Item item = itemService.selectItem(paymentinfo.getItemId());
+						
+				mv.addObject("manager", manager);
+				mv.addObject("item", item);
+				mv.addObject("payitem", payitem);
+				mv.addObject("character", character);
+				mv.addObject("payment", payment);
+				
+				mv.setViewName("empCase/empNewRefundCaseView");
+			
+					
+			return mv;
+		}
+	
 	
 	
 	//기안 작성페이지 

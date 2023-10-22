@@ -47,6 +47,10 @@
 		select * from evol.inventory where char_id = #{ charId }
 	</select>
 	
+	<select id="selectPaymentItem" parameterType="long" resultMap="resultInventory">
+		select * from evol.inventory where unique_id = #{ uniqueId }
+	</select>
+	
 	<update id="updateItemChange" parameterType="Case">
 		update evol.inventory
 		set evol.inventory.nameid = #{ newItemId },
