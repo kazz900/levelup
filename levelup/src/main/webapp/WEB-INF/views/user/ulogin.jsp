@@ -26,7 +26,12 @@
         <link href="resources/css/icons.min.css" rel="stylesheet" type="text/css" />
         <!-- App Css-->
         <link href="resources/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
-
+	<script type="text/javascript">
+		var message = "${ requestScope.message }";
+		if (message != null && message === "success") {
+		    alert("회원가입 성공");
+		}
+	</script>
     </head>
 <style>
 .uloginbox{
@@ -48,11 +53,10 @@
                             
                                         <div class="mt-4">
                                             <form action="login.do" method="post">
-                
-                                                <div class="mb-3">
-                                                    <label for="username" class="form-label">Username</label>
-                                                    <input type="text" class="form-control" name="userId" id="username" placeholder="Enter username">
-                                                </div>
+                								<div class="mb-3">
+												    <label for="username" class="form-label">Username</label>
+												    <input type="text" class="form-control" name="userId" id="username" placeholder="Enter username" value="${not empty requestScope.useridpass ? requestScope.useridpass : ''}">
+												</div>
                         
                                                 <div class="mb-3">
                                                     <div class="float-end">

@@ -12,6 +12,7 @@
 		<result column="logincount" property="logincount"/>
 		<result column="lastlogin" property="lastlogin"/>
 		<result column="last_ip" property="lastIp"/>
+		<result column="sex" property="sex"/>
 	</resultMap>
 	
 	<select id="selectListCount" resultType="_int">
@@ -41,5 +42,9 @@
 	<select id="selectCheckId" parameterType="string" resultType="_int">
 	  select count(evol.login.userid) from evol.login where evol.login.userid = #{userid}
 	</select>
+	
+	<insert id="insertUser" parameterType="User">
+		insert into evol.login(evol.login.userid, evol.login.user_pass, evol.login.sex, evol.login.email) values (#{ userId }, #{ userPass }, #{ sex }, #{ email })	
+	</insert>
 		
 </mapper>

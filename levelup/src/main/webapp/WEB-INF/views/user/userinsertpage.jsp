@@ -64,7 +64,7 @@ function dupIDCheck(){
 </head>
 <style>
 .uenrollbox{
-	padding-top: 160px;
+	padding-top: 120px;
 	padding-left: 40%;
 	padding-right: 40%;
 }
@@ -107,10 +107,13 @@ function dupIDCheck(){
                                                 </div>
                                                 
                                                 <label for="username" class="form-label">성별</label>
+                                                <br>
 												
 												<input type="radio" name="sex" value="M"> 남자 &nbsp;
 												<input type="radio" name="sex" value="F"> 여자
-												
+												<br><br>
+												<label for="email" class="form-label">email</label>
+                                                <input type="email" class="form-control" name="email" id="email" placeholder="Enter email">
                         						
                         						<br><br>
                                                 <div class="form-check">
