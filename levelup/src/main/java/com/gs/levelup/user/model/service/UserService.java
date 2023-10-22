@@ -18,11 +18,14 @@ public interface UserService {
 	public int selectSearchIdCount(String keyword);
 
 	// 검색 관련
+	public int selectCheckId(String userid);
 	// 유저 리스트 반환
 	public ArrayList<User> selectSearchUserId(Search search);
+	
 	
 	// 유저 객체 리턴
 	public User selectOneSearchAccountId(Search search);
 	public User selectOneSearchUserId(Search search);
 	public User selectOneSearchEmail(Search search);
+
 }

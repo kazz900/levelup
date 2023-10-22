@@ -58,4 +58,8 @@ public class UserDao {
 	public User selectOneSearchEmail(Search search) {
 		return sqlSessionTemplateMaria.selectOne("userMapper.selectOneSearchEmail", search);
 	}
+
+	public int selectCheckId(String userid) {
+		return sqlSessionTemplateMaria.selectOne("userMapper.selectCheckId", userid);
+	}
 }

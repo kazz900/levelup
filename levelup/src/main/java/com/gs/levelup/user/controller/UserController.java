@@ -1,6 +1,8 @@
 package com.gs.levelup.user.controller;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.time.Instant;
@@ -8,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
@@ -103,6 +106,11 @@ public class UserController {
 		return "user/buykeyin";
 	}
 	
+	@RequestMapping("userinsertpage.do")
+	public String userinsertpageMethod() {
+		return "user/userinsertpage";
+	}
+	
 	@RequestMapping(value="uhelp.do", method = {RequestMethod.POST, RequestMethod.GET})
 	public String userhelpPageMethod(@RequestParam(name="page", required=false) String page,
 			@RequestParam(name="limit", required=false) String slimit,
@@ -152,7 +160,11 @@ public class UserController {
 	}
 	
 	@RequestMapping("ushop.do")
-	public String goUShopMethod() {
+	public String goUShopMethod(
+			@RequestParam(value="message", required=false) String message) {
+		if(message != null && message.equals("success")) {
+			//int result = paymentService.updatePaymentState(null);
+		}
 		return "user/ushop";
 	}
 
@@ -676,8 +688,6 @@ public class UserController {
 		
 		Payment payment = new Payment(amount, orderId, paymentKey, receiverId, receiverName, nameId, accountId, uniqueId);
 		
-		logger.info("buyingpage.do : orderId - " + orderId);
-		
 		int insertResult = paymentService.insertPayment(payment);
 		
 		if(insertResult> 0) {
@@ -853,5 +863,31 @@ public class UserController {
 		}
 	}
 	
+	//ajax 통신으로 아이디 중복체크요청 처리용 메소드
+	@RequestMapping(value="idchk.do", method = RequestMethod.POST)
+	public void dupCheckIdMethod(@RequestParam("userid") String userid,
+			HttpServletResponse response) throws IOException {
+		//@RequestParam("전송온이름") 자료형 값저장변수명
+		//메소드의 매개변수에 사용하는 어노테이션임, 아래의 코드와 같은 기능을 수행함
+		//String userid = request.getParameter("userid");
+		int idCount = userService.selectCheckId(userid);
+		String returnStr = null;
+		if(idCount == 0){
+			returnStr = "ok";
+		}else {
+			returnStr = "dup";
+		}
+		
+		//response 를 이용해서 클라이언트와 출력스트림을 열어서 값 보냄
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.append(returnStr);
+		out.flush();
+		out.close();
+	}
+	
+	/*
+	 * @RequestMapping("enroll.do") public
+	 */
 
 }
