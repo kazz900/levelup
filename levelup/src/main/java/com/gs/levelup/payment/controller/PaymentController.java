@@ -267,7 +267,6 @@ public class PaymentController {
 			model.addAttribute("message", paymentKey + "에 대한 결제 취소 실패");
 			return "common/error";
 		}
-		
 	}
 	
 	
