@@ -82,16 +82,16 @@ $(function(){
 <c:import url="/WEB-INF/views/user/userFooter.jsp"/>
 <script type="text/javascript">
 // 김지혁
-//const clientKey = 'test_ck_6BYq7GWPVvnz7o1ODvR5VNE5vbo1';
-//const secretKey = 'test_sk_DpexMgkW36ZnqQN19dEN3GbR5ozO';
+const clientKey = 'test_ck_6BYq7GWPVvnz7o1ODvR5VNE5vbo1';
+const secretKey = 'test_sk_DpexMgkW36ZnqQN19dEN3GbR5ozO';
 
 // 김화범
 //const clientKey = 'test_ck_mBZ1gQ4YVXK2qEKKLN2X3l2KPoqN';
 //const secretKey = 'test_sk_DpexMgkW36xJ0M0ooAXMrGbR5ozO';
 
 // 최유미
-const clientKey = 'test_ck_Gv6LjeKD8aY5W2QbeknN8wYxAdXy';
-const secretKey = 'test_sk_24xLea5zVAmdw7OMPDZxVQAMYNwW';
+//const clientKey = 'test_ck_Gv6LjeKD8aY5W2QbeknN8wYxAdXy';
+//const secretKey = 'test_sk_24xLea5zVAmdw7OMPDZxVQAMYNwW';
 
 
 const base64Encoded = btoa(secretKey);
