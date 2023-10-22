@@ -81,8 +81,15 @@ $(function(){
 </div>
 <c:import url="/WEB-INF/views/user/userFooter.jsp"/>
 <script type="text/javascript">
-const clientKey = 'test_ck_mBZ1gQ4YVXK2qEKKLN2X3l2KPoqN'
-const secretKey = 'test_sk_DpexMgkW36xJ0M0ooAXMrGbR5ozO'
+// 김지혁
+const clientKey = 'test_ck_6BYq7GWPVvnz7o1ODvR5VNE5vbo1';
+const secretKey = 'test_sk_DpexMgkW36ZnqQN19dEN3GbR5ozO';
+
+// 김화범
+//const clientKey = 'test_ck_mBZ1gQ4YVXK2qEKKLN2X3l2KPoqN';
+//const secretKey = 'test_sk_DpexMgkW36xJ0M0ooAXMrGbR5ozO';
+
+
 const base64Encoded = btoa(secretKey);
 console.log("=============" + base64Encoded);
 const customerKey = "${ sessionScope.loginUser.userId }"
