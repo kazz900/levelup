@@ -28,8 +28,11 @@
   //중복 취소를 막기위해 취소 가능금액을 전송
   String refundableAmount = null;
   
+  //김지혁 테스트 시크릿키
+  String secretKey = "test_sk_DpexMgkW36ZnqQN19dEN3GbR5ozO:";
+  
   //김화범 테스트 시크릿키
-  String secretKey = "test_sk_DpexMgkW36xJ0M0ooAXMrGbR5ozO:";
+  //String secretKey2 = "test_sk_DpexMgkW36xJ0M0ooAXMrGbR5ozO:";
   
   Encoder encoder = Base64.getEncoder(); 
   byte[] encodedBytes = encoder.encode(secretKey.getBytes("UTF-8"));
