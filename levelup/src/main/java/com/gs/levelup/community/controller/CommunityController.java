@@ -1,8 +1,12 @@
 package com.gs.levelup.community.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -19,14 +23,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.gs.levelup.common.FileNameChange;
 import com.gs.levelup.common.Paging;
 import com.gs.levelup.common.Search;
 import com.gs.levelup.common.SearchDate;
 import com.gs.levelup.community.model.service.CommunityService;
 import com.gs.levelup.community.model.vo.Community;
-import com.gs.levelup.employee.model.vo.Employee;
-import com.gs.levelup.notice.model.vo.Notice;
 
 @Controller
 public class CommunityController {
@@ -47,10 +48,25 @@ public class CommunityController {
 		return "community/comDetail";
 	}
 
-	@RequestMapping("comdelete.do")
-	public String deleteCommunity(String boardId, Model model, int currentPage) {
-		communityService.deleteCommunity(boardId);
-		return null;
+	// Community insert 이동처리용
+	@RequestMapping("movecomWrite.do")
+	public String moveComeWrite() {
+		return "community/comWrite";
+	}
+
+	@RequestMapping("comDelete.do")
+	public String deleteCommunity(
+			@RequestParam("board_id") String board_id, 
+			@RequestParam("currentPage") String currentPage, 
+			Model model 
+			) {
+		if(communityService.deleteCommunity(board_id) > 0) {
+			model.addAttribute("currentPage", currentPage);
+			return "redirect:comlist.do";
+		} else {
+			model.addAttribute("message", currentPage + "게시글 삭제 실패");
+			return "common/error";
+		}
 	}
 
 	// 요청 결과 처리용
@@ -79,7 +95,8 @@ public class CommunityController {
 	public String selectList(
 			@RequestParam(name = "currentPage", required = false) String page,
 			@RequestParam(name = "limit", required = false) String slimit, 
-			Model model) {
+			Model model
+			) {
 		logger.info("comlist.do : page : " + page + ", slimit: " + slimit);
 
 		int currentPage = 1;
@@ -114,75 +131,115 @@ public class CommunityController {
 		}
 	}
 
+	@RequestMapping("comlistHashmap.do")
+	public String selectListHashMap(@RequestParam(name = "currentPage", required = false) String page,
+			@RequestParam(name = "limit", required = false) String slimit, Model model) {
+		logger.info("comlistHashmap.do : page : " + page + ", slimit: " + slimit);
+
+		int currentPage = 1;
+		if (page != null) {
+			currentPage = Integer.parseInt(page);
+		}
+
+		// 한 페이지에 공지 10개씩 출력되게 한다면
+		int limit = 10;
+		if (slimit != null) {
+			limit = Integer.parseInt(slimit);
+		}
+
+		// 페이지 관련 항목 계산 처리
+		int listCount = communityService.selectListCount();
+		Paging paging = new Paging(listCount, currentPage, limit, "comlistHashmap.do");
+		paging.calculator();
+
+		// 페이지에 출력할 목록 조회해 옴
+		ArrayList<HashMap> list = communityService.selectListHashMap(paging);
+		logger.info("HashMap : " + list);
+		System.out.println("board_id : " + list.get(0).get("BOARD_ID").toString());
+
+		if (list != null && list.size() > 0) {
+			model.addAttribute("list", list);
+			model.addAttribute("paging", paging);
+			model.addAttribute("currentPage", currentPage);
+			model.addAttribute("limit", limit);
+
+			return "community/comlist";
+		} else {
+			model.addAttribute("message", currentPage + "페이지 목록 조회 실패");
+			return "common/error";
+		}
+	}
+
 	// 새 공지글 등록 처리 - 파일업로드 기능 추가
 	@RequestMapping(value = "cominsert.do", method = RequestMethod.POST)
-	public String insertCommunityArticle(Community community, Model model, int currentPage, HttpServletRequest request,
-			@RequestParam(name = "ofile", required = false) MultipartFile mfile) {
+	public String insertCommunityArticle(Community community, Model model, HttpServletRequest request,
+			@RequestParam(name = "upfiles[]", required = false) List<MultipartFile> mfileList)
+			throws IllegalStateException, IOException {
 		logger.info("cominsert.do : " + community);
+		logger.info("cominsert.do mfileList : " + mfileList);
 
-		// 공지사항 첨부파일 저장 폴더 경로 지정
-		String savePath = request.getSession().getServletContext().getRealPath("resources/notice_upfiles");
+		// board_id 생성, 대입
+		String board_id = UUID.randomUUID().toString().replaceAll("-", "").toUpperCase();
+		community.setBoard_id(board_id);
 
-		// 전송온 파일이름 추출함
-		String fileName = mfile.getOriginalFilename();
-		String renameFileName = null;
-
-		// 첨부파일이 있을 때
-		if (!mfile.isEmpty()) {
-
-			// 저장폴더에는 변경된 이름으로 저장 처리
-			// 파일 이름 바꾸기함: 년월일시분초.확장자
-			if (fileName != null && fileName.length() > 0) {
-				// 바꿀 파일명에 대한 문자열 만들기
-//				renameFileName = FileNameChange.change(fileName, savePath ,"yyyyMMddHHmmss");
-				// 저장 폴더에 파일명 바꾸기 처리
-				try {
-					mfile.transferTo(new File(savePath + "\\" + renameFileName));
-
-				} catch (Exception e) {
-					e.printStackTrace();
-					model.addAttribute("message", "첨부파일 저장 실패");
-					return "common/error";
-				}
-			} // 파일명 바꾸기
-		} // 첨부파일 있을 때
-			// notice 객체에 첨부파일 정보 저장 처리
-//		community.setOriginalFilePath(fileName);
-//		community.setRenameFilePath(renameFileName);
+		// 각 변수 준비
+		String attachement_filename = "[\"";
+		String savePath = "";
+		File saveFolder = null;
+		// 전송온 파일이 있으면 이름 추출하고 저장처리
+		if (mfileList.get(0).getSize() != 0) {
+			// 파일 이름 추출하여 json 어레이 형태로 저장 
+			for (int i = 0; i < mfileList.size(); i++) {
+				attachement_filename += (i == mfileList.size() - 1 ? mfileList.get(i).getOriginalFilename() + "\"]"
+						: mfileList.get(i).getOriginalFilename() + "\",\"");
+			}
+			System.out.println("cominsert.do : " + attachement_filename);
+			community.setAttachement_filename(attachement_filename);
+		}
 
 		if (communityService.insertCommunity(community) > 0) {
-			// 공지글 등록 성공시 목록보기 페이지로 이동
-			return "redirect:nlist.do";
+			// 게시글 등록 성공시 파일이 있으면 파일 저장 후 목록보기 페이지로 이동
+			// 게시글 등록에 실패하면 파일 저장도 하지 않음
+			if (mfileList.get(0).getSize() != 0) {
+				// 공지사항 첨부파일 저장 폴더 경로 지정, 새로 쓰는 글이기 때문에 중복문제는 발생하지 않을 듯
+				savePath = request.getSession().getServletContext().getRealPath("resources/com_upfiles/" + board_id);
+				saveFolder = new File(savePath);
+				saveFolder.mkdir();
+
+				for (int i = 0; i < mfileList.size(); i++) {
+					mfileList.get(i).transferTo(new File(savePath + "\\" + mfileList.get(i).getOriginalFilename()));
+				}
+			}
+			return "redirect:comlist.do";
 		} else {
-			model.addAttribute("message", "새 공지글 등록 실패");
+			model.addAttribute("message", "게시글 등록 실패");
 			return "common/error";
 		}
 	}
 
 	// 공지글 상세보기 요청 처리용
 	@RequestMapping("comdetail.do")
-	public ModelAndView selectCommunity(@RequestParam("boardNo") int boardNo, ModelAndView mv, HttpSession session) {
-		// 관리자용 상세보기 페이지와 일반회원 | 비회원 상세보기 페이지 구분해서 내보내기
-		// 관리자인지 확인하기 위해 session 매개변수 추가함
-		Community community = communityService.selectCommunity(boardNo);
+	public ModelAndView selectCommunity(
+			@RequestParam("board_id") String board_id, 
+			@RequestParam("page") int currentPage, 
+			ModelAndView mv,
+			HttpSession session) {
+		logger.info("comdetail.do : " + board_id + ", page : " + currentPage);
+		Community community = communityService.selectCommunity(board_id);
 
-		// 조회수 1증가 처리
-		communityService.updateReadCount(boardNo);
-
-//		if(notice != null) {
-//			mv.addObject("notice", notice);
-//			
-//			Employee loginEmployee = (Employee)session.getAttribute("loginEmployee");
-//			if(loginEmployee != null && loginEmployee.getAdmin().equals("Y")) {
-//				mv.setViewName("notice/noticeAdminDetailView");
-//			} else {
-//				mv.setViewName("notice/noticeDetailView");
-//			}
-//		} else {
-//			mv.addObject("message", noticeno + "번 공지글 상세조회 실패");
-//			mv.setViewName("common/error");
-//		}
-
+		if (community != null) {
+			// 조회수 1증가 처리
+			communityService.updateReadCount(board_id);
+			mv.addObject("title", community.getBoard_title());
+			mv.addObject("item", community.getDepartment_name());
+			mv.addObject("subitem", community.getTeam_name());
+			mv.addObject(community);
+			mv.addObject("page", currentPage);
+			mv.setViewName("community/comDetail");
+		} else {
+			mv.addObject("message", "게시글 조회 실패");
+			mv.setViewName("common/error");
+		}
 		return mv;
 	}
 
@@ -260,7 +317,7 @@ public class CommunityController {
 			// 공지글 수정 성공시 목록 보기 페이지로 이동
 			return "redirect:comlist.do";
 		} else {
-			model.addAttribute("message", community.getBoardId() + "번 공지 수정 실패");
+			model.addAttribute("message", community.getBoard_id() + "번 공지 수정 실패");
 			return "common/error";
 		}
 
@@ -426,6 +483,5 @@ public class CommunityController {
 		}
 		return mv;
 	}
-	
-	
+
 }

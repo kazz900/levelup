@@ -1,6 +1,7 @@
 package com.gs.levelup.community.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -30,20 +31,21 @@ public class CommunityDao {
 		List<Community> list = sqlSessionTemplate.selectList("comMapper.selectList",paging);
 		return (ArrayList<Community>)list;
 	}
+	public ArrayList<HashMap> selectListHashMap(Paging paging) {
+		List<HashMap> list = sqlSessionTemplate.selectList("comMapper.selectListHashMap",paging);
+		return (ArrayList<HashMap>)list;
+	}
 
 	public int insertCommunity(Community community) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSessionTemplate.insert("comMapper.insertCommunity",community);
 	}
 
-	public Community selectCommunity(int boardNo) {
-		// TODO Auto-generated method stub
-		return null;
+	public Community selectCommunity(String board_id) {
+		return sqlSessionTemplate.selectOne("comMapper.selectCommunity", board_id);
 	}
 
-	public int updateReadCount(int boardNo) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int updateReadCount(String board_id) {
+		return sqlSessionTemplate.update("comMapper.updateReadCount", board_id);
 	}
 
 	public int updateCommunity(Community community) {
@@ -81,9 +83,8 @@ public class CommunityDao {
 		return null;
 	}
 
-	public int deleteCommunity(String boardId) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int deleteCommunity(String board_id) {
+		return sqlSessionTemplate.update("comMapper.deleteCommunity", board_id);
 	}
 
 }

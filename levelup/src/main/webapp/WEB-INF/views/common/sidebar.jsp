@@ -64,7 +64,7 @@
 								<span key="t-dashboards">게시판</span>
 							</a>
 							<ul class="sub-menu" aria-expanded="false">
-								<li><a href="movecom.do" key="t-default">게시판</a></li>
+								<li><a href="comlist.do" key="t-default">게시판</a></li>
 								<li><a href="movecomdetail.do" key="t-default">DetailView</a></li>
 								<li><a href="#" key="t-default">일정수정</a></li>
 								<li><a href="#" key="t-default">일정삭제</a></li>
