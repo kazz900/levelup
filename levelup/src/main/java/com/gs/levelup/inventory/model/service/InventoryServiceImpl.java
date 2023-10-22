@@ -46,5 +46,11 @@ public class InventoryServiceImpl implements InventoryService{
 		return inventoryDao.deleteItemOne(_case);
 	}
 	
+	@Override
+	public Inventory selectPaymentItem(Long uniqueId) {
+		return inventoryDao.selectPaymentItem(uniqueId);
+	}
+	
+	
 
 }

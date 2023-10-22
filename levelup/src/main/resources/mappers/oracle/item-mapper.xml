@@ -23,6 +23,10 @@
 	<select id="selectOneItem" parameterType="string" resultMap="resultItem">
 		select * from item where item_name = #{ itemName }
 	</select>
+	
+	<select id="selectItem" parameterType="_int" resultMap="resultItem">
+		select * from item where ITEM_ID = #{ itemId }
+	</select>
 
 	<select id="selectItem3" resultMap="resultItem3">
 		<![CDATA[

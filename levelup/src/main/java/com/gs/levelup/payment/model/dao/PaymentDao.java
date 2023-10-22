@@ -71,7 +71,7 @@ public class PaymentDao {
 	}
 
 	public Payment selectPaymentOne(String paymentKey) {
-		return sqlSessionTemplate.selectOne("paymentMapper.selectPaymentOne");
+		return sqlSessionTemplate.selectOne("paymentMapper.selectPaymentOne", paymentKey);
 	}
 
 }
