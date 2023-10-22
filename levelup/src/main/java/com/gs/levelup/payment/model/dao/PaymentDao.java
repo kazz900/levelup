@@ -70,4 +70,8 @@ public class PaymentDao {
 		return sqlSessionTemplate.insert("paymentMapper.cancelPayment", search);
 	}
 
+	public Payment selectPaymentOne(String paymentKey) {
+		return sqlSessionTemplate.selectOne("paymentMapper.selectPaymentOne");
+	}
+
 }

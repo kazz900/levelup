@@ -105,7 +105,7 @@
 								<th>Item Type</th>
 								<th>Price</th>
 								<th>Game Price</th>
-								<th>GUID</th>
+								<th>Unique ID</th>
 								<th>Amount</th>
 								<th>Change</th>
 								<th>Delete</th>
@@ -120,7 +120,7 @@
 											<td data-th="Item Name">${ i.itemName }</td> 
 											</c:if>
 											<c:if test="${ empty i.itemName }">
-											<td data-th="Item Name">잡템</td> 
+											<td data-th="Item Name">잡템 ${ i.nameId }</td> 
 											</c:if>
 											<!-- Item Type COLUMN -->
 											<c:if test="${ !empty i.itemType }">
