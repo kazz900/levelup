@@ -100,20 +100,24 @@ function cmdgame(){
 		<h3>welcome to Manaworld</h3>
 			<c:if test="${ empty sessionScope.loginUser }">
 				<div class="umainloginbox">
-					<div class="gamestartbox" onclick="logingamecheck()">게임 시작
+					<div class="gamestartbox">
+						<p onclick="logingamecheck()">게임 시작</p>
+						<a href="http://download.evolonline.org/manaplus/download/manaplus-win32.exe">게임 다운로드</a>
 					</div>
 					<div class="uloginbox" onclick="gouloginpage()">로그인하러가기</div>
-					
 				</div>
 			</c:if>
 			<c:if test="${ !empty sessionScope.loginUser }">
 				<div class="umainloginbox">
-					<div class="gamestartbox" onclick="cmdgame()">게임 시작</div>
-					<hr>
+					<div class="gamestartbox" onclick="cmdgame()">
+						<p onclick="cmdgame()">게임 시작</p>
+						<a href="http://download.evolonline.org/manaplus/download/manaplus-win32.exe">게임 다운로드</a>
+					</div>
 					<div class="uloginbox2">
 						${loginUser.userId} 님 방문을 환영합니다.
+						<a href="logout.do">로그아웃</a>
 					</div>
-					<a href="logout.do">로그아웃</a>
+					
 				</div>
 			</c:if>
 		</div>

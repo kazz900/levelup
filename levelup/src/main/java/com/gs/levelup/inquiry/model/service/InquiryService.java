@@ -13,6 +13,7 @@ public interface InquiryService {
 	public ArrayList<Inquiry> selectListType(Search search);	
 	public int insertInquiryAnswer(Inquiry inquiry);	
 	public int updateInquiryAnswer(Inquiry inquiry);	
+	public int updateInquiry(Inquiry inquiry);	
 	public int deleteInquiryAnswer(String inquiryId);	
 	public int selectListCount();
 	public int selectListCount(String type);

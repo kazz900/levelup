@@ -17,12 +17,14 @@
 
 <c:url var="caseApprove" value="caseApprove.do">
 	<c:param name="caseId" value="${ requestScope.casedetail.caseId }" />
-	<c:param name="employeeId" value="${ sessionScope.loginEmployee.employeeId }" />
+	<c:param name="employeeId" value="${ sessionScope.loginEmployee.employeeId }" />	
+	<c:param name="charId" value="${ requestScope.casedetail.charId }" />		
 </c:url>
 
 <c:url var="caseReject" value="caseReject.do">
 	<c:param name="caseId" value="${ requestScope.casedetail.caseId }" />
 	<c:param name="employeeId" value="${ sessionScope.loginEmployee.employeeId }" />
+	<c:param name="charId" value="${ requestScope.casedetail.charId }" />
 </c:url>
 
 <script type="text/javascript">
@@ -31,14 +33,14 @@ function golist(){
 }
 
 function caseApprove(){
-	var ans = confirm("기안이 승인하시겠습니까? 아이템의 정보가 변경됩니다.");
+	var ans = confirm("기안을 승인하시겠습니까? 아이템의 정보가 변경됩니다.");
 	if(ans) { location.href = "${ caseApprove }";
 	}	
 	return false;
 }
 
 function caseReject(){
-	var ans = confirm("기안이 반려하시겠습니까? 아이템이 삭제 됩니다.");
+	var ans = confirm("기안을 반려하시겠습니까? 아이템이 삭제 됩니다.");
 	if(ans) { location.href = "${ caseReject }";
 	}	
 	return false;
@@ -75,7 +77,7 @@ function caseReject(){
 				
 				<div class="card">
                 <div class="card-body">
-                    <div class="pt-3">
+                    <div class="pt-4">
                         <div class="row justify-content-center">
                             <div class="col-xl-10">
                                 <div>
@@ -94,9 +96,11 @@ function caseReject(){
                              <!-- ---------------------------------------------- -->       
                                     
                              <!-- 기안 분류 -->
-                                    <div class="text-center">
+                                    <div class="text-center" align="center">
                                         <div class="row">
-                                            <div class="col-sm-4">
+                                        
+                                        
+                                            <div class="col-sm-2">
                                                 <div>
                                                     <p class="text-muted mb-2">기안 분류</p>
                                                     <c:if test="${ requestScope.casedetail.caseType eq 1}">
@@ -109,7 +113,7 @@ function caseReject(){
                                             </div>
                                             
                              <!-- 기안 작성 날짜 -->
-                                       <div class="col-sm-4">
+                                       <div class="col-sm-3">
                                            <div class="mt-4 mt-sm-0">
                                                <p class="text-muted mb-2">기안 작성 날짜</p>
                                                <h5 class="font-size-15"><fmt:formatDate value="${ requestScope.casedetail.editDate }" pattern="yyyy-MM-dd HH:mm:ss" /></h5>
@@ -117,13 +121,44 @@ function caseReject(){
                                        </div>
                                        
                               <!-- 기안 작성자 -->
-                                       <div class="col-sm-4">
+                                       <div class="col-sm-2">
                                            <div class="mt-4 mt-sm-0">
                                                <p class="text-muted mb-2">기안 작성자</p>
                                                <h5 class="font-size-15">${ requestScope.casedetail.caseWriterName }</h5>
                                            </div>
                                        </div>
+                                       
+                               <!-- 기안 처리 상태 -->                                      
+                                       <div class="col-sm-2">
+                                           <div class="mt-4 mt-sm-0">
+                                               <p class="text-muted mb-2">기안 처리 상태</p>
+                                               <c:if test="${ requestScope.casedetail.caseStatus eq 0 }" >
+                                               		<span class="badge badge-pill badge-soft-warning font-size-15">처리필요</span>
+                                               </c:if>
+                                               <c:if test="${ requestScope.casedetail.caseStatus eq 1 }" >
+                                               		<span class="badge badge-pill bg-success font-size-15">승인완료</span>
+                                               </c:if>
+                                               <c:if test="${ requestScope.casedetail.caseStatus eq 2 }" >
+                                               		<span class="badge badge-pill bg-danger font-size-15">반려</span>
+                                               </c:if>
+                                           </div>
                                        </div>
+                                       
+                                 <!-- 기안 처리 상태 -->                                      
+                                       <div class="col-sm-2">
+                                           <div class="mt-4 mt-sm-0">
+                                               <p class="text-muted mb-2">기안 처리자</p>
+                                               <c:if test="${ requestScope.casedetail.caseStatus eq 0 }" >
+                                               		<h5 class="font-size-15"> &nbsp; </h5>
+                                               </c:if>
+                                               <c:if test="${ requestScope.casedetail.caseStatus eq 1  || requestScope.casedetail.caseStatus eq 2 }" >
+                                               		<h5 class="font-size-15">${ requestScope.casedetail.caseManagerName }</h5>
+                                               </c:if>
+                                           </div>
+                                       </div>
+                                       
+                                       
+                                       </div><!-- ROW -->
                                     </div>
                                     
                                <!-- ------------------------------------------------------------------ -->     
@@ -140,14 +175,34 @@ function caseReject(){
                                     <div class="mt-4">
                                         <div class="text-muted font-size-14">
                                   
+                               <!-- 유저 정보 -->	
+                                		<h5 class="mb-3">유저 정보</h5>									
+									<div class="row">
+										<div class="mb-3 col-lg-2">											
+												<label>계정 ID</label>
+												<input type="text" name="" id="disabledTextInput" class="form-control"
+												placeholder="${ requestScope.casedetail.accountId }" disabled>
+										</div>
+										<div class="mb-3 col-lg-2">
+											<label>캐릭터 ID</label><input type="text"
+												id="disabledTextInput" class="form-control"
+												placeholder="${ requestScope.casedetail.charId }"
+												disabled>
+										</div>
+										<div class="mb-3 col-lg-2">
+											<label>캐릭터 이름</label><input type="text"
+												id="disabledTextInput" class="form-control"
+												placeholder="${ requestScope.casedetail.charName }"
+												disabled>
+										</div>
+									</div>
+									
+									<br><br>
+                                		  	
+                                	
                                 <!-- 변경 전 아이템 정보 -->  
                                 		
-                                		<h5 class="mb-3">대상 유저 정보</h5>
-                                		  	<label>유저 ID</label>&nbsp;&nbsp;&nbsp;<input type="text" value="${ requestScope.casedetail.charId }" disabled>
-                                		  	
-                                		<br><br><br><br>
-                                		
-                                		<h5 class="mb-3">현재 아이템 정보</h5>
+                                		<h5 class="mb-3">아이템 정보</h5>
                                 
                              			<div id="currentItems">
                                    		<div class="row" >
@@ -185,7 +240,7 @@ function caseReject(){
                                 <!-- 변경 후 아이템 정보 -->	
                                 
                                 	
-                                		<h5 class="mb-3">변경 후 아이템</h5>
+                                		<h5 class="mb-3">변경 후 아이템 정보</h5>
                                 
                              			<div id="beforeItems">
                                    		<div class="row" >
@@ -238,10 +293,9 @@ function caseReject(){
                                             </div>
                                             
                                       <!-- 첨부된 파일 -->   
-								<div class="col-lg-4">
-									<div class="card">
-										<div class="card-body">
-											<h4 class="card-title mb-4">첨부 파일 목록</h4>
+					
+										<div class="mt-4">
+											<h5 class="mb-3">첨부 파일</h5>
 											<div class="table-responsive">
 												<table class="table table-nowrap align-middle table-hover mb-0">
 													<tbody>
@@ -270,8 +324,7 @@ function caseReject(){
 												</table>
 											</div>
 										</div>
-									</div>
-								</div>
+								
 
 									 <!-- ----------------------------기안 내용 끝------------------------------------------------- -->			
 
@@ -291,9 +344,19 @@ function caseReject(){
                                    </c:if>
                                    
 									<c:if test="${ sessionScope.loginEmployee.employeeId == requestScope.casedetail.caseManagerId }">
-                                  <button type="button" class="btn btn-secondary waves-effect waves-light" onclick="golist();">목록으로</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                  <button type="button" class="btn btn-success waves-effect waves-light" onclick="caseApprove();">기안 승인</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                  <button type="button" class="btn btn-danger waves-effect waves-light" onclick="caseReject();">기안 반려</button>                               
+										<c:if test="${ requestScope.casedetail.caseStatus eq 0 }" >
+		                                  <button type="button" class="btn btn-secondary waves-effect waves-light" onclick="golist();">목록으로</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		                                  <button type="button" class="btn btn-success waves-effect waves-light" onclick="caseApprove();">기안 승인</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		                                  <button type="button" class="btn btn-danger waves-effect waves-light" onclick="caseReject();">기안 반려</button>   										
+										</c:if>
+										
+										<c:if test="${ requestScope.casedetail.caseStatus eq 1 }" >										  
+										  <button type="button" class="btn btn-secondary waves-effect waves-light" onclick="golist();">목록으로</button>										
+                                  		</c:if> 
+                                  		
+                                  		<c:if test="${ requestScope.casedetail.caseStatus eq 2 }" >										  
+										  <button type="button" class="btn btn-secondary waves-effect waves-light" onclick="golist();">목록으로</button>										
+                                  		</c:if>                              
                                    </c:if>
                               </div>
 								
@@ -306,16 +369,7 @@ function caseReject(){
             </div>
 				
 
-				
-				
-				
-					
-				
-				
-				
-				
-				
-				
+
 
 	
 			</div>
