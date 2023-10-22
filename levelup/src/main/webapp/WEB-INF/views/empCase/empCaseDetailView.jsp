@@ -17,12 +17,14 @@
 
 <c:url var="caseApprove" value="caseApprove.do">
 	<c:param name="caseId" value="${ requestScope.casedetail.caseId }" />
-	<c:param name="employeeId" value="${ sessionScope.loginEmployee.employeeId }" />
+	<c:param name="employeeId" value="${ sessionScope.loginEmployee.employeeId }" />	
+	<c:param name="charId" value="${ requestScope.casedetail.charId }" />		
 </c:url>
 
 <c:url var="caseReject" value="caseReject.do">
 	<c:param name="caseId" value="${ requestScope.casedetail.caseId }" />
 	<c:param name="employeeId" value="${ sessionScope.loginEmployee.employeeId }" />
+	<c:param name="charId" value="${ requestScope.casedetail.charId }" />
 </c:url>
 
 <script type="text/javascript">
@@ -31,14 +33,14 @@ function golist(){
 }
 
 function caseApprove(){
-	var ans = confirm("기안이 승인하시겠습니까? 아이템의 정보가 변경됩니다.");
+	var ans = confirm("기안을 승인하시겠습니까? 아이템의 정보가 변경됩니다.");
 	if(ans) { location.href = "${ caseApprove }";
 	}	
 	return false;
 }
 
 function caseReject(){
-	var ans = confirm("기안이 반려하시겠습니까? 아이템이 삭제 됩니다.");
+	var ans = confirm("기안을 반려하시겠습니까? 아이템이 삭제 됩니다.");
 	if(ans) { location.href = "${ caseReject }";
 	}	
 	return false;
