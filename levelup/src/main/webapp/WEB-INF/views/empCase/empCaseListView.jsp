@@ -183,7 +183,6 @@ function showTypeDropdown(){
 									<td data-th="Action"><a href="#" onclick="javascript:location.href='${cdetail}'" 
 											class="btn btn-primary waves-effect waves-light">View Details</a></td>
 									</tr>
-								</tr>
 							</c:forEach>
 							</c:if>
 						</tbody>
@@ -205,4 +204,3 @@ function showTypeDropdown(){
 
 </body>
 </html>
-

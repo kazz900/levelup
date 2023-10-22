@@ -104,4 +104,8 @@ public class InquiryDao {
 	public int deleteInquiry(String inquiryId) {
 		return sqlSessionTemplate.delete("inquiryMapper.deleteInquiry", inquiryId);
 	}
+
+	public int updateInquiry(Inquiry inquiry) {
+		return sqlSessionTemplate.update("inquiryMapper.updateInquiry", inquiry);
+	}
 }

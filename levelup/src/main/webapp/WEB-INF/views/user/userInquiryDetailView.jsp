@@ -88,7 +88,7 @@ function moveinqFixPage(){
 			<div class="d-flex">
 				<div class="flex-grow-1 overflow-hidden">
 					<h5 class="text-truncate font-size-15">문의 제목 : ${ requestScope.inquiry.inquiryTitle }</h5>
-					<p class="text-muted">문의 ID : ${ requestScope.inquiry.inquiryId }</p>
+					<%-- <p class="text-muted">문의 ID : ${ requestScope.inquiry.inquiryId }</p> --%>
 				</div>
 			</div>
 			
@@ -97,15 +97,15 @@ function moveinqFixPage(){
 				<c:url var="idown" value="ifdown.do">
 					<c:param name="file" value="${ requestScope.inquiry.attachmentFileName }" />												
 				</c:url>
-			<td>
-				<h5 class="font-size-14 mb-1">
+				<td>
+					<h5 class="font-size-14 mb-1">
+						
+				   <c:set var="filename" value="${fn:split(requestScope.inquiry.attachmentFileName, '#')[1]}" />
+				   <a href="${idown}" class="text-dark">${filename}</a> &nbsp; <a href="${ idown }" class="text-dark"><i class="bx bx-download h3 m-0"></i></a>
+					</h5>
 					
-			   <c:set var="filename" value="${fn:split(requestScope.inquiry.attachmentFileName, '#')[1]}" />
-			   <a href="${idown}" class="text-dark">${filename}</a> &nbsp; <a href="${ idown }" class="text-dark"><i class="bx bx-download h3 m-0"></i></a>
-				</h5>
-				
 
-			</td>
+				</td>
 			</c:if>
 			<c:if test="${ empty requestScope.inquiry.attachmentFileName }">
 			첨부파일 없음

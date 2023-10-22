@@ -780,7 +780,78 @@ public class UserController {
 		return mv;
 	} 
 	
-	
+	@RequestMapping(value="inquiryupdate.do", method=RequestMethod.POST)
+	public String boardOriginUpdateMethod(Inquiry inquiry, Model model, HttpServletRequest request,
+			@RequestParam(name="deleteFlag", required=false) String delFlag,
+			@RequestParam(name="page", required=false) String page,
+			@RequestParam(name="upfile", required=false) MultipartFile mfile) {
+		logger.info("inquiryupdate.do : " + inquiry);
+		
+		int currentPage = 1;
+		if(page != null) {
+			currentPage = Integer.parseInt(page);
+		}
+		
+		//공지사항 첨부파일 저장 폴더 지정
+		String savePath = request.getSession().getServletContext().getRealPath("resources/inquiry_files");
+				
+		//첨부파일이 변경된 경우의 처리--------------------------------------------------------
+		//1. 원래 첨부파일이 있는데 '파일삭제'를 선택한 경우
+		//	또는 원래 첨부파일이 있는데 새로운 첨부파일이 업로드 된 경우
+		if(inquiry.getAttachmentFileName() != null && 
+				(delFlag != null && delFlag.equals("yes")) || !mfile.isEmpty()
+				) {
+			//저장폴더에서 파일삭제함
+			String fileName = mfile.getOriginalFilename();
+			String renameFileName = FileNameChange.change(fileName, "yyyyMMddHHmmss") + "#" + mfile.getOriginalFilename();
+			logger.info("왜 파일이 삭제가 안될까에 대해 : " + renameFileName);
+			new File(savePath + "\\" + renameFileName).delete();
+			//notice 안의 파일정보도 제거함
+			inquiry.setAttachmentFileName(null);
+		}
+		
+		//2. 새로운 첨부파일이 있을 때 (공지글 첨부파일은 1개임)
+		if(!mfile.isEmpty()) {
+			//전송온 파일이름 추출함
+			String fileName = mfile.getOriginalFilename();
+			String renameFileName = null;
+			
+			//저장폴더에는 변경된 이름을 저장 처리함
+			//파일 이름바꾸기함 : 년월일시분초.확장자
+			if(fileName != null && fileName.length() > 0) {
+				
+					//바꿀 파일명에 대한 문자열 만들기
+					renameFileName = FileNameChange.change(fileName, "yyyyMMddHHmmss") + "#" + mfile.getOriginalFilename();
+					logger.info("첨부파일명 확인 : " + fileName + ", " + renameFileName);
+				try {
+					//저장 폴더에 파일명 바꾸기 처리
+					mfile.transferTo(new File(savePath + "\\" + renameFileName));
+					
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+					model.addAttribute("message", "첨부파일 저장 실패!");
+					return "common/error";
+				}	
+				
+			}//파일명 바꾸기
+			//board 객체에 첨부파일 정보 저장처리
+			inquiry.setAttachmentFileName(renameFileName);
+			
+		}//첨부파일이 있을 때
+		
+		
+		if(inquiryService.updateInquiry(inquiry) > 0) {
+			//공지글 수정 성공시 상세보기 페이지로 이동
+			model.addAttribute("page", currentPage);
+			model.addAttribute("iid", inquiry.getInquiryId());
+			model.addAttribute("userId", inquiry.getUserId());
+			return "redirect:uuidetail.do";
+		}else {
+			model.addAttribute("message", inquiry.getInquiryId() + "번 게시원글 수정 실패!");
+			return "common/error";
+		}
+	}
 	
 
 }

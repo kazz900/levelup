@@ -112,4 +112,9 @@ public class InquiryServiceImpl implements InquiryService {
 		return inquiryDao.deleteInquiry(inquiryId);
 	}
 
+	@Override
+	public int updateInquiry(Inquiry inquiry) {
+		return inquiryDao.updateInquiry(inquiry);
+	}
+
 }
