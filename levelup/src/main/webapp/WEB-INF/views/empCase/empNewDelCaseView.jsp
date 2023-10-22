@@ -74,7 +74,7 @@
 	                      
 	                            
 	                            
-	                            <input type="hidden" name="caseType" value="${ param.caseType }">
+	                            <input type="hidden" name="caseType" value="2">
 	                            <input type="hidden" name="charId" value="${ param.charId }">
 	                            <input type="hidden" name="accountId" value="${ requestScope.character.accountId }">
 	                            <input type="hidden" name="charName" value="${ requestScope.character.name }">
