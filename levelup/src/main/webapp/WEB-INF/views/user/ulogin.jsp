@@ -81,7 +81,7 @@
 
                                             </form>
                                             <div class="mt-5 text-center">
-                                                <p>Don't have an account ? <a href="/auth/register-2" class="fw-medium text-primary"> Signup now </a> </p>
+                                                <p>Don't have an account ? <a href="${ pageContext.servletContext.contextPath }/userinsertpage.do" class="fw-medium text-primary"> Signup now </a> </p>
                                             </div>
                                         </div>
                                     </div>

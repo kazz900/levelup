@@ -37,4 +37,9 @@
 	<select id="selectOneSearchEmail" parameterType="Search" resultMap="resultUser">
 		SELECT * FROM evol.login WHERE evol.login.email = #{keyword}
 	</select>
+	
+	<select id="selectCheckId" parameterType="string" resultType="_int">
+	  select count(evol.login.userid) from evol.login where evol.login.userid = #{userid}
+	</select>
+		
 </mapper>
