@@ -185,7 +185,7 @@ function showTypeDropdown(){
 											onclick="cancelPayment('${p.paymentKey }');"
 											class="btn btn-primary waves-effect waves-light">임시환불버튼</a></td>
 										<c:url var="cwrite" value="cicform.do">
-												<c:param name="paymentId" value="${ p.paymentKey }"/>
+												<c:param name="paymentKey" value="${ p.paymentKey }"/>
 												<c:param name="page" value="${ nowpage }"/>
 												<c:param name="employeeId" value="${ sessionScope.loginEmployee.employeeId }"/>
 												<c:param name="managerId" value="${ sessionScope.loginEmployee.managerId }"/>
