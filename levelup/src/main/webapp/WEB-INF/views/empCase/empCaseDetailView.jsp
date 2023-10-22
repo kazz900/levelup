@@ -17,12 +17,14 @@
 
 <c:url var="caseApprove" value="caseApprove.do">
 	<c:param name="caseId" value="${ requestScope.casedetail.caseId }" />
-	<c:param name="employeeId" value="${ sessionScope.loginEmployee.employeeId }" />
+	<c:param name="employeeId" value="${ sessionScope.loginEmployee.employeeId }" />	
+	<c:param name="charId" value="${ requestScope.casedetail.charId }" />		
 </c:url>
 
 <c:url var="caseReject" value="caseReject.do">
 	<c:param name="caseId" value="${ requestScope.casedetail.caseId }" />
 	<c:param name="employeeId" value="${ sessionScope.loginEmployee.employeeId }" />
+	<c:param name="charId" value="${ requestScope.casedetail.charId }" />
 </c:url>
 
 <script type="text/javascript">
@@ -31,14 +33,14 @@ function golist(){
 }
 
 function caseApprove(){
-	var ans = confirm("기안이 승인하시겠습니까? 아이템의 정보가 변경됩니다.");
+	var ans = confirm("기안을 승인하시겠습니까? 아이템의 정보가 변경됩니다.");
 	if(ans) { location.href = "${ caseApprove }";
 	}	
 	return false;
 }
 
 function caseReject(){
-	var ans = confirm("기안이 반려하시겠습니까? 아이템이 삭제 됩니다.");
+	var ans = confirm("기안을 반려하시겠습니까? 아이템이 삭제 됩니다.");
 	if(ans) { location.href = "${ caseReject }";
 	}	
 	return false;
@@ -205,10 +207,9 @@ function caseReject(){
                              			<div id="currentItems">
                                    		<div class="row" >
                                      		<div class="mb-3 col-lg-2">ID</div>        
-                                            <div class="mb-3 col-lg-2">NAME</div>         
-                                            <div class="mb-3 col-lg-2">AMOUNT</div>   
-                                            <div class="mb-3 col-lg-2">PRICE</div>
-                                            <div class="mb-3 col-lg-2">GAME PRICE</div>
+                                            <div class="mb-3 col-lg-2">NAME</div> 
+                                            <div class="mb-3 col-lg-2">UNIQUE ID</div>	        
+                                            <div class="mb-3 col-lg-2">AMOUNT</div>                 
                                         </div>  
                                         
                                              
@@ -218,16 +219,13 @@ function caseReject(){
 	                                        </div>        
 	                                        <div class="mb-3 col-lg-2">		                                        
 		                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.casedetail.originalItemName }" disabled>		                                 
-	                                        </div>          
+	                                        </div>  
+	                                        <div class="mb-3 col-lg-2">
+	                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.casedetail.uniqueId }" disabled>
+	                                        </div>        
 	                                        <div class="mb-3 col-lg-2">
 	                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.casedetail.originalItemAmount }" disabled>
-	                                        </div>  
-	                                       	<div class="mb-3 col-lg-2">
-                                            	<input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.item.price }" disabled>
-	                                        </div>   
-	                                        <div class="mb-3 col-lg-2">
-	                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.item.gamePrice }" disabled>
-	                                        </div> 
+	                                        </div>  	                                       	
                                 			
                                 		</div>	 
                                 		
@@ -244,9 +242,7 @@ function caseReject(){
                                    		<div class="row" >
                                      		<div class="mb-3 col-lg-2">ID</div>        
                                             <div class="mb-3 col-lg-2">NAME</div>         
-                                            <div class="mb-3 col-lg-2">AMOUNT</div>   
-                                            <div class="mb-3 col-lg-2">PRICE</div>
-                                            <div class="mb-3 col-lg-2">GAME PRICE</div>
+                                            <div class="mb-3 col-lg-2">AMOUNT</div>              
                                         </div>  
                                         
                                              
@@ -259,13 +255,7 @@ function caseReject(){
 	                                        </div>          
 	                                        <div class="mb-3 col-lg-2">
 	                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.casedetail.newItemAmount }" disabled>
-	                                        </div>  
-	                                       	<div class="mb-3 col-lg-2">
-                                            	<input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.item2.price }" disabled>
-	                                        </div>   
-	                                        <div class="mb-3 col-lg-2">
-	                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.item2.gamePrice }" disabled>
-	                                        </div> 
+	                                        </div>  	                          
                                 			
                                 		</div>	  
                                 		</div>
