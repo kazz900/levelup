@@ -207,7 +207,8 @@ function caseReject(){
                              			<div id="currentItems">
                                    		<div class="row" >
                                      		<div class="mb-3 col-lg-2">ID</div>        
-                                            <div class="mb-3 col-lg-2">NAME</div>         
+                                            <div class="mb-3 col-lg-2">NAME</div> 
+                                            <div class="mb-3 col-lg-2">UNIQUE ID</div>	        
                                             <div class="mb-3 col-lg-2">AMOUNT</div>                 
                                         </div>  
                                         
@@ -218,7 +219,10 @@ function caseReject(){
 	                                        </div>        
 	                                        <div class="mb-3 col-lg-2">		                                        
 		                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.casedetail.originalItemName }" disabled>		                                 
-	                                        </div>          
+	                                        </div>  
+	                                        <div class="mb-3 col-lg-2">
+	                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.casedetail.uniqueId }" disabled>
+	                                        </div>        
 	                                        <div class="mb-3 col-lg-2">
 	                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.casedetail.originalItemAmount }" disabled>
 	                                        </div>  	                                       	
