@@ -112,7 +112,7 @@ function showTypeDropdown(){
 										<option value="0">상태구분</option>
 										<option value="1">결제완료</option>
 										<option value="2">환불</option>
-										<option value="3">결제오류</option>
+										<option value="3">결제대기</option>
 									</select>
 								</div>
 								<input id="keywordInputbox" type="search" name="keyword">

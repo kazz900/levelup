@@ -39,7 +39,7 @@
 	
 	<select id="insertPayment" parameterType="Payment" resultMap="resultPayment">
 		insert into payment 
-		values (default, #{itemId}, #{charId}, #{accountId}, #{amount}, sysdate, null, null, 1,  null, #{paymentKey}, #{uniqueId}, default)
+		values (default, #{itemId}, #{charId}, #{accountId}, #{amount}, sysdate, null, null, '3',  null, #{paymentKey}, #{uniqueId}, default)
 	</select>
 	
 	<select id="selectListCount" resultType="_int">
@@ -114,6 +114,11 @@
 		SET PAYMENT_STATUS = '2',
 		REFUND_CAUSE = #{cancelReason}
 		WHERE PAYMENT_KEY = #{paymentKey}
+	</update>
+	
+	<update id="updatePaymentState" parameterType="string">
+    	update payment 
+    	set PAYMENT_STATUS = '1' where PAYMENT_KEY = #{ paymentKey }
 	</update>
 	
 </mapper>

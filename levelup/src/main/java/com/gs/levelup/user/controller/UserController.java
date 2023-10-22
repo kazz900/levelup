@@ -161,9 +161,18 @@ public class UserController {
 	
 	@RequestMapping("ushop.do")
 	public String goUShopMethod(
-			@RequestParam(value="message", required=false) String message) {
+			@RequestParam(value="message", required=false) String message, 
+			@RequestParam(value="paymentKey", required=false) String paymentKey,
+			Model model) {
 		if(message != null && message.equals("success")) {
-			//int result = paymentService.updatePaymentState(null);
+			System.out.println("test1 paymentKey : " + paymentKey);
+			
+			int result = paymentService.updatePaymentState(paymentKey);
+			
+			if(result <= 0) {
+				model.addAttribute("message", "로그인 실패");
+				return "common/error";
+			}
 		}
 		return "user/ushop";
 	}
