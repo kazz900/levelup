@@ -20,7 +20,13 @@
   String paymentKey = request.getParameter("paymentKey");
   String amount = request.getParameter("amount");
   // 김화범 시크릿키
-  String secretKey = "test_sk_DpexMgkW36xJ0M0ooAXMrGbR5ozO:";
+  //String secretKey = "test_sk_DpexMgkW36xJ0M0ooAXMrGbR5ozO:";
+  
+  // 김지혁 시크릿키
+  //String secretKey = "test_sk_DpexMgkW36ZnqQN19dEN3GbR5ozO:";
+  
+  // 최유미 시크릿키
+  String secretKey = "test_sk_24xLea5zVAmdw7OMPDZxVQAMYNwW:";
   
   Encoder encoder = Base64.getEncoder(); 
   byte[] encodedBytes = encoder.encode(secretKey.getBytes("UTF-8"));

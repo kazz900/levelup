@@ -105,7 +105,7 @@
 								<th>Item Type</th>
 								<th>Price</th>
 								<th>Game Price</th>
-								<th>GUID</th>
+								<th>Unique ID</th>
 								<th>Amount</th>
 								<th>Change</th>
 								<th>Delete</th>
@@ -120,7 +120,7 @@
 											<td data-th="Item Name">${ i.itemName }</td> 
 											</c:if>
 											<c:if test="${ empty i.itemName }">
-											<td data-th="Item Name">잡템</td> 
+											<td data-th="Item Name">잡템 ${ i.nameId }</td> 
 											</c:if>
 											<!-- Item Type COLUMN -->
 											<c:if test="${ !empty i.itemType }">
@@ -139,6 +139,7 @@
 											<td data-th="Amount">${ i.amount }</td>
 											<!-- Action COLUMN -->
 											<!-- TODO: CONNECT TO CASE WRITE FORM -->
+											<!-- 캐릭터가 가진 아이템 정보 -->
 											<c:url var="cwrite" value="cicform.do">
 												<c:param name="charId" value="${ i.charId }"/>
 												<c:param name="nameId" value="${ i.nameId }"/>

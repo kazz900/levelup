@@ -42,4 +42,22 @@
 	<select id="selectAll" resultMap="resultList">
 		SELECT * FROM evol.ITEM	
 	</select>
+	
+	<select id="selectCharInventory" parameterType="_int" resultMap="resultInventory">
+		select * from evol.inventory where char_id = #{ charId }
+	</select>
+	
+	<update id="updateItemChange" parameterType="Case">
+		update evol.inventory
+		set evol.inventory.nameid = #{ newItemId },
+			evol.inventory.amount = #{ newItemAmount }			
+		where evol.inventory.char_id = #{ charId } and evol.inventory.nameid = #{ originalItemId } 
+		and evol.inventory.unique_id = #{ uniqueId }
+	</update>
+	
+	<delete id="deleteItemOne" parameterType="Case">
+		delete from evol.inventory
+		where evol.inventory.char_id = #{ charId } and evol.inventory.nameid = #{ originalItemId }
+		and evol.inventory.unique_id = #{ uniqueId }
+	</delete>
 </mapper>

@@ -137,6 +137,7 @@ function showTypeDropdown(){
 								<th>Refund Cause</th>
 								<th>Action</th>
 								<th>임시환불버튼</th>
+								<th>기안 작성버튼</th>
 							</tr>
 							<%-- <c:url var="idt" value="idetail.do">
 									<c:param name="iid" value="${ requestScope.inquiry.inquiryId }" />
@@ -183,6 +184,16 @@ function showTypeDropdown(){
 										<td data-th="임시환불버튼"><a href="#"
 											onclick="cancelPayment('${p.paymentKey }');"
 											class="btn btn-primary waves-effect waves-light">임시환불버튼</a></td>
+										<c:url var="cwrite" value="cicform.do">
+												<c:param name="paymentKey" value="${ p.paymentKey }"/>
+												<c:param name="page" value="${ nowpage }"/>
+												<c:param name="employeeId" value="${ sessionScope.loginEmployee.employeeId }"/>
+												<c:param name="managerId" value="${ sessionScope.loginEmployee.managerId }"/>
+										</c:url>
+										<!-- 환불기안버튼 -->
+										<td data-th="기안작성"><a href="#"
+											onclick="javascript:location.href='${cwrite}&caseType=3'"
+											class="btn btn-primary waves-effect waves-light">환불기안</a></td>
 									</tr>
 								</c:forEach>
 							</c:if>

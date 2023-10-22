@@ -160,9 +160,9 @@ function golist(){
 									
 									
 
-									<!-- 현재  아이템 정보 -->
+									<!-- 구매한 아이템 정보 -->
 
-									<label for="currentItems" class="col-form-label col-lg-3">현재 아이템 정보</label>
+									<label for="currentItems" class="col-form-label col-lg-3">구매한 아이템 정보</label>
 									<div id="currentItems">
 										<div class="row">
 											<div class="mb-3 col-lg-2">ID</div>
@@ -174,8 +174,7 @@ function golist(){
 										<div class="row">
 
 											<div class="mb-3 col-lg-2">
-												
-												<input type="text" id="disabledTextInput"
+													<input type="text" id="disabledTextInput"
 													class="form-control" placeholder="${ requestScope.itemdata.nameId }"
 													disabled>
 											</div>
@@ -204,59 +203,51 @@ function golist(){
 										</div>
 
 									</div>
-									<!-- 변경할 아이템 선택 Drop Down-->
+									
+									
+									
+									<!-- 결재 정보 -->
 
-									<!-- TODO 오늘까지 한거 -->
-									<!-- TODO 드랍다운 추가 -->
-									<div>
-										<label>변경 아이템 선택</label> <br>
-										<select class="item-select" id="replacementitemselect" onchange="onReplacementItemSelectChange(this.options[this.selectedIndex]);">
-											<c:forEach items="${ requestScope.ilist }" var="i">
-												<option class="options" id="${ i.itemId }"
-												data-nameId="${ i.itemId }"
-												data-amount="${ i.amount }"
-												data-uniqueId="${ i.uniqueId }"
-												data-itemName="${ i.itemName }"
-												data-itemType="${ i.itemType }"
-												data-price="${ i.price }"
-												data-gamePrice="${ i.gamePrice }">${ i.itemName }
-												</option>
-											</c:forEach>
-										</select>
-
-				
-									</div>
-
-									<!-- 드랍다운에서 아이템 선택 시 자동으로 채워지는 칸들 -->
+									<label for="currentItems" class="col-form-label col-lg-3">결재 정보</label>
 									<div id="currentItems">
 										<div class="row">
-											<div class="mb-3 col-lg-2">ID</div>
-											<div class="mb-3 col-lg-2">NAME</div>							
-											<div class="mb-3 col-lg-2">AMOUNT</div>
+											<div class="mb-3 col-lg-2">PAYMENT ID</div>
+											<div class="mb-3 col-lg-2">PAYMENT KEY</div>
+											<div class="mb-3 col-lg-2">PAYMENT DATE</div>	
+											<div class="mb-3 col-lg-2">PAYMENT STATUS</div>											
 										</div>
 
 										<div class="row">
-											<div class="mb-3 col-lg-2">
-												<input type="text" id="replacementitemid" name="disabledReplaceItemId"
-													class="form-control"
+
+											<div class="mb-3 col-lg-2">												
+												<input type="text" id="disabledTextInput"
+													class="form-control" placeholder="${ requestScope.payment.paymentId }"
 													disabled>
-													<input type="hidden" id="hiddenInputReplaceItemId" name="newItemId">
 											</div>
+											
 											<div class="mb-3 col-lg-2">
-													<input type="text" id="replacementitemname" name="disabledReplaceItemName"
-														class="form-control"
-														disabled>
-													<input type="hidden" id="hiddenInputReplaceItemName" name="newItemName">
-											</div>											
+												<input type="text" id="disabledTextInput" 
+													class="form-control" placeholder="${ requestScope.payment.paymentKey }"
+													disabled>
+											</div>
+											
 											<div class="mb-3 col-lg-2">
-												<input type="number" id="disabledTextInput" name="newItemAmount"
-													class="form-control" required>
+												<input type="text" id="disabledTextInput" 
+													class="form-control" placeholder="<fmt:formatDate value="${ requestScope.payment.paymentDate }" pattern="yyyy-MM-dd HH:mm:ss" />"
+													disabled>
+											</div>									
+											
+											<div class="mb-3 col-lg-2">
+												<input type="text" id="disabledTextInput" 
+													class="form-control" placeholder="${ requestScope.payment.paymentStatus }"
+													disabled>
 											</div>
 										</div>
+
 									</div>
-
-
-
+									
+									
+									
 
 
 									<!-- 기안 내용 -->
@@ -329,23 +320,7 @@ function golist(){
 
 	<!-- Plugins js -->
 	<script src="resources/libs/dropzone/min/dropzone.min.js"></script>
-	
-	<script type="text/javascript">
-		function onReplacementItemSelectChange(replacementItem){
-			// Disabled Input Field (뷰 처리용) 아이템 이름이랑 아이디 띄우는 용도
-			var replacementitemidinputfield = document.getElementById('replacementitemid');
-			var replacementitemnameinputfield = document.getElementById('replacementitemname');
-			// Hidden Input Field (컨트롤러로 New Item 정보 전송용) 
-			var hiddenInputReplacementItemId = document.getElementById('hiddenInputReplaceItemId');
-			var hiddenInputReplacementItemName = document.getElementById('hiddenInputReplaceItemName');
-			
-			replacementitemidinputfield.value = replacementItem.getAttribute("data-nameId");
-			replacementitemnameinputfield.value = replacementItem.getAttribute("data-itemName");
-			
-			hiddenInputReplacementItemId.value = replacementItem.getAttribute("data-nameId");
-			hiddenInputReplacementItemName.value = replacementItem.getAttribute("data-itemName");
-		}
-	</script>
+
 </body>
 </html>
 

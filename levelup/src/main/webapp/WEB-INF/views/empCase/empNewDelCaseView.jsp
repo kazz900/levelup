@@ -76,30 +76,28 @@ function golist(){
 	                            <input type="hidden" name="caseWriterId" value="${ sessionScope.loginEmployee.employeeId }">
 	                            <input type="hidden" name="caseWriterName" value="${ sessionScope.loginEmployee.employeeName }">
 	                            <input type="hidden" name="caseManagerId" value="${ requestScope.manager.employeeId }">
-	                            <input type="hidden" name="caseManagerName" value="${ requestScope.manager.employeeName }">                            
-	                      
+	                            <input type="hidden" name="caseManagerName" value="${ requestScope.manager.employeeName }">                           
 	                            
-	                            
-	                            <input type="hidden" name="caseType" value="${ param.caseType }">
-	                            <input type="hidden" name="charId" value="${ param.charId }">
+	                            <input type="hidden" name="caseType" value="1">
+	                            <input type="hidden" name="charId" value="${ requestScope.character.charId }">
 	                            <input type="hidden" name="accountId" value="${ requestScope.character.accountId }">
 	                            <input type="hidden" name="charName" value="${ requestScope.character.name }">
 	                            <input type="hidden" name="uniqueId" value="${ requestScope.itemdata.uniqueId }">
 	                            
-	                            <input type="hidden" name="originalItemId" value="${ param.nameId }">
-	                            <c:if test="${ !empty param.itemName }">
-		                            <input type="hidden" name="originalItemName" value="${ param.itemName }">
+	                            <input type="hidden" name="originalItemId" value="${ requestScope.itemdata.nameId }">
+	                            <c:if test="${ !empty requestScope.itemdata.itemName }">
+		                            <input type="hidden" name="originalItemName" value="${ requestScope.itemdata.itemName }">
 	                            </c:if>
-	                            <c:if test="${ empty param.itemName }">
-		                            <input type="hidden" name="originalItemName" value="잡템">
+	                            <c:if test="${ empty requestScope.itemdata.itemName }">
+		                            <input type="hidden" name="originalItemName" value="잡템 ${ requestScope.itemdata.nameId }">
 	                            </c:if>
-	                            <input type="hidden" name="originalItemAmount" value="${ param.amount }">
+	                            <input type="hidden" name="originalItemAmount" value="${ requestScope.itemdata.amount }">
 
 
 
 									<!-- 기안 제목 -->
 									<div class="form-group row mb-4">
-										<label for="caseTitle" class="col-form-label col-lg-3">기안 제목</label>
+										<label for="caseTitle" class="col-form-label col-lg-3" >기안 제목</label>
 										<div class="col-lg-12">
 											<input id="caseTitle" name="caseTitle" type="text"
 												class="form-control" placeholder="기안 제목 입력하세요" required>
@@ -168,51 +166,47 @@ function golist(){
 									<div id="currentItems">
 										<div class="row">
 											<div class="mb-3 col-lg-2">ID</div>
-											<div class="mb-3 col-lg-2">NAME</div>
-											<div class="mb-3 col-lg-2">PRICE</div>
-											<div class="mb-3 col-lg-2">GAME PRICE</div>
+											<div class="mb-3 col-lg-2">NAME</div>	
+											<div class="mb-3 col-lg-2">UNIQUE ID</div>			
 											<div class="mb-3 col-lg-2">AMOUNT</div>
 										</div>
 
 										<div class="row">
 
 											<div class="mb-3 col-lg-2">
-												<input type="hidden" name="charId" value="${ param.charId }">
+												
 												<input type="text" id="disabledTextInput"
-													class="form-control" placeholder="${ param.nameId }"
+													class="form-control" placeholder="${ requestScope.itemdata.nameId }"
 													disabled>
 											</div>
 											<div class="mb-3 col-lg-2">
-												<c:if test="${ !empty param.itemName }">
+												<c:if test="${ !empty requestScope.itemdata.itemName }">
 													<input type="text" id="disabledTextInput"
-														class="form-control" placeholder="${ param.itemName }"
+														class="form-control" placeholder="${ requestScope.itemdata.itemName }"
 														disabled>
 												</c:if>
-												<c:if test="${ empty param.itemName }">
+												<c:if test="${ empty requestScope.itemdata.itemName }">
 													<input type="text" id="disabledTextInput"
-														class="form-control" placeholder="잡템" disabled>
+														class="form-control" placeholder="잡템 ${ requestScope.itemdata.nameId }" disabled>
 												</c:if>
-											</div>
-											<div class="mb-3 col-lg-2">
-												<input type="text" id="disabledTextInput"
-													class="form-control" placeholder="${ param.price }"
-													disabled>
-											</div>
-											<div class="mb-3 col-lg-2">
-												<input type="text" id="disabledTextInput"
-													class="form-control" placeholder="${ param.gamePrice }"
-													disabled>
-											</div>
+											</div>	
 											<div class="mb-3 col-lg-2">
 												<input type="text" id="disabledTextInput" 
-													class="form-control" placeholder="${ param.amount }"
+													class="form-control" placeholder="${ requestScope.itemdata.uniqueId }"
+													disabled>
+											</div>									
+											
+											<div class="mb-3 col-lg-2">
+												<input type="text" id="disabledTextInput" 
+													class="form-control" placeholder="${ requestScope.itemdata.amount }"
 													disabled>
 											</div>
 										</div>
 
 									</div>
 								
-								
+
+
 									<!-- 기안 내용 -->
 									<div class="d-flex">
 										<div class="flex-grow-1 overflow-hidden">
@@ -253,7 +247,7 @@ function golist(){
 												<button type="button" class="btn btn-secondary waves-effect waves-light" onclick="golist();">목록으로</button>
 											</div>
 										</div>
-									
+										
 									</c:if>
 
 								</form>
@@ -283,6 +277,7 @@ function golist(){
 
 	<!-- Plugins js -->
 	<script src="resources/libs/dropzone/min/dropzone.min.js"></script>
+	
 
 </body>
 </html>
