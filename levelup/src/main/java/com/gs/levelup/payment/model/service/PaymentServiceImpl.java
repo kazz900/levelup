@@ -77,4 +77,8 @@ public class PaymentServiceImpl implements PaymentService {
 		public int updatePaymentState(String paymentKey) {
 			return paymentDao.updatePaymentState(paymentKey);
 		}
+		@Override
+		public Payment selectPaymentKey(String paymentKey) {
+			return paymentDao.selectPaymentKey(paymentKey);
+		}
 }

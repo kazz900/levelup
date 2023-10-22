@@ -167,7 +167,7 @@ public class UserController {
 		if(message != null && message.equals("success")) {
 			System.out.println("test1 paymentKey : " + paymentKey);
 			
-			int result = paymentService.updatePaymentState(paymentKey);
+			int result = paymentService.updatePaymentState(paymentKey);         
 			
 			if(result <= 0) {
 				model.addAttribute("message", "로그인 실패");

@@ -73,12 +73,21 @@
    <%
     if (isSuccess) { %>
 		<script>
-		    // 성공 메시지 표시
-		    alert("결제가 성공적으로 완료되었습니다.");
-		    
-		    // 페이지 이동
-		    var paymentKey = "${requestScope.paymentKey}"; // 변수 값을 따옴표로 감싸서 할당합니다.
-		    window.location.href = "ushop.do?message=success&paymentKey=" + paymentKey;
+		    // 폼 엘리먼트 생성
+		    var form = document.createElement("form");
+		    form.method = "POST"; // POST 메서드를 사용합니다.
+		    form.action = "purchase.do"; // 이동할 페이지 URL을 설정합니다.
+		
+		    // 파라미터(데이터)를 폼에 추가
+		    var paymentKeyInput = document.createElement("input");
+		    paymentKeyInput.type = "hidden"; // 숨김 입력 필드로 만듭니다.
+		    paymentKeyInput.name = "paymentKey"; // 파라미터 이름
+		    paymentKeyInput.value = "${requestScope.paymentKey}"; // 파라미터 값
+		    form.appendChild(paymentKeyInput);
+		
+		    // 페이지 이동을 위해 폼을 body에 추가하고 제출(submit)합니다.
+		    document.body.appendChild(form);
+		    form.submit();
 		</script>
         <%-- <h1>결제 성공</h1>
         <p>결과 데이터 : <%= jsonObject.toJSONString() %></p>
