@@ -13,6 +13,7 @@ public interface InquiryService {
 	public ArrayList<Inquiry> selectListType(Search search);	
 	public int insertInquiryAnswer(Inquiry inquiry);	
 	public int updateInquiryAnswer(Inquiry inquiry);	
+	public int updateInquiry(Inquiry inquiry);	
 	public int deleteInquiryAnswer(String inquiryId);	
 	public int selectListCount();
 	public int selectListCount(String type);
@@ -27,4 +28,5 @@ public interface InquiryService {
 	public int insertInquiry(Inquiry inquiry);
 	public Inquiry selectInquiry(String inquiryId);
 	public ArrayList<Inquiry> selectUserPreviousInquiry(String userId);
+	public int deleteInquiry(String inquiryId);
 }

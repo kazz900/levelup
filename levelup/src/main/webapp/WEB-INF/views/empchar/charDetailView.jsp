@@ -105,7 +105,7 @@
 								<th>Item Type</th>
 								<th>Price</th>
 								<th>Game Price</th>
-								<th>GUID</th>
+								<th>Unique ID</th>
 								<th>Amount</th>
 								<th>Change</th>
 								<th>Delete</th>
@@ -120,7 +120,7 @@
 											<td data-th="Item Name">${ i.itemName }</td> 
 											</c:if>
 											<c:if test="${ empty i.itemName }">
-											<td data-th="Item Name">잡템</td> 
+											<td data-th="Item Name">잡템 ${ i.nameId }</td> 
 											</c:if>
 											<!-- Item Type COLUMN -->
 											<c:if test="${ !empty i.itemType }">
@@ -139,7 +139,8 @@
 											<td data-th="Amount">${ i.amount }</td>
 											<!-- Action COLUMN -->
 											<!-- TODO: CONNECT TO CASE WRITE FORM -->
-											<c:url var="cwrite" value="cicform.do">
+											<!-- 캐릭터가 가진 아이템 정보 -->
+											<c:url var="cwrite" value="cdcaseform.do">
 												<c:param name="charId" value="${ i.charId }"/>
 												<c:param name="nameId" value="${ i.nameId }"/>
 												<c:param name="amount" value="${ i.amount }"/>
@@ -147,13 +148,15 @@
 												<c:param name="itemType" value="${ i.itemType }"/>
 												<c:param name="price" value="${ i.price }"/>
 												<c:param name="gamePrice" value="${ i.gamePrice }"/>
+												<c:param name="uniqueId" value="${ i.uniqueId }"/>
+												<c:param name="keyword" value="${ param.keyword }"/>
 												<c:param name="employeeId" value="${ sessionScope.loginEmployee.employeeId }"/>
 												<c:param name="managerId" value="${ sessionScope.loginEmployee.managerId }"/>
 											</c:url>
-											<td data-th="Action"><a href="#" onclick="javascript:location.href='${cwrite}'" 
+											<td data-th="Action"><a href="#" onclick="javascript:location.href='${cwrite}&caseType=1'" 
 											class="btn btn-primary waves-effect waves-light">Change Item</a></td>
 											<td data-th="Action"><a href="#" 
-											class="btn btn-primary waves-effect waves-light">Delete Item</a></td>
+											class="btn btn-primary waves-effect waves-light" onclick="javascript:location.href='${cwrite}&caseType=2'">Delete Item</a></td>
 										</tr>
 									</c:forEach>
 								</c:if>

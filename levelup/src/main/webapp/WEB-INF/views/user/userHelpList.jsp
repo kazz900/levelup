@@ -3,8 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>   
-
-<script type="text/javascript" src="/levelup/resources/js/jquery-3.7.0.min.js"></script>
+<script src="resources/js/jquery-3.7.0.min.js"></script>
 <c:set var="nowpage" value="1" /> 
 <c:if test="${ !empty requestScope.currentPage }">
    <c:set var="nowpage" value="${ requestScope.currentPage }"/>
@@ -14,11 +13,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 </head>
 <body>
 <c:import url="/WEB-INF/views/user/userHeader.jsp"/>
-
+<c:if test="${not empty message}">
+    <script type="text/javascript">
+    	alert("삭제되었습니다.");
+    </script>
+</c:if>
 <div>
 <div class="container">
 <hr><br><br><br><br><br>
@@ -27,8 +29,9 @@
 <a onclick="help2()">&nbsp;&nbsp;&nbsp; 게임문의 &nbsp;&nbsp;&nbsp;</a>| 
 <a onclick="help3()">&nbsp;&nbsp;&nbsp; 기타문의 &nbsp;&nbsp;&nbsp;</a> | 
 <a onclick="help4()">&nbsp;&nbsp;&nbsp; 아이템 &nbsp;&nbsp;&nbsp;</a> | 
-<a onclick="help5()">&nbsp;&nbsp;&nbsp; 고객센터 &nbsp;&nbsp;&nbsp;</a> |
+<a onclick="help5()">&nbsp;&nbsp;&nbsp; 문의전화 &nbsp;&nbsp;&nbsp;</a> |
 </div>	
+
 		
 		<hr>
 		
@@ -57,7 +60,7 @@
 							<c:forEach items="${ requestScope.list }" var="i">
 								<tr>
 									<td data-th="Question Title"><a class="ititle"
-										href="/levelup/uidetail.do?iid=${ i.inquiryId }&page=${ nowpage }">${ i.inquiryTitle }</a></td>
+    								href="javascript:void(0);" onclick="checkUser('${i.userId}', '${sessionScope.loginUser.userId}', '${i.inquiryId}');">${i.inquiryTitle}</a></td>
 									<td data-th="User ID">${ i.userId }</td>
 									<c:if test="${ i.inquiryType eq '1' }">
 										<td data-th="Type">환불문의</td>
@@ -77,6 +80,7 @@
 										<td data-th="Answer"><span class="badge bg-danger">미답변</span></td>
 									</c:if>
 								</tr>
+
 							</c:forEach>
 						</tbody>
 					</table>
@@ -98,7 +102,7 @@
 		&nbsp;
 	</c:if>
 </div>
-	
+
 
 <script type="text/javascript">
         // 버튼 클릭 이벤트 핸들러
@@ -132,7 +136,17 @@
         function help5(){
        	 location.href = "${ pageContext.servletContext.contextPath }/helptype5.do";
        }
-    </script>
+</script>
+<script type="text/javascript">
+function checkUser(postUserId, currentUserId, inquiryId) {
+    if (postUserId !== currentUserId) {
+        alert("본인 게시글만 확인할 수 있습니다.");
+    } else {
+        var page = '${nowpage}';
+        window.location.href = "/levelup/uuidetail.do?iid=" + inquiryId + "&page=" + page + "&userId=" + postUserId;
+    }
+}
+</script>
 <c:import url="/WEB-INF/views/user/userFooter.jsp"/>
 </body>
 </html>

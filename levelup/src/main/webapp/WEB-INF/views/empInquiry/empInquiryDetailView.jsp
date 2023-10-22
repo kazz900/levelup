@@ -23,6 +23,7 @@
 	<c:param name="page" value="${ param.page }" />	
 </c:url>
 <script type="text/javascript">
+
 function golist(){
 	location.href = "${pageContext.servletContext.contextPath}/ilist.do?page=${ param.page }";
 }
@@ -32,6 +33,7 @@ function moveAnsFixPage(){
 }
 
 </script>
+
 </head>
 <style>
 .table-responsive {
@@ -189,7 +191,8 @@ function moveAnsFixPage(){
 								<div class="flex-grow-1 overflow-hidden">
 									<h5 class="text-truncate font-size-15"> 답변 내용 : </h5>
 									<div class="mb-3">
-                                           <textarea id="formmessage" name="answerContent" class="form-control" rows="3" placeholder="답변을 달아주세요"></textarea>
+                                           <textarea id="formmessage" name="answerContent" class="form-control" rows="3" placeholder="답변을 달아주세요" required></textarea>
+                                           
                                        </div>
 								</div>
 							</div>				
@@ -258,7 +261,7 @@ function moveAnsFixPage(){
 	<c:import url="/WEB-INF/views/common/footer.jsp" />
 	</div>
 	<!-- main-content -->
-
+	
 </body>
 </html>
 
