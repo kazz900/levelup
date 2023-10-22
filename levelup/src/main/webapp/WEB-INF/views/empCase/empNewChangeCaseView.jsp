@@ -45,6 +45,12 @@
 	color: black;
 }
 </style>
+<script type="text/javascript">
+function golist(){
+	location.href = "${pageContext.servletContext.contextPath}/csearchcharid.do?keyword=${ param.keyword }";
+}
+
+</script>
 <body data-sidebar="dark" data-layout-mode="light">
 	<!-- 내비게이션바, 사이드바 등등 -->
 	<c:import url="/WEB-INF/views/common/layout.jsp" />
@@ -91,36 +97,72 @@
 
 									<!-- 기안 제목 -->
 									<div class="form-group row mb-4">
-										<label for="caseTitle" class="col-form-label col-lg-1">기안 제목</label>
-										<div class="col-lg-11">
+										<label for="caseTitle" class="col-form-label col-lg-3" >기안 제목</label>
+										<div class="col-lg-12">
 											<input id="caseTitle" name="caseTitle" type="text"
 												class="form-control" placeholder="기안 제목 입력하세요" required>
 										</div>
 									</div>
 
-									<!-- 결재자 -->
-									<!-- 결재자 정보 -->
+									
+									<!-- 결재자 정보 -->									
+									<label for="currentItems" class="col-form-label col-lg-3">결재자 정보</label>
 									<div class="row">
+										<!-- 관리자가 있는 경우 -->
+										<c:if test="${ !empty sessionScope.loginEmployee.managerId }">
 										<!-- 결재자 이름 -->
-										<div class="mb-3 col-lg-2">
-											<input type="hidden" name=""
-												value="${ requestScope.manager.employeeId }"> 
-												<label>결재자 이름</label>
+											<div class="mb-3 col-lg-2">											
+													<label>결재자 이름</label>
+													<input type="text" name="" id="disabledTextInput" class="form-control"
+													placeholder="${ requestScope.manager.employeeName }" disabled>
+											</div>
+											<div class="mb-3 col-lg-3">
+												<label>결재자 이메일</label><input type="text"
+													id="disabledTextInput" class="form-control"
+													placeholder="${ requestScope.manager.employeeEmail }"
+													disabled>
+											</div>
+										</c:if>
+										
+										<!-- 관리자가 없는 경우(본인이 최종결재자인 경우) -->
+										<c:if test="${ empty sessionScope.loginEmployee.managerId }">								
+										
+											<div class="mb-3 col-lg-3">	
 												<input type="text" name="" id="disabledTextInput" class="form-control"
-												placeholder="${ requestScope.manager.employeeName }" disabled>
+												placeholder="결재자 정보가 없습니다" disabled>
+											</div>
+										
+										</c:if>
+									</div>
+									
+									
+									<!-- 유저 정보 -->
+									<label for="currentItems" class="col-form-label col-lg-3">유저 정보</label>										
+									<div class="row">
+										<div class="mb-3 col-lg-2">											
+												<label>계정 ID</label>
+												<input type="text" name="" id="disabledTextInput" class="form-control"
+												placeholder="${ requestScope.character.accountId }" disabled>
 										</div>
 										<div class="mb-3 col-lg-2">
-											<label>결재자 이메일</label><input type="text"
+											<label>캐릭터 ID</label><input type="text"
 												id="disabledTextInput" class="form-control"
-												placeholder="${ requestScope.manager.employeeEmail }"
+												placeholder="${ requestScope.character.charId }"
+												disabled>
+										</div>
+										<div class="mb-3 col-lg-2">
+											<label>캐릭터 이름</label><input type="text"
+												id="disabledTextInput" class="form-control"
+												placeholder="${ requestScope.character.name }"
 												disabled>
 										</div>
 									</div>
+									
+									
 
 									<!-- 현재  아이템 정보 -->
 
-									<label for="currentItems" class="col-form-label col-lg-3">ITEM
-										INFO</label>
+									<label for="currentItems" class="col-form-label col-lg-3">현재 아이템 정보</label>
 									<div id="currentItems">
 										<div class="row">
 											<div class="mb-3 col-lg-2">ID</div>
@@ -161,7 +203,7 @@
 									<!-- TODO 오늘까지 한거 -->
 									<!-- TODO 드랍다운 추가 -->
 									<div>
-										<label>SELECT REPLACEMENT ITEM</label> <br>
+										<label>변경 아이템 선택</label> <br>
 										<select class="item-select" id="replacementitemselect" onchange="onReplacementItemSelectChange(this.options[this.selectedIndex]);">
 											<c:forEach items="${ requestScope.ilist }" var="i">
 												<option class="options" id="${ i.itemId }"
@@ -214,8 +256,7 @@
 									<!-- 기안 내용 -->
 									<div class="d-flex">
 										<div class="flex-grow-1 overflow-hidden">
-											<label for="caseContent" class="col-form-label col-lg-1">기안
-												내용</label>
+											<label for="caseContent" class="col-form-label col-lg-3">기안 내용</label>
 											<div class="col-lg-12">
 												<textarea id="caseContent" name="caseContent"
 													class="form-control" rows="3" cols="40"
@@ -226,7 +267,7 @@
 									<br>
 
 									<!-- 파일 업로드 -->
-									<label for="attatchFile" class="col-form-label col-lg-1">첨부 파일</label>
+									<label for="attatchFile" class="col-form-label col-lg-3">첨부 파일</label>
 									<div class="mb-3" align="center">
 										<!--  <i class="display-4 text-muted bx bxs-cloud-upload"></i><br> -->
 										<input class="form-control" type="file" name="upfile">
@@ -236,11 +277,24 @@
 									
 									
 									<!-- 작성 완료 -->
-									<div class="row justify-content-end">
-										<div class="col-lg-10">
-											<button type="submit" class="btn btn-primary">작성 완료</button>
+									
+									<c:if test="${ !empty sessionScope.loginEmployee.managerId }">
+										<div class="row justify-content-end" align="center">
+											<div class="col-lg-12">
+												<button type="button" class="btn btn-secondary waves-effect waves-light" onclick="golist();">목록으로</button>
+												<button type="submit" class="btn btn-primary">작성 완료</button>
+											</div>
 										</div>
-									</div>
+									</c:if>
+									
+									<c:if test="${ empty sessionScope.loginEmployee.managerId }">								
+										<div class="row justify-content-end" align="center">
+											<div class="col-lg-12">
+												<button type="button" class="btn btn-secondary waves-effect waves-light" onclick="golist();">목록으로</button>
+											</div>
+										</div>
+										
+									</c:if>
 
 								</form>
 

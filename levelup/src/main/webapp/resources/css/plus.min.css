@@ -89,6 +89,11 @@ nav .uheaderul li a {
 	cursor: pointer;
 }
 
+.gamestartbox a{
+	text-align: left;
+	font-size: 12px;
+}
+
 .udownbutton{
 	padding-top: 20px;
 	font-size: 12px;
@@ -272,4 +277,8 @@ a:hover {
 }
 .card-body{
 	
+}
+.alingg{
+	display: flex;
+    align-items: center;
 }

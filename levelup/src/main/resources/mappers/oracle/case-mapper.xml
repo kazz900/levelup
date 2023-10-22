@@ -197,7 +197,7 @@
 
 	</insert>
 	
-	<update id="updateCaseArrove" parameterType="string">
+	<update id="updateCaseAprrove" parameterType="string">
 		update case
 		set CASE_STATUS = '1',
 			SIGN_DATE = SYSDATE

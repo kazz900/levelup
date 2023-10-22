@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.gs.levelup._case.model.vo.Case;
 import com.gs.levelup.item.model.dao.ItemDao;
 import com.gs.levelup.item.model.vo.Item;
 
@@ -42,6 +43,5 @@ public class ItemServiceImpl implements ItemService{
 	public ArrayList<Item> selectItem3() {
 		return itemDao.selectItem3();
 	}
-	
-	
+		
 }
