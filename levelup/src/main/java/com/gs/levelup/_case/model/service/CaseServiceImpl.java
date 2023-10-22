@@ -30,8 +30,8 @@ public class CaseServiceImpl implements CaseService{
 	}
 	
 	@Override
-	public int updateCaseArrove(String caseId) {
-		return caseDao.updateCaseArrove(caseId);
+	public int updateCaseAprrove(String caseId) {
+		return caseDao.updateCaseAprrove(caseId);
 	}
 	
 	@Override

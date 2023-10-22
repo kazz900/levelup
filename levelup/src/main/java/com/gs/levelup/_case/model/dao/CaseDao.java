@@ -32,8 +32,8 @@ public class CaseDao {
 		return 0;
 	}
 	
-	public int updateCaseArrove(String caseId) {
-		return sqlSessionTemplate.update("caseMapper.updateCaseArrove", caseId);
+	public int updateCaseAprrove(String caseId) {
+		return sqlSessionTemplate.update("caseMapper.updateCaseAprrove", caseId);
 	}
 	
 	public int updateCaseReject(String caseId) {
