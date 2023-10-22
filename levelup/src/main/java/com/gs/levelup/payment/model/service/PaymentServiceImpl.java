@@ -68,4 +68,9 @@ public class PaymentServiceImpl implements PaymentService {
 		public int cancelPayment(Search search) {
 			return paymentDao.cancelPayment(search);
 		}
+		
+		@Override
+		public Payment selectPaymentOne(String paymentKey) {
+			return paymentDao.selectPaymentOne(paymentKey);
+		}
 }

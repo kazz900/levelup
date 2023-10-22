@@ -89,7 +89,7 @@ function golist(){
 		                            <input type="hidden" name="originalItemName" value="${ requestScope.itemdata.itemName }">
 	                            </c:if>
 	                            <c:if test="${ empty requestScope.itemdata.itemName }">
-		                            <input type="hidden" name="originalItemName" value="잡템">
+		                            <input type="hidden" name="originalItemName" value="잡템 ${ requestScope.itemdata.itemName }">
 	                            </c:if>
 	                            <input type="hidden" name="originalItemAmount" value="${ requestScope.itemdata.amount }">
 
@@ -166,14 +166,15 @@ function golist(){
 									<div id="currentItems">
 										<div class="row">
 											<div class="mb-3 col-lg-2">ID</div>
-											<div class="mb-3 col-lg-2">NAME</div>				
+											<div class="mb-3 col-lg-2">NAME</div>	
+											<div class="mb-3 col-lg-2">UNIQUE ID</div>			
 											<div class="mb-3 col-lg-2">AMOUNT</div>
 										</div>
 
 										<div class="row">
 
 											<div class="mb-3 col-lg-2">
-												<input type="hidden" name="charId" value="${ requestScope.character.charId }">
+												
 												<input type="text" id="disabledTextInput"
 													class="form-control" placeholder="${ requestScope.itemdata.nameId }"
 													disabled>
@@ -186,9 +187,14 @@ function golist(){
 												</c:if>
 												<c:if test="${ empty requestScope.itemdata.itemName }">
 													<input type="text" id="disabledTextInput"
-														class="form-control" placeholder="잡템" disabled>
+														class="form-control" placeholder="잡템 ${ requestScope.itemdata.nameId }" disabled>
 												</c:if>
-											</div>										
+											</div>	
+											<div class="mb-3 col-lg-2">
+												<input type="text" id="disabledTextInput" 
+													class="form-control" placeholder="${ requestScope.itemdata.uniqueId }"
+													disabled>
+											</div>									
 											
 											<div class="mb-3 col-lg-2">
 												<input type="text" id="disabledTextInput" 

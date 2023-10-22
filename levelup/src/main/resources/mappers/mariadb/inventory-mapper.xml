@@ -58,5 +58,6 @@
 	<delete id="deleteItemOne" parameterType="Case">
 		delete from evol.inventory
 		where evol.inventory.char_id = #{ charId } and evol.inventory.nameid = #{ originalItemId }
+		and evol.inventory.unique_id = #{ uniqueId }
 	</delete>
 </mapper>

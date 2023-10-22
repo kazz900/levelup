@@ -29,6 +29,8 @@ import com.gs.levelup.employee.model.vo.Employee;
 import com.gs.levelup.inventory.model.service.InventoryService;
 import com.gs.levelup.inventory.model.vo.Inventory;
 import com.gs.levelup.item.model.service.ItemService;
+import com.gs.levelup.payment.model.service.PaymentService;
+import com.gs.levelup.payment.model.vo.Payment;
 
 @Controller
 public class CaseController {
@@ -48,6 +50,9 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 	
 	@Autowired
 	private CharacterService characterService;
+	
+	@Autowired
+	private PaymentService paymentService;
 
 	// 기안 리스트 출력용
 	@RequestMapping(value = "clist.do", method = RequestMethod.GET)
@@ -338,6 +343,7 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 	@RequestMapping("cicform.do")
 	public ModelAndView moveCaseItemChangeWritePage(@RequestParam("caseType") String caseType,
 													@RequestParam("managerId") String managerId, 
+													@RequestParam("paymentKey") String paymentKey, 
 													Inventory itemdata,		//Original 아이템 정보											
 													ModelAndView mv) {
 		// 현재 우리가 ITEM TABLE에 가지고 있는 정보를 불러오는 용도
@@ -346,6 +352,8 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 		Employee manager = employeeService.selectManager(managerId);
 		// 기안 테이블에 유저 정보를 넣기위해 캐릭터 TABLE에서 유저 정보를 가져옴
 		com.gs.levelup.character.model.vo.Character character = characterService.selectCharacter(itemdata.getCharId());
+		// payment 테이블에서 해당 paymentId의 결재 정보를 가져옴
+		Payment payment = paymentService.selectPaymentOne(paymentKey);
 		
 		if(caseType.equals("1")) {
 			mv.addObject("manager", manager);
@@ -360,6 +368,15 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 			mv.addObject("ilist", ilist);
 			mv.addObject("itemdata", itemdata);
 			mv.addObject("character", character);
+			
+			mv.setViewName("empCase/empNewDelCaseView");
+		}
+		else if (caseType.equals("3")) {
+			mv.addObject("manager", manager);
+			mv.addObject("ilist", ilist);
+			mv.addObject("itemdata", itemdata);
+			mv.addObject("character", character);
+			mv.addObject("payment", payment);
 			
 			mv.setViewName("empCase/empNewDelCaseView");
 		}
@@ -419,9 +436,7 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 	//작성한 기안 디테일 뷰. 승인/ 반려 페이지
 	@RequestMapping(value="cdetail.do", method = RequestMethod.GET)
 	public ModelAndView selectCaseItemChangeDetail(ModelAndView mv,
-												 @RequestParam("caseId") String caseId,
-												 @RequestParam("itemName") String itemName,
-												 @RequestParam("itemName2") String itemName2,
+												 Case _case,
 												 @RequestParam(name="page", required=false) String page) {
 		
 		//출력할 페이지 
@@ -430,19 +445,14 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 		if(page != null) {
 			currentPage = Integer.parseInt(page);					
 		}
+
 		
-		if (itemName.equals("잡템")) {
-			itemName = "NONE";
-		}
-		
-		Case casedetail = caseService.selectCase(caseId);	
-		com.gs.levelup.item.model.vo.Item item = itemService.selectOneItem(itemName);
-		com.gs.levelup.item.model.vo.Item item2 = itemService.selectOneItem(itemName2);
+		Case casedetail = caseService.selectCase(_case.getCaseId());	
+
 		if(casedetail != null) {
 			mv.addObject("casedetail", casedetail);
 			mv.addObject("currentPage", currentPage);
-			mv.addObject("item", item);
-			mv.addObject("item2", item2);
+;
 		
 			mv.setViewName("empCase/empCaseDetailView");
 		}else {
