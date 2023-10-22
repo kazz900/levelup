@@ -43,4 +43,9 @@ public class InventoryDao {
 			return sqlSessionTemplateMaria.delete("inventoryMapper.deleteItemOne", _case);
 		}
 
+		public Inventory selectPaymentItem(Long uniqueId) {
+			return sqlSessionTemplateMaria.selectOne("inventoryMapper.selectPaymentItem", uniqueId);
+		}
+
+
 }
