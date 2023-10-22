@@ -51,7 +51,8 @@
 		update evol.inventory
 		set evol.inventory.nameid = #{ newItemId },
 			evol.inventory.amount = #{ newItemAmount }			
-		where evol.inventory.char_id = #{ charId } and evol.inventory.nameid = #{ originalItemId }
+		where evol.inventory.char_id = #{ charId } and evol.inventory.nameid = #{ originalItemId } 
+		and evol.inventory.unique_id = #{ uniqueId }
 	</update>
 	
 	<delete id="deleteItemOne" parameterType="Case">
