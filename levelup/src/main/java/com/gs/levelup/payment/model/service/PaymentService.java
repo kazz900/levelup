@@ -24,4 +24,5 @@ public interface PaymentService {
 	public Payment selectPaymentOne(String paymentKey);
 	public int updatePaymentState(String paymentKey);
 	public Payment selectPaymentKey(String paymentKey);
+	public ArrayList<Payment> selectPaymentList(int accountId);
 }
