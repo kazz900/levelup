@@ -1,18 +1,18 @@
 INSERT INTO DEPARTMENT
-VALUES(SYS_GUID(), '개발부');
+VALUES('dev', '개발부');
 
 INSERT INTO DEPARTMENT
-VALUES(SYS_GUID(), '영업부');
+VALUES('marketing', '영업부');
 
 INSERT INTO DEPARTMENT
-VALUES(SYS_GUID(), '무역부');
-
-
-INSERT INTO DEPARTMENT
-VALUES(SYS_GUID(), '경리부');
+VALUES('trade', '무역부');
 
 
 INSERT INTO DEPARTMENT
-VALUES(SYS_GUID(), '아무것도안하는부');
+VALUES('accounting', '경리부');
+
+
+INSERT INTO DEPARTMENT
+VALUES('none', '미정');
 
 COMMIT;
