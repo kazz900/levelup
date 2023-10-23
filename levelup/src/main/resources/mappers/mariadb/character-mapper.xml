@@ -72,6 +72,10 @@
 		select * from evol.char
 	</select>
 	
+	<select id="selectCharacterName" parameterType="string" resultMap="resultChar">
+		select * from evol.char where evol.char.name = #{ name } 
+	</select>
+	
 
 	
 	

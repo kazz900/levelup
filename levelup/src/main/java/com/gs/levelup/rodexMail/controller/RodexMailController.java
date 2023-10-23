@@ -57,7 +57,9 @@ public class RodexMailController {
 //				+ (new Random().nextInt(10)));
 
 		logger.info("purchase.do : " + payment.getCharName() + ", " + payment.getCharId() + ", " + payment.getItemId() + ", " + sendDate + ", " + payment.getUniqueId());
-
+		
+		logger.info("purchaes.do : getId" + payment.getCharId());
+		
 		Map<String, Object> purchase = new HashMap<String, Object>();
 		purchase.put("receiverName", payment.getCharName());
 		purchase.put("receiverId", payment.getCharId());

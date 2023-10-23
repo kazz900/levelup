@@ -29,4 +29,9 @@ public class CharacterServiceImpl implements CharacterService{
 		return characterDao.selectAll();
 	}
 
+	@Override
+	public Character selectCharacterName(String receiverName) {
+		return characterDao.selectCharacterName(receiverName);
+	}
+
 }

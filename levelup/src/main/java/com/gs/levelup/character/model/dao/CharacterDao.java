@@ -28,4 +28,8 @@ public class CharacterDao {
 		return (ArrayList<com.gs.levelup.character.model.vo.Character>)list;
 	}
 
+	public Character selectCharacterName(String receiverName) {
+		return sqlSessionTemplateMaria.selectOne("charMapper.selectCharacterName", receiverName);
+	}
+
 }

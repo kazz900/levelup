@@ -660,25 +660,29 @@ public class UserController {
 
 	@RequestMapping(value = "buyingpage.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String insertRodexMail(HttpServletRequest request, @RequestParam(value = "charName") String receiverName,
-			@RequestParam(value = "charId") int receiverId, @RequestParam(value = "itemId") int nameId,
+			 @RequestParam(value = "itemId") int nameId,
 			@RequestParam("paymentKey") String paymentKey, @RequestParam("orderId") String orderId,
 			@RequestParam("amount") int amount, HttpSession session, Model model) {
 
 		User loginUser = (User) session.getAttribute("loginUser");
 
 		int accountId = loginUser.getAccountId();
-
+		
+		Character character = characterService.selectCharacterName(receiverName);
+		
 		long uniqueId = Instant.now().toEpochMilli() * 100 + (new Random().nextInt(10) + 1) * 10
 				+ (new Random().nextInt(10));
-
-		Payment payment = new Payment(amount, orderId, paymentKey, receiverId, receiverName, nameId, accountId,
+		
+		logger.info("buyingpage.do charID : " + character.getCharId());
+		
+		Payment payment = new Payment(amount, orderId, paymentKey, character.getCharId(), receiverName, nameId, accountId,
 				uniqueId);
 
 		int insertResult = paymentService.insertPayment(payment);
 
 		if (insertResult > 0) {
 			model.addAttribute("charName", receiverName);
-			model.addAttribute("charId", receiverId);
+			model.addAttribute("charId", character.getCharId());
 			model.addAttribute("itemId", nameId);
 			model.addAttribute("paymentKey", paymentKey);
 			model.addAttribute("orderId", orderId);
