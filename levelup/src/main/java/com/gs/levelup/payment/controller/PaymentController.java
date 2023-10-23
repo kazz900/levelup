@@ -2,6 +2,7 @@ package com.gs.levelup.payment.controller;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -196,10 +197,16 @@ public class PaymentController {
 		if (page != null) {
 			currentPage = Integer.parseInt(page);
 		}
+		
+		// 날짜 검색시 end를 시작보다 24시간 뒤로 세팅
+		Calendar c = Calendar.getInstance();
+		c.setTime(Date.valueOf(end));
+		c.add(Calendar.HOUR, 24);
+		java.util.Date endDate = c.getTime();
 
 		Search search = new Search();
 		search.setBegin(Date.valueOf(begin));
-		search.setEnd(Date.valueOf(end));
+		search.setEnd(new java.sql.Date(endDate.getTime()));
 
 		// 한 페이지당 출력할 목록 갯수 지정
 		int limit = 10;

@@ -1,16 +1,16 @@
 INSERT INTO TEAM
-VALUES(SYS_GUID(), '백엔드');
+VALUES('backend', '백엔드');
 
 INSERT INTO TEAM
-VALUES(SYS_GUID(), '프론트개발');
+VALUES('webfront', '프론트개발');
 
 INSERT INTO TEAM
-VALUES(SYS_GUID(), '안드로이드개발');
+VALUES('anddev', '안드로이드개발');
 
 INSERT INTO TEAM
-VALUES(SYS_GUID(), 'iOS개발');
+VALUES('iosdev', 'iOS개발');
 
 INSERT INTO TEAM
-VALUES(SYS_GUID(), '고객서비스');
+VALUES('cs', '고객서비스');
 
 COMMIT;

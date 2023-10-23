@@ -52,6 +52,10 @@ function golist(){
 
 </script>
 <body data-sidebar="dark" data-layout-mode="light">
+
+<c:if test="${ empty loginEmployee }">
+   <c:redirect url="eloginPage.do"/>
+</c:if>
 	<!-- 내비게이션바, 사이드바 등등 -->
 	<c:import url="/WEB-INF/views/common/layout.jsp" />
 

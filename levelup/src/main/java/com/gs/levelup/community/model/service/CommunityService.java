@@ -1,12 +1,12 @@
 package com.gs.levelup.community.model.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.gs.levelup.common.Paging;
 import com.gs.levelup.common.Search;
 import com.gs.levelup.common.SearchDate;
 import com.gs.levelup.community.model.vo.Community;
-import com.gs.levelup.notice.model.vo.Notice;
 
 public interface CommunityService {
 
@@ -18,9 +18,7 @@ public interface CommunityService {
 
 	public int insertCommunity(Community community);
 
-	public Community selectCommunity(int boardNo);
-
-	public int updateReadCount(int boardNo);
+	public Community selectCommunity(String board_id);
 
 	public int updateCommunity(Community community);
 
@@ -36,7 +34,11 @@ public interface CommunityService {
 
 	public ArrayList<Community> selectSearchDate(Search search);
 
-	public int deleteCommunity(String boardId);
+	public int deleteCommunity(String board_id);
+
+	ArrayList<HashMap> selectListHashMap(Paging paging);
+
+	int updateReadCount(String board_id);
 	
 	
 	
