@@ -81,14 +81,17 @@ function golist(){
 	                            <input type="hidden" name="caseWriterName" value="${ sessionScope.loginEmployee.employeeName }">
 	                            <input type="hidden" name="caseManagerId" value="${ requestScope.manager.employeeId }">
 	                            <input type="hidden" name="caseManagerName" value="${ requestScope.manager.employeeName }">                           
-	                            
 	                            <input type="hidden" name="caseType" value="1">
 	                            <input type="hidden" name="charId" value="${ requestScope.character.charId }">
 	                            <input type="hidden" name="accountId" value="${ requestScope.character.accountId }">
 	                            <input type="hidden" name="charName" value="${ requestScope.character.name }">
 	                            <input type="hidden" name="uniqueId" value="${ requestScope.payitem.uniqueId }">
+<<<<<<< HEAD
 	                            
 	                            <input type="hidden" name="originalItemId" value="${ requestScope.rodexitem.nameId }">
+=======
+	                            <input type="hidden" name="originalItemId" value="${ requestScope.payitem.nameId }">
+>>>>>>> 0f01bd8c384ddd5ee53589a465066327c85dffb1
 	                            <c:if test="${ !empty requestScope.itemdata.itemName }">
 		                            <input type="hidden" name="originalItemName" value="${ requestScope.item.itemName }">
 	                            </c:if>
@@ -107,7 +110,6 @@ function golist(){
 												class="form-control" placeholder="기안 제목 입력하세요" required>
 										</div>
 									</div>
-
 									
 									<!-- 결재자 정보 -->									
 									<label for="currentItems" class="col-form-label col-lg-3">결재자 정보</label>
