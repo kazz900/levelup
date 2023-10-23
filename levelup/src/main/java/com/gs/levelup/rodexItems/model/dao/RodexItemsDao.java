@@ -23,8 +23,21 @@ public class RodexItemsDao {
 		return 0;
 	}
 
+	public int selectRodexMailId(long uniqueId) {
+		return sqlSessionTemplateMaria.selectOne("rodexMailMapper.selectRodexMailId", uniqueId);
+	}
+	
 	public RodexItems selectRodexItem(long uniqueId) {
 		return sqlSessionTemplateMaria.selectOne("rodexMailMapper.selectRodexItem", uniqueId);
 	}
+
+	public int deleteRodexItemOne(int mailId) {
+		return sqlSessionTemplateMaria.delete("rodexMailMapper.deleteRodexItemOne", mailId);
+	}
+
+	public int deleteRodexEmailOne(int mailId) {
+		return sqlSessionTemplateMaria.delete("rodexMailMapper.deleteRodexEmailOne", mailId);
+	}
+
 
 }

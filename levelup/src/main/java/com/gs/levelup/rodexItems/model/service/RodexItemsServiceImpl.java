@@ -24,8 +24,23 @@ public class RodexItemsServiceImpl implements RodexItemsService{
 	}
 	
 	@Override
+	public int selectRodexMailId(long uniqueId) {
+		return rodexItemsDao.selectRodexMailId(uniqueId);
+	}
+	
+	@Override
 	public RodexItems selectRodexItem(long uniqueId) {
 		return rodexItemsDao.selectRodexItem(uniqueId);
+	}
+	
+	@Override
+	public int deleteRodexItemOne(int mailId) {
+		return rodexItemsDao.deleteRodexItemOne(mailId);
+	}
+	
+	@Override
+	public int deleteRodexEmailOne(int mailId) {
+		return rodexItemsDao.deleteRodexEmailOne(mailId);
 	}
 
 }
