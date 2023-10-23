@@ -27,6 +27,24 @@ public class Inquiry implements Serializable{
 
 	public Inquiry(String inquiryId, String userId, String employeeId, String inquiryTitle, String inquiryContent,
 			String answerStatus, Date editDate, Date answerDate, String answerContent, String attachmentFileName,
+			String inquiryType, String employeeName) {
+		super();
+		this.inquiryId = inquiryId;
+		this.userId = userId;
+		this.employeeId = employeeId;
+		this.inquiryTitle = inquiryTitle;
+		this.inquiryContent = inquiryContent;
+		this.answerStatus = answerStatus;
+		this.editDate = editDate;
+		this.answerDate = answerDate;
+		this.answerContent = answerContent;
+		this.attachmentFileName = attachmentFileName;
+		this.inquiryType = inquiryType;
+		this.employeeName = employeeName;
+	}
+
+	public Inquiry(String inquiryId, String userId, String employeeId, String inquiryTitle, String inquiryContent,
+			String answerStatus, Date editDate, Date answerDate, String answerContent, String attachmentFileName,
 			String inquiryType, String inquiryRef, String answerRef, String employeeName) {
 		super();
 		this.inquiryId = inquiryId;
@@ -150,6 +168,6 @@ public class Inquiry implements Serializable{
 				+ ", inquiryTitle=" + inquiryTitle + ", inquiryContent=" + inquiryContent + ", answerStatus="
 				+ answerStatus + ", editDate=" + editDate + ", answerDate=" + answerDate + ", answerContent="
 				+ answerContent + ", attachmentFileName=" + attachmentFileName + ", inquiryType=" + inquiryType
-				+ "]";
+				+ ", employeeName=" + employeeName + "]";
 	}
 }
