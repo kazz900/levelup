@@ -23,11 +23,6 @@ public class UserDao {
 		return sqlSessionTemplateMaria.selectOne("userMapper.selectLogin",user);
 	}
 
-	public User selectMember(String userid) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public ArrayList<User> selectList(Paging paging) {
 		List<User> list = sqlSessionTemplateMaria.selectList("userMapper.selectList",paging);
 		return (ArrayList<User>)list;
@@ -65,5 +60,9 @@ public class UserDao {
 
 	public int insertUser(User user) {
 		return sqlSessionTemplateMaria.insert("userMapper.insertUser" , user);
+	}
+
+	public User selectUser(String userid) {
+		return sqlSessionTemplateMaria.selectOne("userMapper.selectUser", userid);
 	}
 }

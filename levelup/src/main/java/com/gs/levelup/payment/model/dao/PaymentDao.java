@@ -82,4 +82,9 @@ public class PaymentDao {
 		return sqlSessionTemplate.selectOne("paymentMapper.selectPaymentKey", paymentKey);
 	}
 
+	public ArrayList<Payment> selectPaymentList(int accountId) {
+		List<Payment> list = sqlSessionTemplate.selectList("paymentMapper.selectPaymentList", accountId);
+		return (ArrayList<Payment>)list;
+	}
+
 }
