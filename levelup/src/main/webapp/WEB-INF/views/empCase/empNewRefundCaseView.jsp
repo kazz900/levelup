@@ -85,20 +85,17 @@ function golist(){
 	                            <input type="hidden" name="charId" value="${ requestScope.character.charId }">
 	                            <input type="hidden" name="accountId" value="${ requestScope.character.accountId }">
 	                            <input type="hidden" name="charName" value="${ requestScope.character.name }">
-	                            <input type="hidden" name="uniqueId" value="${ requestScope.payitem.uniqueId }">
-<<<<<<< HEAD
+	                            <input type="hidden" name="uniqueId" value="${ requestScope.rodexitem.uniqueId }">
 	                            
 	                            <input type="hidden" name="originalItemId" value="${ requestScope.rodexitem.nameId }">
-=======
-	                            <input type="hidden" name="originalItemId" value="${ requestScope.payitem.nameId }">
->>>>>>> 0f01bd8c384ddd5ee53589a465066327c85dffb1
+
 	                            <c:if test="${ !empty requestScope.itemdata.itemName }">
 		                            <input type="hidden" name="originalItemName" value="${ requestScope.item.itemName }">
 	                            </c:if>
 	                            <c:if test="${ empty requestScope.itemdata.itemName }">
 		                            <input type="hidden" name="originalItemName" value="잡템 ${ requestScope.item.itemName }">
 	                            </c:if>
-	                            <input type="hidden" name="originalItemAmount" value="${ requestScope.rodexitemrodexitemrodexitem.amount }">
+	                            <input type="hidden" name="originalItemAmount" value="${ requestScope.rodexitem.amount }">
 
 
 
