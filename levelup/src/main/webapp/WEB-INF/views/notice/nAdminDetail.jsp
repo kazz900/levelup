@@ -98,22 +98,25 @@ function requestDelete(){
 											</div>
 										</div>
 									</div>
-									<ul class="message-list">
-									        <li>
-									            <div class="col-mail col-mail-1">
-									                <div class="checkbox-wrapper-mail">
-									                    <input type="checkbox" id="chk1">
-									                    <label for="chk1" class="toggle"></label>
-									                </div>
-									                <a class="title">${notice.noticeTitle}</a><span class="star-toggle far fa-star"></span>
-									            </div>
-									            <div class="col-mail col-mail-2">
-									                <a>${notice.noticeContent}</a>
-									                <div class="date">${notice.readCount}</div>
-									            </div>
-									            
-									        </li>
-									</ul>
+								<ul class="message-list">
+  <li class="message-item">
+    <div class="col-mail col-mail-1">
+      <div class="checkbox-wrapper-mail">
+        <input type="checkbox" id="chk1">
+        <label for="chk1" class="toggle"></label>
+      </div>
+      <div class="message-title">제목: ${notice.noticeTitle}</div>
+      <div class="message-author">작성자: ${notice.employeeName}</div>
+      <span class="star-toggle far fa-star"></span>
+    </div>
+    <div class="col-mail col-mail-2">
+      <div class="message-content">${notice.noticeContent}</div>
+      <div class="message-read-count">조회수: ${notice.readCount}</div>
+    </div>
+  </li>
+</ul>
+
+									
 									
 									<tr><th>첨부파일</th>
 												 	<td>
