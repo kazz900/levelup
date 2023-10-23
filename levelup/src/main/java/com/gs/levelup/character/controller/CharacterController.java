@@ -73,16 +73,10 @@ public class CharacterController {
 
 	// 관리자용 : 캐릭터 검색 처리용 메소드
 	@RequestMapping(value = "charsearch.do", method= {RequestMethod.GET, RequestMethod.POST})
-	public String selectSearchMethod(@RequestParam(name="action", required=false) String action, 
-									@RequestParam("keyword") String keyword,
+	public String selectSearchMethod(@RequestParam("keyword") String keyword,
 									Model model, RedirectAttributes re) {
-		if (action != null && action.equals("char_id")) {
 			re.addAttribute("keyword", keyword);
 			return "redirect:csearchcharid.do";
-		} else {
-			model.addAttribute("message1", keyword + "로 검색된 캐릭터가 없습니다");
-			return "empchar/charDetailView";
-		}
 	}
 	
 	// 캐릭터 CHAR ID 로 검색 처리용 메소드
