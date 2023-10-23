@@ -27,6 +27,10 @@
 		select * from evol.login where userid = #{userId} and user_pass = #{userPass}
 	</select>
 	
+	<select id="selectUser" parameterType="string" resultMap="resultUser">
+		select * from evol.login where userid = #{userId}
+	</select>
+	
 	<select id="selectOneSearchAccountId" parameterType="Search" resultMap="resultUser">
 		SELECT * FROM evol.login WHERE evol.login.account_id = #{keyword}
 	</select>

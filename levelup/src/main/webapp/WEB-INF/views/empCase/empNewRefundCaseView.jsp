@@ -52,6 +52,10 @@ function golist(){
 
 </script>
 <body data-sidebar="dark" data-layout-mode="light">
+
+	<c:if test="${ empty loginEmployee }">
+	   <c:redirect url="eloginPage.do"/>
+	</c:if>
 	<!-- 내비게이션바, 사이드바 등등 -->
 	<c:import url="/WEB-INF/views/common/layout.jsp" />
 
@@ -77,13 +81,11 @@ function golist(){
 	                            <input type="hidden" name="caseWriterName" value="${ sessionScope.loginEmployee.employeeName }">
 	                            <input type="hidden" name="caseManagerId" value="${ requestScope.manager.employeeId }">
 	                            <input type="hidden" name="caseManagerName" value="${ requestScope.manager.employeeName }">                           
-	                            
 	                            <input type="hidden" name="caseType" value="1">
 	                            <input type="hidden" name="charId" value="${ requestScope.character.charId }">
 	                            <input type="hidden" name="accountId" value="${ requestScope.character.accountId }">
 	                            <input type="hidden" name="charName" value="${ requestScope.character.name }">
 	                            <input type="hidden" name="uniqueId" value="${ requestScope.payitem.uniqueId }">
-	                            
 	                            <input type="hidden" name="originalItemId" value="${ requestScope.payitem.nameId }">
 	                            <c:if test="${ !empty requestScope.itemdata.itemName }">
 		                            <input type="hidden" name="originalItemName" value="${ requestScope.item.itemName }">
@@ -103,7 +105,6 @@ function golist(){
 												class="form-control" placeholder="기안 제목 입력하세요" required>
 										</div>
 									</div>
-
 									
 									<!-- 결재자 정보 -->									
 									<label for="currentItems" class="col-form-label col-lg-3">결재자 정보</label>
@@ -180,7 +181,7 @@ function golist(){
 											</div>
 											<div class="mb-3 col-lg-2">												
 													<input type="text" id="disabledTextInput"
-														class="form-control" placeholder="${ requestScope.payitem.itemName }"
+														class="form-control" placeholder="${ requestScope.item.itemName }"
 														disabled>										
 											</div>	
 											<div class="mb-3 col-lg-2">
@@ -219,7 +220,7 @@ function golist(){
 													disabled>
 											</div>
 											
-											<div class="mb-3 col-lg-2">
+											<div class="mb-3 col-lg-4">
 												<input type="text" id="disabledTextInput" name="paymentKey"
 													class="form-control" placeholder="${ requestScope.payment.paymentKey }"
 													disabled>

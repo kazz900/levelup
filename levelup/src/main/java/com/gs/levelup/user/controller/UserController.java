@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Random;
@@ -65,6 +64,7 @@ public class UserController {
 	@Autowired
 	private PaymentService paymentService;
 
+	
 	@RequestMapping("ulogin.do")
 	public String moveUserLogin() {
 		return "user/ulogin";
@@ -660,25 +660,29 @@ public class UserController {
 
 	@RequestMapping(value = "buyingpage.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String insertRodexMail(HttpServletRequest request, @RequestParam(value = "charName") String receiverName,
-			@RequestParam(value = "charId") int receiverId, @RequestParam(value = "itemId") int nameId,
+			 @RequestParam(value = "itemId") int nameId,
 			@RequestParam("paymentKey") String paymentKey, @RequestParam("orderId") String orderId,
 			@RequestParam("amount") int amount, HttpSession session, Model model) {
 
 		User loginUser = (User) session.getAttribute("loginUser");
 
 		int accountId = loginUser.getAccountId();
-
+		
+		Character character = characterService.selectCharacterName(receiverName);
+		
 		long uniqueId = Instant.now().toEpochMilli() * 100 + (new Random().nextInt(10) + 1) * 10
 				+ (new Random().nextInt(10));
-
-		Payment payment = new Payment(amount, orderId, paymentKey, receiverId, receiverName, nameId, accountId,
+		
+		logger.info("buyingpage.do charID : " + character.getCharId());
+		
+		Payment payment = new Payment(amount, orderId, paymentKey, character.getCharId(), receiverName, nameId, accountId,
 				uniqueId);
 
 		int insertResult = paymentService.insertPayment(payment);
 
 		if (insertResult > 0) {
 			model.addAttribute("charName", receiverName);
-			model.addAttribute("charId", receiverId);
+			model.addAttribute("charId", character.getCharId());
 			model.addAttribute("itemId", nameId);
 			model.addAttribute("paymentKey", paymentKey);
 			model.addAttribute("orderId", orderId);
@@ -881,6 +885,35 @@ public class UserController {
 			model.addAttribute("message","회원 가입 실패!");
 			return "common/error";
 		}
+	}
+	
+	//마이페이지로 이동 메소드
+	@RequestMapping("mypage.do")
+	public ModelAndView myPagegoMethod(ModelAndView mv,
+			@RequestParam("userId") String userId) {
+		logger.info("mypage.do : " + userId);
+		
+		User user = userService.selectUser(userId);
+		
+		ArrayList<com.gs.levelup.character.model.vo.Character> charList = characterService.selectCharacters(user.getAccountId());
+		
+		ArrayList<Payment> paymentList = paymentService.selectPaymentList(user.getAccountId());
+		
+		ArrayList<Inquiry> inquiryList = inquiryService.selectUserPreviousInquiry(userId);
+		
+		if (charList != null && charList.size() > 0 &&
+				paymentList != null && paymentList.size() > 0 &&
+				inquiryList != null && inquiryList.size() > 0) {
+			mv.addObject("userId", userId);
+			mv.addObject("charList", charList);
+			mv.addObject("paymentList", paymentList);
+			mv.addObject("inquiryList", inquiryList);
+			mv.setViewName("user/uMyPage");
+		}else {
+			mv.addObject("message", "mypage 불러오기중 오류");
+			mv.setViewName("common/error");
+		}
+		return mv;
 	}
 
 }

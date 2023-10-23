@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.gs.levelup.character.model.vo.Character;
+
 @Repository("characterDao")
 public class CharacterDao {
 
@@ -25,4 +27,9 @@ public class CharacterDao {
 		List<com.gs.levelup.character.model.vo.Character> list = sqlSessionTemplateMaria.selectList("charMapper.selectAll");
 		return (ArrayList<com.gs.levelup.character.model.vo.Character>)list;
 	}
+
+	public Character selectCharacterName(String receiverName) {
+		return sqlSessionTemplateMaria.selectOne("charMapper.selectCharacterName", receiverName);
+	}
+
 }
