@@ -45,7 +45,8 @@ LAST_INSERT_ID(),
 #{ nameId },
 1,
 1,
-#{ uniqueId })
+#{ uniqueId });
+
 	</insert>
 
 </mapper>
