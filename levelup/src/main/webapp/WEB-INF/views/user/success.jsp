@@ -23,10 +23,10 @@
   //String secretKey = "test_sk_DpexMgkW36xJ0M0ooAXMrGbR5ozO:";
   
   // 김지혁 시크릿키
-  //String secretKey = "test_sk_DpexMgkW36ZnqQN19dEN3GbR5ozO:";
+  String secretKey = "test_sk_DpexMgkW36ZnqQN19dEN3GbR5ozO:";
   
   // 최유미 시크릿키
-  String secretKey = "test_sk_24xLea5zVAmdw7OMPDZxVQAMYNwW:";
+  //String secretKey = "test_sk_24xLea5zVAmdw7OMPDZxVQAMYNwW:";
   
   Encoder encoder = Base64.getEncoder(); 
   byte[] encodedBytes = encoder.encode(secretKey.getBytes("UTF-8"));
@@ -70,9 +70,26 @@
 <body>
 <c:import url="/WEB-INF/views/user/userHeader.jsp"/>
 <section>
-    <%
+   <%
     if (isSuccess) { %>
-        <h1>결제 성공</h1>
+		<script>
+		    // 폼 엘리먼트 생성
+		    var form = document.createElement("form");
+		    form.method = "POST"; // POST 메서드를 사용합니다.
+		    form.action = "purchase.do"; // 이동할 페이지 URL을 설정합니다.
+		
+		    // 파라미터(데이터)를 폼에 추가
+		    var paymentKeyInput = document.createElement("input");
+		    paymentKeyInput.type = "hidden"; // 숨김 입력 필드로 만듭니다.
+		    paymentKeyInput.name = "paymentKey"; // 파라미터 이름
+		    paymentKeyInput.value = "${requestScope.paymentKey}"; // 파라미터 값
+		    form.appendChild(paymentKeyInput);
+		
+		    // 페이지 이동을 위해 폼을 body에 추가하고 제출(submit)합니다.
+		    document.body.appendChild(form);
+		    form.submit();
+		</script>
+        <%-- <h1>결제 성공</h1>
         <p>결과 데이터 : <%= jsonObject.toJSONString() %></p>
         <p>orderName : <%= jsonObject.get("orderName") %></p>
         <p>method : <%= jsonObject.get("method") %></p>
@@ -81,12 +98,19 @@
             <% if(jsonObject.get("method").equals("가상계좌")) { out.println(((JSONObject)jsonObject.get("virtualAccount")).get("accountNumber"));} %>
             <% if(jsonObject.get("method").equals("계좌이체")) { out.println(((JSONObject)jsonObject.get("transfer")).get("bank"));} %>
             <% if(jsonObject.get("method").equals("휴대폰")) { out.println(((JSONObject)jsonObject.get("mobilePhone")).get("customerMobilePhone"));} %>
-        </p>
+        </p> --%>
        
     <%} else { %>
-        <h1>결제 실패</h1>
+        <script>
+        // 성공 메시지 표시
+        alert("결제가 실패하였습니다.");
+
+        // 페이지 이동
+        window.location.href = "ushop.do";
+    </script>
+       <%--  <h1>결제 실패</h1>
         <p><%= jsonObject.get("message") %></p>
-        <span>에러코드: <%= jsonObject.get("code") %></span>
+        <span>에러코드: <%= jsonObject.get("code") %></span> --%>
         <%
     }
     %>
