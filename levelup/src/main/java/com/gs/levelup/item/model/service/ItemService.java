@@ -2,6 +2,7 @@ package com.gs.levelup.item.model.service;
 
 import java.util.ArrayList;
 
+import com.gs.levelup._case.model.vo.Case;
 import com.gs.levelup.item.model.vo.Item;
 
 public interface ItemService {

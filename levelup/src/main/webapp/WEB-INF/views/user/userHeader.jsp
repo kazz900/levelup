@@ -32,7 +32,15 @@
 					<li><a href="${ pageContext.servletContext.contextPath }/uitem.do">items</a></li>
 					<li><a href="${ pageContext.servletContext.contextPath }/uhelp.do">고객지원</a></li>
 					<li><a href="${ pageContext.servletContext.contextPath }/uabout.do">About Us</a></li>
+					<c:if test="${ empty sessionScope.loginUser }">
+					<div style="padding-left: 600px;"><a style="color:black;" onclick="gouloginpage()">로그인해주세요</a></div>
+					</c:if>
+					<c:if test="${ !empty sessionScope.loginUser }">
+					<div style="padding-left: 600px;"><a href="mypage.do?userId=${ loginUser.userId }" style="color:black;">${ sessionScope.loginUser.userId }
+					</a></div>
+					</c:if>
 				</ul>
+				
 		</nav>
 	</header>
 </body>

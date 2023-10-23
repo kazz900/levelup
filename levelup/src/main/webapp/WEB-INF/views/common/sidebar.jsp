@@ -22,12 +22,11 @@
 								<li><a href="${pageContext.servletContext.contextPath}/ilist.do" key="t-default">유저 문의</a></li>
 								<li><a href="${pageContext.servletContext.contextPath}/moveusearch.do" key="t-default">유저 검색</a></li>
 								<li><a href="${pageContext.servletContext.contextPath}/chardetailview.do" key="t-default">캐릭터 검색</a></li>
-								<li><a href="${pageContext.servletContext.contextPath}/cicdetail.do" key="t-default">기안 작성 완료한 페이지</a></li>
 								<li><a href="ulist.do" key="t-default">유저 목록</a></li>
-								<li><a href="ulogin.do" key="t-default">유저 로그인</a></li>
+								<li><a href="umain.do" key="t-default">유저 홈페이지</a></li>
 								<li><a href="listChar.do" key="t-default">게임캐럭터 목록</a></li>
 								<li><a href="getLogs.do" key="t-default">캐럭터 게임로그 출력</a></li>
-								<li><a href="movepaylist.do" key="t-default">전체 결제 내역</a></li>
+								<li><a href="${pageContext.servletContext.contextPath}/plist.do" key="t-default">전체 결제 내역</a></li>
 							</ul>
 						</li>
 						
@@ -37,10 +36,8 @@
                                     <span key="t-blog">기안관리</span>
                                 </a>
                                 <ul class="sub-menu mm-collapse mm-show" aria-expanded="false" style="">
-                                    <li><a href="#" key="t-blog-list">My 기안함</a></li>
-                                    <li><a href="${pageContext.servletContext.contextPath}/ciclist.do" key="t-blog-list">전체 아이템 변경 기안</a></li>
-                                    <li><a href="#" key="t-blog-grid">전체 아이템 삭제 기안</a></li>
-                                    <li><a href="#" key="t-blog-details">전체 아이템 환불 기안</a></li>
+                                    <li><a href="${pageContext.servletContext.contextPath}/mclist.do?employeeId=${ sessionScope.loginEmployee.employeeId }" key="t-blog-list">My 기안함</a></li>
+                                    <li><a href="${pageContext.servletContext.contextPath}/clist.do" key="t-blog-list">전체 기안 목록</a></li>
                                 </ul>
                             </li>
 						
@@ -64,7 +61,7 @@
 								<span key="t-dashboards">게시판</span>
 							</a>
 							<ul class="sub-menu" aria-expanded="false">
-								<li><a href="movecom.do" key="t-default">게시판</a></li>
+								<li><a href="comlist.do" key="t-default">게시판</a></li>
 								<li><a href="movecomdetail.do" key="t-default">DetailView</a></li>
 								<li><a href="#" key="t-default">일정수정</a></li>
 								<li><a href="#" key="t-default">일정삭제</a></li>

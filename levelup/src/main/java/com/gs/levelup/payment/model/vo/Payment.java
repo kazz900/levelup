@@ -5,11 +5,11 @@ import java.sql.Date;
 public class Payment implements java.io.Serializable {
 	private static final long serialVersionUID = -6902969006704456021L;
 
-	private String paymentId;
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
+	private String paymentId;
 	private int itemId;
 	private int charId;
 	private int accountId;
@@ -19,18 +19,16 @@ public class Payment implements java.io.Serializable {
 	private Date refundDate;
 	private String refundCause;
 	private String charName;
-	private String orderId;
 	private String paymentKey;
-	private Long uniqueId;
+	private long uniqueId;
 	private String emailStatus;
-	
-	
-	
-	public Long getUniqueId() {
+	private String orderId;
+	public long getUniqueId() {
+
 		return uniqueId;
 	}
 
-	public void setUniqueId(Long uniqueId) {
+	public void setUniqueId(long uniqueId) {
 		this.uniqueId = uniqueId;
 	}
 
@@ -58,15 +56,17 @@ public class Payment implements java.io.Serializable {
 		this.paymentKey = paymentKey;
 	}
 
-	public String getOrderId() {
-		return orderId;
-	}
-
-	public void setOrderId(String orderId) {
-		this.orderId = orderId;
-	}
-
 	public Payment() {}
+	
+	public Payment(int amount, String paymentKey, int charId, String charName, int itemId, int accountId, long uniqueId) {
+		this.amount = amount;
+		this.paymentKey = paymentKey;
+		this.charId = charId;
+		this.charName = charName;
+		this.itemId = itemId;
+		this.accountId = accountId;
+		this.uniqueId = uniqueId;
+	}
 	
 	public Payment(int amount, String orderId, String paymentKey, int charId, String charName, int itemId, int accountId, long uniqueId) {
 		this.amount = amount;
@@ -164,12 +164,24 @@ public class Payment implements java.io.Serializable {
 	public void setRefundCause(String refundCause) {
 		this.refundCause = refundCause;
 	}
+	
+	
+
+	public String getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
+	}
 
 	@Override
 	public String toString() {
 		return "Payment [paymentId=" + paymentId + ", itemId=" + itemId + ", charId=" + charId + ", accountId="
 				+ accountId + ", amount=" + amount + ", paymentDate=" + paymentDate + ", paymentStatus=" + paymentStatus
-				+ ", refundDate=" + refundDate + ", refundCause=" + refundCause + "]";
+				+ ", refundDate=" + refundDate + ", refundCause=" + refundCause + ", charName=" + charName
+				+ ", paymentKey=" + paymentKey + ", uniqueId=" + uniqueId + ", emailStatus=" + emailStatus
+				+ ", orderId=" + orderId + "]";
 	}
 	
 	

@@ -35,6 +35,9 @@ function golist(){
 }
 </style>
 <body data-sidebar="dark" data-layout-mode="light">
+<c:if test="${ empty loginEmployee }">
+   <c:redirect url="eloginPage.do"/>
+</c:if>
 	<!-- 내비게이션바, 사이드바 등등 -->
 	<c:import url="/WEB-INF/views/common/layout.jsp" />
 
@@ -152,7 +155,7 @@ function golist(){
 								<div class="flex-grow-1 overflow-hidden">
 									<h5 class="text-truncate font-size-15"> 답변 내용 : </h5>
 									<div class="mb-3">
-                                           <textarea id="formmessage" name="answerContent" class="form-control" rows="3">${ requestScope.inquiry.answerContent }</textarea>
+                                           <textarea id="formmessage" name="answerContent" class="form-control" rows="3" required>${ requestScope.inquiry.answerContent }</textarea>
                                        </div>
 								</div>
 							</div>				

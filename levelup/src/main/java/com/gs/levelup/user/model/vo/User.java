@@ -16,6 +16,7 @@ public class User  implements java.io.Serializable{
 	private int logincount;
 	private Date lastlogin;
 	private String lastIp;
+	private String sex;
 	
 	public User() {}
 
@@ -27,6 +28,27 @@ public class User  implements java.io.Serializable{
 		this.email = email;
 		this.logincount = logincount;
 		this.lastlogin = lastlogin;
+	}	
+
+	public User(int accountId, String userId, String userPass, String email, int logincount, Date lastlogin,
+			String lastIp, String sex) {
+		super();
+		this.accountId = accountId;
+		this.userId = userId;
+		this.userPass = userPass;
+		this.email = email;
+		this.logincount = logincount;
+		this.lastlogin = lastlogin;
+		this.lastIp = lastIp;
+		this.sex = sex;
+	}
+
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 
 	public int getAccountId() {

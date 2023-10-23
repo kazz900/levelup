@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.gs.levelup._case.model.vo.Case;
 import com.gs.levelup.item.model.vo.Item;
 
 @Repository("itemDao")
@@ -21,8 +22,7 @@ public class ItemDao {
 	}
 
 	public Item selectItem(int itemId) {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSessionTemplate.selectOne("itemMapper.selectItem", itemId);
 	}
 
 	public ArrayList<Item> selectListItemType(String itemType) {
