@@ -12,7 +12,6 @@
 <script type="text/javascript">
 
 $(function(){
-    
    
     // 세션 상태를 JavaScript 변수에 할당
     var isUserLoggedIn = ${not empty sessionScope.loginUser};

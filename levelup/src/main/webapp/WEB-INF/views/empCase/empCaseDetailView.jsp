@@ -242,7 +242,7 @@ function caseReject(){
                                 	
                                 		<h5 class="mb-3">변경 후 아이템 정보</h5>
                                 
-                             			<div id="beforeItems">
+                             			<div id="newItems">
                                    		<div class="row" >
                                      		<div class="mb-3 col-lg-2">ID</div>        
                                             <div class="mb-3 col-lg-2">NAME</div>         
@@ -265,9 +265,51 @@ function caseReject(){
                                 		</div>
                                 		<!-- 변경 후 아이템 끝 -->
                                 		</c:if>
+                                		
+                                		
+                                		
+                                		<!-- 아이템 환불 -->
+                                		<c:if test="${ requestScope.casedetail.caseType eq 3}">
+	                                		<h5 class="mb-3">아이템 구매 정보</h5>
+	                                
+	                             			<div id="refundItems">
+	                                   		<div class="row" >
+	                                     		<div class="mb-3 col-lg-2">구매날짜</div>        
+	                                            <div class="mb-3 col-lg-2">구매상태</div>         
+	                                            <div class="mb-3 col-lg-2">구매수량</div> 	                                                                                      	                                                
+	                                            <div class="mb-3 col-lg-2">Payment Key</div>         
+	                                        </div>  
+	                                        
+	                                             
+	                                		<div class="row">	
+	                                			<div class="mb-3 col-lg-2">	                                        	
+		                                            <input type="text" name="" id="disabledTextInput" class="form-control" placeholder="<fmt:formatDate value="${ requestScope.casedetail.editDate }" pattern="yyyy-MM-dd HH:mm:ss" />" disabled>
+		                                        </div>        
+		                                        <div class="mb-3 col-lg-2">		                                        
+			                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.paymentStatus.newItemName }" disabled>		                                 
+		                                        </div>          
+		                                        <div class="mb-3 col-lg-2">
+		                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.paymentAmount.newItemAmount }" disabled>
+		                                        </div>  
+		                                        <div class="mb-3 col-lg-2">
+		                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.refundCause.newItemAmount }" disabled>
+		                                        </div> 
+		                                         <div class="mb-3 col-lg-2">
+		                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.paymentKey.newItemAmount }" disabled>
+		                                        </div>  	                          
+	                                			
+	                                		</div>	
+	                                		
+	                                		<div class="mb-3 col-lg-2">환불 사유</div> 
+	                                		<div class="mb-3 col-lg-6">	                                        	
+	                                            <input type="text" name="" id="disabledTextInput" class="form-control" placeholder="${ requestScope.casedetail.refundCause }" disabled>
+	                                        </div>       
+	                                		</div>                                		
+	                                
+                                		</c:if>
                                 	
                                 		
-                                		</div> <!-- 아이템 내용 끝-->
+                                		</div> <!-- 아이템 환불  끝-->
                                 		
                                 		
                                 		      

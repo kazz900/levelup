@@ -34,6 +34,9 @@
   //김화범 테스트 시크릿키
   //String secretKey2 = "test_sk_DpexMgkW36xJ0M0ooAXMrGbR5ozO:";
   
+  //최유미 테스트 시크릿키
+ //String secretKey = "test_sk_24xLea5zVAmdw7OMPDZxVQAMYNwW:";
+  
   Encoder encoder = Base64.getEncoder(); 
   byte[] encodedBytes = encoder.encode(secretKey.getBytes("UTF-8"));
   String authorizations = "Basic "+ new String(encodedBytes, 0, encodedBytes.length);

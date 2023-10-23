@@ -89,6 +89,10 @@ const secretKey = 'test_sk_DpexMgkW36ZnqQN19dEN3GbR5ozO';
 //const clientKey = 'test_ck_mBZ1gQ4YVXK2qEKKLN2X3l2KPoqN';
 //const secretKey = 'test_sk_DpexMgkW36xJ0M0ooAXMrGbR5ozO';
 
+// 최유미
+//const clientKey = 'test_ck_Gv6LjeKD8aY5W2QbeknN8wYxAdXy';
+//const secretKey = 'test_sk_24xLea5zVAmdw7OMPDZxVQAMYNwW';
+
 
 const base64Encoded = btoa(secretKey);
 console.log("=============" + base64Encoded);

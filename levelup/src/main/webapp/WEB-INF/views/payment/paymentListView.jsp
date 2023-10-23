@@ -115,7 +115,7 @@ function showTypeDropdown(){
 										<option value="0">상태구분</option>
 										<option value="1">결제완료</option>
 										<option value="2">환불</option>
-										<option value="3">결제오류</option>
+										<option value="3">결제대기</option>
 									</select>
 								</div>
 								<input id="keywordInputbox" type="search" name="keyword">
@@ -187,8 +187,11 @@ function showTypeDropdown(){
 										<td data-th="임시환불버튼"><a href="#"
 											onclick="cancelPayment('${p.paymentKey }');"
 											class="btn btn-primary waves-effect waves-light">임시환불버튼</a></td>
-										<c:url var="cwrite" value="cicform.do">
-												<c:param name="paymentId" value="${ p.paymentKey }"/>
+										<c:url var="cwrite" value="rfcaseform.do">
+												<c:param name="charId" value="${ p.charId }"/>
+												<c:param name="itemId" value="${ p.itemId }"/>
+												<c:param name="uniqueId" value="${ p.uniqueId }"/>
+												<c:param name="paymentKey" value="${ p.paymentKey }"/>
 												<c:param name="page" value="${ nowpage }"/>
 												<c:param name="employeeId" value="${ sessionScope.loginEmployee.employeeId }"/>
 												<c:param name="managerId" value="${ sessionScope.loginEmployee.managerId }"/>

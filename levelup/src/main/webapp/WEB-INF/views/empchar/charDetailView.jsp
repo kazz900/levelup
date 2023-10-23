@@ -144,7 +144,7 @@
 											<!-- Action COLUMN -->
 											<!-- TODO: CONNECT TO CASE WRITE FORM -->
 											<!-- 캐릭터가 가진 아이템 정보 -->
-											<c:url var="cwrite" value="cicform.do">
+											<c:url var="cwrite" value="cdcaseform.do">
 												<c:param name="charId" value="${ i.charId }"/>
 												<c:param name="nameId" value="${ i.nameId }"/>
 												<c:param name="amount" value="${ i.amount }"/>

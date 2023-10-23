@@ -22,8 +22,7 @@ public class ItemDao {
 	}
 
 	public Item selectItem(int itemId) {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSessionTemplate.selectOne("itemMapper.selectItem", itemId);
 	}
 
 	public ArrayList<Item> selectListItemType(String itemType) {

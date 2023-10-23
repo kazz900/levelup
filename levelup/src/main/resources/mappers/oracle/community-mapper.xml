@@ -5,35 +5,67 @@
 <mapper namespace="comMapper">
 
 	<resultMap type="Community" id="resultCom">
-		<id column="BOARD_ID" property="boardId" />
-		<result column="DEPARTMENT_ID" property="departmentId" />
-		<result column="EMPLOYEE_ID" property="employeeId" />
-		<result column="BOARD_TITLE" property="boardTitle" />
-		<result column="BOARD_CONTENT" property="boardContent" />
-		<result column="BOARD_DATE" property="boardDate" />
-		<result column="ATTACHEMENT_FILENAME" property="attachementFilename" />
-		<result column="BOARD_TYPE" property="boardType" />
-		<result column="READ_COUNT" property="readCount" />
 	</resultMap>
 
 	<select id="selectListCount" resultType="_int">
-		select count(*) from community
+		select count(*) from community where delYN = 'N' and ref_id is null
 	</select>
 		
 	<select id="selectList" parameterType="Paging" resultMap="resultCom">
 		select * from (select rownum rnum, BOARD_ID, DEPARTMENT_ID, 
-				            EMPLOYEE_ID, BOARD_TITLE, BOARD_CONTENT, BOARD_DATE, 
-				            ATTACHEMENT_FILENAME, BOARD_TYPE, READ_COUNT
-				      from (select * from Community 
+				            EMPLOYEE_ID, BOARD_TITLE, BOARD_DATE, board_body, 
+				            ATTACHEMENT_FILENAME, BOARD_TYPE, READ_COUNT, 
+				            ref_id , refyn, delyn , team_id
+				      from (select * from Community
+				      		where delyn = 'n' and ref_id is null
 				            order by BOARD_DATE desc)
 				     ) 
 		 where rnum between #{ startRow } and #{ endRow }
 	</select>
+	
+	<select id="selectListHashMap" parameterType="Paging" resultType="HashMap">
+			select * 
+				from community c
+				join employee e using (employee_id)
+				join department d on (c.department_id = d.department_id)
+				join rank r on (e.rank_id = r.rank_id)
+	</select>
+
+	<update id="updateReadCount" parameterType="string">
+		update COMMUNITY 
+		set READ_COUNT = READ_COUNT + 1 
+		where BOARD_ID = #{ board_id }
+	</update>
+
+	<select id="selectCommunity" parameterType="string" resultType="Community">
+		select *
+    from community 
+    join (select 
+    rank_id, rank_name, department_name, team_name,
+    employee_id, employee_name, employee_email
+    from employee
+        join rank using (rank_id)
+        join department using (department_id)
+        join team using (team_id))
+        using (employee_id)
+    where board_id = #{ board_id }
+	</select>	
+
+	<insert id="insertCommunity" parameterType="Community">
+		insert into Community 
+		values (#{board_id}, #{department_id},
+				#{employee_id},  #{board_title}, 
+				sysdate, #{attachement_filename}, 
+				default, 0,  null , #{board_body}, 
+				 #{team_id}, default, default)
+	</insert>
+	
+	<update id="deleteCommunity" parameterType="string">
+		update Community set delYN = 'y' where Board_ID = #{ board_id }
+	</update>
+		
 <!-- 	
 
-	<select id="selectOne" parameterType="string" resultMap="resultCom">
-		select * from Community where Community_ID = #{ CommunityId }
-	</select>	
 	
 	
 	<select id="getSearchTitleCount" parameterType="string" resultType="_int">
@@ -84,19 +116,8 @@
 		where rnum between #{ startRow } and #{ endRow }
 	</select>
 	
-	<update id="addReadCount" parameterType="string">
-		update Community 
-		set READ_COUNT = READ_COUNT + 1 
-		where Community_ID = #{ CommunityId }
-	</update>
 	
-	<insert id="insertCommunity" parameterType="Community">
-		insert into Community 
-		values (default, 
-				#{employeeId}, #{departmentId}, #{teamId}, #{CommunityTitle}, 
-				#{CommunityContent}, sysdate, #{attachementFilename}, default, #{renameFilename})
-	</insert>
-	
+
 	<update id="updateCommunity" parameterType="Community">
     update Community 
     set EMPLOYEE_ID = #{employeeId}, 
@@ -115,9 +136,7 @@
 	</update>
 
 	
-	<delete id="deleteCommunity" parameterType="string">
-		delete from Community where Community_ID = #{ CommunityId }
-	</delete>
+
  -->
 </mapper>
 
