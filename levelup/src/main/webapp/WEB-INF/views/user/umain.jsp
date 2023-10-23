@@ -113,7 +113,7 @@ function cmdgame(){
 						<a href="http://download.evolonline.org/manaplus/download/manaplus-win32.exe">게임 다운로드</a>
 					</div>
 					<div class="uloginbox2">
-						${loginUser.userId} 님 방문을 환영합니다.
+						<a href="mypage.do?userId=${ loginUser.userId }">${loginUser.userId} 님 방문을 환영합니다.</a>
 						<a href="logout.do">로그아웃</a>
 					</div>
 					

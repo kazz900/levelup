@@ -55,17 +55,15 @@ public class RodexMailController {
 		long sendDate = Instant.now().toEpochMilli() / 1000;
 //		BigDecimal uniqueId = BigDecimal.valueOf(Instant.now().toEpochMilli() * 100 + (new Random().nextInt(10) + 1) * 10
 //				+ (new Random().nextInt(10)));
-		long uniqueId = Instant.now().toEpochMilli() * 100 + (new Random().nextInt(10) + 1) * 10
-				+ (new Random().nextInt(10));
 
-		logger.info("purchase.do : " + payment.getCharName() + ", " + payment.getCharId() + ", " + payment.getItemId() + ", " + sendDate + ", " + uniqueId);
+		logger.info("purchase.do : " + payment.getCharName() + ", " + payment.getCharId() + ", " + payment.getItemId() + ", " + sendDate + ", " + payment.getUniqueId());
 
 		Map<String, Object> purchase = new HashMap<String, Object>();
 		purchase.put("receiverName", payment.getCharName());
 		purchase.put("receiverId", payment.getCharId());
 		purchase.put("nameId", payment.getItemId());
 		purchase.put("sendDate", sendDate);
-		purchase.put("uniqueId", uniqueId);
+		purchase.put("uniqueId", payment.getUniqueId());
 		
 		if (rodexMailService.insertRodexMail(purchase) > 0) {
 			model.addAttribute("message", "구매성공했습니다.");

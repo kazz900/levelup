@@ -125,4 +125,8 @@
 		select * from payment where payment_key = #{ paymentKey }
 	</select>
 	
+	<select id="selectPaymentList" parameterType="int" resultMap="resultList">
+		select * from payment where account_id = #{ accountId }
+	</select>
+	
 </mapper>
