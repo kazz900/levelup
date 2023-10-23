@@ -13,6 +13,10 @@
 </head>
 <body data-sidebar="dark" data-layout-mode="light">
 
+<c:if test="${ empty loginEmployee }">
+   <c:redirect url="eloginPage.do"/>
+</c:if>
+
 <c:import url="/WEB-INF/views/common/layout.jsp"/>
 	<!-- ============================================================== -->
 	<!-- Start right Content here -->

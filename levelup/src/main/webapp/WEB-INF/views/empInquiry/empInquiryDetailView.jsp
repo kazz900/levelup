@@ -47,6 +47,9 @@ function moveAnsFixPage(){
 }
 </style>
 <body data-sidebar="dark" data-layout-mode="light">
+<c:if test="${ empty loginEmployee }">
+   <c:redirect url="eloginPage.do"/>
+</c:if>
 	<!-- 내비게이션바, 사이드바 등등 -->
 	<c:import url="/WEB-INF/views/common/layout.jsp" />
 
@@ -219,7 +222,7 @@ function moveAnsFixPage(){
 									<tbody>
 										<tr>
 											<c:if test="${ !empty requestScope.inquiry.attachmentFileName }">
-												<c:url var="idown" value="ifdown.do">
+												<c:url var="idown" value="ifdown.do">													
 													<c:param name="file" value="${ requestScope.inquiry.attachmentFileName }" />												
 												</c:url>
 											<td>
