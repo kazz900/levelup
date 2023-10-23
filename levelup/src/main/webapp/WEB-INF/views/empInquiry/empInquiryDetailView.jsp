@@ -222,7 +222,7 @@ function moveAnsFixPage(){
 									<tbody>
 										<tr>
 											<c:if test="${ !empty requestScope.inquiry.attachmentFileName }">
-												<c:url var="idown" value="ifdown.do">
+												<c:url var="idown" value="ifdown.do">													
 													<c:param name="file" value="${ requestScope.inquiry.attachmentFileName }" />												
 												</c:url>
 											<td>

@@ -387,7 +387,8 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 		@RequestMapping("rfcaseform.do")
 		public ModelAndView moveitemRefundCasePage(@RequestParam("caseType") String caseType,
 														@RequestParam("managerId") String managerId, 
-														Payment paymentinfo, 																								
+														Payment paymentinfo, 
+														Inventory inventory,
 														ModelAndView mv) {
 			// 현재 우리가 ITEM TABLE에 가지고 있는 정보를 불러오는 용도
 			//ArrayList<Inventory> ilist = inventoryService.selectAll();
@@ -405,6 +406,9 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 			
 			// 구매한 아이템의 아이템정보를 Item 테이블에서 가져옴
 			Item item = itemService.selectItem(paymentinfo.getItemId());
+			
+			logger.info("UniqueId :  " + String.valueOf(paymentinfo.getUniqueId()));
+			System.out.println("UniqueId :  " + String.valueOf(paymentinfo.getUniqueId()));
 						
 				mv.addObject("manager", manager);
 				mv.addObject("item", item);
@@ -433,14 +437,14 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 		
 		if(!mfile.isEmpty()) {
 			//전송온 파일이름 추출함
-			String fileName = mfile.getOriginalFilename();
+			String fileName = mfile.getOriginalFilename();			
 			String renameFileName = null;
-			
 			//저장폴더에는 변경된 이름을 저장 처리함
-			//파일 이름바꾸기함 : 년월일시분초.확장자
+			//파일 이름바꾸기함 : charId + OriginalFilename + 작성날짜.확장자
 			if(fileName != null && fileName.length() > 0) {				
 				//바꿀 파일명에 대한 문자열 만들기
-				renameFileName = FileNameChange.change(fileName, "yyyyMMddHHmmss");
+				renameFileName = _case.getCharId() + "_" + _case.getOriginalItemId() + "_" + FileNameChange.change(fileName, "yyyyMMddHHmmss");
+				renameFileName += "." + (mfile.getOriginalFilename()).substring((mfile.getOriginalFilename()).lastIndexOf(".") + 1);
 				try {	
 					//저장 폴더에 파일명 바꾸기 처리
 					mfile.transferTo(new File(savePath + "\\" + renameFileName));
@@ -451,7 +455,8 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 					return "common/error";
 				}
 			}  //파일명 바꾸기
-			//board 객체에 첨부파일 정보 저장 처리
+			
+			//Case 객체에 첨부파일 정보 저장 처리
 			_case.setAttachmentFileName(renameFileName);
 			
 		} //첨부파일 있을 때	

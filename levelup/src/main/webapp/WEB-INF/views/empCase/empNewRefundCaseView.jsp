@@ -181,7 +181,7 @@ function golist(){
 											</div>
 											<div class="mb-3 col-lg-2">												
 													<input type="text" id="disabledTextInput"
-														class="form-control" placeholder="${ requestScope.payitem.itemName }"
+														class="form-control" placeholder="${ requestScope.item.itemName }"
 														disabled>										
 											</div>	
 											<div class="mb-3 col-lg-2">
@@ -220,7 +220,7 @@ function golist(){
 													disabled>
 											</div>
 											
-											<div class="mb-3 col-lg-2">
+											<div class="mb-3 col-lg-4">
 												<input type="text" id="disabledTextInput" name="paymentKey"
 													class="form-control" placeholder="${ requestScope.payment.paymentKey }"
 													disabled>

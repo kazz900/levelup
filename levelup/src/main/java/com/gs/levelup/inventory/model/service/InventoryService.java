@@ -12,6 +12,6 @@ public interface InventoryService {
 	public Inventory selectCharInventory(int charId);
 	public int updateItemChange(Case _case);
 	public int deleteItemOne(Case _case);
-	public Inventory selectPaymentItem(Long uniqueId);
+	public Inventory selectPaymentItem(long uniqueId);
 	
 }

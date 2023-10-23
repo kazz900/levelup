@@ -20,17 +20,17 @@ public class Payment implements java.io.Serializable {
 	private String refundCause;
 	private String charName;
 	private String paymentKey;
-	private Long uniqueId;
+	private long uniqueId;
 	private String emailStatus;
 	private String orderId;
 	
 	
 	
-	public Long getUniqueId() {
+	public long getUniqueId() {
 		return uniqueId;
 	}
 
-	public void setUniqueId(Long uniqueId) {
+	public void setUniqueId(long uniqueId) {
 		this.uniqueId = uniqueId;
 	}
 
