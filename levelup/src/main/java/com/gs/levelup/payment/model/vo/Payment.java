@@ -24,8 +24,6 @@ public class Payment implements java.io.Serializable {
 	private String emailStatus;
 	private String orderId;
 	
-	
-	
 	public Long getUniqueId() {
 		return uniqueId;
 	}
@@ -181,7 +179,9 @@ public class Payment implements java.io.Serializable {
 	public String toString() {
 		return "Payment [paymentId=" + paymentId + ", itemId=" + itemId + ", charId=" + charId + ", accountId="
 				+ accountId + ", amount=" + amount + ", paymentDate=" + paymentDate + ", paymentStatus=" + paymentStatus
-				+ ", refundDate=" + refundDate + ", refundCause=" + refundCause + "]";
+				+ ", refundDate=" + refundDate + ", refundCause=" + refundCause + ", charName=" + charName
+				+ ", paymentKey=" + paymentKey + ", uniqueId=" + uniqueId + ", emailStatus=" + emailStatus
+				+ ", orderId=" + orderId + "]";
 	}
 	
 	
