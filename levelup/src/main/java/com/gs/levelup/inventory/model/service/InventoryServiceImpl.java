@@ -47,7 +47,7 @@ public class InventoryServiceImpl implements InventoryService{
 	}
 	
 	@Override
-	public Inventory selectPaymentItem(Long uniqueId) {
+	public Inventory selectPaymentItem(long uniqueId) {
 		return inventoryDao.selectPaymentItem(uniqueId);
 	}
 	

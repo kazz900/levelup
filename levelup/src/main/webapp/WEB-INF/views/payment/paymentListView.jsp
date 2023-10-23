@@ -185,6 +185,7 @@ function showTypeDropdown(){
 											onclick="cancelPayment('${p.paymentKey }');"
 											class="btn btn-primary waves-effect waves-light">임시환불버튼</a></td>
 										<c:url var="cwrite" value="rfcaseform.do">
+												<c:param name="charId" value="${ p.paymentId }"/>
 												<c:param name="charId" value="${ p.charId }"/>
 												<c:param name="itemId" value="${ p.itemId }"/>
 												<c:param name="uniqueId" value="${ p.uniqueId }"/>
@@ -196,7 +197,7 @@ function showTypeDropdown(){
 										<!-- 환불기안버튼 -->
 										<td data-th="기안작성"><a href="#"
 											onclick="javascript:location.href='${cwrite}&caseType=3'"
-											class="btn btn-primary waves-effect waves-light">환불기안</a></td>
+											class="btn btn-primary waves-effect waves-light">환불기안 ${ p.uniqueId }</a></td>										
 									</tr>
 								</c:forEach>
 							</c:if>

@@ -47,7 +47,7 @@
 		select * from evol.inventory where char_id = #{ charId }
 	</select>
 	
-	<select id="selectPaymentItem" parameterType="long" resultMap="resultInventory">
+	<select id="selectPaymentItem" parameterType="Inventory" resultMap="resultInventory">
 		select * from evol.inventory where unique_id = #{ uniqueId }
 	</select>
 	
