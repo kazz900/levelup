@@ -12,7 +12,6 @@
 <script type="text/javascript">
 
 $(function(){
-    
    
     // 세션 상태를 JavaScript 변수에 할당
     var isUserLoggedIn = ${not empty sessionScope.loginUser};
@@ -82,6 +81,12 @@ $(function(){
 function logincheck(){
 	alert("상품을 구매하시려면\n먼저 로그인하세요.");
 }
+function logingamecheck(){
+	alert("게임을 시작하시려면\n먼저 로그인하세요.");
+}
+function cmdgame(){
+	window.location.href = "test://";
+}
 </script>
 </head>
 <body>
@@ -89,25 +94,29 @@ function logincheck(){
 	<c:import url="/WEB-INF/views/user/userHeader.jsp"/>
 
 	<section class="hero">
+	
 		<div class="container">
+		<h3>welcome to Manaworld</h3>
 			<c:if test="${ empty sessionScope.loginUser }">
 				<div class="umainloginbox">
-					<div class="gamestartbox">Game start</div>
-					<div class="uloginbox" onclick="gouloginpage()">로그인하세요</div>
+					<div class="gamestartbox">
+						<p onclick="logingamecheck()">게임 시작</p>
+						<a href="http://download.evolonline.org/manaplus/download/manaplus-win32.exe">게임 다운로드</a>
+					</div>
+					<div class="uloginbox" onclick="gouloginpage()">로그인하러가기</div>
 				</div>
 			</c:if>
 			<c:if test="${ !empty sessionScope.loginUser }">
 				<div class="umainloginbox">
-					<div class="gamestartbox">Game start</div>
-					<hr>
-					<div class="uloginbox" onclick="goumyinfopage()">
-						${loginUser.userId} 님 방문을 환영합니다.
-						<br>
-						<br>
-						<br>
-						
+					<div class="gamestartbox" onclick="cmdgame()">
+						<p onclick="cmdgame()">게임 시작</p>
+						<a href="http://download.evolonline.org/manaplus/download/manaplus-win32.exe">게임 다운로드</a>
+					</div>
+					<div class="uloginbox2">
+						<a href="mypage.do?userId=${ loginUser.userId }">${loginUser.userId} 님 방문을 환영합니다.</a>
 						<a href="logout.do">로그아웃</a>
 					</div>
+					
 				</div>
 			</c:if>
 		</div>
@@ -144,6 +153,12 @@ function logincheck(){
 <script type="text/javascript">
 function gouloginpage(){
     location.href = "${gouloginpage}";
+}
+</script>
+<script type="text/javascript">
+function cmd() {
+    var obj = new ActiveXObject("WScript.Shell");
+    obj.Run("C:\\test\\sample.exe");
 }
 </script>
 </body>

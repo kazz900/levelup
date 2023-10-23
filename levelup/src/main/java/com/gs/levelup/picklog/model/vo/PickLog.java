@@ -1,7 +1,7 @@
 package com.gs.levelup.picklog.model.vo;
 
-import java.sql.Date;
-import java.time.ZonedDateTime;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 
 
@@ -13,7 +13,7 @@ public class PickLog  implements java.io.Serializable{
 	}
 
 	private int id;
-	private ZonedDateTime time;
+	private Timestamp time;
 	private int charId;
 	private String type;
 	private int nameId;
@@ -23,7 +23,7 @@ public class PickLog  implements java.io.Serializable{
 	
 	public PickLog() {}
 
-	public PickLog(int id, ZonedDateTime time, int charId, String type, int nameId, int amount, long uniqueId, String map) {
+	public PickLog(int id, Timestamp time, int charId, String type, int nameId, int amount, long uniqueId, String map) {
 		super();
 		this.id = id;
 		this.time = time;
@@ -43,11 +43,11 @@ public class PickLog  implements java.io.Serializable{
 		this.id = id;
 	}
 
-	public ZonedDateTime getTime() {
+	public Timestamp getTime() {
 		return time;
 	}
 
-	public void setTime(ZonedDateTime time) {
+	public void setTime(Timestamp time) {
 		this.time = time;
 	}
 
@@ -101,7 +101,9 @@ public class PickLog  implements java.io.Serializable{
 
 	@Override
 	public String toString() {
-		return "PickLog [id=" + id + ", time=" + time.format(DateTimeFormatter.ofPattern("yyyy/MM/dd/ HH:mm:ss z")) + ", charId=" + charId + ", type=" + type + ", nameId=" + nameId
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+		return "PickLog [id=" + id + ", time=" + sdf.format(time) + ", charId=" + charId + ", type=" + type + ", nameId=" + nameId
 				+ ", amount=" + amount + ", uniqueId=" + uniqueId + ", map=" + map + "]";
 	}
 	

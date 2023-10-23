@@ -1,6 +1,7 @@
 package com.gs.levelup.community.model.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +32,10 @@ public class CommunityServiceImpl implements CommunityService{
 	public ArrayList<Community> selectList(Paging paging) {
 		return communityDao.selectList(paging);
 	}
+	@Override
+	public ArrayList<HashMap> selectListHashMap(Paging paging) {
+		return communityDao.selectListHashMap(paging);
+	}
 
 	@Override
 	public int insertCommunity(Community community) {
@@ -38,13 +43,13 @@ public class CommunityServiceImpl implements CommunityService{
 	}
 
 	@Override
-	public Community selectCommunity(int boardNo) {
-		return communityDao.selectCommunity(boardNo);
+	public Community selectCommunity(String board_id) {
+		return communityDao.selectCommunity(board_id);
 	}
 
 	@Override
-	public int updateReadCount(int boardNo) {
-		return communityDao.updateReadCount(boardNo);
+	public int updateReadCount(String board_id) {
+		return communityDao.updateReadCount(board_id);
 	}
 
 	@Override

@@ -23,6 +23,7 @@
 	<c:param name="page" value="${ param.page }" />	
 </c:url>
 <script type="text/javascript">
+
 function golist(){
 	location.href = "${pageContext.servletContext.contextPath}/ilist.do?page=${ param.page }";
 }
@@ -32,6 +33,7 @@ function moveAnsFixPage(){
 }
 
 </script>
+
 </head>
 <style>
 .table-responsive {
@@ -45,6 +47,9 @@ function moveAnsFixPage(){
 }
 </style>
 <body data-sidebar="dark" data-layout-mode="light">
+<c:if test="${ empty loginEmployee }">
+   <c:redirect url="eloginPage.do"/>
+</c:if>
 	<!-- 내비게이션바, 사이드바 등등 -->
 	<c:import url="/WEB-INF/views/common/layout.jsp" />
 
@@ -189,7 +194,8 @@ function moveAnsFixPage(){
 								<div class="flex-grow-1 overflow-hidden">
 									<h5 class="text-truncate font-size-15"> 답변 내용 : </h5>
 									<div class="mb-3">
-                                           <textarea id="formmessage" name="answerContent" class="form-control" rows="3" placeholder="답변을 달아주세요"></textarea>
+                                           <textarea id="formmessage" name="answerContent" class="form-control" rows="3" placeholder="답변을 달아주세요" required></textarea>
+                                           
                                        </div>
 								</div>
 							</div>				
@@ -216,7 +222,7 @@ function moveAnsFixPage(){
 									<tbody>
 										<tr>
 											<c:if test="${ !empty requestScope.inquiry.attachmentFileName }">
-												<c:url var="idown" value="ifdown.do">
+												<c:url var="idown" value="ifdown.do">													
 													<c:param name="file" value="${ requestScope.inquiry.attachmentFileName }" />												
 												</c:url>
 											<td>
@@ -258,7 +264,7 @@ function moveAnsFixPage(){
 	<c:import url="/WEB-INF/views/common/footer.jsp" />
 	</div>
 	<!-- main-content -->
-
+	
 </body>
 </html>
 

@@ -28,8 +28,8 @@ NULL,
 #{ receiverName } ,
 #{ receiverId },
 0,
-'#{ receiverName }. Thank you for purchase ',
-'Here is your item which you bought ',
+concat('Dear ',#{ receiverName },'. Thank you for purchase '),
+'Here is your item which you bought.',
 0,
 6,
 0,
@@ -38,14 +38,17 @@ NULL,
 2000000000,
 100);
 
-
 INSERT INTO rodex_items 
 (mail_id, nameid, amount, identify, unique_id) VALUES (
 LAST_INSERT_ID(),
 #{ nameId },
 1,
 1,
+<<<<<<< HEAD
 #{ uniqueId });
+=======
+#{ uniqueId })
+>>>>>>> 784346cdb9f95d368e10c1ee3de72ccf22621708
 
 	</insert>
 

@@ -14,25 +14,16 @@
 		<!-- 존재하지 않는 클래스를 등록하면 톰캣 구동 안됨 
 		vo 클래스의 줄임말을 등록. mapper.xlm 에서 줄임말 쓰기 위한 용도 -->
  		<typeAlias type="com.gs.levelup.employee.model.vo.Employee" alias="Employee" />
-
  		<typeAlias type="com.gs.levelup.notice.model.vo.Notice" alias="Notice" />
- 		
  		<typeAlias type="com.gs.levelup.schedule.model.vo.Schedule" alias="Schedule" />
 
+=======
+
  		<typeAlias type="com.gs.levelup.inquiry.model.vo.Inquiry" alias="Inquiry" />
-
  		<typeAlias type="com.gs.levelup.item.model.vo.Item" alias="Item" />
- 		
- 		<typeAlias type="com.gs.levelup.item.model.vo.Item" alias="Item" />
- 		
- 		<typeAlias type="com.gs.levelup.caseitemchange.model.vo.CaseItemChange" alias="CaseItemChange" />
-
  		<typeAlias type="com.gs.levelup.payment.model.vo.Payment" alias="Payment" />
-
- 		<typeAlias type="com.gs.levelup.caseitemdelete.model.vo.CaseItemDelete" alias="CaseItemDelete" />
-    
- 		<typeAlias type="com.gs.levelup.caseitemrefund.model.vo.CaseItemRefund" alias="CaseItemRefund" />
-
+ 		<typeAlias type="com.gs.levelup._case.model.vo.Case" alias="Case" />
+		<typeAlias type="com.gs.levelup.community.model.vo.Community" alias="Community" />
  		<typeAlias type="com.gs.levelup.common.FileDownload" alias="FileDownload" />
  		<typeAlias type="com.gs.levelup.common.FileNameChange" alias="FileNameChange" />
  		<typeAlias type="com.gs.levelup.common.Paging" alias="Paging" />
@@ -50,5 +41,6 @@
 		<mapper resource="mappers/oracle/item-mapper.xml" />
 		<mapper resource="mappers/oracle/payment-mapper.xml" />
 		<mapper resource="mappers/oracle/case-mapper.xml" />
+		<mapper resource="mappers/oracle/community-mapper.xml" />
 	</mappers>
 </configuration>

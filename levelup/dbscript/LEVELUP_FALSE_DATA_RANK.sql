@@ -1,28 +1,28 @@
 INSERT INTO RANK
-VALUES(SYS_GUID(), '사원');
+VALUES('emp', '사원');
 
 INSERT INTO RANK
-VALUES(SYS_GUID(), '인턴');
+VALUES('intern', '인턴');
 
 INSERT INTO RANK
-VALUES(SYS_GUID(), '주임');
+VALUES('chief', '주임');
 
 INSERT INTO RANK
-VALUES(SYS_GUID(), '대리');
+VALUES('senior', '대리');
 
 INSERT INTO RANK
-VALUES(SYS_GUID(), '과장');
+VALUES('jman', '과장');
 
 INSERT INTO RANK
-VALUES(SYS_GUID(), '차장');
+VALUES('sman', '차장');
 
 INSERT INTO RANK
-VALUES(SYS_GUID(), '전무');
+VALUES('jdirec', '전무');
 
 INSERT INTO RANK
-VALUES(SYS_GUID(), '이사');
+VALUES('direc', '이사');
 
 INSERT INTO RANK
-VALUES(SYS_GUID(), 'CEO');
+VALUES('ceo', 'CEO');
 
 COMMIT;

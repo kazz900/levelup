@@ -20,6 +20,18 @@ public class FileNameChange {
 		//변경할 파일명 만들기
 		renameFileName = sdf.format(new java.sql.Date(System.currentTimeMillis()));
 		
+		//강사님 처럼 database에 renameFilename을 따로 만들지 않아서 이 구문이 있으면 파일이름 저장에 문제 -> 삭제
+		/*
+		 * renameFileName += "." + originalFileName.substring(
+		 * originalFileName.lastIndexOf(".") + 1);
+		 */
+						
 		return renameFileName;
 	}
+	
+
+	
+	
+
+	
 }

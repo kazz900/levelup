@@ -345,6 +345,60 @@
 		<a href="/levelup/${ urlMapping }?page=${ maxPage }&action=${ action }&begin=${ begin }&end=${ end }">[맨끝]</a> &nbsp;
 	</c:if>
 </div>
+<<<<<<< HEAD
 </c:if> --%>
+=======
+</c:if>
+
+<!-- ------------------------------------------------------------------- -->
+<%-- 결제리스트 출력용 페이징 처리(결제 상태)--%>
+<c:if test="${ !empty action and action eq 'status' }">
+
+<div style="text-align:center;">
+	<c:if test="${ currentPage eq 1 }" >
+		[맨처음] &nbsp;
+	</c:if>
+	<c:if test="${ currentPage gt 1 }" >
+		<a href="/levelup/${ urlMapping }?page=&action=${ action }&type=${ type }">[맨처음]</a> &nbsp;
+	</c:if>
+	<c:if test="${ ((currentPage - 10) < startPage) && ((currentPage - 10) > 1) }">
+		<c:url var="um1" value="${ urlMapping }">
+			<c:param name="page" value="${ startPage -10 }" />
+			<c:param name="action" value="${ action }" />
+			<c:param name="keyword" value="${ keyword }" />
+		</c:url>
+		<a href="${ um1 }">[이전그룹]</a> &nbsp;
+	</c:if>
+	<c:if test="${ !((currentPage - 10) < startPage && (currentPage - 10) > 1) }">
+		[이전그룹] &nbsp;
+	</c:if>
+	
+	<%-- 현재 페이지가 속한 페이지그룹 숫자 출력 --%>
+	<c:forEach var="p" begin="${ startPage }" end="${ endPage }" step="1">
+		<c:if test="${ p eq currentPage }">
+			<font color="blue" size="4"><b>${ p }</b></font>
+		</c:if>
+		<c:if test="${ !(p eq currentPage) }">
+			<a href="/levelup/${ urlMapping }?page=${ p }&action=${ action }&type=${ type }">${ p }</a>
+		</c:if>
+	</c:forEach>
+	
+	<%-- 다음 페이지 그룹으로 이동 --%>
+	<c:if test="${ (currentPage + 10) > endPage && ((currentPage + 10) < maxPage) }">
+		<a href="/levelup/${ urlMapping }?page=${ startPage + 10 }&action=${ action }&type=${ type }">[다음그룹]</a> &nbsp;
+	</c:if>
+	<c:if test="${ !((currentPage + 10) > endPage && (currentPage + 10) < maxPage) }">
+		[다음그룹] &nbsp;
+	</c:if>
+	
+	<c:if test="${ currentPage >= maxPage }">
+		[맨끝] &nbsp;
+	</c:if>
+	<c:if test="${ currentPage < maxPage }">
+		<a href="/levelup/${ urlMapping }?page=${ maxPage }&action=${ action }&type=${ type }">[맨끝]</a> &nbsp;
+	</c:if>
+</div>
+</c:if>
+>>>>>>> 784346cdb9f95d368e10c1ee3de72ccf22621708
 </body>
 </html>

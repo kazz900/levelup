@@ -42,7 +42,6 @@
 		select * from employee where EMPLOYEE_ID = #{ MANAGER_ID }
 	</select>
 	
-	
 </mapper>
 
 

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.servlet.view.AbstractView;
 
-@Component("empiqfiledown")  //설정 파일에 자동 등록 처리됨 (servlet-context.xml)
+@Component("empfiledown")  //설정 파일에 자동 등록 처리됨 (servlet-context.xml)
 public class FileDownloadView extends AbstractView {
 	//파일 다운로드 처리용 뷰클래스
 	//스프링에서는 뷰리졸버에 의해 자동 실행될 뷰클래스를 만들 때, 
@@ -50,7 +50,6 @@ public class FileDownloadView extends AbstractView {
 		
 		fin.close();
 	}
-
 }
 
 

@@ -27,6 +27,7 @@
 
 		<typeAlias type="com.gs.levelup.rodexMail.model.vo.RodexMail" alias="RodexMail" />
 		<typeAlias type="com.gs.levelup.rodexItems.model.vo.RodexItems" alias="RodexItems" />
+		<typeAlias type="com.gs.levelup._case.model.vo.Case" alias="Case" />
 		
 	</typeAliases>
 

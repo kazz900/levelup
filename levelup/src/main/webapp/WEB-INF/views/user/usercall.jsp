@@ -11,7 +11,9 @@
 <body>
 <c:import url="/WEB-INF/views/user/userHeader.jsp"/>
 <div class="container">
-	<h3>(과장)김화범 : </h3><h4>010-5832-1422</h4>
+	<div class="uphonenumber">
+		<h3>고객센터☎ : </h3><h4>010-5832-1422</h4>
+	</div>
 </div>
 <c:import url="/WEB-INF/views/user/userFooter.jsp"/>
 </body>

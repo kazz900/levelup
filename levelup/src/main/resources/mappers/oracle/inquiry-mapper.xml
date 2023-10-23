@@ -176,9 +176,28 @@
 		where INQUIRY_ID = #{ inquiryId }
 		
 	</update>
+	
+	<update id="updateInquiry" parameterType="Inquiry">				
+		update inquiry 
+		set INQUIRY_TITLE = #{ inquiryTitle },
+		MODIFY_DATE = SYSDATE,
+		<if test="attachmentFileName != null">
+		ATTACHEMENT_FILENAME = #{ attachmentFileName },
+		</if>
+		<if test="attachmentFileName == null">
+		ATTACHEMENT_FILENAME = NULL,
+		</if>
+		INQUIRY_CONTENT = #{ inquiryContent }
+		where INQUIRY_ID = #{ inquiryId }
+	</update>
 
 	
 	<select id="selectInquiry" parameterType="string" resultMap="resultInquiry">
 		select * from INQUIRY where INQUIRY_ID = #{ inquiryId }
 	</select>
+	
+	<delete id="deleteInquiry" parameterType="string">
+		delete from inquiry where inquiry_id = #{ inquiryId }
+	</delete>
+	
 </mapper>
