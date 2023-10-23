@@ -48,4 +48,10 @@ LAST_INSERT_ID(),
 
 	</insert>
 
+
+	<select id="selectRodexItem" parameterType="long" resultMap="resultRodexItems">
+		select * from evol.rodex_items where evol.rodex_items.unique_id = #{ uniqueId };
+	
+	</select>
+
 </mapper>

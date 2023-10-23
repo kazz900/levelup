@@ -188,7 +188,7 @@ function showTypeDropdown(){
 											onclick="cancelPayment('${p.paymentKey }');"
 											class="btn btn-primary waves-effect waves-light">임시환불버튼</a></td>
 										<c:url var="cwrite" value="rfcaseform.do">
-												<c:param name="charId" value="${ p.paymentId }"/>
+												<c:param name="paymentId" value="${ p.paymentId }"/>
 												<c:param name="charId" value="${ p.charId }"/>
 												<c:param name="itemId" value="${ p.itemId }"/>
 												<c:param name="uniqueId" value="${ p.uniqueId }"/>

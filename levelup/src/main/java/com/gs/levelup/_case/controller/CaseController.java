@@ -33,6 +33,8 @@ import com.gs.levelup.item.model.service.ItemService;
 import com.gs.levelup.item.model.vo.Item;
 import com.gs.levelup.payment.model.service.PaymentService;
 import com.gs.levelup.payment.model.vo.Payment;
+import com.gs.levelup.rodexItems.model.service.RodexItemsService;
+import com.gs.levelup.rodexItems.model.vo.RodexItems;
 
 @Controller
 public class CaseController {
@@ -55,6 +57,9 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 	
 	@Autowired
 	private PaymentService paymentService;
+	
+	@Autowired
+	private RodexItemsService rodexItemsService;
 
 	// 기안 리스트 출력용
 	@RequestMapping(value = "clist.do", method = RequestMethod.GET)
@@ -287,7 +292,7 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 
 		// 검색결과에 대한 페이징 처리
 		// 출력할 페이지 지정
-		int currentPage = 1;ㅃ
+		int currentPage = 1;
 		// 전송온 페이지 값이 있다면 추출함
 		if (page != null) {
 			currentPage = Integer.parseInt(page);
@@ -387,8 +392,7 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 		@RequestMapping("rfcaseform.do")
 		public ModelAndView moveitemRefundCasePage(@RequestParam("caseType") String caseType,
 														@RequestParam("managerId") String managerId, 
-														Payment paymentinfo, 
-														Inventory inventory,
+														Payment paymentinfo, 														
 														ModelAndView mv) {
 			// 현재 우리가 ITEM TABLE에 가지고 있는 정보를 불러오는 용도
 			//ArrayList<Inventory> ilist = inventoryService.selectAll();
@@ -401,8 +405,8 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 			// payment 테이블에서 해당 paymentId의 결재 정보를 가져옴
 			Payment payment = paymentService.selectPaymentOne(paymentinfo.getPaymentKey());
 			
-			// Inventory 테이블에서 구매한 아이템의 UniqueId를 가진 아이템을 조회해옴 
-			Inventory payitem = inventoryService.selectPaymentItem(paymentinfo.getUniqueId());
+			// rodexitem 테이블에서 구매한 아이템의 UniqueId를 가진 아이템을 조회해옴 
+			RodexItems rodexitem = rodexItemsService.selectRodexItem(paymentinfo.getUniqueId());
 			
 			// 구매한 아이템의 아이템정보를 Item 테이블에서 가져옴
 			Item item = itemService.selectItem(paymentinfo.getItemId());
@@ -412,7 +416,7 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 						
 				mv.addObject("manager", manager);
 				mv.addObject("item", item);
-				mv.addObject("payitem", payitem);
+				mv.addObject("rodexitem", rodexitem);
 				mv.addObject("character", character);
 				mv.addObject("payment", payment);
 				

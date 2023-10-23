@@ -88,14 +88,14 @@ function golist(){
 	                            <input type="hidden" name="charName" value="${ requestScope.character.name }">
 	                            <input type="hidden" name="uniqueId" value="${ requestScope.payitem.uniqueId }">
 	                            
-	                            <input type="hidden" name="originalItemId" value="${ requestScope.payitem.nameId }">
+	                            <input type="hidden" name="originalItemId" value="${ requestScope.rodexitem.nameId }">
 	                            <c:if test="${ !empty requestScope.itemdata.itemName }">
 		                            <input type="hidden" name="originalItemName" value="${ requestScope.item.itemName }">
 	                            </c:if>
 	                            <c:if test="${ empty requestScope.itemdata.itemName }">
 		                            <input type="hidden" name="originalItemName" value="잡템 ${ requestScope.item.itemName }">
 	                            </c:if>
-	                            <input type="hidden" name="originalItemAmount" value="${ requestScope.payitem.amount }">
+	                            <input type="hidden" name="originalItemAmount" value="${ requestScope.rodexitemrodexitemrodexitem.amount }">
 
 
 
@@ -179,7 +179,7 @@ function golist(){
 
 											<div class="mb-3 col-lg-2">
 													<input type="text" id="disabledTextInput"
-													class="form-control" placeholder="${ requestScope.payitem.nameId }"
+													class="form-control" placeholder="${ requestScope.rodexitem.nameId }"
 													disabled>
 											</div>
 											<div class="mb-3 col-lg-2">												
@@ -189,13 +189,13 @@ function golist(){
 											</div>	
 											<div class="mb-3 col-lg-2">
 												<input type="text" id="disabledTextInput" 
-													class="form-control" placeholder="${ requestScope.payitem.uniqueId }"
+													class="form-control" placeholder="${ requestScope.rodexitem.uniqueId }"
 													disabled>
 											</div>									
 											
 											<div class="mb-3 col-lg-2">
 												<input type="text" id="disabledTextInput" name="paymentAmount"
-													class="form-control" placeholder="${ requestScope.payitem.amount }"
+													class="form-control" placeholder="${ requestScope.rodexitem.amount }"
 													disabled>
 											</div>
 										</div>
