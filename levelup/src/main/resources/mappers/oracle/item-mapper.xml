@@ -3,7 +3,6 @@
 "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="itemMapper">
-
 	<resultMap type="Item" id="resultItem">
 		<result column="ITEM_ID" property="itemId" />
 		<result column="ITEM_TYPE" property="itemType" />
@@ -33,5 +32,4 @@
 		where rnum <= 3
 		]]>
 	</select>
-	
 </mapper>
