@@ -10,15 +10,15 @@
 			<!-- LOGO -->
 			<div class="navbar-brand-box">
 				<a href="main.do" class="logo logo-dark"> <span class="logo-sm">
-						<img src="resources/images/logo.svg" alt="" height="22">
-				</span> <span class="logo-lg"> <img
-						src="resources/images/logo-dark.png" alt="" height="17">
+						<img src="resources/images/logo/rubik.png" alt="" height="22">
+				</span>LEVELUP <span class="logo-lg"> <img
+						src="resources/images/logo/rubik.png" alt="" height="17">
 				</span>
 				</a> <a href="main.do" class="logo logo-light"> <span
 					class="logo-sm"> <img src="resources/images/logo-light.svg"
-						alt="" height="22">
+						alt="" height="22">LEVELUP
 				</span> <span class="logo-lg"> <img
-						src="resources/images/logo-light.png" alt="" height="19">
+						src="resources/images/logo/rubik.png" alt="" height="19">LEVELUP
 				</span>
 				</a>
 			</div>
@@ -400,15 +400,15 @@
 			<!-- LOGO -->
 			<div class="navbar-brand-box">
 				<a href="main.do" class="logo logo-dark"> <span class="logo-sm">
-						<img src="resources/images/logo.svg" alt="" height="22">
+						<img src="resources/images/logo/levelup_logo.png" alt="" height="60">
 				</span> <span class="logo-lg"> <img
-						src="resources/images/logo-dark.png" alt="" height="17">
+						src="resources/images/logo/rubik.png" alt="" height="60">
 				</span>
 				</a> <a href="main.do" class="logo logo-light"> <span
-					class="logo-sm"> <img src="resources/images/logo-light.svg"
+					class="logo-sm"> <img src="resources/images/logo/levelup_logo.png"
 						alt="" height="22">
 				</span> <span class="logo-lg"> <img
-						src="resources/images/logo-light.png" alt="" height="19">
+						src="resources/images/logo/levelup_logo.png" alt="" height="60">
 				</span>
 				</a>
 			</div>

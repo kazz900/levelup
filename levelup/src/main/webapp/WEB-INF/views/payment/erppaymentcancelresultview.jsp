@@ -79,6 +79,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 </head>
 <body>
+<c:if test="${ empty loginEmployee }">
+   <c:redirect url="eloginPage.do"/>
+</c:if>
 <section>
     <% if (isSuccess) { %>
     	<c:redirect url="pcancelsuccessresult.do">
