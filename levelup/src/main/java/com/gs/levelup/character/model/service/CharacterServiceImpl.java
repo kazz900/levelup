@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gs.levelup.character.model.dao.CharacterDao;
+import com.gs.levelup.character.model.vo.Character;
 
 @Service("characterService")
 public class CharacterServiceImpl implements CharacterService{
@@ -27,4 +28,10 @@ public class CharacterServiceImpl implements CharacterService{
 	public ArrayList<com.gs.levelup.character.model.vo.Character> selectAll() {
 		return characterDao.selectAll();
 	}
+
+	@Override
+	public Character selectCharacterName(String receiverName) {
+		return characterDao.selectCharacterName(receiverName);
+	}
+
 }
