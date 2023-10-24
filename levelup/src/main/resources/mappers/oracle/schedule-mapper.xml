@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="scheduleMapper">
+
+	<resultMap type="Schedule" id="resultSchedule">
+		<result column="SCHEDULE_ID" property="scheduleId" />
+		<result column="EMPLOYEE_ID" property="employeeId" />
+		<result column="DEPARTMENT_ID" property="departmentId" />
+		<result column="TEAM_ID" property="teamId" />
+		<result column="RANK_ID" property="rankId" />
+		<result column="SCHEDULE_STARTDAY" property="scheduleStartday" />
+		<result column="SCHEDULE_ENDDAY" property="scheduleEndday" />
+		<result column="SCHEDULE_ADDRESS" property="scheduleAddress" />
+		<result column="SCHEDULE_THEME" property="scheduleTheme" />
+		<result column="SCHEDULE_CONTENT" property="scheduleContent" />
+		
+		
+	</resultMap>
+	
+	
+	<select id="selectSchedule" parameterType="string" resultMap="resultSchedule">
+		select * from schedule
+	</select>
+
+	<select id="selectScheduleList" resultMap="resultSchedule">
+		<![CDATA[
+		select * from schedule
+		]]>
+	</select>
+	
+</mapper>

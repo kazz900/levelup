@@ -15,10 +15,13 @@
 		vo 클래스의 줄임말을 등록. mapper.xlm 에서 줄임말 쓰기 위한 용도 -->
  		<typeAlias type="com.gs.levelup.employee.model.vo.Employee" alias="Employee" />
  		<typeAlias type="com.gs.levelup.notice.model.vo.Notice" alias="Notice" />
+ 		<typeAlias type="com.gs.levelup.schedule.model.vo.Schedule" alias="Schedule" />
+
  		<typeAlias type="com.gs.levelup.inquiry.model.vo.Inquiry" alias="Inquiry" />
  		<typeAlias type="com.gs.levelup.item.model.vo.Item" alias="Item" />
  		<typeAlias type="com.gs.levelup.payment.model.vo.Payment" alias="Payment" />
  		<typeAlias type="com.gs.levelup._case.model.vo.Case" alias="Case" />
+ 		<typeAlias type="com.gs.levelup.email_check.model.vo.EmailCheck" alias="EmailCheck" />
 		<typeAlias type="com.gs.levelup.community.model.vo.Community" alias="Community" />
  		<typeAlias type="com.gs.levelup.common.FileDownload" alias="FileDownload" />
  		<typeAlias type="com.gs.levelup.common.FileNameChange" alias="FileNameChange" />
@@ -32,10 +35,12 @@
 		<!-- 클래스들은 java 폴더가 base -->
 		<mapper resource="mappers/oracle/employee-mapper.xml" />
 		<mapper resource="mappers/oracle/notice-mapper.xml" />
+		<mapper resource="mappers/oracle/schedule-mapper.xml" />
 		<mapper resource="mappers/oracle/inquiry-mapper.xml" />
 		<mapper resource="mappers/oracle/item-mapper.xml" />
 		<mapper resource="mappers/oracle/payment-mapper.xml" />
 		<mapper resource="mappers/oracle/case-mapper.xml" />
 		<mapper resource="mappers/oracle/community-mapper.xml" />
+		<mapper resource="mappers/oracle/emailcheck-mapper.xml" />
 	</mappers>
 </configuration>

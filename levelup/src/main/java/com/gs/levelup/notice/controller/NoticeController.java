@@ -284,7 +284,7 @@ public class NoticeController {
 		public ModelAndView noticeDetailMethod(
 				@RequestParam("noticeId") String noticeId, ModelAndView mv, HttpSession session, HttpServletRequest request) {
 			
-			
+			String listPage = (String)session.getAttribute("listPage");
 			String previousPage = request.getHeader("Referer");
 			session.setAttribute("previousPage", previousPage);
 			session.getAttribute("listPage");
@@ -297,11 +297,13 @@ public class NoticeController {
 			
 			if(notice != null) {
 				mv.addObject("notice", notice);
-				
 				Employee loginEmployee = (Employee)session.getAttribute("loginEmployee");
-				if(loginEmployee != null && loginEmployee.getRankId().equals("EEFFCAD943CE46ECB77B8146324D497F")) {
+				if(loginEmployee != null && listPage.toString().contains("nlist") && notice.getEmployeeId().equals(loginEmployee.getEmployeeId()) || loginEmployee.getRankId().equals("jdirec") || loginEmployee.getRankId().equals("direc") || loginEmployee.getRankId().equals("ceo")) {
+					mv.setViewName("notice/nAdminDetail");}
+				if(loginEmployee != null && listPage.toString().contains("ntlist") && notice.getEmployeeId().equals(loginEmployee.getEmployeeId()) || loginEmployee.getRankId().equals("jman") || loginEmployee.getRankId().equals("sman") || loginEmployee.getRankId().equals("jdirec") || loginEmployee.getRankId().equals("direc") || loginEmployee.getRankId().equals("ceo") || notice.getEmployeeId().equals(loginEmployee.getEmployeeId())) {
+					mv.setViewName("notice/nAdminDetail");}
+				if(loginEmployee != null && listPage.toString().contains("ndlist") && notice.getEmployeeId().equals(loginEmployee.getEmployeeId()) || 	loginEmployee.getRankId().equals("sman") || loginEmployee.getRankId().equals("jdirec") || loginEmployee.getRankId().equals("direc") || loginEmployee.getRankId().equals("ceo") || notice.getEmployeeId().equals(loginEmployee.getEmployeeId())) {
 					mv.setViewName("notice/nAdminDetail");
-				
 				}else {
 					mv.setViewName("notice/ndetail");
 				}
@@ -428,7 +430,7 @@ public class NoticeController {
 
 		
 		//공지글 제목 검색용 (페이징 처리 포함)
-		@RequestMapping(value="nsearchTitle.do", method=RequestMethod.POST)
+		@RequestMapping(value="nsearchTitle.do", method=RequestMethod.GET)
 		public ModelAndView noticeSearchTitleMethod(
 				@RequestParam("action") String action, 
 				@ModelAttribute Search search, // Use @ModelAttribute to receive the search object

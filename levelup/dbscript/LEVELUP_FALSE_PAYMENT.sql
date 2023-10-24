@@ -29,5 +29,6 @@ update item set discount_rate = 15 where item_id = 1011;
 update item set discount_rate = 15 where item_id = 625;
 update item set discount_rate = 20 where item_id = 1012;
 
-commit;
 
+
+commit;

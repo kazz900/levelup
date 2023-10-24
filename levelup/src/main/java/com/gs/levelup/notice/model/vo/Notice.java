@@ -1,6 +1,6 @@
 package com.gs.levelup.notice.model.vo;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Notice {
 	private String noticeId;
@@ -9,15 +9,24 @@ public class Notice {
 	private String teamId;
 	private String noticeTitle;
 	private String noticeContent;
-	private Date editDate;
+	private Timestamp editDate;
 	private String attachementFilename;
 	private String renameFilename;
 	private int readCount;
+	private String employeeName;
 	
+	public String getEmployeeName() {
+		return employeeName;
+	}
+
+	public void setEmployeeName(String employeeName) {
+		this.employeeName = employeeName;
+	}
+
 	public Notice() {}
 
 	public Notice(String noticeId, String employeeId, String departmentId, String teamId, String noticeTitle,
-			String noticeContent, Date editDate, String attachementFilename, int readCount) {
+			String noticeContent, Timestamp editDate, String attachementFilename, int readCount) {
 		super();
 		this.noticeId = noticeId;
 		this.employeeId = employeeId;
@@ -86,11 +95,11 @@ public class Notice {
 		this.noticeContent = noticeContent;
 	}
 
-	public Date getEditDate() {
+	public Timestamp getEditDate() {
 		return editDate;
 	}
 
-	public void setEditDate(Date editDate) {
+	public void setEditDate(Timestamp editDate) {
 		this.editDate = editDate;
 	}
 
