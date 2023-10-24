@@ -169,6 +169,7 @@ function showTypeDropdown(){
 										<!-- Payment Date -->
 										<td data-th="Payment Date"><fmt:formatDate
 												value="${ p.paymentDate }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+										
 										<!-- Refund Date -->
 										<td data-th="Refund Date"><fmt:formatDate
 												value="${ p.refundDate }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
@@ -192,7 +193,7 @@ function showTypeDropdown(){
 										<!-- 환불기안버튼 -->
 										<td data-th="기안작성"><a href="#"
 											onclick="javascript:location.href='${cwrite}&caseType=3'"
-											class="btn btn-primary waves-effect waves-light">Refund</a></td>										
+											class="btn btn-primary waves-effect waves-light">환불 기안</a></td>										
 									</tr>
 								</c:forEach>
 							</c:if>
@@ -215,6 +216,9 @@ function showTypeDropdown(){
 		<c:import url="/WEB-INF/views/common/footer.jsp" />
 	</div>
 	<!-- main-content -->
+	<script type="text/javascript">
+	
+	</script>
 	
 	<script type="text/javascript">
 		function cancelPayment(paymentKey){
