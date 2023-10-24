@@ -26,27 +26,6 @@
 	<c:param name="employeeId" value="${ sessionScope.loginEmployee.employeeId }" />
 	<c:param name="charId" value="${ requestScope.casedetail.charId }" />
 </c:url>
-
-<script type="text/javascript">
-function golist(){
-	location.href = "${pageContext.servletContext.contextPath}/clist.do?page=${ param.page }";
-}
-
-function caseApprove(){
-	var ans = confirm("기안을 승인하시겠습니까? 아이템의 정보가 변경됩니다.");
-	if(ans) { location.href = "${ caseApprove }";
-	}	
-	return false;
-}
-
-function caseReject(){
-	var ans = confirm("기안을 반려하시겠습니까? 아이템이 삭제 됩니다.");
-	if(ans) { location.href = "${ caseReject }";
-	}	
-	return false;
-}
-
-</script>
 </head>
 <style>
 .table-responsive {
@@ -210,10 +189,10 @@ function caseReject(){
                                 
                              			<div id="currentItems">
                                    		<div class="row" >
-                                     		<div class="mb-3 col-lg-2">ID</div>        
-                                            <div class="mb-3 col-lg-2">NAME</div> 
+                                     		<div class="mb-3 col-lg-2">아이템 ID</div>        
+                                            <div class="mb-3 col-lg-2">아이템 이름</div> 
                                             <div class="mb-3 col-lg-2">UNIQUE ID</div>	        
-                                            <div class="mb-3 col-lg-2">AMOUNT</div>                 
+                                            <div class="mb-3 col-lg-2">수량</div>                 
                                         </div>  
                                         
                                              
@@ -244,9 +223,9 @@ function caseReject(){
                                 
                              			<div id="newItems">
                                    		<div class="row" >
-                                     		<div class="mb-3 col-lg-2">ID</div>        
-                                            <div class="mb-3 col-lg-2">NAME</div>         
-                                            <div class="mb-3 col-lg-2">AMOUNT</div>              
+                                     		<div class="mb-3 col-lg-2">아이템 ID</div>        
+                                            <div class="mb-3 col-lg-2">아이템 이름</div>         
+                                            <div class="mb-3 col-lg-2">수량</div>              
                                         </div>  
                                         
                                              
@@ -283,28 +262,31 @@ function caseReject(){
 	                                             
 	                                		<div class="row">	
 	                                			<div class="mb-3 col-lg-2">	                                        	
-		                                            <input type="text" name="" id="disabledTextInput" class="form-control" placeholder="<fmt:formatDate value="${ requestScope.casedetail.editDate }" pattern="yyyy-MM-dd HH:mm:ss" />" disabled>
+		                                            <input type="text" name="" id="disabledTextInput" class="form-control" placeholder="<fmt:formatDate value="${ requestScope.casedetail.paymentDate }" pattern="yyyy-MM-dd HH:mm:ss" />" disabled>
 		                                        </div>        
 		                                        <div class="mb-3 col-lg-2">		                                        
-			                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.paymentStatus.newItemName }" disabled>		                                 
+			                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.casedetail.paymentStatus }" disabled>		                                 
 		                                        </div>          
 		                                        <div class="mb-3 col-lg-2">
-		                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.paymentAmount.newItemAmount }" disabled>
-		                                        </div>  
-		                                        <div class="mb-3 col-lg-2">
-		                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.refundCause.newItemAmount }" disabled>
-		                                        </div> 
-		                                         <div class="mb-3 col-lg-2">
-		                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.paymentKey.newItemAmount }" disabled>
+		                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.casedetail.paymentAmount }" disabled>
+		                                        </div>  		                                        
+		                                         <div class="mb-3 col-lg-5">
+		                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.casedetail.paymentKey }" disabled>
 		                                        </div>  	                          
 	                                			
 	                                		</div>	
-	                                		
-	                                		<div class="mb-3 col-lg-2">환불 사유</div> 
-	                                		<div class="mb-3 col-lg-6">	                                        	
-	                                            <input type="text" name="" id="disabledTextInput" class="form-control" placeholder="${ requestScope.casedetail.refundCause }" disabled>
+	                                		<div class="row" >
+	                                     		<div class="mb-3 col-lg-2">환불날짜</div>        
+	                                            <div class="mb-3 col-lg-2">환불사유</div>           
+	                                        </div>    
+	                                         	<div class="mb-3 col-lg-2">
+		                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.casedetail.refundDate }" disabled>
+		                                        </div>                                      	
+	                                            <div class="mb-3 col-lg-6">
+		                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.casedetail.refundCause }" disabled>
+		                                        </div> 
 	                                        </div>       
-	                                		</div>                                		
+	                                		                               		
 	                                
                                 		</c:if>
                                 	
@@ -371,23 +353,36 @@ function caseReject(){
 								<!-- 수정하기 버튼, 기안 올리기 버튼, 삭제하기버튼, 목록으로 버튼 -->
 								
 								<div class="col-lg-10" align="center">
-									
+									<!-- 기안 결재자가 아닌 경우 -->
 									<c:if test="${ sessionScope.loginEmployee.employeeId != requestScope.casedetail.caseManagerId }">
                                   <button type="button" class="btn btn-secondary waves-effect waves-light" onclick="golist();">목록으로</button>
                                   
                                    </c:if>
                                    
+                                   <!-- 기안 결재자인 경우 -->
 									<c:if test="${ sessionScope.loginEmployee.employeeId == requestScope.casedetail.caseManagerId }">
 										<c:if test="${ requestScope.casedetail.caseStatus eq 0 }" >
 		                                  <button type="button" class="btn btn-secondary waves-effect waves-light" onclick="golist();">목록으로</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		                                  <button type="button" class="btn btn-success waves-effect waves-light" onclick="caseApprove();">기안 승인</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		                                  
+		                                  	<!-- 아이템 변경/삭제 기안의 경우의 승인처리 -->
+		                                  	<c:if test="${ requestScope.casedetail.caseType eq 1 || requestScope.casedetail.caseType eq 2 }"> 
+		                                 		 <button type="button" class="btn btn-success waves-effect waves-light" onclick="caseApprove();">기안 승인</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		                                  	</c:if>
+		                                  	
+		                                  	<!-- 아이템 환불 기안의 경우의 승인처리 -->
+		                                  	<c:if test="${ requestScope.casedetail.caseType eq 3 }">
+		                                  		<button type="button" class="btn btn-success waves-effect waves-light" onclick="cancelPayment();">기안 승인</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		                                  	</c:if>
+		                                  
 		                                  <button type="button" class="btn btn-danger waves-effect waves-light" onclick="caseReject();">기안 반려</button>   										
 										</c:if>
 										
+										<!-- 이미 승인된 기안 -->
 										<c:if test="${ requestScope.casedetail.caseStatus eq 1 }" >										  
 										  <button type="button" class="btn btn-secondary waves-effect waves-light" onclick="golist();">목록으로</button>										
                                   		</c:if> 
                                   		
+                                  		<!-- 이미 반려된 기안 -->
                                   		<c:if test="${ requestScope.casedetail.caseStatus eq 2 }" >										  
 										  <button type="button" class="btn btn-secondary waves-effect waves-light" onclick="golist();">목록으로</button>										
                                   		</c:if>                              
@@ -414,6 +409,101 @@ function caseReject(){
 	<c:import url="/WEB-INF/views/common/footer.jsp" />
 	</div>
 	<!-- main-content -->
+
+	<script type="text/javascript">
+		function cancelPayment(){
+			
+			var ans = confirm("기안을 승인하시겠습니까? 바로 환불이 진행됩니다");
+			if(ans) {
+			
+				/* form */
+				let f = document.createElement('form');	
+				
+				/* caseId hidden input */
+				let caseIdHiddenInput = document.createElement('input');
+				caseIdHiddenInput.setAttribute('type', 'hidden');
+				caseIdHiddenInput.setAttribute('name', 'caseId');
+				caseIdHiddenInput.setAttribute('value', '${ requestScope.casedetail.caseId }');
+				
+				/* charId hidden input */
+				let charIdHiddenInput = document.createElement('input');
+				charIdHiddenInput.setAttribute('type', 'hidden');
+				charIdHiddenInput.setAttribute('name', 'charId');
+				charIdHiddenInput.setAttribute('value', '${ requestScope.casedetail.charId }');
+				
+				/* employeeId hidden input */
+				let employeeIdHiddenInput = document.createElement('input');
+				employeeIdHiddenInput.setAttribute('type', 'hidden');
+				employeeIdHiddenInput.setAttribute('name', 'employeeId');
+				employeeIdHiddenInput.setAttribute('value', '${ sessionScope.loginEmployee.employeeId }');
+				
+				
+				/* paymentKey hidden input */
+				let paymentKeyHiddenInput = document.createElement('input');
+				paymentKeyHiddenInput.setAttribute('type', 'hidden');
+				paymentKeyHiddenInput.setAttribute('name', 'paymentKey');
+				paymentKeyHiddenInput.setAttribute('value', '${ requestScope.casedetail.paymentKey }');
+				
+			    /* cancel reason hidden input */
+				let cancelReasonHiddenInput = document.createElement('input');
+				cancelReasonHiddenInput.setAttribute('type', 'hidden');
+				cancelReasonHiddenInput.setAttribute('name', 'cancelReason');
+				/* 환불 사유는 나중에 손보면댐 */
+				cancelReasonHiddenInput.setAttribute('value', '테스트 환불');
+			    
+				/* nowpage hidden input */
+				let nowpageHiddenInput = document.createElement('input');
+				nowpageHiddenInput.setAttribute('type', 'hidden');
+				nowpageHiddenInput.setAttribute('name', 'page');
+				nowpageHiddenInput.setAttribute('value', '${ nowpage }');
+				
+			    f.appendChild(caseIdHiddenInput);
+			    f.appendChild(charIdHiddenInput);
+			    f.appendChild(employeeIdHiddenInput);	
+			    f.appendChild(paymentKeyHiddenInput);
+			    f.appendChild(cancelReasonHiddenInput);
+			    f.appendChild(nowpageHiddenInput);
+			    
+			    
+			    f.setAttribute('method', 'post');
+				f.setAttribute('action', 'caserfApprove.do');
+				
+				console.log(paymentKeyHiddenInput.value);
+				console.log(cancelReasonHiddenInput.value);
+				console.log(nowpageHiddenInput.value);
+				
+				document.body.appendChild(f);
+				f.submit();
+			}else {
+				return false;
+			}
+		}
+		
+		function golist(){
+			location.href = "${pageContext.servletContext.contextPath}/clist.do?page=${ param.page }";
+		}
+
+		function caseApprove(){
+			if(${ requestScope.casedetail.caseType eq 1}){
+				
+				var ans = confirm("기안을 승인하시겠습니까? 아이템의 정보가 변경됩니다.");
+					if(ans) { location.href = "${ caseApprove }";
+					}
+			}else if(${ requestScope.casedetail.caseType eq 2}){
+				var ans = confirm("기안을 승인하시겠습니까? 아이템이 삭제됩니다.");
+					if(ans) { location.href = "${ caseApprove }";		
+					}
+			}
+			return false;
+		}
+
+		function caseReject(){
+			var ans = confirm("기안을 반려하시겠습니까?");
+			if(ans) { location.href = "${ caseReject }";
+			}	
+			return false;
+		}
+	</script>
 
 </body>
 </html>
