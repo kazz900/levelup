@@ -95,6 +95,8 @@
     alert("코드를 다시 입력하세요.");
   }else if(message === "error2"){
 	  alert("등록된 이메일이 아닙니다.");
+  }else if(message === "sendsuccess"){
+	  alert("메일이 전송되었습니다.");
   }
   
 </script>

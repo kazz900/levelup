@@ -85,7 +85,7 @@ function dupIDCheck(){
                 
                                                 <div class="mb-3">
                                                     <label for="username" class="form-label">Username</label>
-                                                    <input type="text" class="form-control" name="userId" id="userId" placeholder="Enter username">
+                                                    <input type="text" class="form-control" name="userId" id="userId" placeholder="Enter username" required>
                                                     <br>
                                                     <input type="button" value="id 중복체크" onclick="return dupIDCheck();">
                                                 </div>
@@ -96,12 +96,12 @@ function dupIDCheck(){
                                                     </div>
                                                     <label class="form-label">암호</label>
                                                     <div class="input-group auth-pass-inputgroup">
-                                                        <input type="password" name="userPass" class="form-control" placeholder="Enter password" aria-label="Password" aria-describedby="password-addon"  id="userpwd">
+                                                        <input type="password" name="userPass" class="form-control" placeholder="Enter password" aria-label="Password" aria-describedby="password-addon"  id="userpwd" required>
                                                         <button class="btn btn-light " type="button"><i class="mdi mdi-eye-outline"></i></button>
                                                     </div>
                                                     <label class="form-label">암호확인</label>
                                                     <div class="input-group auth-pass-inputgroup">
-                                                        <input type="password" class="form-control" placeholder="Enter password repeat" aria-label="Password" aria-describedby="password-addon" id="userpwd2">
+                                                        <input type="password" class="form-control" placeholder="Enter password repeat" aria-label="Password" aria-describedby="password-addon" id="userpwd2" required>
                                                         <button class="btn btn-light " type="button"><i class="mdi mdi-eye-outline"></i></button>
                                                     </div>
                                                 </div>
@@ -113,7 +113,7 @@ function dupIDCheck(){
 												<input type="radio" name="sex" value="F"> 여자
 												<br><br>
 												<label for="email" class="form-label">email</label>
-                                                <input type="email" class="form-control" name="email" id="email" placeholder="Enter email">
+                                                <input type="email" class="form-control" name="email" id="email" placeholder="Enter email" required>
                         						
                         						<br><br>
                                                 <div class="form-check">
