@@ -92,6 +92,9 @@
                                                    	 <c:if test="${ requestScope.casedetail.caseType eq 2}">
                                                     	<h5 class="font-size-15">아이템 삭제 기안</h5>
                                                    	</c:if>
+                                                   	 <c:if test="${ requestScope.casedetail.caseType eq 3}">
+                                                    	<h5 class="font-size-15">아이템 환불 기안</h5>
+                                                   	</c:if>
                                                 </div>
                                             </div>
                                             
@@ -190,7 +193,7 @@
                              			<div id="currentItems">
                                    		<div class="row" >
                                      		<div class="mb-3 col-lg-2">아이템 ID</div>        
-                                            <div class="mb-3 col-lg-2">아이템 이름</div> 
+                                            <div class="mb-3 col-lg-3">아이템 이름</div> 
                                             <div class="mb-3 col-lg-2">UNIQUE ID</div>	        
                                             <div class="mb-3 col-lg-2">수량</div>                 
                                         </div>  
@@ -200,7 +203,7 @@
                                 			<div class="mb-3 col-lg-2">	                                        	
 	                                            <input type="text" name="" id="disabledTextInput" class="form-control" placeholder="${ requestScope.casedetail.originalItemId }" disabled>
 	                                        </div>        
-	                                        <div class="mb-3 col-lg-2">		                                        
+	                                        <div class="mb-3 col-lg-3">		                                        
 		                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.casedetail.originalItemName }" disabled>		                                 
 	                                        </div>  
 	                                        <div class="mb-3 col-lg-2">
@@ -224,7 +227,7 @@
                              			<div id="newItems">
                                    		<div class="row" >
                                      		<div class="mb-3 col-lg-2">아이템 ID</div>        
-                                            <div class="mb-3 col-lg-2">아이템 이름</div>         
+                                            <div class="mb-3 col-lg-3">아이템 이름</div>         
                                             <div class="mb-3 col-lg-2">수량</div>              
                                         </div>  
                                         
@@ -233,7 +236,7 @@
                                 			<div class="mb-3 col-lg-2">	                                        	
 	                                            <input type="text" name="" id="disabledTextInput" class="form-control" placeholder="${ requestScope.casedetail.newItemId }" disabled>
 	                                        </div>        
-	                                        <div class="mb-3 col-lg-2">		                                        
+	                                        <div class="mb-3 col-lg-3">		                                        
 		                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.casedetail.newItemName }" disabled>		                                 
 	                                        </div>          
 	                                        <div class="mb-3 col-lg-2">
@@ -264,13 +267,27 @@
 	                                			<div class="mb-3 col-lg-2">	                                        	
 		                                            <input type="text" name="" id="disabledTextInput" class="form-control" placeholder="<fmt:formatDate value="${ requestScope.casedetail.paymentDate }" pattern="yyyy-MM-dd HH:mm:ss" />" disabled>
 		                                        </div>        
-		                                        <div class="mb-3 col-lg-2">		                                        
-			                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.casedetail.paymentStatus }" disabled>		                                 
-		                                        </div>          
+		                                        <div class="mb-3 col-lg-2">
+		                                               <c:if test="${ requestScope.casedetail.paymentStatus eq 1 }" >
+		                                               		<input type="text" id="disabledTextInput" name="paymentStatus"
+															class="form-control" placeholder="결제 완료" disabled>
+															<input type="hidden" name="paymentStatus" value="1">
+		                                               </c:if>
+		                                               <c:if test="${ requestScope.casedetail.paymentStatus eq 2 }" >
+		                                               		<input type="text" id="disabledTextInput" name="paymentStatus"
+															class="form-control" placeholder="환불 완료" disabled>
+															<input type="hidden" name="paymentStatus" value="2">
+		                                               </c:if>
+		                                                <c:if test="${ requestScope.casedetail.paymentStatus eq 3 }" >
+		                                               		<input type="text" id="disabledTextInput" name="paymentStatus"
+															class="form-control" placeholder="결제 대기" disabled>
+															<input type="hidden" name="paymentStatus" value="3">
+		                                               </c:if>
+												</div>	 
 		                                        <div class="mb-3 col-lg-2">
 		                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.casedetail.paymentAmount }" disabled>
 		                                        </div>  		                                        
-		                                         <div class="mb-3 col-lg-5">
+		                                         <div class="mb-3 col-lg-6">
 		                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.casedetail.paymentKey }" disabled>
 		                                        </div>  	                          
 	                                			
@@ -279,12 +296,15 @@
 	                                     		<div class="mb-3 col-lg-2">환불날짜</div>        
 	                                            <div class="mb-3 col-lg-2">환불사유</div>           
 	                                        </div>    
+	                                        <div class="row" >
 	                                         	<div class="mb-3 col-lg-2">
 		                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.casedetail.refundDate }" disabled>
 		                                        </div>                                      	
-	                                            <div class="mb-3 col-lg-6">
+	                                            <div class="mb-3 col-lg-4">
 		                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.casedetail.refundCause }" disabled>
 		                                        </div> 
+		                                     </div>
+		                                     
 	                                        </div>       
 	                                		                               		
 	                                
@@ -455,7 +475,7 @@
 				let nowpageHiddenInput = document.createElement('input');
 				nowpageHiddenInput.setAttribute('type', 'hidden');
 				nowpageHiddenInput.setAttribute('name', 'page');
-				nowpageHiddenInput.setAttribute('value', '${ nowpage }');
+				nowpageHiddenInput.setAttribute('value', '1');
 				
 			    f.appendChild(caseIdHiddenInput);
 			    f.appendChild(charIdHiddenInput);

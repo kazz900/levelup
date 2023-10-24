@@ -19,5 +19,14 @@ public class PickLogServiceImpl implements PickLogService{
 		return pickLogDao.selectPickLog(charId);
 	}
 	
+	@Override
+	public int selectPayItemPickLog(long uniqueId) {
+		return pickLogDao.selectPayItemPickLog(uniqueId);
+	}
+	
+	@Override 
+	public ArrayList<PickLog> selectPayItemPickLogAll(){
+		return pickLogDao.selectPayItemPickLogAll();
+	}
 
 }

@@ -269,9 +269,17 @@ function golist(){
 											<label for="caseContent" class="col-form-label col-lg-3">기안 내용</label>
 											<div class="col-lg-12">
 												<div class="mb-3 col-lg-2">
-												<input type="text" id="form-control" name="refundCause"
-													class="form-control" placeholder="환불 사유"
-													required>
+												
+												<select class="form-select" name="refundCause" required>
+                                                    <option selected disabled>환불 사유</option>
+                                                    <option>게임 오류로 인한 아이템 수령불가</option>
+                                                    <option>구매한 것과 다른 아이템이 발송됨</option>
+                                                    <option>이벤트/할인 등이 적용되지 않음</option>
+                                                    <option>서버오류로 인한 잘못된 구매</option>
+                                                    <option>해킹으로 인한 구매</option>
+                                                    <option>그 외</option>
+                                                </select>
+																							
 												</div>
 												<textarea id="caseContent" name="caseContent"
 													class="form-control" rows="3" cols="40"

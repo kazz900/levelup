@@ -48,16 +48,18 @@ public class EmployeeController {
 	}
 
 	// 회원가입 페이지 내보내기용
-	@RequestMapping("eenrollPage.do")
+	@RequestMapping("enrollEmppage.do")
 	public String moveEnrollPage() {
-		return "member/enrollPage";
+		return "employee/insertEmployee";
 	}
 
 	@RequestMapping(value = "elogin.do", method = RequestMethod.POST)
 	public String loginMethod(Employee employee, HttpSession session, SessionStatus status, Model model) {
 		Employee loginEmployee = employeeService.selectEmployee(employee.getEmployeeEmail());
 
-		if (loginEmployee != null && employee.getEmployeePwd().equals(loginEmployee.getEmployeePwd())) {
+		if(loginEmployee != null && 
+				this.bcryptPasswordEncoder.matches(
+						employee.getEmployeePwd(), loginEmployee.getEmployeePwd())) {
 			session.setAttribute("loginEmployee", loginEmployee);
 			status.setComplete();
 			return "common/main";
@@ -65,6 +67,25 @@ public class EmployeeController {
 			model.addAttribute("message", "로그인 실패!, 아이디 및 비밀번호를 확인 해주세요");
 			return "common/error";
 		}
+	}
+	
+	@RequestMapping(value = "empenroll.do", method = RequestMethod.POST)
+	public String empenrollMethod(Model model, 
+			Employee emp) {
+		
+		logger.info("empenroll.do : " + emp);
+		emp.setEmployeePwd(bcryptPasswordEncoder.encode(emp.getEmployeePwd()));
+		logger.info("after encode : " + emp.getEmployeePwd());
+		
+		if(employeeService.insertEmployee(emp) > 0) {
+			model.addAttribute("message", "사원이 등록되었습니다.");
+			return "employee/insertEmployee";
+		}else {
+			model.addAttribute("message", "사원등록중 오류 발생 개발팀에 문의바람.");
+			return "employee/insertEmployee";
+		}
+		
+		
 	}
 
 	// 로그아웃 처리용 메소드
