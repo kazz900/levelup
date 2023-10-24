@@ -17,8 +17,6 @@
  		<typeAlias type="com.gs.levelup.notice.model.vo.Notice" alias="Notice" />
  		<typeAlias type="com.gs.levelup.schedule.model.vo.Schedule" alias="Schedule" />
 
-=======
-
  		<typeAlias type="com.gs.levelup.inquiry.model.vo.Inquiry" alias="Inquiry" />
  		<typeAlias type="com.gs.levelup.item.model.vo.Item" alias="Item" />
  		<typeAlias type="com.gs.levelup.payment.model.vo.Payment" alias="Payment" />

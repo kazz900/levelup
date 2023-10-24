@@ -124,7 +124,7 @@ ${currentPage} &nbsp; ${ community.attachement_filename }
                 <div class="flex-grow-1">
                     작성자: <b class="font-size-14 mt-1">${ loginEmployee.employeeName }</b> <small class="text-muted"><a href="mailto:${ loginEmployee.employeeEmail }">${ loginEmployee.employeeEmail }</a></small><br>
 
-				<form id="upload-form" class="form" action="cominsert.do" method="POST" encType="multipart/form-data">
+				<form id="upload-form" class="form" action="cominsertRep.do" method="POST" encType="multipart/form-data">
 					<div class="row">
 						<div class="col-12 mb-3">
 							<div class="form-floating">
@@ -133,6 +133,8 @@ ${currentPage} &nbsp; ${ community.attachement_filename }
 				          		<input name="employee_id" value="${ loginEmployee.employeeId }" type="hidden">
 				          		<input name="department_id" value="${ loginEmployee.departmentId }" type="hidden">
 				          		<input name="team_id" value="${ loginEmployee.teamId }" type="hidden">
+				          		<input name="ref_id" value="${ community.board_id }" type="hidden">
+				          		<input name="currentPage" value="${ currentPage }" type="hidden">
 				          	</div>
 						</div>
 					</div>
