@@ -37,12 +37,12 @@ public class PaymentController {
 	public String selectListMethod(@RequestParam(name = "page", required = false) String page, Model model) {
 
 		int currentPage = 1;
-		// 환불 끝나면 기안 리스트 페이지로 PAGE 값 가지고 돌아가도록 처리하라!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//		
-//		if (page != null) {
-//			currentPage = Integer.parseInt(page);
-//		}
-//
+		
+		
+	if (page != null) {
+			currentPage = Integer.parseInt(page);
+		}
+
 		// 한 페이지 게시글 10개씩 출력되게 한다면
 		int limit = 10;
 

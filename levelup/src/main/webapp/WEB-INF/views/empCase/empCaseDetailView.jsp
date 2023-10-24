@@ -455,7 +455,7 @@
 				let nowpageHiddenInput = document.createElement('input');
 				nowpageHiddenInput.setAttribute('type', 'hidden');
 				nowpageHiddenInput.setAttribute('name', 'page');
-				nowpageHiddenInput.setAttribute('value', '${ nowpage }');
+				nowpageHiddenInput.setAttribute('value', '1');
 				
 			    f.appendChild(caseIdHiddenInput);
 			    f.appendChild(charIdHiddenInput);
