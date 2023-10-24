@@ -287,7 +287,7 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 
 		// 검색결과에 대한 페이징 처리
 		// 출력할 페이지 지정
-		int currentPage = 1;ㅃ
+		int currentPage = 1;
 		// 전송온 페이지 값이 있다면 추출함
 		if (page != null) {
 			currentPage = Integer.parseInt(page);

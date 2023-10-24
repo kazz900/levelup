@@ -27,6 +27,10 @@ public interface UserService {
 	public User selectOneSearchAccountId(Search search);
 	public User selectOneSearchUserId(Search search);
 	public User selectOneSearchEmail(Search search);
+	
+	
 	public int insertUser(User user);
+	public int updatePwd(User user);
+	public String selectUserEmail(String email);
 
 }

@@ -12,12 +12,11 @@
 </head>
 <body>
 <c:import url="/WEB-INF/views/user/userHeader.jsp"/>
-
+<div class="container">
 <h2>${ sessionScope.loginUser.userId }님의 마이페이지</h2>
 
 <br><br><br>
 <h4>캐릭터 리스트</h4>
-${ requestScope.charList }
 <table align="center" border="1" cellspacing="0" width="700">
 <tr>
 	<th align="center">캐릭터 이름</th>
@@ -51,7 +50,6 @@ ${ requestScope.charList }
 
 <br><br><br>
 <h4>결제 내역</h4>
-${ requestScope.paymentList }
 <table align="center" border="1" cellspacing="0" width="700">
 <tr>
 	<th align="center">캐릭터 이름</th>
@@ -73,7 +71,6 @@ ${ requestScope.paymentList }
 
 <br><br><br>
 <h4>문의 내역</h4>
-${ requestScope.inquiryList }
 <table align="center" border="1" cellspacing="0" width="700">
 <tr>
 	<th align="center">문의한 id</th>
@@ -94,7 +91,7 @@ ${ requestScope.inquiryList }
 </table>
 <br><br>
 
-
+</div>
 <c:import url="/WEB-INF/views/user/userFooter.jsp"/>
 <script type="text/javascript">
 /* $(document).ready(function() {
