@@ -62,10 +62,10 @@ public class TestController {
 			emailCheckService.insertEmailCheck(emailCheck);
 
 			// 보내는 사람 김지혁
-			//String frm = "kimjihyuk_@naver.com";
+			String frm = "kimjihyuk_@naver.com";
 			
 			// 보내는 사람 김화범
-			String frm = "vulpes900@naver.com";
+			//String frm = "vulpes900@naver.com";
 		
 			try {
 				// 메일 내용 넣을 객체와, 이를 도와주는 Helper 객체 생성
@@ -84,7 +84,7 @@ public class TestController {
 				e.printStackTrace();
 			}
 			
-			return "redirect:searchPwd.do?success=" + toEmail;
+			return "redirect:searchPwd.do?success=" + toEmail + "&message=sendsuccess";
 		}else {
 			return "redirect:searchPwd.do?success=" + toEmail + "&message=error2";
 		}

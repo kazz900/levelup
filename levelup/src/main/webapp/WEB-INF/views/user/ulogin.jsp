@@ -91,7 +91,7 @@
                                                 <p>Don't have an account ? <a href="${ pageContext.servletContext.contextPath }/userinsertpage.do" class="fw-medium text-primary"> Signup now </a> </p>
                                             </div>
                                             <div class="mt-5 text-center">
-                                                <p>비밀번호 분실시 - <a href="${ pageContext.servletContext.contextPath }/searchPwd.do" class="fw-medium text-primary"> find id </a> </p>
+                                                <p>비밀번호 분실시 - <a href="${ pageContext.servletContext.contextPath }/searchPwd.do" class="fw-medium text-primary"> find password </a> </p>
                                             </div>
                                         </div>
                                     </div>

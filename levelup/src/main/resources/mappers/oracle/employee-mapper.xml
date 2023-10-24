@@ -42,6 +42,11 @@
 		select * from employee where EMPLOYEE_ID = #{ MANAGER_ID }
 	</select>
 	
+	<insert id="insertMember" parameterType="Employee">
+		insert into employee values( default, #{departmentId}, #{teamId}, 'emp', #{employeeName}, #{employeeEmail},
+		#{employeePwd}, #{employeeAddress}, #{employeePhone}, #{employeeBirthdate}, #{managerId} )
+	</insert>
+	
 </mapper>
 
 
