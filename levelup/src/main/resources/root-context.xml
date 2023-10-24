@@ -132,8 +132,8 @@
    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
       <property name="host" value="smtp.naver.com" />
       <property name="port" value="465" />
-      <property name="username" value="testgs0798@naver.com" />
-      <property name="password" value="testgs1111" />
+      <property name="username" value="vulpes900@naver.com" />
+      <property name="password" value="rlaghkqja@456" />
       <property name="defaultEncoding" value="utf-8" />
       <property name="javaMailProperties">
          <props>
@@ -146,8 +146,6 @@
          </props>
       </property>
    </bean>
-   
-      
 </beans>
 
 

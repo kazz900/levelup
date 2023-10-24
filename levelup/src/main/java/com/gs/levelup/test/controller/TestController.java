@@ -54,16 +54,18 @@ public class TestController {
 			logger.info("sendMail.do : " + ranNum);
 			
 			// 메일 내용
-			String subject = "메일 발송시 제목";
+			String subject = "The Mana World - 비밀번호 재설정 코드";
 			String content = "\n발송된 코드 : " + ranNum;
 			
 			EmailCheck emailCheck = new EmailCheck(toEmail, ranNum);
 			
-			int result = emailCheckService.insertEmailCheck(emailCheck);
+			emailCheckService.insertEmailCheck(emailCheck);
 
-			// 보내는 사람
-			String frm = "kimjihyuk_@naver.com";
-
+			// 보내는 사람 김지혁
+			//String frm = "kimjihyuk_@naver.com";
+			
+			// 보내는 사람 김화범
+			String frm = "vulpes900@naver.com";
 		
 			try {
 				// 메일 내용 넣을 객체와, 이를 도와주는 Helper 객체 생성
@@ -84,7 +86,7 @@ public class TestController {
 			
 			return "redirect:searchPwd.do?success=" + toEmail;
 		}else {
-			return "redirect:searchPwd.do?success=" + toEmail + "&message=error";
+			return "redirect:searchPwd.do?success=" + toEmail + "&message=error2";
 		}
 		
 		
