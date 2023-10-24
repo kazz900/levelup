@@ -139,8 +139,6 @@ function showTypeDropdown(){
 								<th>Refund Date</th>
 								<th>Refund Cause</th>
 								<th>Action</th>
-								<th>임시환불버튼</th>
-								<th>기안 작성버튼</th>
 							</tr>
 							<%-- <c:url var="idt" value="idetail.do">
 									<c:param name="iid" value="${ requestScope.inquiry.inquiryId }" />
@@ -175,18 +173,12 @@ function showTypeDropdown(){
 										<td data-th="Refund Date"><fmt:formatDate
 												value="${ p.refundDate }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 										<!-- Refund Cause -->
-										<td data-th="Refund Cause">${ p.refundCause }</td>
-										<c:url var="pdetail" value="pdetail.do">
-											<c:param name="paymentId" value="${ p.paymentId }" />
-										</c:url>
-										<!-- Action -->
-										<td data-th="Action"><a href="#"
-											onclick="javascript:location.href='${pdetail}'"
-											class="btn btn-primary waves-effect waves-light">Refund</a></td>
-										<!-- 임시환불버튼 -->	
-										<td data-th="임시환불버튼"><a href="#"
-											onclick="cancelPayment('${p.paymentKey }');"
-											class="btn btn-primary waves-effect waves-light">임시환불버튼</a></td>
+										<c:if test="${ !empty p.refundCause }">
+											<td data-th="Refund Cause">${ p.refundCause }</td>
+										</c:if>
+										<c:if test="${ empty p.refundCause }">
+											<td data-th="Refund Cause">해당없음</td>
+										</c:if>
 										<c:url var="cwrite" value="rfcaseform.do">
 												<c:param name="paymentId" value="${ p.paymentId }"/>
 												<c:param name="charId" value="${ p.charId }"/>
@@ -200,7 +192,7 @@ function showTypeDropdown(){
 										<!-- 환불기안버튼 -->
 										<td data-th="기안작성"><a href="#"
 											onclick="javascript:location.href='${cwrite}&caseType=3'"
-											class="btn btn-primary waves-effect waves-light">환불기안</a></td>										
+											class="btn btn-primary waves-effect waves-light">Refund</a></td>										
 									</tr>
 								</c:forEach>
 							</c:if>

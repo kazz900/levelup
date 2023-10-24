@@ -18,7 +18,8 @@
 
 <c:import url="/WEB-INF/views/common/head-script.jsp"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.min.css" crossorigin="anonymous">
-<link href="resources/css/fileinput.css" rel="stylesheet">
+
+	<link href="resources/css/fileinput.css" rel="stylesheet">
 <style>
 .kv-avatar .krajee-default.file-preview-frame,.kv-avatar .krajee-default.file-preview-frame:hover {
     margin: 0;
@@ -71,32 +72,32 @@
                 <div class="flex-grow-1">
                     작성자: <b class="font-size-14 mt-1">${ loginEmployee.employeeName }</b> <small class="text-muted"><a href="mailto:${ loginEmployee.employeeEmail }">${ loginEmployee.employeeEmail }</a></small><br>
 
-				<form id="upload-form" class="form" action="cominsert.do" method="POST" encType="multipart/form-data">
+				<form id="upload-form" class="form" action="comUpdate.do" method="POST" encType="multipart/form-data">
 					<div class="row">
 						<div class="col-12 mb-3">
 							<div class="form-floating">
-				            	<input name="board_title" type="text" class="form-control" id="floatingInput" placeholder="제목을 입력해 주세요" required="true">
+				            	<input name="board_title" type="text" class="form-control" id="floatingInput" value="${ community.board_title }" required="true">
 				            	<label for="floatingInput">제목</label>
 				          		<input name="employee_id" value="${ loginEmployee.employeeId }" type="hidden">
-				          		<input name="department_id" value="${ loginEmployee.departmentId }" type="hidden">
-				          		<input name="team_id" value="${ loginEmployee.teamId }" type="hidden">
+				          		<input name="department_id" value="${ community.department_id }" type="hidden">
+				          		<input name="team_id" value="${ community.team_id }" type="hidden">
 				          	</div>
 						</div>
 					</div>
 					<div class="row mb-2">
-							<textarea name="board_body" id="elm1" class="col-12"></textarea>
+							<textarea name="board_body" id="elm1" class="col-12">${ community.board_body }</textarea>
 					</div>
+
 					<div class="row">
 						<div class="kv-avatar col-12">
 			                <div class="file-loading">
             			        <input id="upfiles" name="upfiles[]" type="file" multiple data-browse-on-zone-click="true">
-                			</div>
-            			</div>
+                		</div>
+            		</div>
   					</div>
   					<div class="btn-group col-3 mt-3">
-						<input type="submit" class="btn btn-primary" value="작성">
-						<input type="reset" class="btn btn-info" valuel="작성취소">
-						<input type="button" value="목록" 
+						<input type="submit" class="btn btn-primary" value="수정">
+						<input type="button" value="목록(수정취소)" 
 						onclick="javascript:location.href='comlist.do?page=1'; return false;" class="btn btn-light">
 					</div>
                 </div>
@@ -142,6 +143,7 @@
 	<script src="resources/js/fileinput/plugins/filetype.min.js" type="text/javascript"></script>
 	<script src="resources/js/fileinput/plugins/piexif.min.js" type="text/javascript"></script>
 	<script src="resources/js/fileinput/plugins/sortable.min.js" type="text/javascript"></script>
+<!-- 	<script src="resources/js/bootstrap.min.js"></script> -->
 	<script src="resources/js/fileinput/fileinput.js"></script>
 
 	<script src="/fm/resources/js/fileinput/locales/kr.js"></script>
@@ -149,8 +151,27 @@
 
 
 <script type="text/javascript">
+<c:if test="${ !empty community.attachement_filename }">
+var imgs = ${ community.attachement_filename};
+</c:if>
+<c:if test="${ empty community.attachement_filename}">
+var imgs = [];
+</c:if>
+var previews = [];
+
+if(imgs.length > 0 ){
+	for ( var i in imgs) {
+		previews.push('${ pageContext.servletContext.contextPath }/resources/com_upfiles/${ community.board_id }/' + imgs[i]);
+	}
+}
+
 $(function(){
 	$("#upfiles").fileinput({
+	overwriteInitial: false,
+    initialPreview: previews,
+    initialPreviewAsData: true, // identify if you are sending preview data only and not the raw markup
+//    initialPreviewDownloadUrl: 'https://kartik-v.github.io/bootstrap-fileinput-samples/samples/{filename}', // includes the dynamic `filename` tag to be replaced for each config
+    
     showUpload: false,
 	browseLabel: '파일 선택',
 	removeLabel: '선택 리셋',
@@ -161,7 +182,6 @@ $(function(){
 	}); //fileinput 
 }); // document ready
 </script>
-
 </div> <!-- main-content -->
 
 </body>
