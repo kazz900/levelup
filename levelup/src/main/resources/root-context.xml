@@ -127,7 +127,6 @@
       <aop:pointcut expression="execution(* com.gs.levelup..*Impl.*(..))" id="serviceMethodMaria" />
       <aop:advisor advice-ref="txAdviceMaria" id="transactionAdvisorMaria" pointcut-ref="serviceMethodMaria" />
    </aop:config>
-<<<<<<< HEAD
 
 	<!-- gmail설정 (mailSender bean 생성)-->
 	<!-- <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"> 
@@ -167,29 +166,6 @@
 		</property>
 	</bean>
 
-   
-      
-=======
-   
-       <!-- 네이버 설정 -->
-   <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-      <property name="host" value="smtp.naver.com" />
-      <property name="port" value="465" />
-      <property name="username" value="vulpes900@naver.com" />
-      <property name="password" value="rlaghkqja@456" />
-      <property name="defaultEncoding" value="utf-8" />
-      <property name="javaMailProperties">
-         <props>
-            <prop key="mail.debug">true</prop>
-            <prop key="mail.smtp.starttls.enable">true</prop>
-            <prop key="mail.smtps.ssl.checkserveridentity">true</prop>
-            <prop key="mail.smtp.auth">true</prop>
-            <prop key="mail.smtps.ssl.trust">*</prop>
-            <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
-         </props>
-      </property>
-   </bean>
->>>>>>> ea94ff25df4e949d8f61d13b5b73d6b1257ff938
 </beans>
 
 
