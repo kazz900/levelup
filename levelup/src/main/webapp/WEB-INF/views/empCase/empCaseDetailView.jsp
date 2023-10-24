@@ -279,12 +279,15 @@
 	                                     		<div class="mb-3 col-lg-2">환불날짜</div>        
 	                                            <div class="mb-3 col-lg-2">환불사유</div>           
 	                                        </div>    
+	                                        <div class="row" >
 	                                         	<div class="mb-3 col-lg-2">
 		                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.casedetail.refundDate }" disabled>
 		                                        </div>                                      	
-	                                            <div class="mb-3 col-lg-6">
+	                                            <div class="mb-3 col-lg-2">
 		                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="${ requestScope.casedetail.refundCause }" disabled>
 		                                        </div> 
+		                                     </div>
+		                                     
 	                                        </div>       
 	                                		                               		
 	                                

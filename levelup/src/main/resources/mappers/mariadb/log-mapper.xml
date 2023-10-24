@@ -49,4 +49,12 @@
 	<select id="selectInventory" parameterType="_int" resultMap="resultInventory">
 		select * from evol.inventory where char_id = #{charId}
 	</select>
+	
+	<select id="selectPayItemPickLog" parameterType="long" resultType="_int">
+		select count(*) from evol.picklog where evol.picklog.unique_id = #{ uniqueId }
+	</select>
+	
+	<select id="selectPayItemPickLogAll" resultMap="resultPickLog">
+		select * from evol.picklog
+	</select>
 </mapper>

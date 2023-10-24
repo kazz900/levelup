@@ -93,7 +93,7 @@ function golist(){
 		                            <input type="hidden" name="originalItemName" value="${ requestScope.itemdata.itemName }">
 	                            </c:if>
 	                            <c:if test="${ empty requestScope.itemdata.itemName }">
-		                            <input type="hidden" name="originalItemName" value="잡템 ${ requestScope.itemdata.itemName }">
+		                            <input type="hidden" name="originalItemName" value="아이템 ${ requestScope.itemdata.itemName }">
 	                            </c:if>
 	                            <input type="hidden" name="originalItemAmount" value="${ requestScope.itemdata.amount }">
 
@@ -191,7 +191,7 @@ function golist(){
 												</c:if>
 												<c:if test="${ empty requestScope.itemdata.itemName }">
 													<input type="text" id="disabledTextInput"
-														class="form-control" placeholder="잡템 ${ requestScope.itemdata.nameId }" disabled>
+														class="form-control" placeholder="아이템 ${ requestScope.itemdata.nameId }" disabled>
 												</c:if>
 											</div>	
 											<div class="mb-3 col-lg-2">

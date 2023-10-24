@@ -21,13 +21,18 @@ import com.gs.levelup.common.Paging;
 import com.gs.levelup.common.Search;
 import com.gs.levelup.payment.model.service.PaymentService;
 import com.gs.levelup.payment.model.vo.Payment;
+import com.gs.levelup.picklog.model.service.PickLogService;
+import com.gs.levelup.picklog.model.vo.PickLog;
 
 @Controller
 public class PaymentController {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
-	private PaymentService paymentService;
+	private PaymentService paymentService;	
+
+	@Autowired
+	private PickLogService pickLogService;
 
 	// 뷰 페이지 이동 처리용 ---------------------------------------------------
 
@@ -55,12 +60,12 @@ public class PaymentController {
 
 		// 페이지에 출력할 목록 조회해 옴
 		ArrayList<Payment> list = paymentService.selectList(paging);
-
+		
 		if (list != null && list.size() > 0) {
 			model.addAttribute("list", list);
 			model.addAttribute("paging", paging);
 			model.addAttribute("currentPage", currentPage);
-			model.addAttribute("limit", limit);
+			model.addAttribute("limit", limit);		
 		}
 		return "payment/paymentListView";
 	}
