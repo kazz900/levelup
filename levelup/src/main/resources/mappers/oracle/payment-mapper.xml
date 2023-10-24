@@ -82,7 +82,7 @@
 	<select id="selectPaymentOne" parameterType="string" resultMap="resultPayment">
 		SELECT * FROM PAYMENT WHERE PAYMENT_KEY = #{ paymentKey }
 	</select>
-	
+		
 	<select id="selectSearchDate" parameterType="Search" resultMap="resultList">
 		<![CDATA[
 		select * 
@@ -112,7 +112,8 @@
 	<update id="cancelPayment" parameterType="Search">
 		UPDATE PAYMENT
 		SET PAYMENT_STATUS = '2',
-		REFUND_CAUSE = #{cancelReason}
+		REFUND_CAUSE = #{cancelReason},
+		PAYMENT_DATE = SYSDATE
 		WHERE PAYMENT_KEY = #{paymentKey}
 	</update>
 	

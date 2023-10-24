@@ -33,6 +33,7 @@ import com.gs.levelup.item.model.service.ItemService;
 import com.gs.levelup.item.model.vo.Item;
 import com.gs.levelup.payment.model.service.PaymentService;
 import com.gs.levelup.payment.model.vo.Payment;
+import com.gs.levelup.picklog.model.service.PickLogService;
 import com.gs.levelup.rodexItems.model.service.RodexItemsService;
 import com.gs.levelup.rodexItems.model.vo.RodexItems;
 
@@ -59,7 +60,10 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 	private PaymentService paymentService;
 	
 	@Autowired
-	private RodexItemsService rodexItemsService;
+	private RodexItemsService rodexItemsService;	
+
+	@Autowired
+	private PickLogService pickLogService;
 
 	// 기안 리스트 출력용
 	@RequestMapping(value = "clist.do", method = RequestMethod.GET)
@@ -393,9 +397,12 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 		public ModelAndView moveitemRefundCasePage(@RequestParam("caseType") String caseType,
 														@RequestParam("managerId") String managerId, 													
 														@RequestParam("paymentKey") String paymentKey,	
-														@RequestParam("charId") int charId,														
+														@RequestParam("charId") int charId,	
+														@RequestParam("uniqueId") long uniqueId,
 														ModelAndView mv) {
-			// 현재 우리가 ITEM TABLE에 가지고 있는 정보를 불러오는 용도
+			
+						
+			// 현재 우리가 ITEM TABLE에 가지고 있는 정보를 불러오는 용도			
 			//ArrayList<Inventory> ilist = inventoryService.selectAll();
 			// 현재 로그인한 사원의 관리자 정보 불러오는 용도
 			Employee manager = employeeService.selectManager(managerId);
@@ -411,7 +418,12 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 			
 			// 구매한 아이템의 아이템정보를 Item 테이블에서 가져옴
 			Item iteminfo = itemService.selectItem(payment.getItemId());
-						
+					
+			logger.info("selectPayItemPickLog : " + pickLogService.selectPayItemPickLog(uniqueId));
+			System.out.println(pickLogService.selectPayItemPickLog(uniqueId));
+			
+			//uniqueId로 게임 DB pick로그 창에서 구매한 상품을 캐릭터가 수령한 기록이 있는지 확인
+			if( pickLogService.selectPayItemPickLog(uniqueId) == 0) {
 				mv.addObject("manager", manager);
 				mv.addObject("iteminfo", iteminfo);
 				mv.addObject("rodexitem", rodexitem);
@@ -420,9 +432,11 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 				
 				mv.setViewName("empCase/empNewRefundCaseView");
 				
-				logger.info("paymentKey : " + payment.getPaymentKey());
+			}else if(pickLogService.selectPayItemPickLog(uniqueId) ==1 ){
+				mv.addObject("message", "아이템 수령기록이 있으므로 환불이 불가합니다");
+				mv.setViewName("common/error");
 			
-					
+			}	
 			return mv;
 		}
 	
@@ -495,7 +509,7 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 		if(casedetail != null) {
 			mv.addObject("casedetail", casedetail);
 			mv.addObject("currentPage", currentPage);
-;
+
 		
 			mv.setViewName("empCase/empCaseDetailView");
 		}else {
