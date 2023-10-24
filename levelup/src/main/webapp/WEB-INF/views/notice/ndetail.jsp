@@ -111,6 +111,11 @@
 												  		<%-- <% } %> --%>
 												   </td>
 												</tr>
+												<tr><th colspan="2">
+													<button onclick="javascript:window.location.href='<%= session.getAttribute("listPage") %>';">목록</button>
+													<a>##previousPage##   <%= session.getAttribute("previousPage") %></a>
+													<a>##listPage##   <%= session.getAttribute("listPage") %></a>
+												</th></tr>
 
 								</div><!-- card -->
 

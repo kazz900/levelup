@@ -73,4 +73,14 @@ public class UserServiceImpl implements UserService{
 		return userDao.insertUser(user);
 	}
 
+	@Override
+	public int updatePwd(User user) {
+		return userDao.updatePwd(user);
+	}
+
+	@Override
+	public String selectUserEmail(String email) {
+		return userDao.selectUserEmail(email);
+	}
+
 }

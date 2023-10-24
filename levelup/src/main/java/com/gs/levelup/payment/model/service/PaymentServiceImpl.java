@@ -25,8 +25,8 @@ public class PaymentServiceImpl implements PaymentService {
 			return paymentDao.updatePayment(payment);
 		}
 		@Override
-		public int deletePayment(String paymentId) {
-			return paymentDao.deletePayment(paymentId);
+		public int deletePayment(String paymentKey) {
+			return paymentDao.deletePayment(paymentKey);
 		}
 		@Override
 		public int selectListCount() {		

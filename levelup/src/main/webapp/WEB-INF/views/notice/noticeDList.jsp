@@ -96,7 +96,7 @@
 
 <%-- 검색 항목별 값 입력 전송용 폼 만들기 --%>
 <%-- 제목 검색 폼 --%>
-<form id="titleform" class="sform" action="nsearchTitle.do" method="post">
+<form id="titleform" class="sform" action="nsearchTitle.do" method="get">
 	<input type="hidden" name="action" value="title">
 	<input type="hidden" name="limit" value="${ currentLimit }">	
 	<input type="hidden" name="teamId" value="${ teamId }">	
@@ -145,6 +145,7 @@
 									            </div>
 									            <div class="col-mail col-mail-2">
 									                <a href="${ pageContext.servletContext.contextPath }/ndetail.do?noticeId=${ n.noticeId }" class="subject">${n.noticeTitle}</a>
+									                <div class="date">${n.employeeName}</div>
 									                <div class="date">${n.readCount}</div>
 									            </div>
 									        </li>
@@ -160,7 +161,7 @@
 									</div>
 									<div class="col-5">
 										<div class="btn-group float-end">
-											<c:if test="${ !empty sessionScope.loginEmployee and loginEmployee.rankId eq 'EEFFCAD943CE46ECB77B8146324D497F' }">
+											<c:if test="${loginEmployee.rankId eq 'sman' || loginEmployee.rankId eq 'jdirec' || loginEmployee.rankId eq 'direc' || loginEmployee.rankId eq 'ceo'}">
 												<button onclick="javascript:location.href='${ pageContext.servletContext.contextPath }/nwrite.do';">공지글 등록</button>
 											</c:if>
 										</div>

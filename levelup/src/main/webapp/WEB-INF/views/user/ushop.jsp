@@ -13,11 +13,14 @@
 <c:import url="/WEB-INF/views/common/page-title.jsp"/>
 <c:import url="/WEB-INF/views/common/title-meta.jsp"/>
 <!-- 헤드 스크립트 -->
-
-
 </head>
 <body>
-
+<% if (request.getAttribute("message") != null) { %>
+    <script type="text/javascript">
+        var message = "${requestScope.message}";
+        alert(message);
+    </script>
+<% } %>
 <div class="user-shop-container">
         <div class="user-filter">
             <h2>카테고리</h2>

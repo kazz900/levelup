@@ -166,7 +166,7 @@ function showTypeDropdown(){
 										</c:if>
 										<c:if test="${ p.paymentStatus eq '3' }">
 											<td data-th="Status"><span
-												class="badge badge-pill badge-soft-warning font-size-12">결제오류</span></td>
+												class="badge badge-pill badge-soft-warning font-size-12">결제 대기</span></td>
 										</c:if>
 										<!-- Payment Date -->
 										<td data-th="Payment Date"><fmt:formatDate
@@ -188,7 +188,7 @@ function showTypeDropdown(){
 											onclick="cancelPayment('${p.paymentKey }');"
 											class="btn btn-primary waves-effect waves-light">임시환불버튼</a></td>
 										<c:url var="cwrite" value="rfcaseform.do">
-												<c:param name="charId" value="${ p.paymentId }"/>
+												<c:param name="paymentId" value="${ p.paymentId }"/>
 												<c:param name="charId" value="${ p.charId }"/>
 												<c:param name="itemId" value="${ p.itemId }"/>
 												<c:param name="uniqueId" value="${ p.uniqueId }"/>
@@ -200,7 +200,7 @@ function showTypeDropdown(){
 										<!-- 환불기안버튼 -->
 										<td data-th="기안작성"><a href="#"
 											onclick="javascript:location.href='${cwrite}&caseType=3'"
-											class="btn btn-primary waves-effect waves-light">환불기안 ${ p.uniqueId }</a></td>										
+											class="btn btn-primary waves-effect waves-light">환불기안</a></td>										
 									</tr>
 								</c:forEach>
 							</c:if>
