@@ -28,9 +28,14 @@
 
 <c:import url="/WEB-INF/views/common/page-title.jsp"/>
 
-<!-- 여기서부터 내용 작성 -->
 
-					<div class="row">
+<!-- 여기서부터 내용 작성 -->
+<script type="text/javascript">
+
+
+
+</script>										
+				<div class="row">
 						<div class="col-lg-12">
 							<div class="card">
 								<div class="card-body">
@@ -149,13 +154,12 @@
 										</div>
 										<div id="calendarList" class="lnb-calendars-d1 mt-4 mt-sm-0 me-sm-0 mb-4"></div>
 
-										<div id="calendar" style="height: 800px;"></div>
+										
 
 									</div>
 								</div>
-							</div>
-						</div>
-					</div>
+								<div id="calendar" style="height: 800px;"></div>
+						
 					<!-- end row -->
 
 	 	<!-- container-fluid -->			
@@ -167,25 +171,51 @@
 
 
 </div> <!-- main-content -->
-
-
+		
+		<!-- Add jQuery -->
 
 		<script src="https://uicdn.toast.com/tui.code-snippet/latest/tui-code-snippet.min.js"></script>
 		<script src="resources/libs/tui-dom/tui-dom.min.js"></script>
-
 		<script src="resources/libs/tui-time-picker/tui-time-picker.min.js"></script>
 		<script src="resources/libs/tui-date-picker/tui-date-picker.min.js"></script>
-
 		<script src="resources/libs/moment/min/moment.min.js"></script>
 		<script src="resources/libs/chance/chance.min.js"></script>
-
 		<script src="resources/libs/tui-calendar/tui-calendar.min.js"></script>
 
 		<script src="resources/js/pages/calendars.js"></script>
-		<script src="resources/js/pages/schedules.js"></script>
-		<script src="resources/js/pages/calendar.init.js"></script>
+		<!-- <script src="resources/js/pages/calendar.init.js"></script> -->
+		
 <script type="text/javascript">
+const calendar = new tui.Calendar("#calendar", {
+	defaultView: 'month',
+	useCreationPopup: true,
+	useDetailPopup: true
+});
 
+
+calendar.render();
+
+
+nextBtn.addEventListener('click', () => {
+	  calendar.next();                          // 현재 뷰 기준으로 다음 뷰로 이동
+	});
+
+	prevBtn.addEventListener('click', () => {
+	  calendar.prev();                          // 현재 뷰 기준으로 이전 뷰로 이동
+	});
+
+	dayViewBtn.addEventListener('click', () => {
+	  calendar.changeView('day', true);         // 일간 뷰 보기
+	});
+
+	weekViewBtn.addEventListener('click', () => {
+	  calendar.changeView('week', true);        // 주간 뷰 보기
+	});
+
+	monthViewBtn.addEventListener('click', () => {
+	  calendar.changeView('month', true);       // 월간 뷰 보기
+	});
+	calendar.setDate('2020-11-16');
 </script>
 </body>
 </html>

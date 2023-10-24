@@ -1,17 +1,31 @@
 package com.gs.levelup.schedule.controller;
 
+import java.io.IOException;
+import java.net.URLEncoder;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gs.levelup.employee.model.vo.Employee;
@@ -30,30 +44,121 @@ public class ScheduleController {
 	// Calendar test 페이지 이동처리용
 	@RequestMapping("calendar.do")
 	public String moveCalendar() {
-		return "schedule/calendarPractice";
+		return "schedule/calendarPractice3";
 	}
 	
-	//전체 스케줄 조회
-	@RequestMapping("calendarList.do")
-		public ModelAndView selectScheduleListMethod( 
-				HttpSession session,
-				HttpServletRequest request,
-				ModelAndView mv) {
-				Employee loginEmployee = (Employee)session.getAttribute("loginEmployee");
-				String teamId = loginEmployee.getTeamId();
-				String departmentId = loginEmployee.getDepartmentId();
-			
-			
-			try {
-				ArrayList<Schedule> list = scheduleService.selectScheduleList();
-				request.setAttribute("calendarList", list);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-				mv.setViewName("schedule/calendarPractice");
+	//스케줄 상세보기 처리용
+	@RequestMapping(value="sselect.do", method= {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody  //리턴하는 jsonString 을 response body 에 담아서 보낸다는 의미임
+	public String selectscheduleMethod(HttpServletResponse response, 
+			@RequestParam("scheduleId") String scheduleId) throws IOException {
+		//클라이언트로 부터 요청이 오면, jsonString을 별도의 스트림을 열어서 내보낼 수도 있고
+		//또는 뷰리졸버로 리턴하면 등록된 JsonView 가 받아서 내보낼 수도 있음
 				
-				return mv;
-			}
+		//Service 메소드 호출하고 결과받기 
+		//최근 공지글 1개 조회해 옴
+		Schedule schedule = scheduleService.selectSchedule(scheduleId);
+		
+		//받은 결과를 JSONObject 에 담아서 내보내는 처리 : 
+		//json 객체 생성 => map 형식(key, value)으로 저장 => jsonString 으로 내보냄
+		JSONObject job = new JSONObject();
+		
+		job.put("scheduleId", schedule.getScheduleId());
+		job.put("employeeId", schedule.getScheduleId());
+		job.put("departmentId", schedule.getScheduleId());
+		job.put("teamId", schedule.getScheduleId());
+		job.put("rankId", schedule.getScheduleId());
+		//날짜데이터는 반드시 문자열로 바꿔서 저장해야 함
+		job.put("scheduleStartday", schedule.getScheduleStartday().toString());
+		//날짜데이터는 반드시 문자열로 바꿔서 저장해야 함
+		job.put("scheduleEndday", schedule.getScheduleEndday().toString());
+		job.put("scheduleType", schedule.getScheduleType());
+		//문자열에 한글이 있다면, 반드시 인코딩해서 저장해야 함
+		job.put("scheduleAddress", URLEncoder.encode(schedule.getScheduleAddress(), "utf-8"));
+		//문자열에 한글이 있다면, 반드시 인코딩해서 저장해야 함
+		job.put("scheduleTheme", URLEncoder.encode(schedule.getScheduleTheme(), "utf-8"));
+		//문자열에 한글이 있다면, 반드시 인코딩해서 저장해야 함
+		job.put("scheduleContent", URLEncoder.encode(schedule.getScheduleContent(), "utf-8"));
+		
+		
+		//ajax 로 서비스 요청시 클라이언트로 응답하는 방법은 2가지
+		//방법 1 : 
+		// public void 형 >> 직접 출력스트림을 만들어서 내보냄
+		//방법 2 : 
+		// public String 형 >> 설정된 JsonView 로 내보냄
+		
+		//리턴되는 json 객체의 string 문자열을 등록된 뷰리졸버인 JsonView 로 보냄
+		return job.toJSONString();
+		//servlet-context.xml 의 JsonView 가 받아서 내보냄
+	}
+	//전체 스케줄 조회
+	@RequestMapping(value="slist.do", method= {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody  //리턴하는 jsonString 을 response body 에 담아서 보낸다는 의미임
+	public String selectScheduleListMethod(HttpServletResponse response, 
+			@RequestParam("employeeId") String employeeId) throws IOException {
+		//전달받은 키워드로 공지사항 제목 검색 메소드 실행하고 결과받기
+		ArrayList<Schedule> list = scheduleService.selectScheduleList(employeeId);
+		
+		//response 에 내보낼 값에 대한 mimiType 설정
+		response.setContentType("application/json; charset=utf-8");
+		
+		//리턴된 list 결과를 json 배열에 담아서 내보내는 처리 : 
+		//전송용 json 객체 생성
+		JSONObject sendJson = new JSONObject();
+		//list 담을 json 배열 객체 생성
+		JSONArray jarr = new JSONArray();
+		
+		//list 를 json 배열에 옮기기
+		for(Schedule schedule : list) {
+			//notice 값을 저장할 json 객체 생성
+			JSONObject job = new JSONObject();
+			
+			job.put("scheduleId", schedule.getScheduleId());
+			job.put("employeeId", schedule.getScheduleId());
+			job.put("departmentId", schedule.getScheduleId());
+			job.put("teamId", schedule.getScheduleId());
+			job.put("rankId", schedule.getScheduleId());
+			//날짜데이터는 반드시 문자열로 바꿔서 저장해야 함
+			job.put("scheduleStartday", schedule.getScheduleStartday().toString());
+			//날짜데이터는 반드시 문자열로 바꿔서 저장해야 함
+			job.put("scheduleEndday", schedule.getScheduleEndday().toString());
+			job.put("scheduleType", schedule.getScheduleType());
+			//문자열에 한글이 있다면, 반드시 인코딩해서 저장해야 함
+			job.put("scheduleAddress", URLEncoder.encode(schedule.getScheduleAddress(), "utf-8"));
+			//문자열에 한글이 있다면, 반드시 인코딩해서 저장해야 함
+			job.put("scheduleTheme", URLEncoder.encode(schedule.getScheduleTheme(), "utf-8"));
+			//문자열에 한글이 있다면, 반드시 인코딩해서 저장해야 함
+			job.put("scheduleContent", URLEncoder.encode(schedule.getScheduleContent(), "utf-8"));
+			
+			//jarr 에 job 저장함
+			jarr.add(job);
+		}
+		
+		//전송용 객체에 jarr 저장
+		sendJson.put("list", jarr);
+		
+		return sendJson.toJSONString();
+	}
+	
+	
+	 //전체 스케줄 조회
+	 
+	 @RequestMapping("calendarList.do") 
+	 public ModelAndView selectScheduleListMethod(
+	 HttpSession session, HttpServletRequest request,
+	 ModelAndView mv
+	 ) { 
+     Employee loginEmployee = (Employee)session.getAttribute("loginEmployee"); String teamId =
+	 loginEmployee.getTeamId();
+     String departmentId = loginEmployee.getDepartmentId();
+	 
+	 try { ArrayList<Schedule> list = scheduleService.selectScheduleList(loginEmployee.getEmployeeId()); 
+	 request.setAttribute("calendarList", list); } 
+	 catch (Exception e)
+	 { e.printStackTrace(); } mv.setViewName("schedule/calendarPractice2");
+	 
+	  return mv; }
+	 
 				
 			
 	
@@ -61,40 +166,141 @@ public class ScheduleController {
 	public Schedule selectSchedule(String ScheduleId) {
 		return null;
 	}
-	
-	
+//	//스케줄 등록
+//	@RequestMapping(value = "sinsert.do", method = RequestMethod.POST)
+//	public ResponseEntity<String> insertSchedule(@RequestBody Schedule schedule) {
+//	    try {
+//	        // 스케줄 저장 로직
+//	        int result = scheduleService.insertSchedule(schedule);
+//	        
+//	        if (result > 0) {
+//	            return new ResponseEntity<String>("success", HttpStatus.OK);
+//	        } else {
+//	            return new ResponseEntity<String>("failed", HttpStatus.INTERNAL_SERVER_ERROR);
+//	        }
+//	    } catch (Exception e) {
+//	        e.printStackTrace();
+//	        return new ResponseEntity<String>("error", HttpStatus.INTERNAL_SERVER_ERROR);
+//	    }
+//	}
+
 	//스케줄 등록
-	@RequestMapping("sinsert.do")
-	public String scheduleInsertMethod(
-			@RequestParam("Scheduleno") int Scheduleno,
-			@RequestParam(name="rfile", required=false) String renameFileName,
-			HttpServletRequest request, Model model) {
-	
-			return "common/error";
-		
-		
-	}
-	//스케줄 수정
-	@RequestMapping("supdate.do")
-	public String scheduleUpdateMethod(
-			@RequestParam("Scheduleno") int Scheduleno,
-			@RequestParam(name="rfile", required=false) String renameFileName,
-			HttpServletRequest request, Model model) {
-	
-			return "common/error";
-		
-		
-	}
-	//스케줄 삭제
-		@RequestMapping("scheduledelete.do")
-		public String scheduleDeleteMethod(
-				@RequestParam("Scheduleno") int Scheduleno,
-				@RequestParam(name="rfile", required=false) String renameFileName,
-				HttpServletRequest request, Model model) {
-		
-				return "common/error";
+	@RequestMapping(value="sinsert.do", method=RequestMethod.POST)
+		public ResponseEntity<String> insertScheduleMethod(@RequestBody String param) throws ParseException, java.text.ParseException {
+			//post 로 request body 에 기록된 json 문자열을 꺼내서 param 변수에 저장하라는 처리임
+			logger.info("입력" + param);
+			//param 에 저장된 json 문자열을 json 객체로 바꿈
+			JSONParser jparser = new JSONParser();
+			JSONObject job = (JSONObject)jparser.parse(param);
 			
 			
+			String startd = (String)job.get("scheduleStartday");
+			logger.info(startd);
+			//String to TimeStamp
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX");
+			Date sdate = simpleDateFormat.parse((String)job.get("scheduleStartday"));
+			Date edate = simpleDateFormat.parse((String)job.get("scheduleEndday"));
+
+			// Date를 Timestamp로 변환
+			Timestamp etimestamp = new Timestamp(edate.getTime());
+			Timestamp stimestamp = new Timestamp(sdate.getTime());
+			
+			
+			logger.info("타임스탬프" + etimestamp);
+			logger.info("입력" + job);
+			//json 객체가 가진 각 필드(property) 값을 추출해서, vo 객체(Notice)에 저장
+			Schedule schedule = new Schedule();
+			schedule.setScheduleId((String)job.get("scheduleId"));
+			schedule.setEmployeeId((String)job.get("employeeId"));
+			schedule.setDepartmentId((String)job.get("departmentId"));
+			schedule.setTeamId((String)job.get("teamId"));
+			schedule.setRankId((String)job.get("rankId"));
+			schedule.setScheduleStartday(stimestamp);
+			schedule.setScheduleEndday(etimestamp);
+			schedule.setScheduleType(job.get("scheduleType").toString());
+			schedule.setScheduleAddress((String)job.get("scheduleAddress"));
+			schedule.setScheduleTheme((String)job.get("scheduleTheme"));
+			schedule.setScheduleContent(job.get("scheduleContent").toString());
+			
+			
+			//새 공지글 등록 처리용 메소드 실행
+			int result = scheduleService.insertSchedule(schedule);
+			
+			//ResponseEntity<T> : 클라이언트에게 응답하는 용도의 객체임
+			//뷰리졸버가 아닌 출력스트림으로 나감
+			if(result > 0) {
+				return new ResponseEntity<String>("success", HttpStatus.OK);
+			}else {
+				return new ResponseEntity<String>("failed", HttpStatus.REQUEST_TIMEOUT);
+			}
 		}
+	
+	//스케줄 수정
+	@RequestMapping(value = "supdate.do", method = RequestMethod.POST)
+	public ResponseEntity<String> updateSchedule(@RequestBody String param) throws ParseException, java.text.ParseException {
+	    // post로 request body에 기록된 JSON 문자열을 꺼내서 param 변수에 저장
+
+	    // param에 저장된 JSON 문자열을 JSON 객체로 변환
+	    JSONParser jparser = new JSONParser();
+	    JSONObject job = (JSONObject) jparser.parse(param);
+
+	    String startd = (String)job.get("scheduleStartday");
+		logger.info(startd);
+		//String to TimeStamp
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX");
+		Date sdate = simpleDateFormat.parse((String)job.get("scheduleStartday"));
+		Date edate = simpleDateFormat.parse((String)job.get("scheduleEndday"));
+
+		// Date를 Timestamp로 변환
+		Timestamp etimestamp = new Timestamp(edate.getTime());
+		Timestamp stimestamp = new Timestamp(sdate.getTime());
+		
+		
+		logger.info("타임스탬프" + etimestamp);
+		logger.info("입력" + job);
+		//json 객체가 가진 각 필드(property) 값을 추출해서, vo 객체(Notice)에 저장
+		Schedule schedule = new Schedule();
+		schedule.setScheduleId((String)job.get("scheduleId"));
+		schedule.setEmployeeId((String)job.get("employeeId"));
+		schedule.setDepartmentId((String)job.get("departmentId"));
+		schedule.setTeamId((String)job.get("teamId"));
+		schedule.setRankId((String)job.get("rankId"));
+		schedule.setScheduleStartday(stimestamp);
+		schedule.setScheduleEndday(etimestamp);
+		schedule.setScheduleType(job.get("scheduleType").toString());
+		schedule.setScheduleAddress((String)job.get("scheduleAddress"));
+		schedule.setScheduleTheme((String)job.get("scheduleTheme"));
+		schedule.setScheduleContent(job.get("scheduleContent").toString());
+		
+		
+		// 스케줄 업데이트 처리용 메소드 실행
+		int result = scheduleService.updateSchedule(schedule);
+		
+		//ResponseEntity<T> : 클라이언트에게 응답하는 용도의 객체임
+		//뷰리졸버가 아닌 출력스트림으로 나감
+		if(result > 0) {
+			return new ResponseEntity<String>("success", HttpStatus.OK);
+		}else {
+			return new ResponseEntity<String>("failed", HttpStatus.REQUEST_TIMEOUT);
+		}
+
+	   
+
+	}
+
+	//스케줄 삭제
+	@RequestMapping(value = "sdelete.do", method = RequestMethod.POST)
+	public ResponseEntity<String> deleteSchedule(@RequestParam("scheduleId") String scheduleId) {
+	    // 스케줄 삭제 처리용 메소드 실행
+	    int result = scheduleService.deleteSchedule(scheduleId);
+
+	    // ResponseEntity<T>: 클라이언트에게 응답하는 용도의 객체, 뷰 리졸버가 아닌 출력 스트림으로 나감
+	    if (result > 0) {
+	        return new ResponseEntity<String>("success", HttpStatus.OK);
+	    } else {
+	        return new ResponseEntity<String>("failed", HttpStatus.REQUEST_TIMEOUT);
+	    }
+	}
+
 		
 }

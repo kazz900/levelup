@@ -44,7 +44,6 @@ LAST_INSERT_ID(),
 #{ nameId },
 1,
 1,
-<<<<<<< HEAD
 #{ uniqueId });
 =======
 #{ uniqueId })

@@ -8,7 +8,7 @@ import com.gs.levelup.common.SearchDate;
 import com.gs.levelup.schedule.model.vo.Schedule;
 
 public interface ScheduleService {
-	public ArrayList<Schedule> selectScheduleList();
+	public ArrayList<Schedule> selectScheduleList(String employeeId);
 	public ArrayList<Schedule> selectTeamScheduleList(String teamId);
 	public ArrayList<Schedule> selectDeptScheduleList(String departmentId);
 	public ArrayList<Schedule> selectMyScheduleList(String employeeId);

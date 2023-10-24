@@ -142,13 +142,13 @@
         "day" === n ? a.push(moment(l.getDate().getTime()).format("YYYY.MM.DD")) : "month" === n && (!t.month.visibleWeeksCount || 4 < t.month.visibleWeeksCount) ? a.push(moment(l.getDate().getTime()).format("YYYY.MM")) : (a.push(moment(l.getDateRangeStart().getTime()).format("YYYY.MM.DD")), a.push(" ~ "), a.push(moment(l.getDateRangeEnd().getTime()).format(" MM.DD"))), e.innerHTML = a.join("")
     }
 
-//    function w() {
-//        l.clear(), generateSchedule(l.getViewName(), l.getDateRangeStart(), l.getDateRangeEnd()), l.createSchedules(ScheduleList), h()
-//    }
+  // function w() {
+  //      l.clear(), generateSchedule(l.getViewName(), l.getDateRangeStart(), l.getDateRangeEnd()), l.createSchedules(ScheduleList), h()
+  // }
     function w() {
         /*l.clear(), console.log("abc"), h()*/
     }
-
+	
     function f(e) {
         return e.dataset ? e.dataset.action : e.getAttribute("data-action")
     }(l = new t("#calendar", {
@@ -234,3 +234,6 @@ function() {
         t.push('<div class="lnb-calendars-item"><label><input type="checkbox" class="tui-full-calendar-checkbox-round" value="' + e.id + '" checked><span style="border-color: ' + e.borderColor + "; background-color: " + e.borderColor + ';"></span><span>' + e.name + "</span></label></div>")
     }), e.innerHTML = t.join("\n")
 }();
+
+
+

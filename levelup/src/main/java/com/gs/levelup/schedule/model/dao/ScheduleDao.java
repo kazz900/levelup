@@ -17,23 +17,23 @@ public class ScheduleDao {
 	private SqlSessionTemplate sqlSessionTemplate;
 
 	//스케줄 전체 조회
-	public ArrayList<Schedule> selectScheduleList(){
-		List<Schedule> list = sqlSessionTemplate.selectList("scheduleMapper.selectScheduleList");
+	public ArrayList<Schedule> selectScheduleList(String employeeId){
+		List<Schedule> list = sqlSessionTemplate.selectList("scheduleMapper.selectScheduleList", employeeId);
 		return (ArrayList<Schedule>)list;
 	}
 	//팀 스케줄 전체 조회
-	public ArrayList<Schedule> selectTeamScheduleList(){
-		List<Schedule> list = sqlSessionTemplate.selectList("scheduleMapper.selectTeamScheduleList");
+	public ArrayList<Schedule> selectTeamScheduleList(String teamId){
+		List<Schedule> list = sqlSessionTemplate.selectList("scheduleMapper.selectTeamScheduleList", teamId);
 		return (ArrayList<Schedule>)list;
 	}
 	//부서 스케줄 전체 조회
-	public ArrayList<Schedule> selectDeptScheduleList(){
-		List<Schedule> list = sqlSessionTemplate.selectList("scheduleMapper.selectDeptScheduleList");
+	public ArrayList<Schedule> selectDeptScheduleList(String departmentId){
+		List<Schedule> list = sqlSessionTemplate.selectList("scheduleMapper.selectDeptScheduleList", departmentId);
 		return (ArrayList<Schedule>)list;
 	}
 	//내 스케줄 전체 조회
-	public ArrayList<Schedule> selectMyScheduleList(){
-		List<Schedule> list = sqlSessionTemplate.selectList("scheduleMapper.selectMyScheduleList");
+	public ArrayList<Schedule> selectMyScheduleList(String employeeId){
+		List<Schedule> list = sqlSessionTemplate.selectList("scheduleMapper.selectMyScheduleList", employeeId);
 		return (ArrayList<Schedule>)list;
 	}
 	

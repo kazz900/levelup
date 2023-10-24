@@ -29,13 +29,7 @@
 <c:import url="/WEB-INF/views/common/page-title.jsp"/>
 
 
-<!-- 여기서부터 내용 작성 -->
-<script type="text/javascript">
-
-
-
-</script>										
-	
+									
 				<div class="row">
 						<div class="col-lg-12">
 							<div class="card">
@@ -182,18 +176,32 @@
 		<script src="resources/libs/moment/min/moment.min.js"></script>
 		<script src="resources/libs/chance/chance.min.js"></script>
 		<script src="resources/libs/tui-calendar/tui-calendar.min.js"></script>
-
 		<script src="resources/js/pages/calendars.js"></script>
 		<!-- <script src="resources/js/pages/calendar.init.js"></script> -->
-		
-		
-		
+
 		
 <script type="text/javascript">
+var scheduleList = [];
+var nnn = {}, ttt = {}, eee = {};
+
+<c:forEach var="s" items="${ calendarList }">
+ var schedule = {
+	 id: "${s.scheduleId}",
+     calendarId: "${s.scheduleType}",
+     title: "${s.scheduleTheme}",
+     isAllDay: false, // 종일 일정 여부에 대한 조건을 설정하세요
+     start: "${s.scheduleStartday}",
+     end: "${s.scheduleEndday}",
+     category: 'time'
+	};
+	scheduleList.push(schedule);
+</c:forEach>
+
+
 "use strict";
 ! function(e, t) {
     var l, n, c, i, a = !0;
-
+    
     function o(e, t) {
         var n = [],
             a = moment(e.start.toUTCString());
@@ -333,14 +341,14 @@
             a = [];
         "day" === n ? a.push(moment(l.getDate().getTime()).format("YYYY.MM.DD")) : "month" === n && (!t.month.visibleWeeksCount || 4 < t.month.visibleWeeksCount) ? a.push(moment(l.getDate().getTime()).format("YYYY.MM")) : (a.push(moment(l.getDateRangeStart().getTime()).format("YYYY.MM.DD")), a.push(" ~ "), a.push(moment(l.getDateRangeEnd().getTime()).format(" MM.DD"))), e.innerHTML = a.join("")
     }
-
-//    function w() {
-//        l.clear(), generateSchedule(l.getViewName(), l.getDateRangeStart(), l.getDateRangeEnd()), l.createSchedules(ScheduleList), h()
-//    }
+    
     function w() {
-        /*l.clear(), console.log("abc"), h()*/
+        l.clear(), l.createSchedules(scheduleList);
     }
-	
+    
+    
+
+	   
     function f(e) {
         return e.dataset ? e.dataset.action : e.getAttribute("data-action")
     }(l = new t("#calendar", {
@@ -392,12 +400,100 @@
                             state: e.state
                         };
                     t && (n.calendarId = t.id, n.color = t.color, n.bgColor = t.bgColor, n.borderColor = t.borderColor);
-                    l.createSchedules([n]), h()
+                    console.log("n" + n);
+                    console.log("t" + t);
+                    console.log("e" + e);
+                    nnn = n, ttt = t, eee = e;
+                    
+                    
+                    //이부분
+                    var scheduleData = {
+				    scheduleId: n.id,
+				    employeeId: "${loginEmployee.employeeId}",
+				    departmentId: "${loginEmployee.departmentId}",
+				    teamId: "${loginEmployee.teamId}",
+				    rankId: "${loginEmployee.rankId}",
+				    scheduleStartday: e.start._date,
+				    scheduleEndday: e.end._date,
+				    scheduleType: t.id,
+				    scheduleAddress: "",
+				    scheduleTheme: n.title,
+				    scheduleContent: n.isAllDay
+				    
+				    // 나머지 필드를 추가
+					};
+                    
+                    $.ajax({
+                        type: "POST",
+                        url: "sinsert.do", // 스케줄을 등록하는 서버의 엔드포인트 URL
+                        contentType: "application/json; charset=utf-8", // 데이터 타입 설정
+                        data: JSON.stringify(scheduleData), // JSON 데이터 전송
+                        success: function (response) {
+                            if (response === "success") {
+                                // 등록 성공 처리
+                                alert("스케줄이 성공적으로 등록되었습니다.");
+                                l.createSchedules([n]), h()
+                                // 추가로 필요한 작업 수행
+                            } else {
+                                // 등록 실패 처리
+                                alert("스케줄 등록에 실패했습니다.");
+                            }
+                        },
+                        error: function (xhr, status, error) {
+                            // 에러 처리
+                            console.error("에러 발생: " + status + ", " + error);
+                        }
+                    });
+                    
+                    
+                   // l.createSchedules([n]), h()
                 }(e)
         },
         beforeUpdateSchedule: function(e) {
             var t = e.schedule,
                 n = e.changes;
+            
+            console.log("t" + t);
+            console.log("n" + n);
+            nnn = n, ttt = t
+          //이부분
+            var scheduleData = {
+		    scheduleId: t.id,
+		    employeeId: "${loginEmployee.employeeId}",
+		    departmentId: "${loginEmployee.departmentId}",
+		    teamId: "${loginEmployee.teamId}",
+		    rankId: "${loginEmployee.rankId}",
+		    scheduleStartday: n.start._date,
+		    scheduleEndday: n.end._date,
+		    scheduleType: n.calendarId,
+		    scheduleAddress: "",
+		    scheduleTheme: t.title,
+		    scheduleContent: n.isAllDay
+		    
+		    // 나머지 필드를 추가
+			};
+            
+            $.ajax({
+                type: "POST",
+                url: "supdate.do", // 스케줄을 등록하는 서버의 엔드포인트 URL
+                contentType: "application/json; charset=utf-8", // 데이터 타입 설정
+                data: JSON.stringify(scheduleData), // JSON 데이터 전송
+                success: function (response) {
+                    if (response === "success") {
+                        // 등록 성공 처리
+                        alert("스케줄이 성공적으로 수정되었습니다.");
+                        l.createSchedules([n]), h()
+                        // 추가로 필요한 작업 수행
+                    } else {
+                        // 등록 실패 처리
+                        alert("스케줄 수정에 실패했습니다.");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    // 에러 처리
+                    console.error("에러 발생: " + status + ", " + error);
+                }
+            });
             console.log("beforeUpdateSchedule", e), l.updateSchedule(t.id, t.calendarId, n), h()
         },
         beforeDeleteSchedule: function(e) {
@@ -427,80 +523,12 @@ function() {
     }), e.innerHTML = t.join("\n")
 }();
 
-var c = new tui.Calendar('#calendar', {
-    // 캘린더 옵션 및 설정
-});
-
-(l = new t("#calendar", {
-    defaultView: "month",
-    useCreationPopup: a,
-    useDetailPopup: !0,
-    calendars: CalendarList,
-    template: {
-        milestone: function(e) {
-        	return '<span class="calendar-font-icon ic-milestone-b"></span> <span style="background-color: ' + e.bgColor + '">' + e.title + "</span>"
-        },
-        allday: function(e) {
-        	 return o(e, !0)
-        },
-        time: function(e) {
-        	 return o(e, !1)
-        }
-    }
-})).on({
-    // ...
-});
-
-
-
-//Step 1: 컨트롤러로 스케줄을 추가하는 로직
-function addScheduleToController(schedule) {
-    // 이 부분에서 컨트롤러로 스케줄을 전달하고 저장 로직을 수행할 수 있음
-    // 서버에 POST 요청을 보내거나 다른 적절한 방법을 사용하여 스케줄을 저장
-    $.ajax({
-        type: "POST",
-        url: "sinsert.do", // 스케줄을 저장할 URL
-        contentType: "application/json",
-        data: JSON.stringify(schedule),
-        success: function(response) {
-            // 서버로부터의 응답을 처리 (성공 또는 실패 메시지)
-            if (response === "success") {
-                // 스케줄이 성공적으로 저장된 경우
-                console.log("스케줄 저장 성공!");
-            } else {
-                // 스케줄 저장 실패의 경우
-                console.log("스케줄 저장 실패!");
-            }
-        },
-        error: function() {
-            // 에러 처리 로직
-            console.error("서버와의 통신 중 에러 발생");
-        }
-    });
-}
-
-// Step 2: beforeCreateSchedule 이벤트 핸들러
-l.on('beforeCreateSchedule', function(eventData) {
-    var newSchedule = {
-        // 새로운 스케줄 정보를 이곳에서 설정
-        title: eventData.title,
-        isAllDay: eventData.isAllDay,
-        start: eventData.start,
-        end: eventData.end,
-        location: eventData.raw.location
-        // 다른 필드 설정도 가능
-    };
-    
-    // Step 3: 스케줄을 컨트롤러로 전달하고 저장 로직 수행
-    addScheduleToController(newSchedule);
-});
-
-
 
 
 </script>
 
-<!-- 여기서부터 내용 작성 -->
+
+
 
 
 </body>
