@@ -12,24 +12,24 @@
 </head>
 <body>
 <c:import url="/WEB-INF/views/user/userHeader.jsp"/>
-
+<div class="container">
 <h2>${ sessionScope.loginUser.userId }님의 마이페이지</h2>
 
 <br><br><br>
 <h4>캐릭터 리스트</h4>
 <table align="center" border="1" cellspacing="0" width="700">
 <tr>
-	<th>캐릭터 이름</th>
-	<th>레벨</th>
-	<th>보유 zeny</th>
-	<th>힘(str)</th>
-	<th>방어력(vit)</th>
-	<th>재주/기교(dex)</th>
-	<th>운(luk)</th>
-	<th>최대채력</th>
-	<th>현재채력</th>
-	<th>최대마나</th>
-	<th>현재마나</th>
+	<th align="center">캐릭터 이름</th>
+	<th align="center">레벨</th>
+	<th align="center">보유 zeny</th>
+	<th align="center">힘(str)</th>
+	<th align="center">방어력(vit)</th>
+	<th align="center">재주/기교(dex)</th>
+	<th align="center">운(luk)</th>
+	<th align="center">최대채력</th>
+	<th align="center">현재채력</th>
+	<th align="center">최대마나</th>
+	<th align="center">현재마나</th>
 </tr>
 <c:forEach items="${requestScope.charList }" var="c">
 	<tr>
@@ -47,55 +47,54 @@
 	</tr>
 </c:forEach>
 </table>
+
 <br><br><br>
 <h4>결제 내역</h4>
-<br> &nbsp;  &nbsp; <p>캐릭터 선택</p>
-<table id="charlist" cellspacing="0" width="700">
-		</table>
-		<div id="selectedCharacter"></div>
+<table align="center" border="1" cellspacing="0" width="700">
 <tr>
-	<th>캐릭터 이름</th>
-	<th>레벨</th>
-	<th>보유 zeny</th>
-	<th>힘(str)</th>
-	<th>방어력(vit)</th>
-	<th>재주/기교(dex)</th>
-	<th>운(luk)</th>
-	<th>최대채력</th>
-	<th>현재채력</th>
-	<th>최대마나</th>
-	<th>현재마나</th>
+	<th align="center">캐릭터 이름</th>
+	<th align="center">아이템 아이디</th>
+	<th align="center">가격</th>
+	<th align="center">결제상태</th>
 </tr>
 <c:forEach items="${requestScope.paymentList }" var="p">
-
+<tr>
+	<td align="center">${ p.charName }</td>
+	<td align="center">${ p.itemId }</td>
+	<td align="center">${ p.amount }</td>
+	<td align="center">
+	${ p.paymentStatus }
+	</td>
+</tr>
 </c:forEach>
-
+</table>
 
 <br><br><br>
-<h4>결제 내역</h4>
+<h4>문의 내역</h4>
+<table align="center" border="1" cellspacing="0" width="700">
 <tr>
-	<th>캐릭터 이름</th>
-	<th>레벨</th>
-	<th>보유 zeny</th>
-	<th>힘(str)</th>
-	<th>방어력(vit)</th>
-	<th>재주/기교(dex)</th>
-	<th>운(luk)</th>
-	<th>최대채력</th>
-	<th>현재채력</th>
-	<th>최대마나</th>
-	<th>현재마나</th>
+	<th align="center">문의한 id</th>
+	<th align="center">종류</th>
+	<th align="center">게시날짜</th>
+	<th align="center">제목</th>
+	<th align="center">답변여부</th>
 </tr>
 <c:forEach items="${requestScope.inquiryList }" var="i">
-
+<tr onclick="uuidetail.do?iid=${ i.inquiryId }&userId=${ sessionScope.loginUser.userId }">
+	<td align="center">${ i.userId }</td>
+	<td align="center">${ i.inquiryType }</td>
+	<td align="center">${ i.editDate }</td>
+	<td align="center">${ i.inquiryTitle }</td>
+	<td align="center">${ i.answerStatus }</td>
+</tr>
 </c:forEach>
+</table>
+<br><br>
 
-
-
-
+</div>
 <c:import url="/WEB-INF/views/user/userFooter.jsp"/>
 <script type="text/javascript">
-$(document).ready(function() {
+/* $(document).ready(function() {
 	var accountId = "${sessionScope.loginUser.accountId}";
 	$.ajax({
 		url: "charlist.do",
@@ -120,22 +119,18 @@ $(document).ready(function() {
 				for (var i in json.list) {
 				    values += "<option value='" + json.list[i].name + "'>" + json.list[i].name + "</option>";
 				}
-				values += "</select><input type='hidden' name='charId' value='"+ json.list[i].charId +"'></td>";
+				values += "</select></td>";
 			}
 			
 			$('#charlist').html($('#charlist').html() + values);
 			
-			 $select.on('change', function() {
-                var selectedCharacterName = $(this).val();
-                console.log("데이터값 확인 1 : " + selectedCharacterName);
-                $('#selectedCharacter').text("선택된 캐릭터: " + selectedCharacterName);
-            });
 		},
 		error: function(jqXHR, textStatus, errorThrown){
 			console.log("error : " + jqXHR + ", " + textStatus + ", " + errorThrown);
 		}
 	}); 
 });
+ */
 </script>
 </body>
 </html>

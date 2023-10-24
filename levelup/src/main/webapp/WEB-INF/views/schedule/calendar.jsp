@@ -317,7 +317,9 @@
 		<script src="resources/js/pages/calendars.js"></script>
 		<script src="resources/js/pages/schedules.js"></script>
 		<script src="resources/js/pages/calendar.init.js"></script>
+<script type="text/javascript">
 
+</script>
 </body>
 </html>
 

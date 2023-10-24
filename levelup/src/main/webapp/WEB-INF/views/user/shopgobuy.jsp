@@ -64,7 +64,18 @@ $(function(){
 		<br>
 		<img src="/levelup/resources/images/itemlist/${requestScope.item.itemId}.png" alt="Item 15">
 		<br>
+		
 		<p>가격 : ${requestScope.item.price}</p>
+		<p>
+  <c:choose>
+    <c:when test="${not empty requestScope.item.discountRate}">
+      할인율 : ${requestScope.item.discountRate}
+    </c:when>
+    <c:otherwise>
+      &nbsp;
+    </c:otherwise>
+  </c:choose>
+</p>
 		<%-- <p>userId : ${ sessionScope.loginUser.userId }</p>
 		<p>accountId : ${ sessionScope.loginUser.accountId }</p>
 		<br>
@@ -84,6 +95,13 @@ $(function(){
 // 김지혁
 const clientKey = 'test_ck_6BYq7GWPVvnz7o1ODvR5VNE5vbo1';
 const secretKey = 'test_sk_DpexMgkW36ZnqQN19dEN3GbR5ozO';
+var price = "${ requestScope.item.price}";
+var discountRate = "${requestScope.item.discountRate}";
+if (discountRate != null && discountRate >= 10) {
+    // 할인율을 적용한 가격으로 업데이트
+    price = price - (price * (discountRate / 100));
+}
+
 
 // 김화범
 //const clientKey = 'test_ck_mBZ1gQ4YVXK2qEKKLN2X3l2KPoqN';
@@ -95,14 +113,14 @@ const secretKey = 'test_sk_DpexMgkW36ZnqQN19dEN3GbR5ozO';
 
 
 const base64Encoded = btoa(secretKey);
-console.log("=============" + base64Encoded);
+console.log("=============" + price);
 const customerKey = "${ sessionScope.loginUser.userId }"
 const button = document.getElementById("payment-button")
 const paymentWidget = PaymentWidget(clientKey, customerKey) // 회원 결제
 
 paymentWidget.renderPaymentMethods(
 	  "#payment-method", 
-	  { value: "${ requestScope.item.price }" },
+	  { value: price },
 	  // 렌더링하고 싶은 멀티 결제 UI의 variantKey
 	  // https://docs.tosspayments.com/guides/payment-widget/admin#멀티-결제-ui
 	  { variantKey: "DEFAULT" }

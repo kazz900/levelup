@@ -17,50 +17,46 @@ public class ScheduleDao {
 	private SqlSessionTemplate sqlSessionTemplate;
 
 	//스케줄 전체 조회
-	public ArrayList<Schedule> selectScheduleList(Paging paging){
-		List<Schedule> list = sqlSessionTemplate.selectList("noticeMapper.selectList", paging);
+	public ArrayList<Schedule> selectScheduleList(){
+		List<Schedule> list = sqlSessionTemplate.selectList("scheduleMapper.selectScheduleList");
 		return (ArrayList<Schedule>)list;
 	}
-	//스케줄 전체 조회
-	public ArrayList<Schedule> selectTeamScheduleList(Paging paging){
-		List<Schedule> list = sqlSessionTemplate.selectList("noticeMapper.selectList", paging);
+	//팀 스케줄 전체 조회
+	public ArrayList<Schedule> selectTeamScheduleList(){
+		List<Schedule> list = sqlSessionTemplate.selectList("scheduleMapper.selectTeamScheduleList");
 		return (ArrayList<Schedule>)list;
 	}
-	//스케줄 전체 조회
-	public ArrayList<Schedule> selectDeptScheduleList(Paging paging){
-		List<Schedule> list = sqlSessionTemplate.selectList("noticeMapper.selectList", paging);
+	//부서 스케줄 전체 조회
+	public ArrayList<Schedule> selectDeptScheduleList(){
+		List<Schedule> list = sqlSessionTemplate.selectList("scheduleMapper.selectDeptScheduleList");
 		return (ArrayList<Schedule>)list;
 	}
-	//스케줄 전체 조회
-	public ArrayList<Schedule> selectMyScheduleList(Paging paging){
-		List<Schedule> list = sqlSessionTemplate.selectList("noticeMapper.selectList", paging);
-		return (ArrayList<Schedule>)list;
-	}
-	//스케줄 전체 조회
-	public ArrayList<Schedule> selectWeeklyScheduleList(Paging paging){
-		List<Schedule> list = sqlSessionTemplate.selectList("noticeMapper.selectList", paging);
+	//내 스케줄 전체 조회
+	public ArrayList<Schedule> selectMyScheduleList(){
+		List<Schedule> list = sqlSessionTemplate.selectList("scheduleMapper.selectMyScheduleList");
 		return (ArrayList<Schedule>)list;
 	}
 	
 	
-	//공지글번호로 한 개 조회 : 공지사항 상세보기용
-	public Schedule selectSchedule(int noticeNo) {
-		return sqlSessionTemplate.selectOne("noticeMapper.selectOne", noticeNo);
+	
+	//스케줄 한 개 조회 : 공지사항 상세보기용
+	public Schedule selectSchedule(String scheduleId) {
+		return sqlSessionTemplate.selectOne("scheduleMapper.selectSchedule", scheduleId);
 	}
 	
-	//새 공지글 등록
+	//새 스케줄 등록
 	public int insertSchedule(Schedule schedule) {
-		return sqlSessionTemplate.insert("noticeMapper.insertNotice", schedule);
+		return sqlSessionTemplate.insert("scheduleMapper.insertSchedule", schedule);
 	}
 	
-	//공지글 수정
+	//스케줄 수정
 	public int updateSchedule(Schedule schedule) {
-		return sqlSessionTemplate.update("noticeMapper.updateNotice", schedule);
+		return sqlSessionTemplate.update("scheduleMapper.updateSchedule", schedule);
 	}
 	
-	//공지글 삭제
-	public int deleteSchedule(int scheduleId) {
-		return sqlSessionTemplate.delete("noticeMapper.deleteNotice", scheduleId);
+	//스케줄 삭제
+	public int deleteSchedule(String scheduleId) {
+		return sqlSessionTemplate.delete("scheduleMapper.deleteSchedule", scheduleId);
 	}
 
 }
