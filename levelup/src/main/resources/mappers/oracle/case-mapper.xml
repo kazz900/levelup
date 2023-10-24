@@ -194,14 +194,30 @@
 		#{ charName }, #{ accountId }, #{ originalItemId }, #{ originalItemName }, #{ originalItemAmount }, #{ uniqueId }, 
 		DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT)
 		</if>
+		<if test="caseType == 3">
+		VALUES (DEFAULT, #{ caseTitle }, #{ caseContent }, #{ caseWriterId }, #{ caseWriterName },
+		#{ caseType }, #{ caseManagerId }, #{ caseManagerName }, '0', SYSDATE, DEFAULT, #{ attachmentFileName }, #{ charId },
+		#{ charName }, #{ accountId }, #{ originalItemId }, #{ originalItemName }, #{ originalItemAmount }, #{ uniqueId }, 
+		DEFAULT, DEFAULT, DEFAULT, #{ paymentDate }, #{ paymentStatus }, #{ paymentAmount }, DEFAULT, #{ refundCause }, #{ paymentKey })
+		</if>
+
 
 	</insert>
 	
-	<update id="updateCaseAprrove" parameterType="string">
-		UPDATE CASE
-		SET CASE_STATUS = '1',
-			SIGN_DATE = SYSDATE
-		WHERE CASE_ID = #{ caseId }
+	<update id="updateCaseAprrove" parameterType="Case">
+		<if test="caseType == 1 || caseType == 2">
+			UPDATE CASE
+			SET CASE_STATUS = '1',
+				SIGN_DATE = SYSDATE
+			WHERE CASE_ID = #{ caseId }
+		</if>
+		<if test="caseType == 3">
+			UPDATE CASE
+			SET CASE_STATUS = '1',
+				SIGN_DATE = SYSDATE,
+				REFUND_DATE = SYSDATE
+			WHERE CASE_ID = #{ caseId }
+		</if>
 	</update>
 	
 	<update id="updateCaseReject" parameterType="string">

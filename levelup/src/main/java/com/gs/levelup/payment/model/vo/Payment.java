@@ -20,17 +20,15 @@ public class Payment implements java.io.Serializable {
 	private String refundCause;
 	private String charName;
 	private String paymentKey;
-	private Long uniqueId;
+	private long uniqueId;
 	private String emailStatus;
 	private String orderId;
-	
-	
-	
-	public Long getUniqueId() {
+	public long getUniqueId() {
+
 		return uniqueId;
 	}
 
-	public void setUniqueId(Long uniqueId) {
+	public void setUniqueId(long uniqueId) {
 		this.uniqueId = uniqueId;
 	}
 
@@ -181,7 +179,9 @@ public class Payment implements java.io.Serializable {
 	public String toString() {
 		return "Payment [paymentId=" + paymentId + ", itemId=" + itemId + ", charId=" + charId + ", accountId="
 				+ accountId + ", amount=" + amount + ", paymentDate=" + paymentDate + ", paymentStatus=" + paymentStatus
-				+ ", refundDate=" + refundDate + ", refundCause=" + refundCause + "]";
+				+ ", refundDate=" + refundDate + ", refundCause=" + refundCause + ", charName=" + charName
+				+ ", paymentKey=" + paymentKey + ", uniqueId=" + uniqueId + ", emailStatus=" + emailStatus
+				+ ", orderId=" + orderId + "]";
 	}
 	
 	

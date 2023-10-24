@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public User selectUser(String userid) {
-		return userDao.selectMember(userid);
+		return userDao.selectUser(userid);
 	}
 
 	@Override
@@ -71,6 +71,16 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public int insertUser(User user) {
 		return userDao.insertUser(user);
+	}
+
+	@Override
+	public int updatePwd(User user) {
+		return userDao.updatePwd(user);
+	}
+
+	@Override
+	public String selectUserEmail(String email) {
+		return userDao.selectUserEmail(email);
 	}
 
 }

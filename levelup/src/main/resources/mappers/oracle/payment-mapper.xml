@@ -121,8 +121,16 @@
     	set PAYMENT_STATUS = '1' where PAYMENT_KEY = #{ paymentKey }
 	</update>
 	
-	<select id="selectPaymentKey" parameterType="string" resultMap="resultPayment">
+	<select id="selectPaymentKey"   resultMap="resultPayment">
 		select * from payment where payment_key = #{ paymentKey }
 	</select>
+	
+	<select id="selectPaymentList" parameterType="int" resultMap="resultList">
+		select * from payment where account_id = #{ accountId }
+	</select>
+	
+	<delete id="deletePayment" parameterType="string">
+		delete from payment where payment_key = #{ paymentKey }
+	</delete>
 	
 </mapper>

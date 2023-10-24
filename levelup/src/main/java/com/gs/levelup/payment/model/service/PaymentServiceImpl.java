@@ -25,8 +25,8 @@ public class PaymentServiceImpl implements PaymentService {
 			return paymentDao.updatePayment(payment);
 		}
 		@Override
-		public int deletePayment(String paymentId) {
-			return paymentDao.deletePayment(paymentId);
+		public int deletePayment(String paymentKey) {
+			return paymentDao.deletePayment(paymentKey);
 		}
 		@Override
 		public int selectListCount() {		
@@ -73,6 +73,7 @@ public class PaymentServiceImpl implements PaymentService {
 		public Payment selectPaymentOne(String paymentKey) {
 			return paymentDao.selectPaymentOne(paymentKey);
 		}
+		
 		@Override
 		public int updatePaymentState(String paymentKey) {
 			return paymentDao.updatePaymentState(paymentKey);
@@ -80,5 +81,9 @@ public class PaymentServiceImpl implements PaymentService {
 		@Override
 		public Payment selectPaymentKey(String paymentKey) {
 			return paymentDao.selectPaymentKey(paymentKey);
+		}
+		@Override
+		public ArrayList<Payment> selectPaymentList(int accountId) {
+			return paymentDao.selectPaymentList(accountId);
 		}
 }

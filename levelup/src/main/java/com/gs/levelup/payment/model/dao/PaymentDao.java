@@ -23,11 +23,11 @@ public class PaymentDao {
 	}
 
 	public int updatePayment(Payment payment) {
-		return sqlSessionTemplate.update("paymentMapper.updateNotice", payment);
+		return sqlSessionTemplate.update("paymentMapper.updatePayment", payment);
 	}
 	
-	public int deletePayment(String paymentId) {
-		return sqlSessionTemplate.delete("paymentMapper.deleteNotice", paymentId);
+	public int deletePayment(String paymentKey) {
+		return sqlSessionTemplate.delete("paymentMapper.deletePayment", paymentKey);
 	}
 
 	public int selectListCount() {
@@ -80,6 +80,11 @@ public class PaymentDao {
 
 	public Payment selectPaymentKey(String paymentKey) {
 		return sqlSessionTemplate.selectOne("paymentMapper.selectPaymentKey", paymentKey);
+	}
+
+	public ArrayList<Payment> selectPaymentList(int accountId) {
+		List<Payment> list = sqlSessionTemplate.selectList("paymentMapper.selectPaymentList", accountId);
+		return (ArrayList<Payment>)list;
 	}
 
 }

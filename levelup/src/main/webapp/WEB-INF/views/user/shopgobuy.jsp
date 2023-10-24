@@ -38,9 +38,9 @@ $(function(){
 				values = "<select name='charName'>";
 				values += "<option value=''>캐릭터를 선택해주세요</option>"; // 선택 안했을 때의 옵션
 				for (var i in json.list) {
-				    values += "<option value='" + json.list[i].name + "'>" + json.list[i].name + "</option>";
+				    values += "<option value='" + json.list[i].name + "'>" + json.list[i].name +  "</option>";
 				}
-				values += "</select><input type='hidden' name='charId' value='"+ json.list[i].charId +"'></td>";
+				values += "</select></td>";
 			}
 			
 			$('#charlist').html($('#charlist').html() + values);
@@ -64,7 +64,18 @@ $(function(){
 		<br>
 		<img src="/levelup/resources/images/itemlist/${requestScope.item.itemId}.png" alt="Item 15">
 		<br>
+		
 		<p>가격 : ${requestScope.item.price}</p>
+		<p>
+  <c:choose>
+    <c:when test="${not empty requestScope.item.discountRate}">
+      할인율 : ${requestScope.item.discountRate}
+    </c:when>
+    <c:otherwise>
+      &nbsp;
+    </c:otherwise>
+  </c:choose>
+</p>
 		<%-- <p>userId : ${ sessionScope.loginUser.userId }</p>
 		<p>accountId : ${ sessionScope.loginUser.accountId }</p>
 		<br>
@@ -84,6 +95,13 @@ $(function(){
 // 김지혁
 const clientKey = 'test_ck_6BYq7GWPVvnz7o1ODvR5VNE5vbo1';
 const secretKey = 'test_sk_DpexMgkW36ZnqQN19dEN3GbR5ozO';
+var price = "${ requestScope.item.price}";
+var discountRate = "${requestScope.item.discountRate}";
+if (discountRate != null && discountRate >= 10) {
+    // 할인율을 적용한 가격으로 업데이트
+    price = price - (price * (discountRate / 100));
+}
+
 
 // 김화범
 //const clientKey = 'test_ck_mBZ1gQ4YVXK2qEKKLN2X3l2KPoqN';
@@ -95,14 +113,14 @@ const secretKey = 'test_sk_DpexMgkW36ZnqQN19dEN3GbR5ozO';
 
 
 const base64Encoded = btoa(secretKey);
-console.log("=============" + base64Encoded);
+console.log("=============" + price);
 const customerKey = "${ sessionScope.loginUser.userId }"
 const button = document.getElementById("payment-button")
 const paymentWidget = PaymentWidget(clientKey, customerKey) // 회원 결제
 
 paymentWidget.renderPaymentMethods(
 	  "#payment-method", 
-	  { value: "${ requestScope.item.price }" },
+	  { value: price },
 	  // 렌더링하고 싶은 멀티 결제 UI의 variantKey
 	  // https://docs.tosspayments.com/guides/payment-widget/admin#멀티-결제-ui
 	  { variantKey: "DEFAULT" }
@@ -118,14 +136,14 @@ const orderId = generateRandomString(10);
 button.addEventListener("click", function () {
     // 구매 성공 URL 및 다른 데이터
     const selectedCharName = document.querySelector("select[name='charName']").value;
-    const hiddenCharId = document.querySelector("input[name='charId']").value;
+    console.log("");
     if (selectedCharName === "") {
         alert("먼저 캐릭터를 선택해주세요");
     } else {
         paymentWidget.requestPayment({
             orderId: orderId,
             orderName: "${ requestScope.item.itemId }",
-            successUrl: "http://localhost:8080/levelup/buyingpage.do?charName=" + selectedCharName + "&charId=" + hiddenCharId + "&itemId=${ requestScope.item.itemId }",
+            successUrl: "http://localhost:8080/levelup/buyingpage.do?charName=" + selectedCharName + "&itemId=${ requestScope.item.itemId }",
             failUrl: "http://localhost:8080/levelup/ushop.do",
             customerEmail: "kimjihyuk5935@gmail.com",
             customerName: "김지혁"

@@ -27,6 +27,14 @@
 		select * from evol.login where userid = #{userId} and user_pass = #{userPass}
 	</select>
 	
+	<select id="selectUser" parameterType="string" resultMap="resultUser">
+		select * from evol.login where userid = #{userId}
+	</select>
+	
+	<select id="selectUserEmail" parameterType="string" resultType="string">
+		SELECT email FROM evol.login WHERE email= #{ email }
+	</select>
+	
 	<select id="selectOneSearchAccountId" parameterType="Search" resultMap="resultUser">
 		SELECT * FROM evol.login WHERE evol.login.account_id = #{keyword}
 	</select>
@@ -46,5 +54,9 @@
 	<insert id="insertUser" parameterType="User">
 		insert into evol.login(evol.login.userid, evol.login.user_pass, evol.login.sex, evol.login.email) values (#{ userId }, #{ userPass }, #{ sex }, #{ email })	
 	</insert>
+	
+	<update id="updatePwd" parameterType="User">
+		update evol.login set user_pass = #{ userPass } where email = #{ email } 
+	</update>
 		
 </mapper>

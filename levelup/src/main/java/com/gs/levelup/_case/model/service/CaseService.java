@@ -11,7 +11,7 @@ public interface CaseService {
 	public int insertCase(Case _case);
 	public Case selectCase(String caseId);
 	public int updateCase(Case _case);
-	public int updateCaseAprrove(String caseId);
+	public int updateCaseAprrove(Case _case);
 	public int updateCaseReject(String caseId);
 	
 	// 전체 목록 조회용

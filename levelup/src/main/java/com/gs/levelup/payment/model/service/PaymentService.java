@@ -12,7 +12,7 @@ public interface PaymentService {
 	public ArrayList<Payment> selectList(Paging paging);	
 	public int insertPayment(Payment payment);	
 	public int updatePayment(Payment payment);	
-	public int deletePayment(String paymentId);	
+	public int deletePayment(String paymentKey);	
 	public int selectListCount();
 	public int selectSearchPaymentIdCount(String keyword);
 	public int selectSearchDateCount(Search search);
@@ -24,4 +24,5 @@ public interface PaymentService {
 	public Payment selectPaymentOne(String paymentKey);
 	public int updatePaymentState(String paymentKey);
 	public Payment selectPaymentKey(String paymentKey);
+	public ArrayList<Payment> selectPaymentList(int accountId);
 }
