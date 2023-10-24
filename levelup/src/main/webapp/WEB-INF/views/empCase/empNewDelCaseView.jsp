@@ -82,7 +82,7 @@ function golist(){
 	                            <input type="hidden" name="caseManagerId" value="${ requestScope.manager.employeeId }">
 	                            <input type="hidden" name="caseManagerName" value="${ requestScope.manager.employeeName }">                           
 	                            
-	                            <input type="hidden" name="caseType" value="1">
+	                            <input type="hidden" name="caseType" value="2">
 	                            <input type="hidden" name="charId" value="${ requestScope.character.charId }">
 	                            <input type="hidden" name="accountId" value="${ requestScope.character.accountId }">
 	                            <input type="hidden" name="charName" value="${ requestScope.character.name }">

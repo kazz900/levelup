@@ -54,7 +54,10 @@
 	</select>
 
 	<select id="selectOne" parameterType="string" resultMap="resultNotice">
-		select * from notice where NOTICE_ID = #{ noticeId }
+		select n.*, e.employee_name as employeeName
+    from notice n
+    left join employee e on n.employee_id = e.employee_id
+    where n.NOTICE_ID = #{noticeId}
 	</select>	
 	
 	<select id="getListCount" resultType="_int">
@@ -72,12 +75,13 @@
 	<select id="getSearchTitleCount" parameterType="Search" resultType="_int">
 		  select count(*) from notice
 		  WHERE NOTICE_TITLE LIKE '%' || #{keyword} || '%'
-		  <if test="teamId != ''">
+		  <if test="teamId != '' and departmentId == ''">
                    AND TEAM_ID = #{teamId}
           </if>
-          <if test="departmentId != ''">
+          <if test="departmentId != '' and teamId == ''">
                    AND DEPARTMENT_ID = #{departmentId}
           </if>
+         
           
 		 
 	</select>

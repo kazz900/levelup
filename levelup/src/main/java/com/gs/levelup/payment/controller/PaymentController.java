@@ -37,10 +37,12 @@ public class PaymentController {
 	public String selectListMethod(@RequestParam(name = "page", required = false) String page, Model model) {
 
 		int currentPage = 1;
-		if (page != null) {
-			currentPage = Integer.parseInt(page);
-		}
-
+		// 환불 끝나면 기안 리스트 페이지로 PAGE 값 가지고 돌아가도록 처리하라!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//		
+//		if (page != null) {
+//			currentPage = Integer.parseInt(page);
+//		}
+//
 		// 한 페이지 게시글 10개씩 출력되게 한다면
 		int limit = 10;
 
@@ -242,16 +244,18 @@ public class PaymentController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "pcancel.do", method = RequestMethod.POST)
+	@RequestMapping(value = "pcancel.do", method = RequestMethod.GET)
 	public ModelAndView cancelPaymentMethod(@RequestParam("paymentKey") String paymentKey,
 									@RequestParam("cancelReason") String cancelReason,
-									@RequestParam("page") String page,
+									@RequestParam(name="page", required=false) String page,
 									ModelAndView mv, HttpServletRequest request) {
 		logger.info("paymentKey : " + paymentKey + ", cancelReason : " + cancelReason + ", page : " + page);
 		
 		mv.addObject("paymentKey", paymentKey.trim());
 		mv.addObject("cancelReason", cancelReason.trim());
-		mv.addObject("page", page);
+		if(page != null) {
+			mv.addObject("page", page);			
+		}
 		mv.setViewName("payment/erppaymentcancelresultview");
 		return mv;
 	}
@@ -259,7 +263,7 @@ public class PaymentController {
 	@RequestMapping(value = "pcancelsuccessresult.do", method = {RequestMethod.POST, RequestMethod.GET})
 	public String moveCancelPaymentResultViewMethod(@RequestParam("paymentKey") String paymentKey,
 									@RequestParam("cancelReason") String cancelReason,
-									@RequestParam("page") String page,
+									@RequestParam(name="page", required=false) String page,
 									RedirectAttributes re, HttpServletRequest request,
 									Model model) {
 		
@@ -268,7 +272,9 @@ public class PaymentController {
 		search.setCancelReason(cancelReason);
 		
 		if(paymentService.cancelPayment(search) > 0) {
-			re.addAttribute("page", page);
+			if (page != null) {
+				re.addAttribute("page", page);				
+			}
 			return "redirect:plist.do";			
 		}else {
 			model.addAttribute("message", paymentKey + "에 대한 결제 취소 실패");
