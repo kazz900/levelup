@@ -13,46 +13,23 @@ public class ScheduleServiceImpl implements ScheduleService{
 	@Autowired	//자동 DI 처리됨 : 자동 객체 생성됨
 	private ScheduleDao scheduleDao;
 	
-	public ArrayList<Schedule> selectScheduleList(){
-		return scheduleDao.selectScheduleList();
+	@Override
+	public ArrayList<Schedule> selectScheduleList(String employeeId, String teamId, String departmentId){
+		return scheduleDao.selectScheduleList(employeeId, teamId, departmentId);
 	}
-	public ArrayList<Schedule> selectTeamScheduleList(){
-		return scheduleDao.selectTeamScheduleList();
-	}
-	public ArrayList<Schedule> selectDeptScheduleList(){
-		return scheduleDao.selectDeptScheduleList();
-	}
-	public ArrayList<Schedule> selectMyScheduleList(){
-		return scheduleDao.selectMyScheduleList();
-	}
-	
-	public Schedule selectSchedule(String scheduleId) {
-		return scheduleDao.selectSchedule(scheduleId);
-	}
+	@Override
 	public int insertSchedule(Schedule schedule) {
 		return scheduleDao.insertSchedule(schedule);
 	}
+	@Override
 	public int updateSchedule(Schedule schedule) {
 		return scheduleDao.updateSchedule(schedule);
 	}
-	public int deleteSchedule(String scheduleId) {
-		return scheduleDao.deleteSchedule(scheduleId);
-	}
 	@Override
-	public ArrayList<Schedule> selectTeamScheduleList(String teamId) {
-		// TODO Auto-generated method stub
-		return null;
+	public int deleteSchedule(Schedule schedule) {
+		return scheduleDao.deleteSchedule(schedule);
 	}
-	@Override
-	public ArrayList<Schedule> selectDeptScheduleList(String departmentId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public ArrayList<Schedule> selectMyScheduleList(String employeeId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	
 	
 	
