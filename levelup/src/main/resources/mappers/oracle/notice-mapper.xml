@@ -17,6 +17,12 @@
 		<result column="RENAME_FILENAME" property="renameFilename" />
 	</resultMap>
 	
+	<resultMap type="Notice" id="resultNotice5">
+		<result property="noticeTitle" column="NOTICE_TITLE" />		
+		<result property="editDate" column="EDIT_DATE" />
+		<result property="attachementFilename" column="ATTACHEMENT_FILENAME" />		
+	</resultMap>
+	
 	
 	<select id="selectList" parameterType="Paging" resultMap="resultNotice">
 		select * from (select rownum rnum, NOTICE_ID, EMPLOYEE_ID, DEPARTMENT_ID, 
@@ -174,6 +180,17 @@
 	<delete id="deleteNotice" parameterType="string">
 		delete from notice where NOTICE_ID = #{ noticeId }
 	</delete>
+	
+	<select id="selectNotices5" resultMap="resultNotice5">
+		<![CDATA[
+		select * 
+		from (select rownum rnum, NOTICE_TITLE, EDIT_DATE, ATTACHEMENT_FILENAME 
+		    from (select * from notice 
+		          where DEPARTMENT_ID = #{ keyword } 
+		)) 
+		where rnum <= 10
+		]]>
+	</select>
 	
 </mapper>
 

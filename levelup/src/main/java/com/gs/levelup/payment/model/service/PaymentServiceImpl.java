@@ -86,4 +86,8 @@ public class PaymentServiceImpl implements PaymentService {
 		public ArrayList<Payment> selectPaymentList(int accountId) {
 			return paymentDao.selectPaymentList(accountId);
 		}
+		@Override
+		public ArrayList<Payment> selectItemList5() {
+			return paymentDao.selectItemList5();
+		}
 }

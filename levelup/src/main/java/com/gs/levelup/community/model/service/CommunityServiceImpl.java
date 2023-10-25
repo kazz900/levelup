@@ -112,4 +112,9 @@ public class CommunityServiceImpl implements CommunityService{
 		return communityDao.updateRepReadCount(board_id);
 	}
 
+	@Override
+	public ArrayList<Community> selectCommunities5(String keyword) {
+		return communityDao.selectCommunities5(keyword);
+	}
+
 }

@@ -365,4 +365,33 @@ public class EmployeeController {
 
 		return mv;
 	}
+	
+	@RequestMapping("elist.do")
+	public ModelAndView userListViewMethod(@RequestParam(name = "page", required = false) String page,
+			ModelAndView mv) {
+
+		int currentPage = 1;
+		if (page != null) {
+			currentPage = Integer.parseInt(page);
+		}
+
+		// 한 페이지에 목록 10개씩 출력되게 한다면
+		int limit = 10;
+		// 회원 목록 전체 갯수 조회해 옴
+		int listCount = employeeService.selectListCount();
+		Paging paging = new Paging(listCount, currentPage, limit, "elist.do");
+		paging.calculator();
+		// 페이징에 필요한 항목들 계산 처리
+
+		ArrayList<Employee> list = employeeService.selectList(paging);
+		if (list != null && list.size() > 0) {
+			mv.addObject("list", list);
+			mv.addObject("paging", paging);
+			mv.setViewName("employee/employeeList");
+		} else {
+			mv.addObject("message", "회원 정보가 존재하지 않습니다.");
+			mv.setViewName("common/error");
+		}
+		return mv;
+	}
 }
