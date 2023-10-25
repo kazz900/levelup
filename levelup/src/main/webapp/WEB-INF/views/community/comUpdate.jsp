@@ -167,7 +167,7 @@ var previewConfig = [];
 
 for ( var i in imgs) {
 	previews.push('${ pageContext.servletContext.contextPath }/resources/com_upfiles/${ community.board_id }/' + imgs[i]);
-	previewConfig.push({caption:imgs[i]});
+	previewConfig.push({caption:imgs[i],key:imgs[i]});
 }
 
 $(function(){
@@ -176,7 +176,11 @@ $(function(){
     initialPreview: previews,
     initialPreviewAsData: true, // identify if you are sending preview data only and not the raw markup
     initialPreviewDownloadUrl: '${ pageContext.servletContext.contextPath }/resources/com_upfiles/${ community.board_id }/{filename}', // includes the dynamic `filename` tag to be replaced for each config
-    initialPreviewConfig: previewConfig,    
+    initialPreviewConfig: previewConfig,
+    deleteUrl: "delfile.do",
+    deleteExtraData: {
+    	board_id: '${community.board_id}'
+    },
     showUpload: false,
     browseLabel: '파일 선택',
 	removeLabel: '선택 리셋',

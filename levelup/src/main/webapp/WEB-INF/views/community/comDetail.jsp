@@ -214,6 +214,11 @@
 
 
 <script type="text/javascript">
+function delCom(){
+	
+};
+
+
 <c:if test="${ !empty community.attachement_filename }">
 var imgs = ${ community.attachement_filename};
 var previews = [];

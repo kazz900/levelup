@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
@@ -17,7 +18,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -385,9 +385,18 @@ public class CommunityController {
 	@RequestMapping("delfile.do")
 	@ResponseBody
 	public String deleteFile(HttpServletRequest request, 
-			@RequestParam("filename") String fileName,
+			@RequestParam("key") String fileName,
 			@RequestParam("board_id") String board_id 
 			) {
+		logger.info("delfile : " + fileName);
+		logger.info("delfile : " + board_id);
+		Enumeration params = request.getParameterNames();
+		System.out.println("----------------------------");
+		while (params.hasMoreElements()){
+		    String name = (String)params.nextElement();
+		    System.out.println(name + " : " +request.getParameter(name));
+		}
+		System.out.println("----------------------------");
 		// 각 변수 준비
 		String attachement_filename = "[\"";
 		String savePath = request.getSession().getServletContext().getRealPath("resources/com_upfiles/" + board_id);
@@ -403,7 +412,7 @@ public class CommunityController {
 		if (delFile.exists()) {
 			delFile.delete();
 		}
-
+		
 		// 파일 저장 디렉토리 파일 목록 불러와서 배열 처리
 
 		if (saveFolder.exists()) {
@@ -411,17 +420,20 @@ public class CommunityController {
 			if (fileList.length > 0) {
 				for (int i = 0; i < fileList.length; i++) {
 					attachement_filename += (i == fileList.length - 1 ? fileList[i] + "\"]" : fileList[i] + "\",\"");
-					System.out.println("delFile.do : " + attachement_filename);
 				}
+				System.out.println("delFile.do : " + attachement_filename);
 			} else {
 				attachement_filename = null;
 			}
 			community.setAttachement_filename(attachement_filename);
 		}
 		if (communityService.updateAttach(community) > 0) {
-			return "redirect:comdetail.do";
+			sendJson.put("error", "false");
+			//{error: BOOLEAN_VALUE}
+			return "{}";
 		} else {
-			return "common/error";
+			sendJson.put("error", "true");
+			return sendJson.toJSONString();
 		}
 	}
 
