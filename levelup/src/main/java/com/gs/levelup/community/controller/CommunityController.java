@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
@@ -57,7 +58,7 @@ public class CommunityController {
 	public String moveComeWrite() {
 		return "community/comWrite";
 	}
-	
+
 	@RequestMapping("moveUP.do")
 	public ModelAndView moveUp(@RequestParam("board_id") String board_id,
 			@RequestParam("currentPage") String currentPage, ModelAndView mv) {
@@ -72,7 +73,7 @@ public class CommunityController {
 		}
 		return mv;
 	}
-	
+
 	@RequestMapping("comRep.do")
 	public ModelAndView moveRep(@RequestParam("board_id") String board_id,
 			@RequestParam("currentPage") String currentPage, ModelAndView mv) {
@@ -92,7 +93,7 @@ public class CommunityController {
 	public String deleteCommunity(@RequestParam("board_id") String board_id,
 			@RequestParam("currentPage") String currentPage, Model model) {
 		if (communityService.deleteCommunity(board_id) > 0) {
-			// TODO: 파일 삭제 루틴 추가 
+			// TODO: 파일 삭제 루틴 추가
 			model.addAttribute("currentPage", currentPage);
 			return "redirect:comlist.do";
 		} else {
@@ -124,7 +125,7 @@ public class CommunityController {
 
 	// 게시글 전체 목록보기 요청 처리용
 	@RequestMapping("comlist.do")
-	public String selectList(@RequestParam(name = "currentPage", required = false) String page,
+	public String selectList(@RequestParam(name = "page", required = false) String page,
 			@RequestParam(name = "limit", required = false) String slimit, Model model) {
 		logger.info("comlist.do : page : " + page + ", slimit: " + slimit);
 
@@ -133,7 +134,7 @@ public class CommunityController {
 			currentPage = Integer.parseInt(page);
 		}
 
-		int limit = 20;
+		int limit = 10;
 		if (slimit != null) {
 			limit = Integer.parseInt(slimit);
 		}
@@ -224,7 +225,7 @@ public class CommunityController {
 //			System.out.println("cominsert.do : " + attachement_filename);
 //			community.setAttachement_filename(attachement_filename);
 //		}
-		
+
 		// 첨부된 파일이 있으면
 		if (mfileList.get(0).getSize() != 0) {
 			// 첨부파일 저장 폴더 경로 지정, 새로 쓰는 글이기 때문에 중복문제는 발생하지 않을 듯
@@ -236,13 +237,13 @@ public class CommunityController {
 			for (int i = 0; i < mfileList.size(); i++) {
 				mfileList.get(i).transferTo(new File(savePath + "\\" + mfileList.get(i).getOriginalFilename()));
 			}
-		}
-		// 저장 후 디렉토리에서 파일 목록 불러와서 배열 처리
-		String[] fileList = saveFolder.list();
-		for (int i = 0; i < fileList.length; i++) {
-			attachement_filename += (i == fileList.length - 1 ? fileList[i] + "\"]" : fileList[i] + "\",\"");
-			System.out.println("cominsert.do : " + attachement_filename);
-			community.setAttachement_filename(attachement_filename);
+			// 저장 후 디렉토리에서 파일 목록 불러와서 배열 처리
+			String[] fileList = saveFolder.list();
+			for (int i = 0; i < fileList.length; i++) {
+				attachement_filename += (i == fileList.length - 1 ? fileList[i] + "\"]" : fileList[i] + "\",\"");
+				System.out.println("cominsert.do : " + attachement_filename);
+				community.setAttachement_filename(attachement_filename);
+			}
 		}
 
 		if (communityService.insertCommunity(community) > 0) {
@@ -255,23 +256,20 @@ public class CommunityController {
 			return "common/error";
 		}
 	}
+
 	// 새 공지글 등록 처리 - 파일업로드 기능 추가
 	@RequestMapping(value = "cominsertRep.do", method = RequestMethod.POST)
-	public String insertCommRep(
-			Community community, 
-			Model model, 
-			HttpServletRequest request,
+	public String insertCommRep(Community community, Model model, HttpServletRequest request,
 			@RequestParam(name = "upfiles[]", required = false) List<MultipartFile> mfileList,
-			@RequestParam(name = "currentPage", required = false) String currentPage
-			)
-					throws IllegalStateException, IOException {
+			@RequestParam(name = "currentPage", required = false) String currentPage)
+			throws IllegalStateException, IOException {
 		logger.info("cominsertRep.do : " + community);
 		logger.info("cominsert.doRep mfileList : " + mfileList);
-		
+
 		// board_id 생성, 대입
 		String board_id = UUID.randomUUID().toString().replaceAll("-", "").toUpperCase();
 		community.setBoard_id(board_id);
-		
+
 		// 각 변수 준비
 		String attachement_filename = "[\"";
 		String savePath = "";
@@ -283,23 +281,69 @@ public class CommunityController {
 			savePath = request.getSession().getServletContext().getRealPath("resources/com_upfiles/" + board_id);
 			saveFolder = new File(savePath);
 			saveFolder.mkdir();
-			
+
+			// 파일 저장 처리
+			for (int i = 0; i < mfileList.size(); i++) {
+				mfileList.get(i).transferTo(new File(savePath + "\\" + mfileList.get(i).getOriginalFilename()));
+			}
+			// 저장 후 디렉토리에서 파일 목록 불러와서 배열 처리
+			String[] fileList = saveFolder.list();
+			for (int i = 0; i < fileList.length; i++) {
+				attachement_filename += (i == fileList.length - 1 ? fileList[i] + "\"]" : fileList[i] + "\",\"");
+				System.out.println("cominsertRep.do : " + attachement_filename);
+				community.setAttachement_filename(attachement_filename);
+			}
+		}
+
+		if (communityService.insertCommunityRep(community) > 0
+				&& communityService.updateCommunityRep(community.getRef_id()) > 0) {
+			model.addAttribute("page", currentPage);
+			model.addAttribute("board_id", community.getRef_id());
+			return "redirect:comdetail.do";
+		} else {
+			model.addAttribute("message", "게시글 등록 실패");
+			return "common/error";
+		}
+	}
+
+	@RequestMapping(value = "comUpdate.do", method = RequestMethod.POST)
+	public String updateCommunity(Community community, Model model, HttpServletRequest request,
+			@RequestParam(name = "upfiles[]", required = false) List<MultipartFile> mfileList,
+			@RequestParam(name = "currentPage", required = false) String currentPage)
+			throws IllegalStateException, IOException {
+		logger.info("comupdate.do: " + community);
+		logger.info("comupdate.do: " + mfileList);
+
+		// 각 변수 준비
+		String attachement_filename = "[\"";
+		String savePath = request.getSession().getServletContext()
+				.getRealPath("resources/com_upfiles/" + community.getBoard_id());
+		File saveFolder = new File(savePath);
+
+		// 첨부된 파일이 있으면
+		if (mfileList.get(0).getSize() != 0) {
+			// 첨부파일 저장 폴더 경로 지정, 업데이트이기 때문에 디렉토리 존재하는지 체크
+			if (!saveFolder.exists()) {
+				saveFolder.mkdir();
+			}
 			// 파일 저장 처리
 			for (int i = 0; i < mfileList.size(); i++) {
 				mfileList.get(i).transferTo(new File(savePath + "\\" + mfileList.get(i).getOriginalFilename()));
 			}
 		}
-		// 저장 후 디렉토리에서 파일 목록 불러와서 배열 처리
-		String[] fileList = saveFolder.list();
-		for (int i = 0; i < fileList.length; i++) {
-			attachement_filename += (i == fileList.length - 1 ? fileList[i] + "\"]" : fileList[i] + "\",\"");
-			System.out.println("cominsertRep.do : " + attachement_filename);
-			community.setAttachement_filename(attachement_filename);
+		// 파이 저장 디렉토리가 존재하면 파일 목록 불러와서 배열 처리
+
+		if (saveFolder.exists()) {
+			String[] fileList = saveFolder.list();
+			for (int i = 0; i < fileList.length; i++) {
+				attachement_filename += (i == fileList.length - 1 ? fileList[i] + "\"]" : fileList[i] + "\",\"");
+				System.out.println("cominsertRep.do : " + attachement_filename);
+				community.setAttachement_filename(attachement_filename);
+			}
 		}
-		
-		if (communityService.insertCommunityRep(community) > 0 && communityService.updateCommunityRep(community.getRef_id()) > 0) {
+		if (communityService.updateCommunity(community) > 0) {
 			model.addAttribute("page", currentPage);
-			model.addAttribute("board_id",community.getRef_id());
+			model.addAttribute("board_id", community.getBoard_id());
 			return "redirect:comdetail.do";
 		} else {
 			model.addAttribute("message", "게시글 등록 실패");
@@ -321,19 +365,19 @@ public class CommunityController {
 			}
 		
 		Community community = communityService.selectCommunity(board_id);
-		
+
 		ArrayList<Community> replys = null;
-		if(community.getRefYN().equals("y")) {
+		if (community.getRefYN().equals("y")) {
 			replys = communityService.selectReplys(board_id);
 			communityService.updateRepReadCount(board_id);
 		} else {
-			 replys = new ArrayList<Community>();
+			replys = new ArrayList<Community>();
 		}
 		logger.info("comdetail.do replys : " + replys.size());
 		if (community != null) {
 			// 조회수 1증가 처리
 			communityService.updateReadCount(board_id);
-			
+
 			mv.addObject("title", community.getBoard_title());
 			mv.addObject("item", community.getDepartment_name());
 			mv.addObject("subitem", community.getTeam_name());
@@ -347,6 +391,64 @@ public class CommunityController {
 		}
 		return mv;
 	}
+
+	// 첨부파일 삭제
+	@RequestMapping("delfile.do")
+	@ResponseBody
+	public String deleteFile(HttpServletRequest request, 
+			@RequestParam("key") String fileName,
+			@RequestParam("board_id") String board_id 
+			) {
+		logger.info("delfile : " + fileName);
+		logger.info("delfile : " + board_id);
+		Enumeration params = request.getParameterNames();
+		System.out.println("----------------------------");
+		while (params.hasMoreElements()){
+		    String name = (String)params.nextElement();
+		    System.out.println(name + " : " +request.getParameter(name));
+		}
+		System.out.println("----------------------------");
+		// 각 변수 준비
+		String attachement_filename = "[\"";
+		String savePath = request.getSession().getServletContext().getRealPath("resources/com_upfiles/" + board_id);
+		File saveFolder = new File(savePath);
+
+		Community community = new Community();
+		community.setBoard_id(board_id);
+		
+		JSONObject sendJson = new JSONObject();
+
+		
+		File delFile = new File(savePath + "/" + fileName);
+		if (delFile.exists()) {
+			delFile.delete();
+		}
+		
+		// 파일 저장 디렉토리 파일 목록 불러와서 배열 처리
+
+		if (saveFolder.exists()) {
+			String[] fileList = saveFolder.list();
+			if (fileList.length > 0) {
+				for (int i = 0; i < fileList.length; i++) {
+					attachement_filename += (i == fileList.length - 1 ? fileList[i] + "\"]" : fileList[i] + "\",\"");
+				}
+				System.out.println("delFile.do : " + attachement_filename);
+			} else {
+				attachement_filename = null;
+			}
+			community.setAttachement_filename(attachement_filename);
+		}
+		if (communityService.updateAttach(community) > 0) {
+			sendJson.put("error", "false");
+			//{error: BOOLEAN_VALUE}
+			return "{}";
+		} else {
+			sendJson.put("error", "true");
+			return sendJson.toJSONString();
+		}
+	}
+
+
 
 	// 첨부파일
 	@RequestMapping("comfdown.do")
@@ -368,63 +470,6 @@ public class CommunityController {
 		mv.addObject("originFile", originFile);
 
 		return mv;
-
-	}
-
-	// 공지글 수정 요청 처리용 (파일 업로드 기능 사용)
-	@RequestMapping(value = "comUpdate.do", method = RequestMethod.POST)
-	public String updateCommunity(Community community, Model model, HttpServletRequest request,
-			@RequestParam(name = "upfiles[]", required = false) List<MultipartFile> mfileList) {
-		logger.info("comupdate.do: " + community);
-		logger.info("comupdate.do: " + mfileList);
-
-		// 공지사항 첨부파일 저장 폴더 경로 지정
-//		String savePath = request.getSession().getServletContext().getRealPath("resources/com_upfiles/" + community.getBoard_id());
-
-		// 첨부파일이 변경된 경우
-		// 1. 원래 첨부파일이 있는데 '파일삭제'를 선택한 경우
-		// 또는 원래 첨부파일이 있는데 새로운 첨부파일이 업로드 된 경우
-//		if(community.getOriginalFilePath() != null && 
-//				(delFlag != null && delFlag.equals("yes"))
-//				|| !mfile.isEmpty()) {
-//			// 저장 폴더에서 파일 삭제하고
-//			new File(savePath + "\\" + community.getRenameFilePath()).delete();
-//			// notice 안의 파일 정보도 제거
-//			community.setOriginalFilePath(null);
-//			community.setRenameFilePath(null);
-//		}
-
-		// 전송온 파일이름 추출함
-//		String fileName = mfile.getOriginalFilename();
-//		String renameFileName = null;
-
-		// 새로운 첨부파일이 있을 때
-//		if (!mfile.isEmpty()) {
-
-		// 저장폴더에는 변경된 이름으로 저장 처리
-		// 파일 이름 바꾸기함: 년월일시분초.확장자
-//			if (fileName != null && fileName.length() > 0) {
-		// 바꿀 파일명에 대한 문자열 만들기
-//				renameFileName = FileNameChange.change(fileName, savePath,"yyyyMMddHHmmss");
-		// 저장 폴더에 파일명 바꾸기 처리
-		try {
-//					mfile.transferTo(new File(savePath + "\\" + renameFileName));
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			model.addAttribute("message", "첨부파일 저장 실패");
-			return "common/error";
-		}
-//			} // 파일명 바꾸기
-//		} // 첨부파일 있을 때
-
-//		if (communityService.updateCommunity(community) > 0) {
-		// 공지글 수정 성공시 목록 보기 페이지로 이동
-//			return "redirect:comlist.do";
-//		} else {
-//			model.addAttribute("message", community.getBoard_id() + "번 공지 수정 실패");
-		return "common/error";
-//		}
 
 	}
 

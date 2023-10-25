@@ -81,6 +81,8 @@
 				          		<input name="employee_id" value="${ loginEmployee.employeeId }" type="hidden">
 				          		<input name="department_id" value="${ community.department_id }" type="hidden">
 				          		<input name="team_id" value="${ community.team_id }" type="hidden">
+				          		<input name="board_id" value="${ community.board_id }" type="hidden">
+				          		<input name="currentPage" value="${ currentPage }" type="hidden">
 				          	</div>
 						</div>
 					</div>
@@ -88,13 +90,15 @@
 							<textarea name="board_body" id="elm1" class="col-12">${ community.board_body }</textarea>
 					</div>
 
+
 					<div class="row">
 						<div class="kv-avatar col-12">
 			                <div class="file-loading">
             			        <input id="upfiles" name="upfiles[]" type="file" multiple data-browse-on-zone-click="true">
-                		</div>
-            		</div>
+                			</div>
+            			</div>
   					</div>
+ 
   					<div class="btn-group col-3 mt-3">
 						<input type="submit" class="btn btn-primary" value="수정">
 						<input type="button" value="목록(수정취소)" 
@@ -150,19 +154,20 @@
 
 
 
+
 <script type="text/javascript">
+var imgs = [];
+
 <c:if test="${ !empty community.attachement_filename }">
 var imgs = ${ community.attachement_filename};
 </c:if>
-<c:if test="${ empty community.attachement_filename}">
-var imgs = [];
-</c:if>
-var previews = [];
 
-if(imgs.length > 0 ){
-	for ( var i in imgs) {
-		previews.push('${ pageContext.servletContext.contextPath }/resources/com_upfiles/${ community.board_id }/' + imgs[i]);
-	}
+var previews = [];
+var previewConfig = [];
+
+for ( var i in imgs) {
+	previews.push('${ pageContext.servletContext.contextPath }/resources/com_upfiles/${ community.board_id }/' + imgs[i]);
+	previewConfig.push({caption:imgs[i],key:imgs[i]});
 }
 
 $(function(){
@@ -170,10 +175,14 @@ $(function(){
 	overwriteInitial: false,
     initialPreview: previews,
     initialPreviewAsData: true, // identify if you are sending preview data only and not the raw markup
-//    initialPreviewDownloadUrl: 'https://kartik-v.github.io/bootstrap-fileinput-samples/samples/{filename}', // includes the dynamic `filename` tag to be replaced for each config
-    
+    initialPreviewDownloadUrl: '${ pageContext.servletContext.contextPath }/resources/com_upfiles/${ community.board_id }/{filename}', // includes the dynamic `filename` tag to be replaced for each config
+    initialPreviewConfig: previewConfig,
+    deleteUrl: "delfile.do",
+    deleteExtraData: {
+    	board_id: '${community.board_id}'
+    },
     showUpload: false,
-	browseLabel: '파일 선택',
+    browseLabel: '파일 선택',
 	removeLabel: '선택 리셋',
 	removeTitle: '파일 업로드 창 리셋',
 	elErrorContainer: '#kv-avatar-errors-1',
@@ -182,6 +191,8 @@ $(function(){
 	}); //fileinput 
 }); // document ready
 </script>
+
+
 </div> <!-- main-content -->
 
 </body>
