@@ -114,7 +114,8 @@
              
             <c:if test="${ loginEmployee ne null and community.employee_id eq loginEmployee.employeeId }">
 	            <a href="moveUP.do?board_id=${ community.board_id }&currentPage=${ currentPage }" class="btn btn-primary waves-effect mt-4"><i class="mdi mdi-tools"></i>수정</a>  &nbsp;
-	            <a href="comDelete.do?board_id=${ community.board_id }&currentPage=${ currentPage }" class="btn btn-primary waves-effect mt-4"><i class="mdi mdi-trash-can"></i>삭제</a>  &nbsp;
+<%-- 	            <a href="comDelete.do?board_id=${ community.board_id }&currentPage=${ currentPage }" class="btn btn-primary waves-effect mt-4"><i class="mdi mdi-trash-can"></i>삭제</a>  &nbsp; --%>
+					<button onclick="(function(){if(confirm('정말로 삭제하시겠습니까?') == true){location.href='comDelete.do?board_id=${ community.board_id }&currentPage=${ currentPage }';return false;}})();return false;" class="btn btn-primary waves-effect mt-4"><i class="mdi mdi-trash-can"></i>삭제</button>
             </c:if>
         </div>
 
@@ -160,7 +161,7 @@
              
             <c:if test="${ loginEmployee ne null and r.employee_id eq loginEmployee.employeeId }">
 	            <a href="moveUP.do?board_id=${ r.board_id }&currentPage=${ currentPage }" class="btn btn-primary waves-effect mt-4"><i class="mdi mdi-tools"></i>수정</a>  &nbsp;
-	            <a href="comDelete.do?board_id=${ r.board_id }&currentPage=${ currentPage }" class="btn btn-primary waves-effect mt-4"><i class="mdi mdi-trash-can"></i>삭제</a>  &nbsp;
+	           <button onclick="(function(){if(confirm('정말로 삭제하시겠습니까?') == true){location.href='comDelete.do?board_id=${ r.board_id }&currentPage=${ currentPage }';return false;}})();return false;" class="btn btn-primary waves-effect mt-4"><i class="mdi mdi-trash-can"></i>삭제</button>
             </c:if>
         </div>
 
@@ -214,10 +215,6 @@
 
 
 <script type="text/javascript">
-function delCom(){
-	
-};
-
 
 <c:if test="${ !empty community.attachement_filename }">
 var imgs = ${ community.attachement_filename};
@@ -239,18 +236,19 @@ $(function(){
 	overwriteInitial: false,
     initialPreview: previews,
     initialPreviewAsData: true, // identify if you are sending preview data only and not the raw markup
-    initialPreviewDownloadUrl: '${ pageContext.servletContext.contextPath }/resources/com_upfiles/${ community.board_id }/{filename}', // includes the dynamic `filename` tag to be replaced for each config
+    initialPreviewDownloadUrl: '${ pageContext.servletContext.contextPath }/resources/com_upfiles/${ community.board_id }/{filename}',
     initialPreviewConfig: previewConfig,
     showUpload: false,
     showBrowse: false,
     browseOnZoneClick: false,
     initialPreviewShowDelete: false,
+    initialPreviewFileType: 'image', // image is the default and can be overridden in config below
 //	browseLabel: '파일 선택',
 //	removeLabel: '선택 리셋',
 //	removeTitle: '파일 업로드 창 리셋',
 	elErrorContainer: '#kv-avatar-errors-1',
 	msgErrorClass: 'alert alert-block alert-danger',
-	layoutTemplates: {main2: '{preview} '},
+	layoutTemplates: {main2: '{preview} ' + ' {remove} {browse}'},
 	}) //fileinput 
 	</c:if>
 
