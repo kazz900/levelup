@@ -112,4 +112,9 @@ public class CommunityServiceImpl implements CommunityService{
 		return communityDao.updateRepReadCount(board_id);
 	}
 
+	@Override
+	public int updateAttach(Community community) {
+		return communityDao.updateAttach(community);
+	}
+
 }

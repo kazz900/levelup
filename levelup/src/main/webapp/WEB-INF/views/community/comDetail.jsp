@@ -57,8 +57,6 @@
 
 	<script src="/fm/resources/js/fileinput/locales/kr.js"></script>
 
-
-
 </head>
 <body data-sidebar="dark" data-layout-mode="light">
 <!-- 내비게이션바, 사이드바 등등 -->
@@ -122,12 +120,14 @@
 
     </div>
 <c:if test="${ !empty replys }">   
+
 	<c:forEach var="r" items="${ replys }">
     <div class="card">
 
         <div class="card-body">
             <div class="d-flex mb-4">
                 <div class="flex-shrink-0 me-3">
+                <i class="mdi mdi-subdirectory-arrow-right"></i>
                 </div>
                 <div class="flex-grow-1">
                     <b class="font-size-14 mt-1">${ r.employee_name }</b> <small class="text-muted"><a href="mailto:${ r.employee_email }">${ r.employee_email }</a></small><br>
@@ -154,7 +154,7 @@
   					</div>
 			</c:if>
 			
-            <a href="comRep.do?board_id=${ r.board_id }&currentPage=${ currentPage }" class="btn btn-primary waves-effect mt-4"><i class="mdi mdi-reply"></i>댓글달기</a> &nbsp;
+<%--             <a href="comRep.do?board_id=${ r.board_id }&currentPage=${ currentPage }" class="btn btn-primary waves-effect mt-4"><i class="mdi mdi-reply"></i>댓글달기</a> &nbsp; --%>
             <a href="comlist.do?currentPage=${ currentPage }" class="btn btn-primary waves-effect mt-4"><i class="mdi mdi-reply"></i>목록으로</a> &nbsp;
             
              
@@ -163,43 +163,7 @@
 	            <a href="comDelete.do?board_id=${ r.board_id }&currentPage=${ currentPage }" class="btn btn-primary waves-effect mt-4"><i class="mdi mdi-trash-can"></i>삭제</a>  &nbsp;
             </c:if>
         </div>
-        
-<c:if test="${ !empty r.attachement_filename }">
 
-<script type="text/javascript">
-
-var imgs = ${ r.attachement_filename};
-var previews = [];
-var previewConfig = [];
-
-
-if(imgs != null){
-	for ( var i in imgs) {
-		previews.push('${ pageContext.servletContext.contextPath }/resources/com_upfiles/${ r.board_id }/' + imgs[i]);
-		previewConfig.push({caption:imgs[i]});
-	}
-}
-
-
-
-$(function(){
-	$("#${r.board_id}").fileinput({
-	overwriteInitial: false,
-    initialPreview: previews,
-    initialPreviewAsData: true, // identify if you are sending preview data only and not the raw markup
-    initialPreviewDownloadUrl: '${ pageContext.servletContext.contextPath }/resources/com_upfiles/${ r.board_id }/{filename}', // includes the dynamic `filename` tag to be replaced for each config
-    initialPreviewConfig: previewConfig,
-    showUpload: false,
-    showBrowse: false,
-    browseOnZoneClick: false,
-    initialPreviewShowDelete: false,
-	elErrorContainer: '#kv-avatar-errors-1',
-	msgErrorClass: 'alert alert-block alert-danger',
-	layoutTemplates: {main2: '{preview} '},
-	}) //fileinput 
-}); // document ready
-</script>
-</c:if>
 <!-- 첨부파일이 있는지 -->
 
 </c:forEach>
@@ -248,10 +212,9 @@ $(function(){
 	
 
 
-<c:if test="${ !empty community.attachement_filename }">
 
 <script type="text/javascript">
-
+<c:if test="${ !empty community.attachement_filename }">
 var imgs = ${ community.attachement_filename};
 var previews = [];
 var previewConfig = [];
@@ -284,9 +247,51 @@ $(function(){
 	msgErrorClass: 'alert alert-block alert-danger',
 	layoutTemplates: {main2: '{preview} '},
 	}) //fileinput 
+	</c:if>
+
+	
+	<c:if test="${ !empty replys }">   
+
+	<c:forEach var="r" items="${ replys }">
+ 
+	<c:if test="${ !empty r.attachement_filename }">
+
+	var imgs${ r.board_id } = ${ r.attachement_filename};
+	var previews${ r.board_id } = [];
+	var previewConfig${ r.board_id } = [];
+	console.log(previews${ r.board_id });
+	console.log(previewConfig${ r.board_id });
+
+	if(imgs${ r.board_id } != null){
+		for ( var i in imgs${ r.board_id }) {
+			previews${ r.board_id }.push('${ pageContext.servletContext.contextPath }/resources/com_upfiles/${ r.board_id }/' + imgs${ r.board_id }[i]);
+			previewConfig${ r.board_id }.push({caption:imgs[i]});
+		}
+	}
+
+
+		$("#${r.board_id}").fileinput({
+		overwriteInitial: false,
+	    initialPreview: previews${ r.board_id },
+	    initialPreviewAsData: true, // identify if you are sending preview data only and not the raw markup
+	    initialPreviewDownloadUrl: '${ pageContext.servletContext.contextPath }/resources/com_upfiles/${ r.board_id }/{filename}', // includes the dynamic `filename` tag to be replaced for each config
+	    initialPreviewConfig: previewConfig${ r.board_id },
+	    showUpload: false,
+	    showBrowse: false,
+	    browseOnZoneClick: false,
+	    initialPreviewShowDelete: false,
+		elErrorContainer: '#kv-avatar-errors-1',
+		msgErrorClass: 'alert alert-block alert-danger',
+		layoutTemplates: {main2: '{preview} '},
+		}) //fileinput 
+
+	</c:if>
+	</c:forEach>
+	</c:if>
+	
 }); // document ready
 </script>
-</c:if>
+
 
 </div> <!-- main-content -->
 

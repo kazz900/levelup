@@ -49,8 +49,7 @@ public class CommunityDao {
 	}
 
 	public int updateCommunity(Community community) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSessionTemplate.update("comMapper.updateCommunity", community);
 	}
 
 	public int selectSearchTitleCount(String keyword) {
@@ -102,6 +101,10 @@ public class CommunityDao {
 
 	public int updateRepReadCount(String board_id) {
 		return sqlSessionTemplate.update("comMapper.updateRepReadCount",board_id);
+	}
+
+	public int updateAttach(Community community) {
+		return sqlSessionTemplate.update("comMapper.updateAttach",community);
 	}
 
 }
