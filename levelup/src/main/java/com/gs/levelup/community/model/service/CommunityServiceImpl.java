@@ -13,11 +13,11 @@ import com.gs.levelup.community.model.dao.CommunityDao;
 import com.gs.levelup.community.model.vo.Community;
 
 @Service("communityService")
-public class CommunityServiceImpl implements CommunityService{
+public class CommunityServiceImpl implements CommunityService {
 
 	@Autowired
 	CommunityDao communityDao;
-	
+
 	@Override
 	public ArrayList<Community> selectCommunityTop() {
 		return communityDao.selectCommunityTop();
@@ -32,6 +32,7 @@ public class CommunityServiceImpl implements CommunityService{
 	public ArrayList<Community> selectList(Paging paging) {
 		return communityDao.selectList(paging);
 	}
+
 	@Override
 	public ArrayList<HashMap> selectListHashMap(Paging paging) {
 		return communityDao.selectListHashMap(paging);
@@ -116,10 +117,20 @@ public class CommunityServiceImpl implements CommunityService{
 	public int updateAttach(Community community) {
 		return communityDao.updateAttach(community);
 	}
-	
-  @Override
-  public ArrayList<Community> selectCommunities5(String keyword) {
+
+	@Override
+	public ArrayList<Community> selectCommunities5(String keyword) {
 		return communityDao.selectCommunities5(keyword);
+	}
+
+	@Override
+	public int selectSearchCount(String keyword) {
+		return communityDao.selectSearchCount(keyword);
+	}
+
+	@Override
+	public ArrayList<Community> selectSearch(Search search) {
+		return communityDao.selectSearch(search);
 	}
 
 }

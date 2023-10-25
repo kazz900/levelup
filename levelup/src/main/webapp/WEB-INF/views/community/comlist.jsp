@@ -33,6 +33,20 @@
 <div class="row">
 	<div class="col-12">
 		<div class="mb-3">
+		<form class="form-control" action="comSearch.do">
+		<div class="row">
+		 <div class="col-4">
+			<div class="form-floating">
+	            	<input name="keyword" type="search" class="form-control" id="floatingInput" placeholder="검색할 키워드를 입력해 주세요" required="true">
+	            	<label for="floatingInput">검색키워드(제목, 본문, 작성자) </label>
+	       	</div>
+	     </div>
+	     <div class="col-2">
+	     	<input name="page" type="hidden" value="${ currentPage }">
+	     	            	<input type ="submit" class="btn btn-primary align-middle" value="검색">
+	     </div>
+		</div>
+		</form>
 			<div class="card">
 				
 		<div class="row pt-2">
