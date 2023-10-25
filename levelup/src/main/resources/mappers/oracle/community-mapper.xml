@@ -6,6 +6,13 @@
 
 	<resultMap type="Community" id="resultCom">
 	</resultMap>
+	
+	<resultMap type="Community" id="resultBoard5">
+		<result property="board_id" column="BOARD_ID" />		
+		<result property="board_title" column="BOARD_TITLE" />		
+		<result property="board_date" column="BOARD_DATE" />
+		<result property="attachement_filename" column="ATTACHEMENT_FILENAME" />		
+	</resultMap>
 
 	<select id="selectListCount" resultType="_int">
 		select count(*) from community where delYN = 'n' and ref_id is null
@@ -97,6 +104,17 @@
 	<update id="deleteCommunity" parameterType="string">
 		update Community set delYN = 'y' where Board_ID = #{ board_id }
 	</update>
+	
+	<select id="selectCommunities5" resultMap="resultBoard5">
+		<![CDATA[
+		select * 
+		from (select rownum rnum, BOARD_ID, BOARD_TITLE, BOARD_DATE, ATTACHEMENT_FILENAME 
+		    from (select * from community 
+		          where DEPARTMENT_ID = #{ keyword } 
+		)) 
+		where rnum <= 10
+		]]>
+	</select>
 		
 <!-- 	
 

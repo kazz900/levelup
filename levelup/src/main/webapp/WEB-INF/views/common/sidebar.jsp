@@ -63,8 +63,7 @@
 							</a>
 							<ul class="sub-menu" aria-expanded="false">
 								<li><a href="enrollEmppage.do" key="t-default">신규 직원 등록</a></li>
-								<li><a href="#" key="t-default">직원 리스트</a></li>
-								<li><a href="#" key="t-default">직원 관리</a></li>
+								<li><a href="elist.do" key="t-default">직원 리스트</a></li>
 							</ul>
 						</li>						
 						</c:if>
