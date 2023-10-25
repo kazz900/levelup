@@ -251,21 +251,82 @@ public class CommunityController {
 			return "common/error";
 		}
 	}
+	// 새 공지글 등록 처리 - 파일업로드 기능 추가
+	@RequestMapping(value = "cominsertRep.do", method = RequestMethod.POST)
+	public String insertCommRep(
+			Community community, 
+			Model model, 
+			HttpServletRequest request,
+			@RequestParam(name = "upfiles[]", required = false) List<MultipartFile> mfileList,
+			@RequestParam(name = "currentPage", required = false) String currentPage
+			)
+					throws IllegalStateException, IOException {
+		logger.info("cominsertRep.do : " + community);
+		logger.info("cominsert.doRep mfileList : " + mfileList);
+		
+		// board_id 생성, 대입
+		String board_id = UUID.randomUUID().toString().replaceAll("-", "").toUpperCase();
+		community.setBoard_id(board_id);
+		
+		// 각 변수 준비
+		String attachement_filename = "[\"";
+		String savePath = "";
+		File saveFolder = null;
 
-	// 공지글 상세보기 요청 처리용
+		// 첨부된 파일이 있으면
+		if (mfileList.get(0).getSize() != 0) {
+			// 첨부파일 저장 폴더 경로 지정, 새로 쓰는 글이기 때문에 중복문제는 발생하지 않을 듯
+			savePath = request.getSession().getServletContext().getRealPath("resources/com_upfiles/" + board_id);
+			saveFolder = new File(savePath);
+			saveFolder.mkdir();
+			
+			// 파일 저장 처리
+			for (int i = 0; i < mfileList.size(); i++) {
+				mfileList.get(i).transferTo(new File(savePath + "\\" + mfileList.get(i).getOriginalFilename()));
+			}
+		}
+		// 저장 후 디렉토리에서 파일 목록 불러와서 배열 처리
+		String[] fileList = saveFolder.list();
+		for (int i = 0; i < fileList.length; i++) {
+			attachement_filename += (i == fileList.length - 1 ? fileList[i] + "\"]" : fileList[i] + "\",\"");
+			System.out.println("cominsertRep.do : " + attachement_filename);
+			community.setAttachement_filename(attachement_filename);
+		}
+		
+		if (communityService.insertCommunityRep(community) > 0 && communityService.updateCommunityRep(community.getRef_id()) > 0) {
+			model.addAttribute("page", currentPage);
+			model.addAttribute("board_id",community.getRef_id());
+			return "redirect:comdetail.do";
+		} else {
+			model.addAttribute("message", "게시글 등록 실패");
+			return "common/error";
+		}
+	}
+
+	// 게시글 상세보기 요청 처리용
 	@RequestMapping("comdetail.do")
 	public ModelAndView selectCommunity(@RequestParam("board_id") String board_id,
 			@RequestParam("page") int currentPage, ModelAndView mv, HttpSession session) {
 		logger.info("comdetail.do : " + board_id + ", page : " + currentPage);
 		Community community = communityService.selectCommunity(board_id);
-
+		
+		ArrayList<Community> replys = null;
+		if(community.getRefYN().equals("y")) {
+			replys = communityService.selectReplys(board_id);
+			communityService.updateRepReadCount(board_id);
+		} else {
+			 replys = new ArrayList<Community>();
+		}
+		logger.info("comdetail.do replys : " + replys.size());
 		if (community != null) {
 			// 조회수 1증가 처리
 			communityService.updateReadCount(board_id);
+			
 			mv.addObject("title", community.getBoard_title());
 			mv.addObject("item", community.getDepartment_name());
 			mv.addObject("subitem", community.getTeam_name());
 			mv.addObject(community);
+			mv.addObject("replys", replys);
 			mv.addObject("currentPage", currentPage);
 			mv.setViewName("community/comDetail");
 		} else {
