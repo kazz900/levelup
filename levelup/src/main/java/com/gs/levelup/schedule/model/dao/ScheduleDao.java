@@ -1,7 +1,9 @@
 package com.gs.levelup.schedule.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,31 +19,14 @@ public class ScheduleDao {
 	private SqlSessionTemplate sqlSessionTemplate;
 
 	//스케줄 전체 조회
-	public ArrayList<Schedule> selectScheduleList(String employeeId){
-		List<Schedule> list = sqlSessionTemplate.selectList("scheduleMapper.selectScheduleList", employeeId);
+	public ArrayList<Schedule> selectScheduleList(String employeeId, String teamId, String departmentId){
+		Map<String, Object> parameters = new HashMap<>();
+	    parameters.put("employeeId", employeeId);
+	    parameters.put("teamId", teamId);
+	    parameters.put("departmentId", departmentId);
+		
+		List<Schedule> list = sqlSessionTemplate.selectList("scheduleMapper.selectScheduleList", parameters);
 		return (ArrayList<Schedule>)list;
-	}
-	//팀 스케줄 전체 조회
-	public ArrayList<Schedule> selectTeamScheduleList(String teamId){
-		List<Schedule> list = sqlSessionTemplate.selectList("scheduleMapper.selectTeamScheduleList", teamId);
-		return (ArrayList<Schedule>)list;
-	}
-	//부서 스케줄 전체 조회
-	public ArrayList<Schedule> selectDeptScheduleList(String departmentId){
-		List<Schedule> list = sqlSessionTemplate.selectList("scheduleMapper.selectDeptScheduleList", departmentId);
-		return (ArrayList<Schedule>)list;
-	}
-	//내 스케줄 전체 조회
-	public ArrayList<Schedule> selectMyScheduleList(String employeeId){
-		List<Schedule> list = sqlSessionTemplate.selectList("scheduleMapper.selectMyScheduleList", employeeId);
-		return (ArrayList<Schedule>)list;
-	}
-	
-	
-	
-	//스케줄 한 개 조회 : 공지사항 상세보기용
-	public Schedule selectSchedule(String scheduleId) {
-		return sqlSessionTemplate.selectOne("scheduleMapper.selectSchedule", scheduleId);
 	}
 	
 	//새 스케줄 등록
@@ -55,8 +40,8 @@ public class ScheduleDao {
 	}
 	
 	//스케줄 삭제
-	public int deleteSchedule(String scheduleId) {
-		return sqlSessionTemplate.delete("scheduleMapper.deleteSchedule", scheduleId);
+	public int deleteSchedule(Schedule schedule) {
+		return sqlSessionTemplate.delete("scheduleMapper.deleteSchedule", schedule);
 	}
 
 }

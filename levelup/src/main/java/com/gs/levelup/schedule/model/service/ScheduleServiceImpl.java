@@ -14,24 +14,8 @@ public class ScheduleServiceImpl implements ScheduleService{
 	private ScheduleDao scheduleDao;
 	
 	@Override
-	public ArrayList<Schedule> selectScheduleList(String employeeId){
-		return scheduleDao.selectScheduleList(employeeId);
-	}
-	@Override
-	public ArrayList<Schedule> selectTeamScheduleList(String teamId) {
-		return scheduleDao.selectTeamScheduleList(teamId);
-	}
-	@Override
-	public ArrayList<Schedule> selectDeptScheduleList(String departmentId) {
-		return scheduleDao.selectTeamScheduleList(departmentId);
-	}
-	@Override
-	public ArrayList<Schedule> selectMyScheduleList(String employeeId) {
-		return scheduleDao.selectTeamScheduleList(employeeId);
-	}
-	@Override
-	public Schedule selectSchedule(String scheduleId) {
-		return scheduleDao.selectSchedule(scheduleId);
+	public ArrayList<Schedule> selectScheduleList(String employeeId, String teamId, String departmentId){
+		return scheduleDao.selectScheduleList(employeeId, teamId, departmentId);
 	}
 	@Override
 	public int insertSchedule(Schedule schedule) {
@@ -42,8 +26,8 @@ public class ScheduleServiceImpl implements ScheduleService{
 		return scheduleDao.updateSchedule(schedule);
 	}
 	@Override
-	public int deleteSchedule(String scheduleId) {
-		return scheduleDao.deleteSchedule(scheduleId);
+	public int deleteSchedule(Schedule schedule) {
+		return scheduleDao.deleteSchedule(schedule);
 	}
 	
 	

@@ -6,6 +6,7 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -44,101 +45,9 @@ public class ScheduleController {
 	// Calendar test 페이지 이동처리용
 	@RequestMapping("calendar.do")
 	public String moveCalendar() {
-		return "schedule/calendarPractice3";
+		return "schedule/calendar";
 	}
 	
-	//스케줄 상세보기 처리용
-	@RequestMapping(value="sselect.do", method= {RequestMethod.GET, RequestMethod.POST})
-	@ResponseBody  //리턴하는 jsonString 을 response body 에 담아서 보낸다는 의미임
-	public String selectscheduleMethod(HttpServletResponse response, 
-			@RequestParam("scheduleId") String scheduleId) throws IOException {
-		//클라이언트로 부터 요청이 오면, jsonString을 별도의 스트림을 열어서 내보낼 수도 있고
-		//또는 뷰리졸버로 리턴하면 등록된 JsonView 가 받아서 내보낼 수도 있음
-				
-		//Service 메소드 호출하고 결과받기 
-		//최근 공지글 1개 조회해 옴
-		Schedule schedule = scheduleService.selectSchedule(scheduleId);
-		
-		//받은 결과를 JSONObject 에 담아서 내보내는 처리 : 
-		//json 객체 생성 => map 형식(key, value)으로 저장 => jsonString 으로 내보냄
-		JSONObject job = new JSONObject();
-		
-		job.put("scheduleId", schedule.getScheduleId());
-		job.put("employeeId", schedule.getScheduleId());
-		job.put("departmentId", schedule.getScheduleId());
-		job.put("teamId", schedule.getScheduleId());
-		job.put("rankId", schedule.getScheduleId());
-		//날짜데이터는 반드시 문자열로 바꿔서 저장해야 함
-		job.put("scheduleStartday", schedule.getScheduleStartday().toString());
-		//날짜데이터는 반드시 문자열로 바꿔서 저장해야 함
-		job.put("scheduleEndday", schedule.getScheduleEndday().toString());
-		job.put("scheduleType", schedule.getScheduleType());
-		//문자열에 한글이 있다면, 반드시 인코딩해서 저장해야 함
-		job.put("scheduleAddress", URLEncoder.encode(schedule.getScheduleAddress(), "utf-8"));
-		//문자열에 한글이 있다면, 반드시 인코딩해서 저장해야 함
-		job.put("scheduleTheme", URLEncoder.encode(schedule.getScheduleTheme(), "utf-8"));
-		//문자열에 한글이 있다면, 반드시 인코딩해서 저장해야 함
-		job.put("scheduleContent", URLEncoder.encode(schedule.getScheduleContent(), "utf-8"));
-		
-		
-		//ajax 로 서비스 요청시 클라이언트로 응답하는 방법은 2가지
-		//방법 1 : 
-		// public void 형 >> 직접 출력스트림을 만들어서 내보냄
-		//방법 2 : 
-		// public String 형 >> 설정된 JsonView 로 내보냄
-		
-		//리턴되는 json 객체의 string 문자열을 등록된 뷰리졸버인 JsonView 로 보냄
-		return job.toJSONString();
-		//servlet-context.xml 의 JsonView 가 받아서 내보냄
-	}
-	//전체 스케줄 조회
-	@RequestMapping(value="slist.do", method= {RequestMethod.GET, RequestMethod.POST})
-	@ResponseBody  //리턴하는 jsonString 을 response body 에 담아서 보낸다는 의미임
-	public String selectScheduleListMethod(HttpServletResponse response, 
-			@RequestParam("employeeId") String employeeId) throws IOException {
-		//전달받은 키워드로 공지사항 제목 검색 메소드 실행하고 결과받기
-		ArrayList<Schedule> list = scheduleService.selectScheduleList(employeeId);
-		
-		//response 에 내보낼 값에 대한 mimiType 설정
-		response.setContentType("application/json; charset=utf-8");
-		
-		//리턴된 list 결과를 json 배열에 담아서 내보내는 처리 : 
-		//전송용 json 객체 생성
-		JSONObject sendJson = new JSONObject();
-		//list 담을 json 배열 객체 생성
-		JSONArray jarr = new JSONArray();
-		
-		//list 를 json 배열에 옮기기
-		for(Schedule schedule : list) {
-			//notice 값을 저장할 json 객체 생성
-			JSONObject job = new JSONObject();
-			
-			job.put("scheduleId", schedule.getScheduleId());
-			job.put("employeeId", schedule.getScheduleId());
-			job.put("departmentId", schedule.getScheduleId());
-			job.put("teamId", schedule.getScheduleId());
-			job.put("rankId", schedule.getScheduleId());
-			//날짜데이터는 반드시 문자열로 바꿔서 저장해야 함
-			job.put("scheduleStartday", schedule.getScheduleStartday().toString());
-			//날짜데이터는 반드시 문자열로 바꿔서 저장해야 함
-			job.put("scheduleEndday", schedule.getScheduleEndday().toString());
-			job.put("scheduleType", schedule.getScheduleType());
-			//문자열에 한글이 있다면, 반드시 인코딩해서 저장해야 함
-			job.put("scheduleAddress", URLEncoder.encode(schedule.getScheduleAddress(), "utf-8"));
-			//문자열에 한글이 있다면, 반드시 인코딩해서 저장해야 함
-			job.put("scheduleTheme", URLEncoder.encode(schedule.getScheduleTheme(), "utf-8"));
-			//문자열에 한글이 있다면, 반드시 인코딩해서 저장해야 함
-			job.put("scheduleContent", URLEncoder.encode(schedule.getScheduleContent(), "utf-8"));
-			
-			//jarr 에 job 저장함
-			jarr.add(job);
-		}
-		
-		//전송용 객체에 jarr 저장
-		sendJson.put("list", jarr);
-		
-		return sendJson.toJSONString();
-	}
 	
 	
 	 //전체 스케줄 조회
@@ -148,14 +57,19 @@ public class ScheduleController {
 	 HttpSession session, HttpServletRequest request,
 	 ModelAndView mv
 	 ) { 
-     Employee loginEmployee = (Employee)session.getAttribute("loginEmployee"); String teamId =
-	 loginEmployee.getTeamId();
+     Employee loginEmployee = (Employee)session.getAttribute("loginEmployee");
+     String employeeId = loginEmployee.getEmployeeId();
+     String teamId = loginEmployee.getTeamId();
      String departmentId = loginEmployee.getDepartmentId();
 	 
-	 try { ArrayList<Schedule> list = scheduleService.selectScheduleList(loginEmployee.getEmployeeId()); 
-	 request.setAttribute("calendarList", list); } 
+	 try { ArrayList<Schedule> list = scheduleService.selectScheduleList(employeeId, teamId, departmentId); 
+	 request.setAttribute("calendarList", list);
+	 request.setAttribute("title", "일정 보기");
+	 request.setAttribute("item", "달력");
+	 request.setAttribute("subitem", "월간");
+	 } 
 	 catch (Exception e)
-	 { e.printStackTrace(); } mv.setViewName("schedule/calendarPractice2");
+	 { e.printStackTrace(); } mv.setViewName("schedule/calendar");
 	 
 	  return mv; }
 	 
@@ -166,23 +80,7 @@ public class ScheduleController {
 	public Schedule selectSchedule(String ScheduleId) {
 		return null;
 	}
-//	//스케줄 등록
-//	@RequestMapping(value = "sinsert.do", method = RequestMethod.POST)
-//	public ResponseEntity<String> insertSchedule(@RequestBody Schedule schedule) {
-//	    try {
-//	        // 스케줄 저장 로직
-//	        int result = scheduleService.insertSchedule(schedule);
-//	        
-//	        if (result > 0) {
-//	            return new ResponseEntity<String>("success", HttpStatus.OK);
-//	        } else {
-//	            return new ResponseEntity<String>("failed", HttpStatus.INTERNAL_SERVER_ERROR);
-//	        }
-//	    } catch (Exception e) {
-//	        e.printStackTrace();
-//	        return new ResponseEntity<String>("error", HttpStatus.INTERNAL_SERVER_ERROR);
-//	    }
-//	}
+
 
 	//스케줄 등록
 	@RequestMapping(value="sinsert.do", method=RequestMethod.POST)
@@ -244,8 +142,6 @@ public class ScheduleController {
 	    JSONParser jparser = new JSONParser();
 	    JSONObject job = (JSONObject) jparser.parse(param);
 
-	    String startd = (String)job.get("scheduleStartday");
-		logger.info(startd);
 		//String to TimeStamp
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX");
 		Date sdate = simpleDateFormat.parse((String)job.get("scheduleStartday"));
@@ -257,7 +153,7 @@ public class ScheduleController {
 		
 		
 		logger.info("타임스탬프" + etimestamp);
-		logger.info("입력" + job);
+		logger.info("job" + job);
 		//json 객체가 가진 각 필드(property) 값을 추출해서, vo 객체(Notice)에 저장
 		Schedule schedule = new Schedule();
 		schedule.setScheduleId((String)job.get("scheduleId"));
@@ -287,12 +183,18 @@ public class ScheduleController {
 	   
 
 	}
-
-	//스케줄 삭제
+	//스케줄삭제
 	@RequestMapping(value = "sdelete.do", method = RequestMethod.POST)
-	public ResponseEntity<String> deleteSchedule(@RequestParam("scheduleId") String scheduleId) {
+	public ResponseEntity<String> deleteSchedule(@RequestBody String param) throws ParseException {
 	    // 스케줄 삭제 처리용 메소드 실행
-	    int result = scheduleService.deleteSchedule(scheduleId);
+		JSONParser jparser = new JSONParser();
+	    JSONObject job = (JSONObject) jparser.parse(param);
+	    
+	    Schedule schedule = new Schedule();
+	    schedule.setScheduleId((String)job.get("scheduleId"));
+	    
+	    int result = scheduleService.deleteSchedule(schedule);
+	    
 
 	    // ResponseEntity<T>: 클라이언트에게 응답하는 용도의 객체, 뷰 리졸버가 아닌 출력 스트림으로 나감
 	    if (result > 0) {
@@ -301,6 +203,7 @@ public class ScheduleController {
 	        return new ResponseEntity<String>("failed", HttpStatus.REQUEST_TIMEOUT);
 	    }
 	}
+
 
 		
 }
