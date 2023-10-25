@@ -53,8 +53,22 @@
 								<li><a href="#" key="t-default">일정수정</a></li>
 								<li><a href="#" key="t-default">일정삭제</a></li>
 							</ul>
+						</li>
+						
+						<c:if test="${loginEmployee.rankId eq 'senior' || loginEmployee.rankId eq 'jman' || loginEmployee.rankId eq 'sman' || loginEmployee.rankId eq 'jdirec' || loginEmployee.rankId eq 'direc' || loginEmployee.rankId eq 'ceo'}">
+						<li>
+							<a href="javascript: void(0);" class="has-arrow waves-effect">
+								<i class="bx bx-home-circle"></i>
+								<span key="t-dashboards">직원관리</span>
+							</a>
+							<ul class="sub-menu" aria-expanded="false">
+								<li><a href="enrollEmppage.do" key="t-default">신규 직원 등록</a></li>
+								<li><a href="#" key="t-default">직원 리스트</a></li>
+								<li><a href="#" key="t-default">직원 관리</a></li>
+							</ul>
 						</li>						
-
+						</c:if>
+						
 						<li>
 							<a href="javascript: void(0);" class="has-arrow waves-effect">
 								<i class="bx bx-home-circle"></i>

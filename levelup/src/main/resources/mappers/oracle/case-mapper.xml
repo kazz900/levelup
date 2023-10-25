@@ -107,10 +107,11 @@
 		]]>
 	</select>
 	
-	<select id="selectMyCaseList" parameterType="string" resultMap="resultList">
-		select * from case where CASE_MANAGER_ID = #{ myEmployeeId } and CASE_STATUS = '0'
-		ORDER BY EDIT_DATE DESC
-	</select>
+
+	 <select id="selectMyCaseList" parameterType="string" resultMap="resultList">
+      select * from case where CASE_MANAGER_ID = #{ myEmployeeId } and CASE_STATUS = '0'
+      ORDER BY EDIT_DATE DESC
+   </select>
 	
 
 	<select id="selectCase" parameterType="string" resultMap="resultCase">
