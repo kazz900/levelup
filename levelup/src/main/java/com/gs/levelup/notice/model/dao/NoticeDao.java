@@ -111,6 +111,10 @@ public class NoticeDao {
 	public int updateReadCount(String noticeId) {
 		return sqlSessionTemplate.update("noticeMapper.addReadCount", noticeId);
 	}
+	public ArrayList<Notice> selectNotices5(String keyword) {
+		List<Notice> list = sqlSessionTemplate.selectList("noticeMapper.selectNotices5", keyword);
+		return (ArrayList<Notice>)list;
+	}
 }
 
 
