@@ -36,6 +36,11 @@
 		<result column="EMAIL_STATUS" property="emailStatus" />
 	</resultMap>
 	
+	<resultMap type="Payment" id="resultList2">
+	    <result property="itemId" column="ITEM_ID"/>
+	    <result property="amount" column="count"/>
+	</resultMap>
+	
 	
 	<select id="insertPayment" parameterType="Payment" resultMap="resultPayment">
 		insert into payment 
@@ -82,7 +87,7 @@
 	<select id="selectPaymentOne" parameterType="string" resultMap="resultPayment">
 		SELECT * FROM PAYMENT WHERE PAYMENT_KEY = #{ paymentKey }
 	</select>
-	
+		
 	<select id="selectSearchDate" parameterType="Search" resultMap="resultList">
 		<![CDATA[
 		select * 
@@ -112,7 +117,8 @@
 	<update id="cancelPayment" parameterType="Search">
 		UPDATE PAYMENT
 		SET PAYMENT_STATUS = '2',
-		REFUND_CAUSE = #{cancelReason}
+		REFUND_CAUSE = #{cancelReason},
+		PAYMENT_DATE = SYSDATE
 		WHERE PAYMENT_KEY = #{paymentKey}
 	</update>
 	
@@ -121,12 +127,24 @@
     	set PAYMENT_STATUS = '1' where PAYMENT_KEY = #{ paymentKey }
 	</update>
 	
-	<select id="selectPaymentKey" parameterType="string" resultMap="resultPayment">
+	<select id="selectPaymentKey"   resultMap="resultPayment">
 		select * from payment where payment_key = #{ paymentKey }
 	</select>
 	
 	<select id="selectPaymentList" parameterType="int" resultMap="resultList">
 		select * from payment where account_id = #{ accountId }
+	</select>
+	
+	<delete id="deletePayment" parameterType="string">
+		delete from payment where payment_key = #{ paymentKey }
+	</delete>
+	
+	<select id="selectItemList5" resultMap="resultList2">
+		SELECT ITEM_ID, COUNT(*) AS COUNT
+		FROM PAYMENT
+		GROUP BY ITEM_ID
+		ORDER BY COUNT(*) DESC
+		FETCH FIRST 5 ROWS ONLY
 	</select>
 	
 </mapper>

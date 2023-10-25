@@ -901,19 +901,68 @@ public class UserController {
 		
 		ArrayList<Inquiry> inquiryList = inquiryService.selectUserPreviousInquiry(userId);
 		
-		if (charList != null && charList.size() > 0 &&
-				paymentList != null && paymentList.size() > 0 &&
-				inquiryList != null && inquiryList.size() > 0) {
-			mv.addObject("userId", userId);
-			mv.addObject("charList", charList);
-			mv.addObject("paymentList", paymentList);
-			mv.addObject("inquiryList", inquiryList);
-			mv.setViewName("user/uMyPage");
+//		if (charList != null && charList.size() > 0 &&
+//				paymentList != null && paymentList.size() > 0 &&
+//				inquiryList != null && inquiryList.size() > 0) {
+//			mv.addObject("userId", userId);
+//			mv.addObject("charList", charList);
+//			mv.addObject("paymentList", paymentList);
+//			mv.addObject("inquiryList", inquiryList);
+//			mv.setViewName("user/uMyPage");
+//		}else if(charList != null && charList.size() > 0){
+//			mv.addObject("userId", userId);
+//			mv.addObject("charList", charList);
+//			mv.setViewName("user/uMyPage");
+//		}else {
+//			mv.addObject("message", "mypage 불러오기중 오류");
+//			mv.setViewName("common/error");
+//		}
+		mv.addObject("userId", userId);
+		mv.addObject("charList", charList);
+		mv.addObject("paymentList", paymentList);
+		mv.addObject("inquiryList", inquiryList);
+		mv.setViewName("user/uMyPage");
+		return mv;
+	}
+	
+	@RequestMapping("searchPwd.do")
+	public ModelAndView findIdMethod(ModelAndView mv,
+			@RequestParam(value="success", required=false) String success,
+			@RequestParam(value="message", required=false) String message) {
+		System.out.println("searchId.do=================");
+		if(success != null && success.length() > 8) {
+			mv.addObject("success", success);
+			mv.addObject("message", message);
+			mv.setViewName("user/searchId");
 		}else {
-			mv.addObject("message", "mypage 불러오기중 오류");
+			mv.setViewName("user/searchId");
+		}
+				
+		return mv;
+	}
+	
+	@RequestMapping(value="rePwd.do", method = RequestMethod.POST)
+	public ModelAndView rePwdMethod(
+			ModelAndView mv,
+			@RequestParam(name="rePwd") String password,
+			@RequestParam(name="email") String email) {
+		
+		User user = new User(password, email);
+		
+		if(userService.updatePwd(user) > 0) {
+			mv.addObject("message", "success2");
+			mv.setViewName("user/ulogin");
+		}else {
+			mv.addObject("message", "비밀번호 재설정중 오류발생");
 			mv.setViewName("common/error");
 		}
+		
 		return mv;
 	}
 
 }
+
+
+
+
+

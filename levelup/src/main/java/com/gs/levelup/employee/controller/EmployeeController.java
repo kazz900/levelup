@@ -48,16 +48,18 @@ public class EmployeeController {
 	}
 
 	// 회원가입 페이지 내보내기용
-	@RequestMapping("eenrollPage.do")
+	@RequestMapping("enrollEmppage.do")
 	public String moveEnrollPage() {
-		return "member/enrollPage";
+		return "employee/insertEmployee";
 	}
 
 	@RequestMapping(value = "elogin.do", method = RequestMethod.POST)
 	public String loginMethod(Employee employee, HttpSession session, SessionStatus status, Model model) {
 		Employee loginEmployee = employeeService.selectEmployee(employee.getEmployeeEmail());
 
-		if (loginEmployee != null && employee.getEmployeePwd().equals(loginEmployee.getEmployeePwd())) {
+		if(loginEmployee != null && 
+				this.bcryptPasswordEncoder.matches(
+						employee.getEmployeePwd(), loginEmployee.getEmployeePwd())) {
 			session.setAttribute("loginEmployee", loginEmployee);
 			status.setComplete();
 			return "common/main";
@@ -65,6 +67,25 @@ public class EmployeeController {
 			model.addAttribute("message", "로그인 실패!, 아이디 및 비밀번호를 확인 해주세요");
 			return "common/error";
 		}
+	}
+	
+	@RequestMapping(value = "empenroll.do", method = RequestMethod.POST)
+	public String empenrollMethod(Model model, 
+			Employee emp) {
+		
+		logger.info("empenroll.do : " + emp);
+		emp.setEmployeePwd(bcryptPasswordEncoder.encode(emp.getEmployeePwd()));
+		logger.info("after encode : " + emp.getEmployeePwd());
+		
+		if(employeeService.insertEmployee(emp) > 0) {
+			model.addAttribute("message", "사원이 등록되었습니다.");
+			return "employee/insertEmployee";
+		}else {
+			model.addAttribute("message", "사원등록중 오류 발생 개발팀에 문의바람.");
+			return "employee/insertEmployee";
+		}
+		
+		
 	}
 
 	// 로그아웃 처리용 메소드
@@ -342,6 +363,35 @@ public class EmployeeController {
 			mv.setViewName("common/error");
 		}
 
+		return mv;
+	}
+	
+	@RequestMapping("elist.do")
+	public ModelAndView userListViewMethod(@RequestParam(name = "page", required = false) String page,
+			ModelAndView mv) {
+
+		int currentPage = 1;
+		if (page != null) {
+			currentPage = Integer.parseInt(page);
+		}
+
+		// 한 페이지에 목록 10개씩 출력되게 한다면
+		int limit = 10;
+		// 회원 목록 전체 갯수 조회해 옴
+		int listCount = employeeService.selectListCount();
+		Paging paging = new Paging(listCount, currentPage, limit, "elist.do");
+		paging.calculator();
+		// 페이징에 필요한 항목들 계산 처리
+
+		ArrayList<Employee> list = employeeService.selectList(paging);
+		if (list != null && list.size() > 0) {
+			mv.addObject("list", list);
+			mv.addObject("paging", paging);
+			mv.setViewName("employee/employeeList");
+		} else {
+			mv.addObject("message", "회원 정보가 존재하지 않습니다.");
+			mv.setViewName("common/error");
+		}
 		return mv;
 	}
 }

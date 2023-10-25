@@ -6,9 +6,16 @@
 
 	<resultMap type="Community" id="resultCom">
 	</resultMap>
+	
+	<resultMap type="Community" id="resultBoard5">
+		<result property="board_id" column="BOARD_ID" />		
+		<result property="board_title" column="BOARD_TITLE" />		
+		<result property="board_date" column="BOARD_DATE" />
+		<result property="attachement_filename" column="ATTACHEMENT_FILENAME" />		
+	</resultMap>
 
 	<select id="selectListCount" resultType="_int">
-		select count(*) from community where delYN = 'N' and ref_id is null
+		select count(*) from community where delYN = 'n' and ref_id is null
 	</select>
 		
 	<select id="selectList" parameterType="Paging" resultMap="resultCom">
@@ -22,6 +29,19 @@
 				     ) 
 		 where rnum between #{ startRow } and #{ endRow }
 	</select>
+	<select id="selectReplys" parameterType="string" resultMap="resultCom">
+		select *
+    from community 
+    join (select 
+    rank_id, rank_name, department_name, team_name,
+    employee_id, employee_name, employee_email
+    from employee
+        join rank using (rank_id)
+        join department using (department_id)
+        join team using (team_id))
+        using (employee_id)
+    where ref_id = #{ board_id } and delyn = 'n'
+	</select>
 	
 	<select id="selectListHashMap" parameterType="Paging" resultType="HashMap">
 			select * 
@@ -34,6 +54,18 @@
 	<update id="updateReadCount" parameterType="string">
 		update COMMUNITY 
 		set READ_COUNT = READ_COUNT + 1 
+		where BOARD_ID = #{ board_id }
+	</update>
+
+	<update id="updateRepReadCount" parameterType="string">
+		update COMMUNITY 
+		set READ_COUNT = READ_COUNT + 1 
+		where ref_ID = #{ board_id }
+	</update>
+
+	<update id="updateCommunityRep" parameterType="string">
+		update COMMUNITY 
+		set refyn = 'y' 
 		where BOARD_ID = #{ board_id }
 	</update>
 
@@ -59,10 +91,30 @@
 				default, 0,  null , #{board_body}, 
 				 #{team_id}, default, default)
 	</insert>
+
+	<insert id="insertCommunityRep" parameterType="Community">
+		insert into Community 
+		values (#{board_id}, #{department_id},
+				#{employee_id},  #{board_title}, 
+				sysdate, #{attachement_filename}, 
+				default, 0,  #{ ref_id } , #{board_body}, 
+				 #{team_id}, default, default)
+	</insert>
 	
 	<update id="deleteCommunity" parameterType="string">
 		update Community set delYN = 'y' where Board_ID = #{ board_id }
 	</update>
+	
+	<select id="selectCommunities5" resultMap="resultBoard5">
+		<![CDATA[
+		select * 
+		from (select rownum rnum, BOARD_ID, BOARD_TITLE, BOARD_DATE, ATTACHEMENT_FILENAME 
+		    from (select * from community 
+		          where DEPARTMENT_ID = #{ keyword } 
+		)) 
+		where rnum <= 10
+		]]>
+	</select>
 		
 <!-- 	
 

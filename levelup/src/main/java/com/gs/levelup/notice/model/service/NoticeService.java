@@ -26,5 +26,6 @@ public interface NoticeService {
 	public ArrayList<Notice> selectSearchContent(Search search);
 	public ArrayList<Notice> selectSearchDate(Search search);
 	public void updateReadCount(String noticeId);
+	public ArrayList<Notice> selectNotices5(String keyword);
  
 }

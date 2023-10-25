@@ -87,4 +87,26 @@ public class CommunityDao {
 		return sqlSessionTemplate.update("comMapper.deleteCommunity", board_id);
 	}
 
+	public int insertCommunityRep(Community community) {
+		return sqlSessionTemplate.insert("comMapper.insertCommunityRep", community);
+	}
+
+	public int updateCommunityRep(String board_id) {
+		return sqlSessionTemplate.update("comMapper.updateCommunityRep", board_id);
+	}
+
+	public ArrayList selectReplys(String board_id) {
+		List<Community> list = sqlSessionTemplate.selectList("comMapper.selectReplys",board_id);
+		return (ArrayList<Community>)list;
+	}
+
+	public int updateRepReadCount(String board_id) {
+		return sqlSessionTemplate.update("comMapper.updateRepReadCount",board_id);
+	}
+
+	public ArrayList<Community> selectCommunities5(String keyword) {
+		List<Community> list = sqlSessionTemplate.selectList("comMapper.selectCommunities5",keyword);
+		return (ArrayList<Community>)list;
+	}
+
 }

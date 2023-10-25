@@ -92,4 +92,29 @@ public class CommunityServiceImpl implements CommunityService{
 		return communityDao.deleteCommunity(boardId);
 	}
 
+	@Override
+	public int insertCommunityRep(Community community) {
+		return communityDao.insertCommunityRep(community);
+	}
+
+	@Override
+	public int updateCommunityRep(String board_id) {
+		return communityDao.updateCommunityRep(board_id);
+	}
+
+	@Override
+	public ArrayList<Community> selectReplys(String board_id) {
+		return communityDao.selectReplys(board_id);
+	}
+
+	@Override
+	public int updateRepReadCount(String board_id) {
+		return communityDao.updateRepReadCount(board_id);
+	}
+
+	@Override
+	public ArrayList<Community> selectCommunities5(String keyword) {
+		return communityDao.selectCommunities5(keyword);
+	}
+
 }

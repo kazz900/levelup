@@ -16,7 +16,6 @@
  		<typeAlias type="com.gs.levelup.common.Paging" alias="Paging" />
  		<typeAlias type="com.gs.levelup.common.Search" alias="Search" />
  		<typeAlias type="com.gs.levelup.common.SearchDate" alias="SearchDate" />
-
 		<typeAlias type="com.gs.levelup.character.model.vo.Character" alias="Char" />
 		<typeAlias type="com.gs.levelup.user.model.vo.User" alias="User" />
 

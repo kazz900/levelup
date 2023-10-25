@@ -1,6 +1,6 @@
 $(document).ready(function () {
    0 < $("#elm1").length && tinymce.init({
-      language: "ko",
+//      language: "ko",
       selector: "textarea#elm1",
       height: 300,
       plugins: ["advlist autolink link lists charmap print preview hr anchor pagebreak spellchecker", "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking", "save table contextmenu directionality emoticons template paste textcolor"],

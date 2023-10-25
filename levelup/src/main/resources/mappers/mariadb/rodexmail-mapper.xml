@@ -50,5 +50,23 @@ LAST_INSERT_ID(),
 >>>>>>> 784346cdb9f95d368e10c1ee3de72ccf22621708
 
 	</insert>
+	
+	<select id="selectRodexMailId" parameterType="long" resultType="_int">
+		select evol.rodex_items.mail_id from evol.rodex_items where evol.rodex_items.unique_id = #{ uniqueId };
+	</select>
 
+
+	<select id="selectRodexItem" parameterType="long" resultMap="resultRodexItems">
+		select * from evol.rodex_items where evol.rodex_items.unique_id = #{ uniqueId };
+	
+	</select>
+	
+	<delete id="deleteRodexItemOne" parameterType="_int" >
+		delete from evol.rodex_items where evol.rodex_items.mail_id = #{ mailId };
+	</delete>
+	
+		<delete id="deleteRodexEmailOne" parameterType="_int" >
+		delete from evol.rodex_mail where evol.rodex_mail.mail_id = #{ mailId };
+	</delete>
+	
 </mapper>

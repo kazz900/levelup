@@ -65,4 +65,13 @@ public class UserDao {
 	public User selectUser(String userid) {
 		return sqlSessionTemplateMaria.selectOne("userMapper.selectUser", userid);
 	}
+
+	public int updatePwd(User user) {
+		return sqlSessionTemplateMaria.update("userMapper.updatePwd", user);
+	}
+
+	public String selectUserEmail(String email) {
+		System.out.println("doa test1 : " + email);
+		return sqlSessionTemplateMaria.selectOne("userMapper.selectUserEmail", email);
+	}
 }

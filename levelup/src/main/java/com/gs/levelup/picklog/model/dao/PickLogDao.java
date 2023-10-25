@@ -17,4 +17,13 @@ public class PickLogDao {
 		List<PickLog> list = sqlSessionTemplateMaria.selectList("logMapper.selectPickLog",charId);
 		return (ArrayList<PickLog>)list;
 	}
+
+	public int selectPayItemPickLog(long uniqueId) {
+		return sqlSessionTemplateMaria.selectOne("logMapper.selectPayItemPickLog", uniqueId);
+	}
+
+	public ArrayList<PickLog> selectPayItemPickLogAll() {
+		List<PickLog> list = sqlSessionTemplateMaria.selectList("logMapper.selectPayItemPickLogAll");
+		return (ArrayList<PickLog>)list;
+	}
 }

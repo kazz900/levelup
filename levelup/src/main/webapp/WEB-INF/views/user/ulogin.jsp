@@ -30,7 +30,10 @@
 		var message = "${ requestScope.message }";
 		if (message != null && message === "success") {
 		    alert("회원가입 성공");
+		}else if(message != null && message === "success2"){
+			alert("비밀번호가 재설정되었습니다.");
 		}
+		
 	</script>
     </head>
 <style>
@@ -86,6 +89,9 @@
                                             </form>
                                             <div class="mt-5 text-center">
                                                 <p>Don't have an account ? <a href="${ pageContext.servletContext.contextPath }/userinsertpage.do" class="fw-medium text-primary"> Signup now </a> </p>
+                                            </div>
+                                            <div class="mt-5 text-center">
+                                                <p>비밀번호 분실시 - <a href="${ pageContext.servletContext.contextPath }/searchPwd.do" class="fw-medium text-primary"> find password </a> </p>
                                             </div>
                                         </div>
                                     </div>

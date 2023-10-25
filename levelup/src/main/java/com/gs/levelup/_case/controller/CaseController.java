@@ -33,6 +33,9 @@ import com.gs.levelup.item.model.service.ItemService;
 import com.gs.levelup.item.model.vo.Item;
 import com.gs.levelup.payment.model.service.PaymentService;
 import com.gs.levelup.payment.model.vo.Payment;
+import com.gs.levelup.picklog.model.service.PickLogService;
+import com.gs.levelup.rodexItems.model.service.RodexItemsService;
+import com.gs.levelup.rodexItems.model.vo.RodexItems;
 
 @Controller
 public class CaseController {
@@ -55,6 +58,12 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 	
 	@Autowired
 	private PaymentService paymentService;
+	
+	@Autowired
+	private RodexItemsService rodexItemsService;	
+
+	@Autowired
+	private PickLogService pickLogService;
 
 	// 기안 리스트 출력용
 	@RequestMapping(value = "clist.do", method = RequestMethod.GET)
@@ -287,7 +296,7 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 
 		// 검색결과에 대한 페이징 처리
 		// 출력할 페이지 지정
-		int currentPage = 1;ㅃ
+		int currentPage = 1;
 		// 전송온 페이지 값이 있다면 추출함
 		if (page != null) {
 			currentPage = Integer.parseInt(page);
@@ -386,39 +395,48 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 	//기안 작성 페이지로 이동(아이템 환불 기안)
 		@RequestMapping("rfcaseform.do")
 		public ModelAndView moveitemRefundCasePage(@RequestParam("caseType") String caseType,
-														@RequestParam("managerId") String managerId, 
-														Payment paymentinfo, 
-														Inventory inventory,
+														@RequestParam("managerId") String managerId, 													
+														@RequestParam("paymentKey") String paymentKey,	
+														@RequestParam("charId") int charId,	
+														@RequestParam("uniqueId") long uniqueId,
 														ModelAndView mv) {
-			// 현재 우리가 ITEM TABLE에 가지고 있는 정보를 불러오는 용도
+			
+						
+			// 현재 우리가 ITEM TABLE에 가지고 있는 정보를 불러오는 용도			
 			//ArrayList<Inventory> ilist = inventoryService.selectAll();
 			// 현재 로그인한 사원의 관리자 정보 불러오는 용도
 			Employee manager = employeeService.selectManager(managerId);
 			
 			// 기안 테이블에 유저 정보를 넣기위해 캐릭터 TABLE에서 유저 정보를 가져옴
-			com.gs.levelup.character.model.vo.Character character = characterService.selectCharacter(paymentinfo.getCharId());
+			com.gs.levelup.character.model.vo.Character character = characterService.selectCharacter(charId);
 			
 			// payment 테이블에서 해당 paymentId의 결재 정보를 가져옴
-			Payment payment = paymentService.selectPaymentOne(paymentinfo.getPaymentKey());
+			Payment payment = paymentService.selectPaymentOne(paymentKey);
 			
-			// Inventory 테이블에서 구매한 아이템의 UniqueId를 가진 아이템을 조회해옴 
-			Inventory payitem = inventoryService.selectPaymentItem(paymentinfo.getUniqueId());
+			// rodexitem 테이블에서 구매한 아이템의 UniqueId를 가진 아이템을 조회해옴 
+			RodexItems rodexitem = rodexItemsService.selectRodexItem(payment.getUniqueId());
 			
 			// 구매한 아이템의 아이템정보를 Item 테이블에서 가져옴
-			Item item = itemService.selectItem(paymentinfo.getItemId());
+			Item iteminfo = itemService.selectItem(payment.getItemId());
+					
+			logger.info("selectPayItemPickLog : " + pickLogService.selectPayItemPickLog(uniqueId));
+			System.out.println(pickLogService.selectPayItemPickLog(uniqueId));
 			
-			logger.info("UniqueId :  " + String.valueOf(paymentinfo.getUniqueId()));
-			System.out.println("UniqueId :  " + String.valueOf(paymentinfo.getUniqueId()));
-						
+			//uniqueId로 게임 DB pick로그 창에서 구매한 상품을 캐릭터가 수령한 기록이 있는지 확인
+			if( pickLogService.selectPayItemPickLog(uniqueId) == 0) {
 				mv.addObject("manager", manager);
-				mv.addObject("item", item);
-				mv.addObject("payitem", payitem);
+				mv.addObject("iteminfo", iteminfo);
+				mv.addObject("rodexitem", rodexitem);
 				mv.addObject("character", character);
-				mv.addObject("payment", payment);
+				mv.addObject("payment", payment);			
 				
 				mv.setViewName("empCase/empNewRefundCaseView");
+				
+			}else if(pickLogService.selectPayItemPickLog(uniqueId) ==1 ){
+				mv.addObject("message", "아이템 수령기록이 있으므로 환불이 불가합니다");
+				mv.setViewName("common/error");
 			
-					
+			}	
 			return mv;
 		}
 	
@@ -430,8 +448,7 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 										@RequestParam(name="upfile", required=false) MultipartFile mfile,
 										HttpServletRequest request,
 										Model model) {		
-		logger.info(String.valueOf(_case.getNewItemId()));
-
+	
 		//첨부파일이 있을 때 저장 경로 지정
 		String savePath = request.getSession().getServletContext().getRealPath("resources/case_upfiles");
 		
@@ -492,7 +509,7 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 		if(casedetail != null) {
 			mv.addObject("casedetail", casedetail);
 			mv.addObject("currentPage", currentPage);
-;
+
 		
 			mv.setViewName("empCase/empCaseDetailView");
 		}else {
@@ -506,7 +523,7 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 	
 	
 	
-	//기안 승인 요청처리용
+	//변경/삭제 기안 승인 요청처리용
 	@RequestMapping(value="caseApprove.do", method = RequestMethod.GET)
 	public String updateSaseStatusApprove(@RequestParam("caseId") String caseId,
 											@RequestParam("employeeId") String employeeId,
@@ -526,7 +543,7 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 			// 인벤토리 서비스 결과에 따라 기안의 상태를 업데이트
 				if(inventoryService.updateItemChange(_case) > 0) {
 					logger.info("인벤토리 업데이트 성공");
-					if(caseService.updateCaseAprrove(caseId) > 0) {
+					if(caseService.updateCaseAprrove(_case) > 0) {
 						
 						re.addAttribute("employeeId", employeeId);
 						return "redirect:mclist.do";
@@ -540,7 +557,7 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 		} else if(_case.getCaseType().equals("2")){
 			if(inventoryService.deleteItemOne(_case) > 0) {
 				logger.info("인벤토리 업데이트(아이템 삭제) 성공");
-				if(caseService.updateCaseAprrove(caseId) > 0) {
+				if(caseService.updateCaseAprrove(_case) > 0) {
 					
 					re.addAttribute("employeeId", employeeId);
 					return "redirect:mclist.do";
@@ -548,16 +565,86 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 				}else {
 					model.addAttribute("message", "기안 승인 실패");
 					return ("common/error");
-				}
-			}
-			
-		}else {
-			model.addAttribute("message", "아이템 변경/삭제 기안이 아님");
-			return ("common/error");
+				}	
+						
 		}
-		model.addAttribute("message", "기안 승인 과정 실패");
+		model.addAttribute("message", "아이템 변경/삭제 기안이 아님");
 		return ("common/error");
 	}
+	
+	model.addAttribute("message", "기안 승인 과정 실패");
+	return ("common/error");
+}
+	
+	
+	//환불 기안 승인 요청처리용
+		@RequestMapping(value="caserfApprove.do", method = {RequestMethod.GET, RequestMethod.POST})
+		public String updateSaseStatusApprove(@RequestParam("caseId") String caseId,
+												@RequestParam("employeeId") String employeeId,
+												@RequestParam("charId") int charId,
+												@RequestParam("paymentKey") String paymentKey,
+												@RequestParam("cancelReason") String cancelReason,
+												@RequestParam("page") String page,
+												HttpServletRequest request, 
+												Model model,
+												RedirectAttributes re) {
+			System.out.println("여기로 오긴 옴?");
+			Case _case = caseService.selectCase(caseId);
+			//RodexItems rodexItems = rodexItemsService.selectRodexItem(_case.getUniqueId());
+			int mailId = rodexItemsService.selectRodexMailId(_case.getUniqueId());
+			logger.info("메일 아이디 가져옴");
+		//아이템 환불 기안일 때
+		if(_case.getCaseType().equals("3")){
+			
+			logger.info("환불 기안 승인 시스템 시작");
+			
+			if(rodexItemsService.deleteRodexItemOne(mailId) > 0) { //게임 rodex_items에서 아이템 삭제
+				logger.info("게임 DB 아이템 삭제 성공");
+				
+				if(rodexItemsService.deleteRodexEmailOne(mailId) > 0) { //게임 rodex_emil에서 메일 삭제
+					
+					logger.info("게임 DB 메일 삭제 성공");
+					Search search = new Search();
+					search.setPaymentKey(paymentKey);
+					search.setCancelReason(cancelReason);
+				
+					if(paymentService.cancelPayment(search) > 0){ //payment 테이블에서 결제 내역 삭제
+						
+						logger.info("오라클DB 결제내역 업데이트 성공");
+				
+						if(caseService.updateCaseAprrove(_case) > 0) { //기안 승인상태 업데이트
+							
+								logger.info("오라클DB 기안 상태 변경 성공");
+					
+								re.addAttribute("paymentKey", paymentKey);
+								re.addAttribute("cancelReason", cancelReason);
+								re.addAttribute("page", page);
+								return "redirect:pcancel.do";
+							
+								}else {
+									
+									model.addAttribute("message", "기안 승인 실패");
+									return ("common/error");
+							
+								}	
+						
+							}
+							model.addAttribute("message", "결제 내역 삭제 실패");
+							return ("common/error");			
+						}
+						model.addAttribute("message", "게임DB rodex_email에서 메일 삭제 실패");
+						return ("common/error");
+					}	
+					
+					model.addAttribute("message", "게임DB rodex_items에서 아이템 삭제 실패");
+					return ("common/error");
+				}
+				model.addAttribute("message", "아이템 시스템 시작 실패");
+				return ("common/error");
+		}
+
+
+		
 /*					
 			
 			// 아이템 삭제 기안일때
@@ -574,7 +661,7 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 	
 
 	
-	//기안 반려 요청처리용
+	//반려 요청처리용
 		@RequestMapping(value="caseReject.do", method = RequestMethod.GET)
 		public String updateSaseStatusReject(Case _case, 
 											@RequestParam("caseId") String caseId,

@@ -82,7 +82,7 @@ function golist(){
 	                            <input type="hidden" name="caseManagerId" value="${ requestScope.manager.employeeId }">
 	                            <input type="hidden" name="caseManagerName" value="${ requestScope.manager.employeeName }">                           
 	                            
-	                            <input type="hidden" name="caseType" value="1">
+	                            <input type="hidden" name="caseType" value="2">
 	                            <input type="hidden" name="charId" value="${ requestScope.character.charId }">
 	                            <input type="hidden" name="accountId" value="${ requestScope.character.accountId }">
 	                            <input type="hidden" name="charName" value="${ requestScope.character.name }">
@@ -93,7 +93,7 @@ function golist(){
 		                            <input type="hidden" name="originalItemName" value="${ requestScope.itemdata.itemName }">
 	                            </c:if>
 	                            <c:if test="${ empty requestScope.itemdata.itemName }">
-		                            <input type="hidden" name="originalItemName" value="잡템 ${ requestScope.itemdata.nameId }">
+		                            <input type="hidden" name="originalItemName" value="아이템 ${ requestScope.itemdata.nameId }">
 	                            </c:if>
 	                            <input type="hidden" name="originalItemAmount" value="${ requestScope.itemdata.amount }">
 
@@ -191,7 +191,7 @@ function golist(){
 												</c:if>
 												<c:if test="${ empty requestScope.itemdata.itemName }">
 													<input type="text" id="disabledTextInput"
-														class="form-control" placeholder="잡템 ${ requestScope.itemdata.nameId }" disabled>
+														class="form-control" placeholder="아이템 ${ requestScope.itemdata.nameId }" disabled>
 												</c:if>
 											</div>	
 											<div class="mb-3 col-lg-2">

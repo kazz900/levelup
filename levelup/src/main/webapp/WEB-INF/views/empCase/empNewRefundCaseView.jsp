@@ -47,7 +47,7 @@
 </style>
 <script type="text/javascript">
 function golist(){
-	location.href = "${pageContext.servletContext.contextPath}/csearchcharid.do?keyword=${ param.keyword }";
+	location.href = "${pageContext.servletContext.contextPath}/plist.do?page=${ param.page }";
 }
 
 </script>
@@ -81,19 +81,16 @@ function golist(){
 	                            <input type="hidden" name="caseWriterName" value="${ sessionScope.loginEmployee.employeeName }">
 	                            <input type="hidden" name="caseManagerId" value="${ requestScope.manager.employeeId }">
 	                            <input type="hidden" name="caseManagerName" value="${ requestScope.manager.employeeName }">                           
-	                            <input type="hidden" name="caseType" value="1">
+	                            <input type="hidden" name="caseType" value="3">
 	                            <input type="hidden" name="charId" value="${ requestScope.character.charId }">
 	                            <input type="hidden" name="accountId" value="${ requestScope.character.accountId }">
 	                            <input type="hidden" name="charName" value="${ requestScope.character.name }">
-	                            <input type="hidden" name="uniqueId" value="${ requestScope.payitem.uniqueId }">
-	                            <input type="hidden" name="originalItemId" value="${ requestScope.payitem.nameId }">
-	                            <c:if test="${ !empty requestScope.itemdata.itemName }">
-		                            <input type="hidden" name="originalItemName" value="${ requestScope.item.itemName }">
-	                            </c:if>
-	                            <c:if test="${ empty requestScope.itemdata.itemName }">
-		                            <input type="hidden" name="originalItemName" value="잡템 ${ requestScope.item.itemName }">
-	                            </c:if>
-	                            <input type="hidden" name="originalItemAmount" value="${ requestScope.payitem.amount }">
+	                            <input type="hidden" name="uniqueId" value="${ requestScope.rodexitem.uniqueId }">
+	                            
+	                            <input type="hidden" name="originalItemId" value="${ requestScope.rodexitem.nameId }">
+								<input type="hidden" name="originalItemName" value="${ requestScope.iteminfo.itemName }">
+	                           
+	                            <input type="hidden" name="originalItemAmount" value="1">
 
 
 
@@ -166,33 +163,33 @@ function golist(){
 									<label for="currentItems" class="col-form-label col-lg-3">구매한 아이템 정보</label>
 									<div id="currentItems">
 										<div class="row">
-											<div class="mb-3 col-lg-2">ID</div>
-											<div class="mb-3 col-lg-2">NAME</div>	
+											<div class="mb-3 col-lg-2">아이템 ID</div>
+											<div class="mb-3 col-lg-2">아이템 이름</div>	
 											<div class="mb-3 col-lg-2">UNIQUE ID</div>			
-											<div class="mb-3 col-lg-2">AMOUNT</div>
+											<div class="mb-3 col-lg-2">수량</div>
 										</div>
 
 										<div class="row">
 
 											<div class="mb-3 col-lg-2">
 													<input type="text" id="disabledTextInput"
-													class="form-control" placeholder="${ requestScope.payitem.nameId }"
+													class="form-control" placeholder="${ requestScope.rodexitem.nameId }"
 													disabled>
 											</div>
 											<div class="mb-3 col-lg-2">												
 													<input type="text" id="disabledTextInput"
-														class="form-control" placeholder="${ requestScope.item.itemName }"
+														class="form-control" placeholder="${ requestScope.iteminfo.itemName }"
 														disabled>										
 											</div>	
 											<div class="mb-3 col-lg-2">
 												<input type="text" id="disabledTextInput" 
-													class="form-control" placeholder="${ requestScope.payitem.uniqueId }"
+													class="form-control" placeholder="${ requestScope.rodexitem.uniqueId }"
 													disabled>
 											</div>									
 											
 											<div class="mb-3 col-lg-2">
-												<input type="text" id="disabledTextInput" name="paymentAmount"
-													class="form-control" placeholder="${ requestScope.payitem.amount }"
+												<input type="text" id="disabledTextInput" 
+													class="form-control" placeholder="${ requestScope.rodexitem.amount }"
 													disabled>
 											</div>
 										</div>
@@ -201,41 +198,62 @@ function golist(){
 									
 									
 									
-									<!-- 결재 정보 -->
+									<!-- 결제 정보 -->
 
-									<label for="currentItems" class="col-form-label col-lg-3">결재 정보</label>
+									<label for="currentItems" class="col-form-label col-lg-3">결제 정보</label>
 									<div id="currentItems">
 										<div class="row">
-											<div class="mb-3 col-lg-2">PAYMENT ID</div>
-											<div class="mb-3 col-lg-2">PAYMENT KEY</div>
-											<div class="mb-3 col-lg-2">PAYMENT DATE</div>	
-											<div class="mb-3 col-lg-2">PAYMENT STATUS</div>																					
+											<div class="mb-3 col-lg-2">결제 ID</div>
+											<div class="mb-3 col-lg-2">결제 금액</div>
+											<div class="mb-3 col-lg-4">결제 KEY</div>
+											<div class="mb-3 col-lg-2">결제 날짜</div>	
+											<div class="mb-3 col-lg-2">결제 상태</div>																					
 										</div>
 
 										<div class="row">
 
 											<div class="mb-3 col-lg-2">												
-												<input type="text" id="disabledTextInput"
+												<input type="text" id="disabledTextInput" 
 													class="form-control" placeholder="${ requestScope.payment.paymentId }"
 													disabled>
+																							</div>
+											<div class="mb-3 col-lg-2">												
+												<input type="text" id="disabledTextInput" 
+													class="form-control" placeholder="${ requestScope.payment.amount }"
+													disabled>
+												<input type="hidden" name="paymentAmount" value="${ requestScope.payment.amount }">
 											</div>
 											
 											<div class="mb-3 col-lg-4">
-												<input type="text" id="disabledTextInput" name="paymentKey"
+												<input type="text" id="disabledTextInput"
 													class="form-control" placeholder="${ requestScope.payment.paymentKey }"
 													disabled>
+												<input type="hidden" name="paymentKey" value="${ requestScope.payment.paymentKey }">
 											</div>
 											
 											<div class="mb-3 col-lg-2">
-												<input type="text" id="disabledTextInput" name="paymentDate"
+												<input type="text" id="disabledTextInput" 
 													class="form-control" placeholder="<fmt:formatDate value="${ requestScope.payment.paymentDate }" pattern="yyyy-MM-dd HH:mm:ss" />"
 													disabled>
+												<input type="hidden" name="paymentDate" value="${ requestScope.payment.paymentDate }" pattern="yyyy-MM-dd HH:mm:ss">
 											</div>									
 											
 											<div class="mb-3 col-lg-2">
-												<input type="text" id="disabledTextInput" 
-													class="form-control" placeholder="${ requestScope.payment.paymentStatus }"
-													disabled>
+                                               <c:if test="${ requestScope.payment.paymentStatus eq 1 }" >
+                                               		<input type="text" id="disabledTextInput" name="paymentStatus"
+													class="form-control" placeholder="결제 완료" disabled>
+													<input type="hidden" name="paymentStatus" value="1">
+                                               </c:if>
+                                               <c:if test="${ requestScope.payment.paymentStatus eq 2 }" >
+                                               		<input type="text" id="disabledTextInput" name="paymentStatus"
+													class="form-control" placeholder="환불 완료" disabled>
+													<input type="hidden" name="paymentStatus" value="2">
+                                               </c:if>
+                                                <c:if test="${ requestScope.payment.paymentStatus eq 3 }" >
+                                               		<input type="text" id="disabledTextInput" name="paymentStatus"
+													class="form-control" placeholder="결제 대기" disabled>
+													<input type="hidden" name="paymentStatus" value="3">
+                                               </c:if>
 											</div>
 										</div>
 
@@ -251,9 +269,17 @@ function golist(){
 											<label for="caseContent" class="col-form-label col-lg-3">기안 내용</label>
 											<div class="col-lg-12">
 												<div class="mb-3 col-lg-2">
-												<input type="text" id="form-control" name="refundCause"
-													class="form-control" placeholder="환불 사유"
-													required>
+												
+												<select class="form-select" name="refundCause" required>
+                                                    <option selected disabled>환불 사유</option>
+                                                    <option>게임 오류로 인한 아이템 수령불가</option>
+                                                    <option>구매한 것과 다른 아이템이 발송됨</option>
+                                                    <option>이벤트/할인 등이 적용되지 않음</option>
+                                                    <option>서버오류로 인한 잘못된 구매</option>
+                                                    <option>해킹으로 인한 구매</option>
+                                                    <option>그 외</option>
+                                                </select>
+																							
 												</div>
 												<textarea id="caseContent" name="caseContent"
 													class="form-control" rows="3" cols="40"

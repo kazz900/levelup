@@ -39,6 +39,16 @@ public interface CommunityService {
 	ArrayList<HashMap> selectListHashMap(Paging paging);
 
 	int updateReadCount(String board_id);
+
+	public int insertCommunityRep(Community community);
+
+	public int updateCommunityRep(String board_id);
+
+	public ArrayList<Community> selectReplys(String board_id);
+
+	public int updateRepReadCount(String board_id);
+
+	public ArrayList<Community> selectCommunities5(String keyword);
 	
 	
 	

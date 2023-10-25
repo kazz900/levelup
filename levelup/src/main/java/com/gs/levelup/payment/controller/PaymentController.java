@@ -1,11 +1,15 @@
 package com.gs.levelup.payment.controller;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -21,13 +26,17 @@ import com.gs.levelup.common.Paging;
 import com.gs.levelup.common.Search;
 import com.gs.levelup.payment.model.service.PaymentService;
 import com.gs.levelup.payment.model.vo.Payment;
+import com.gs.levelup.picklog.model.service.PickLogService;
 
 @Controller
 public class PaymentController {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
-	private PaymentService paymentService;
+	private PaymentService paymentService;	
+
+	@Autowired
+	private PickLogService pickLogService;
 
 	// 뷰 페이지 이동 처리용 ---------------------------------------------------
 
@@ -37,7 +46,9 @@ public class PaymentController {
 	public String selectListMethod(@RequestParam(name = "page", required = false) String page, Model model) {
 
 		int currentPage = 1;
-		if (page != null) {
+		
+		
+	if (page != null) {
 			currentPage = Integer.parseInt(page);
 		}
 
@@ -53,12 +64,12 @@ public class PaymentController {
 
 		// 페이지에 출력할 목록 조회해 옴
 		ArrayList<Payment> list = paymentService.selectList(paging);
-
+		
 		if (list != null && list.size() > 0) {
 			model.addAttribute("list", list);
 			model.addAttribute("paging", paging);
 			model.addAttribute("currentPage", currentPage);
-			model.addAttribute("limit", limit);
+			model.addAttribute("limit", limit);		
 		}
 		return "payment/paymentListView";
 	}
@@ -242,16 +253,18 @@ public class PaymentController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "pcancel.do", method = RequestMethod.POST)
+	@RequestMapping(value = "pcancel.do", method = RequestMethod.GET)
 	public ModelAndView cancelPaymentMethod(@RequestParam("paymentKey") String paymentKey,
 									@RequestParam("cancelReason") String cancelReason,
-									@RequestParam("page") String page,
+									@RequestParam(name="page", required=false) String page,
 									ModelAndView mv, HttpServletRequest request) {
 		logger.info("paymentKey : " + paymentKey + ", cancelReason : " + cancelReason + ", page : " + page);
 		
 		mv.addObject("paymentKey", paymentKey.trim());
 		mv.addObject("cancelReason", cancelReason.trim());
-		mv.addObject("page", page);
+		if(page != null) {
+			mv.addObject("page", page);			
+		}
 		mv.setViewName("payment/erppaymentcancelresultview");
 		return mv;
 	}
@@ -259,7 +272,7 @@ public class PaymentController {
 	@RequestMapping(value = "pcancelsuccessresult.do", method = {RequestMethod.POST, RequestMethod.GET})
 	public String moveCancelPaymentResultViewMethod(@RequestParam("paymentKey") String paymentKey,
 									@RequestParam("cancelReason") String cancelReason,
-									@RequestParam("page") String page,
+									@RequestParam(name="page", required=false) String page,
 									RedirectAttributes re, HttpServletRequest request,
 									Model model) {
 		
@@ -268,7 +281,9 @@ public class PaymentController {
 		search.setCancelReason(cancelReason);
 		
 		if(paymentService.cancelPayment(search) > 0) {
-			re.addAttribute("page", page);
+			if (page != null) {
+				re.addAttribute("page", page);				
+			}
 			return "redirect:plist.do";			
 		}else {
 			model.addAttribute("message", paymentKey + "에 대한 결제 취소 실패");
@@ -293,4 +308,40 @@ public class PaymentController {
 			HttpServletRequest request) {
 		return 1;
 	}
+	
+	@RequestMapping(value="itemlist5.do", method= {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody	//리턴하는 jsonString 을 response body에 담아서 보낸다는 의미임
+	public String itemlist5Method(HttpServletResponse response) throws IOException {
+		//클라이언트로 부터 요청이 오면, jsonString을 별도의 스트림을 열어서 내보낼수도있고
+		//또는 뷰리졸버로 리턴하면 등록된 jsonView 가 받아서 내보낼수도 있음
+		
+		
+		ArrayList<Payment> list = paymentService.selectItemList5();
+		
+		JSONObject sendJson = new JSONObject();
+		
+		JSONArray jarr = new JSONArray();
+		
+		for(Payment payment : list) {
+			//notice 의 각 필드값 저장할 json 객체 생성
+			JSONObject job = new JSONObject();
+			
+			job.put("itemId", payment.getItemId());
+			
+			job.put("amount", payment.getAmount());
+			
+			//job를 jarr 에 추가함
+			jarr.add(job);
+		}
+		sendJson.put("nlist",jarr);
+		//ajax로 서비스 요청시 클라이언트로 응답하는 방법은 2가지
+		// 방법 1: 
+		//public void 형 >> 직접 출력스트림을 만들어서 내보냄
+		// 방법 2:
+		//public String 형 >> 설정된 JsonView 로 내보냄
+		
+		//리턴되는 json객체의 string 문자열을 등록된 뷰리졸버인 JsonView로 보냄
+		return sendJson.toJSONString();
+	}
+	
 }

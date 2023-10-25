@@ -29,6 +29,12 @@ public class User  implements java.io.Serializable{
 		this.logincount = logincount;
 		this.lastlogin = lastlogin;
 	}	
+	
+	public User(String userPass, String email) {
+		super();
+		this.userPass = userPass;
+		this.email = email;
+	}	
 
 	public User(int accountId, String userId, String userPass, String email, int logincount, Date lastlogin,
 			String lastIp, String sex) {

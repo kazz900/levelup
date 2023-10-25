@@ -20,6 +20,7 @@
  		<typeAlias type="com.gs.levelup.item.model.vo.Item" alias="Item" />
  		<typeAlias type="com.gs.levelup.payment.model.vo.Payment" alias="Payment" />
  		<typeAlias type="com.gs.levelup._case.model.vo.Case" alias="Case" />
+ 		<typeAlias type="com.gs.levelup.email_check.model.vo.EmailCheck" alias="EmailCheck" />
 		<typeAlias type="com.gs.levelup.community.model.vo.Community" alias="Community" />
  		<typeAlias type="com.gs.levelup.common.FileDownload" alias="FileDownload" />
  		<typeAlias type="com.gs.levelup.common.FileNameChange" alias="FileNameChange" />
@@ -39,5 +40,6 @@
 		<mapper resource="mappers/oracle/payment-mapper.xml" />
 		<mapper resource="mappers/oracle/case-mapper.xml" />
 		<mapper resource="mappers/oracle/community-mapper.xml" />
+		<mapper resource="mappers/oracle/emailcheck-mapper.xml" />
 	</mappers>
 </configuration>
