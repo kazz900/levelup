@@ -43,7 +43,7 @@ $(function(){
 				if(json.nlist[i].attachementFilename != null){
 					var truncatedFilename = truncateString(json.nlist[i].attachementFilename, 5);
 				}
-				values += "<tr><td><a href='#'>" + decodeURIComponent(json.nlist[i].title).replace(/\+/gi, " ") 
+				values += "<tr><td><a href='ndetail.do?noticeId=" + json.nlist[i].noticeId + "'>" + decodeURIComponent(json.nlist[i].title).replace(/\+/gi, " ") 
 						+ "</a></td><td>"
 						+ json.nlist[i].date
 						+ "</td><td>"
@@ -79,7 +79,7 @@ $(function(){
 				}
 					
 					
-				values += "<tr><td><a href='#'>" + decodeURIComponent(json.nlist[i].title).replace(/\+/gi, " ") 
+				values += "<tr><td><a href='comdetail.do?board_id=" + json.nlist[i].board_id + "'>" + decodeURIComponent(json.nlist[i].title).replace(/\+/gi, " ") 
 						+ "</a></td><td>"
 						+ json.nlist[i].date
 						+ "</td><td>"

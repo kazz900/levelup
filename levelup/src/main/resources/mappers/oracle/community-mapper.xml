@@ -8,6 +8,7 @@
 	</resultMap>
 	
 	<resultMap type="Community" id="resultBoard5">
+		<result property="board_id" column="BOARD_ID" />		
 		<result property="board_title" column="BOARD_TITLE" />		
 		<result property="board_date" column="BOARD_DATE" />
 		<result property="attachement_filename" column="ATTACHEMENT_FILENAME" />		
@@ -107,7 +108,7 @@
 	<select id="selectCommunities5" resultMap="resultBoard5">
 		<![CDATA[
 		select * 
-		from (select rownum rnum, BOARD_TITLE, BOARD_DATE, ATTACHEMENT_FILENAME 
+		from (select rownum rnum, BOARD_ID, BOARD_TITLE, BOARD_DATE, ATTACHEMENT_FILENAME 
 		    from (select * from community 
 		          where DEPARTMENT_ID = #{ keyword } 
 		)) 

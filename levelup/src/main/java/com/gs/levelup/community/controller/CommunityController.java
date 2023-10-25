@@ -310,8 +310,16 @@ public class CommunityController {
 	// 게시글 상세보기 요청 처리용
 	@RequestMapping("comdetail.do")
 	public ModelAndView selectCommunity(@RequestParam("board_id") String board_id,
-			@RequestParam("page") int currentPage, ModelAndView mv, HttpSession session) {
-		logger.info("comdetail.do : " + board_id + ", page : " + currentPage);
+			@RequestParam(value="page", required=false) String page, ModelAndView mv, HttpSession session) {
+		logger.info("comdetail.do : " + board_id + ", page : " + page);
+		
+		int currentPage = 1;
+		
+		
+		if (page != null) {
+				currentPage = Integer.parseInt(page);
+			}
+		
 		Community community = communityService.selectCommunity(board_id);
 		
 		ArrayList<Community> replys = null;
@@ -602,6 +610,8 @@ public class CommunityController {
 			job.put("date", community.getBoard_date().toString());
 			
 			job.put("attachementFilename", community.getAttachement_filename());
+			
+			job.put("board_id", community.getBoard_id());
 			
 			//job를 jarr 에 추가함
 			jarr.add(job);

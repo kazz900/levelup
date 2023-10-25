@@ -18,6 +18,7 @@
 	</resultMap>
 	
 	<resultMap type="Notice" id="resultNotice5">
+		<result property="noticeId" column="NOTICE_ID" />		
 		<result property="noticeTitle" column="NOTICE_TITLE" />		
 		<result property="editDate" column="EDIT_DATE" />
 		<result property="attachementFilename" column="ATTACHEMENT_FILENAME" />		
@@ -184,7 +185,7 @@
 	<select id="selectNotices5" resultMap="resultNotice5">
 		<![CDATA[
 		select * 
-		from (select rownum rnum, NOTICE_TITLE, EDIT_DATE, ATTACHEMENT_FILENAME 
+		from (select rownum rnum, NOTICE_ID, NOTICE_TITLE, EDIT_DATE, ATTACHEMENT_FILENAME
 		    from (select * from notice 
 		          where DEPARTMENT_ID = #{ keyword } 
 		)) 

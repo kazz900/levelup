@@ -734,6 +734,8 @@ public class NoticeController {
 				
 				job.put("attachementFilename", notice.getAttachementFilename());
 				
+				job.put("noticeId", notice.getNoticeId());
+				
 				//job를 jarr 에 추가함
 				jarr.add(job);
 			}
