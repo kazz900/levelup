@@ -1,11 +1,16 @@
 package com.gs.levelup.notice.controller;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +20,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -699,6 +705,43 @@ public class NoticeController {
 			
 			return mv;
 			
+		}
+		
+		@RequestMapping(value="notices5.do", method=RequestMethod.POST)
+		@ResponseBody
+		public String noticeNewTop3Method(HttpServletResponse response, 
+				@RequestParam("keyword") String keyword) throws UnsupportedEncodingException{
+			//ajax 요청시 return 방법은 여러가지가 있음
+			//response 객체 이용시에는 2가지중 선택 가능
+			//1. 출력 스트림으로 응답하는 방법 (아이디 중복체크 예)
+			//2. 뷰리졸버로 리턴하는 방법 : response body 에 내보낼 값을 저장함
+			
+			//최근 등록된 공지글 3개 조회해 옴
+			ArrayList<Notice> list = noticeService.selectNotices5(keyword);
+			
+			//전송용 json 객체 준비
+			JSONObject sendJson = new JSONObject();
+			//list 저장할 json 배열 객체 준비
+			JSONArray jarr = new JSONArray();
+			
+			for(Notice notice : list) {
+				//notice 의 각 필드값 저장할 json 객체 생성
+				JSONObject job = new JSONObject();
+				
+				job.put("title", URLEncoder.encode(notice.getNoticeTitle(), "UTF-8"));
+				
+				job.put("date", notice.getEditDate().toString());
+				
+				job.put("attachementFilename", notice.getAttachementFilename());
+				
+				job.put("noticeId", notice.getNoticeId());
+				
+				//job를 jarr 에 추가함
+				jarr.add(job);
+			}
+			sendJson.put("nlist",jarr);
+			
+			return sendJson.toJSONString();
 		}
 
 		

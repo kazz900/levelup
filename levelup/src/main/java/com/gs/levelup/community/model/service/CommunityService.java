@@ -47,6 +47,8 @@ public interface CommunityService {
 	public ArrayList<Community> selectReplys(String board_id);
 
 	public int updateRepReadCount(String board_id);
+
+	public ArrayList<Community> selectCommunities5(String keyword);
 	
 	
 	

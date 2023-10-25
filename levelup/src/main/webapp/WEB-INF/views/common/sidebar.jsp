@@ -48,7 +48,7 @@
 								<span key="t-dashboards">일정관리</span>
 							</a>
 							<ul class="sub-menu" aria-expanded="false">
-								<li><a href="calendar.do" key="t-default">일정보기</a></li>
+								<li><a href="calendarList.do" key="t-default">일정보기</a></li>
 								<li><a href="#" key="t-default">일정등록</a></li>
 								<li><a href="#" key="t-default">일정수정</a></li>
 								<li><a href="#" key="t-default">일정삭제</a></li>
@@ -63,8 +63,7 @@
 							</a>
 							<ul class="sub-menu" aria-expanded="false">
 								<li><a href="enrollEmppage.do" key="t-default">신규 직원 등록</a></li>
-								<li><a href="#" key="t-default">직원 리스트</a></li>
-								<li><a href="#" key="t-default">직원 관리</a></li>
+								<li><a href="elist.do" key="t-default">직원 리스트</a></li>
 							</ul>
 						</li>						
 						</c:if>

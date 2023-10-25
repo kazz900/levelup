@@ -3,14 +3,18 @@ package com.gs.levelup.community.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -306,8 +310,16 @@ public class CommunityController {
 	// 게시글 상세보기 요청 처리용
 	@RequestMapping("comdetail.do")
 	public ModelAndView selectCommunity(@RequestParam("board_id") String board_id,
-			@RequestParam("page") int currentPage, ModelAndView mv, HttpSession session) {
-		logger.info("comdetail.do : " + board_id + ", page : " + currentPage);
+			@RequestParam(value="page", required=false) String page, ModelAndView mv, HttpSession session) {
+		logger.info("comdetail.do : " + board_id + ", page : " + page);
+		
+		int currentPage = 1;
+		
+		
+		if (page != null) {
+				currentPage = Integer.parseInt(page);
+			}
+		
 		Community community = communityService.selectCommunity(board_id);
 		
 		ArrayList<Community> replys = null;
@@ -575,6 +587,38 @@ public class CommunityController {
 			mv.setViewName("common/error");
 		}
 		return mv;
+	}
+	
+	@RequestMapping(value="communities5.do", method=RequestMethod.POST)
+	@ResponseBody
+	public String noticeNewTop3Method(HttpServletResponse response, 
+			@RequestParam("keyword") String keyword) throws UnsupportedEncodingException{
+	
+		ArrayList<Community> list = communityService.selectCommunities5(keyword);
+		
+		//전송용 json 객체 준비
+		JSONObject sendJson = new JSONObject();
+		//list 저장할 json 배열 객체 준비
+		JSONArray jarr = new JSONArray();
+		
+		for(Community community : list) {
+			//notice 의 각 필드값 저장할 json 객체 생성
+			JSONObject job = new JSONObject();
+			
+			job.put("title", URLEncoder.encode(community.getBoard_title(), "UTF-8"));
+			
+			job.put("date", community.getBoard_date().toString());
+			
+			job.put("attachementFilename", community.getAttachement_filename());
+			
+			job.put("board_id", community.getBoard_id());
+			
+			//job를 jarr 에 추가함
+			jarr.add(job);
+		}
+		sendJson.put("nlist",jarr);
+		
+		return sendJson.toJSONString();
 	}
 
 }

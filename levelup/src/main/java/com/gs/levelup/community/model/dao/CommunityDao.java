@@ -104,4 +104,9 @@ public class CommunityDao {
 		return sqlSessionTemplate.update("comMapper.updateRepReadCount",board_id);
 	}
 
+	public ArrayList<Community> selectCommunities5(String keyword) {
+		List<Community> list = sqlSessionTemplate.selectList("comMapper.selectCommunities5",keyword);
+		return (ArrayList<Community>)list;
+	}
+
 }
