@@ -115,6 +115,10 @@ public class CommunityServiceImpl implements CommunityService{
 	@Override
 	public int updateAttach(Community community) {
 		return communityDao.updateAttach(community);
+
+  @Override
+  public ArrayList<Community> selectCommunities5(String keyword) {
+		return communityDao.selectCommunities5(keyword);
 	}
 
 }

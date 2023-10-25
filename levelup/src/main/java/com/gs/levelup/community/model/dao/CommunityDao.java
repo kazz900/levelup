@@ -105,6 +105,11 @@ public class CommunityDao {
 
 	public int updateAttach(Community community) {
 		return sqlSessionTemplate.update("comMapper.updateAttach",community);
+
+    
+  public ArrayList<Community> selectCommunities5(String keyword) {
+		List<Community> list = sqlSessionTemplate.selectList("comMapper.selectCommunities5",keyword);
+		return (ArrayList<Community>)list;
 	}
 
 }

@@ -85,4 +85,8 @@ public class NoticeServiceImpl implements NoticeService{
 	public void updateReadCount(String noticeId) {
 		noticeDao.updateReadCount(noticeId);
 	}
+	@Override
+	public ArrayList<Notice> selectNotices5(String keyword) {
+		return noticeDao.selectNotices5(keyword);
+	}
 }

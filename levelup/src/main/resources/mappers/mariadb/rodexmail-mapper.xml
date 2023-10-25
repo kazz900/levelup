@@ -44,7 +44,10 @@ LAST_INSERT_ID(),
 #{ nameId },
 1,
 1,
+#{ uniqueId });
+=======
 #{ uniqueId })
+>>>>>>> 784346cdb9f95d368e10c1ee3de72ccf22621708
 
 	</insert>
 	
