@@ -57,8 +57,6 @@
 
 	<script src="/fm/resources/js/fileinput/locales/kr.js"></script>
 
-
-
 </head>
 <body data-sidebar="dark" data-layout-mode="light">
 <!-- 내비게이션바, 사이드바 등등 -->
@@ -104,7 +102,7 @@
 					<div class="row">
 						<div class="kv-avatar col-12">
 			                <div class="file-loading">
-            			        <input id="upfiles" type="file" disabled="true">
+            			        <input id="upfiles" type="file">
                 			</div>
             			</div>
   					</div>
@@ -116,18 +114,21 @@
              
             <c:if test="${ loginEmployee ne null and community.employee_id eq loginEmployee.employeeId }">
 	            <a href="moveUP.do?board_id=${ community.board_id }&currentPage=${ currentPage }" class="btn btn-primary waves-effect mt-4"><i class="mdi mdi-tools"></i>수정</a>  &nbsp;
-	            <a href="comDelete.do?board_id=${ community.board_id }&currentPage=${ currentPage }" class="btn btn-primary waves-effect mt-4"><i class="mdi mdi-trash-can"></i>삭제</a>  &nbsp;
+<%-- 	            <a href="comDelete.do?board_id=${ community.board_id }&currentPage=${ currentPage }" class="btn btn-primary waves-effect mt-4"><i class="mdi mdi-trash-can"></i>삭제</a>  &nbsp; --%>
+					<button onclick="(function(){if(confirm('정말로 삭제하시겠습니까?') == true){location.href='comDelete.do?board_id=${ community.board_id }&currentPage=${ currentPage }';return false;}})();return false;" class="btn btn-primary waves-effect mt-4"><i class="mdi mdi-trash-can"></i>삭제</button>
             </c:if>
         </div>
 
     </div>
 <c:if test="${ !empty replys }">   
+
 	<c:forEach var="r" items="${ replys }">
     <div class="card">
 
         <div class="card-body">
             <div class="d-flex mb-4">
                 <div class="flex-shrink-0 me-3">
+                <i class="mdi mdi-subdirectory-arrow-right"></i>
                 </div>
                 <div class="flex-grow-1">
                     <b class="font-size-14 mt-1">${ r.employee_name }</b> <small class="text-muted"><a href="mailto:${ r.employee_email }">${ r.employee_email }</a></small><br>
@@ -148,58 +149,22 @@
 					<div class="row">
 						<div class="kv-avatar col-12">
 			                <div class="file-loading">
-            			        <input id="${ r.board_id }" type="file" disabled="true">
+            			        <input id="${ r.board_id }" type="file">
                 			</div>
             			</div>
   					</div>
 			</c:if>
 			
-            <a href="comRep.do?board_id=${ r.board_id }&currentPage=${ currentPage }" class="btn btn-primary waves-effect mt-4"><i class="mdi mdi-reply"></i>댓글달기</a> &nbsp;
+<%--             <a href="comRep.do?board_id=${ r.board_id }&currentPage=${ currentPage }" class="btn btn-primary waves-effect mt-4"><i class="mdi mdi-reply"></i>댓글달기</a> &nbsp; --%>
             <a href="comlist.do?currentPage=${ currentPage }" class="btn btn-primary waves-effect mt-4"><i class="mdi mdi-reply"></i>목록으로</a> &nbsp;
             
              
             <c:if test="${ loginEmployee ne null and r.employee_id eq loginEmployee.employeeId }">
 	            <a href="moveUP.do?board_id=${ r.board_id }&currentPage=${ currentPage }" class="btn btn-primary waves-effect mt-4"><i class="mdi mdi-tools"></i>수정</a>  &nbsp;
-	            <a href="comDelete.do?board_id=${ r.board_id }&currentPage=${ currentPage }" class="btn btn-primary waves-effect mt-4"><i class="mdi mdi-trash-can"></i>삭제</a>  &nbsp;
+	           <button onclick="(function(){if(confirm('정말로 삭제하시겠습니까?') == true){location.href='comDelete.do?board_id=${ r.board_id }&currentPage=${ currentPage }';return false;}})();return false;" class="btn btn-primary waves-effect mt-4"><i class="mdi mdi-trash-can"></i>삭제</button>
             </c:if>
         </div>
-        
-<c:if test="${ !empty r.attachement_filename }">
 
-<script type="text/javascript">
-
-var imgs = ${ r.attachement_filename};
-var previews = [];
-var previewConfig = [];
-
-
-if(imgs != null){
-	for ( var i in imgs) {
-		previews.push('${ pageContext.servletContext.contextPath }/resources/com_upfiles/${ r.board_id }/' + imgs[i]);
-		previewConfig.push({caption:imgs[i]});
-	}
-}
-
-
-
-$(function(){
-	$("#${r.board_id}").fileinput({
-	overwriteInitial: false,
-    initialPreview: previews,
-    initialPreviewAsData: true, // identify if you are sending preview data only and not the raw markup
-    initialPreviewDownloadUrl: '${ pageContext.servletContext.contextPath }/resources/com_upfiles/${ r.board_id }/{filename}', // includes the dynamic `filename` tag to be replaced for each config
-    initialPreviewConfig: previewConfig,
-    showUpload: false,
-    showBrowse: false,
-    browseOnZoneClick: false,
-    initialPreviewShowDelete: false,
-	elErrorContainer: '#kv-avatar-errors-1',
-	msgErrorClass: 'alert alert-block alert-danger',
-	layoutTemplates: {main2: '{preview} '},
-	}) //fileinput 
-}); // document ready
-</script>
-</c:if>
 <!-- 첨부파일이 있는지 -->
 
 </c:forEach>
@@ -248,10 +213,10 @@ $(function(){
 	
 
 
-<c:if test="${ !empty community.attachement_filename }">
 
 <script type="text/javascript">
 
+<c:if test="${ !empty community.attachement_filename }">
 var imgs = ${ community.attachement_filename};
 var previews = [];
 var previewConfig = [];
@@ -260,18 +225,35 @@ var previewConfig = [];
 if(imgs != null){
 	for ( var i in imgs) {
 		previews.push('${ pageContext.servletContext.contextPath }/resources/com_upfiles/${ community.board_id }/' + imgs[i]);
-		previewConfig.push({caption:imgs[i]});
+		
+		let fileLength = imgs[i].length;
+		let fileDot = imgs[i].lastIndexOf('.');
+		let fileType = imgs[i].substring(fileDot+1, fileLength).toLowerCase();
+		
+		if(fileType == 'txt'){
+			previewConfig.push({caption:imgs[i], type:'text'});
+		} else if(fileType == 'pdf') { 
+			previewConfig.push({caption:imgs[i], type:'pdf'});
+		} else if(fileType == 'doc' || fileType == 'xls' || fileType == 'ppt') { 
+			previewConfig.push({caption:imgs[i], type:'office'});
+		} else if(fileType == 'mp4') { 
+			previewConfig.push({caption:imgs[i], type:'video'});
+		} else {
+			previewConfig.push({caption:imgs[i]});
+		}
 	}
 }
 
-
+</c:if>
 
 $(function(){
+	
+	<c:if test="${ !empty community.attachement_filename }">
 	$("#upfiles").fileinput({
 	overwriteInitial: false,
     initialPreview: previews,
     initialPreviewAsData: true, // identify if you are sending preview data only and not the raw markup
-    initialPreviewDownloadUrl: '${ pageContext.servletContext.contextPath }/resources/com_upfiles/${ community.board_id }/{filename}', // includes the dynamic `filename` tag to be replaced for each config
+    initialPreviewDownloadUrl: '${ pageContext.servletContext.contextPath }/resources/com_upfiles/${ community.board_id }/{filename}',
     initialPreviewConfig: previewConfig,
     showUpload: false,
     showBrowse: false,
@@ -281,12 +263,70 @@ $(function(){
 //	removeLabel: '선택 리셋',
 //	removeTitle: '파일 업로드 창 리셋',
 	elErrorContainer: '#kv-avatar-errors-1',
-	msgErrorClass: 'alert alert-block alert-danger',
-	layoutTemplates: {main2: '{preview} '},
+	msgErrorClass: 'alert alert-block alert-danger'
+//	,
+//	layoutTemplates: {main2: '{preview} ' + ' {remove} {browse}'},
 	}) //fileinput 
+
+	</c:if>
+	
+	<c:if test="${ !empty replys }">   
+
+	<c:forEach var="r" items="${ replys }">
+ 
+	<c:if test="${ !empty r.attachement_filename }">
+
+	var imgs${ r.board_id } = ${ r.attachement_filename};
+	var previews${ r.board_id } = [];
+	var previewConfig${ r.board_id } = [];
+
+	if(imgs${ r.board_id } != null){
+		for ( var i in imgs${ r.board_id }) {
+			previews${ r.board_id }.push('${ pageContext.servletContext.contextPath }/resources/com_upfiles/${ r.board_id }/' + imgs${ r.board_id }[i]);
+			
+			let fileLength = imgs${ r.board_id }[i].length;
+			let fileDot = imgs${ r.board_id }[i].lastIndexOf('.');
+			let fileType = imgs${ r.board_id }[i].substring(fileDot+1, fileLength).toLowerCase();
+			
+			if(fileType == 'txt'){
+				previewConfig${ r.board_id }.push({caption:imgs${ r.board_id }[i], type:'text'});
+			} else if(fileType == 'pdf') { 
+				previewConfig${ r.board_id }.push({caption:imgs${ r.board_id }[i], type:'pdf'});
+			} else if(fileType == 'doc' || fileType == 'xls' || fileType == 'ppt') { 
+				previewConfig${ r.board_id }.push({caption:imgs${ r.board_id }[i], type:'office'});
+			} else if(fileType == 'mp4') { 
+				previewConfig${ r.board_id }.push({caption:imgs${ r.board_id }[i], type:'video'});
+			}else {
+				previewConfig${ r.board_id }.push({caption:imgs${ r.board_id }[i]});
+			}
+		}
+	}
+	console.log(previews${ r.board_id });
+	console.log(previewConfig${ r.board_id });
+
+		$("#${r.board_id}").fileinput({
+		overwriteInitial: false,
+	    initialPreview: previews${ r.board_id },
+	    initialPreviewAsData: true, // identify if you are sending preview data only and not the raw markup
+	    initialPreviewDownloadUrl: '${ pageContext.servletContext.contextPath }/resources/com_upfiles/${ r.board_id }/{filename}', // includes the dynamic `filename` tag to be replaced for each config
+	    initialPreviewConfig: previewConfig${ r.board_id },
+	    showUpload: false,
+	    showBrowse: false,
+	    browseOnZoneClick: false,
+	    initialPreviewShowDelete: false
+//	    ,
+//		elErrorContainer: '#kv-avatar-errors-1',
+//		msgErrorClass: 'alert alert-block alert-danger',
+//		layoutTemplates: {main2: '{preview} '},
+		}) //fileinput 
+
+	</c:if>
+	</c:forEach>
+	</c:if>
+	
 }); // document ready
 </script>
-</c:if>
+
 
 </div> <!-- main-content -->
 

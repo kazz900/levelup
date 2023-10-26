@@ -1,7 +1,9 @@
 package com.gs.levelup.schedule.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,32 +19,26 @@ public class ScheduleDao {
 	private SqlSessionTemplate sqlSessionTemplate;
 
 	//스케줄 전체 조회
-	public ArrayList<Schedule> selectScheduleList(){
-		List<Schedule> list = sqlSessionTemplate.selectList("scheduleMapper.selectScheduleList");
-		return (ArrayList<Schedule>)list;
-	}
-	//팀 스케줄 전체 조회
-	public ArrayList<Schedule> selectTeamScheduleList(){
-		List<Schedule> list = sqlSessionTemplate.selectList("scheduleMapper.selectTeamScheduleList");
-		return (ArrayList<Schedule>)list;
-	}
-	//부서 스케줄 전체 조회
-	public ArrayList<Schedule> selectDeptScheduleList(){
-		List<Schedule> list = sqlSessionTemplate.selectList("scheduleMapper.selectDeptScheduleList");
-		return (ArrayList<Schedule>)list;
-	}
-	//내 스케줄 전체 조회
-	public ArrayList<Schedule> selectMyScheduleList(){
-		List<Schedule> list = sqlSessionTemplate.selectList("scheduleMapper.selectMyScheduleList");
+	public ArrayList<Schedule> selectScheduleList(String employeeId, String teamId, String departmentId){
+		Map<String, Object> parameters = new HashMap<>();
+	    parameters.put("employeeId", employeeId);
+	    parameters.put("teamId", teamId);
+	    parameters.put("departmentId", departmentId);
+		
+		List<Schedule> list = sqlSessionTemplate.selectList("scheduleMapper.selectScheduleList", parameters);
 		return (ArrayList<Schedule>)list;
 	}
 	
-	
-	
-	//스케줄 한 개 조회 : 공지사항 상세보기용
-	public Schedule selectSchedule(String scheduleId) {
-		return sqlSessionTemplate.selectOne("scheduleMapper.selectSchedule", scheduleId);
-	}
+	//스케줄 오늘것만 조회
+		public ArrayList<Schedule> selectTDScheduleList(String employeeId, String teamId, String departmentId){
+			Map<String, Object> parameters = new HashMap<>();
+		    parameters.put("employeeId", employeeId);
+		    parameters.put("teamId", teamId);
+		    parameters.put("departmentId", departmentId);
+			
+			List<Schedule> list = sqlSessionTemplate.selectList("scheduleMapper.selectTDScheduleList", parameters);
+			return (ArrayList<Schedule>)list;
+		}
 	
 	//새 스케줄 등록
 	public int insertSchedule(Schedule schedule) {
@@ -54,9 +50,14 @@ public class ScheduleDao {
 		return sqlSessionTemplate.update("scheduleMapper.updateSchedule", schedule);
 	}
 	
+	//스케줄 수정
+		public int updateReadSchedule(Schedule schedule) {
+			return sqlSessionTemplate.update("scheduleMapper.updateReadSchedule", schedule);
+		}
+	
 	//스케줄 삭제
-	public int deleteSchedule(String scheduleId) {
-		return sqlSessionTemplate.delete("scheduleMapper.deleteSchedule", scheduleId);
+	public int deleteSchedule(Schedule schedule) {
+		return sqlSessionTemplate.delete("scheduleMapper.deleteSchedule", schedule);
 	}
 
 }

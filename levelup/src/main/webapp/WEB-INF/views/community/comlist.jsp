@@ -28,109 +28,63 @@
 <c:import url="/WEB-INF/views/common/page-title.jsp"/>
 
 <!-- 여기서부터 내용 작성 -->
-${ loginEmployee }
 
-<div class="row">
+
+<div class="row mb-3">
 	<div class="col-12">
-		<div class="mb-3">
-			<div class="card">
-		<div class="btn-toolbar p-3" role="toolbar">
-			<div class="btn-group me-2 mb-2 mb-sm-0">
-				<button type="button" class="btn btn-primary waves-light waves-effect" 
-						onclick="javascript:location.href='movecomWrite.do'">
+		<div>
+		<form class="form-control" action="comSearch.do">
+		<div class="row mb-3">
+		 <div class="col-4">
+			<div class="form-floating">
+	            	<input name="keyword" type="search" class="form-control" id="floatingInput" placeholder="검색할 키워드를 입력해 주세요" required="true">
+	            	<label for="floatingInput">검색키워드(제목, 본문, 작성자) </label>
+	       	</div>
+	     </div>
+	     <div class="col-2">
+	     	<input name="page" type="hidden" value="${ currentPage }">
+	     	            	<input type ="submit" class="btn btn-primary align-middle" value="검색">
+	     </div>
+	     <div class="col-3">
+							<button type="button" class="btn btn-primary waves-light waves-effect"
+								onclick="javascript:location.href='movecomWrite.do'">
 						<i class="bx bx-edit-alt"></i> 새 글 작성</button>
-				<button type="button" class="btn btn-primary waves-light waves-effect"><i
-						class="fa fa-exclamation-circle"></i></button>
-				<button type="button" class="btn btn-primary waves-light waves-effect"><i
-						class="far fa-trash-alt"></i></button>
-			</div>
-			<div class="btn-group me-2 mb-2 mb-sm-0">
-				<button type="button" class="btn btn-primary waves-light waves-effect"
-					data-bs-toggle="dropdown" aria-expanded="false">
-					<i class="fa fa-folder"></i> <i class="mdi mdi-chevron-down ms-1"></i>
-				</button>
-				<div class="dropdown-menu">
-					<a class="dropdown-item" href="#">Updates</a>
-					<a class="dropdown-item" href="#">Social</a>
-					<a class="dropdown-item" href="#">Team Manage</a>
-				</div>
-			</div>
-			<div class="btn-group me-2 mb-2 mb-sm-0">
-				<button type="button" class="btn btn-primary waves-light waves-effect"
-					data-bs-toggle="dropdown" aria-expanded="false">
-					<i class="fa fa-tag"></i> <i class="mdi mdi-chevron-down ms-1"></i>
-				</button>
-				<div class="dropdown-menu">
-					<a class="dropdown-item" href="#">Updates</a>
-					<a class="dropdown-item" href="#">Social</a>
-					<a class="dropdown-item" href="#">Team Manage</a>
-				</div>
-			</div>
-
-			<div class="btn-group me-2 mb-2 mb-sm-0">
-				<button type="button" class="btn btn-primary waves-light waves-effect"
-					data-bs-toggle="dropdown" aria-expanded="false">
-					More <i class="mdi mdi-dots-vertical ms-2"></i>
-				</button>
-				<div class="dropdown-menu">
-					<a class="dropdown-item" href="#">Mark as Unread</a>
-					<a class="dropdown-item" href="#">Mark as Important</a>
-					<a class="dropdown-item" href="#">Add to Tasks</a>
-					<a class="dropdown-item" href="#">Add Star</a>
-					<a class="dropdown-item" href="#">Mute</a>
-				</div>
-			</div>
+	     </div>
 		</div>
-<!-- 		<ul class="message-list"> -->
-		<div class="row">
-			<div class="col-2 date ms-4">
-					작성시간
-			</div>
-			<div class="col-6">
-				<p text-align="center">제목</p>
-				
-			</div>
-			<div class="col-1">
-				댓글
-			</div>
-			<div class="col-1">
-				조회수
-			</div>
-		</div>
+		</form>
+			
+<div class="row row row-cols-1 row-cols-md-2 mt-3 gx-7">
 <c:forEach var="b" items="${ list }" >
-		<div class="row border border-2 p-1">
-			<div class="col-2 date ms-4">
-					${ b.board_date }
-			</div>
-			<div class="col-6">
-				<a href="comdetail.do?board_id=${ b.board_id }&page=${currentPage}" class="subject">${ b.board_title }
-				</a>
-			</div>
-			<div class="col-1">
-				${ b.refYN }
-			</div>
-			<div class="col-1">
-				${ b.read_count }
-			</div>
-		</div>
+
+
+<div class="card gx-3 overflow-hidden">
+  <div class="card-body">
+    <h5 class="card-title">${ b.board_title }</h5>
+    <div class="card-text overflow-auto">${ b.board_body }</div>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">${ b.department_name }/${ b.team_name }팀/${ b.rank_name }/ <b>${ b.employee_name }</b></li>
+    <li class="list-group-item">작성일: ${ b.board_date } 조회수: 	${ b.read_count }</li>
+<c:if test="${ !empty b.attachement_filename }">
+    <li class="list-group-item">${ b.attachement_filename }</li>
+</c:if>
+  </ul>
+  <div class="card-body
+  <c:if test="${ b.refYN == 'y' }">
+text-bg-info
+</c:if>
+  ">
+    <a href="comdetail.do?board_id=${ b.board_id }&page=${currentPage}" class="btn btn-primary">상세보기</a>
+<c:if test="${ b.refYN == 'y' }">
+	&nbsp;&nbsp;<i class="mdi mdi-message-plus-outline fs-1"></i>
+</c:if>
+  </div>
+</div>
 </c:forEach>
+
+
 					</div><!-- card -->
 
-<!-- 
-					<div class="row">
-						<div class="col-7">
-							Showing 1 - 20 of 1,524
-						</div>
-						<div class="col-5">
-							<div class="btn-group float-end">
-								<button type="button" class="btn btn-sm btn-success waves-effect"><i
-										class="fa fa-chevron-left"></i></button>
-								<button type="button" class="btn btn-sm btn-success waves-effect"><i
-										class="fa fa-chevron-right"></i></button>
-							</div>
-						</div>
-					</div>
- -->
 				</div> <!-- end Col-9 -->
 
 			</div>

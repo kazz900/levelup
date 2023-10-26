@@ -1,6 +1,6 @@
 package com.gs.levelup.schedule.model.vo;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Schedule  implements java.io.Serializable{
 	private static final long serialVersionUID = -6088993346291069316L;
@@ -14,17 +14,26 @@ public class Schedule  implements java.io.Serializable{
 	private String departmentId;
 	private String teamId;
 	private String rankId;
-	private Date scheduleStartday;
-	private Date scheduleEndday;
+	private Timestamp scheduleStartday;
+	private Timestamp scheduleEndday;
 	private String scheduleType;
 	private String scheduleAddress;
 	private String scheduleTheme;
 	private String scheduleContent;
+	private String read;
 	
+	public String getRead() {
+		return read;
+	}
+
+	public void setRead(String read) {
+		this.read = read;
+	}
+
 	public Schedule() {}
 
 	public Schedule(String scheduleId, String employeeId, String departmentId, String teamId, String rankId,
-			Date scheduleStartday, Date scheduleEndday, String scheduleType, String scheduleAddress,
+			Timestamp scheduleStartday, Timestamp scheduleEndday, String scheduleType, String scheduleAddress,
 			String scheduleTheme, String scheduleContent) {
 		super();
 		this.scheduleId = scheduleId;
@@ -80,19 +89,19 @@ public class Schedule  implements java.io.Serializable{
 		this.rankId = rankId;
 	}
 
-	public Date getScheduleStartday() {
+	public Timestamp getScheduleStartday() {
 		return scheduleStartday;
 	}
 
-	public void setScheduleStartday(Date scheduleStartday) {
+	public void setScheduleStartday(Timestamp scheduleStartday) {
 		this.scheduleStartday = scheduleStartday;
 	}
 
-	public Date getScheduleEndday() {
+	public Timestamp getScheduleEndday() {
 		return scheduleEndday;
 	}
 
-	public void setScheduleEndday(Date scheduleEndday) {
+	public void setScheduleEndday(Timestamp scheduleEndday) {
 		this.scheduleEndday = scheduleEndday;
 	}
 

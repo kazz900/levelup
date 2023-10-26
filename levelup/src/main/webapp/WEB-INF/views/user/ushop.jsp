@@ -10,18 +10,30 @@
 <meta charset="UTF-8">
 <!-- 타이틀 -->
 <c:import url="/WEB-INF/views/user/userHeader.jsp"/>
-<c:import url="/WEB-INF/views/common/page-title.jsp"/>
 <c:import url="/WEB-INF/views/common/title-meta.jsp"/>
 <!-- 헤드 스크립트 -->
 </head>
-<body>
+<body style="background-color:white;">
 <% if (request.getAttribute("message") != null) { %>
     <script type="text/javascript">
         var message = "${requestScope.message}";
         alert(message);
     </script>
 <% } %>
-<div class="user-shop-container">
+<div class="imageback">
+    <img alt="유저상점사진" src="/levelup/resources/images/styleimage/backgroundgif2.gif">
+    <div class="row">
+    	<div class="col-7"></div>
+    	<div class="col-3">
+    		<img alt="다른 이미지" src="/levelup/resources/images/styleimage/shop_open.png" class="overlay-image">
+    	</div>
+    	<div class="col-2"></div>
+    </div>
+</div>
+<br><br>
+<div class="user-shop-container container">
+
+<div class="row">
         <div class="user-filter">
             <h2>카테고리</h2>
             <ul>
@@ -34,10 +46,11 @@
                 <!-- 다른 카테고리 항목 추가 -->
             </ul>
         </div>
-        <div class="user-items">
+        <div class="user-items user-items-w">
             <!-- 상품 카드 1 -->
-            <div class="user-item-card" data-category="necklace">
-                <img src="/levelup/resources/images/itemlist/1000.png" alt="Item 1">
+            <div class="user-item-card" data-category="necklace" style="width:200px;">
+            	<img src="/levelup/resources/images/sales/10non.png" alt="sale" style="position: relative;width: 60px; height: 60px;margin-top:-10px;margin-right:-10px;z-index:2;">
+                <img src="/levelup/resources/images/itemlist2/1000.png" alt="Item 1" id="itemimage" style="position: relative;margin-top:-50px;">
                 <h3>Copper Necklace</h3>
                 <p>상품 아이디: 1000</p>
                 <p class="item-price">가격: $1000</p>
@@ -45,8 +58,8 @@
             </div>
             <!-- 다른 상품 카드 추가 -->
             <!-- 상품 카드 2 -->
-            <div class="user-item-card" data-category="necklace">
-                <img src="/levelup/resources/images/itemlist/1001.png" alt="Item 2">
+            <div class="user-item-card" data-category="necklace" style="width:200px;">
+                <img src="/levelup/resources/images/itemlist2/1001.png" alt="Item 2" id="itemimage" >
                 <h3>Silver Necklace</h3>
                 <p>상품 아이디: 1001</p>
                 <p class="item-price">가격: $2000</p>
@@ -54,8 +67,8 @@
             </div>
             <!-- 다른 상품 카드 추가 -->
             <!-- 상품 카드 3 -->
-            <div class="user-item-card" data-category="necklace">
-                <img src="/levelup/resources/images/itemlist/1002.png" alt="Item 3">
+            <div class="user-item-card" data-category="necklace" style="width:200px;">
+                <img src="/levelup/resources/images/itemlist2/1002.png" alt="Item 3" id="itemimage" >
                 <h3>Gold Necklace</h3>
                 <p>상품 아이디: 1002</p>
                 <p class="item-price">가격: $5000</p>
@@ -63,8 +76,8 @@
             </div>
             <!-- 다른 상품 카드 추가 -->
             <!-- 상품 카드 4 -->
-            <div class="user-item-card" data-category="necklace">
-                <img src="/levelup/resources/images/itemlist/1006.png" alt="Item 4">
+            <div class="user-item-card" data-category="necklace" style="width:200px;">
+                <img src="/levelup/resources/images/itemlist2/1006.png" alt="Item 4" id="itemimage" >
                 <h3>Golden Four-Leaf Necklace</h3>
                 <p>상품 아이디: 1006</p>
                 <p class="item-price">가격: $5000</p>
@@ -72,8 +85,8 @@
             </div>
             <!-- 다른 상품 카드 추가 -->
             <!-- 상품 카드 5 -->
-            <div class="user-item-card" data-category="electronics">
-                <img src="/levelup/resources/images/itemlist/1013.png" alt="Item 5">
+            <div class="user-item-card" data-category="electronics" style="width:200px;">
+                <img src="/levelup/resources/images/itemlist2/1013.png" alt="Item 5" id="itemimage" >
                 <h3>Skull Necklace</h3>
                 <p>상품 아이디: 1013</p>
                 <p class="item-price">가격: $5000</p>
@@ -81,8 +94,8 @@
             </div>
             <!-- 다른 상품 카드 추가 -->
             <!-- 상품 카드 6 -->
-            <div class="user-item-card" data-category="ring">
-                <img src="/levelup/resources/images/itemlist/1100.png" alt="Item 6">
+            <div class="user-item-card" data-category="ring" style="width:200px;">
+                <img src="/levelup/resources/images/itemlist2/1100.png" alt="Item 6" id="itemimage" >
                 <h3>Simple Copper Ring</h3>
                 <p>상품 아이디: 1100</p>
                 <p class="item-price">가격: $1000</p>
@@ -90,8 +103,8 @@
             </div>
             <!-- 다른 상품 카드 추가 -->
             <!-- 상품 카드 7 -->
-            <div class="user-item-card" data-category="ring">
-                <img src="/levelup/resources/images/itemlist/1101.png" alt="Item 7">
+            <div class="user-item-card" data-category="ring" style="width:200px;">
+                <img src="/levelup/resources/images/itemlist2/1101.png" alt="Item 7" id="itemimage" >
                 <h3>Simple Silver Ring</h3>
                 <p>상품 아이디: 1101</p>
                 <p class="item-price">가격: $1000</p>
@@ -99,8 +112,9 @@
             </div>
             <!-- 다른 상품 카드 추가 -->
             <!-- 상품 카드 8 -->
-            <div class="user-item-card" data-category="ring">
-                <img src="/levelup/resources/images/itemlist/1102.png" alt="Item 8">
+            <div class="user-item-card" data-category="ring" style="width:200px;">
+                <img src="/levelup/resources/images/sales/20non.png" alt="sale" style="position: relative;width: 60px; height: 60px;margin-top:-10px;margin-right:-10px;z-index:2;">
+                <img src="/levelup/resources/images/itemlist2/1102.png" alt="Item 8" style="position: relative;margin-top:-50px;" id="itemimage" >
                 <h3>Simple Golden Ring</h3>
                 <p>상품 아이디: 1102</p>
                 <p class="item-price">가격: $1000</p>
@@ -108,60 +122,71 @@
             </div>
             <!-- 다른 상품 카드 추가 -->
             <!-- 상품 카드 9 -->
-            <div class="user-item-card" data-category="ring">
-                <img src="/levelup/resources/images/itemlist/1106.png" alt="Item 9">
+            <div class="user-item-card" data-category="ring" style="width:200px;">
+                <img src="/levelup/resources/images/itemlist2/1106.png" alt="Item 9" id="itemimage" >
                 <h3>Silver Ring</h3>
                 <p>상품 아이디: 1106</p>
                 <p class="item-price">가격: $2000</p>
                 <p>아이템 설명란 : 가벼운 은 반지</p>
             </div>
             <!-- 다른 상품 카드 추가 -->
-            <div class="user-item-card" data-category="ring">
-                <img src="/levelup/resources/images/itemlist/1110.png" alt="Item 10">
+            <div class="user-item-card" data-category="ring" style="width:200px;">
+                <img src="/levelup/resources/images/sales/20non.png" alt="sale" style="position: relative;width: 60px; height: 60px;margin-top:-10px;margin-right:-10px;z-index:2;">
+                <img src="/levelup/resources/images/itemlist2/1110.png" alt="Item 10" style="position: relative;margin-top:-50px;" id="itemimage" >
                 <h3>Silver Signet Ring</h3>
                 <p>상품 아이디: 1110</p>
                 <p class="item-price">가격: $5000</p>
                 <p>아이템 설명란 : 구하기 힘든 실버 인장 반지 19호</p>
             </div>
-            <div class="user-item-card" data-category="etc">
-                <img src="/levelup/resources/images/itemlist/615.png" alt="Item 11">
+            <div class="user-item-card" data-category="etc" style="width:200px;">
+                <img src="/levelup/resources/images/sales/30non.png" alt="sale" style="position: relative;width: 60px; height: 60px;margin-top:-10px;margin-right:-10px;z-index:2;">
+                <img src="/levelup/resources/images/itemlist2/615.png" alt="Item 11" style="position: relative;margin-top:-50px;" id="itemimage" >
                 <h3>Treasure Map</h3>
                 <p>상품 아이디: 615</p>
                 <p class="item-price">가격: $4500</p>
                 <p>아이템 설명란 : 세계 어딘가 숨어있는 보물을 가르키는 지도</p>
             </div>
-            <div class="user-item-card" data-category="potions">
-                <img src="/levelup/resources/images/itemlist/608.png" alt="Item 12">
+            <div class="user-item-card" data-category="potions" style="width:200px;">
+                <img src="/levelup/resources/images/itemlist2/608.png" alt="Item 12" id="itemimage" >
                 <h3>Fertility Potion</h3>
                 <p>상품 아이디: 608</p>
                 <p class="item-price">가격: $2500</p>
                 <p>아이템 설명란 : 다산의 물약</p>
             </div>
-            <div class="user-item-card" data-category="potions">
-                <img src="/levelup/resources/images/itemlist/613.png" alt="Item 13">
+            <div class="user-item-card" data-category="potions" style="width:200px;">
+                <img src="/levelup/resources/images/itemlist2/613.png" alt="Item 13" id="itemimage" >
                 <h3>Purification Potion</h3>
                 <p>상품 아이디: 613</p>
                 <p class="item-price">가격: $2500</p>
                 <p>아이템 설명란 : 정화 물약</p>
             </div>
-            <div class="user-item-card" data-category="potions">
-                <img src="/levelup/resources/images/itemlist/625.png" alt="Item 14">
+            <div class="user-item-card" data-category="potions" style="width:200px;">
+                <img src="/levelup/resources/images/itemlist2/625.png" alt="Item 14" id="itemimage" >
                 <h3>Seafood Plate</h3>
                 <p>상품 아이디: 625</p>
                 <p class="item-price">가격: $5000</p>
                 <p>아이템 설명란 : 해산물 접시(회복)</p>
             </div>
-            <div class="user-item-card" data-category="potions">
-                <img src="/levelup/resources/images/itemlist/626.png" alt="Item 15">
+            <div class="user-item-card" data-category="potions" style="width:200px;">
+                <img src="/levelup/resources/images/itemlist2/626.png" alt="Item 15" id="itemimage" >
                 <h3>Barbecue Plate</h3>
                 <p>상품 아이디: 626</p>
                 <p class="item-price">가격: $5000</p>
                 <p>아이템 설명란 : 바베큐 플레이트(회복)</p>
             </div>
-  			<div id="noResultsMessage" style="display: none;">
+            <div class="user-item-card" data-category="potions" style="width:200px;">
+                <img src="/levelup/resources/images/itemlist2/626.png" alt="Item 15" id="itemimage" >
+                <h3>Barbecue Plate</h3>
+                <p>상품 아이디: 626</p>
+                <p class="item-price">가격: $5000</p>
+                <p>아이템 설명란 : 바베큐 플레이트(회복)</p>
+            </div>
+           
+  			<div id="noResultsMessage" style="display: none;" style="width:200px;">
 			    검색 결과가 없습니다.
 			</div>
 			
+        </div>
         </div>
     </div>
     <div id="buyItemModal" class="modal">
@@ -224,7 +249,7 @@
             const priceText = this.querySelector('.item-price').textContent; // .item-price 클래스를 사용하여 가격 가져오기
             const result = priceText.replace(/[^0-9]/g,'');
             const itemPrice = parseInt(result);
-            const itemImage = this.querySelector('img').getAttribute('src');
+            const itemImage = this.querySelector('#itemimage').getAttribute('src');
 
             console.log("Category: " + category);
             console.log("Item ID: " + itemId);

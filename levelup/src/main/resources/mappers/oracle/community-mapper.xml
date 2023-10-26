@@ -22,6 +22,34 @@
 		select * from (select rownum rnum, BOARD_ID, DEPARTMENT_ID, 
 				            EMPLOYEE_ID, BOARD_TITLE, BOARD_DATE, board_body, 
 				            ATTACHEMENT_FILENAME, BOARD_TYPE, READ_COUNT, 
+				            ref_id , refyn, delyn , team_id,
+				             rank_id, rank_name, department_name, team_name,
+					     employee_name, employee_email
+               from (select  BOARD_ID, community.DEPARTMENT_ID, 
+				            EMPLOYEE_ID, BOARD_TITLE, BOARD_DATE, board_body, 
+				            ATTACHEMENT_FILENAME, BOARD_TYPE, READ_COUNT, 
+				            ref_id , refyn, delyn , community.team_id,
+				             rank_id, rank_name, department_name, team_name,
+					     employee_name, employee_email 
+					    from community 
+					    join (select 
+					    rank_id, rank_name, department_name, team_name,
+					    employee_id, employee_name, employee_email
+					    from employee
+					        join rank using (rank_id)
+					        join department using (department_id)
+					        join team using (team_id))
+					        using (employee_id)
+					    where delYN = 'n' and ref_id is null
+					    order by BOARD_DATE desc)
+									     )  
+		 where rnum between #{ startRow } and #{ endRow }
+	</select>
+<!-- 
+	<select id="selectList" parameterType="Paging" resultMap="resultCom">
+		select * from (select rownum rnum, BOARD_ID, DEPARTMENT_ID, 
+				            EMPLOYEE_ID, BOARD_TITLE, BOARD_DATE, board_body, 
+				            ATTACHEMENT_FILENAME, BOARD_TYPE, READ_COUNT, 
 				            ref_id , refyn, delyn , team_id
 				      from (select * from Community
 				      		where delyn = 'n' and ref_id is null
@@ -29,6 +57,7 @@
 				     ) 
 		 where rnum between #{ startRow } and #{ endRow }
 	</select>
+ -->
 	<select id="selectReplys" parameterType="string" resultMap="resultCom">
 		select *
     from community 
@@ -54,6 +83,12 @@
 	<update id="updateReadCount" parameterType="string">
 		update COMMUNITY 
 		set READ_COUNT = READ_COUNT + 1 
+		where BOARD_ID = #{ board_id }
+	</update>
+
+	<update id="updateAttach" parameterType="Community">
+		update COMMUNITY 
+		set ATTACHEMENT_FILENAME = #{ attachement_filename } 
 		where BOARD_ID = #{ board_id }
 	</update>
 
@@ -116,14 +151,93 @@
 		]]>
 	</select>
 		
-<!-- 	
+			<update id="updateCommunity" parameterType="Community">
+    update Community 
+    set   
+BOARD_TITLE = #{board_title},
+ATTACHEMENT_FILENAME = #{attachement_filename},
+BOARD_BODY = #{board_body}
+    where BOARD_ID = #{board_id}
+	</update>
 
 	
+	<select id="selectSearchCount" parameterType="string" resultType="_int">
+		select count(*) from (
 	
-	<select id="getSearchTitleCount" parameterType="string" resultType="_int">
-		select count(*) from Community where Community_TITLE like '%' || #{ keyword } || '%'
+				select rownum rnum, BOARD_ID, DEPARTMENT_ID, 
+							            EMPLOYEE_ID, BOARD_TITLE, BOARD_DATE, board_body, 
+							            ATTACHEMENT_FILENAME, BOARD_TYPE, READ_COUNT, 
+							            ref_id , refyn, delyn , team_id,
+							             rank_id, rank_name, department_name, team_name,
+								     employee_name, employee_email
+			               from (
+			               
+			               select  BOARD_ID, community.DEPARTMENT_ID, 
+							            EMPLOYEE_ID, BOARD_TITLE, BOARD_DATE, board_body, 
+							            ATTACHEMENT_FILENAME, BOARD_TYPE, READ_COUNT, 
+							            ref_id , refyn, delyn , community.team_id,
+							             rank_id, rank_name, department_name, team_name,
+								     employee_name, employee_email 
+								    from community 
+								    join (select 
+								    rank_id, rank_name, department_name, team_name,
+								    employee_id, employee_name, employee_email
+								    from employee
+								        join rank using (rank_id)
+								        join department using (department_id)
+								        join team using (team_id))
+								        using (employee_id)
+								    where delYN = 'n' and ref_id is null
+								    
+								    and BOARD_TITLE like '%' || #{ keyword } || '%'
+			OR ATTACHEMENT_FILENAME like '%' || #{ keyword } || '%'
+			OR BOARD_BODY like '%' || #{ keyword } || '%'
+			OR employee_name like '%' || #{ keyword } || '%'
+								    
+								    order by BOARD_DATE desc)
+								    
+									     )  
 	</select>
+
+	<select id="selectSearch" parameterType="Search" resultMap="resultCom">
+	select * from (
 	
+				select rownum rnum, BOARD_ID, DEPARTMENT_ID, 
+							            EMPLOYEE_ID, BOARD_TITLE, BOARD_DATE, board_body, 
+							            ATTACHEMENT_FILENAME, BOARD_TYPE, READ_COUNT, 
+							            ref_id , refyn, delyn , team_id,
+							             rank_id, rank_name, department_name, team_name,
+								     employee_name, employee_email
+			               from (
+			               
+			               select  BOARD_ID, community.DEPARTMENT_ID, 
+							            EMPLOYEE_ID, BOARD_TITLE, BOARD_DATE, board_body, 
+							            ATTACHEMENT_FILENAME, BOARD_TYPE, READ_COUNT, 
+							            ref_id , refyn, delyn , community.team_id,
+							             rank_id, rank_name, department_name, team_name,
+								     employee_name, employee_email 
+								    from community 
+								    join (select 
+								    rank_id, rank_name, department_name, team_name,
+								    employee_id, employee_name, employee_email
+								    from employee
+								        join rank using (rank_id)
+								        join department using (department_id)
+								        join team using (team_id))
+								        using (employee_id)
+								    where delYN = 'n' and ref_id is null
+								    
+								    and BOARD_TITLE like '%' || #{ keyword } || '%'
+			OR ATTACHEMENT_FILENAME like '%' || #{ keyword } || '%'
+			OR BOARD_BODY like '%' || #{ keyword } || '%'
+			OR employee_name like '%' || #{ keyword } || '%'
+								    
+								    order by BOARD_DATE desc)
+								    
+									     )  
+		 where	rnum between #{ startRow } and #{ endRow }
+	</select>
+<!--	
 	<select id="getSearchContentCount" parameterType="string" resultType="_int">
 		select count(*) from Community where Community_CONTENT like '%' || #{ keyword } || '%'
 	</select>
@@ -169,23 +283,6 @@
 	</select>
 	
 	
-
-	<update id="updateCommunity" parameterType="Community">
-    update Community 
-    set EMPLOYEE_ID = #{employeeId}, 
-        Community_TITLE = #{CommunityTitle},  
-        Community_CONTENT = #{CommunityContent}, 
-        EDIT_DATE = sysdate
-    <if test="attachementFilename == null">
-        , ATTACHEMENT_FILENAME = null, 
-        RENAME_FILENAME = null
-    </if>
-    <if test="attachementFilename != null">
-        , ATTACHEMENT_FILENAME = #{attachementFilename}, 
-        RENAME_FILENAME = #{renameFilename}
-    </if>
-    where Community_ID = #{CommunityId}
-	</update>
 
 	
 

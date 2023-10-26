@@ -33,6 +33,11 @@
 							<div class="email-rightbar mb-3">
 
 								<div class="card">
+								<div class="flex-grow-1">
+                    <b class="font-size-14 mt-1">${ notice.employeeName }</b> <small class="text-muted"><a href="mailto:${ notice.employeeEmail }">${ notice.employeeEmail }</a></small><br>
+                    <small class="text-muted">${ notice.departmentName } / ${ notice.teamName }팀 / ${ notice.rankName }</small>
+                    
+                </div>
 									<div class="btn-toolbar p-3" role="toolbar">
 										<div class="btn-group me-2 mb-2 mb-sm-0">
 											<button type="button" class="btn btn-primary waves-light waves-effect"><i
@@ -121,7 +126,7 @@
 
 								<div class="row">
 									<div class="col-7">
-										Showing 1 - 20 of 1,524
+										공지 일반상세보기
 									</div>
 									<div class="col-5">
 										<div class="btn-group float-end">
