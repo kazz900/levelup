@@ -6,7 +6,6 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,7 +24,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -73,7 +71,82 @@ public class ScheduleController {
 	 
 	  return mv; }
 	 
+	 
+	//오늘 스케줄 조회
+	 @RequestMapping(value="calendarTDList.do", method= {RequestMethod.GET, RequestMethod.POST})
+		@ResponseBody  //리턴하는 jsonString 을 response body 에 담아서 보낸다는 의미임
+		public String calendarTDListMethod(HttpServletResponse response,
+				HttpSession session
+				) throws IOException {
+		 	Employee loginEmployee = (Employee)session.getAttribute("loginEmployee");
+		 	String employeeId = loginEmployee.getEmployeeId();
+		 	String teamId = loginEmployee.getTeamId();
+		 	String departmentId = loginEmployee.getDepartmentId();
+			//전달받은 키워드로 공지사항 제목 검색 메소드 실행하고 결과받기
+			ArrayList<Schedule> list = scheduleService.selectTDScheduleList(employeeId, teamId, departmentId);
+			
+			//response 에 내보낼 값에 대한 mimiType 설정
+			response.setContentType("application/json; charset=utf-8");
+			
+			//리턴된 list 결과를 json 배열에 담아서 내보내는 처리 : 
+			//전송용 json 객체 생성
+			JSONObject sendJson = new JSONObject();
+			//list 담을 json 배열 객체 생성
+			JSONArray jarr = new JSONArray();
+			
+			//list 를 json 배열에 옮기기
+			for(Schedule schedule : list) {
+				//notice 값을 저장할 json 객체 생성
+				JSONObject job = new JSONObject();
 				
+				job.put("scheduleId", schedule.getScheduleId());
+				//문자열에 한글이 있다면, 반드시 인코딩해서 저장해야 함
+				job.put("scheduleTitle", URLEncoder.encode(schedule.getScheduleTheme(), "utf-8"));
+				//날짜데이터는 반드시 문자열로 바꿔서 저장해야 함
+				job.put("scheduleStartday", schedule.getScheduleStartday().toString());
+				job.put("scheduleEndday", schedule.getScheduleEndday().toString());
+				job.put("read", schedule.getRead());
+				
+				
+				//jarr 에 job 저장함
+				jarr.add(job);
+			}
+			
+			//전송용 객체에 jarr 저장
+			sendJson.put("sclist", jarr);
+			
+			return sendJson.toJSONString();
+		}
+	 
+	//오늘 스케줄용 확인 수정
+		@RequestMapping(value = "sreadup.do", method = RequestMethod.POST)
+		public ResponseEntity<String> updateRead(@RequestBody String param) throws ParseException, java.text.ParseException {
+		    // post로 request body에 기록된 JSON 문자열을 꺼내서 param 변수에 저장
+
+		    // param에 저장된 JSON 문자열을 JSON 객체로 변환
+		    JSONParser jparser = new JSONParser();
+		    JSONObject job = (JSONObject) jparser.parse(param);
+
+			logger.info("job" + job);
+			//json 객체가 가진 각 필드(property) 값을 추출해서, vo 객체(Notice)에 저장
+			Schedule schedule = new Schedule();
+			schedule.setScheduleId((String)job.get("scheduleId"));
+			schedule.setRead(job.get("read").toString());
+			
+			// 스케줄 업데이트 처리용 메소드 실행
+			int result = scheduleService.updateReadSchedule(schedule);
+			
+			//ResponseEntity<T> : 클라이언트에게 응답하는 용도의 객체임
+			//뷰리졸버가 아닌 출력스트림으로 나감
+			if(result > 0) {
+				return new ResponseEntity<String>("success", HttpStatus.OK);
+			}else {
+				return new ResponseEntity<String>("failed", HttpStatus.REQUEST_TIMEOUT);
+			}
+
+		   
+
+		}
 			
 	
 	//스케줄 상세보기 조회

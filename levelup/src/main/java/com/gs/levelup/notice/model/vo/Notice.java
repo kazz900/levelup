@@ -14,7 +14,55 @@ public class Notice {
 	private String renameFilename;
 	private int readCount;
 	private String employeeName;
+	private String rankId;
+	private String rankName;
+	private String departmentName;
+	private String teamName;
+	private String employeeEmail;
 	
+	
+	
+	
+	public String getRankId() {
+		return rankId;
+	}
+
+	public void setRankId(String rankId) {
+		this.rankId = rankId;
+	}
+
+	public String getRankName() {
+		return rankName;
+	}
+
+	public void setRankName(String rankName) {
+		this.rankName = rankName;
+	}
+
+	public String getDepartmentName() {
+		return departmentName;
+	}
+
+	public void setDepartmentName(String departmentName) {
+		this.departmentName = departmentName;
+	}
+
+	public String getTeamName() {
+		return teamName;
+	}
+
+	public void setTeamName(String teamName) {
+		this.teamName = teamName;
+	}
+
+	public String getEmployeeEmail() {
+		return employeeEmail;
+	}
+
+	public void setEmployeeEmail(String employeeEmail) {
+		this.employeeEmail = employeeEmail;
+	}
+
 	public String getEmployeeName() {
 		return employeeName;
 	}
