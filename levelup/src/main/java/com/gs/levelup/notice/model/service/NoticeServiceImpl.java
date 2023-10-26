@@ -22,8 +22,8 @@ public class NoticeServiceImpl implements NoticeService{
 		return noticeDao.selectList(paging);
 	}
 	@Override
-	public ArrayList<Notice> selectTList(Paging paging, String teamId){
-		return noticeDao.selectTList(paging, teamId);
+	public ArrayList<Notice> selectTList(Paging paging, String teamId, String departmentId){
+		return noticeDao.selectTList(paging, teamId, departmentId);
 	}
 	@Override
 	public ArrayList<Notice> selectDList(Paging paging, String departmentId){
@@ -50,8 +50,8 @@ public class NoticeServiceImpl implements NoticeService{
 		return noticeDao.selectListCount();
 	}
 	@Override
-	public int selectTListCount(String teamId) {
-		return noticeDao.selectTListCount(teamId);
+	public int selectTListCount(String teamId, String departmentId) {
+		return noticeDao.selectTListCount(teamId, departmentId);
 	}
 	@Override
 	public int selectDListCount(String departmentId) {
