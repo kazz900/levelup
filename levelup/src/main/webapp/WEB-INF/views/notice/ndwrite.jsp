@@ -26,18 +26,7 @@
 
 				<!-- 여기서부터 내용 작성 -->
 				<h1 align="left">새 부서 공지글 등록 페이지</h1>
-				<h2>
-					##Page##
-					<%=session.getAttribute("Page")%></h2>
-				<h2>
-					##listPage##
-					<%=session.getAttribute("listPage")%></h2>
-				<h2>
-					##teamID##
-					<%=session.getAttribute("teamId")%></h2>
-				<h2>
-					##departmentId##
-					<%=session.getAttribute("departmentId")%></h2>
+				
 				
 				<form action="ninsert.do" method="post"
 					enctype="multipart/form-data">

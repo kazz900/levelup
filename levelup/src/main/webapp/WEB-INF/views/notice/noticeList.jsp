@@ -30,17 +30,17 @@
 
 			<c:import url="/WEB-INF/views/common/page-title.jsp" />
 			<!-- 여기서부터 내용 작성 -->
+			<h1 class="mt-4">전체 공지사항</h1>
 
 
 			<main class="mt-5 pt-5">
 				<div class="container-fluid px-4">
-					<h1 class="mt-4">전체 공지사항</h1>
 
 					<div class="card mb-4">
 						<div class="card-header">
 							<div class="btn-group float-end">
 									<c:if
-										test="${loginEmployee.rankId eq 'sman' || loginEmployee.rankId eq 'jdirec' || loginEmployee.rankId eq 'direc' || loginEmployee.rankId eq 'ceo'}">
+										test="${loginEmployee.rankId eq 'jdirec' || loginEmployee.rankId eq 'direc' || loginEmployee.rankId eq 'ceo'}">
 										<button
 											onclick="javascript:location.href='${ pageContext.servletContext.contextPath }/nwrite.do';">공지글
 											등록</button>
@@ -66,6 +66,7 @@
 									<tr>
 										<th>공지 제목</th>
 										<th>작성자</th>
+										<th>직급</th>
 										<th>조회수</th>
 										<th>작성일</th>
 									</tr>
@@ -77,6 +78,7 @@
 												href="${pageContext.servletContext.contextPath}/ndetail.do?noticeId=${n.noticeId}"
 												class="subject">${n.noticeTitle}</a></td>
 											<td>${n.employeeName}</td>
+											<td>${n.rankName}</td>
 											<td>${n.readCount}</td>
 											<td>${n.editDate}</td>
 										</tr>
