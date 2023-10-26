@@ -52,60 +52,20 @@ function requestDelete(){
 							<div class="email-rightbar mb-3">
 
 								<div class="card">
+								<div class="flex-grow-1">
+                    <b class="font-size-14 mt-1">${ notice.employeeName }</b> <small class="text-muted"><a href="mailto:${ notice.employeeEmail }">${ notice.employeeEmail }</a></small><br>
+                    <small class="text-muted">${ notice.departmentName } / ${ notice.teamName }팀 / ${ notice.rankName }</small>
+                    
+                </div>
+						
 									<div class="btn-toolbar p-3" role="toolbar">
-										<div class="btn-group me-2 mb-2 mb-sm-0">
-											<button type="button" class="btn btn-primary waves-light waves-effect"><i
-													class="fa fa-inbox"></i></button>
-											<button type="button" class="btn btn-primary waves-light waves-effect"><i
-													class="fa fa-exclamation-circle"></i></button>
-											<button type="button" class="btn btn-primary waves-light waves-effect"><i
-													class="far fa-trash-alt"></i></button>
-										</div>
-										<div class="btn-group me-2 mb-2 mb-sm-0">
-											<button type="button" class="btn btn-primary waves-light waves-effect"
-												data-bs-toggle="dropdown" aria-expanded="false">
-												<i class="fa fa-folder"></i> <i class="mdi mdi-chevron-down ms-1"></i>
-											</button>
-											<div class="dropdown-menu">
-												<a class="dropdown-item" href="#">Updates</a>
-												<a class="dropdown-item" href="#">Social</a>
-												<a class="dropdown-item" href="#">Team Manage</a>
-											</div>
-										</div>
-										<div class="btn-group me-2 mb-2 mb-sm-0">
-											<button type="button" class="btn btn-primary waves-light waves-effect"
-												data-bs-toggle="dropdown" aria-expanded="false">
-												<i class="fa fa-tag"></i> <i class="mdi mdi-chevron-down ms-1"></i>
-											</button>
-											<div class="dropdown-menu">
-												<a class="dropdown-item" href="#">Updates</a>
-												<a class="dropdown-item" href="#">Social</a>
-												<a class="dropdown-item" href="#">Team Manage</a>
-											</div>
-										</div>
-
-										<div class="btn-group me-2 mb-2 mb-sm-0">
-											<button type="button" class="btn btn-primary waves-light waves-effect"
-												data-bs-toggle="dropdown" aria-expanded="false">
-												More <i class="mdi mdi-dots-vertical ms-2"></i>
-											</button>
-											<div class="dropdown-menu">
-												<a class="dropdown-item" href="#">Mark as Unread</a>
-												<a class="dropdown-item" href="#">Mark as Important</a>
-												<a class="dropdown-item" href="#">Add to Tasks</a>
-												<a class="dropdown-item" href="#">Add Star</a>
-												<a class="dropdown-item" href="#">Mute</a>
-											</div>
-										</div>
+										<div class="message-title">제목: ${notice.noticeTitle}</div>
+										
 									</div>
 								<ul class="message-list">
   <li class="message-item">
     <div class="col-mail col-mail-1">
-      <div class="checkbox-wrapper-mail">
-        <input type="checkbox" id="chk1">
-        <label for="chk1" class="toggle"></label>
-      </div>
-      <div class="message-title">제목: ${notice.noticeTitle}</div>
+      
       <div class="message-author">작성자: ${notice.employeeName}</div>
       <span class="star-toggle far fa-star"></span>
     </div>
@@ -145,15 +105,9 @@ function requestDelete(){
 
 								<div class="row">
 									<div class="col-7">
-										Showing 1 - 20 of 1,524
+										공지 adm상세보기
 									</div>
 									<div class="col-5">
-										<div class="btn-group float-end">
-											<button type="button" class="btn btn-sm btn-success waves-effect"><i
-													class="fa fa-chevron-left"></i></button>
-											<button type="button" class="btn btn-sm btn-success waves-effect"><i
-													class="fa fa-chevron-right"></i></button>
-										</div>
 									</div>
 								</div>
 
@@ -165,41 +119,6 @@ function requestDelete(){
 					<!--  end row -->
 				</div>
 	
-			<!-- Modal -->
-			<div class="modal fade" id="composemodal" tabindex="-1" role="dialog" aria-labelledby="composemodalTitle"
-				aria-hidden="true">
-				<div class="modal-dialog modal-dialog-centered" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="composemodalTitle">New Message</h5>
-							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-						</div>
-						<div class="modal-body">
-							<div>
-								<div class="mb-3">
-									<input type="email" class="form-control" placeholder="To">
-								</div>
-
-								<div class="mb-3">
-									<input type="text" class="form-control" placeholder="Subject">
-								</div>
-								<div class="mb-3">
-									<form method="post">
-										<textarea id="email-editor" name="area"></textarea>
-									</form>
-								</div>
-
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-							<button type="button" class="btn btn-primary">Send <i
-									class="fab fa-telegram-plane ms-1"></i></button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- end modal -->
 
 
 	 	<!-- container-fluid -->			

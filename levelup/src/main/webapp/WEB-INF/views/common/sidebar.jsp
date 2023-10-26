@@ -48,7 +48,7 @@
 								<span key="t-dashboards">일정관리</span>
 							</a>
 							<ul class="sub-menu" aria-expanded="false">
-								<li><a href="calendar.do" key="t-default">일정보기</a></li>
+								<li><a href="calendarList.do" key="t-default">일정보기</a></li>
 								<li><a href="#" key="t-default">일정등록</a></li>
 								<li><a href="#" key="t-default">일정수정</a></li>
 								<li><a href="#" key="t-default">일정삭제</a></li>
@@ -78,6 +78,17 @@
 								<li><a href="movecomdetail.do" key="t-default">DetailView</a></li>
 								<li><a href="#" key="t-default">일정수정</a></li>
 								<li><a href="#" key="t-default">일정삭제</a></li>
+							</ul>
+						</li>	
+
+						<li>
+							<a href="javascript: void(0);" class="has-arrow waves-effect">
+								<i class="bx bx-home-circle"></i>
+								<span key="t-dashboards">데이터크롤링시각화</span>
+							</a>
+							<ul class="sub-menu" aria-expanded="false">
+								<li><a href="runCrawling.do" key="t-default">데이터크롤링실행</a></li>
+								<li><a href="steam.do" key="t-default">데이터시각화</a></li>
 							</ul>
 						</li>	
 						

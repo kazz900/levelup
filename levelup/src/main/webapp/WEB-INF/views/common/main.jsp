@@ -3,6 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<c:if test="${ empty loginEmployee }">
+   <c:redirect url="eloginPage.do"/>
+</c:if>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -101,9 +104,6 @@ $(function(){
 </head>
 <body data-sidebar="dark" data-layout-mode="light">
 
-<c:if test="${ empty loginEmployee }">
-   <c:redirect url="eloginPage.do"/>
-</c:if>
 
 <c:import url="/WEB-INF/views/common/layout.jsp"/>
 	<!-- ============================================================== -->

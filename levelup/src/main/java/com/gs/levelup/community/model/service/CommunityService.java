@@ -48,9 +48,12 @@ public interface CommunityService {
 
 	public int updateRepReadCount(String board_id);
 
+	public int updateAttach(Community community);
+
 	public ArrayList<Community> selectCommunities5(String keyword);
-	
-	
-	
+
+	public int selectSearchCount(String keyword);
+
+	public ArrayList<Community> selectSearch(Search search);
 
 }
