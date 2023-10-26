@@ -29,12 +29,14 @@
 
 <!-- 여기서부터 내용 작성 -->
 
-
+<div class="container-fluid">
 <div class="row mb-3">
 	<div class="col-12">
 		<div>
 		<form class="form-control" action="comSearch.do">
-		<div class="row mb-3">
+		<div class="row">
+
+<!-- 
 		 <div class="col-4">
 			<div class="form-floating">
 	            	<input name="keyword" type="search" class="form-control" id="floatingInput" placeholder="검색할 키워드를 입력해 주세요" required="true">
@@ -45,6 +47,8 @@
 	     	<input name="page" type="hidden" value="${ currentPage }">
 	     	            	<input type ="submit" class="btn btn-primary align-middle" value="검색">
 	     </div>
+ -->
+
 	     <div class="col-3">
 							<button type="button" class="btn btn-primary waves-light waves-effect"
 								onclick="javascript:location.href='movecomWrite.do'">
@@ -53,20 +57,21 @@
 		</div>
 		</form>
 			
-<div class="row row row-cols-1 row-cols-md-2 mt-3 gx-7">
+<div class="row row row-cols-1 row-cols-md-2 mt-3">
 <c:forEach var="b" items="${ list }" >
 
 
+<div class="container">
 <div class="card gx-3 overflow-hidden">
   <div class="card-body">
-    <h5 class="card-title">${ b.board_title }</h5>
-    <div class="card-text overflow-auto">${ b.board_body }</div>
+    <h5 class="card-title fs-3">${ b.board_title }</h5>
+    <div class="card-text overflow-auto fs-4">${ b.board_body }</div>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">${ b.department_name }/${ b.team_name }팀/${ b.rank_name }/ <b>${ b.employee_name }</b></li>
-    <li class="list-group-item">작성일: ${ b.board_date } 조회수: 	${ b.read_count }</li>
+    <li class="list-group-item"><i class="fas fa-pen-nib fs-4 text-primary text-opacity-20"></i> ${ b.department_name }/${ b.team_name }팀/${ b.rank_name }/ <b class="fs-4 text-primary">${ b.employee_name }</b></li>
+    <li class="list-group-item"><i class="mdi mdi-clock-outline fs-4 text-primary text-opacity-20"></i> ${ b.board_date }  <i class="fas fa-eye fs-4 text-primary text-opacity-20"></i> ${ b.read_count }</li>
 <c:if test="${ !empty b.attachement_filename }">
-    <li class="list-group-item">${ b.attachement_filename }</li>
+    <li class="list-group-item text-bg-light"><i class="fas fa-file-alt fs-4 text-primary text-opacity-20"></i> ${ b.attachement_filename }</li>
 </c:if>
   </ul>
   <div class="card-body
@@ -76,10 +81,12 @@ text-bg-info
   ">
     <a href="comdetail.do?board_id=${ b.board_id }&page=${currentPage}" class="btn btn-primary">상세보기</a>
 <c:if test="${ b.refYN == 'y' }">
-	&nbsp;&nbsp;<i class="mdi mdi-message-plus-outline fs-1"></i>
+	&nbsp;&nbsp;<i class="mdi mdi-message-plus-outline fs-1 text-primary text-opacity-20"></i>
 </c:if>
   </div>
 </div>
+</div>
+
 </c:forEach>
 
 
@@ -91,6 +98,8 @@ text-bg-info
 
 		</div>
 		<!--  end row -->
+	</div>
+
 	</div>
 
 <!-- Modal -->
