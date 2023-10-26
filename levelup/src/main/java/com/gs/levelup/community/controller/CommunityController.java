@@ -421,7 +421,12 @@ public class CommunityController {
 		
 		File delFile = new File(savePath + "/" + fileName);
 		if (delFile.exists()) {
+			logger.info("delFile : exists " + delFile.exists());
+			System.gc();
+			System.runFinalization();
 			delFile.delete();
+			logger.info("delFile : after delete " + delFile.exists());
+			
 		}
 		
 		// 파일 저장 디렉토리 파일 목록 불러와서 배열 처리

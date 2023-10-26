@@ -53,15 +53,11 @@
 		</div>
 		</form>
 			
-<div class="row row row-cols-1 row-cols-md-2 gx-7">
+<div class="row row row-cols-1 row-cols-md-2 mt-3 gx-7">
 <c:forEach var="b" items="${ list }" >
 
 
-<div class="card gx-3 overflow-hidden 
-<c:if test="${ b.refYN == 'y' }">
-text-bg-success
-</c:if>
-">
+<div class="card gx-3 overflow-hidden">
   <div class="card-body">
     <h5 class="card-title">${ b.board_title }</h5>
     <div class="card-text overflow-auto">${ b.board_body }</div>
@@ -73,10 +69,14 @@ text-bg-success
     <li class="list-group-item">${ b.attachement_filename }</li>
 </c:if>
   </ul>
-  <div class="card-body">
+  <div class="card-body
+  <c:if test="${ b.refYN == 'y' }">
+text-bg-info
+</c:if>
+  ">
     <a href="comdetail.do?board_id=${ b.board_id }&page=${currentPage}" class="btn btn-primary">상세보기</a>
 <c:if test="${ b.refYN == 'y' }">
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="mdi mdi-message-plus-outline fs-2"></i>
+	&nbsp;&nbsp;<i class="mdi mdi-message-plus-outline fs-1"></i>
 </c:if>
   </div>
 </div>

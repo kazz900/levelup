@@ -225,13 +225,30 @@ var previewConfig = [];
 if(imgs != null){
 	for ( var i in imgs) {
 		previews.push('${ pageContext.servletContext.contextPath }/resources/com_upfiles/${ community.board_id }/' + imgs[i]);
-		previewConfig.push({caption:imgs[i]});
+		
+		let fileLength = imgs[i].length;
+		let fileDot = imgs[i].lastIndexOf('.');
+		let fileType = imgs[i].substring(fileDot+1, fileLength).toLowerCase();
+		
+		if(fileType == 'txt'){
+			previewConfig.push({caption:imgs[i], type:'text'});
+		} else if(fileType == 'pdf') { 
+			previewConfig.push({caption:imgs[i], type:'pdf'});
+		} else if(fileType == 'doc' || fileType == 'xls' || fileType == 'ppt') { 
+			previewConfig.push({caption:imgs[i], type:'office'});
+		} else if(fileType == 'mp4') { 
+			previewConfig.push({caption:imgs[i], type:'video'});
+		} else {
+			previewConfig.push({caption:imgs[i]});
+		}
 	}
 }
 
-
+</c:if>
 
 $(function(){
+	
+	<c:if test="${ !empty community.attachement_filename }">
 	$("#upfiles").fileinput({
 	overwriteInitial: false,
     initialPreview: previews,
@@ -250,8 +267,8 @@ $(function(){
 //	,
 //	layoutTemplates: {main2: '{preview} ' + ' {remove} {browse}'},
 	}) //fileinput 
-	</c:if>
 
+	</c:if>
 	
 	<c:if test="${ !empty replys }">   
 
@@ -262,16 +279,30 @@ $(function(){
 	var imgs${ r.board_id } = ${ r.attachement_filename};
 	var previews${ r.board_id } = [];
 	var previewConfig${ r.board_id } = [];
-	console.log(previews${ r.board_id });
-	console.log(previewConfig${ r.board_id });
 
 	if(imgs${ r.board_id } != null){
 		for ( var i in imgs${ r.board_id }) {
 			previews${ r.board_id }.push('${ pageContext.servletContext.contextPath }/resources/com_upfiles/${ r.board_id }/' + imgs${ r.board_id }[i]);
-			previewConfig${ r.board_id }.push({caption:imgs[i]});
+			
+			let fileLength = imgs${ r.board_id }[i].length;
+			let fileDot = imgs${ r.board_id }[i].lastIndexOf('.');
+			let fileType = imgs${ r.board_id }[i].substring(fileDot+1, fileLength).toLowerCase();
+			
+			if(fileType == 'txt'){
+				previewConfig${ r.board_id }.push({caption:imgs${ r.board_id }[i], type:'text'});
+			} else if(fileType == 'pdf') { 
+				previewConfig${ r.board_id }.push({caption:imgs${ r.board_id }[i], type:'pdf'});
+			} else if(fileType == 'doc' || fileType == 'xls' || fileType == 'ppt') { 
+				previewConfig${ r.board_id }.push({caption:imgs${ r.board_id }[i], type:'office'});
+			} else if(fileType == 'mp4') { 
+				previewConfig${ r.board_id }.push({caption:imgs${ r.board_id }[i], type:'video'});
+			}else {
+				previewConfig${ r.board_id }.push({caption:imgs${ r.board_id }[i]});
+			}
 		}
 	}
-
+	console.log(previews${ r.board_id });
+	console.log(previewConfig${ r.board_id });
 
 		$("#${r.board_id}").fileinput({
 		overwriteInitial: false,

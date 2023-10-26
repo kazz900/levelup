@@ -165,9 +165,27 @@ var imgs = ${ community.attachement_filename};
 var previews = [];
 var previewConfig = [];
 
-for ( var i in imgs) {
-	previews.push('${ pageContext.servletContext.contextPath }/resources/com_upfiles/${ community.board_id }/' + imgs[i]);
-	previewConfig.push({caption:imgs[i],key:imgs[i]});
+if(imgs != null){
+	for ( var i in imgs) {
+		previews.push('${ pageContext.servletContext.contextPath }/resources/com_upfiles/${ community.board_id }/' + imgs[i]);
+		
+		let fileLength = imgs[i].length;
+		let fileDot = imgs[i].lastIndexOf('.');
+		let fileType = imgs[i].substring(fileDot+1, fileLength).toLowerCase();
+		
+		if(fileType == 'txt'){
+			previewConfig.push({caption:imgs[i], type:'text'});
+		} else if(fileType == 'pdf') { 
+			previewConfig.push({caption:imgs[i], type:'pdf'});
+		} else if(fileType == 'doc' || fileType == 'xls' || fileType == 'ppt') { 
+			previewConfig.push({caption:imgs[i], type:'office'});
+		} else if(fileType == 'mp4') { 
+			previewConfig.push({caption:imgs[i], type:'video'});
+		} else {
+			previewConfig.push({caption:imgs[i]});
+		}
+		
+	}
 }
 
 $(function(){
