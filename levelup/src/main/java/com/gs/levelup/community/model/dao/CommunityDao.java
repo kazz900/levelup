@@ -112,4 +112,13 @@ public class CommunityDao {
 		return (ArrayList<Community>)list;
 	}
 
+public int selectSearchCount(String keyword) {
+	return sqlSessionTemplate.selectOne("comMapper.selectSearchCount", keyword);
+}
+
+public ArrayList<Community> selectSearch(Search search) {
+	List<Community> list = sqlSessionTemplate.selectList("comMapper.selectSearch",search);
+	return (ArrayList<Community>)list;
+}
+
 }

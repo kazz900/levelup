@@ -160,12 +160,84 @@ BOARD_BODY = #{board_body}
     where BOARD_ID = #{board_id}
 	</update>
 
-		
-<!-- 	
-	<select id="getSearchTitleCount" parameterType="string" resultType="_int">
-		select count(*) from Community where Community_TITLE like '%' || #{ keyword } || '%'
-	</select>
 	
+	<select id="selectSearchCount" parameterType="string" resultType="_int">
+		select count(*) from (
+	
+				select rownum rnum, BOARD_ID, DEPARTMENT_ID, 
+							            EMPLOYEE_ID, BOARD_TITLE, BOARD_DATE, board_body, 
+							            ATTACHEMENT_FILENAME, BOARD_TYPE, READ_COUNT, 
+							            ref_id , refyn, delyn , team_id,
+							             rank_id, rank_name, department_name, team_name,
+								     employee_name, employee_email
+			               from (
+			               
+			               select  BOARD_ID, community.DEPARTMENT_ID, 
+							            EMPLOYEE_ID, BOARD_TITLE, BOARD_DATE, board_body, 
+							            ATTACHEMENT_FILENAME, BOARD_TYPE, READ_COUNT, 
+							            ref_id , refyn, delyn , community.team_id,
+							             rank_id, rank_name, department_name, team_name,
+								     employee_name, employee_email 
+								    from community 
+								    join (select 
+								    rank_id, rank_name, department_name, team_name,
+								    employee_id, employee_name, employee_email
+								    from employee
+								        join rank using (rank_id)
+								        join department using (department_id)
+								        join team using (team_id))
+								        using (employee_id)
+								    where delYN = 'n' and ref_id is null
+								    
+								    and BOARD_TITLE like '%' || #{ keyword } || '%'
+			OR ATTACHEMENT_FILENAME like '%' || #{ keyword } || '%'
+			OR BOARD_BODY like '%' || #{ keyword } || '%'
+			OR employee_name like '%' || #{ keyword } || '%'
+								    
+								    order by BOARD_DATE desc)
+								    
+									     )  
+	</select>
+
+	<select id="selectSearch" parameterType="Search" resultMap="resultCom">
+	select * from (
+	
+				select rownum rnum, BOARD_ID, DEPARTMENT_ID, 
+							            EMPLOYEE_ID, BOARD_TITLE, BOARD_DATE, board_body, 
+							            ATTACHEMENT_FILENAME, BOARD_TYPE, READ_COUNT, 
+							            ref_id , refyn, delyn , team_id,
+							             rank_id, rank_name, department_name, team_name,
+								     employee_name, employee_email
+			               from (
+			               
+			               select  BOARD_ID, community.DEPARTMENT_ID, 
+							            EMPLOYEE_ID, BOARD_TITLE, BOARD_DATE, board_body, 
+							            ATTACHEMENT_FILENAME, BOARD_TYPE, READ_COUNT, 
+							            ref_id , refyn, delyn , community.team_id,
+							             rank_id, rank_name, department_name, team_name,
+								     employee_name, employee_email 
+								    from community 
+								    join (select 
+								    rank_id, rank_name, department_name, team_name,
+								    employee_id, employee_name, employee_email
+								    from employee
+								        join rank using (rank_id)
+								        join department using (department_id)
+								        join team using (team_id))
+								        using (employee_id)
+								    where delYN = 'n' and ref_id is null
+								    
+								    and BOARD_TITLE like '%' || #{ keyword } || '%'
+			OR ATTACHEMENT_FILENAME like '%' || #{ keyword } || '%'
+			OR BOARD_BODY like '%' || #{ keyword } || '%'
+			OR employee_name like '%' || #{ keyword } || '%'
+								    
+								    order by BOARD_DATE desc)
+								    
+									     )  
+		 where	rnum between #{ startRow } and #{ endRow }
+	</select>
+<!--	
 	<select id="getSearchContentCount" parameterType="string" resultType="_int">
 		select count(*) from Community where Community_CONTENT like '%' || #{ keyword } || '%'
 	</select>

@@ -421,7 +421,12 @@ public class CommunityController {
 		
 		File delFile = new File(savePath + "/" + fileName);
 		if (delFile.exists()) {
+			logger.info("delFile : exists " + delFile.exists());
+			System.gc();
+			System.runFinalization();
 			delFile.delete();
+			logger.info("delFile : after delete " + delFile.exists());
+			
 		}
 		
 		// 파일 저장 디렉토리 파일 목록 불러와서 배열 처리
@@ -449,34 +454,12 @@ public class CommunityController {
 	}
 
 
-
-	// 첨부파일
-	@RequestMapping("comfdown.do")
-	public ModelAndView fileDownMethod(ModelAndView mv, HttpServletRequest request,
-			@RequestParam("ofile") String originalFileName, @RequestParam("rfile") String renameFileName) {
-		// 파일 다운 메소드는 리턴타입이 ModelAndView 로 정해져 있음
-		String savePath = request.getSession().getServletContext().getRealPath("resources/notice_upfiles");
-
-		// 저장 폴더에서 읽을 파일에 대한 파일 객체 생성함
-		File renameFile = new File(savePath + "\\" + renameFileName);
-		// 파일 다운시 브라우저 내보낼 원래 파일이름에 대한 파일 객체 생성
-		File originFile = new File(originalFileName);
-
-		// 파일 다운로드용 뷰로 전달할 정보 저장 처리
-		mv.setViewName("filedown");
-		// 등록된 파일다운로드용 뷰클래스의 id명
-		// 뷰클래스 order 에 따라 파일다운로드를 먼저 찾고 없으면 jsp 리졸버로 넘어감
-		mv.addObject("renameFile", renameFile);
-		mv.addObject("originFile", originFile);
-
-		return mv;
-
-	}
-
 	// 공지글 제목 검색용 (페이징 처리 포함)
-	@RequestMapping(value = "comSearchTitle.do", method = RequestMethod.POST)
-	public ModelAndView selectSearchTitle(@RequestParam("action") String action,
-			@RequestParam("keyword") String keyword, @RequestParam(name = "limit", required = false) String slimit,
+	@RequestMapping("comSearch.do")
+	public ModelAndView selectSearchTitle(
+//			@RequestParam("action") String action,
+			@RequestParam("keyword") String keyword, 
+			@RequestParam(name = "limit", required = false) String slimit,
 			@RequestParam(name = "page", required = false) String page, ModelAndView mv) {
 		// 검색 결과에 대한 페이징 처리
 		// 검색 결과에 대한 페이징 처리
@@ -495,10 +478,10 @@ public class CommunityController {
 		}
 
 		// 총페이지수 계산을 위한 검색결과 적용된 총 목록 갯수 조회
-		int listCount = communityService.selectSearchTitleCount(keyword);
+		int listCount = communityService.selectSearchCount(keyword);
 
 		// 뷰 페이지에 사용할 페이징 관련 값 계산처리
-		Paging paging = new Paging(listCount, currentPage, limit, "comSearchTitle.do");
+		Paging paging = new Paging(listCount, currentPage, limit, "comSearch.do");
 		paging.calculator();
 
 		// 2. 서비스 메소드 호출하고 리턴 결과 다루기
@@ -506,8 +489,9 @@ public class CommunityController {
 		search.setStartRow(paging.getStartRow());
 		search.setEndRow(paging.getEndRow());
 		search.setKeyword(keyword);
+		logger.info("comSearch.do" + search);
 
-		ArrayList<Community> list = communityService.selectSearchTitle(search);
+		ArrayList<Community> list = communityService.selectSearch(search);
 
 		// 받은 결과에 따라 성공/ 실패 페이지 내보내기
 		if (list != null && list.size() > 0) {
@@ -515,12 +499,11 @@ public class CommunityController {
 			mv.addObject("paging", paging);
 			mv.addObject("currentPage", currentPage);
 			mv.addObject("limit", limit);
-			mv.addObject("action", action);
 			mv.addObject("keyword", keyword);
 
-			mv.setViewName("notice/noticeListView");
+			mv.setViewName("community/comlist");
 		} else {
-			mv.addObject("message", action + "에 대한 " + keyword + " 검색 결과가 존재하지 않습니다.");
+			mv.addObject("message", keyword + " 에 대한 검색 결과가 존재하지 않습니다.");
 			mv.setViewName("common/error");
 		}
 
