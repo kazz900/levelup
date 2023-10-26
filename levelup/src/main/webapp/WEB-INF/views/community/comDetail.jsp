@@ -102,7 +102,7 @@
 					<div class="row">
 						<div class="kv-avatar col-12">
 			                <div class="file-loading">
-            			        <input id="upfiles" type="file" disabled="true">
+            			        <input id="upfiles" type="file">
                 			</div>
             			</div>
   					</div>
@@ -149,7 +149,7 @@
 					<div class="row">
 						<div class="kv-avatar col-12">
 			                <div class="file-loading">
-            			        <input id="${ r.board_id }" type="file" disabled="true">
+            			        <input id="${ r.board_id }" type="file">
                 			</div>
             			</div>
   					</div>
@@ -242,13 +242,13 @@ $(function(){
     showBrowse: false,
     browseOnZoneClick: false,
     initialPreviewShowDelete: false,
-    initialPreviewFileType: 'image', // image is the default and can be overridden in config below
 //	browseLabel: '파일 선택',
 //	removeLabel: '선택 리셋',
 //	removeTitle: '파일 업로드 창 리셋',
 	elErrorContainer: '#kv-avatar-errors-1',
-	msgErrorClass: 'alert alert-block alert-danger',
-	layoutTemplates: {main2: '{preview} ' + ' {remove} {browse}'},
+	msgErrorClass: 'alert alert-block alert-danger'
+//	,
+//	layoutTemplates: {main2: '{preview} ' + ' {remove} {browse}'},
 	}) //fileinput 
 	</c:if>
 
@@ -282,10 +282,11 @@ $(function(){
 	    showUpload: false,
 	    showBrowse: false,
 	    browseOnZoneClick: false,
-	    initialPreviewShowDelete: false,
-		elErrorContainer: '#kv-avatar-errors-1',
-		msgErrorClass: 'alert alert-block alert-danger',
-		layoutTemplates: {main2: '{preview} '},
+	    initialPreviewShowDelete: false
+//	    ,
+//		elErrorContainer: '#kv-avatar-errors-1',
+//		msgErrorClass: 'alert alert-block alert-danger',
+//		layoutTemplates: {main2: '{preview} '},
 		}) //fileinput 
 
 	</c:if>
