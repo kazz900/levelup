@@ -32,7 +32,7 @@
 
 	
 						<div class="col-6 border border3 pt-3 pb-3">
-						<div class="container" text-align: center;">
+						<div text-align: center;">
 							<canvas id="myChart" width="100%" height="100%"></canvas>
 						</div>
 						</div>
@@ -56,7 +56,7 @@ $(function(){
             var itemCount = [];
             
 <c:forEach var="b" items="${ list }">
-            itemId.push("${b.name}");
+            itemId.push(`${b.name}`);
             itemCount.push(${b.meta});
 </c:forEach>
             // 차트를 생성하고 데이터를 설정
