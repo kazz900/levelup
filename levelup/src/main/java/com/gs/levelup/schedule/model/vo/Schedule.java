@@ -20,7 +20,16 @@ public class Schedule  implements java.io.Serializable{
 	private String scheduleAddress;
 	private String scheduleTheme;
 	private String scheduleContent;
+	private String read;
 	
+	public String getRead() {
+		return read;
+	}
+
+	public void setRead(String read) {
+		this.read = read;
+	}
+
 	public Schedule() {}
 
 	public Schedule(String scheduleId, String employeeId, String departmentId, String teamId, String rankId,
