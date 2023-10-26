@@ -138,7 +138,8 @@ public class UserController {
 
 		// 페이지에 출력할 목록 조회해 옴
 		ArrayList<Inquiry> list = inquiryService.selectList(paging);
-
+			
+		logger.info("uhelp.do : 페이지 오류 테스트 : " + list.size());
 		if (list != null && list.size() > 0) {
 			model.addAttribute("list", list);
 			model.addAttribute("paging", paging);

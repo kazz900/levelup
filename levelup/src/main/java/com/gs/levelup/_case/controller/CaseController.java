@@ -608,7 +608,7 @@ private static final Logger logger = LoggerFactory.getLogger(CaseController.clas
 					search.setPaymentKey(paymentKey);
 					search.setCancelReason(cancelReason);
 				
-					if(paymentService.cancelPayment(search) > 0){ //payment 테이블에서 결제 내역 삭제
+					if(paymentService.cancelPayment(search) > 0){ //payment 테이블에서 결제 내역 환불 상태로 업데이트
 						
 						logger.info("오라클DB 결제내역 업데이트 성공");
 				

@@ -416,16 +416,18 @@ public class CommunityController {
 		Community community = new Community();
 		community.setBoard_id(board_id);
 		
-		JSONObject sendJson = new JSONObject();
-
+		String resJson = "";
 		
 		File delFile = new File(savePath + "/" + fileName);
 		if (delFile.exists()) {
 			logger.info("delFile : exists " + delFile.exists());
-			System.gc();
-			System.runFinalization();
-			delFile.delete();
-			logger.info("delFile : after delete " + delFile.exists());
+			if(delFile.delete()) {
+				logger.info("delFile : after delete " + delFile.exists());
+				resJson = "{}";
+			} else {
+				logger.info("delFile : " + fileName + " delete failed" );
+				resJson = "{error: 'file deletion error'}";
+			}
 			
 		}
 		
@@ -444,12 +446,10 @@ public class CommunityController {
 			community.setAttachement_filename(attachement_filename);
 		}
 		if (communityService.updateAttach(community) > 0) {
-			sendJson.put("error", "false");
-			//{error: BOOLEAN_VALUE}
-			return "{}";
+			return resJson;
 		} else {
-			sendJson.put("error", "true");
-			return sendJson.toJSONString();
+			resJson = "{ error : 'DB update failed'}";
+			return resJson;
 		}
 	}
 
