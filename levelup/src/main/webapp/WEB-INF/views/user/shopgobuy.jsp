@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>유저 상점 결제 페이지</title>
 <c:import url="/WEB-INF/views/common/head-script.jsp"/>
 <script src="https://js.tosspayments.com/v1/payment-widget"></script>
 <script src="resources/js/jquery-3.7.0.min.js"></script>
@@ -55,42 +55,42 @@ $(function(){
 </head>
 <body>
 <c:import url="/WEB-INF/views/user/userHeader.jsp"/>
-<br>
-<div class="container">
-	<div class="divider">
-		<h3>캐릭터를 선택해 주세요</h3>
-		<table id="charlist" cellspacing="0" width="700">
-		</table>
-		<br>
-		<img src="/levelup/resources/images/itemlist/${requestScope.item.itemId}.png" alt="Item 15">
-		<br>
+	<br>
+	<div class="container">
+	
+		<div class="row pt-4 mb-5">
+			<div class="col-1"></div>
+			<div class="col-4 pt-5 bg-white">
+				<div class="container">
+					<h3>구매전 캐릭터를 선택해 주세요</h3>
+					<table id="charlist" cellspacing="0" width="700">
+					</table>
+					<br> <img
+						src="/levelup/resources/images/itemlist/${requestScope.item.itemId}.png"
+						alt="Item 15"> <br>
 		
-		<p>가격 : ${requestScope.item.price}</p>
-		<p>
-  <c:choose>
-    <c:when test="${not empty requestScope.item.discountRate}">
-      할인율 : ${requestScope.item.discountRate}
-    </c:when>
-    <c:otherwise>
-      &nbsp;
-    </c:otherwise>
-  </c:choose>
-</p>
-		<%-- <p>userId : ${ sessionScope.loginUser.userId }</p>
-		<p>accountId : ${ sessionScope.loginUser.accountId }</p>
-		<br>
-		<p>Item id: ${ requestScope.item.itemId }</p> --%>
+					<p>가격 : ${requestScope.item.price}</p>
+					<p>
+					<c:choose>
+						<c:when test="${not empty requestScope.item.discountRate}">
+					      할인율 : ${requestScope.item.discountRate}
+					    </c:when>
+						<c:otherwise>
+					      &nbsp;
+					    </c:otherwise>
+					</c:choose>
+				</p>
+				</div>
+			</div>
+			<div class="col-7 bg-white">
+				<br> <br>
+				<div id="payment-method"></div>
+				<div id="agreement"></div>
+				<button id="payment-button" class="btn btn-link ms-2 mb-3">결제하기</button>
+			</div>
+		</div>
 	</div>
-	<div class="divider">
-		<br>
-		<br>
-		<div id="payment-method"></div>
-		  <div id="agreement"></div>
-		  <br>
-		<button id="payment-button">결제하기</button>
-	</div>
-</div>
-<c:import url="/WEB-INF/views/user/userFooter.jsp"/>
+	<c:import url="/WEB-INF/views/user/userFooter.jsp"/>
 <script type="text/javascript">
 // 김지혁
 const clientKey = 'test_ck_6BYq7GWPVvnz7o1ODvR5VNE5vbo1';

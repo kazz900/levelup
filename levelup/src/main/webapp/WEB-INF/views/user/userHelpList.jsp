@@ -21,9 +21,12 @@
     	alert("삭제되었습니다.");
     </script>
 </c:if>
-<div>
 <div class="container">
-<hr><br><br><br><br><br>
+<div class="row">
+<div class="col-3"></div>
+<div class="col-7">
+<div class="container">
+<hr><br><br><br>
 <h3>도움말&문의</h3>|
 <a onclick="help1()">&nbsp;&nbsp;&nbsp; 환불문의 &nbsp;&nbsp;&nbsp;</a>|
 <a onclick="help2()">&nbsp;&nbsp;&nbsp; 게임문의 &nbsp;&nbsp;&nbsp;</a>| 
@@ -90,18 +93,30 @@
 
 				<!-- container-fluid -->
 			</div>
-			<!-- page-content -->
-				<c:import url="/WEB-INF/views/common/pagingView.jsp" />
-		</div>
-<div class="container">
-	<c:if test="${ !empty sessionScope.loginUser }">
-		<input type="button" value="작성하기" id="submitButton">
-	</c:if>
-	<c:if test="${ empty sessionScope.loginUser }">
-		&nbsp;
-	</c:if>
-</div>
+			<br><br><br><br>
+		<!-- page-content -->
 
+</div>
+<div class="col-2"></div>
+</div>
+<div class="row">
+<div class="col-2"></div>
+<div class="col-7">
+		<div>
+			<c:import url="/WEB-INF/views/common/pagingView.jsp" />
+		</div>
+				<div class="container ms-5 mt-5">
+					<c:if test="${ !empty sessionScope.loginUser }">
+						<input type="button" value="작성하기" id="submitButton">
+					</c:if>
+					<c:if test="${ empty sessionScope.loginUser }">
+						&nbsp;
+					</c:if>
+				</div>
+</div>
+<div class="col-3"></div>
+</div>
+</div>
 
 <script type="text/javascript">
         // 버튼 클릭 이벤트 핸들러
