@@ -77,10 +77,10 @@
 							<div class="form-floating">
 				            	<input name="board_title" type="text" class="form-control" id="floatingInput" placeholder="제목을 입력해 주세요" required="true">
 				            	<label for="floatingInput">제목</label>
+				          	</div>
 				          		<input name="employee_id" value="${ loginEmployee.employeeId }" type="hidden">
 				          		<input name="department_id" value="${ loginEmployee.departmentId }" type="hidden">
 				          		<input name="team_id" value="${ loginEmployee.teamId }" type="hidden">
-				          	</div>
 						</div>
 					</div>
 					<div class="row mb-2">

@@ -27,6 +27,9 @@
  		<typeAlias type="com.gs.levelup.common.Paging" alias="Paging" />
  		<typeAlias type="com.gs.levelup.common.Search" alias="Search" />
  		<typeAlias type="com.gs.levelup.common.SearchDate" alias="SearchDate" />
+ 		<typeAlias type="com.gs.levelup.python.Python" alias="Python" />
+ 		
+ 		
 	</typeAliases>
 
 	<mappers>
@@ -41,5 +44,6 @@
 		<mapper resource="mappers/oracle/case-mapper.xml" />
 		<mapper resource="mappers/oracle/community-mapper.xml" />
 		<mapper resource="mappers/oracle/emailcheck-mapper.xml" />
+		<mapper resource="mappers/oracle/python-mapper.xml"/>
 	</mappers>
 </configuration>
