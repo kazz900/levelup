@@ -16,6 +16,7 @@
 		<result column="SCHEDULE_ADDRESS" property="scheduleAddress" />
 		<result column="SCHEDULE_THEME" property="scheduleTheme" />
 		<result column="SCHEDULE_CONTENT" property="scheduleContent" />
+		<result column="READ" property="read" />
 		
 		
 	</resultMap>
@@ -30,11 +31,20 @@
 		]]>
 	</select>
 	
+	<select id="selectTDScheduleList" resultMap="resultSchedule">
+		<![CDATA[
+		select * from schedule where (read is null and (trunc(schedule_startday) <= trunc(sysdate) and trunc(schedule_endday) >= trunc(sysdate))) 
+		and (EMPLOYEE_ID = #{employeeId}
+		 or (SCHEDULE_TYPE = '2' and DEPARTMENT_ID = #{departmentId}) 
+		 or (SCHEDULE_TYPE = '3' and TEAM_ID = #{teamId}))
+		]]>
+	</select>
+	
 	<insert id="insertSchedule" parameterType="Schedule">
 		insert into schedule 
 		values (default, 
 				#{employeeId}, #{departmentId}, #{teamId}, #{rankId}, 
-				#{scheduleStartday}, #{scheduleEndday}, #{scheduleType}, #{scheduleAddress}, #{scheduleTheme}, #{scheduleContent})
+				#{scheduleStartday}, #{scheduleEndday}, #{scheduleType}, #{scheduleAddress}, #{scheduleTheme}, #{scheduleContent}, default)
 	</insert>
 	
 	<update id="updateSchedule" parameterType="Schedule">
@@ -44,7 +54,16 @@
         SCHEDULE_ADDRESS = #{scheduleAddress},
         SCHEDULE_TYPE = #{scheduleType},
         SCHEDULE_THEME = #{scheduleTheme},
-        SCHEDULE_CONTENT = #{scheduleContent}
+        SCHEDULE_CONTENT = #{scheduleContent},
+        READ = null
+        
+    where SCHEDULE_ID = #{scheduleId}
+	</update>
+	
+	<update id="updateReadSchedule" parameterType="Schedule">
+    update schedule 
+    set READ = #{read}
+        
         
     where SCHEDULE_ID = #{scheduleId}
 	</update>
