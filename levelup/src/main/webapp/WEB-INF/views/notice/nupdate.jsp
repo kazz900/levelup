@@ -26,7 +26,6 @@
 
 				<!-- 여기서부터 내용 작성 -->
 				<h1 align="left">공지글 수정 페이지</h1>
-				${ notice.noticeId } 번 공지글 수정 페이지</h1>
 <br>
 <form action="nupdate.do" method="post"
 					enctype="multipart/form-data">
@@ -50,7 +49,8 @@
 									<p class="card-title-desc">
 									<tr>
 										<th>작성자</th>
-											<td><input type="text" name="employeeId" readonly value="${ sessionScope.loginEmployee.employeeId }"></td></tr>
+											<td> : ${ sessionScope.loginEmployee.employeeName }
+											<input type="hidden" name="employeeId" readonly value="${ sessionScope.loginEmployee.employeeId }"></td></tr>
 									<tr>
 									<br>
 											<th>첨부파일 : </th>
@@ -80,9 +80,6 @@
     										onclick="javascript:window.location.href='<%= session.getAttribute("listPage") %>';"></th>
 											
 											<br>
-											<th><a>##previousPage##     <%= session.getAttribute("previousPage") %></a>
-											<br>
-											<a>##listPage##     <%= session.getAttribute("listPage") %></a>
 									</tr>
 								</div>
 							</div>

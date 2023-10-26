@@ -29,8 +29,8 @@
 				
 				<form action="ninsert.do" method="post"
 					enctype="multipart/form-data">
-					<input type="hidden" value="${ sessionScope.loginEmployee.teamId }" name="teamId">
-					<input type="hidden" value="${ sessionScope.loginEmployee.departmentId }" name="departmentId">
+					<input type="hidden" value="none" name="teamId">
+					<input type="hidden" value="none" name="departmentId">
 					<div class="row">
 						<div class="col-12">
 							<div class="card">
