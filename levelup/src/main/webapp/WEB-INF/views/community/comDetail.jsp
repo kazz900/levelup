@@ -91,8 +91,8 @@
             </div>
 			<div>
             제목 
-            <h4 class="font-size-16 border border-3 p-1">${ community.board_title }</h4>
-	            <div class="border border-2 p-2">
+            <h4 class="font-size-16 border border-3 p-1 fs-3">${ community.board_title }</h4>
+	            <div class="border border-2 p-2 fs-4">
 				${ community.board_body }
 				</div>
 			</div>
@@ -138,8 +138,8 @@
             </div>
 			<div>
             제목 
-            <h4 class="font-size-16 border border-3 p-1">${ r.board_title }</h4>
-	            <div class="border border-2 p-2">
+            <h4 class="fs-3 border border-3 p-1">${ r.board_title }</h4>
+	            <div class="fs-4 border border-2 p-2">
 				${ r.board_body }
 				</div>
 			</div>
@@ -257,6 +257,7 @@ $(function(){
     initialPreviewConfig: previewConfig,
     showUpload: false,
     showBrowse: false,
+    showRemove: false,
     browseOnZoneClick: false,
     initialPreviewShowDelete: false,
 //	browseLabel: '파일 선택',
@@ -312,6 +313,7 @@ $(function(){
 	    initialPreviewConfig: previewConfig${ r.board_id },
 	    showUpload: false,
 	    showBrowse: false,
+	    showRemove: false,
 	    browseOnZoneClick: false,
 	    initialPreviewShowDelete: false
 //	    ,
