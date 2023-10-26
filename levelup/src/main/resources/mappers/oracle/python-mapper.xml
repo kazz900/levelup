@@ -9,7 +9,7 @@
 	
 		
 	<select id="selectAll" resultMap="resultP">
-		select * from tour where rownum between 1 and 20
+		select * from (select rownum rnum, name, meta from (select name , meta  from tour order by meta desc)) where rnum between 1 and 30
 	</select>
 
 	<delete id="deleteAll">
