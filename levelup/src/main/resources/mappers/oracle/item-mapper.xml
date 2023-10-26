@@ -32,8 +32,8 @@
 		select * 
 		from (select rownum rnum, ITEM_ID, ITEM_NAME, DISCOUNT_RATE 
 		    from (select * from item 
-		          order by DISCOUNT_RATE)) 
-		where rnum <= 3
+		          order by DISCOUNT_RATE desc nulls last)) 
+		where rnum <= 6
 		]]>
 	</select>
 </mapper>
