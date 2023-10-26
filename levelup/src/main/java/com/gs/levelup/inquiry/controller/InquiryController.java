@@ -74,7 +74,9 @@ public class InquiryController {
 			@RequestParam(name = "end", required = false) String end,
 			@RequestParam(name = "keyword", required = false) String keyword,
 			@RequestParam(name = "page", required = false) String page,
-			@RequestParam(name = "type", required = false) String type, Model model, RedirectAttributes re) {
+			@RequestParam(name = "type", required = false) String type, 
+			Model model, 
+			RedirectAttributes re) {
 
 		if (action.equals("writer")) {
 			re.addAttribute("action", action);

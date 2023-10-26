@@ -29,10 +29,13 @@ $(function(){
                 var values = "";
 
                 for (var i in json.list) {
-                    values += "<div class='user-item-card'><img src='/levelup/resources/images/itemlist/"
-                        + json.list[i].itemId + ".png' alt='item" + json.list[i].itemId + "'>"
+                	values += 
+                    	"<div class='user-item-card' style='width: 200px;'>"
+                    	+ "<img src='/levelup/resources/images/sales/" + json.list[i].discountRate + ".png' alt='sales' style='position: relative;width: 50px; height: 50px;z-index:2;'>"
+                    	+ "<img src='/levelup/resources/images/itemlist2/"
+                        + json.list[i].itemId + ".png' alt='item" + json.list[i].itemId + "' style='margin-top:-20px;'>"
                         + "<h3>" + json.list[i].itemName + "</h3>"
-                        + "<p> -" + json.list[i].discountRate + "%</p>"
+                        
                         + "<a href='" + "${pageContext.servletContext.contextPath}/itembuypage.do?itemname=" 
                         + json.list[i].itemName + "' class='btn btn-secondary'>구매하기</a></div>";
                 }
@@ -60,11 +63,14 @@ $(function(){
                 var values = "";
 
                 for (var i in json.list) {
-                    values += "<div class='user-item-card'><img src='/levelup/resources/images/itemlist/"
-                        + json.list[i].itemId + ".png' alt='item" + json.list[i].itemId + "'>"
+                    values += 
+                    	"<div class='user-item-card' style='width: 200px;'>"
+                    	+ "<img src='/levelup/resources/images/sales/" + json.list[i].discountRate + ".png' alt='sales' style='position: relative;width: 50px; height: 50px;z-index:2;'>"
+                    	+ "<img src='/levelup/resources/images/itemlist2/"
+                        + json.list[i].itemId + ".png' alt='item" + json.list[i].itemId + "' style='margin-top:-20px;'>"
                         + "<h3>" + json.list[i].itemName + "</h3>"
-                        + "<p> -" + json.list[i].discountRate + "%</p>"
-                        + "<a class='btn btn-secondary purchase-button' onclick='logincheck()'>구매하기</a></div>";
+                       
+                        + "<a class='btn btn-secondary purchase-button ' onclick='logincheck()' style='margin-left:0 auto;'>구매하기</a></div>";
                 }
                 
                 $('#user-items').html($('#user-items').html() + values);
@@ -88,6 +94,7 @@ function cmdgame(){
 	window.location.href = "test://";
 }
 </script>
+
 </head>
 <body>
 
@@ -96,7 +103,13 @@ function cmdgame(){
 	<section class="hero">
 	
 		<div class="container">
-		<h3>welcome to Manaworld</h3>
+		<div class="row">
+		<div class="col-4">
+		<div class="banner-container">
+		<img src="/levelup/resources/images/logo/umain2.png" width="300" height="300" alt="메인화면배너 사진">
+		</div>
+		</div>
+		<div class="col-7">
 			<c:if test="${ empty sessionScope.loginUser }">
 				<div class="umainloginbox">
 					<div class="button_base b10_tveffect">
@@ -108,7 +121,7 @@ function cmdgame(){
 				        </div>
 						<!-- <a href="http://download.evolonline.org/manaplus/download/manaplus-win32.exe">게임 다운로드</a> -->
 					</div>
-					<div class="uloginbox" onclick="gouloginpage()">로그인하러가기</div>
+					<div class="uloginbox box_inner2" onclick="gouloginpage()">로그인하러가기</div>
 					
 				</div>
 				
@@ -124,41 +137,38 @@ function cmdgame(){
 				        </div>
 						<!-- <a href="http://download.evolonline.org/manaplus/download/manaplus-win32.exe">게임 다운로드</a> -->
 					</div>
-					<div class="uloginbox2">
+					<div class="uloginbox2 box_inner2">
 						<a href="mypage.do?userId=${ loginUser.userId }">${loginUser.userId} 님 방문을 환영합니다.</a>
+						<br><br>
 						<a href="logout.do">로그아웃</a>
 					</div>
 					
 				</div>
 			</c:if>
-		</div>
-	</section>
-
-	<section class="featured-games">
-		<div class="container">
-			<h3>event cash shop</h3>
-			<br>
-			<div class="user-items" id="user-items">
-				<!-- <div class="user-item-card">
-					<img src="#" alt="item 1">
-					<h3>item Title 1</h3>
-					<p>Explore a fantastic world in this epic adventure.</p>
-					<a href="#" class="btn btn-secondary">구매하기</a>
-				</div>
-				<div class="user-item-card">
-					<img src="#" alt="item 2">
-					<h3>item Title 2</h3>
-					<p>Compete with friends in this exciting multiplayer game.</p>
-					<a href="#" class="btn btn-secondary">구매하기</a>
-				</div>
-				<div class="user-item-card">
-					<img src="#" alt="item 3">
-					<h3>item Title 3</h3>
-					<p>Compete with friends in this exciting multiplayer game.</p>
-					<a href="#" class="btn btn-secondary">구매하기</a>
-				</div> -->
+			</div>
+			<div class="col-1"></div>
 			</div>
 		</div>
+	</section>
+	
+	<div class="container">
+		<section class="featured-games">
+		<div class="row pb-5 pl-auto pl-auto">
+		
+			<div class="col-1"></div>
+			<div class="col-3 border border-2"><img src="/levelup/resources/images/logo/eventshop.png" height="34"></div>
+			<div class="col-7"> <p style="font-size:10px;text-align: right;">*일주일간 진행되는 할인상점입니다.</p></div>
+			<div class="col-1"></div>
+		</div>
+		<div class="row pb-5 pl-auto pl-auto">
+			<div class="col-1"></div>
+			<div class="col-9 border border-4"><div class="user-items" id="user-items" style="witdh:852px;margin:0 auto;margin-top:10px;"></div></div>
+			<div class="col-1"></div>
+		</div>
+	</div>	
+			
+		
+	
 	</section>
 <c:import url="/WEB-INF/views/user/userFooter.jsp"/>
 

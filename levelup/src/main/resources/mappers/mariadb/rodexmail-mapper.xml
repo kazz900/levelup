@@ -46,7 +46,8 @@ LAST_INSERT_ID(),
 1,
 #{ uniqueId });
 
-	</insert>
+  
+ </insert>
 	
 	<select id="selectRodexMailId" parameterType="long" resultType="_int">
 		select evol.rodex_items.mail_id from evol.rodex_items where evol.rodex_items.unique_id = #{ uniqueId };

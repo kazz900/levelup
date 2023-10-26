@@ -13,6 +13,7 @@
 		<result column="NOTICE_CONTENT" property="noticeContent" />
 		<result column="EDIT_DATE" property="editDate" />
 		<result column="ATTACHEMENT_FILENAME" property="attachementFilename" />
+		<result column="RENAME_FILENAME" property="renameFilename" />
 		<result column="READ_COUNT" property="readCount" />
 		<result column="rank_id" property="rankId" />
 		<result column="rank_name" property="rankName" />
@@ -36,7 +37,8 @@
 		select * from (select rownum rnum, NOTICE_ID, EMPLOYEE_ID, DEPARTMENT_ID, 
 				            TEAM_ID, NOTICE_TITLE, NOTICE_CONTENT, EDIT_DATE, 
 				            ATTACHEMENT_FILENAME, READ_COUNT, RENAME_FILENAME
-				      from (select * from notice  
+				      from (select * from notice where TEAM_ID = 'none'
+				      and DEPARTMENT_ID = 'none'
 				            order by EDIT_DATE desc, NOTICE_ID desc)
 				     ) 
 		 where rnum between #{ startRow } and #{ endRow }
@@ -49,6 +51,7 @@
 	    ATTACHEMENT_FILENAME, READ_COUNT, RENAME_FILENAME
 	    from (
 	        select * from notice where TEAM_ID = #{teamId}
+	        and DEPARTMENT_ID = #{departmentId}
 	        order by EDIT_DATE desc, NOTICE_ID desc
 			    )
 			)
@@ -83,11 +86,11 @@
 	</select>	
 	
 	<select id="getListCount" resultType="_int">
-		select count(*) from notice
+		select count(*) from notice where TEAM_ID = 'none' and DEPARTMENT_ID = 'none'
 	</select>
 	
 	<select id="getTListCount" resultType="_int">
-		select count(*) from notice where TEAM_ID = #{ teamId }
+		select count(*) from notice where TEAM_ID = #{ teamId } and DEPARTMENT_ID = #{ departmentId }
 	</select>
 	
 	<select id="getDListCount" resultType="_int">
@@ -97,8 +100,8 @@
 	<select id="getSearchTitleCount" parameterType="Search" resultType="_int">
 		  select count(*) from notice
 		  WHERE NOTICE_TITLE LIKE '%' || #{keyword} || '%'
-		  <if test="teamId != '' and departmentId == ''">
-                   AND TEAM_ID = #{teamId}
+		  <if test="teamId != ''">
+                   AND TEAM_ID = #{teamId} and DEPARTMENT_ID = #{departmentId} 
           </if>
           <if test="departmentId != '' and teamId == ''">
                    AND DEPARTMENT_ID = #{departmentId}
@@ -124,9 +127,10 @@
           FROM (SELECT * FROM notice 
                WHERE NOTICE_TITLE LIKE '%' || #{keyword} || '%'
                <if test="teamId != null">
-                   AND TEAM_ID = #{teamId}
+                   AND TEAM_ID = #{teamId} AND DEPARTMENT_ID = #{departmentId}
                </if>
-               <if test="departmentId != null">
+               
+               <if test="teamId == null and departmentId != null">
                    AND DEPARTMENT_ID = #{departmentId}
                </if>
                
@@ -178,8 +182,6 @@
     update notice 
     set EMPLOYEE_ID = #{employeeId}, 
         NOTICE_TITLE = #{noticeTitle},
-        DEPARTMENT_ID = #{departmentId},
-        TEAM_ID = #{teamId},
         NOTICE_CONTENT = #{noticeContent}, 
         EDIT_DATE = sysdate
     <if test="attachementFilename == null">

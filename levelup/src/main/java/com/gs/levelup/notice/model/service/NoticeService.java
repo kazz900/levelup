@@ -10,14 +10,14 @@ import com.gs.levelup.notice.model.vo.Notice;
 
 public interface NoticeService {
 	public ArrayList<Notice> selectList(Paging paging);
-	public ArrayList<Notice> selectTList(Paging paging, String teamId);
+	public ArrayList<Notice> selectTList(Paging paging, String teamId, String departmentId);
 	public ArrayList<Notice> selectDList(Paging paging, String departmentId);
 	public Notice selectOne(String noticeId);
 	public int insertNotice(Notice notice);
 	public int updateNotice(Notice notice);
 	public int deleteNotice(String noticeId);
 	public int selectListCount();
-	public int selectTListCount(String teamId);
+	public int selectTListCount(String teamId, String departmentId);
 	public int selectDListCount(String departmentId);
 	public int selectSearchTitleCount(Search search);
 	public int selectSearchContentCount(String keyword);

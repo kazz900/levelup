@@ -38,7 +38,7 @@
     </head>
 <style>
 .uloginbox{
-	padding-top: 230px;
+	padding-top: 190px;
 	padding-left: 40%;
 	padding-right: 40%;
 }
@@ -88,10 +88,11 @@
 
                                             </form>
                                             <div class="mt-5 text-center">
-                                                <p>Don't have an account ? <a href="${ pageContext.servletContext.contextPath }/userinsertpage.do" class="fw-medium text-primary"> Signup now </a> </p>
+                                                <p>계정이 없으신가요? <a href="${ pageContext.servletContext.contextPath }/userinsertpage.do" class="fw-medium text-primary"> Signup now </a> </p>
+                                                <p>비밀번호 찾기 | <a href="${ pageContext.servletContext.contextPath }/searchPwd.do" class="fw-medium text-primary"> find password </a> </p>
                                             </div>
                                             <div class="mt-5 text-center">
-                                                <p>비밀번호 분실시 - <a href="${ pageContext.servletContext.contextPath }/searchPwd.do" class="fw-medium text-primary"> find password </a> </p>
+                                                
                                             </div>
                                         </div>
                                     </div>

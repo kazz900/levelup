@@ -180,20 +180,26 @@ function showTypeDropdown(){
 										<c:if test="${ empty p.refundCause }">
 											<td data-th="Refund Cause">해당없음</td>
 										</c:if>
-										<c:url var="cwrite" value="rfcaseform.do">
-												<c:param name="paymentId" value="${ p.paymentId }"/>
-												<c:param name="charId" value="${ p.charId }"/>
-												<c:param name="itemId" value="${ p.itemId }"/>
-												<c:param name="uniqueId" value="${ p.uniqueId }"/>
-												<c:param name="paymentKey" value="${ p.paymentKey }"/>
-												<c:param name="page" value="${ nowpage }"/>
-												<c:param name="employeeId" value="${ sessionScope.loginEmployee.employeeId }"/>
-												<c:param name="managerId" value="${ sessionScope.loginEmployee.managerId }"/>
-										</c:url>
-										<!-- 환불기안버튼 -->
-										<td data-th="기안작성"><a href="#"
-											onclick="javascript:location.href='${cwrite}&caseType=3'"
-											class="btn btn-primary waves-effect waves-light">환불 기안</a></td>										
+										<c:if test="${ p.paymentStatus eq '1' || p.paymentStatus eq '3' }">
+											<c:url var="cwrite" value="rfcaseform.do">
+													<c:param name="paymentId" value="${ p.paymentId }"/>
+													<c:param name="charId" value="${ p.charId }"/>
+													<c:param name="itemId" value="${ p.itemId }"/>
+													<c:param name="uniqueId" value="${ p.uniqueId }"/>
+													<c:param name="paymentKey" value="${ p.paymentKey }"/>
+													<c:param name="page" value="${ nowpage }"/>
+													<c:param name="employeeId" value="${ sessionScope.loginEmployee.employeeId }"/>
+													<c:param name="managerId" value="${ sessionScope.loginEmployee.managerId }"/>
+											</c:url>
+											<!-- 환불기안버튼 -->
+											<td data-th="기안작성"><a href="#"
+												onclick="javascript:location.href='${cwrite}&caseType=3'"
+												class="btn btn-primary waves-effect waves-light">환불 기안</a></td>	
+										</c:if>	
+										<c:if test="${ p.paymentStatus eq '2' }">	
+											<td data-th="기안작성"><a href="#" onclick="alreadyrefund();"												
+												class="btn btn-secondary waves-effect waves-light">환불 완료</a></td>
+										</c:if>							
 									</tr>
 								</c:forEach>
 							</c:if>
@@ -258,7 +264,11 @@ function showTypeDropdown(){
 			document.body.appendChild(f);
 			f.submit();
 		}
-	</script>
+		
+		function alreadyrefund(){
+			alert("이미 환불이 된 결제내역 입니다");
+		}
+	</script>	
 </body>
 </html>
 

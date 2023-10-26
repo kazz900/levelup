@@ -80,8 +80,7 @@
                                     
                              <!-- 기안 분류 -->
                                     <div class="text-center" align="center">
-                                        <div class="row">
-                                        
+                                        <div class="row">                                    
                                         
                                             <div class="col-sm-2">
                                                 <div>

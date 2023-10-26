@@ -29,11 +29,11 @@
 					src="/levelup/resources/images/users/umainlogo.jpg"
 					class="umainlogo" alt="Game Logo"></a>
 				<ul class="uheaderul">
-					<li><a href="${ pageContext.servletContext.contextPath }/umain.do">Home</a></li>
-					<li><a href="${ pageContext.servletContext.contextPath }/ushop.do">shop</a></li>
-					<li><a href="${ pageContext.servletContext.contextPath }/uhelp.do">고객지원</a></li>
-					<li><a href="${ pageContext.servletContext.contextPath }/uabout.do">About Us</a></li>
-					<div style="padding-left: 600px;"><a style="color:black;" onclick="gouloginpage()">로그인해주세요</a></div>
+					<li><a class="aclick1" href="${ pageContext.servletContext.contextPath }/umain.do">Home</a></li>
+					<li><a class="aclick1" href="${ pageContext.servletContext.contextPath }/ushop.do">shop</a></li>
+					<li><a class="aclick1" href="${ pageContext.servletContext.contextPath }/uhelp.do">고객지원</a></li>
+					<li><a class="aclick1" href="${ pageContext.servletContext.contextPath }/uabout.do">About Us</a></li>
+					<div style="padding-left: 600px;"><a style="color:black;" href="gouloginpage.do">로그인해주세요</a></div>
 				</ul>
 				
 		</nav>
@@ -46,13 +46,13 @@
 					src="/levelup/resources/images/users/umainlogo.jpg"
 					class="umainlogo" alt="Game Logo"></a>
 				<ul class="uheaderul">
-					<li><a href="${ pageContext.servletContext.contextPath }/umain.do">Home</a></li>
-					<li><a href="${ pageContext.servletContext.contextPath }/ushop.do">shop</a></li>
-					<li><a href="${ pageContext.servletContext.contextPath }/uhelp.do">고객지원</a></li>
-					<li><a href="mypage.do?userId=${ loginUser.userId }">MyPage</a></li>					
-					<li><a href="${ pageContext.servletContext.contextPath }/uabout.do">About Us</a></li>
-					<div style="padding-left: 600px;"><a href="mypage.do?userId=${ loginUser.userId }" style="color:black;">${ sessionScope.loginUser.userId }
-					</a></div>
+					<li><a class="aclick1" href="${ pageContext.servletContext.contextPath }/umain.do">Home</a></li>
+					<li><a class="aclick1" href="${ pageContext.servletContext.contextPath }/ushop.do">shop</a></li>
+					<li><a class="aclick1" href="${ pageContext.servletContext.contextPath }/uhelp.do">고객지원</a></li>
+					<li><a class="aclick1" href="mypage.do?userId=${ loginUser.userId }">MyPage</a></li>					
+					<li><a class="aclick1" href="${ pageContext.servletContext.contextPath }/uabout.do">About Us</a></li>
+					<div style="padding-left: 580px;"><a href="mypage.do?userId=${ loginUser.userId }" style="color:black;">${ sessionScope.loginUser.userId } 마이페이지
+					</a> <a href="logout.do"> | 로그아웃</a></div>
 				</ul>
 		</nav>
 	</header>

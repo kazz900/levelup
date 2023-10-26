@@ -81,7 +81,7 @@
                 if (response === "success") {
                     // 업데이트 성공 처리
                     alert("스케줄이 성공적으로 업데이트되었습니다.");
-                    window.location.href = "calendarList.do";
+                    /* window.location.href = "calendarList.do"; */
                     
                     // 필요한 추가 작업 수행
                 } else {
