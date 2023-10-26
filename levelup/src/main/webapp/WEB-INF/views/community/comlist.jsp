@@ -16,6 +16,7 @@
 <!-- 헤드 스크립트 -->
 <c:import url="/WEB-INF/views/common/head-script.jsp"/>
 
+
 </head>
 <body data-sidebar="dark" data-layout-mode="light">
 <!-- 내비게이션바, 사이드바 등등 -->
@@ -57,7 +58,7 @@
 		</div>
 		</form>
 			
-<div class="row row row-cols-1 row-cols-md-2 mt-3">
+<div class="row row row-cols-1 row-cols-md-2 mt-3" data-masonry='{"percentPosition": true }'>
 <c:forEach var="b" items="${ list }" >
 
 
@@ -71,7 +72,7 @@
     <li class="list-group-item"><i class="fas fa-pen-nib fs-4 text-primary text-opacity-20"></i> ${ b.department_name }/${ b.team_name }팀/${ b.rank_name }/ <b class="fs-4 text-primary">${ b.employee_name }</b></li>
     <li class="list-group-item"><i class="mdi mdi-clock-outline fs-4 text-primary text-opacity-20"></i> ${ b.board_date }  <i class="fas fa-eye fs-4 text-primary text-opacity-20"></i> ${ b.read_count }</li>
 <c:if test="${ !empty b.attachement_filename }">
-    <li class="list-group-item text-bg-light"><i class="fas fa-file-alt fs-4 text-primary text-opacity-20"></i> ${ b.attachement_filename }</li>
+    <li class="list-group-item"><i class="fas fa-file-alt fs-4 text-primary text-opacity-20"></i> ${ b.attachement_filename }</li>
 </c:if>
   </ul>
   <div class="card-body
@@ -155,6 +156,7 @@ text-bg-info
         <!-- email editor init -->
         <script src="resources/js/pages/email-editor.init.js"></script>
 
+	<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
 
 </body>
 </html>
