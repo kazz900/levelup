@@ -94,6 +94,7 @@ public class NoticeController {
 			Employee loginEmployee = (Employee)session.getAttribute("loginEmployee");
 			String teamId = loginEmployee.getTeamId();
 			String departmentId = loginEmployee.getDepartmentId();
+			String employeeId = loginEmployee.getEmployeeId();
 		int currentPage = 1;
 		if (page != null) {
 			currentPage = Integer.parseInt(page);
@@ -113,6 +114,7 @@ public class NoticeController {
 		session.setAttribute("listPage", request.getRequestURL().toString());
 		session.setAttribute("departmentId", departmentId);
 		session.setAttribute("teamId", teamId);
+		session.setAttribute("employeeId", employeeId);
 		
 		int listCount = noticeService.selectListCount();
 		Paging paging = new Paging(listCount, currentPage, ttlimit, "nlist.do");
@@ -125,6 +127,11 @@ public class NoticeController {
 			model.addAttribute("paging", paging);
 			model.addAttribute("currentPage", currentPage);
 			model.addAttribute("limit", ttlimit);
+			model.addAttribute("departmentId", departmentId);
+			model.addAttribute("teamId", teamId);
+			model.addAttribute("employeeId", employeeId);
+			
+			request.setAttribute("title", "전체 공지사항");
 			
 			return "notice/noticeList";
 		}else {
@@ -177,7 +184,7 @@ public class NoticeController {
 			model.addAttribute("paging", paging);
 			model.addAttribute("currentPage", currentPage);
 			model.addAttribute("limit", ttlimit);
-			
+			request.setAttribute("title", "팀 공지사항");
 			return "notice/noticeTList";
 		}else {
 			model.addAttribute("message", currentPage + "페이지 목록 조회 실패!");
@@ -226,7 +233,7 @@ public class NoticeController {
 					model.addAttribute("paging", paging);
 					model.addAttribute("currentPage", currentPage);
 					model.addAttribute("limit", ddlimit);
-					
+					request.setAttribute("title", "부서 공지사항");
 					return "notice/noticeDList";
 				}else {
 					model.addAttribute("message", currentPage + "페이지 목록 조회 실패!");

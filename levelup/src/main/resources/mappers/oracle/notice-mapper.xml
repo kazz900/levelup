@@ -14,7 +14,14 @@
 		<result column="EDIT_DATE" property="editDate" />
 		<result column="ATTACHEMENT_FILENAME" property="attachementFilename" />
 		<result column="READ_COUNT" property="readCount" />
-		<result column="RENAME_FILENAME" property="renameFilename" />
+		<result column="rank_id" property="rankId" />
+		<result column="rank_name" property="rankName" />
+		<result column="department_name" property="departmentName" />
+		<result column="team_name" property="teamName" />
+		<result column="employee_name" property="employeeName" />
+		<result column="employee_email" property="employeeEmail" />
+		
+		
 	</resultMap>
 	
 	<resultMap type="Notice" id="resultNotice5">
@@ -61,10 +68,18 @@
 	</select>
 
 	<select id="selectOne" parameterType="string" resultMap="resultNotice">
-		select n.*, e.employee_name as employeeName
-    from notice n
-    left join employee e on n.employee_id = e.employee_id
-    where n.NOTICE_ID = #{noticeId}
+		
+		select *
+    from notice 
+    join (select 
+    rank_id, rank_name, department_name, team_name,
+    employee_id, employee_name, employee_email
+    from employee
+        join rank using (rank_id)
+        join department using (department_id)
+        join team using (team_id))
+        using (employee_id)
+    where NOTICE_ID = #{noticeId}
 	</select>	
 	
 	<select id="getListCount" resultType="_int">
