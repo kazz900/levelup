@@ -21,33 +21,30 @@
 	</resultMap>
 
 	<insert id="insertRodexMail" parameterType="Map">
-INSERT INTO rodex_mail VALUE (
-NULL,
-'SYSTEM',
-150021,
-#{ receiverName } ,
-#{ receiverId },
-0,
-concat('Dear ',#{ receiverName },'. Thank you for purchase '),
-'Here is your item which you bought.',
-0,
-6,
-0,
-0,
-#{ sendDate },
-2000000000,
-100);
-
-INSERT INTO rodex_items 
-(mail_id, nameid, amount, identify, unique_id) VALUES (
-LAST_INSERT_ID(),
-#{ nameId },
-1,
-1,
-#{ uniqueId });
-=======
-#{ uniqueId })
->>>>>>> 784346cdb9f95d368e10c1ee3de72ccf22621708
+		INSERT INTO rodex_mail VALUE (
+		NULL,
+		'SYSTEM',
+		150021,
+		#{ receiverName } ,
+		#{ receiverId },
+		0,
+		concat('Dear ',#{ receiverName },'. Thank you for purchase '),
+		'Here is your item which you bought.',
+		0,
+		6,
+		0,
+		0,
+		#{ sendDate },
+		2000000000,
+		100);
+		
+		INSERT INTO rodex_items 
+		(mail_id, nameid, amount, identify, unique_id) VALUES (
+		LAST_INSERT_ID(),
+		#{ nameId },
+		1,
+		1,
+		#{ uniqueId });
 
 	</insert>
 	

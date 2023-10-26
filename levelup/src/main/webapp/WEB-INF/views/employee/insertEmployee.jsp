@@ -42,10 +42,13 @@ function validate(){
 
 	<div class="main-content">
 		<div class="page-content">
-			<div class="container-fluid" style="margin:7% 35%;">
-
+		
 				<c:import url="/WEB-INF/views/common/page-title.jsp" />
-
+				<div class="row"><br><br><br><br></div>
+							<div class="row">
+							<div class="col-3"></div>
+							<div class="col-6 bg-white border border-3">
+							<h4 class="pt-3">직원 등록란</h4>
 				<!-- 여기서부터 내용 작성 -->
 				<form action="empenroll.do" id="enrollForm" method="post" onsubmit="return validate();">
 				    <label for="departmentId">부서 선택 :</label>
@@ -76,6 +79,7 @@ function validate(){
 				    <br><br>
 				    <label for="employeePwd">비밀번호 : </label>
 				    <input type="password" name="employeePwd" id="employeePwd" required>
+				    <br>
 				    <label for="employeePwd2">비밀번호 확인 : </label>
 				    <input type="password" name="employeePwd2" id="employeePwd2" required>
 				    <br><br>
@@ -89,7 +93,7 @@ function validate(){
 				    <input type="date" name="employeeBirthdate" id="employeeBirthdate" placeholder="enter birthday" required>
 				    <input type="hidden" value="${ loginEmployee.employeeId }" id="managerId" name="managerId">
 				    <br><br>
-				    <button type="submit">제출</button>
+				    <button class="mb-4" type="submit">제출</button>
 				</form>
 				
 				<script>
@@ -117,6 +121,8 @@ function validate(){
 				
 				</script>
 				<!-- container-fluid -->
+				</div>
+			<div class="col-3"></div>
 			</div>
 			<!-- page-content -->
 		</div>
