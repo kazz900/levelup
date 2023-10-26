@@ -68,8 +68,10 @@ $(function(){
                     datasets: [{
                         label: '전세계 온라인 게임 동시접속자수 (Steam)',
                         data: itemCount,
-                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                        borderColor: 'rgba(255, 99, 132, 1)',
+                        //backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        //borderColor: 'rgba(255, 99, 132, 1)',
+                        backgroundColor: 'rgba(11, 238, 49, 0.49)',
+                        borderColor: 'rgba(11, 238, 49, 0.9)',
                         borderWidth: 1
                     }]
                 },
