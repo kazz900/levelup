@@ -36,38 +36,80 @@
 	<select id="selectList" parameterType="Paging" resultMap="resultNotice">
 		select * from (select rownum rnum, NOTICE_ID, EMPLOYEE_ID, DEPARTMENT_ID, 
 				            TEAM_ID, NOTICE_TITLE, NOTICE_CONTENT, EDIT_DATE, 
-				            ATTACHEMENT_FILENAME, READ_COUNT, RENAME_FILENAME
-				      from (select * from notice where TEAM_ID = 'none'
-				      and DEPARTMENT_ID = 'none'
-				            order by EDIT_DATE desc, NOTICE_ID desc)
-				     ) 
+				            ATTACHEMENT_FILENAME, READ_COUNT, RENAME_FILENAME,
+				             rank_id, rank_name, department_name, team_name,
+					     employee_name, employee_email
+               from (select  NOTICE_ID, EMPLOYEE_ID, DEPARTMENT_ID, 
+				            TEAM_ID, NOTICE_TITLE, NOTICE_CONTENT, EDIT_DATE, 
+				            ATTACHEMENT_FILENAME, READ_COUNT, RENAME_FILENAME,
+				             rank_id, rank_name, department_name, team_name,
+					     employee_name, employee_email
+					    from notice 
+					    join (select 
+					    rank_id, rank_name, department_name, team_name,
+					    employee_id, employee_name, employee_email
+					    from employee
+					        join rank using (rank_id)
+					        join department using (department_id)
+					        join team using (team_id))
+					        using (employee_id)
+					    where TEAM_ID = 'none' and DEPARTMENT_ID = 'none'
+					    order by EDIT_DATE desc)
+									     )  
 		 where rnum between #{ startRow } and #{ endRow }
 	</select>
 	
 	<select id="selectTList" parameterType="Paging" resultMap="resultNotice">
-		select * from (
-	    select rownum rnum, NOTICE_ID, EMPLOYEE_ID, DEPARTMENT_ID, 
-	    TEAM_ID, NOTICE_TITLE, NOTICE_CONTENT, EDIT_DATE, 
-	    ATTACHEMENT_FILENAME, READ_COUNT, RENAME_FILENAME
-	    from (
-	        select * from notice where TEAM_ID = #{teamId}
-	        and DEPARTMENT_ID = #{departmentId}
-	        order by EDIT_DATE desc, NOTICE_ID desc
-			    )
-			)
-		where rnum between #{paging.startRow} and #{paging.endRow}
-		
+		select * from (select rownum rnum, NOTICE_ID, EMPLOYEE_ID, DEPARTMENT_ID, 
+				            TEAM_ID, NOTICE_TITLE, NOTICE_CONTENT, EDIT_DATE, 
+				            ATTACHEMENT_FILENAME, READ_COUNT, RENAME_FILENAME,
+				             rank_id, rank_name, department_name, team_name,
+					     employee_name, employee_email
+               from (select  NOTICE_ID, EMPLOYEE_ID, DEPARTMENT_ID, 
+				            TEAM_ID, NOTICE_TITLE, NOTICE_CONTENT, EDIT_DATE, 
+				            ATTACHEMENT_FILENAME, READ_COUNT, RENAME_FILENAME,
+				             rank_id, rank_name, department_name, team_name,
+					     employee_name, employee_email
+					    from notice 
+					    join (select 
+					    rank_id, rank_name, department_name, team_name,
+					    employee_id, employee_name, employee_email
+					    from employee
+					        join rank using (rank_id)
+					        join department using (department_id)
+					        join team using (team_id))
+					        using (employee_id)
+					   where TEAM_ID = #{teamId} and DEPARTMENT_ID = #{departmentId}
+					    order by EDIT_DATE desc)
+									     )  
+		where rnum between #{ paging.startRow } and #{ paging.endRow }
 
 	</select>
 	
 	<select id="selectDList" parameterType="Paging" resultMap="resultNotice">
 		select * from (select rownum rnum, NOTICE_ID, EMPLOYEE_ID, DEPARTMENT_ID, 
 				            TEAM_ID, NOTICE_TITLE, NOTICE_CONTENT, EDIT_DATE, 
-				            ATTACHEMENT_FILENAME, READ_COUNT, RENAME_FILENAME
-				      from (select * from notice where DEPARTMENT_ID = #{departmentId}
-				            order by EDIT_DATE desc, NOTICE_ID desc)
-				     ) 
-		 where rnum between #{ paging.startRow } and #{ paging.endRow }
+				            ATTACHEMENT_FILENAME, READ_COUNT, RENAME_FILENAME,
+				             rank_id, rank_name, department_name, team_name,
+					     employee_name, employee_email
+               from (select  NOTICE_ID, EMPLOYEE_ID, DEPARTMENT_ID, 
+				            TEAM_ID, NOTICE_TITLE, NOTICE_CONTENT, EDIT_DATE, 
+				            ATTACHEMENT_FILENAME, READ_COUNT, RENAME_FILENAME,
+				             rank_id, rank_name, department_name, team_name,
+					     employee_name, employee_email
+					    from notice 
+					    join (select 
+					    rank_id, rank_name, department_name, team_name,
+					    employee_id, employee_name, employee_email
+					    from employee
+					        join rank using (rank_id)
+					        join department using (department_id)
+					        join team using (team_id))
+					        using (employee_id)
+					   where DEPARTMENT_ID = #{departmentId}
+					    order by EDIT_DATE desc)
+									     )  
+		where rnum between #{ paging.startRow } and #{ paging.endRow }
 	</select>
 
 	<select id="selectOne" parameterType="string" resultMap="resultNotice">

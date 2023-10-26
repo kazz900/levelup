@@ -157,7 +157,6 @@ public class NoticeController {
 			model.addAttribute("teamId", teamId);
 			model.addAttribute("employeeId", employeeId);
 			
-			request.setAttribute("title", "전체 공지사항");
 			
 			return "notice/noticeList";
 		}else {
@@ -210,7 +209,6 @@ public class NoticeController {
 			model.addAttribute("paging", paging);
 			model.addAttribute("currentPage", currentPage);
 			model.addAttribute("limit", ttlimit);
-			request.setAttribute("title", "팀 공지사항");
 			return "notice/noticeTList";
 		}else {
 			model.addAttribute("message", currentPage + "페이지 목록 조회 실패!");
@@ -259,7 +257,6 @@ public class NoticeController {
 					model.addAttribute("paging", paging);
 					model.addAttribute("currentPage", currentPage);
 					model.addAttribute("limit", ddlimit);
-					request.setAttribute("title", "부서 공지사항");
 					return "notice/noticeDList";
 				}else {
 					model.addAttribute("message", currentPage + "페이지 목록 조회 실패!");

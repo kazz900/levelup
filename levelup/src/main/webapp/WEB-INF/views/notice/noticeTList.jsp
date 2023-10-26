@@ -30,11 +30,11 @@
 
 			<c:import url="/WEB-INF/views/common/page-title.jsp" />
 			<!-- 여기서부터 내용 작성 -->
+			<h1 class="mt-4">팀 공지사항</h1>
 
 
 			<main class="mt-5 pt-5">
 				<div class="container-fluid px-4">
-					<h1 class="mt-4">팀 공지사항</h1>
 
 					<div class="card mb-4">
 						<div class="card-header">
@@ -65,7 +65,10 @@
 								<thead>
 									<tr>
 										<th>공지 제목</th>
+										<th>부서명</th>
+										<th>팀명</th>
 										<th>작성자</th>
+										<th>직급</th>
 										<th>조회수</th>
 										<th>작성일</th>
 									</tr>
@@ -76,7 +79,10 @@
 											<td><a
 												href="${pageContext.servletContext.contextPath}/ndetail.do?noticeId=${n.noticeId}"
 												class="subject">${n.noticeTitle}</a></td>
+											<td>${n.departmentName}</td>												
+											<td>${n.teamId}</td>
 											<td>${n.employeeName}</td>
+											<td>${n.rankName}</td>
 											<td>${n.readCount}</td>
 											<td>${n.editDate}</td>
 										</tr>
