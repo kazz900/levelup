@@ -29,10 +29,11 @@ public class NoticeDao {
 		return (ArrayList<Notice>)list;
 	}
 	//공지사항 페이지 단위로 목록 조회 : 공지사항 목록보기용
-	public ArrayList<Notice> selectTList(Paging paging, String teamId){
+	public ArrayList<Notice> selectTList(Paging paging, String teamId, String departmentId){
 		Map<String, Object> parameters = new HashMap<>();
 	    parameters.put("paging", paging);
 	    parameters.put("teamId", teamId);
+	    parameters.put("departmentId", departmentId);
 	    
 	    List<Notice> tlist = sqlSessionTemplate.selectList("noticeMapper.selectTList", parameters);
 	    return (ArrayList<Notice>)tlist;
@@ -74,8 +75,11 @@ public class NoticeDao {
 		return sqlSessionTemplate.selectOne("noticeMapper.getListCount");
 	}
 	
-	public int selectTListCount(String teamId) {
-		return sqlSessionTemplate.selectOne("noticeMapper.getTListCount", teamId);
+	public int selectTListCount(String teamId, String departmentId) {
+		Map<String, Object> parameters = new HashMap<>();
+	    parameters.put("teamId", teamId);
+	    parameters.put("departmentId", departmentId);
+		return sqlSessionTemplate.selectOne("noticeMapper.getTListCount", parameters);
 	}
 	public int selectDListCount(String departmentId) {
 		return sqlSessionTemplate.selectOne("noticeMapper.getDListCount", departmentId);
