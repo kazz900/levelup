@@ -23,10 +23,10 @@
 </c:if>
 <div class="container">
 <div class="row">
-<div class="col-3"></div>
-<div class="col-7">
+<div class="col-2"></div>
+<div class="col-7 bg-white border border-3 mb-5">
 <div class="container">
-<hr><br><br><br>
+<hr>
 <h3>도움말&문의</h3>|
 <a onclick="help1()">&nbsp;&nbsp;&nbsp; 환불문의 &nbsp;&nbsp;&nbsp;</a>|
 <a onclick="help2()">&nbsp;&nbsp;&nbsp; 게임문의 &nbsp;&nbsp;&nbsp;</a>| 
@@ -87,8 +87,13 @@
 						</tbody>
 					</table>
 
-					<br>
-
+					<br><br><br>
+					<c:if test="${ !empty sessionScope.loginUser }">
+						<input type="button" value="문의 작성하기" id="submitButton">
+					</c:if>
+					<c:if test="${ empty sessionScope.loginUser }">
+						&nbsp;
+					</c:if>
 				</div>
 
 				<!-- container-fluid -->
@@ -97,7 +102,7 @@
 		<!-- page-content -->
 
 </div>
-<div class="col-2"></div>
+<div class="col-3"></div>
 </div>
 <div class="row">
 <div class="col-2"></div>
@@ -105,14 +110,7 @@
 		<div>
 			<c:import url="/WEB-INF/views/common/pagingView.jsp" />
 		</div>
-				<div class="container ms-5 mt-5">
-					<c:if test="${ !empty sessionScope.loginUser }">
-						<input type="button" value="작성하기" id="submitButton">
-					</c:if>
-					<c:if test="${ empty sessionScope.loginUser }">
-						&nbsp;
-					</c:if>
-				</div>
+
 </div>
 <div class="col-3"></div>
 </div>

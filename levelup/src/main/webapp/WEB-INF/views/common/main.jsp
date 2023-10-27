@@ -27,74 +27,73 @@ function truncateString(str, maxLength) {
 $(function(){
 	
 	$.ajax({
-		url: "notices5.do",
-		type: "post",
-		data: { keyword: "${loginEmployee.departmentId}" },
-		dataType: "json",
-		success: function(data){
-			console.log("success : " + data);
-			
-			//object --> string
-			var str = JSON.stringify(data);
-			
-			//string --> json
-			var json = JSON.parse(str);
-			
-			values = "";			
-			for(var i in json.nlist){
-				var truncatedFilename = json.nlist[i].attachementFilename
-				if(json.nlist[i].attachementFilename != null){
-					var truncatedFilename = truncateString(json.nlist[i].attachementFilename, 5);
-				}
-				values += "<tr><td><a href='ndetail.do?noticeId=" + json.nlist[i].noticeId + "'>" + decodeURIComponent(json.nlist[i].title).replace(/\+/gi, " ") 
-						+ "</a></td><td>"
-						+ json.nlist[i].date
-						+ "</td><td>"
-						+ truncatedFilename + "</td></tr>";
-			}
-			
-			$('#denotice').html($('#denotice').html() + values);
-		},
-		error: function(jqXHR, textStatus, errorThrown){
-			console.log("error : " + jqXHR + ", " + textStatus + ", " + errorThrown);
-		}
-	}); 
+	    url: "notices5.do",
+	    type: "post",
+	    data: { keyword: "${loginEmployee.departmentId}" },
+	    dataType: "json",
+	    success: function(data) {
+	        console.log("success: " + data);
+
+	        // object --> string
+	        var str = JSON.stringify(data);
+
+	        // string --> json
+	        var json = JSON.parse(str);
+
+	        var values = "";
+	        for (var i in json.nlist) {
+	            values += "<tr><td><a href='ndetail.do?noticeId=" + json.nlist[i].noticeId + "'>" + decodeURIComponent(json.nlist[i].title).replace(/\+/gi, " ") + "</a></td><td>" + json.nlist[i].date + "</td>";
+
+	            if (json.nlist[i].attachementFilename) {
+	                values += "<td data-th='Type' class='text-center'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-clipboard-check' viewBox='0 0 16 16'><path fill-rule='evenodd' d='M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z'/><path d='M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z'/><path d='M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z'/></svg></td>";
+	            } else {
+	                values += "<td data-th='Type' class='text-center'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-clipboard' viewBox='0 0 16 16'><path d='M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z'/><path d='M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z'/></svg></td>";
+	            }
+
+	            values += "</tr>";
+	        }
+
+	        $('#denotice').html($('#denotice').html() + values);
+	    },
+	    error: function(jqXHR, textStatus, errorThrown) {
+	        console.log("error: " + jqXHR + ", " + textStatus + ", " + errorThrown);
+	    }
+	});
 	
 	$.ajax({
-		url: "communities5.do",
-		type: "post",
-		data: { keyword: "${loginEmployee.departmentId}" },
-		dataType: "json",
-		success: function(data){
-			console.log("success : " + data);
-			
-			//object --> string
-			var str = JSON.stringify(data);
-			
-			//string --> json
-			var json = JSON.parse(str);
-			
-			values = "";			
-			for(var i in json.nlist){
-				var truncatedFilename = json.nlist[i].attachementFilename
-				if(json.nlist[i].attachementFilename != null){
-					var truncatedFilename = truncateString(json.nlist[i].attachementFilename, 5);
-				}
-					
-					
-				values += "<tr><td><a href='comdetail.do?board_id=" + json.nlist[i].board_id + "'>" + decodeURIComponent(json.nlist[i].title).replace(/\+/gi, " ") 
-						+ "</a></td><td>"
-						+ json.nlist[i].date
-						+ "</td><td>"
-						+ truncatedFilename + "</td></tr>";
-			}
-			
-			$('#decommunity').html($('#decommunity').html() + values);
-		},
-		error: function(jqXHR, textStatus, errorThrown){
-			console.log("error : " + jqXHR + ", " + textStatus + ", " + errorThrown);
-		}
-	}); 
+	    url: "communities5.do",
+	    type: "post",
+	    data: { keyword: "${loginEmployee.departmentId}" },
+	    dataType: "json",
+	    success: function(data) {
+	        console.log("success: " + data);
+
+	        // object --> string
+	        var str = JSON.stringify(data);
+
+	        // string --> json
+	        var json = JSON.parse(str);
+
+	        values = "";
+	        for (var i in json.nlist) {
+	            values += "<tr><td><a href='comdetail.do?board_id=" + json.nlist[i].board_id + "'>" + decodeURIComponent(json.nlist[i].title).replace(/\+/gi, " ")
+	                    + "</a></td><td>" + json.nlist[i].date + "</td>";
+
+	            if (json.nlist[i].attachementFilename) {
+	                values += "<td data-th='Type' class='text-center'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-clipboard-check' viewBox='0 0 16 16'><path fill-rule='evenodd' d='M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z'/><path d='M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z'/><path d='M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z'/></svg></td>";
+	            } else {
+	                values += "<td data-th='Type' class='text-center'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-clipboard' viewBox='0 0 16 16'><path d='M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z'/><path d='M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z'/></svg></td>";
+	            }
+
+	            values += "</tr>";
+	        }
+
+	        $('#decommunity').html($('#decommunity').html() + values);
+	    },
+	    error: function(jqXHR, textStatus, errorThrown) {
+	        console.log("error: " + jqXHR + ", " + textStatus + ", " + errorThrown);
+	    }
+	});
 	
 
 })
@@ -122,14 +121,13 @@ $(function(){
 						<div class="col-6 border border3 pt-3 pb-10">
 							<h4>${loginEmployee.departmentId}부서 공지사항</h4>
 							<table id="denotice" class="border border-4" cellspacing="0" width="80%">
-								<tr><th>제목</th><th>날짜</th><th>첨부파일</th></tr>
+								<tr><th>제목</th><th>날짜</th><th class="text-center">첨부파일</th></tr>
 							</table>
 						</div>
 						
 						
 						<div class="col-6 border border3 pt-3 pb-10">
 							<h4>국내 게임 시장 데이터 시각화</h4>
-							
 							<iframe src="resources/iframe/index.html" width="100%" height="100%">
 							</iframe>
 							
@@ -167,7 +165,8 @@ $(function(){
 			</div>
 			<!-- End Page-content -->
 			<!-- Start footer -->
-<!-- 			<div th:replace="footer :: footer"></div> -->
+<!-- 			<div th:replace='footer :: footer'></div> -->
+
 			<c:import url="/WEB-INF/views/common/footer.jsp"/>
 			<!-- end footer -->
 			

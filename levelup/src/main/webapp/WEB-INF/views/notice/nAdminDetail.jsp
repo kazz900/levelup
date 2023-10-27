@@ -41,6 +41,14 @@ function moveUpdatePage(){
 	location.href = "${nup}";
 }
 
+function confirmDelete() {
+    var confirmed = confirm("정말 삭제하시겠습니까?");
+    if (confirmed) {
+        // 사용자가 확인을 누르면 삭제 요청을 보냅니다.
+        requestDelete();
+    }
+}
+
 function requestDelete(){
 	location.href = "${nd}";
 }
@@ -95,7 +103,7 @@ function requestDelete(){
 								<div class="buttons">
 								<button onclick="moveUpdatePage(); return false;">수정페이지로
 											이동</button>
-										<button onclick="requestDelete(); return false;">삭제하기</button>
+										<button onclick="confirmDelete(); return false;">삭제하기</button>
 									<button
 										onclick="javascript:window.location.href='<%=session.getAttribute("listPage")%>';">목록</button>
 								</div>

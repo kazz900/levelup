@@ -88,6 +88,9 @@ public class NoticeDao {
 	public int selectSearchTitleCount(Search search) {
 		return sqlSessionTemplate.selectOne("noticeMapper.getSearchTitleCount", search);
 	}
+	public int selectSearchTitleCountD(Search search) {
+		return sqlSessionTemplate.selectOne("noticeMapper.getSearchTitleCountD", search);
+	}
 
 	public int selectSearchContentCount(String keyword) {
 		return sqlSessionTemplate.selectOne("noticeMapper.getSearchContentCount", keyword);

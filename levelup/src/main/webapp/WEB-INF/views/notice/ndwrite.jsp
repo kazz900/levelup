@@ -44,7 +44,7 @@
     <p class="card-title-desc">
         <tr>
             <th>작성자</th>
-            <td><input type="text" name="employeeId" readonly value="${sessionScope.loginEmployee.employeeId}"></td>
+            <td><input type="text" name="employeeId" readonly value="${sessionScope.loginEmployee.employeeName}"></td>
         </tr>
         <tr>
             <th>부서 선택</th>

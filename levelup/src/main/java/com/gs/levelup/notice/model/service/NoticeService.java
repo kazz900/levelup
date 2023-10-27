@@ -20,6 +20,7 @@ public interface NoticeService {
 	public int selectTListCount(String teamId, String departmentId);
 	public int selectDListCount(String departmentId);
 	public int selectSearchTitleCount(Search search);
+	public int selectSearchTitleCountD(Search search);
 	public int selectSearchContentCount(String keyword);
 	public int selectSearchDateCount(SearchDate date);
 	public ArrayList<Notice> selectSearchTitle(Search search);
