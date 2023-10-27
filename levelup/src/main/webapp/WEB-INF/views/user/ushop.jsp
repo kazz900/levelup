@@ -189,7 +189,7 @@
         </div>
         </div>
     </div>
-    <div id="buyItemModal" class="modal">
+    <div id="buyItemModal" class="modal" style="z-index:3;">
 	    <div class="modal-content">
 	        <span class="close" id="closeModal">&times;</span>
 	        <h2>구매 확인</h2>
