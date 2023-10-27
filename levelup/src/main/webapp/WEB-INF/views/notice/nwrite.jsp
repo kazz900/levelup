@@ -46,7 +46,10 @@
 									<p class="card-title-desc">
 									<tr>
 										<th>작성자</th>
-											<td><input type="text" name="employeeId" readonly 
+											<td> : <b>${ sessionScope.loginEmployee.employeeName }
+											</b>
+											
+											<input type="hidden" name="employeeId" readonly 
 											value="${ sessionScope.loginEmployee.employeeId }"></td></tr>
 									<tr>
 											<th>첨부파일</th>

@@ -167,7 +167,31 @@
 					</div>
 				</div>
 			</div>
-
+			<div class="text">
+				<button type="button" class="btn header-item waves-effect"
+					id="departmentName">
+					<span class="d-none d-xl-inline-block ms-1" key="t-henry">${ sessionScope.loginEmployee.departmentId }</span>
+					<i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+				</button>
+				
+			</div>
+			<div class="text">
+				<button type="button" class="btn header-item waves-effect"
+					id="teamName">
+					<span class="d-none d-xl-inline-block ms-1" key="t-henry">${ sessionScope.loginEmployee.teamId }</span>
+					<i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+				</button>
+				
+			</div>
+			<div class="text">
+				<button type="button" class="btn header-item waves-effect"
+					id="rankName">
+					<span class="d-none d-xl-inline-block ms-1" key="t-henry">${ sessionScope.loginEmployee.rankId }</span>
+					<i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+				</button>
+				
+			</div>
+			
 			<div class="dropdown d-inline-block">
 				<button type="button" class="btn header-item waves-effect"
 					id="page-header-user-dropdown" data-bs-toggle="dropdown"
@@ -208,7 +232,71 @@
 
 		</div>
 	</div>
+	<script>
+	var rankId = "${ sessionScope.loginEmployee.rankId }";
+	var teamId = "${ sessionScope.loginEmployee.teamId }";
+	var departmentId = "${ sessionScope.loginEmployee.departmentId }";
 
+	var rankName = "";
+	if (rankId === "emp") {
+	    rankName = "사원";
+	} else if (rankId === "intern") {
+	    rankName = "인턴";
+	} else if (rankId === "chief") {
+	    rankName = "주임";
+	} else if (rankId === "senior") {
+	    rankName = "대리";
+	} else if (rankId === "jman") {
+	    rankName = "과장";
+	} else if (rankId === "sman") {
+	    rankName = "차장";
+	} else if (rankId === "jdirec") {
+	    rankName = "전무";
+	} else if (rankId === "direc") {
+	    rankName = "이사";
+	} else if (rankId === "ceo") {
+	    rankName = "CEO";
+	} else {
+	    // 기타 경우에 대한 처리
+	}
+
+	var teamName = "";
+	if (teamId === "none") {
+	    teamName = "총괄";
+	} else if (teamId === "backend") {
+	    teamName = "백엔드";
+	} else if (teamId === "webfront") {
+	    teamName = "프론트개발";
+	} else if (teamId === "anddev") {
+	    teamName = "안드로이드개발";
+	} else if (teamId === "iosdev") {
+	    teamName = "iOS개발";
+	} else if (teamId === "cs") {
+	    teamName = "고객서비스";
+	} else {
+	    // 기타 경우에 대한 처리
+	}
+
+	var departmentName = "";
+	if (departmentId === "dev") {
+	    departmentName = "개발부";
+	} else if (departmentId === "marketing") {
+	    departmentName = "영업부";
+	} else if (departmentId === "trade") {
+	    departmentName = "무역부";
+	} else if (departmentId === "accounting") {
+	    departmentName = "경리부";
+	} else if (departmentId === "none") {
+	    departmentName = "총괄";
+	} else {
+	    // 기타 경우에 대한 처리
+	}
+
+    document.getElementById("rankName").innerHTML = rankName;
+    document.getElementById("teamName").innerHTML = teamName;
+    document.getElementById("departmentName").innerHTML = departmentName	;
+</script>
+	
 
 
 </header>

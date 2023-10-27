@@ -31,7 +31,7 @@
 			<c:import url="/WEB-INF/views/common/page-title.jsp" />
 			<!-- 여기서부터 내용 작성 -->
 			<h1 class="mt-4">전체 공지사항</h1>
-
+			
 
 			<main class="mt-5 pt-5">
 				<div class="container-fluid px-4">
