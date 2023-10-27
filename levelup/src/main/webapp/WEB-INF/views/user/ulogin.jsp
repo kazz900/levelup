@@ -63,7 +63,7 @@
                         
                                                 <div class="mb-3">
                                                     <div class="float-end">
-                                                        <a href="auth-recoverpw-2.html" class="text-muted">Forgot password?</a>
+                                                        <a href="${ pageContext.servletContext.contextPath }/searchPwd.do"  class="text-muted">Forgot password?</a>
                                                     </div>
                                                     <label class="form-label">Password</label>
                                                     <div class="input-group auth-pass-inputgroup">
