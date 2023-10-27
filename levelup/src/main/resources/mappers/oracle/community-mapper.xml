@@ -189,10 +189,10 @@ BOARD_BODY = #{board_body}
 								        using (employee_id)
 								    where delYN = 'n' and ref_id is null
 								    
-								    and BOARD_TITLE like '%' || #{ keyword } || '%'
-			OR ATTACHEMENT_FILENAME like '%' || #{ keyword } || '%'
-			OR BOARD_BODY like '%' || #{ keyword } || '%'
-			OR employee_name like '%' || #{ keyword } || '%'
+								    and lower(BOARD_TITLE) like lower('%' || #{ keyword } || '%')
+			OR lower(ATTACHEMENT_FILENAME) like lower('%' || #{ keyword } || '%')
+			OR lower(BOARD_BODY) like lower('%' || #{ keyword } || '%')
+			OR lower(employee_name) like lower('%' || #{ keyword } || '%')
 								    
 								    order by BOARD_DATE desc)
 								    
@@ -227,10 +227,10 @@ BOARD_BODY = #{board_body}
 								        using (employee_id)
 								    where delYN = 'n' and ref_id is null
 								    
-								    and BOARD_TITLE like '%' || #{ keyword } || '%'
-			OR ATTACHEMENT_FILENAME like '%' || #{ keyword } || '%'
-			OR BOARD_BODY like '%' || #{ keyword } || '%'
-			OR employee_name like '%' || #{ keyword } || '%'
+								    and lower(BOARD_TITLE) like lower('%' || #{ keyword } || '%')
+			OR lower(ATTACHEMENT_FILENAME) like lower('%' || #{ keyword } || '%')
+			OR lower(BOARD_BODY) like lower('%' || #{ keyword } || '%')
+			OR lower(employee_name) like lower('%' || #{ keyword } || '%')
 								    
 								    order by BOARD_DATE desc)
 								    

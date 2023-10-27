@@ -58,6 +58,32 @@ public class NoticeController {
 		    return "notice/nwrite";
 		}
 		
+		//새 팀 공지글 등록 페이지 이동 처리용
+		@RequestMapping("ntwrite.do")
+		public String moveTeamWritePage(HttpServletRequest request) {
+			String previousPage = request.getHeader("Referer"); // 현재 페이지로 이동하기 전 페이지의 URL
+		    HttpSession session = request.getSession();
+		    String listPage = (String)session.getAttribute("listPage");
+		    session.setAttribute("listPage", previousPage);
+		    session.setAttribute("previousPage", previousPage);
+		    
+		    
+		    return "notice/ntwrite";
+		}
+				
+		//새 부서 공지글 등록 페이지 이동 처리용
+		@RequestMapping("ndwrite.do")
+		public String moveDeptWritePage(HttpServletRequest request) {
+			String previousPage = request.getHeader("Referer"); // 현재 페이지로 이동하기 전 페이지의 URL
+		    HttpSession session = request.getSession();
+		    String listPage = (String)session.getAttribute("listPage");
+		    session.setAttribute("listPage", previousPage);
+		    session.setAttribute("previousPage", previousPage);
+		    
+		    
+		    return "notice/ndwrite";
+		}
+		
 		//공지글 수정페이지로 이동 처리용
 		@RequestMapping("nmoveup.do")
 		public ModelAndView moveUpdatePage(HttpServletRequest request,
@@ -131,7 +157,6 @@ public class NoticeController {
 			model.addAttribute("teamId", teamId);
 			model.addAttribute("employeeId", employeeId);
 			
-			request.setAttribute("title", "전체 공지사항");
 			
 			return "notice/noticeList";
 		}else {
@@ -162,10 +187,10 @@ public class NoticeController {
 
 		Employee loginEmployee = (Employee)session.getAttribute("loginEmployee");
 
-		
+		String departmentId = loginEmployee.getDepartmentId();
 		String teamId = loginEmployee.getTeamId();
 		session.setAttribute("teamId", teamId);
-		session.setAttribute("departmentId", null);
+		session.setAttribute("departmentId", departmentId);
 		//한 페이지 공지 10개씩 출력되게 한다면
 		int ttlimit = 10;
 		if (tlimit != null) {
@@ -173,18 +198,17 @@ public class NoticeController {
 		}
 		
 		//총 페이지 수 계산을 위한 공지글 총 갯수 조회
-		int listCount = noticeService.selectTListCount(teamId);
+		int listCount = noticeService.selectTListCount(teamId, departmentId);
 		Paging paging = new Paging(listCount, currentPage, ttlimit, "ntlist.do");
 		paging.calculator();
 		
-		ArrayList<Notice> tlist = noticeService.selectTList(paging, teamId);
+		ArrayList<Notice> tlist = noticeService.selectTList(paging, teamId, departmentId);
 		
 		if(tlist != null && tlist.size() > 0) {
 			model.addAttribute("tlist", tlist);
 			model.addAttribute("paging", paging);
 			model.addAttribute("currentPage", currentPage);
 			model.addAttribute("limit", ttlimit);
-			request.setAttribute("title", "팀 공지사항");
 			return "notice/noticeTList";
 		}else {
 			model.addAttribute("message", currentPage + "페이지 목록 조회 실패!");
@@ -233,7 +257,6 @@ public class NoticeController {
 					model.addAttribute("paging", paging);
 					model.addAttribute("currentPage", currentPage);
 					model.addAttribute("limit", ddlimit);
-					request.setAttribute("title", "부서 공지사항");
 					return "notice/noticeDList";
 				}else {
 					model.addAttribute("message", currentPage + "페이지 목록 조회 실패!");
@@ -241,56 +264,57 @@ public class NoticeController {
 				}
 					
 				}
-				//공지사항 입력
-				@RequestMapping(value="ninsert.do", method=RequestMethod.POST)
-				public String noticeInsertMethod(Notice notice, Model model, HttpServletRequest request, 
-				        @RequestParam(name = "ofile", required = false) MultipartFile mfile) {
-				    logger.info("ninsert.do : " + notice);
-				    
-				    //공지사항 첨부파일 저장 폴더 경로 지정
-				    String savePath = request.getSession().getServletContext().getRealPath(
-				            "resources/notice_upfiles");
+		//공지사항 입력
+		@RequestMapping(value="ninsert.do", method=RequestMethod.POST)
+		public String noticeInsertMethod(Notice notice, Model model, HttpServletRequest request, 
+		        @RequestParam(name = "ofile", required = false) MultipartFile mfile) {
+		    logger.info("ninsert.do : " + notice);
+		    
+		   
+		    //공지사항 첨부파일 저장 폴더 경로 지정
+		    String savePath = request.getSession().getServletContext().getRealPath(
+		            "resources/notice_upfiles");
 
-				    //첨부파일이 있을 때
-				    if(!mfile.isEmpty()) {
-				        //전송온 파일이름 추출함
-				        String fileName = mfile.getOriginalFilename();
-				        String renameFileName = null;
-				        
-				        //저장폴더에는 변경된 이름을 저장 처리함
-				        //파일 이름바꾸기함 : 년월일시분초.확장자
-				        if(fileName != null && fileName.length() > 0) {                
-				            //바꿀 파일명에 대한 문자열 만들기
-				            renameFileName = FileNameChange.change(fileName, "yyyyMMddHHmmss");
-				            logger.info("첨부파일명 확인 : " + fileName + ", " + renameFileName);
-				            try {    
-				                //저장 폴더에 파일명 바꾸기 처리
-				                mfile.transferTo(new File(savePath + "\\" + renameFileName));
-				            
-				            }catch(Exception e) {
-				                e.printStackTrace();
-				                model.addAttribute("message", "첨부파일 저장 실패!");
-				                return "common/error";
-				            }
-				        }  //파일명 바꾸기
-				        //notice 객체에 첨부파일 정보 저장 처리
-				        notice.setAttachementFilename(fileName);
-				        notice.setRenameFilename(renameFileName);
-				    } //첨부파일 있을 때        
-				    
-				    if(noticeService.insertNotice(notice) > 0) {
-				        HttpSession session = request.getSession();
-				        String previousPage = (String) session.getAttribute("previousPage");
-				        if (previousPage != null) {
-				            return "redirect:" + previousPage;
-				        } else {
-				            return "redirect:nlist.do"; // 기본 리디렉션 페이지
-				        }
-				    } else {
-				        model.addAttribute("message", "새 공지글 등록 실패!");
-				        return "common/error";
-				    }
-				}
+		    //첨부파일이 있을 때
+		    if(!mfile.isEmpty()) {
+		        //전송온 파일이름 추출함
+		        String fileName = mfile.getOriginalFilename();
+		        String renameFileName = null;
+		        
+		        //저장폴더에는 변경된 이름을 저장 처리함
+		        //파일 이름바꾸기함 : 년월일시분초.확장자
+		        if(fileName != null && fileName.length() > 0) {                
+		            //바꿀 파일명에 대한 문자열 만들기
+		            renameFileName = FileNameChange.change2(fileName, "yyyyMMddHHmmss");
+		            logger.info("첨부파일명 확인 : " + fileName + ", " + renameFileName);
+		            try {    
+		                //저장 폴더에 파일명 바꾸기 처리
+		                mfile.transferTo(new File(savePath + "\\" + renameFileName));
+		            
+		            }catch(Exception e) {
+		                e.printStackTrace();
+		                model.addAttribute("message", "첨부파일 저장 실패!");
+		                return "common/error";
+		            }
+		        }  //파일명 바꾸기
+		        //notice 객체에 첨부파일 정보 저장 처리
+		        notice.setAttachementFilename(fileName);
+		        notice.setRenameFilename(renameFileName);
+		    } //첨부파일 있을 때        
+		    
+		    if(noticeService.insertNotice(notice) > 0) {
+		        HttpSession session = request.getSession();
+		        String previousPage = (String) session.getAttribute("previousPage");
+		        if (previousPage != null) {
+		            return "redirect:" + previousPage;
+		        } else {
+		            return "redirect:nlist.do"; // 기본 리디렉션 페이지
+		        }
+		    } else {
+		        model.addAttribute("message", "새 공지글 등록 실패!");
+		        return "common/error";
+		    }
+		}
 		
 		//공지글 상세보기 요청 처리용 
 		@RequestMapping("ndetail.do")
@@ -387,7 +411,7 @@ public class NoticeController {
 				//파일 이름바꾸기함 : 년월일시분초.확장자
 				if(fileName != null && fileName.length() > 0) {				
 					//바꿀 파일명에 대한 문자열 만들기
-					renameFileName = FileNameChange.change(fileName, 	"yyyyMMddHHmmss");
+					renameFileName = FileNameChange.change2(fileName, 	"yyyyMMddHHmmss");
 					logger.info("첨부파일명 확인 : " + fileName + ", " + renameFileName);
 					try {	
 						//저장 폴더에 파일명 바꾸기 처리
@@ -534,7 +558,7 @@ public class NoticeController {
 			    search.setStartRow(paging.getStartRow());
 			    search.setEndRow(paging.getEndRow());
 			    search.setTeamId(teamId); // Team ID 설정
-			    search.setDepartmentId(null); // Department ID 설정
+			    search.setDepartmentId(departmentId); // Department ID 설정
 
 			    ArrayList<Notice> list = noticeService.selectSearchTitle(search);
 			
