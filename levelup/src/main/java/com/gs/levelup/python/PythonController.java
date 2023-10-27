@@ -28,14 +28,14 @@ public class PythonController {
 		
 		logger.info(scriptPath);
 		
-		if(pythonService.deleteAll()> 0) {
+		pythonService.deleteAll();
 			
 		ProcessBuilder pb = new ProcessBuilder(scriptPath + "/steamcrawling.exe");
 		// 워킹디렉토리 지정(크롬드라이버 찾기 위해)
 		pb.directory(new File(scriptPath)); 
 		Process p = pb.start();	
 		
-		}
+		
 		Thread.sleep(45000); //45초 대기
 
 
