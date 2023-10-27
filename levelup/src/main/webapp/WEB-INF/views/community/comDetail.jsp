@@ -271,11 +271,10 @@ $(function(){
 
 	</c:if>
 	
-	<c:if test="${ !empty replys }">   
 
-	<c:forEach var="r" items="${ replys }">
- 
-	<c:if test="${ !empty r.attachement_filename }">
+	<c:if test="${ !empty replys }">   
+		<c:forEach var="r" items="${ replys }">
+			<c:if test="${ !empty r.attachement_filename }">
 
 	var imgs${ r.board_id } = ${ r.attachement_filename};
 	var previews${ r.board_id } = [];
@@ -320,10 +319,10 @@ $(function(){
 //		elErrorContainer: '#kv-avatar-errors-1',
 //		msgErrorClass: 'alert alert-block alert-danger',
 //		layoutTemplates: {main2: '{preview} '},
-		}) //fileinput 
+		}); //fileinput 
 
-	</c:if>
-	</c:forEach>
+			</c:if>
+		</c:forEach>
 	</c:if>
 	
 }); // document ready
