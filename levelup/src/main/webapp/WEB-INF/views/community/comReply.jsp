@@ -90,7 +90,7 @@ ${currentPage} &nbsp; ${ community.attachement_filename }
 					<div class="row">
 						<div class="kv-avatar col-12">
 			                <div class="file-loading">
-            			        <input id="files" type="file" disabled="true">
+            			        <input id="files" type="file"">
                 			</div>
             			</div>
   					</div>
@@ -279,6 +279,7 @@ $(function(){
     initialPreviewConfig: previewConfig,
     showUpload: false,
     showBrowse: false,
+    showRemove: false,
     browseOnZoneClick: false,
     initialPreviewShowDelete: false,
 //	browseLabel: '파일 선택',

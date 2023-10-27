@@ -73,9 +73,7 @@ public class EmployeeController {
 	public String empenrollMethod(Model model, 
 			Employee emp) {
 		
-		logger.info("empenroll.do : " + emp);
 		emp.setEmployeePwd(bcryptPasswordEncoder.encode(emp.getEmployeePwd()));
-		logger.info("after encode : " + emp.getEmployeePwd());
 		
 		if(employeeService.insertEmployee(emp) > 0) {
 			model.addAttribute("message", "사원이 등록되었습니다.");
