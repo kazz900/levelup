@@ -335,11 +335,11 @@ public class NoticeController {
 			if(notice != null) {
 				mv.addObject("notice", notice);
 				Employee loginEmployee = (Employee)session.getAttribute("loginEmployee");
-				if(loginEmployee != null && listPage.toString().contains("nlist") && notice.getEmployeeId().equals(loginEmployee.getEmployeeId()) || loginEmployee.getRankId().equals("jdirec") || loginEmployee.getRankId().equals("direc") || loginEmployee.getRankId().equals("ceo")) {
+				if(loginEmployee != null && listPage.toString().contains("nlist") && notice.getEmployeeId().equals(loginEmployee.getEmployeeId()) && (loginEmployee.getRankId().equals("jdirec") || loginEmployee.getRankId().equals("direc") || loginEmployee.getRankId().equals("ceo"))) {
 					mv.setViewName("notice/nAdminDetail");}
-				if(loginEmployee != null && listPage.toString().contains("ntlist") && notice.getEmployeeId().equals(loginEmployee.getEmployeeId()) || loginEmployee.getRankId().equals("jman") || loginEmployee.getRankId().equals("sman") || loginEmployee.getRankId().equals("jdirec") || loginEmployee.getRankId().equals("direc") || loginEmployee.getRankId().equals("ceo") || notice.getEmployeeId().equals(loginEmployee.getEmployeeId())) {
+				else if(loginEmployee != null && listPage.toString().contains("ntlist") && notice.getEmployeeId().equals(loginEmployee.getEmployeeId()) || loginEmployee.getRankId().equals("sman") || loginEmployee.getRankId().equals("jdirec") || loginEmployee.getRankId().equals("direc") || loginEmployee.getRankId().equals("ceo") || notice.getEmployeeId().equals(loginEmployee.getEmployeeId())) {
 					mv.setViewName("notice/nAdminDetail");}
-				if(loginEmployee != null && listPage.toString().contains("ndlist") && notice.getEmployeeId().equals(loginEmployee.getEmployeeId()) || 	loginEmployee.getRankId().equals("sman") || loginEmployee.getRankId().equals("jdirec") || loginEmployee.getRankId().equals("direc") || loginEmployee.getRankId().equals("ceo") || notice.getEmployeeId().equals(loginEmployee.getEmployeeId())) {
+				else if(loginEmployee != null && listPage.toString().contains("ndlist") && notice.getEmployeeId().equals(loginEmployee.getEmployeeId()) || loginEmployee.getRankId().equals("sman") || loginEmployee.getRankId().equals("jdirec") || loginEmployee.getRankId().equals("direc") || loginEmployee.getRankId().equals("ceo") || notice.getEmployeeId().equals(loginEmployee.getEmployeeId())) {
 					mv.setViewName("notice/nAdminDetail");
 				}else {
 					mv.setViewName("notice/ndetail");
@@ -584,7 +584,7 @@ public class NoticeController {
 			//전체 공지 검색 리스트인 경우
 			else {
 				// 총 페이지수 계산을 위한 검색 결과 적용된 총 목록 갯수 조회
-			    int listCount = noticeService.selectSearchTitleCount(search);
+			    int listCount = noticeService.selectSearchTitleCountD(search);
 
 			    // 뷰 페이지에 사용할 페이징 관련 값 계산 처리
 			    Paging paging = new Paging(listCount, currentPage, limit, "nsearchTitle.do");

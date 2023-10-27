@@ -62,6 +62,10 @@ public class NoticeServiceImpl implements NoticeService{
 		return noticeDao.selectSearchTitleCount(search);
 	}
 	@Override
+	public int selectSearchTitleCountD(Search search) {
+		return noticeDao.selectSearchTitleCountD(search);
+	}
+	@Override
 	public int selectSearchContentCount(String keyword) {
 		return noticeDao.selectSearchContentCount(keyword);
 	}

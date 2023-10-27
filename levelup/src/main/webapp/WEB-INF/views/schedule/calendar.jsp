@@ -180,14 +180,14 @@
 		
 <script type="text/javascript">
 var scheduleList = [];
-var nnn = {}, ttt = {}, eee = {};
+
 
 <c:forEach var="s" items="${ calendarList }">
  var schedule = {
 	 id: "${s.scheduleId}",
      calendarId: "${s.scheduleType}",
      title: "${s.scheduleTheme}",
-     isAllDay: "${s.scheduleContent}" == "false" ? false : true, // 종일 일정 여부에 대한 조건을 설정하세요
+     isAllDay: "${s.scheduleContent}" == "false" ? false : true, // 
      start: "${s.scheduleStartday}",
      end: "${s.scheduleEndday}",
      category: 'time',
