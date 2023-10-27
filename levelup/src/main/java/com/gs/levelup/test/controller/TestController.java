@@ -34,18 +34,10 @@ public class TestController {
 	@Autowired
 	private UserService userService;
 	
-	/*
-	 * @RequestMapping(value = "sendMail.do", method = RequestMethod.GET) public
-	 * void getMailSend() { logger.info("메일발송 JSP진입"); }
-	 */
-	
 	@RequestMapping(value = "sendMail.do", method = RequestMethod.POST)
     public String sendMailTest(
     		HttpServletRequest request,
-    		@RequestParam(value="email", required=false) String toEmail) throws Exception{
-		System.out.println("sendMail.do=================" + toEmail);
-		
-		
+    		@RequestParam(value="email", required=false) String toEmail) throws Exception{		
 		
 		if(userService.selectUserEmail(toEmail) != null && userService.selectUserEmail(toEmail).length() > 5) {
 			Random random = new Random();
@@ -61,24 +53,17 @@ public class TestController {
 			
 			emailCheckService.insertEmailCheck(emailCheck);
 
-			// 보내는 사람 김지혁
 			String frm = "kimjihyuk_@naver.com";
-			
-			// 보내는 사람 김화범
-			//String frm = "vulpes900@naver.com";
 		
 			try {
-				// 메일 내용 넣을 객체와, 이를 도와주는 Helper 객체 생성
 				MimeMessage mail = mailSender.createMimeMessage();
 				MimeMessageHelper mailHelper = new MimeMessageHelper(mail, "UTF-8");
+			
+				mailHelper.setFrom(frm);	
+				mailHelper.setTo(toEmail);	
+				mailHelper.setSubject(subject);	
+				mailHelper.setText(content);
 
-				// 메일 내용을 채워줌
-				mailHelper.setFrom(frm);	// 보내는 사람 셋팅
-				mailHelper.setTo(toEmail);		// 받는 사람 셋팅
-				mailHelper.setSubject(subject);	// 제목 셋팅
-				mailHelper.setText(content);	// 내용 셋팅
-
-				// 메일 전송
 				mailSender.send(mail);
 			} catch(Exception e) {
 				e.printStackTrace();
@@ -98,7 +83,7 @@ public class TestController {
 			Model model,
 			@RequestParam(name="code") int code,
 			@RequestParam(name="email") String email) {
-		System.out.println("checkCode.do=================");
+
 		EmailCheck emailCheck = new EmailCheck(email, code);
 		
 		int result = emailCheckService.selectCheckCode(emailCheck);
