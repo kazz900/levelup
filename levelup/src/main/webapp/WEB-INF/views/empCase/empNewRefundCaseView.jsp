@@ -305,7 +305,12 @@ function golist(){
 										<div class="row justify-content-end" align="center">
 											<div class="col-lg-12">
 												<button type="button" class="btn btn-secondary waves-effect waves-light" onclick="golist();">목록으로</button>
+												<c:if test="${ requestScope.payment.paymentStatus eq 1 }" >
 												<button type="submit" class="btn btn-primary">작성 완료</button>
+												</c:if>
+												<c:if test="${ requestScope.payment.paymentStatus eq 2 || requestScope.payment.paymentStatus eq 3 }" >
+												 &nbsp;
+												</c:if>
 											</div>
 										</div>
 									</c:if>

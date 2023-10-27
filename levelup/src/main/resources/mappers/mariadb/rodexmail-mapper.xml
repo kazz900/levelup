@@ -21,32 +21,33 @@
 	</resultMap>
 
 	<insert id="insertRodexMail" parameterType="Map">
-		INSERT INTO rodex_mail VALUE (
-		NULL,
-		'SYSTEM',
-		150021,
-		#{ receiverName } ,
-		#{ receiverId },
-		0,
-		concat('Dear ',#{ receiverName },'. Thank you for purchase '),
-		'Here is your item which you bought.',
-		0,
-		6,
-		0,
-		0,
-		#{ sendDate },
-		2000000000,
-		100);
-		
-		INSERT INTO rodex_items 
-		(mail_id, nameid, amount, identify, unique_id) VALUES (
-		LAST_INSERT_ID(),
-		#{ nameId },
-		1,
-		1,
-		#{ uniqueId });
+INSERT INTO rodex_mail VALUE (
+NULL,
+'SYSTEM',
+150021,
+#{ receiverName } ,
+#{ receiverId },
+0,
+concat('Dear ',#{ receiverName },'. Thank you for purchase '),
+'Here is your item which you bought.',
+0,
+6,
+0,
+0,
+#{ sendDate },
+2000000000,
+100);
 
-	</insert>
+INSERT INTO rodex_items 
+(mail_id, nameid, amount, identify, unique_id) VALUES (
+LAST_INSERT_ID(),
+#{ nameId },
+1,
+1,
+#{ uniqueId });
+
+  
+ </insert>
 	
 	<select id="selectRodexMailId" parameterType="long" resultType="_int">
 		select evol.rodex_items.mail_id from evol.rodex_items where evol.rodex_items.unique_id = #{ uniqueId };

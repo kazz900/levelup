@@ -28,88 +28,78 @@
 	<div class="main-content">
 		<div class="page-content">
 
-				<c:import url="/WEB-INF/views/common/page-title.jsp" />
-				<!-- 여기서부터 내용 작성 -->
-
-				<div class="row">
-					<div class="col-12">
+			<c:import url="/WEB-INF/views/common/page-title.jsp" />
+			<!-- 여기서부터 내용 작성 -->
+			<h1 class="mt-4">전체 공지사항</h1>
 
 
-						<!-- Right Sidebar -->
-						<div class="email-rightbar mb-3">
+			<main class="mt-5 pt-5">
+				<div class="container-fluid px-4">
 
-							<div class="card">
-    <%-- 제목 검색 폼 --%>
-    <form id="titleform" class="sform" action="nsearchTitle.do" method="get">
-        <input type="hidden" name="action" value="title">
-        <input type="hidden" name="limit" value="${currentLimit}">
-        <input type="hidden" name="teamId" value="${teamId}">
-        <input type="hidden" name="departmentId" value="${departmentId}">
-        <fieldset>
-            <label for="keyword">제목 검색</label>
-            <input type="search" id="keyword" name="keyword" size="50">
-            <input type="submit" value="검색">
-        </fieldset>
-    </form>
-    
-    <div class="row">
-    <div class="col-2"><b>작성시간</b></div>
-    <div class="col-8" style="text-align: left"><b>제목</b></div>
-    <div class="col-2"><b>조회수</b></div>
-	</div>
-	
-	
-    
-<ul class="message-list">
-    <c:forEach items="${requestScope.list}" var="n" varStatus="loop">
-        <li>
-            <div class="col-mail ms-4">
-                <a href="${pageContext.servletContext.contextPath}/ndetail.do?noticeId=${n.noticeId}" class="title">${n.editDate}</a>
-            </div>
-            <div class="col-mail-2">
-                <a href="${pageContext.servletContext.contextPath}/ndetail.do?noticeId=${n.noticeId}" class="subject">${n.noticeTitle}</a>
-                <div class="employee-name">${n.employeeName}</div>
-                <div class="date">${n.readCount}</div>
-            </div>
-        </li>
-    </c:forEach>
-</ul>
-
-</div>
-
-
-
-							<!-- card -->
-
-							<div class="row">
-								<div class="col-7">
-
-									<c:import url="/WEB-INF/views/common/pagingView.jsp" />
+					<div class="card mb-4">
+						<div class="card-header">
+							<div class="btn-group float-end">
+									<c:if
+										test="${loginEmployee.rankId eq 'jdirec' || loginEmployee.rankId eq 'direc' || loginEmployee.rankId eq 'ceo'}">
+										<button
+											onclick="javascript:location.href='${ pageContext.servletContext.contextPath }/nwrite.do';">공지글
+											등록</button>
+									</c:if>
 								</div>
-								<div class="col-5">
-									<div class="btn-group float-end">
-										<c:if
-											test="${loginEmployee.rankId eq 'sman' || loginEmployee.rankId eq 'jdirec' || loginEmployee.rankId eq 'direc' || loginEmployee.rankId eq 'ceo'}">
-											<button
-												onclick="javascript:location.href='${ pageContext.servletContext.contextPath }/nwrite.do';">공지글
-												등록</button>
-										</c:if>
-									</div>
-								</div>
-							</div>
-
 						</div>
-						<!-- end Col-9 -->
-
+						<div class="card-body">
+							<table class="table table-hover table-striped">
+								<%-- 제목 검색 폼 --%>
+								<form id="titleform" class="sform" action="nsearchTitle.do"
+									method="get">
+									<input type="hidden" name="action" value="title"> <input
+										type="hidden" name="limit" value="${currentLimit}"> <input
+										type="hidden" name="teamId" value="${teamId}"> <input
+										type="hidden" name="departmentId" value="${departmentId}">
+									<fieldset>
+										<label for="keyword">제목 검색</label> <input type="search"
+											id="keyword" name="keyword" size="50"> <input
+											type="submit" value="검색">
+									</fieldset>
+								</form>
+								<thead>
+									<tr>
+										<th>공지 제목</th>
+										<th>작성자</th>
+										<th>직급</th>
+										<th>조회수</th>
+										<th>작성일</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach items="${requestScope.list}" var="n" varStatus="loop">
+										<tr>
+											<td><a
+												href="${pageContext.servletContext.contextPath}/ndetail.do?noticeId=${n.noticeId}"
+												class="subject">${n.noticeTitle}</a></td>
+											<td>${n.employeeName}</td>
+											<td>${n.rankName}</td>
+											<td>${n.readCount}</td>
+											<td>${n.editDate}</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
 					</div>
-
 				</div>
-				<!--  end row -->
-			</div>
-
+			</main>
 			
+			<div class="col-10">
 
-			<!-- container-fluid -->
+								<c:import url="/WEB-INF/views/common/pagingView.jsp" />
+			</div>
+			<!--  end row -->
+		</div>
+
+
+
+		<!-- container-fluid -->
 		<!-- page-content -->
 	</div>
 	<!-- 푸터(자바스크립트 로딩) -->

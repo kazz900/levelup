@@ -16,6 +16,7 @@
 <!-- 헤드 스크립트 -->
 <c:import url="/WEB-INF/views/common/head-script.jsp"/>
 
+
 </head>
 <body data-sidebar="dark" data-layout-mode="light">
 <!-- 내비게이션바, 사이드바 등등 -->
@@ -29,12 +30,14 @@
 
 <!-- 여기서부터 내용 작성 -->
 
-
+<div class="container-fluid">
 <div class="row mb-3">
 	<div class="col-12">
 		<div>
 		<form class="form-control" action="comSearch.do">
-		<div class="row mb-3">
+		<div class="row">
+
+<!-- 
 		 <div class="col-4">
 			<div class="form-floating">
 	            	<input name="keyword" type="search" class="form-control" id="floatingInput" placeholder="검색할 키워드를 입력해 주세요" required="true">
@@ -45,6 +48,8 @@
 	     	<input name="page" type="hidden" value="${ currentPage }">
 	     	            	<input type ="submit" class="btn btn-primary align-middle" value="검색">
 	     </div>
+ -->
+
 	     <div class="col-3">
 							<button type="button" class="btn btn-primary waves-light waves-effect"
 								onclick="javascript:location.href='movecomWrite.do'">
@@ -53,21 +58,21 @@
 		</div>
 		</form>
 			
-<div class="row row row-cols-1 row-cols-md-2 mt-3 gx-7">
+<div class="row row row-cols-1 row-cols-md-2 mt-3" data-masonry='{"percentPosition": true }'>
 <c:forEach var="b" items="${ list }" >
 
 
+<div class="container">
 <div class="card gx-3 overflow-hidden">
+	
   <div class="card-body">
-    <h5 class="card-title">${ b.board_title }</h5>
-    <div class="card-text overflow-auto">${ b.board_body }</div>
+    <h5 class="card-title fs-3">${ b.board_title }</h5>
+    <div class="card-text overflow-auto fs-4">${ b.board_body }</div>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">${ b.department_name }/${ b.team_name }팀/${ b.rank_name }/ <b>${ b.employee_name }</b></li>
-    <li class="list-group-item">작성일: ${ b.board_date } 조회수: 	${ b.read_count }</li>
-<c:if test="${ !empty b.attachement_filename }">
-    <li class="list-group-item">${ b.attachement_filename }</li>
-</c:if>
+    <li class="list-group-item text-end"><i class="fas fa-pen-nib fs-4 text-primary text-opacity-20"></i> ${ b.department_name }/${ b.team_name }팀/${ b.rank_name }/ <b class="fs-4 text-primary">${ b.employee_name }</b></li>
+    <li class="list-group-item text-end"><i class="mdi mdi-clock-outline fs-4 text-primary text-opacity-20"></i> ${ b.board_date }  <i class="fas fa-eye fs-4 text-primary text-opacity-20"></i> ${ b.read_count }</li>
+
   </ul>
   <div class="card-body
   <c:if test="${ b.refYN == 'y' }">
@@ -76,10 +81,27 @@ text-bg-info
   ">
     <a href="comdetail.do?board_id=${ b.board_id }&page=${currentPage}" class="btn btn-primary">상세보기</a>
 <c:if test="${ b.refYN == 'y' }">
-	&nbsp;&nbsp;<i class="mdi mdi-message-plus-outline fs-1"></i>
+	&nbsp;&nbsp;<i class="mdi mdi-message-plus-outline fs-1"></i>&nbsp;&nbsp;
 </c:if>
+<c:if test="${ !empty b.attachement_filename }">
+
+<!-- <div class="dropdown"> -->
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    첨부 파일
+  </a>
+
+  <ul class="dropdown-menu" id="${ b.board_id }">
+  </ul>
+<!-- </div> -->
+	
+</c:if>
+  
   </div>
 </div>
+</div>
+
+
+
 </c:forEach>
 
 
@@ -91,6 +113,8 @@ text-bg-info
 
 		</div>
 		<!--  end row -->
+	</div>
+
 	</div>
 
 <!-- Modal -->
@@ -146,6 +170,25 @@ text-bg-info
         <!-- email editor init -->
         <script src="resources/js/pages/email-editor.init.js"></script>
 
+<c:forEach var="b" items="${ list }">
+<c:if test="${ !empty b.attachement_filename }">
+	
+<script type="text/javascript">
+$(function(){
+	files${ b.board_id } = ${ b.attachement_filename };
+	for(i in files${ b.board_id }){
+		$('#${ b.board_id}').append('<li><a class="dropdown-item" href="resources/com_upfiles/${b.board_id}/' + files${ b.board_id }[i] + '">' + files${ b.board_id }[i] + '<a></li>');
+//		$('#${ b.board_id}').append('<li class="list-group-item"><i class="fas fa-file-alt fs-4 text-primary text-opacity-20"></i> ' + files${ b.board_id }[i] + '</li>');
+
+	}    
+	
+});
+</script>
+
+</c:if>
+</c:forEach>
+
+	<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
 
 </body>
 </html>
