@@ -177,9 +177,7 @@ text-bg-info
 $(function(){
 	files${ b.board_id } = ${ b.attachement_filename };
 	for(i in files${ b.board_id }){
-		$('#${ b.board_id}').append('<li><a class="dropdown-item" href="resources/com_upfiles/${b.board_id}/''">' + files${ b.board_id }[i] + '<a></li>');
-//		$('#${ b.board_id}').append('<li class="list-group-item"><i class="fas fa-file-alt fs-4 text-primary text-opacity-20"></i> ' + files${ b.board_id }[i] + '</li>');
-
+		$('#${ b.board_id}').append('<li><a class="dropdown-item" href="resources/com_upfiles/${b.board_id}/' + files${ b.board_id }[i] + '">' + files${ b.board_id }[i] + '<a></li>');
 	}    
 	
 });
